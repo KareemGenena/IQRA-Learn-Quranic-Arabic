@@ -1,0 +1,429 @@
+:root {
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --card-border: #dbe4ec;
+  --text: #17303f;
+  --text-soft: #5c7285;
+  --accent: #1c5f8f;
+  --accent-strong: #164b72;
+  --highlight: rgba(106, 168, 79, 0.4);
+  --highlight-border: rgba(76, 137, 72, 0.75);
+  --shadow: 0 1px 3px rgba(23, 48, 63, 0.1);
+  --shadow-lift: 0 4px 14px rgba(23, 48, 63, 0.16);
+}
+
+:root[data-theme='dark'] {
+  --bg: #0e1a24;
+  --card: #16283a;
+  --card-border: #24405a;
+  --text: #e8f0f6;
+  --text-soft: #8fa9bd;
+  --accent: #5aa4d6;
+  --accent-strong: #7cbbe6;
+  --highlight: rgba(120, 190, 100, 0.35);
+  --highlight-border: rgba(140, 205, 120, 0.7);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-lift: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+}
+
+/* ---------- header ---------- */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0 18px;
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+}
+
+.titles h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.14em;
+  color: var(--accent-strong);
+}
+
+.titles p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.theme-toggle {
+  margin-inline-start: auto;
+  font-size: 20px;
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* ---------- lesson head ---------- */
+
+.lesson-head h2 {
+  margin: 0 0 2px;
+  font-size: 20px;
+}
+
+.lesson-sub {
+  margin: 0;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 20px;
+  color: var(--text-soft);
+}
+
+.hint {
+  margin: 10px 0 18px;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.loading {
+  text-align: center;
+  color: var(--text-soft);
+  padding: 60px 0;
+}
+
+/* ---------- word grid ---------- */
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.word-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 118px;
+  padding: 26px 14px 20px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.word-card:hover {
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+}
+
+.word-card.playing {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lift);
+}
+
+.word-num {
+  position: absolute;
+  top: 8px;
+  inset-inline-start: 12px;
+  direction: ltr;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.play-icon {
+  position: absolute;
+  bottom: 8px;
+  inset-inline-end: 10px;
+  color: var(--accent);
+  opacity: 0.8;
+  display: flex;
+}
+
+/* ---------- Arabic word + highlight ---------- */
+
+.arabic-word {
+  position: relative;
+  display: inline-block;
+}
+
+.arabic-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: clamp(42px, 5.5vw, 56px);
+  line-height: 1.9;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.letter-highlight {
+  position: absolute;
+  z-index: 0;
+  background: var(--highlight);
+  border-bottom: 3px solid var(--highlight-border);
+  border-radius: 8px;
+  transition: left 0.13s ease-out, width 0.13s ease-out, top 0.13s ease-out,
+    height 0.13s ease-out;
+  pointer-events: none;
+}
+
+.letter-pending {
+  position: absolute;
+  z-index: 0;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+  pointer-events: none;
+}
+
+/* ---------- toolbar / speed ---------- */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rate-group {
+  display: inline-flex;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.rate-btn {
+  padding: 8px 14px;
+  border: none;
+  background: none;
+  color: var(--text-soft);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.rate-btn + .rate-btn {
+  border-inline-start: 1px solid var(--card-border);
+}
+
+.rate-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.rate-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ---------- admin gate ---------- */
+
+.admin-gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 16px;
+  color: var(--text-soft);
+}
+
+.admin-gate input {
+  font-size: 18px;
+  padding: 10px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  text-align: center;
+  width: 200px;
+}
+
+.gate-error {
+  color: #c0392b;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* ---------- calibrate page ---------- */
+
+.breadcrumb {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.breadcrumb a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.breadcrumb h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.cal-intro {
+  color: var(--text-soft);
+  font-size: 14px;
+  max-width: 640px;
+}
+
+kbd {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 12px;
+}
+
+.cal-word-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 20px;
+}
+
+.cal-chip {
+  min-width: 34px;
+  padding: 6px 4px;
+  direction: ltr;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 9px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.cal-chip.done {
+  background: var(--highlight);
+  border-color: var(--highlight-border);
+}
+
+.cal-chip.current {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+}
+
+.cal-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 28px 16px;
+}
+
+.cal-word .arabic-text {
+  font-size: clamp(56px, 10vw, 84px);
+}
+
+.cal-status {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.cal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn.danger {
+  color: #c0392b;
+  border-color: #c0392b66;
+}
+
+.tap-btn {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 22px 64px;
+  border-radius: 18px;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.cal-offset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.cal-offset input {
+  width: 220px;
+}
+
+.cal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .word-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .arabic-text {
+    font-size: 40px;
+  }
+}

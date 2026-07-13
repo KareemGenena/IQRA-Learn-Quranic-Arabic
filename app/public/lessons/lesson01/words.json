@@ -1,0 +1,206 @@
+{
+  "lesson": 1,
+  "title": "Five-Letter Words",
+  "titleArabic": "كلمات من خمسة أحرف",
+  "audioPath": "audio/lesson01/",
+  "words": [
+    {
+      "id": 1,
+      "arabic": "أَنْعَمْتَ",
+      "audio": "word01.wav",
+      "timings": null
+    },
+    {
+      "id": 2,
+      "arabic": "مَغْضُوبِ",
+      "audio": "word02.wav",
+      "timings": null
+    },
+    {
+      "id": 3,
+      "arabic": "عَلَيْهِمْ",
+      "audio": "word03.wav",
+      "timings": null
+    },
+    {
+      "id": 4,
+      "arabic": "مَثَلُهُمْ",
+      "audio": "word04.wav",
+      "timings": null
+    },
+    {
+      "id": 5,
+      "arabic": "تَرَكَهُمْ",
+      "audio": "word05.wav",
+      "timings": null
+    },
+    {
+      "id": 6,
+      "arabic": "خَلَقَكُمْ",
+      "audio": "word06.wav",
+      "timings": null
+    },
+    {
+      "id": 7,
+      "arabic": "قَبْلِكُمْ",
+      "audio": "word07.wav",
+      "timings": null
+    },
+    {
+      "id": 8,
+      "arabic": "فَأَخْرَجَ",
+      "audio": "word08.wav",
+      "timings": null
+    },
+    {
+      "id": 9,
+      "arabic": "عَبْدِنَا",
+      "audio": "word09.wav",
+      "timings": null
+    },
+    {
+      "id": 10,
+      "arabic": "بِسُورَةٍ",
+      "audio": "word10.wav",
+      "timings": null
+    },
+    {
+      "id": 11,
+      "arabic": "حِجَارَةُ",
+      "audio": "word11.wav",
+      "timings": null
+    },
+    {
+      "id": 12,
+      "arabic": "تَحْتِهَا",
+      "audio": "word12.wav",
+      "timings": null
+    },
+    {
+      "id": 13,
+      "arabic": "أَنْهَـارُ",
+      "audio": "word13.wav",
+      "timings": null
+    },
+    {
+      "id": 14,
+      "arabic": "رُزِقْنَا",
+      "audio": "word14.wav",
+      "timings": null
+    },
+    {
+      "id": 15,
+      "arabic": "أَزْوَاجٌ",
+      "audio": "word15.wav",
+      "timings": null
+    },
+    {
+      "id": 16,
+      "arabic": "بَعُوضَةً",
+      "audio": "word16.wav",
+      "timings": null
+    },
+    {
+      "id": 17,
+      "arabic": "فَوْقَهَا",
+      "audio": "word17.wav",
+      "timings": null
+    },
+    {
+      "id": 18,
+      "arabic": "خَلِيفَةً",
+      "audio": "word18.wav",
+      "timings": null
+    },
+    {
+      "id": 19,
+      "arabic": "بِحَمْدِكَ",
+      "audio": "word19.wav",
+      "timings": null
+    },
+    {
+      "id": 20,
+      "arabic": "عَرَضَهُمْ",
+      "audio": "word20.wav",
+      "timings": null
+    },
+    {
+      "id": 21,
+      "arabic": "سُبْحَـانَ",
+      "audio": "word21.wav",
+      "timings": null
+    },
+    {
+      "id": 22,
+      "arabic": "تُبْدُونَ",
+      "audio": "word22.wav",
+      "timings": null
+    },
+    {
+      "id": 23,
+      "arabic": "إِبْلِيسَ",
+      "audio": "word23.wav",
+      "timings": null
+    },
+    {
+      "id": 24,
+      "arabic": "وَزَوْجُكَ",
+      "audio": "word24.wav",
+      "timings": null
+    },
+    {
+      "id": 25,
+      "arabic": "تَقْرَبَا",
+      "audio": "word25.wav",
+      "timings": null
+    },
+    {
+      "id": 26,
+      "arabic": "وَقُلْنَا",
+      "audio": "word26.wav",
+      "timings": null
+    },
+    {
+      "id": 27,
+      "arabic": "بَعْضُكُمْ",
+      "audio": "word27.wav",
+      "timings": null
+    },
+    {
+      "id": 28,
+      "arabic": "كَلِمَـاتٍ",
+      "audio": "word28.wav",
+      "timings": null
+    },
+    {
+      "id": 29,
+      "arabic": "أَصْحَـابُ",
+      "audio": "word29.wav",
+      "timings": null
+    },
+    {
+      "id": 30,
+      "arabic": "نِعْمَتِيَ",
+      "audio": "word30.wav",
+      "timings": null
+    },
+    {
+      "id": 31,
+      "arabic": "عَلَيْكُمْ",
+      "audio": "word31.wav",
+      "timings": null
+    },
+    {
+      "id": 32,
+      "arabic": "بِعَهْدِي",
+      "audio": "word32.wav",
+      "timings": null
+    },
+    {
+      "id": 33,
+      "arabic": "كَبِيرَةٌ",
+      "audio": "word33.wav",
+      "timings": null
+    }
+  ]
+}
