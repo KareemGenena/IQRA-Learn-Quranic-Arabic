@@ -3,6 +3,8 @@ import { WordGrid } from './components/WordGrid';
 import { AdminGate } from './components/AdminGate';
 import { CalibratePage } from './pages/CalibratePage';
 import { isAdmin } from './lib/admin';
+import { storeCloudSnapshot } from './lib/calibration';
+import { fetchCloudCalibrations } from './lib/cloudCalibration';
 import type { Lesson } from './types';
 
 type Theme = 'light' | 'dark';
@@ -56,6 +58,15 @@ export default function App() {
       .then(setLesson)
       .catch(() => setError(true));
   }, []);
+
+  // Pull the latest calibrations from the cloud (soft-fail: offline or
+  // Firestore unavailable just means the last-known/baked timings are used).
+  useEffect(() => {
+    if (!lesson) return;
+    fetchCloudCalibrations(lesson.lesson)
+      .then((map) => storeCloudSnapshot(lesson.lesson, map))
+      .catch(() => {});
+  }, [lesson]);
 
   const calibrating = route === '#calibrate';
 

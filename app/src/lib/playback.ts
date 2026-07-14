@@ -5,7 +5,7 @@
 
 import { speechBounds } from './audioAnalysis';
 import { autoBoundaries } from './timing';
-import { loadCalibration } from './calibration';
+import { loadCalibration, loadCloudSnapshot } from './calibration';
 import type { LetterCluster } from './graphemes';
 import type { Lesson, WordEntry } from '../types';
 
@@ -22,7 +22,8 @@ export function audioUrl(lesson: Lesson, word: WordEntry): string {
 
 /**
  * Boundary times for a word, best source first:
- * user calibration (localStorage) > words.json timings > automatic estimate.
+ * this device's own calibration > cloud-synced calibration >
+ * words.json timings > automatic estimate.
  */
 export async function resolveBoundaries(
   lesson: Lesson,
@@ -33,6 +34,9 @@ export async function resolveBoundaries(
 
   const calibrated = loadCalibration(lesson.lesson)[word.id];
   if (calibrated?.length === expected) return calibrated;
+
+  const cloud = loadCloudSnapshot(lesson.lesson)[word.id];
+  if (cloud?.length === expected) return cloud;
 
   if (word.timings?.length === expected) return word.timings;
 

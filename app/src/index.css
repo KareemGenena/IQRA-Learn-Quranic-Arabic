@@ -409,6 +409,13 @@ kbd {
   width: 220px;
 }
 
+.sync-msg {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-soft);
+  margin: 14px 0 0;
+}
+
 .cal-footer {
   display: flex;
   align-items: center;

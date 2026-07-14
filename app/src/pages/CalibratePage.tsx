@@ -9,6 +9,10 @@ import {
   saveCalibration,
 } from '../lib/calibration';
 import {
+  deleteCloudCalibration,
+  saveCloudCalibration,
+} from '../lib/cloudCalibration';
+import {
   audioUrl,
   playWithHighlights,
   stopActivePlayback,
@@ -30,6 +34,7 @@ export function CalibratePage({ lesson }: { lesson: Lesson }) {
   const [rate, setRate] = useState(0.75);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [calVersion, setCalVersion] = useState(0);
+  const [syncMsg, setSyncMsg] = useState('');
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const tapsRef = useRef<number[]>([]);
@@ -148,6 +153,13 @@ export function CalibratePage({ lesson }: { lesson: Lesson }) {
   const save = () => {
     if (!boundaries) return;
     saveCalibration(lesson.lesson, word.id, boundaries);
+    setSyncMsg(`Word ${word.id}: syncing…`);
+    saveCloudCalibration(lesson.lesson, word.id, boundaries)
+      .then(() => setSyncMsg(`Word ${word.id}: saved & synced to all devices ✓`))
+      .catch((err) => {
+        console.error('cloud sync failed:', err);
+        setSyncMsg(`Word ${word.id}: saved on this device — cloud sync FAILED (will not reach other devices)`);
+      });
     setCalVersion((v) => v + 1);
     setPhase('idle');
     setBoundaries(null);
@@ -157,6 +169,13 @@ export function CalibratePage({ lesson }: { lesson: Lesson }) {
 
   const removeSaved = () => {
     clearCalibration(lesson.lesson, word.id);
+    setSyncMsg(`Word ${word.id}: deleting from cloud…`);
+    deleteCloudCalibration(lesson.lesson, word.id)
+      .then(() => setSyncMsg(`Word ${word.id}: calibration deleted everywhere ✓`))
+      .catch((err) => {
+        console.error('cloud delete failed:', err);
+        setSyncMsg(`Word ${word.id}: deleted here — cloud delete FAILED`);
+      });
     setCalVersion((v) => v + 1);
   };
 
@@ -270,6 +289,8 @@ export function CalibratePage({ lesson }: { lesson: Lesson }) {
           />
         </label>
       </div>
+
+      {syncMsg && <p className="sync-msg">{syncMsg}</p>}
 
       <div className="cal-footer">
         <span>
