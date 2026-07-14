@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArabicWord } from '../components/ArabicWord';
 import { splitClusters } from '../lib/graphemes';
+import { getAudioSrc } from '../lib/audioSource';
 import { speechBounds } from '../lib/audioAnalysis';
 import {
   clearCalibration,
@@ -64,13 +65,13 @@ export function CalibratePage({ lesson }: { lesson: Lesson }) {
   const startCapture = async () => {
     stopEverything();
     const url = audioUrl(lesson, word);
-    const bounds = await speechBounds(url);
+    const [bounds, src] = await Promise.all([speechBounds(url), getAudioSrc(url)]);
 
     tapsRef.current = [];
     setTaps([]);
     setPhase('capturing');
 
-    const audio = new Audio(url);
+    const audio = new Audio(src);
     audio.playbackRate = rate;
     audio.preservesPitch = true;
     audioRef.current = audio;
@@ -129,11 +130,12 @@ export function CalibratePage({ lesson }: { lesson: Lesson }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, clusters.length, offsetMs, rate]);
 
-  const preview = () => {
+  const preview = async () => {
     if (!boundaries) return;
     stopEverything();
+    const src = await getAudioSrc(audioUrl(lesson, word));
     previewRef.current = playWithHighlights(
-      audioUrl(lesson, word),
+      src,
       boundaries,
       setActiveIndex,
       () => {

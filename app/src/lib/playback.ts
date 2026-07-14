@@ -45,7 +45,7 @@ export interface PlaybackHandle {
 }
 
 export function playWithHighlights(
-  url: string,
+  src: string,
   boundaries: number[],
   onActiveLetter: (index: number | null) => void,
   onDone: () => void,
@@ -53,7 +53,9 @@ export function playWithHighlights(
 ): PlaybackHandle {
   stopActivePlayback();
 
-  const audio = new Audio(url);
+  // src should be a blob: URL from getAudioSrc — never the raw file URL,
+  // which would stream through the service worker (see audioSource.ts).
+  const audio = new Audio(src);
   // Boundaries are in media time and audio.currentTime advances in media
   // time whatever the rate, so highlights stay in sync at any speed.
   audio.playbackRate = rate;
@@ -92,7 +94,10 @@ export function playWithHighlights(
   };
 
   audio.addEventListener('ended', finish);
-  audio.addEventListener('error', finish);
+  audio.addEventListener('error', () => {
+    console.error('audio playback error:', audio.error?.code, audio.error?.message);
+    finish();
+  });
   void audio.play().then(() => {
     rafId = requestAnimationFrame(tick);
   }).catch(finish);

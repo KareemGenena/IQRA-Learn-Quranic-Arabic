@@ -4,6 +4,8 @@
  * Runs once per file in the browser; results are cached in memory.
  */
 
+import { getAudioBlob } from './audioSource';
+
 export interface SpeechBounds {
   start: number;
   end: number;
@@ -18,7 +20,7 @@ const WINDOW_S = 0.01; // 10 ms RMS windows
 
 async function analyze(url: string): Promise<SpeechBounds> {
   ctx ??= new AudioContext();
-  const raw = await (await fetch(url)).arrayBuffer();
+  const raw = await (await getAudioBlob(url)).arrayBuffer();
   const audio = await ctx.decodeAudioData(raw);
   const data = audio.getChannelData(0);
 
@@ -60,6 +62,9 @@ export function speechBounds(url: string): Promise<SpeechBounds> {
       pending.delete(url);
       return res;
     });
+    // A transient failure must not stay cached, or the word stays broken
+    // until the page reloads.
+    p.catch(() => pending.delete(url));
     pending.set(url, p);
   }
   return p;

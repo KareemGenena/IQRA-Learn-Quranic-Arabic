@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { ArabicWord } from './ArabicWord';
 import { splitClusters } from '../lib/graphemes';
+import { getAudioSrc } from '../lib/audioSource';
 import {
   audioUrl,
   playWithHighlights,
@@ -30,9 +31,13 @@ export function WordCard({ lesson, word, rate }: Props) {
     stopActivePlayback();
     setPlaying(true);
     try {
-      const boundaries = await resolveBoundaries(lesson, word, clusters);
+      const url = audioUrl(lesson, word);
+      const [boundaries, src] = await Promise.all([
+        resolveBoundaries(lesson, word, clusters),
+        getAudioSrc(url),
+      ]);
       handleRef.current = playWithHighlights(
-        audioUrl(lesson, word),
+        src,
         boundaries,
         setActiveIndex,
         () => {
@@ -41,7 +46,8 @@ export function WordCard({ lesson, word, rate }: Props) {
         },
         rate,
       );
-    } catch {
+    } catch (err) {
+      console.error(`word ${word.id} playback failed:`, err);
       setPlaying(false);
     }
   };
