@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { WordGrid } from './components/WordGrid';
 import { AdminGate } from './components/AdminGate';
 import { CalibratePage } from './pages/CalibratePage';
-import { isAdmin } from './lib/admin';
+import { getSession, signOut } from './lib/adminAuth';
 import { storeCloudSnapshot } from './lib/calibration';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
 import type { Lesson } from './types';
@@ -40,7 +40,7 @@ export default function App() {
   const [error, setError] = useState(false);
   const [theme, setTheme] = useState<Theme>(initialTheme);
   const [rate, setRate] = useState<number>(initialRate);
-  const [admin, setAdmin] = useState(isAdmin);
+  const [admin, setAdmin] = useState(() => getSession() !== null);
   const route = useHashRoute();
 
   useEffect(() => {
@@ -96,6 +96,18 @@ export default function App() {
           <nav className="breadcrumb">
             <a href="#">← Back to words</a>
             <h2>Calibrate timings</h2>
+            {admin && (
+              <button
+                type="button"
+                className="signout-btn"
+                onClick={() => {
+                  signOut();
+                  setAdmin(false);
+                }}
+              >
+                Sign out
+              </button>
+            )}
           </nav>
           {admin ? (
             <CalibratePage lesson={lesson} />

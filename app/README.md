@@ -21,24 +21,30 @@ fonts, and all audio — so learners can practice with no connection.
 Timings are **never hand-typed**. For each word the app uses the best source
 available, in this order:
 
-1. **Calibration** — saved from the calibrate page (see below) in the browser's
-   localStorage.
-2. **words.json timings** — calibrations that were exported and baked into the
-   lesson file.
-3. **Automatic estimate** — the app detects where speech starts/ends in the
+1. **This device's own calibration** (the admin's taps, in localStorage).
+2. **Cloud calibration** — synced from Firestore on every app start and
+   snapshotted locally so the installed PWA has it offline too.
+3. **words.json timings** — calibrations baked into the lesson file as the
+   first-run/offline baseline.
+4. **Automatic estimate** — the app detects where speech starts/ends in the
    recording and divides that span across the letters using tajweed-style
-   weights (madd letters longer, sukoon shorter, tanween longer...). See
-   `src/lib/timing.ts`; future rules (ghunna, madd lazim...) are added there.
+   weights (madd letters longer, final sukoon shorter, tanween longer...).
+   See `src/lib/timing.ts`; future rules (ghunna, madd lazim...) go there.
 
 ### Calibrating (admin only)
 
-Go to `#calibrate` (e.g. `https://your-site/#calibrate`) and enter the admin
-PIN — there is no visible link, and the PIN's hash lives in
-`src/lib/admin.ts` (instructions to change it are in that file). Play a word
-and tap <kbd>Space</kbd> — or the big TAP button on a phone — at the moment
-each letter begins. Capture runs at 0.5× speed by default for precision
-(taps are stored in media time, so they're correct at every playback speed).
-Preview, save, next word. The main page uses saved calibrations immediately.
+Go to `#calibrate` (there is no visible link) and sign in with the admin's
+Firebase account. Play a word and tap <kbd>Space</kbd> — or the big TAP
+button on a phone — at the moment each letter begins. Capture runs below
+full speed for precision (taps are stored in media time, so they're correct
+at every playback speed). Preview, save, next word. Saves sync to Firestore
+automatically, so every device gets them on its next app start — no
+redeploy needed.
+
+**Sole-writer security:** Firestore rules (`../firestore.rules`) only accept
+calibration writes from the admin's email via Firebase Auth; reads are
+public. The admin account is managed in the Firebase console under
+Authentication → Users.
 
 **Export words.json** downloads the lesson with calibrated timings baked in;
 replace `public/lessons/lesson01/words.json` with it to make the timings

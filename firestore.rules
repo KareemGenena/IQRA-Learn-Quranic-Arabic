@@ -4,17 +4,20 @@ service cloud.firestore {
     // Letter-timing calibrations, one doc per word:
     //   calibrations/{lessonId}/words/{wordId}  ->  { b: [boundary seconds] }
     //
-    // Anyone can read (learners need the timings). Writes are open but
-    // strictly shape-validated; the calibrate UI is PIN-gated and clients
-    // re-validate on read (monotonic, letter count), so a malformed or
-    // malicious write is ignored and the baked words.json is the fallback.
+    // Anyone can read (learners need the timings). Only the admin —
+    // authenticated via Firebase Auth with this exact email — can write,
+    // and writes are shape-validated. Clients also re-validate on read
+    // (monotonic, letter count) with words.json as the fallback.
     match /calibrations/{lessonId}/words/{wordId} {
       allow read: if true;
-      allow create, update: if request.resource.data.keys().hasOnly(['b'])
+      allow create, update: if request.auth != null
+        && request.auth.token.email == 'kgenena@hotmail.fr'
+        && request.resource.data.keys().hasOnly(['b'])
         && request.resource.data.b is list
         && request.resource.data.b.size() >= 2
         && request.resource.data.b.size() <= 12;
-      allow delete: if true;
+      allow delete: if request.auth != null
+        && request.auth.token.email == 'kgenena@hotmail.fr';
     }
   }
 }

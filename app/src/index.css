@@ -289,6 +289,16 @@ body {
   font-size: 20px;
 }
 
+.signout-btn {
+  margin-inline-start: auto;
+  background: none;
+  border: none;
+  color: var(--text-soft);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .cal-intro {
   color: var(--text-soft);
   font-size: 14px;

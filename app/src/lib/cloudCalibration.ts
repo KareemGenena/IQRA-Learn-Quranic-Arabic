@@ -11,10 +11,10 @@
  * into words.json or the automatic estimate.
  */
 
+import { getIdToken } from './adminAuth';
+import { API_KEY, PROJECT_ID } from './firebaseConfig';
 import type { CalibrationMap } from './calibration';
 
-const PROJECT_ID = 'iqra---learn-quranic-arabic';
-const API_KEY = 'AIzaSyCxCjuSvjxYza2FZUnNMCXCumECto0Eyig'; // public web key; access is governed by Firestore rules
 const BASE = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents`;
 
 const wordsPath = (lessonId: number) => `${BASE}/calibrations/lesson${lessonId}/words`;
@@ -52,6 +52,12 @@ export async function fetchCloudCalibrations(lessonId: number): Promise<Calibrat
   return map;
 }
 
+async function authHeader(): Promise<Record<string, string>> {
+  const token = await getIdToken();
+  if (!token) throw new Error('not signed in');
+  return { Authorization: `Bearer ${token}` };
+}
+
 export async function saveCloudCalibration(
   lessonId: number,
   wordId: number,
@@ -59,7 +65,7 @@ export async function saveCloudCalibration(
 ): Promise<void> {
   const res = await fetch(`${wordsPath(lessonId)}/${wordId}?key=${API_KEY}`, {
     method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...(await authHeader()) },
     body: JSON.stringify({
       fields: { b: { arrayValue: { values: boundaries.map((n) => ({ doubleValue: n })) } } },
     }),
@@ -68,6 +74,9 @@ export async function saveCloudCalibration(
 }
 
 export async function deleteCloudCalibration(lessonId: number, wordId: number): Promise<void> {
-  const res = await fetch(`${wordsPath(lessonId)}/${wordId}?key=${API_KEY}`, { method: 'DELETE' });
+  const res = await fetch(`${wordsPath(lessonId)}/${wordId}?key=${API_KEY}`, {
+    method: 'DELETE',
+    headers: await authHeader(),
+  });
   if (!res.ok) throw new Error(`calibration delete failed: ${res.status}`);
 }
