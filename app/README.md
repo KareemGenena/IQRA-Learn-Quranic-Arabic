@@ -1,5 +1,29 @@
 # IQRA — Learn Quranic Arabic
 
+## Lessons
+
+| # | Lesson | Data | Audio |
+|---|--------|------|-------|
+| 1 | Five-Letter Words (33) | `public/lessons/lesson01/words.json` | `public/audio/lesson01/` |
+| 2 | Sun & Moon Lam (46 pairs) | `public/lessons/lesson02/words.json` | `public/audio/lesson02/` |
+
+Lesson 2 is generated — never hand-edit its `words.json`. Run
+`node scripts/make-lesson2.mjs`, which reads `../Word Tables/لام شمسية وقمرية.docx`
+and the paired recordings, splits each recording into its two forms, adds the
+sukoon to the qamariyya lam, validates every word, and prints any correction
+it applied. Add a lesson to the menu in `src/lib/lessons.ts`.
+
+## Font
+
+`public/fonts/UthmanicHafs1-Ver09.otf` — KFGQPC Uthmanic Script HAFS, the
+Madinah Mushaf face. Its licence permits use, copying and distribution but
+**forbids modification**, so it is served as the original file: never subset
+it or convert it to WOFF2. See `public/fonts/LICENSE.txt`.
+
+The Mushaf-shaped sukoon (the small ح) and shadda are just how this font
+draws the ordinary Unicode marks — the text stays plain Unicode Arabic.
+
+
 A PWA that teaches Quranic Arabic pronunciation. Tap a word to hear it while
 each letter lights up as it is pronounced. Works fully offline once installed.
 

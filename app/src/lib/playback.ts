@@ -1,13 +1,13 @@
 /**
- * Plays a word's audio while reporting which letter is active, based on the
- * boundary times. Only one word plays at a time app-wide.
+ * Plays a recording while reporting which letter is active, from the
+ * boundary times. Only one thing plays at a time app-wide.
  */
 
 import { speechBounds } from './audioAnalysis';
-import { autoBoundaries } from './timing';
+import { audibleIndices, autoBoundaries } from './timing';
 import { loadCalibration, loadCloudSnapshot } from './calibration';
 import type { LetterCluster } from './graphemes';
-import type { Lesson, WordEntry } from '../types';
+import type { Lesson, Playable } from '../types';
 
 let activeStop: (() => void) | null = null;
 
@@ -16,32 +16,33 @@ export function stopActivePlayback(): void {
   activeStop = null;
 }
 
-export function audioUrl(lesson: Lesson, word: WordEntry): string {
-  return `${import.meta.env.BASE_URL}${lesson.audioPath}${word.audio}`;
+export function audioUrl(lesson: Lesson, playable: Playable): string {
+  return `${import.meta.env.BASE_URL}${lesson.audioPath}${playable.audio}`;
 }
 
 /**
- * Boundary times for a word, best source first:
- * this device's own calibration > cloud-synced calibration >
- * words.json timings > automatic estimate.
+ * Boundary times for a playable, best source first:
+ * this device's calibration > cloud calibration > baked timings > automatic.
+ * Length is always (audible letters + 1); anything of the wrong length is
+ * ignored so a stale calibration can't desync the highlighting.
  */
 export async function resolveBoundaries(
   lesson: Lesson,
-  word: WordEntry,
+  playable: Playable,
   clusters: LetterCluster[],
 ): Promise<number[]> {
-  const expected = clusters.length + 1;
+  const expected = audibleIndices(clusters, playable.silentClusters).length + 1;
 
-  const calibrated = loadCalibration(lesson.lesson)[word.id];
-  if (calibrated?.length === expected) return calibrated;
+  const own = loadCalibration(lesson.lesson)[playable.key];
+  if (own?.length === expected) return own;
 
-  const cloud = loadCloudSnapshot(lesson.lesson)[word.id];
+  const cloud = loadCloudSnapshot(lesson.lesson)[playable.key];
   if (cloud?.length === expected) return cloud;
 
-  if (word.timings?.length === expected) return word.timings;
+  if (playable.timings?.length === expected) return playable.timings;
 
-  const bounds = await speechBounds(audioUrl(lesson, word));
-  return autoBoundaries(clusters, bounds.start, bounds.end);
+  const bounds = await speechBounds(audioUrl(lesson, playable));
+  return autoBoundaries(clusters, bounds.start, bounds.end, playable.silentClusters);
 }
 
 export interface PlaybackHandle {
@@ -51,9 +52,12 @@ export interface PlaybackHandle {
 export function playWithHighlights(
   src: string,
   boundaries: number[],
+  /** Receives the CLUSTER index to highlight (silent letters are skipped). */
   onActiveLetter: (index: number | null) => void,
   onDone: () => void,
   rate = 1,
+  /** Maps boundary index → cluster index. Identity when nothing is silent. */
+  indexMap?: number[],
 ): PlaybackHandle {
   stopActivePlayback();
 
@@ -64,6 +68,7 @@ export function playWithHighlights(
   // time whatever the rate, so highlights stay in sync at any speed.
   audio.playbackRate = rate;
   audio.preservesPitch = true;
+
   let rafId = 0;
   let finished = false;
 
@@ -90,9 +95,9 @@ export function playWithHighlights(
     if (t < boundaries[0] || t >= lastBoundary) {
       onActiveLetter(null);
     } else {
-      let idx = 0;
-      while (idx < boundaries.length - 2 && t >= boundaries[idx + 1]) idx++;
-      onActiveLetter(idx);
+      let i = 0;
+      while (i < boundaries.length - 2 && t >= boundaries[i + 1]) i++;
+      onActiveLetter(indexMap ? indexMap[i] : i);
     }
     rafId = requestAnimationFrame(tick);
   };
@@ -102,9 +107,12 @@ export function playWithHighlights(
     console.error('audio playback error:', audio.error?.code, audio.error?.message);
     finish();
   });
-  void audio.play().then(() => {
-    rafId = requestAnimationFrame(tick);
-  }).catch(finish);
+  void audio
+    .play()
+    .then(() => {
+      rafId = requestAnimationFrame(tick);
+    })
+    .catch(finish);
 
   activeStop = stop;
   return { stop };

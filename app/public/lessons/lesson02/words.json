@@ -1,0 +1,761 @@
+{
+  "lesson": 2,
+  "title": "Sun & Moon Lam",
+  "titleArabic": "اللام الشمسية والقمرية",
+  "kind": "pairs",
+  "audioPath": "audio/lesson02/",
+  "perPage": 4,
+  "sections": [
+    {
+      "type": "qamariyya",
+      "title": "Moon Lam",
+      "titleArabic": "اللام القمرية",
+      "hint": "The ل is pronounced — it carries a sukoon."
+    },
+    {
+      "type": "shamsiyya",
+      "title": "Sun Lam",
+      "titleArabic": "اللام الشمسية",
+      "hint": "The ل is silent — the next letter doubles."
+    }
+  ],
+  "quizSize": 5,
+  "words": [
+    {
+      "id": 1,
+      "type": "qamariyya",
+      "meaning": "The one who whispers",
+      "alLength": 3,
+      "bare": {
+        "text": "وَسْوَاسِ",
+        "audio": "word01a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْوَسْوَاسِ",
+        "audio": "word01b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 2,
+      "type": "qamariyya",
+      "meaning": "The daybreak",
+      "alLength": 3,
+      "bare": {
+        "text": "فَلَقِ",
+        "audio": "word02a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْفَلَقِ",
+        "audio": "word02b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 3,
+      "type": "qamariyya",
+      "meaning": "The one who retreats",
+      "alLength": 3,
+      "bare": {
+        "text": "خَنَّاسِ",
+        "audio": "word03a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْخَنَّاسِ",
+        "audio": "word03b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 4,
+      "type": "qamariyya",
+      "meaning": "The jinn (creation of fire)",
+      "alLength": 3,
+      "bare": {
+        "text": "جِنَّةِ",
+        "audio": "word04a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْجِنَّةِ",
+        "audio": "word04b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 5,
+      "type": "qamariyya",
+      "meaning": "The knots",
+      "alLength": 3,
+      "bare": {
+        "text": "عُقَدِ",
+        "audio": "word05a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْعُقَدِ",
+        "audio": "word05b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 6,
+      "type": "qamariyya",
+      "meaning": "The logs of wood",
+      "alLength": 3,
+      "bare": {
+        "text": "حَطَبِ",
+        "audio": "word06a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْحَطَبِ",
+        "audio": "word06b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 7,
+      "type": "qamariyya",
+      "meaning": "The conquest/victory",
+      "alLength": 3,
+      "bare": {
+        "text": "فَتْحُ",
+        "audio": "word07a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْفَتْحُ",
+        "audio": "word07b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 8,
+      "type": "qamariyya",
+      "meaning": "The disbelievers",
+      "alLength": 3,
+      "bare": {
+        "text": "كَافِرُونَ",
+        "audio": "word08a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْكَافِرُونَ",
+        "audio": "word08b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 9,
+      "type": "qamariyya",
+      "meaning": "Name of river in Heaven. Could also mean abundant goodness.",
+      "alLength": 3,
+      "bare": {
+        "text": "كَوْثَرَ",
+        "audio": "word09a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْكَوْثَرَ",
+        "audio": "word09b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 10,
+      "type": "qamariyya",
+      "meaning": "The one who is cut off",
+      "alLength": 3,
+      "bare": {
+        "text": "أَبْتَرُ",
+        "audio": "word10a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْأَبْتَرُ",
+        "audio": "word10b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 11,
+      "type": "qamariyya",
+      "meaning": "The orphan",
+      "alLength": 3,
+      "bare": {
+        "text": "يَتِيمَ",
+        "audio": "word11a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْيَتِيمَ",
+        "audio": "word11b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 12,
+      "type": "qamariyya",
+      "meaning": "The poor",
+      "alLength": 3,
+      "bare": {
+        "text": "مِسْكِينِ",
+        "audio": "word12a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمِسْكِينِ",
+        "audio": "word12b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 13,
+      "type": "qamariyya",
+      "meaning": "The ones who pray",
+      "alLength": 3,
+      "bare": {
+        "text": "مُصَلِّينَ",
+        "audio": "word13a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمُصَلِّينَ",
+        "audio": "word13b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 14,
+      "type": "qamariyya",
+      "meaning": "The aid",
+      "alLength": 3,
+      "bare": {
+        "text": "مَاعُونَ",
+        "audio": "word14a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمَاعُونَ",
+        "audio": "word14b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 15,
+      "type": "qamariyya",
+      "meaning": "The house",
+      "alLength": 3,
+      "bare": {
+        "text": "بَيْتِ",
+        "audio": "word15a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْبَيْتِ",
+        "audio": "word15b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 16,
+      "type": "qamariyya",
+      "meaning": "The elephant",
+      "alLength": 3,
+      "bare": {
+        "text": "فِيلِ",
+        "audio": "word16a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْفِيلِ",
+        "audio": "word16b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 17,
+      "type": "qamariyya",
+      "meaning": "A name for the hell fire derived from crushing",
+      "alLength": 3,
+      "bare": {
+        "text": "حُطَمَةِ",
+        "audio": "word17a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْحُطَمَةِ",
+        "audio": "word17b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 18,
+      "type": "qamariyya",
+      "meaning": "The lit (fire)",
+      "alLength": 3,
+      "bare": {
+        "text": "مُوقَدَةُ",
+        "audio": "word18a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمُوقَدَةُ",
+        "audio": "word18b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 19,
+      "type": "qamariyya",
+      "meaning": "The hearts",
+      "alLength": 3,
+      "bare": {
+        "text": "أَفْئِدَةِ",
+        "audio": "word19a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْأَفْئِدَةِ",
+        "audio": "word19b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 20,
+      "type": "qamariyya",
+      "meaning": "The time of day between Zuhr and Maghrib (afternoon)",
+      "alLength": 3,
+      "bare": {
+        "text": "عَصْرِ",
+        "audio": "word20a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْعَصْرِ",
+        "audio": "word20b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 21,
+      "type": "qamariyya",
+      "meaning": "The human being",
+      "alLength": 3,
+      "bare": {
+        "text": "إِنْسَانَ",
+        "audio": "word21a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْإِنْسَانَ",
+        "audio": "word21b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 22,
+      "type": "qamariyya",
+      "meaning": "The truth",
+      "alLength": 3,
+      "bare": {
+        "text": "حَقِّ",
+        "audio": "word22a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْحَقِّ",
+        "audio": "word22b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 23,
+      "type": "qamariyya",
+      "meaning": "The graveyards",
+      "alLength": 3,
+      "bare": {
+        "text": "مَقَابِرَ",
+        "audio": "word23a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمَقَابِرَ",
+        "audio": "word23b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 24,
+      "type": "qamariyya",
+      "meaning": "The certitude",
+      "alLength": 3,
+      "bare": {
+        "text": "يَقِينِ",
+        "audio": "word24a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْيَقِينِ",
+        "audio": "word24b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 25,
+      "type": "qamariyya",
+      "meaning": "A name for the hell fire",
+      "alLength": 3,
+      "bare": {
+        "text": "جَحِيمَ",
+        "audio": "word25a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْجَحِيمَ",
+        "audio": "word25b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 26,
+      "type": "qamariyya",
+      "meaning": "A name for the day of judgment meaning striking calamity",
+      "alLength": 3,
+      "bare": {
+        "text": "قَارِعَةُ",
+        "audio": "word26a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْقَارِعَةُ",
+        "audio": "word26b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 27,
+      "type": "qamariyya",
+      "meaning": "The moths",
+      "alLength": 3,
+      "bare": {
+        "text": "فَرَاشِ",
+        "audio": "word27a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْفَرَاشِ",
+        "audio": "word27b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 28,
+      "type": "qamariyya",
+      "meaning": "The scattered (here refers to moths)",
+      "alLength": 3,
+      "bare": {
+        "text": "مَبْثُوثِ",
+        "audio": "word28a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمَبْثُوثِ",
+        "audio": "word28b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 29,
+      "type": "qamariyya",
+      "meaning": "The mountains",
+      "alLength": 3,
+      "bare": {
+        "text": "جِبَالُ",
+        "audio": "word29a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْجِبَالُ",
+        "audio": "word29b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 30,
+      "type": "qamariyya",
+      "meaning": "The wool",
+      "alLength": 3,
+      "bare": {
+        "text": "عِهْنِ",
+        "audio": "word30a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْعِهْنِ",
+        "audio": "word30b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 31,
+      "type": "qamariyya",
+      "meaning": "The fluffed (here referring to the wool)",
+      "alLength": 3,
+      "bare": {
+        "text": "مَنْفُوشِ",
+        "audio": "word31a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمَنْفُوشِ",
+        "audio": "word31b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 32,
+      "type": "qamariyya",
+      "meaning": "The running (horses)",
+      "alLength": 3,
+      "bare": {
+        "text": "عَادِيَاتِ",
+        "audio": "word32a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْعَادِيَاتِ",
+        "audio": "word32b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 33,
+      "type": "qamariyya",
+      "meaning": "The producers of spark (here referring to the horse hoofs)",
+      "alLength": 3,
+      "bare": {
+        "text": "مُورِيَاتِ",
+        "audio": "word33a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمُورِيَاتِ",
+        "audio": "word33b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 34,
+      "type": "qamariyya",
+      "meaning": "The raiders (also referring to horses)",
+      "alLength": 3,
+      "bare": {
+        "text": "مُغِيرَاتِ",
+        "audio": "word34a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْمُغِيرَاتِ",
+        "audio": "word34b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 35,
+      "type": "qamariyya",
+      "meaning": "The good (here referring to money)",
+      "alLength": 3,
+      "bare": {
+        "text": "خَيْرِ",
+        "audio": "word35a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْخَيْرِ",
+        "audio": "word35b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 36,
+      "type": "qamariyya",
+      "meaning": "The graves",
+      "alLength": 3,
+      "bare": {
+        "text": "قُبُورِ",
+        "audio": "word36a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الْقُبُورِ",
+        "audio": "word36b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 37,
+      "type": "shamsiyya",
+      "meaning": "The people",
+      "alLength": 2,
+      "bare": {
+        "text": "نَاسِ",
+        "audio": "word37a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "النَّاسِ",
+        "audio": "word37b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 38,
+      "type": "shamsiyya",
+      "meaning": "The one people turn to",
+      "alLength": 2,
+      "bare": {
+        "text": "صَمَدُ",
+        "audio": "word38a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الصَّمَدُ",
+        "audio": "word38b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 39,
+      "type": "shamsiyya",
+      "meaning": "The religion",
+      "alLength": 2,
+      "bare": {
+        "text": "دِينِ",
+        "audio": "word39a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الدِّينِ",
+        "audio": "word39b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 40,
+      "type": "shamsiyya",
+      "meaning": "The winter",
+      "alLength": 2,
+      "bare": {
+        "text": "شِتَاءِ",
+        "audio": "word40a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الشِّتَاءِ",
+        "audio": "word40b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 41,
+      "type": "shamsiyya",
+      "meaning": "The summer",
+      "alLength": 2,
+      "bare": {
+        "text": "صَيْفِ",
+        "audio": "word41a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الصَّيْفِ",
+        "audio": "word41b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 42,
+      "type": "shamsiyya",
+      "meaning": "The good deeds",
+      "alLength": 2,
+      "bare": {
+        "text": "صَالِحَاتِ",
+        "audio": "word42a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الصَّالِحَاتِ",
+        "audio": "word42b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 43,
+      "type": "shamsiyya",
+      "meaning": "The patience",
+      "alLength": 2,
+      "bare": {
+        "text": "صَبْرِ",
+        "audio": "word43a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الصَّبْرِ",
+        "audio": "word43b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 44,
+      "type": "shamsiyya",
+      "meaning": "Competition in gathering more of this dunya",
+      "alLength": 2,
+      "bare": {
+        "text": "تَكَاثُرُ",
+        "audio": "word44a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "التَّكَاثُرُ",
+        "audio": "word44b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 45,
+      "type": "shamsiyya",
+      "meaning": "The bliss",
+      "alLength": 2,
+      "bare": {
+        "text": "نَعِيمِ",
+        "audio": "word45a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "النَّعِيمِ",
+        "audio": "word45b.wav",
+        "timings": null
+      }
+    },
+    {
+      "id": 46,
+      "type": "shamsiyya",
+      "meaning": "The chests",
+      "alLength": 2,
+      "bare": {
+        "text": "صُدُورِ",
+        "audio": "word46a.wav",
+        "timings": null
+      },
+      "withAl": {
+        "text": "الصُّدُورِ",
+        "audio": "word46b.wav",
+        "timings": null
+      }
+    }
+  ]
+}

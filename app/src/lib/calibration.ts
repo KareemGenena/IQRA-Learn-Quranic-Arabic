@@ -5,7 +5,8 @@
  * words.json with the calibrated timings baked in.
  */
 
-export type CalibrationMap = Record<number, number[]>;
+/** Keyed by Playable.key — "4" in lesson 1, "12b" in lesson 2. */
+export type CalibrationMap = Record<string, number[]>;
 
 const key = (lessonId: number) => `iqra-calibration-lesson${lessonId}`;
 
@@ -18,15 +19,15 @@ export function loadCalibration(lessonId: number): CalibrationMap {
   }
 }
 
-export function saveCalibration(lessonId: number, wordId: number, boundaries: number[]): void {
+export function saveCalibration(lessonId: number, wordKey: string, boundaries: number[]): void {
   const map = loadCalibration(lessonId);
-  map[wordId] = boundaries.map((b) => Math.round(b * 1000) / 1000);
+  map[wordKey] = boundaries.map((b) => Math.round(b * 1000) / 1000);
   localStorage.setItem(key(lessonId), JSON.stringify(map));
 }
 
-export function clearCalibration(lessonId: number, wordId: number): void {
+export function clearCalibration(lessonId: number, wordKey: string): void {
   const map = loadCalibration(lessonId);
-  delete map[wordId];
+  delete map[wordKey];
   localStorage.setItem(key(lessonId), JSON.stringify(map));
 }
 

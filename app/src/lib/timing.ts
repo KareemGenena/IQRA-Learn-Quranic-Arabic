@@ -44,7 +44,11 @@ export function clusterWeight(
 
   let w = 1.0;
 
-  if (bare && (base === 'ا' || base === 'ى')) {
+  if (bare && base === 'ا' && !prev) {
+    // Word-initial bare alif is hamzat wasl (the "a" of ال), not a madd —
+    // a madd needs a vowel before it, and there is nothing before this.
+    w = 0.9;
+  } else if (bare && (base === 'ا' || base === 'ى')) {
     w = MADD_WEIGHT; // alif of madd: full elongation unit
   } else if (bare && base === 'و' && prevMarks.includes(DAMMA)) {
     w = MADD_WEIGHT;
@@ -68,18 +72,33 @@ export function clusterWeight(
 }
 
 /**
- * Build boundary times (length = clusters.length + 1) by distributing the
- * speech span [speechStart, speechEnd] across the letters by weight.
+ * Indices of the clusters that are actually pronounced. Silent letters (the
+ * shamsiyya lam) are written but never spoken, so they take no time and are
+ * never highlighted — everything downstream counts in AUDIBLE letters.
+ */
+export function audibleIndices(clusters: LetterCluster[], silent: number[] = []): number[] {
+  const skip = new Set(silent);
+  return clusters.map((_, i) => i).filter((i) => !skip.has(i));
+}
+
+/**
+ * Build boundary times (length = audible letter count + 1) by distributing
+ * the speech span [speechStart, speechEnd] across the audible letters by
+ * weight.
  */
 export function autoBoundaries(
   clusters: LetterCluster[],
   speechStart: number,
   speechEnd: number,
+  silent: number[] = [],
 ): number[] {
-  const weights = clusters.map((c, i) =>
-    clusterWeight(c, clusters[i - 1], i === clusters.length - 1),
+  const audible = audibleIndices(clusters, silent);
+  // Elongation depends on the letter WRITTEN before, not the previous audible
+  // one, so pass the visual neighbour.
+  const weights = audible.map((idx, n) =>
+    clusterWeight(clusters[idx], clusters[idx - 1], n === audible.length - 1),
   );
-  const total = weights.reduce((a, b) => a + b, 0);
+  const total = weights.reduce((a, b) => a + b, 0) || 1;
   const span = speechEnd - speechStart;
 
   const boundaries = [speechStart];

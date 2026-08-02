@@ -42,11 +42,11 @@ export async function fetchCloudCalibrations(lessonId: number): Promise<Calibrat
 
   const map: CalibrationMap = {};
   for (const doc of json.documents ?? []) {
-    const wordId = Number(doc.name.split('/').pop());
+    const wordKey = doc.name.split('/').pop() ?? '';
     const values = doc.fields?.b?.arrayValue?.values ?? [];
     const boundaries = values.map((v) => (v.doubleValue !== undefined ? v.doubleValue : Number(v.integerValue)));
-    if (Number.isInteger(wordId) && wordId > 0 && validBoundaries(boundaries)) {
-      map[wordId] = boundaries;
+    if (/^\d+[ab]?$/.test(wordKey) && validBoundaries(boundaries)) {
+      map[wordKey] = boundaries;
     }
   }
   return map;
@@ -60,10 +60,10 @@ async function authHeader(): Promise<Record<string, string>> {
 
 export async function saveCloudCalibration(
   lessonId: number,
-  wordId: number,
+  wordKey: string,
   boundaries: number[],
 ): Promise<void> {
-  const res = await fetch(`${wordsPath(lessonId)}/${wordId}?key=${API_KEY}`, {
+  const res = await fetch(`${wordsPath(lessonId)}/${wordKey}?key=${API_KEY}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json', ...(await authHeader()) },
     body: JSON.stringify({
@@ -73,8 +73,8 @@ export async function saveCloudCalibration(
   if (!res.ok) throw new Error(`calibration save failed: ${res.status}`);
 }
 
-export async function deleteCloudCalibration(lessonId: number, wordId: number): Promise<void> {
-  const res = await fetch(`${wordsPath(lessonId)}/${wordId}?key=${API_KEY}`, {
+export async function deleteCloudCalibration(lessonId: number, wordKey: string): Promise<void> {
+  const res = await fetch(`${wordsPath(lessonId)}/${wordKey}?key=${API_KEY}`, {
     method: 'DELETE',
     headers: await authHeader(),
   });

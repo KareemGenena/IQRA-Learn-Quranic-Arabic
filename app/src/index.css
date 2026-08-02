@@ -1,3 +1,12 @@
+/* KFGQPC Uthmanic Script HAFS — the Madinah Mushaf face. Served as the
+   original, unmodified file: its licence forbids modification, which rules
+   out subsetting or WOFF2 conversion. See public/fonts/LICENSE.txt. */
+@font-face {
+  font-family: 'Uthmanic Hafs';
+  src: url('/fonts/UthmanicHafs1-Ver09.otf') format('opentype');
+  font-display: swap;
+}
+
 :root {
   --bg: #f7fafc;
   --card: #ffffff;
@@ -10,6 +19,10 @@
   --highlight-border: rgba(76, 137, 72, 0.75);
   --shadow: 0 1px 3px rgba(23, 48, 63, 0.1);
   --shadow-lift: 0 4px 14px rgba(23, 48, 63, 0.16);
+  --al-color: #b4531a;
+  --silent: #b9c6d1;
+  --sun: #b4531a;
+  --moon: #1c5f8f;
 }
 
 :root[data-theme='dark'] {
@@ -24,6 +37,10 @@
   --highlight-border: rgba(140, 205, 120, 0.7);
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   --shadow-lift: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --al-color: #e8a06a;
+  --silent: #46607a;
+  --sun: #e8a06a;
+  --moon: #5aa4d6;
 }
 
 * {
@@ -174,11 +191,34 @@ body {
 .arabic-text {
   position: relative;
   z-index: 1;
-  font-family: 'Noto Naskh Arabic', serif;
-  font-size: clamp(42px, 5.5vw, 56px);
-  line-height: 1.9;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  font-size: clamp(38px, 5vw, 52px);
+  /* Quranic glyphs stack marks well above and below the baseline, so the
+     line box must be tall enough that nothing is clipped by the layers. */
+  line-height: 2.1;
   color: var(--text);
   white-space: nowrap;
+  unicode-bidi: plaintext;
+}
+
+/* Recoloured copies of the same string, clipped to one letter range.
+   Identical text means identical shaping, so joining is never broken. */
+.arabic-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+.layer-prefix {
+  color: var(--al-color);
+}
+
+.layer-silent {
+  color: var(--silent);
 }
 
 .letter-highlight {
@@ -199,6 +239,336 @@ body {
   border-radius: 2px;
   background: var(--accent);
   pointer-events: none;
+}
+
+/* ---------- home / lesson list ---------- */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-name {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent-strong);
+}
+
+.brand-sub {
+  display: block;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.home-intro {
+  color: var(--text-soft);
+  margin: 8px 0 20px;
+}
+
+.lesson-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.lesson-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.lesson-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--accent);
+}
+
+.lesson-no {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.lesson-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.lesson-title {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.lesson-ar {
+  display: block;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  font-size: 20px;
+  line-height: 2;
+  color: var(--text-soft);
+}
+
+.lesson-blurb {
+  display: block;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.lesson-go {
+  font-size: 28px;
+  color: var(--text-soft);
+}
+
+.lesson-ar-head {
+  margin: 0;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  font-size: 22px;
+  line-height: 2;
+  color: var(--text-soft);
+}
+
+/* ---------- pairs lesson ---------- */
+
+.section-head {
+  margin: 18px 0 14px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border-inline-start: 5px solid var(--moon);
+  background: var(--card);
+  border-block: 1px solid var(--card-border);
+  border-inline-end: 1px solid var(--card-border);
+}
+
+.section-head.shamsiyya {
+  border-inline-start-color: var(--sun);
+}
+
+.section-head.quiz {
+  border-inline-start-color: var(--highlight-border);
+}
+
+.section-head h3 {
+  margin: 0;
+  font-size: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  outline: none;
+}
+
+.section-ar {
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  font-size: 20px;
+  line-height: 2;
+  color: var(--text-soft);
+  font-weight: 400;
+}
+
+.section-hint {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+.pair-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.pair-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 10px 12px 14px;
+}
+
+.pair-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+/* The grid card positions its number absolutely; inside a pair card it sits
+   in the flow as a numbered badge — it is what a voice-control user reads
+   out to pick a word, so it has to be plainly visible. */
+.pair-head .word-num {
+  position: static;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.type-badge {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--moon) 14%, transparent);
+  color: var(--moon);
+}
+
+.pair-card.shamsiyya .type-badge {
+  background: color-mix(in srgb, var(--sun) 16%, transparent);
+  color: var(--sun);
+}
+
+.info-btn {
+  margin-inline-start: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  color: var(--text-soft);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  flex: none;
+}
+
+.info-btn:hover,
+.info-btn[aria-expanded='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.meaning-tip {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 6px);
+  inset-inline-end: 0;
+  max-width: 260px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: var(--shadow-lift);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease;
+}
+
+.meaning-tip.open,
+.pair-head:hover .meaning-tip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pair-forms {
+  display: grid;
+  gap: 8px;
+}
+
+.form-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  min-height: 96px;
+  padding: 8px 34px 8px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.form-btn:hover {
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.form-btn.playing {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+.form-btn + .form-btn {
+  border-top: 1px dashed var(--card-border);
+  border-radius: 14px;
+}
+
+/* ---------- pager ---------- */
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.nav-btn,
+.play-all {
+  min-width: 116px;
+  min-height: 52px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.page-status {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 14px;
+  margin: 12px 0 0;
+}
+
+.page-total {
+  opacity: 0.7;
+}
+
+.kbd-hint {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 12px;
+  margin: 6px 0 0;
+}
+
+.kbd-hint kbd {
+  margin: 0 2px;
 }
 
 /* ---------- toolbar / speed ---------- */

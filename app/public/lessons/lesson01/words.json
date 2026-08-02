@@ -2,6 +2,7 @@
   "lesson": 1,
   "title": "Five-Letter Words",
   "titleArabic": "كلمات من خمسة أحرف",
+  "kind": "words",
   "audioPath": "audio/lesson01/",
   "words": [
     {
@@ -85,7 +86,7 @@
     },
     {
       "id": 13,
-      "arabic": "أَنْهَـارُ",
+      "arabic": "أَنْهَارُ",
       "audio": "word13.wav",
       "timings": null
     },
@@ -133,7 +134,7 @@
     },
     {
       "id": 21,
-      "arabic": "سُبْحَـانَ",
+      "arabic": "سُبْحَانَ",
       "audio": "word21.wav",
       "timings": null
     },
@@ -175,13 +176,13 @@
     },
     {
       "id": 28,
-      "arabic": "كَلِمَـاتٍ",
+      "arabic": "كَلِمَاتٍ",
       "audio": "word28.wav",
       "timings": null
     },
     {
       "id": 29,
-      "arabic": "أَصْحَـابُ",
+      "arabic": "أَصْحَابُ",
       "audio": "word29.wav",
       "timings": null
     },
