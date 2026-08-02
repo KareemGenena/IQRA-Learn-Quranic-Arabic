@@ -549,6 +549,63 @@ body {
   cursor: default;
 }
 
+/* ---------- laser pointer ---------- */
+
+.laser-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  /* The overlay takes the pointer so nothing underneath is tapped by
+     accident, and touch drags draw instead of scrolling the page. */
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.laser-toggle {
+  position: fixed;
+  z-index: 950;
+  right: 16px;
+  bottom: 16px;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-lift);
+  cursor: pointer;
+}
+
+.laser-toggle:hover {
+  border-color: #e11;
+  color: #e11;
+}
+
+.laser-toggle.on {
+  background: #e11;
+  border-color: #e11;
+  color: #fff;
+}
+
+/* A calm red frame while pointing, so the mode is never a mystery. */
+.app.laser-on::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 899;
+  pointer-events: none;
+  border: 3px solid rgba(255, 34, 34, 0.55);
+}
+
+@media print {
+  .laser-toggle,
+  .laser-canvas {
+    display: none;
+  }
+}
+
 /* ---------- contents ---------- */
 
 .contents-bar {

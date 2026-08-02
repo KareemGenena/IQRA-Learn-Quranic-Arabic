@@ -6,17 +6,23 @@
  * proportion to those weights. Rules follow tajweed duration logic and are
  * meant to grow: a new ruling is a new clause here and nothing else changes.
  *
- * LENGTH
+ * LENGTH — one unit is a harakah, the time of one short vowel
  *  · plain letter with a short vowel ............... 1.0
  *  · sukoon inside the word ....................... 1.0  (articulated fully)
  *  · sukoon on the FINAL letter (clipped stop) .... 0.75
- *  · madd letter — bare ا/ى, و after damma,
- *    ي after kasra, or a dagger alif ............. +1.2
  *  · madd leen (وْ / يْ after a fatha) ............. 1.1
  *  · hamzat wasl (the ٱ of ٱل, word-initial) ....... 0.9
  *  · shadda (the letter is doubled) .............. +0.8
  *  · tanween ending .............................. +0.5
- *  · lam-alif ligature ........................... +1.2 for the alif
+ *
+ * MADD — a long vowel (bare ا/ى, و after damma, ي after kasra, or a dagger
+ * alif), held for as many harakat as its ruling:
+ *  · tabee'i / natural ............................ 2
+ *  · wajib muttasil — hamza follows in the SAME word    4
+ *  · jaa'iz munfasil — hamza opens the NEXT word ...... 4
+ *  · lazim — a permanent sukoon or shadda follows ..... 6
+ *    (ٱلضَّآلِّينَ, ءَآلْـَٰٔنَ), and the disconnected letters
+ *    opening some surahs that carry the maddah sign
  *
  * GHUNNA — the ~2-count nasal hum, added to the noon/meem that carries it:
  *  · noon or meem with shadda (نّ / مّ) ............ always
@@ -48,7 +54,17 @@ const TANWEEN = ['ً', 'ٌ', 'ٍ']; // fathatan, dammatan, kasratan
 const DAGGER_ALIF = 'ٰ';
 const MADDAH = 'ٓ';
 
-const MADD_WEIGHT = 1.2;
+/**
+ * Madd lengths, in harakat (one harakah = one ordinary short vowel = 1.0):
+ *   tabee'i (natural) .. 2   the plain long vowel
+ *   muttasil ........... 4   madd letter then a hamza IN THE SAME WORD
+ *   munfasil ........... 4   madd ends the word, next word opens with hamza
+ *   lazim .............. 6   madd then a PERMANENT sukoon or shadda, and the
+ *                            disconnected letters that open some surahs
+ */
+const MADD_NATURAL = 2;
+const MADD_MUTTASIL = 4; // munfasil is the same length
+const MADD_LAZIM = 6;
 /** Extra time for the nasal hum — about two counts. */
 const GHUNNA_WEIGHT = 0.9;
 
@@ -66,6 +82,53 @@ const hasVowel = (marks: string[]) =>
   marks.some((m) => m === FATHA || m === DAMMA || m === KASRA || TANWEEN.includes(m));
 const hasSukoon = (marks: string[]) => marks.includes(SUKOON) || marks.includes(MUSHAF_SUKOON);
 const isSaakin = (marks: string[]) => hasSukoon(marks) || !hasVowel(marks);
+
+/** Hamza in any of its written forms, including one written as a mark. */
+const HAMZAS = new Set(['ء', 'أ', 'إ', 'ؤ', 'ئ', 'آ']);
+const isHamza = (c: LetterCluster | undefined) =>
+  !!c && (HAMZAS.has(baseChar(c.text)) || /[ٕٔ]/.test(c.text));
+
+/**
+ * A madd letter is a long vowel: a bare alif (or alif maqsura), a waw after a
+ * damma, or a yaa after a kasra — "bare" meaning it carries no vowel of its
+ * own, since it IS the vowel. ٱ is excluded: hamzat wasl is a short "a".
+ */
+function isMaddLetter(cluster: LetterCluster, prev: LetterCluster | undefined): boolean {
+  const base = baseChar(cluster.text);
+  const marks = marksOf(cluster.text);
+  if (base === 'ٱ') return false;
+  if (hasVowel(marks) || hasSukoon(marks) || marks.includes(SHADDA)) return false;
+  const prevMarks = prev ? marksOf(prev.text) : [];
+  if (base === 'آ') return true; // alif with maddah baked in
+  if (base === 'ا' || base === 'ى') return !!prev; // word-initial alif is wasl
+  if (base === 'و') return prevMarks.includes(DAMMA);
+  if (base === 'ي') return prevMarks.includes(KASRA);
+  return false;
+}
+
+/**
+ * How long a madd is held, in harakat, given what is written after it.
+ * Order matters: a following sukoon/shadda (lazim, 6) outranks a following
+ * hamza (muttasil, 4), which outranks the plain natural madd (2).
+ */
+function maddLength(cluster: LetterCluster, next: LetterCluster | undefined): number {
+  const marks = marksOf(cluster.text);
+  const nextMarks = next ? marksOf(next.text) : [];
+
+  // Madd lazim kalimi: the madd runs straight into a permanent sukoon
+  // (ءَآلْـَٰٔنَ) or a shadda (ٱلضَّآلِّينَ).
+  if (next && (nextMarks.includes(SHADDA) || hasSukoon(nextMarks))) return MADD_LAZIM;
+
+  // Madd wajib muttasil: madd then hamza inside the one word (ٱلشِّتَآءِ).
+  if (isHamza(next)) return MADD_MUTTASIL;
+
+  // The Mushaf writes the maddah sign only over a madd that is longer than
+  // natural. With no hamza after it in this word, that means munfasil — the
+  // hamza opens the NEXT word — which is held the same 4 harakat.
+  if (marks.includes(MADDAH)) return MADD_MUTTASIL;
+
+  return MADD_NATURAL;
+}
 
 /** Does this cluster earn a ghunna, given the letter written after it? */
 export function ghunnaFor(cluster: LetterCluster, next: LetterCluster | undefined): boolean {
@@ -112,30 +175,33 @@ export function clusterWeight(
     // before it, and this is the start of the word. (ٱ U+0671 always is one;
     // a plain bare alif only when it opens the word.)
     w = 0.9;
-  } else if (bare && (base === 'ا' || base === 'ى')) {
-    w = MADD_WEIGHT; // alif of madd: full elongation unit
-  } else if (bare && base === 'و' && prevMarks.includes(DAMMA)) {
-    w = MADD_WEIGHT;
-  } else if (bare && base === 'ي' && prevMarks.includes(KASRA)) {
-    w = MADD_WEIGHT;
+  } else if (isMaddLetter(cluster, prev)) {
+    // The letter IS the long vowel, so its whole duration is the madd.
+    w = maddLength(cluster, next);
   } else if (hasSukoon(marks)) {
     const leen = (base === 'و' || base === 'ي') && prevMarks.includes(FATHA);
     // A medial sukoon letter is articulated fully; only stopping on a final
     // sukoon clips it short.
     w = leen ? 1.1 : isLast ? 0.75 : 1.0;
+  } else if (marks.includes(MADDAH) && !hasVowel(marks)) {
+    // A plain consonant carrying the maddah sign is one of the disconnected
+    // letters that open some surahs (الٓمٓ، صٓ، قٓ): madd lazim harfi, 6
+    // harakat. The ones held only 2 (حي طهر) carry no maddah sign, so they
+    // fall through to the ordinary weight below.
+    w = MADD_LAZIM;
   }
 
   if (marks.includes(SHADDA)) w += 0.8;
-  // A dagger alif IS the long vowel, so it adds a full elongation.
-  if (marks.includes(DAGGER_ALIF)) w += MADD_WEIGHT;
-  if (marks.includes(MADDAH)) w += MADD_WEIGHT;
+  // A dagger alif is the long vowel written as a mark, so the cluster is
+  // consonant + madd, exactly like a written alif would be.
+  if (marks.includes(DAGGER_ALIF)) w += maddLength(cluster, next);
   if (TANWEEN.some((t) => marks.includes(t))) w += 0.5;
   if (ghunnaFor(cluster, next)) w += GHUNNA_WEIGHT;
 
   // Merged lam-alif ligature: the alif fused into it needs its own time — a
-  // full elongation when it is a bare madd alif (لَا), but only a normal
-  // letter's worth when it carries a vowel of its own (لْإِ in ٱلْإِنسَٰنَ).
-  if (cluster.ligature) w += cluster.ligatureTailBare ? MADD_WEIGHT : 1.0;
+  // full madd when it is a bare alif (لَا), but only a normal letter's worth
+  // when it carries a vowel of its own (لْإِ in ٱلْإِنسَٰنَ).
+  if (cluster.ligature) w += cluster.ligatureTailBare ? maddLength(cluster, next) : 1.0;
 
   return w;
 }

@@ -4,6 +4,7 @@ import { WordsLesson } from './pages/WordsLesson';
 import { PairsLesson } from './pages/PairsLesson';
 import { CalibratePage } from './pages/CalibratePage';
 import { AdminGate } from './components/AdminGate';
+import { LaserPointer } from './components/LaserPointer';
 import { getSession, signOut } from './lib/adminAuth';
 import { storeCloudSnapshot } from './lib/calibration';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
@@ -45,6 +46,7 @@ export default function App() {
   const [theme, setTheme] = useState<Theme>(initialTheme);
   const [rate, setRate] = useState<number>(initialRate);
   const [admin, setAdmin] = useState(() => getSession() !== null);
+  const [laser, setLaser] = useState(false);
 
   useEffect(() => {
     const onChange = () => setRoute(parseRoute(window.location.hash));
@@ -88,7 +90,17 @@ export default function App() {
   const meta = LESSONS.find((l) => l.id === route.lessonId);
 
   return (
-    <div className="app">
+    <div className={`app ${laser ? 'laser-on' : ''}`}>
+      <LaserPointer active={laser} onExit={() => setLaser(false)} />
+      <button
+        type="button"
+        className={`laser-toggle ${laser ? 'on' : ''}`}
+        aria-pressed={laser}
+        onClick={() => setLaser((v) => !v)}
+      >
+        {laser ? 'Laser on — tap to exit' : 'Laser'}
+      </button>
+
       <header className="app-header">
         <a className="brand" href="#/">
           <img src={`${import.meta.env.BASE_URL}pwa-192.png`} alt="" className="logo" />
