@@ -7,25 +7,25 @@
   "words": [
     {
       "id": 1,
-      "arabic": "أَنْعَمْتَ",
+      "arabic": "أَنۡعَمۡتَ",
       "audio": "word01.wav",
       "timings": null
     },
     {
       "id": 2,
-      "arabic": "مَغْضُوبِ",
+      "arabic": "مَغۡضُوبِ",
       "audio": "word02.wav",
       "timings": null
     },
     {
       "id": 3,
-      "arabic": "عَلَيْهِمْ",
+      "arabic": "عَلَيۡهِمۡ",
       "audio": "word03.wav",
       "timings": null
     },
     {
       "id": 4,
-      "arabic": "مَثَلُهُمْ",
+      "arabic": "مَثَلُهُمۡ",
       "audio": "word04.wav",
       "timings": [
         0.749,
@@ -38,31 +38,31 @@
     },
     {
       "id": 5,
-      "arabic": "تَرَكَهُمْ",
+      "arabic": "تَرَكَهُمۡ",
       "audio": "word05.wav",
       "timings": null
     },
     {
       "id": 6,
-      "arabic": "خَلَقَكُمْ",
+      "arabic": "خَلَقَكُمۡ",
       "audio": "word06.wav",
       "timings": null
     },
     {
       "id": 7,
-      "arabic": "قَبْلِكُمْ",
+      "arabic": "قَبۡلِكُمۡ",
       "audio": "word07.wav",
       "timings": null
     },
     {
       "id": 8,
-      "arabic": "فَأَخْرَجَ",
+      "arabic": "فَأَخۡرَجَ",
       "audio": "word08.wav",
       "timings": null
     },
     {
       "id": 9,
-      "arabic": "عَبْدِنَا",
+      "arabic": "عَبۡدِنَا",
       "audio": "word09.wav",
       "timings": null
     },
@@ -80,25 +80,25 @@
     },
     {
       "id": 12,
-      "arabic": "تَحْتِهَا",
+      "arabic": "تَحۡتِهَا",
       "audio": "word12.wav",
       "timings": null
     },
     {
       "id": 13,
-      "arabic": "أَنْهَارُ",
+      "arabic": "أَنۡهَارُ",
       "audio": "word13.wav",
       "timings": null
     },
     {
       "id": 14,
-      "arabic": "رُزِقْنَا",
+      "arabic": "رُزِقۡنَا",
       "audio": "word14.wav",
       "timings": null
     },
     {
       "id": 15,
-      "arabic": "أَزْوَاجٌ",
+      "arabic": "أَزۡوَاجٌ",
       "audio": "word15.wav",
       "timings": null
     },
@@ -110,7 +110,7 @@
     },
     {
       "id": 17,
-      "arabic": "فَوْقَهَا",
+      "arabic": "فَوۡقَهَا",
       "audio": "word17.wav",
       "timings": null
     },
@@ -122,55 +122,55 @@
     },
     {
       "id": 19,
-      "arabic": "بِحَمْدِكَ",
+      "arabic": "بِحَمۡدِكَ",
       "audio": "word19.wav",
       "timings": null
     },
     {
       "id": 20,
-      "arabic": "عَرَضَهُمْ",
+      "arabic": "عَرَضَهُمۡ",
       "audio": "word20.wav",
       "timings": null
     },
     {
       "id": 21,
-      "arabic": "سُبْحَانَ",
+      "arabic": "سُبۡحَانَ",
       "audio": "word21.wav",
       "timings": null
     },
     {
       "id": 22,
-      "arabic": "تُبْدُونَ",
+      "arabic": "تُبۡدُونَ",
       "audio": "word22.wav",
       "timings": null
     },
     {
       "id": 23,
-      "arabic": "إِبْلِيسَ",
+      "arabic": "إِبۡلِيسَ",
       "audio": "word23.wav",
       "timings": null
     },
     {
       "id": 24,
-      "arabic": "وَزَوْجُكَ",
+      "arabic": "وَزَوۡجُكَ",
       "audio": "word24.wav",
       "timings": null
     },
     {
       "id": 25,
-      "arabic": "تَقْرَبَا",
+      "arabic": "تَقۡرَبَا",
       "audio": "word25.wav",
       "timings": null
     },
     {
       "id": 26,
-      "arabic": "وَقُلْنَا",
+      "arabic": "وَقُلۡنَا",
       "audio": "word26.wav",
       "timings": null
     },
     {
       "id": 27,
-      "arabic": "بَعْضُكُمْ",
+      "arabic": "بَعۡضُكُمۡ",
       "audio": "word27.wav",
       "timings": null
     },
@@ -182,25 +182,25 @@
     },
     {
       "id": 29,
-      "arabic": "أَصْحَابُ",
+      "arabic": "أَصۡحَابُ",
       "audio": "word29.wav",
       "timings": null
     },
     {
       "id": 30,
-      "arabic": "نِعْمَتِيَ",
+      "arabic": "نِعۡمَتِيَ",
       "audio": "word30.wav",
       "timings": null
     },
     {
       "id": 31,
-      "arabic": "عَلَيْكُمْ",
+      "arabic": "عَلَيۡكُمۡ",
       "audio": "word31.wav",
       "timings": null
     },
     {
       "id": 32,
-      "arabic": "بِعَهْدِي",
+      "arabic": "بِعَهۡدِي",
       "audio": "word32.wav",
       "timings": null
     },

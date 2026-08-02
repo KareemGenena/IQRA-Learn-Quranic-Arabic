@@ -56,11 +56,24 @@ export function PairsLesson({ lesson, rate }: { lesson: Lesson; rate: number }) 
   const pages = useMemo(() => buildPages(lesson), [lesson]);
   const [pageNo, setPageNo] = useState(0);
   const [playingAll, setPlayingAll] = useState(false);
+  const [showContents, setShowContents] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const playersRef = useRef(new Map<string, () => Promise<void>>());
   const cancelAllRef = useRef(false);
 
   const page = pages[pageNo];
+
+  /** Pages grouped by section, for the contents panel. */
+  const groups = useMemo(() => {
+    const out: { label: string; pages: (Page & { index: number })[] }[] = [];
+    pages.forEach((p, index) => {
+      const label = p.quiz ? 'Mixed Review' : (p.section?.title ?? '');
+      const last = out[out.length - 1];
+      if (last?.label === label) last.pages.push({ ...p, index });
+      else out.push({ label, pages: [{ ...p, index }] });
+    });
+    return out;
+  }, [pages]);
 
   const register = useCallback((key: string, play: () => Promise<void>) => {
     playersRef.current.set(key, play);
@@ -157,6 +170,35 @@ export function PairsLesson({ lesson, rate }: { lesson: Lesson; rate: number }) 
         ))}
       </div>
 
+      {showContents && (
+        <nav className="contents" aria-label="Contents">
+          {groups.map((g) => (
+            <div key={g.label} className="contents-group">
+              <h4>{g.label}</h4>
+              <div className="contents-chips">
+                {g.pages.map((p) => (
+                  <button
+                    key={p.index}
+                    type="button"
+                    className={`contents-chip ${p.index === pageNo ? 'current' : ''}`}
+                    onClick={() => {
+                      goto(p.index);
+                      setShowContents(false);
+                    }}
+                    aria-current={p.index === pageNo ? 'page' : undefined}
+                  >
+                    <span className="chip-no">{p.indexInGroup}</span>
+                    <span className="chip-words" dir="rtl" lang="ar">
+                      {p.words.map((w) => w.bare.text).join('  ')}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </nav>
+      )}
+
       <nav className="pager" aria-label="Lesson pages">
         <button type="button" className="btn nav-btn" onClick={() => goto(pageNo - 1)} disabled={pageNo === 0}>
           Back
@@ -173,6 +215,17 @@ export function PairsLesson({ lesson, rate }: { lesson: Lesson; rate: number }) 
           Next
         </button>
       </nav>
+
+      <div className="contents-bar">
+        <button
+          type="button"
+          className="btn contents-btn"
+          aria-expanded={showContents}
+          onClick={() => setShowContents((v) => !v)}
+        >
+          {showContents ? 'Hide contents' : 'Contents'}
+        </button>
+      </div>
 
       <p className="page-status" aria-live="polite">
         {heading} — page {page.indexInGroup} of {page.groupSize}

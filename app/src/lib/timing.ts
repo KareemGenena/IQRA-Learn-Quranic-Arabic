@@ -1,22 +1,38 @@
 /**
  * Automatic letter-timing estimation.
  *
- * Each letter cluster gets a WEIGHT in "time units". The detected speech span
- * of the recording is then divided among the letters in proportion to their
- * weights. Rules follow tajweed duration logic and are designed to grow:
- * future lessons add rules here (ghunna, madd lazim, qalqalah...) without
- * touching anything else.
+ * Each letter cluster gets a WEIGHT in "time units" (roughly one harakah).
+ * The detected speech span of a recording is divided among the letters in
+ * proportion to those weights. Rules follow tajweed duration logic and are
+ * meant to grow: a new ruling is a new clause here and nothing else changes.
  *
- * Current rules:
- *  - plain letter with a short vowel ............ 1.0
- *  - sukoon inside the word ..................... 1.0  (articulated fully)
- *  - sukoon on the FINAL letter (clipped stop) .. 0.75
- *  - madd letter (bare ا / و after damma /
- *    ي after kasra — the elongation itself) ..... 1.2
- *  - madd leen (وْ or يْ after a fatha) ........... 1.1
- *  - tanween ending ............................. +0.5
- *  - shadda (doubled letter) .................... +0.8
- *  - lam-alif ligature .......................... lam weight + 1.2 for the alif
+ * LENGTH
+ *  · plain letter with a short vowel ............... 1.0
+ *  · sukoon inside the word ....................... 1.0  (articulated fully)
+ *  · sukoon on the FINAL letter (clipped stop) .... 0.75
+ *  · madd letter — bare ا/ى, و after damma,
+ *    ي after kasra, or a dagger alif ............. +1.2
+ *  · madd leen (وْ / يْ after a fatha) ............. 1.1
+ *  · hamzat wasl (the ٱ of ٱل, word-initial) ....... 0.9
+ *  · shadda (the letter is doubled) .............. +0.8
+ *  · tanween ending .............................. +0.5
+ *  · lam-alif ligature ........................... +1.2 for the alif
+ *
+ * GHUNNA — the ~2-count nasal hum, added to the noon/meem that carries it:
+ *  · noon or meem with shadda (نّ / مّ) ............ always
+ *  · noon saakin or tanween followed by
+ *      – one of the 15 ikhfa letters .............. ghunna (hidden noon)
+ *      – ي ن م و (idgham with ghunna) ............. ghunna
+ *      – ب (iqlab: the noon becomes a meem) ....... ghunna
+ *      – ء ه ع ح غ خ (izhar, throat) .............. NO ghunna
+ *      – ر ل (idgham without ghunna) .............. NO ghunna
+ *  · meem saakin followed by
+ *      – ب (ikhfa shafawi) or م (idgham shafawi) .. ghunna
+ *      – anything else (izhar shafawi) ............ NO ghunna
+ *
+ * A noon/meem counts as saakin when it carries an explicit sukoon OR carries
+ * no vowel at all — Uthmani script leaves the ikhfa noon unmarked (ٱلْمَنفُوشِ),
+ * and neither letter is ever a madd letter, so bare means silent-vowelled.
  */
 
 import { baseChar, marksOf } from './graphemes';
@@ -25,17 +41,64 @@ import type { LetterCluster } from './graphemes';
 const FATHA = 'َ';
 const DAMMA = 'ُ';
 const KASRA = 'ِ';
-const SUKOON = 'ْ';
+const SUKOON = 'ْ'; // U+0652
+const MUSHAF_SUKOON = 'ۡ'; // U+06E1
 const SHADDA = 'ّ';
 const TANWEEN = ['ً', 'ٌ', 'ٍ']; // fathatan, dammatan, kasratan
 const DAGGER_ALIF = 'ٰ';
+const MADDAH = 'ٓ';
 
 const MADD_WEIGHT = 1.2;
+/** Extra time for the nasal hum — about two counts. */
+const GHUNNA_WEIGHT = 0.9;
+
+const NOON = 'ن';
+const MEEM = 'م';
+/** The 15 letters after which a noon saakin is hidden (ikhfa) with ghunna. */
+const IKHFA = new Set('تثجدذزسشصضطظفقك');
+/** يرملون minus ر ل — these merge the noon and keep the ghunna. */
+const IDGHAM_GHUNNA = new Set('ينمو');
+/** Throat letters: the noon is pronounced clearly, no ghunna. */
+const IZHAR = new Set('ءأإآهعحغخ');
+const BAA = 'ب';
+
+const hasVowel = (marks: string[]) =>
+  marks.some((m) => m === FATHA || m === DAMMA || m === KASRA || TANWEEN.includes(m));
+const hasSukoon = (marks: string[]) => marks.includes(SUKOON) || marks.includes(MUSHAF_SUKOON);
+const isSaakin = (marks: string[]) => hasSukoon(marks) || !hasVowel(marks);
+
+/** Does this cluster earn a ghunna, given the letter written after it? */
+export function ghunnaFor(cluster: LetterCluster, next: LetterCluster | undefined): boolean {
+  const base = baseChar(cluster.text);
+  const marks = marksOf(cluster.text);
+  const nextBase = next ? baseChar(next.text) : '';
+
+  // Noon or meem with shadda always hums, wherever it sits.
+  if (marks.includes(SHADDA) && (base === NOON || base === MEEM)) return true;
+
+  const tanween = TANWEEN.some((t) => marks.includes(t));
+
+  // Noon saakin or tanween — the ruling depends on the next letter.
+  if ((base === NOON && isSaakin(marks)) || tanween) {
+    if (!nextBase) return false; // stopping here: no following letter, no ghunna
+    if (IZHAR.has(nextBase)) return false;
+    if (IKHFA.has(nextBase) || IDGHAM_GHUNNA.has(nextBase) || nextBase === BAA) return true;
+    return false; // ر ل — merged with no ghunna
+  }
+
+  // Meem saakin: hums only before ب or م.
+  if (base === MEEM && isSaakin(marks) && !marks.includes(SHADDA)) {
+    return nextBase === BAA || nextBase === MEEM;
+  }
+
+  return false;
+}
 
 export function clusterWeight(
   cluster: LetterCluster,
   prev: LetterCluster | undefined,
   isLast: boolean,
+  next?: LetterCluster,
 ): number {
   const base = baseChar(cluster.text);
   const marks = marksOf(cluster.text);
@@ -44,9 +107,10 @@ export function clusterWeight(
 
   let w = 1.0;
 
-  if (bare && base === 'ا' && !prev) {
-    // Word-initial bare alif is hamzat wasl (the "a" of ال), not a madd —
-    // a madd needs a vowel before it, and there is nothing before this.
+  if (base === 'ٱ' || (bare && base === 'ا' && !prev)) {
+    // Hamzat wasl — the "a" of ٱل. Never a madd: an elongation needs a vowel
+    // before it, and this is the start of the word. (ٱ U+0671 always is one;
+    // a plain bare alif only when it opens the word.)
     w = 0.9;
   } else if (bare && (base === 'ا' || base === 'ى')) {
     w = MADD_WEIGHT; // alif of madd: full elongation unit
@@ -54,7 +118,7 @@ export function clusterWeight(
     w = MADD_WEIGHT;
   } else if (bare && base === 'ي' && prevMarks.includes(KASRA)) {
     w = MADD_WEIGHT;
-  } else if (marks.includes(SUKOON)) {
+  } else if (hasSukoon(marks)) {
     const leen = (base === 'و' || base === 'ي') && prevMarks.includes(FATHA);
     // A medial sukoon letter is articulated fully; only stopping on a final
     // sukoon clips it short.
@@ -62,11 +126,16 @@ export function clusterWeight(
   }
 
   if (marks.includes(SHADDA)) w += 0.8;
-  if (marks.includes(DAGGER_ALIF)) w += MADD_WEIGHT - 1; // dagger alif elongates like madd
+  // A dagger alif IS the long vowel, so it adds a full elongation.
+  if (marks.includes(DAGGER_ALIF)) w += MADD_WEIGHT;
+  if (marks.includes(MADDAH)) w += MADD_WEIGHT;
   if (TANWEEN.some((t) => marks.includes(t))) w += 0.5;
+  if (ghunnaFor(cluster, next)) w += GHUNNA_WEIGHT;
 
-  // Merged lam-alif ligature: the trailing alif is its own madd time unit.
-  if (cluster.ligature) w += MADD_WEIGHT;
+  // Merged lam-alif ligature: the alif fused into it needs its own time — a
+  // full elongation when it is a bare madd alif (لَا), but only a normal
+  // letter's worth when it carries a vowel of its own (لْإِ in ٱلْإِنسَٰنَ).
+  if (cluster.ligature) w += cluster.ligatureTailBare ? MADD_WEIGHT : 1.0;
 
   return w;
 }
@@ -93,10 +162,10 @@ export function autoBoundaries(
   silent: number[] = [],
 ): number[] {
   const audible = audibleIndices(clusters, silent);
-  // Elongation depends on the letter WRITTEN before, not the previous audible
-  // one, so pass the visual neighbour.
+  // Elongation and ghunna depend on the letters WRITTEN either side, not the
+  // audible ones, so pass the visual neighbours.
   const weights = audible.map((idx, n) =>
-    clusterWeight(clusters[idx], clusters[idx - 1], n === audible.length - 1),
+    clusterWeight(clusters[idx], clusters[idx - 1], n === audible.length - 1, clusters[idx + 1]),
   );
   const total = weights.reduce((a, b) => a + b, 0) || 1;
   const span = speechEnd - speechStart;

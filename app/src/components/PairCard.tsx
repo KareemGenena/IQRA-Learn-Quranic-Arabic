@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { ArabicWord } from './ArabicWord';
 import { PlayIcon } from './PlayIcon';
 import { usePlayable } from '../lib/usePlayable';
@@ -50,15 +50,52 @@ interface Props {
   hideType?: boolean;
 }
 
+/** Broadcast so at most one meaning is open at a time. */
+const TIP_EVENT = 'iqra-meaning-open';
+
 export function PairCard({ lesson, word, rate, displayNo, register, hideType }: Props) {
   const [showMeaning, setShowMeaning] = useState(false);
   const tipId = useId();
+  const headRef = useRef<HTMLDivElement>(null);
   const bare = useMemo(() => barePlayable(word), [word]);
   const withAl = useMemo(() => withAlPlayable(word), [word]);
 
+  // While a meaning is open, dismiss it on a tap outside, on Escape, or when
+  // another card's meaning opens. No auto-timeout: content shown on hover or
+  // focus must stay until the reader dismisses it (WCAG 1.4.13), and a timer
+  // would snatch it away from anyone reading slowly.
+  useEffect(() => {
+    if (!showMeaning) return;
+    const close = () => setShowMeaning(false);
+    const onPointer = (e: PointerEvent) => {
+      if (!headRef.current?.contains(e.target as Node)) close();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close();
+    };
+    const onOther = (e: Event) => {
+      if ((e as CustomEvent<string>).detail !== tipId) close();
+    };
+    document.addEventListener('pointerdown', onPointer);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener(TIP_EVENT, onOther);
+    return () => {
+      document.removeEventListener('pointerdown', onPointer);
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener(TIP_EVENT, onOther);
+    };
+  }, [showMeaning, tipId]);
+
+  const toggleMeaning = () => {
+    setShowMeaning((open) => {
+      if (!open) window.dispatchEvent(new CustomEvent(TIP_EVENT, { detail: tipId }));
+      return !open;
+    });
+  };
+
   return (
     <div className={`pair-card ${word.type}`}>
-      <div className="pair-head">
+      <div className="pair-head" ref={headRef}>
         <span className="word-num">{displayNo}</span>
         {!hideType && (
           <span className="type-badge">{word.type === 'shamsiyya' ? 'Sun ش' : 'Moon ق'}</span>
@@ -69,7 +106,7 @@ export function PairCard({ lesson, word, rate, displayNo, register, hideType }: 
           aria-label={`Meaning of word ${displayNo}`}
           aria-expanded={showMeaning}
           aria-describedby={showMeaning ? tipId : undefined}
-          onClick={() => setShowMeaning((v) => !v)}
+          onClick={toggleMeaning}
         >
           i
         </button>

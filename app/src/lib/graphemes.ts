@@ -25,11 +25,22 @@ export interface LetterCluster {
   end: number;
   /** True for a merged lam-alif ligature — counts as two letters in timing. */
   ligature?: boolean;
+  /** For a ligature: was the fused alif bare (a madd) or vowelled? */
+  ligatureTailBare?: boolean;
 }
 
 const TATWEEL = 'ـ';
-/** Harakat, tanween, shadda, sukoon (U+064B–U+0652) and dagger alif (U+0670). */
-const MARK_RE = /[ً-ْٰ]/;
+/**
+ * Every combining mark Quranic text uses: harakat/tanween/shadda/sukoon
+ * (U+064B–U+065F), the dagger alif (U+0670), and the Quranic annotation
+ * marks (U+06D6–U+06ED) — which is where the Mushaf's own sukoon lives
+ * (U+06E1, the small head of khah). Miss these and a mark is counted as a
+ * letter.
+ */
+const MARK_RE =
+  /[ً-ٰٟۖ-ۜ۟-۪ۤۧۨ-ۭ]/;
+/** Hamza written as a combining mark, which makes its seat a real consonant. */
+const HAMZA_MARK_RE = /[ٕٔ]/;
 const LAM = 'ل';
 const ALIFS = new Set(['ا', 'أ', 'إ', 'آ']); // ا أ إ آ
 
@@ -55,8 +66,11 @@ export function splitClusters(word: string): LetterCluster[] {
     const base = baseChar(text);
     const prev = clusters[clusters.length - 1];
 
-    // Tatweel (or a stray mark with no base letter): absorb into the previous letter.
-    if (prev && (base === TATWEEL || base === '')) {
+    // Tatweel (or a stray mark with no base letter): absorb into the previous
+    // letter — it is a stretched pen stroke, not a letter of its own.
+    // Exception: a tatweel carrying a hamza (as in ٱلْأَفْـِٔدَةِ) is a genuine
+    // seat for a consonant, so it stays a letter in its own right.
+    if (prev && (base === TATWEEL || base === '') && !HAMZA_MARK_RE.test(text)) {
       prev.text += text;
       prev.end = seg.index + text.length;
       continue;
@@ -65,6 +79,7 @@ export function splitClusters(word: string): LetterCluster[] {
     // Lam-alif ligature: lam followed by any alif always renders as one glyph,
     // whatever mark the lam carries, so it must be one highlight unit.
     if (prev && ALIFS.has(base) && baseChar(prev.text) === LAM) {
+      prev.ligatureTailBare = marksOf(text).length === 0;
       prev.text += text;
       prev.end = seg.index + text.length;
       prev.ligature = true;

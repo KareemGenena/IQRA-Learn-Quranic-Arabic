@@ -549,6 +549,92 @@ body {
   cursor: default;
 }
 
+/* ---------- contents ---------- */
+
+.contents-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.contents-btn {
+  min-height: 44px;
+}
+
+.contents {
+  margin: 20px 0 4px;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.contents-group + .contents-group {
+  margin-top: 16px;
+}
+
+.contents-group h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contents-chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+}
+
+.contents-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 6px 10px;
+  background: var(--bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  text-align: start;
+  overflow: hidden;
+}
+
+.contents-chip:hover {
+  border-color: var(--accent);
+}
+
+.contents-chip.current {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+}
+
+.chip-no {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.chip-words {
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  font-size: 19px;
+  line-height: 2;
+  color: var(--text-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .page-status {
   text-align: center;
   color: var(--text-soft);

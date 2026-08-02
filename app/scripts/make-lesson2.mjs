@@ -28,18 +28,42 @@ const AUDIO_SRC = join(root, 'Audio', 'Audio - Lam shamseya and qamareya');
 const AUDIO_OUT = join(here, '..', 'public', 'audio', 'lesson02');
 const LESSON_OUT = join(here, '..', 'public', 'lessons', 'lesson02', 'words.json');
 
-const SUKOON = 'ْ';
-const ALIF = 'ا';
+const SUKOON = 'ْ'; // U+0652 — the modern circular sukoon, as typed in the docx
+const MUSHAF_SUKOON = 'ۡ'; // U+06E1 — the small head of khah the Mushaf draws
+const ALIF = 'ا'; // U+0627
+const ALIF_WASLA = 'ٱ'; // U+0671 — carries the ص of hamzat wasl
 const LAM = 'ل';
-const MARKS = /[ً-ْٰـ]/g;
-const bare = (s) => s.replace(MARKS, '');
+const MARKS = /[ً-ْٰۡـٓٔ]/g;
+const bare = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا');
+
+/**
+ * Uthmani spellings that differ from the everyday spelling in the docx.
+ * Keyed by the bare (mark-free) word. These are the Madinah Mushaf forms:
+ * dagger alifs replacing written alifs, the maddah in ٱلشِّتَآءِ, the hamza on
+ * its tatweel seat in ٱلْأَفْـِٔدَةِ, and the ikhfa noon left unmarked.
+ *
+ * Every entry is printed on each run so the spellings stay reviewable.
+ */
+const cp = (...codes) => String.fromCodePoint(...codes);
+const UTHMANI = {
+  كافرون: 'كَٰفِرُونَ',
+  إنسان: 'إِنسَٰنَ',
+  منفوش: 'مَنفُوشِ',
+  عاديات: 'عَٰدِيَٰتِ',
+  موريات: 'مُورِيَٰتِ',
+  مغيرات: 'مُغِيرَٰتِ',
+  صالحات: 'صَٰلِحَٰتِ',
+  // alif + maddah as separate codepoints, the way Uthmani text encodes it
+  شتاء: cp(0x634, 0x650, 0x62a, 0x64e, 0x627, 0x653, 0x621, 0x650),
+  أفئدة: 'أَفْـِٔدَةِ',
+};
+const uthmaniUsed = [];
 
 /**
  * Typos in the docx where the two forms of a word disagree. Each is applied
  * to ONE cell and reported on every run, so the correction stays visible and
  * the source document is never edited behind the author's back.
  */
-const cp = (...codes) => String.fromCodePoint(...codes);
 const CORRECTIONS = [
   // المُصَلَّينَ: the lam carries shadda+fatha; the ayah (and the bare form
   // in the same row) has shadda+kasra. Spelled out by codepoint because the
@@ -101,6 +125,19 @@ const entries = [...collect('qamariyya', 0, 1, 2), ...collect('shamsiyya', 3, 4,
 const words = entries.map((e, i) => {
   const id = i + 1;
   let withAl = e.definite;
+  let indefinite = e.indefinite;
+  // Keep the docx spelling: the recordings are named with it.
+  const audioKey = [bare(e.indefinite), bare(e.definite)];
+
+  // Swap in the Mushaf spelling where it differs, keeping both forms in step.
+  const key = bare(indefinite);
+  if (UTHMANI[key]) {
+    const uth = UTHMANI[key];
+    uthmaniUsed.push(`${indefinite} → ${uth}`);
+    withAl = withAl.slice(0, 2) + (e.type === 'shamsiyya' ? uth[0] + 'ّ' + uth.slice(1) : uth);
+    indefinite = uth;
+    e = { ...e, indefinite };
+  }
 
   if (!withAl.startsWith(ALIF + LAM)) {
     problems.push(`#${id} ${bare(e.indefinite)}: definite form doesn't start with ال`);
@@ -119,11 +156,18 @@ const words = entries.map((e, i) => {
   // is removed first, since that mark belongs to the ال rule, not the word.
   const alLength = e.type === 'qamariyya' ? 3 : 2;
   const stem = withAl.slice(alLength).replace(/^(.)ّ/, '$1');
-  if (stem !== e.indefinite) {
+  if (stem !== indefinite) {
     problems.push(
-      `#${id} ${bare(e.indefinite)}: the two forms don't match — "${e.indefinite}" vs "${e.definite}" (strips to "${stem}")`,
+      `#${id} ${bare(indefinite)}: the two forms don't match — "${indefinite}" vs "${e.definite}" (strips to "${stem}")`,
     );
   }
+
+  // Mushaf orthography, applied to every word:
+  //  · the article's alif is hamzat wasl, which is what draws the ص above it
+  //  · sukoon is the small head of khah, not the modern circle
+  const mushaf = (s) => s.replaceAll(SUKOON, MUSHAF_SUKOON);
+  withAl = ALIF_WASLA + mushaf(withAl.slice(1));
+  indefinite = mushaf(indefinite);
 
   return {
     id,
@@ -133,7 +177,10 @@ const words = entries.map((e, i) => {
     // shamsiyya ا+ل = 2 (the shadda belongs to the root letter),
     // qamariyya ا+ل+sukoon = 3.
     alLength,
-    bare: { text: e.indefinite, audio: `word${String(id).padStart(2, '0')}a.wav`, timings: null },
+    // Recordings are named with the everyday spelling from the docx, so match
+    // on that — the Mushaf forms differ (a dagger alif is a mark, not a letter).
+    audioKey,
+    bare: { text: indefinite, audio: `word${String(id).padStart(2, '0')}a.wav`, timings: null },
     withAl: { text: withAl, audio: `word${String(id).padStart(2, '0')}b.wav`, timings: null },
   };
 });
@@ -150,8 +197,7 @@ for (const [type, folder] of Object.entries(folders)) {
 mkdirSync(AUDIO_OUT, { recursive: true });
 let split = 0;
 for (const w of words) {
-  const wantBare = bare(w.bare.text);
-  const wantAl = bare(w.withAl.text);
+  const [wantBare, wantAl] = w.audioKey;
   const hit = files[w.type].find(({ key }) => key[0] === wantBare && key[1] === wantAl);
   if (!hit) {
     problems.push(`#${w.id} ${wantBare}: no recording matched (looked for "${wantBare} ${wantAl}.wav")`);
@@ -184,7 +230,7 @@ const lesson = {
     { type: 'shamsiyya', title: 'Sun Lam', titleArabic: 'اللام الشمسية', hint: 'The ل is silent — the next letter doubles.' },
   ],
   quizSize: 5,
-  words,
+  words: words.map(({ audioKey, ...w }) => w),
 };
 mkdirSync(dirname(LESSON_OUT), { recursive: true });
 writeFileSync(LESSON_OUT, JSON.stringify(lesson, null, 2), 'utf8');
@@ -195,4 +241,7 @@ console.log(`${words.length} words (${q} qamariyya, ${words.length - q} shamsiyy
 console.log(`audio: split ${split} pair recordings into ${split * 2} files`);
 console.log(`missing translations: ${words.filter((w) => !w.meaning).length}`);
 if (applied.length) console.log(`\nCORRECTIONS APPLIED (docx unchanged):\n  ${applied.join('\n  ')}`);
+if (uthmaniUsed.length) {
+  console.log(`\nMUSHAF SPELLINGS SUBSTITUTED (${uthmaniUsed.length}) — please review:\n  ${uthmaniUsed.join('\n  ')}`);
+}
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');
