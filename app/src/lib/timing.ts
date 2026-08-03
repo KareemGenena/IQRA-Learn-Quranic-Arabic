@@ -67,6 +67,12 @@ const MADD_MUTTASIL = 4; // munfasil is the same length
 const MADD_LAZIM = 6;
 /** Extra time for the nasal hum — about two counts. */
 const GHUNNA_WEIGHT = 0.9;
+/**
+ * Qalqalah: ق ط ب ج د carrying a sukoon can't be held or whispered, so the
+ * voice bounces off them. The echo is quick — a fraction of a harakah.
+ */
+const QALQALAH = new Set('قطبجد');
+const QALQALAH_WEIGHT = 0.25;
 
 const NOON = 'ن';
 const MEEM = 'م';
@@ -157,11 +163,23 @@ export function ghunnaFor(cluster: LetterCluster, next: LetterCluster | undefine
   return false;
 }
 
+export interface WeightOptions {
+  /**
+   * The text is disconnected letters opening a surah (الٓمٓ، طه، يس), where
+   * each character is read as its full NAME. The names of نقص عسلكم hold a
+   * madd lazim of 6 and carry the maddah sign, so they are already handled;
+   * the names of حي طهر hold a natural madd of 2 but carry no sign at all,
+   * which is indistinguishable from an ordinary letter without this flag.
+   */
+  letterNames?: boolean;
+}
+
 export function clusterWeight(
   cluster: LetterCluster,
   prev: LetterCluster | undefined,
   isLast: boolean,
   next?: LetterCluster,
+  opts: WeightOptions = {},
 ): number {
   const base = baseChar(cluster.text);
   const marks = marksOf(cluster.text);
@@ -185,10 +203,13 @@ export function clusterWeight(
     w = leen ? 1.1 : isLast ? 0.75 : 1.0;
   } else if (marks.includes(MADDAH) && !hasVowel(marks)) {
     // A plain consonant carrying the maddah sign is one of the disconnected
-    // letters that open some surahs (الٓمٓ، صٓ، قٓ): madd lazim harfi, 6
-    // harakat. The ones held only 2 (حي طهر) carry no maddah sign, so they
-    // fall through to the ordinary weight below.
+    // letters that open some surahs (الٓمٓ، صٓ، قٓ): madd lazim harfi, 6 harakat.
     w = MADD_LAZIM;
+  } else if (opts.letterNames && !hasVowel(marks)) {
+    // Same context, but one of حي طهر — read as its name (طا، ها، حا، يا، را),
+    // which holds a natural madd of 2. Nothing in the text marks these, hence
+    // the flag.
+    w = MADD_NATURAL;
   }
 
   if (marks.includes(SHADDA)) w += 0.8;
@@ -197,6 +218,7 @@ export function clusterWeight(
   if (marks.includes(DAGGER_ALIF)) w += maddLength(cluster, next);
   if (TANWEEN.some((t) => marks.includes(t))) w += 0.5;
   if (ghunnaFor(cluster, next)) w += GHUNNA_WEIGHT;
+  if (QALQALAH.has(base) && hasSukoon(marks)) w += QALQALAH_WEIGHT;
 
   // Merged lam-alif ligature: the alif fused into it needs its own time — a
   // full madd when it is a bare alif (لَا), but only a normal letter's worth
@@ -226,12 +248,19 @@ export function autoBoundaries(
   speechStart: number,
   speechEnd: number,
   silent: number[] = [],
+  opts: WeightOptions = {},
 ): number[] {
   const audible = audibleIndices(clusters, silent);
   // Elongation and ghunna depend on the letters WRITTEN either side, not the
   // audible ones, so pass the visual neighbours.
   const weights = audible.map((idx, n) =>
-    clusterWeight(clusters[idx], clusters[idx - 1], n === audible.length - 1, clusters[idx + 1]),
+    clusterWeight(
+      clusters[idx],
+      clusters[idx - 1],
+      n === audible.length - 1,
+      clusters[idx + 1],
+      opts,
+    ),
   );
   const total = weights.reduce((a, b) => a + b, 0) || 1;
   const span = speechEnd - speechStart;

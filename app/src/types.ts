@@ -67,4 +67,7 @@ export interface Playable {
   silentClusters: number[];
   /** Leading clusters that form the ال prefix, coloured apart. 0 = none. */
   prefixClusters: number;
+  /** Set for surah-opening disconnected letters (الٓمٓ، طه) — each character
+   *  is read as its full letter name, which changes how long it is held. */
+  letterNames?: boolean;
 }

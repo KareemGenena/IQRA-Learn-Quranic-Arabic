@@ -42,7 +42,9 @@ export async function resolveBoundaries(
   if (playable.timings?.length === expected) return playable.timings;
 
   const bounds = await speechBounds(audioUrl(lesson, playable));
-  return autoBoundaries(clusters, bounds.start, bounds.end, playable.silentClusters);
+  return autoBoundaries(clusters, bounds.start, bounds.end, playable.silentClusters, {
+    letterNames: playable.letterNames,
+  });
 }
 
 export interface PlaybackHandle {
