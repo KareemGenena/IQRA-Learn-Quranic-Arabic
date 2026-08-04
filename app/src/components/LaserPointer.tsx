@@ -14,7 +14,7 @@ import type { Point } from '../lib/laserStrokes';
  * can be tapped by accident. Escape leaves the mode.
  */
 
-const LINE_WIDTH = 7;
+const LINE_WIDTH = 5;
 const COLOR = '255, 34, 34';
 
 export function LaserPointer({ active, onExit }: { active: boolean; onExit: () => void }) {
