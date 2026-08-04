@@ -50,6 +50,8 @@ export interface LetterWord {
   badges?: string[];
   /** Which letter to light up, and which occurrence of it. */
   target?: { letter: string; position: string };
+  /** Contrast drills carry two words instead of one `text`/`audio`. */
+  pair?: { text: string; audio: string; timings: Timings }[];
 }
 
 export interface Lesson {

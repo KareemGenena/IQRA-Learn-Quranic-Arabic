@@ -103,18 +103,31 @@ function findTargetCluster(text: string, letter: string, position: string): numb
   return hits[0];
 }
 
-function letterPlayable(word: LetterWord): Playable {
-  return {
-    key: String(word.id),
-    text: word.text,
-    audio: word.audio,
-    timings: word.timings,
-    silentClusters: [],
-    prefixClusters: 0,
-    highlightCluster: word.target
-      ? findTargetCluster(word.text, word.target.letter, word.target.position)
-      : undefined,
-  };
+function letterPlayables(word: LetterWord): Playable[] {
+  // A contrast drill carries two words on one card, each played separately.
+  if (word.pair) {
+    return word.pair.map((f, i) => ({
+      key: `${word.id}${'ab'[i]}`,
+      text: f.text,
+      audio: f.audio,
+      timings: f.timings,
+      silentClusters: [],
+      prefixClusters: 0,
+    }));
+  }
+  return [
+    {
+      key: String(word.id),
+      text: word.text,
+      audio: word.audio,
+      timings: word.timings,
+      silentClusters: [],
+      prefixClusters: 0,
+      highlightCluster: word.target
+        ? findTargetCluster(word.text, word.target.letter, word.target.position)
+        : undefined,
+    },
+  ];
 }
 
 /** Normalises any paged lesson into the cards the page component renders. */
@@ -125,7 +138,7 @@ export function toItems(lesson: Lesson): LessonItem[] {
       section: w.section,
       badges: w.badges ?? [],
       meaning: w.meaning,
-      forms: [letterPlayable(w)],
+      forms: letterPlayables(w),
     }));
   }
   return (lesson.words as PairWord[]).map((w) => ({
@@ -149,10 +162,12 @@ export function allPlayables(lesson: Lesson): { label: string; playable: Playabl
     ]);
   }
   if (lesson.kind === 'letters') {
-    return (lesson.words as LetterWord[]).map((w) => ({
-      label: `${w.id}`,
-      playable: letterPlayable(w),
-    }));
+    return (lesson.words as LetterWord[]).flatMap((w) =>
+      letterPlayables(w).map((playable, i) => ({
+        label: w.pair ? `${w.id}${'ab'[i]}` : `${w.id}`,
+        playable,
+      })),
+    );
   }
   return (lesson.words as SimpleWord[]).map((w) => ({
     label: `${w.id}`,

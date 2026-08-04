@@ -47,6 +47,12 @@
       "title": "Pair drills",
       "titleArabic": "تمارين",
       "hint": "Alternate the two letters until the difference is automatic."
+    },
+    {
+      "id": "contrast",
+      "title": "Contrast drills",
+      "titleArabic": "تمارين التمييز",
+      "hint": "Two words, one letter apart. Play them back to back and listen for the switch."
     }
   ],
   "words": [
@@ -791,6 +797,158 @@
       "timings": null,
       "badges": [
         "ح / خ"
+      ]
+    },
+    {
+      "id": 52,
+      "section": "contrast",
+      "pair": [
+        {
+          "text": "يَهۡدِي",
+          "audio": "word52a.wav",
+          "timings": null
+        },
+        {
+          "text": "يَحۡكُمُ",
+          "audio": "word52b.wav",
+          "timings": null
+        }
+      ],
+      "badges": [
+        "ه / ح"
+      ]
+    },
+    {
+      "id": 53,
+      "section": "contrast",
+      "pair": [
+        {
+          "text": "هَلَكَ",
+          "audio": "word53a.wav",
+          "timings": null
+        },
+        {
+          "text": "حَضَرَ",
+          "audio": "word53b.wav",
+          "timings": null
+        }
+      ],
+      "badges": [
+        "ه / ح"
+      ]
+    },
+    {
+      "id": 54,
+      "section": "contrast",
+      "pair": [
+        {
+          "text": "هَادٍ",
+          "audio": "word54a.wav",
+          "timings": null
+        },
+        {
+          "text": "حَآدَّ",
+          "audio": "word54b.wav",
+          "timings": null
+        }
+      ],
+      "badges": [
+        "ه / ح"
+      ]
+    },
+    {
+      "id": 55,
+      "section": "contrast",
+      "pair": [
+        {
+          "text": "عَلِيمٍ",
+          "audio": "word55a.wav",
+          "timings": null
+        },
+        {
+          "text": "حَلِيمٍ",
+          "audio": "word55b.wav",
+          "timings": null
+        }
+      ],
+      "badges": [
+        "ع / ح"
+      ]
+    },
+    {
+      "id": 56,
+      "section": "contrast",
+      "pair": [
+        {
+          "text": "عَبَدَ",
+          "audio": "word56a.wav",
+          "timings": null
+        },
+        {
+          "text": "حَمِدَ",
+          "audio": "word56b.wav",
+          "timings": null
+        }
+      ],
+      "badges": [
+        "ع / ح"
+      ]
+    },
+    {
+      "id": 57,
+      "section": "contrast",
+      "pair": [
+        {
+          "text": "غَفُورٌ",
+          "audio": "word57a.wav",
+          "timings": null
+        },
+        {
+          "text": "خَبِيرٌ",
+          "audio": "word57b.wav",
+          "timings": null
+        }
+      ],
+      "badges": [
+        "غ / خ"
+      ]
+    },
+    {
+      "id": 58,
+      "section": "contrast",
+      "pair": [
+        {
+          "text": "غَيۡرَ",
+          "audio": "word58a.wav",
+          "timings": null
+        },
+        {
+          "text": "خَيۡرَ",
+          "audio": "word58b.wav",
+          "timings": null
+        }
+      ],
+      "badges": [
+        "غ / خ"
+      ]
+    },
+    {
+      "id": 59,
+      "section": "contrast",
+      "pair": [
+        {
+          "text": "بَلَغَ",
+          "audio": "word59a.wav",
+          "timings": null
+        },
+        {
+          "text": "خَلَقَ",
+          "audio": "word59b.wav",
+          "timings": null
+        }
+      ],
+      "badges": [
+        "غ / خ"
       ]
     }
   ]

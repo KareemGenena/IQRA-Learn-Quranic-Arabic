@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
 import { AdminPage } from './pages/AdminPage';
+import { NotesPage } from './pages/NotesPage';
 import { AdminGate } from './components/AdminGate';
 import { LaserPointer } from './components/LaserPointer';
 import { getSession, signOut } from './lib/adminAuth';
@@ -29,16 +30,17 @@ function initialRate(): number {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'admin';
+  page: 'home' | 'lesson' | 'admin' | 'notes';
   lessonId: number;
 }
 
 function parseRoute(hash: string): Route {
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
-  const m = /^#\/(lesson|admin|calibrate)\/(\d+)/.exec(hash);
+  const m = /^#\/(lesson|admin|calibrate|notes)\/(\d+)/.exec(hash);
   if (m) {
-    return { page: m[1] === 'lesson' ? 'lesson' : 'admin', lessonId: Number(m[2]) };
+    const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
+    return { page, lessonId: Number(m[2]) };
   }
   return { page: 'home', lessonId: 0 };
 }
@@ -157,7 +159,7 @@ export default function App() {
           <nav className="breadcrumb">
             <a href="#/">← All lessons</a>
             <h2>
-              {route.page === 'admin' ? 'Admin — ' : ''}
+              {route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}
               Lesson {route.lessonId}
               {meta ? ` — ${meta.title}` : ''}
             </h2>
@@ -177,6 +179,8 @@ export default function App() {
 
           {error && <p className="loading">Could not load this lesson. Please reload.</p>}
           {!error && !lesson && <p className="loading">Loading…</p>}
+
+          {lesson && route.page === 'notes' && <NotesPage lesson={lesson} />}
 
           {lesson && route.page === 'admin' && (
             admin ? <AdminPage lesson={lesson} /> : <AdminGate onUnlock={() => setAdmin(true)} />
@@ -201,6 +205,7 @@ export default function App() {
                   ))}
                 </div>
               </div>
+              <p className="notes-link"><a href={`#/notes/${route.lessonId}`}>📝 Open notes for this lesson</a></p>
               {lesson.kind === 'words' ? (
                 <WordsLesson lesson={lesson} rate={rate} />
               ) : (

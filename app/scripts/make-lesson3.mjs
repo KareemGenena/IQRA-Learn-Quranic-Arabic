@@ -43,6 +43,12 @@ const SECTIONS = [
 const DRILL_PAIRS = { id: 'pairs', title: 'Pair drills', titleArabic: 'تمارين', rows: [52, 57], take: 'drill-pairs',
   hint: 'Alternate the two letters until the difference is automatic.' };
 
+/** Each row is two words that differ only in the confusable letter, so the
+ *  card carries both and each is playable on its own. */
+const DRILL_CONTRAST = { id: 'contrast', title: 'Contrast drills', titleArabic: 'تمارين التمييز', rows: [59, 66],
+  take: 'drill-contrast-v2',
+  hint: 'Two words, one letter apart. Play them back to back and listen for the switch.' };
+
 // ── read the docx table ───────────────────────────────────────────────────
 const xml = readZipEntry(DOCX, 'word/document.xml').toString('utf8');
 const rows = xml.split(/<w:tr[ >]/).slice(1).map((r) =>
@@ -109,6 +115,27 @@ for (const cells of drillRows) {
   });
 }
 
+// Contrast drills: one card per row holding both words, split "A – B".
+sections.push({ id: DRILL_CONTRAST.id, title: DRILL_CONTRAST.title, titleArabic: DRILL_CONTRAST.titleArabic, hint: DRILL_CONTRAST.hint });
+const contrastRows = rows.slice(DRILL_CONTRAST.rows[0], DRILL_CONTRAST.rows[1] + 1);
+const contrastClips = [];
+for (const cells of contrastRows) {
+  const parts = cells[1].split(/\s*[–—-]\s*/).filter(Boolean);
+  if (parts.length !== 2) {
+    problems.push(`contrast: "${cells[1]}" didn't split into two words`);
+    continue;
+  }
+  id += 1;
+  const n = String(id).padStart(2, '0');
+  words.push({
+    id,
+    section: DRILL_CONTRAST.id,
+    pair: parts.map((text, i) => ({ text, audio: `word${n}${'ab'[i]}.wav`, timings: null })),
+    badges: [cells[0]],
+  });
+  contrastClips.push(`word${n}a.wav`, `word${n}b.wav`);
+}
+
 // ── split the takes ───────────────────────────────────────────────────────
 mkdirSync(AUDIO_OUT, { recursive: true });
 let written = 0;
@@ -130,6 +157,21 @@ for (const s of [...SECTIONS, DRILL_PAIRS]) {
   });
 }
 
+// The contrast take runs straight through both words of every row.
+{
+  const wav = readWav(join(AUDIO_SRC, `${DRILL_CONTRAST.take}.wav`));
+  const { segments, durations, suspicious } = splitIntoN(wav, contrastClips.length);
+  if (segments.length !== contrastClips.length) {
+    problems.push(`contrast: split gave ${segments.length} pieces for ${contrastClips.length} words`);
+  } else {
+    if (suspicious) problems.push(`contrast: uneven pieces — ${durations.map((d) => d.toFixed(2)).join(' ')}`);
+    segments.forEach(([a, b], i) => {
+      writeSegment(wav, a, b, join(AUDIO_OUT, contrastClips[i]), { mono: true });
+      written += 1;
+    });
+  }
+}
+
 // ── write the lesson ──────────────────────────────────────────────────────
 const lesson = {
   lesson: 3,
@@ -149,5 +191,6 @@ for (const s of sections) {
   console.log(`  ${s.id.padEnd(8)} ${words.filter((w) => w.section === s.id).length}`);
 }
 console.log(`audio: wrote ${written} clips`);
-console.log(`missing meanings: ${words.filter((w) => w.section !== 'pairs' && !w.meaning).length}`);
+const needsMeaning = words.filter((w) => !['pairs', 'contrast'].includes(w.section) && !w.meaning);
+console.log(`missing meanings: ${needsMeaning.length}`);
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');
