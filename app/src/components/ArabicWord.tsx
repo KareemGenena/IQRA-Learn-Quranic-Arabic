@@ -13,6 +13,8 @@ interface Props {
   prefixClusters?: number;
   /** Clusters written but not pronounced — painted faded. */
   silentClusters?: number[];
+  /** A single cluster painted as the letter being taught. */
+  markCluster?: number;
   className?: string;
 }
 
@@ -59,6 +61,7 @@ export function ArabicWord({
   pendingIndex = null,
   prefixClusters = 0,
   silentClusters = NO_CLUSTERS,
+  markCluster,
   className,
 }: Props) {
   const wrapRef = useRef<HTMLSpanElement>(null);
@@ -149,11 +152,15 @@ export function ArabicWord({
       const clip = clipTo(idx, idx + 1);
       if (clip) next.push({ className: 'layer-silent', clip });
     }
+    if (markCluster !== undefined) {
+      const clip = clipTo(markCluster, markCluster + 1);
+      if (clip) next.push({ className: 'layer-mark', clip });
+    }
     // Only commit a real change: setting an equal-but-new array would
     // re-render, which would run this effect again.
     setLayers((prev) => (sameLayers(prev, next) ? prev : next));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [measure, prefixClusters, silentKey, text, revision]);
+  }, [measure, prefixClusters, silentKey, markCluster, text, revision]);
 
   useLayoutEffect(() => {
     const box = activeIndex === null ? null : measure(activeIndex, activeIndex + 1);

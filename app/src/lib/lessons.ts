@@ -1,6 +1,7 @@
 /** Lesson loading and normalisation into Playables. */
 
-import type { Lesson, PairWord, Playable, SimpleWord } from '../types';
+import { splitClusters, baseChar } from './graphemes';
+import type { Lesson, LessonItem, LetterWord, PairWord, Playable, SimpleWord } from '../types';
 
 export interface LessonMeta {
   id: number;
@@ -22,6 +23,12 @@ export const LESSONS: LessonMeta[] = [
     title: 'Sun & Moon Lam',
     titleArabic: 'اللام الشمسية والقمرية',
     blurb: '46 words from the last surahs — hear when the ل is spoken and when it is silent.',
+  },
+  {
+    id: 3,
+    title: 'Throat Letters',
+    titleArabic: 'حروف الحلق',
+    blurb: 'ء ه ح ع غ خ — the six letters of the throat, at the start, middle and end of a word.',
   },
 ];
 
@@ -76,13 +83,76 @@ export function simplePlayable(word: SimpleWord): Playable {
   };
 }
 
-/** Every playable in a lesson, in teaching order — used by the calibrate page. */
+/**
+ * Which cluster holds the letter being taught. The Position column
+ * disambiguates a letter that appears more than once — "Beginning" takes the
+ * first occurrence, "End" the last, "Middle" the first interior one.
+ */
+function findTargetCluster(text: string, letter: string, position: string): number | undefined {
+  const clusters = splitClusters(text);
+  const hits = clusters
+    .map((c, i) => ({ i, base: baseChar(c.text) }))
+    .filter((c) => c.base === letter)
+    .map((c) => c.i);
+  if (hits.length === 0) return undefined;
+  const p = position.toLowerCase();
+  if (p.startsWith('end')) return hits[hits.length - 1];
+  if (p.startsWith('mid')) {
+    return hits.find((i) => i > 0 && i < clusters.length - 1) ?? hits[0];
+  }
+  return hits[0];
+}
+
+function letterPlayable(word: LetterWord): Playable {
+  return {
+    key: String(word.id),
+    text: word.text,
+    audio: word.audio,
+    timings: word.timings,
+    silentClusters: [],
+    prefixClusters: 0,
+    highlightCluster: word.target
+      ? findTargetCluster(word.text, word.target.letter, word.target.position)
+      : undefined,
+  };
+}
+
+/** Normalises any paged lesson into the cards the page component renders. */
+export function toItems(lesson: Lesson): LessonItem[] {
+  if (lesson.kind === 'letters') {
+    return (lesson.words as LetterWord[]).map((w) => ({
+      id: w.id,
+      section: w.section,
+      badges: w.badges ?? [],
+      meaning: w.meaning,
+      forms: [letterPlayable(w)],
+    }));
+  }
+  return (lesson.words as PairWord[]).map((w) => ({
+    id: w.id,
+    section: w.type,
+    badges: [w.type === 'shamsiyya' ? 'Sun ش' : 'Moon ق'],
+    meaning: w.meaning,
+    forms: [barePlayable(w), withAlPlayable(w)],
+  }));
+}
+
+/** A section's stable key, whichever lesson shape it came from. */
+export const sectionKey = (s: { id?: string; type?: string }) => s.id ?? s.type ?? '';
+
+/** Every playable in a lesson, in teaching order — used by the admin page. */
 export function allPlayables(lesson: Lesson): { label: string; playable: Playable }[] {
   if (lesson.kind === 'pairs') {
     return (lesson.words as PairWord[]).flatMap((w) => [
       { label: `${w.id}`, playable: barePlayable(w) },
       { label: `${w.id} +ال`, playable: withAlPlayable(w) },
     ]);
+  }
+  if (lesson.kind === 'letters') {
+    return (lesson.words as LetterWord[]).map((w) => ({
+      label: `${w.id}`,
+      playable: letterPlayable(w),
+    }));
   }
   return (lesson.words as SimpleWord[]).map((w) => ({
     label: `${w.id}`,

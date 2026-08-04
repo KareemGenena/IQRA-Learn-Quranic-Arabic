@@ -1,0 +1,797 @@
+{
+  "lesson": 3,
+  "title": "Throat Letters",
+  "titleArabic": "حروف الحلق",
+  "kind": "letters",
+  "audioPath": "audio/lesson03/",
+  "perPage": 4,
+  "sections": [
+    {
+      "id": "hamza",
+      "title": "Hamza ء",
+      "titleArabic": "الهمزة",
+      "hint": "The deepest of them all — a clean stop from the bottom of the throat."
+    },
+    {
+      "id": "haa",
+      "title": "Haa ه",
+      "titleArabic": "الهاء",
+      "hint": "Same place as the hamza, but breathed out softly instead of stopped."
+    },
+    {
+      "id": "hha",
+      "title": "Hhaa ح",
+      "titleArabic": "الحاء",
+      "hint": "From the middle of the throat — a warm, breathy sound with no rasp."
+    },
+    {
+      "id": "ayn",
+      "title": "Ayn ع",
+      "titleArabic": "العين",
+      "hint": "The middle of the throat squeezed — voiced, the partner of ح."
+    },
+    {
+      "id": "ghayn",
+      "title": "Ghayn غ",
+      "titleArabic": "الغين",
+      "hint": "Nearest the mouth — a gargled sound, the voiced partner of خ."
+    },
+    {
+      "id": "kha",
+      "title": "Khaa خ",
+      "titleArabic": "الخاء",
+      "hint": "Nearest the mouth and unvoiced — the rasp of ح moved forward."
+    },
+    {
+      "id": "pairs",
+      "title": "Pair drills",
+      "titleArabic": "تمارين",
+      "hint": "Alternate the two letters until the difference is automatic."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "hamza",
+      "text": "أَنۡعَمۡتَ",
+      "audio": "word01.wav",
+      "timings": null,
+      "meaning": "(You) bestowed a blessing",
+      "target": {
+        "letter": "أ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning",
+        "أ"
+      ]
+    },
+    {
+      "id": 2,
+      "section": "hamza",
+      "text": "أَحَدٌ",
+      "audio": "word02.wav",
+      "timings": null,
+      "meaning": "One and unique",
+      "target": {
+        "letter": "أ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning",
+        "أ"
+      ]
+    },
+    {
+      "id": 3,
+      "section": "hamza",
+      "text": "أَكۡثَرُ",
+      "audio": "word03.wav",
+      "timings": null,
+      "meaning": "Most",
+      "target": {
+        "letter": "أ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning",
+        "أ"
+      ]
+    },
+    {
+      "id": 4,
+      "section": "hamza",
+      "text": "يُؤۡمِنُونَ",
+      "audio": "word04.wav",
+      "timings": null,
+      "meaning": "(They) believe",
+      "target": {
+        "letter": "ؤ",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle",
+        "ؤ"
+      ]
+    },
+    {
+      "id": 5,
+      "section": "hamza",
+      "text": "جِئۡتَ",
+      "audio": "word05.wav",
+      "timings": null,
+      "meaning": "(You) came",
+      "target": {
+        "letter": "ئ",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle",
+        "ئ"
+      ]
+    },
+    {
+      "id": 6,
+      "section": "hamza",
+      "text": "شَيۡئًا",
+      "audio": "word06.wav",
+      "timings": null,
+      "meaning": "Something",
+      "target": {
+        "letter": "ئ",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle",
+        "ئ"
+      ]
+    },
+    {
+      "id": 7,
+      "section": "hamza",
+      "text": "ٱلسَّمَآءِ",
+      "audio": "word07.wav",
+      "timings": null,
+      "meaning": "The sky",
+      "target": {
+        "letter": "ء",
+        "position": "End"
+      },
+      "badges": [
+        "End",
+        "ء"
+      ]
+    },
+    {
+      "id": 8,
+      "section": "hamza",
+      "text": "قُرِئَ",
+      "audio": "word08.wav",
+      "timings": null,
+      "meaning": "Was read (passive voice)",
+      "target": {
+        "letter": "ئ",
+        "position": "End"
+      },
+      "badges": [
+        "End",
+        "ئ"
+      ]
+    },
+    {
+      "id": 9,
+      "section": "haa",
+      "text": "هُدًى",
+      "audio": "word09.wav",
+      "timings": null,
+      "meaning": "Guidance",
+      "target": {
+        "letter": "ه",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 10,
+      "section": "haa",
+      "text": "هَٰذَا",
+      "audio": "word10.wav",
+      "timings": null,
+      "meaning": "This",
+      "target": {
+        "letter": "ه",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 11,
+      "section": "haa",
+      "text": "هَلۡ",
+      "audio": "word11.wav",
+      "timings": null,
+      "meaning": "(Interrogative article)",
+      "target": {
+        "letter": "ه",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 12,
+      "section": "haa",
+      "text": "إِلَٰهَ",
+      "audio": "word12.wav",
+      "timings": null,
+      "meaning": "God",
+      "target": {
+        "letter": "ه",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 13,
+      "section": "haa",
+      "text": "وَجۡهُ",
+      "audio": "word13.wav",
+      "timings": null,
+      "meaning": "Face",
+      "target": {
+        "letter": "ه",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 14,
+      "section": "haa",
+      "text": "نَهَارَ",
+      "audio": "word14.wav",
+      "timings": null,
+      "meaning": "Morning",
+      "target": {
+        "letter": "ه",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 15,
+      "section": "haa",
+      "text": "يَنۡهَىٰ",
+      "audio": "word15.wav",
+      "timings": null,
+      "meaning": "Forbids",
+      "target": {
+        "letter": "ه",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 16,
+      "section": "haa",
+      "text": "لَهُمۡ",
+      "audio": "word16.wav",
+      "timings": null,
+      "meaning": "To them",
+      "target": {
+        "letter": "ه",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 17,
+      "section": "hha",
+      "text": "ٱلۡحَمۡدُ",
+      "audio": "word17.wav",
+      "timings": null,
+      "meaning": "The praise",
+      "target": {
+        "letter": "ح",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 18,
+      "section": "hha",
+      "text": "حَقُّ",
+      "audio": "word18.wav",
+      "timings": null,
+      "meaning": "Truth",
+      "target": {
+        "letter": "ح",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 19,
+      "section": "hha",
+      "text": "حَكِيمٍ",
+      "audio": "word19.wav",
+      "timings": null,
+      "meaning": "Wise",
+      "target": {
+        "letter": "ح",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 20,
+      "section": "hha",
+      "text": "ٱلرَّحۡمَٰنِ",
+      "audio": "word20.wav",
+      "timings": null,
+      "meaning": "The most gracious (Name of Allah)",
+      "target": {
+        "letter": "ح",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 21,
+      "section": "hha",
+      "text": "ٱلرَّحِيمِ",
+      "audio": "word21.wav",
+      "timings": null,
+      "meaning": "The most merciful (Name of Allah)",
+      "target": {
+        "letter": "ح",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 22,
+      "section": "hha",
+      "text": "يُصۡلِحُ",
+      "audio": "word22.wav",
+      "timings": null,
+      "meaning": "(He) fixes",
+      "target": {
+        "letter": "ح",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 23,
+      "section": "hha",
+      "text": "صَالِحُ",
+      "audio": "word23.wav",
+      "timings": null,
+      "meaning": "Name of a prophet (Saleh)",
+      "target": {
+        "letter": "ح",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 24,
+      "section": "ayn",
+      "text": "عَلِيمٍ",
+      "audio": "word24.wav",
+      "timings": null,
+      "meaning": "All-knowing (when referring to Allah)",
+      "target": {
+        "letter": "ع",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 25,
+      "section": "ayn",
+      "text": "عِبَادُ",
+      "audio": "word25.wav",
+      "timings": null,
+      "meaning": "Slaves",
+      "target": {
+        "letter": "ع",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 26,
+      "section": "ayn",
+      "text": "عَبَدَ",
+      "audio": "word26.wav",
+      "timings": null,
+      "meaning": "(He) worshiped",
+      "target": {
+        "letter": "ع",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 27,
+      "section": "ayn",
+      "text": "نَعۡبُدُ",
+      "audio": "word27.wav",
+      "timings": null,
+      "meaning": "(We) worship",
+      "target": {
+        "letter": "ع",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 28,
+      "section": "ayn",
+      "text": "يَعۡلَمُ",
+      "audio": "word28.wav",
+      "timings": null,
+      "meaning": "(He) knows",
+      "target": {
+        "letter": "ع",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 29,
+      "section": "ayn",
+      "text": "سَمِيعُ",
+      "audio": "word29.wav",
+      "timings": null,
+      "meaning": "All-hearing (when referring to Allah)",
+      "target": {
+        "letter": "ع",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 30,
+      "section": "ayn",
+      "text": "وَاسِعُ",
+      "audio": "word30.wav",
+      "timings": null,
+      "meaning": "Vast",
+      "target": {
+        "letter": "ع",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 31,
+      "section": "ghayn",
+      "text": "غَيۡرُ",
+      "audio": "word31.wav",
+      "timings": null,
+      "meaning": "Other",
+      "target": {
+        "letter": "غ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 32,
+      "section": "ghayn",
+      "text": "غَفُورٌ",
+      "audio": "word32.wav",
+      "timings": null,
+      "meaning": "Most forgiving (when referring to Allah)",
+      "target": {
+        "letter": "غ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 33,
+      "section": "ghayn",
+      "text": "غَنِيٌّ",
+      "audio": "word33.wav",
+      "timings": null,
+      "meaning": "Self sufficient",
+      "target": {
+        "letter": "غ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 34,
+      "section": "ghayn",
+      "text": "يَبۡتَغُونَ",
+      "audio": "word34.wav",
+      "timings": null,
+      "meaning": "(They) seek",
+      "target": {
+        "letter": "غ",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 35,
+      "section": "ghayn",
+      "text": "مَغۡفِرَةٌ",
+      "audio": "word35.wav",
+      "timings": null,
+      "meaning": "Forgiveness",
+      "target": {
+        "letter": "غ",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 36,
+      "section": "ghayn",
+      "text": "بَلَغَ",
+      "audio": "word36.wav",
+      "timings": null,
+      "meaning": "(He) reached",
+      "target": {
+        "letter": "غ",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 37,
+      "section": "ghayn",
+      "text": "بَلَاغٌ",
+      "audio": "word37.wav",
+      "timings": null,
+      "meaning": "Delivery (of a message)",
+      "target": {
+        "letter": "غ",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 38,
+      "section": "kha",
+      "text": "خَلَقَ",
+      "audio": "word38.wav",
+      "timings": null,
+      "meaning": "(He) created",
+      "target": {
+        "letter": "خ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 39,
+      "section": "kha",
+      "text": "خَبِيرٌ",
+      "audio": "word39.wav",
+      "timings": null,
+      "meaning": "All-aware (when referring to Allah)",
+      "target": {
+        "letter": "خ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 40,
+      "section": "kha",
+      "text": "خَيۡرِ",
+      "audio": "word40.wav",
+      "timings": null,
+      "meaning": "Good",
+      "target": {
+        "letter": "خ",
+        "position": "Beginning"
+      },
+      "badges": [
+        "Beginning"
+      ]
+    },
+    {
+      "id": 41,
+      "section": "kha",
+      "text": "أَخۡرَجَ",
+      "audio": "word41.wav",
+      "timings": null,
+      "meaning": "(He) brought out",
+      "target": {
+        "letter": "خ",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 42,
+      "section": "kha",
+      "text": "يَخۡشَىٰ",
+      "audio": "word42.wav",
+      "timings": null,
+      "meaning": "(He) fears",
+      "target": {
+        "letter": "خ",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 43,
+      "section": "kha",
+      "text": "مُخۡلِصِينَ",
+      "audio": "word43.wav",
+      "timings": null,
+      "meaning": "Sincere",
+      "target": {
+        "letter": "خ",
+        "position": "Middle"
+      },
+      "badges": [
+        "Middle"
+      ]
+    },
+    {
+      "id": 44,
+      "section": "kha",
+      "text": "نَفَخَ",
+      "audio": "word44.wav",
+      "timings": null,
+      "meaning": "(He) blew",
+      "target": {
+        "letter": "خ",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 45,
+      "section": "kha",
+      "text": "بَرۡزَخٌ",
+      "audio": "word45.wav",
+      "timings": null,
+      "meaning": "Barrier/separator (sometimes used to refer to the grave, as a separator between this life the next)",
+      "target": {
+        "letter": "خ",
+        "position": "End"
+      },
+      "badges": [
+        "End"
+      ]
+    },
+    {
+      "id": 46,
+      "section": "pairs",
+      "text": "ه ح ه ح",
+      "audio": "word46.wav",
+      "timings": null,
+      "badges": [
+        "ه / ح"
+      ]
+    },
+    {
+      "id": 47,
+      "section": "pairs",
+      "text": "ع ح ع ح",
+      "audio": "word47.wav",
+      "timings": null,
+      "badges": [
+        "ع / ح"
+      ]
+    },
+    {
+      "id": 48,
+      "section": "pairs",
+      "text": "غ خ غ خ",
+      "audio": "word48.wav",
+      "timings": null,
+      "badges": [
+        "غ / خ"
+      ]
+    },
+    {
+      "id": 49,
+      "section": "pairs",
+      "text": "ه ء ه ء",
+      "audio": "word49.wav",
+      "timings": null,
+      "badges": [
+        "ه / ء"
+      ]
+    },
+    {
+      "id": 50,
+      "section": "pairs",
+      "text": "ع غ ع غ",
+      "audio": "word50.wav",
+      "timings": null,
+      "badges": [
+        "ع / غ"
+      ]
+    },
+    {
+      "id": 51,
+      "section": "pairs",
+      "text": "ح خ ح خ",
+      "audio": "word51.wav",
+      "timings": null,
+      "badges": [
+        "ح / خ"
+      ]
+    }
+  ]
+}

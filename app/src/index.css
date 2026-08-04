@@ -94,8 +94,49 @@ body {
   color: var(--text-soft);
 }
 
-.theme-toggle {
+.header-actions {
   margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.account-btn {
+  padding: 9px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.account-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.admin-bar {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  font-size: 13px;
+}
+
+.admin-bar a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* The taught letter, lit up inside its word. */
+.layer-mark {
+  color: var(--al-color);
+}
+
+.theme-toggle {
   font-size: 20px;
   background: none;
   border: 1px solid var(--card-border);

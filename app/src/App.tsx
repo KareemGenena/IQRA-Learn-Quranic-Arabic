@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { WordsLesson } from './pages/WordsLesson';
-import { PairsLesson } from './pages/PairsLesson';
-import { CalibratePage } from './pages/CalibratePage';
+import { SectionedLesson } from './pages/SectionedLesson';
+import { AdminPage } from './pages/AdminPage';
 import { AdminGate } from './components/AdminGate';
 import { LaserPointer } from './components/LaserPointer';
 import { getSession, signOut } from './lib/adminAuth';
@@ -29,13 +29,17 @@ function initialRate(): number {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'calibrate';
+  page: 'home' | 'lesson' | 'admin';
   lessonId: number;
 }
 
 function parseRoute(hash: string): Route {
-  const m = /^#\/(lesson|calibrate)\/(\d+)/.exec(hash);
-  if (m) return { page: m[1] as 'lesson' | 'calibrate', lessonId: Number(m[2]) };
+  // "calibrate" is the old name for the admin page; still accepted so an old
+  // bookmark or an installed shortcut doesn't dead-end.
+  const m = /^#\/(lesson|admin|calibrate)\/(\d+)/.exec(hash);
+  if (m) {
+    return { page: m[1] === 'lesson' ? 'lesson' : 'admin', lessonId: Number(m[2]) };
+  }
   return { page: 'home', lessonId: 0 };
 }
 
@@ -109,15 +113,42 @@ export default function App() {
             <span className="brand-sub">Learn Quranic Arabic</span>
           </span>
         </a>
-        <button
-          type="button"
-          className="theme-toggle"
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          aria-label="Toggle dark mode"
-        >
-          {theme === 'dark' ? '☀️' : '🌙'}
-        </button>
+        <div className="header-actions">
+          {/* The installed PWA has no address bar, so the admin page needs a
+              way in that isn't a typed URL. */}
+          {admin ? (
+            <button
+              type="button"
+              className="account-btn"
+              onClick={() => {
+                signOut();
+                setAdmin(false);
+                window.location.hash = '#/';
+              }}
+            >
+              Sign out
+            </button>
+          ) : (
+            <a className="account-btn" href="#/admin/1">
+              Sign in
+            </a>
+          )}
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
+        </div>
       </header>
+
+      {admin && route.page === 'lesson' && (
+        <p className="admin-bar">
+          <a href={`#/admin/${route.lessonId}`}>Admin — calibrate this lesson&apos;s timings</a>
+        </p>
+      )}
 
       {route.page === 'home' && <HomePage />}
 
@@ -126,11 +157,11 @@ export default function App() {
           <nav className="breadcrumb">
             <a href="#/">← All lessons</a>
             <h2>
-              {route.page === 'calibrate' ? 'Calibrate — ' : ''}
+              {route.page === 'admin' ? 'Admin — ' : ''}
               Lesson {route.lessonId}
               {meta ? ` — ${meta.title}` : ''}
             </h2>
-            {route.page === 'calibrate' && admin && (
+            {route.page === 'admin' && admin && (
               <button
                 type="button"
                 className="signout-btn"
@@ -147,8 +178,8 @@ export default function App() {
           {error && <p className="loading">Could not load this lesson. Please reload.</p>}
           {!error && !lesson && <p className="loading">Loading…</p>}
 
-          {lesson && route.page === 'calibrate' && (
-            admin ? <CalibratePage lesson={lesson} /> : <AdminGate onUnlock={() => setAdmin(true)} />
+          {lesson && route.page === 'admin' && (
+            admin ? <AdminPage lesson={lesson} /> : <AdminGate onUnlock={() => setAdmin(true)} />
           )}
 
           {lesson && route.page === 'lesson' && (
@@ -170,10 +201,10 @@ export default function App() {
                   ))}
                 </div>
               </div>
-              {lesson.kind === 'pairs' ? (
-                <PairsLesson lesson={lesson} rate={rate} />
-              ) : (
+              {lesson.kind === 'words' ? (
                 <WordsLesson lesson={lesson} rate={rate} />
+              ) : (
+                <SectionedLesson lesson={lesson} rate={rate} />
               )}
             </>
           )}

@@ -60,7 +60,13 @@ export function findSegments(wav, { gap = 0.6, pad = 0.15, floor = 0.06, min = 0
     if (r > peak) peak = r;
   }
 
-  const threshold = Math.max(0.008, peak * floor);
+  // The threshold has to adapt to how hot the take was recorded: a fixed
+  // floor that suits a loud session swallows a quiet one whole. Take the
+  // room tone from a low percentile of the windows and sit safely above it,
+  // but never below a share of the peak.
+  const sorted = Float64Array.from(rms).sort();
+  const noiseFloor = sorted[Math.floor(sorted.length * 0.15)] || 0;
+  const threshold = Math.max(noiseFloor * 3.5, peak * floor, 0.0008);
   const gapWindows = Math.round(gap / 0.01);
   const regions = [];
   let startW = null;
@@ -87,6 +93,114 @@ export function findSegments(wav, { gap = 0.6, pad = 0.15, floor = 0.06, min = 0
   return {
     segments: regions.filter(([a, b]) => b - a >= minWindows).map(toFrames),
     dropped: regions.filter(([a, b]) => b - a < minWindows).map(toFrames),
+  };
+}
+
+/** RMS per 10 ms window, plus the peak and an adaptive silence threshold. */
+function profile(wav, floor = 0.06) {
+  const { buf, dataStart, bytesPerFrame, sampleRate, frames } = wav;
+  const win = Math.max(1, Math.round(sampleRate * 0.01));
+  const n = Math.floor(frames / win);
+  const rms = new Float64Array(n);
+  let peak = 0;
+  for (let w = 0; w < n; w++) {
+    let sum = 0;
+    for (let f = w * win; f < (w + 1) * win; f++) {
+      const v = buf.readInt16LE(dataStart + f * bytesPerFrame) / 32768;
+      sum += v * v;
+    }
+    rms[w] = Math.sqrt(sum / win);
+    if (rms[w] > peak) peak = rms[w];
+  }
+  const sorted = Float64Array.from(rms).sort();
+  const noiseFloor = sorted[Math.floor(sorted.length * 0.15)] || 0;
+  return { rms, peak, win, threshold: Math.max(noiseFloor * 3.5, peak * floor, 0.0008) };
+}
+
+/**
+ * Split a take into EXACTLY `count` pieces by cutting at the `count - 1`
+ * longest internal silences.
+ *
+ * This beats a fixed silence threshold when the pauses are uneven — a take
+ * where the speaker left 0.3s in one place and 0.8s in another has no single
+ * gap length that yields the right number of words. Knowing how many words
+ * the take should contain turns an unreliable guess into a ranking problem.
+ */
+export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15 } = {}) {
+  const { rms, win, threshold } = profile(wav, floor);
+  const n = rms.length;
+
+  // 1. Runs of sound, discarding brief clicks and breaths. A stray 0.3s blip
+  //    at the top of a take would otherwise both look like a word and steal a
+  //    cut, leaving two real words fused together.
+  let runs = [];
+  let start = -1;
+  for (let w = 0; w <= n; w++) {
+    const loud = w < n && rms[w] >= threshold;
+    if (loud && start === -1) start = w;
+    else if (!loud && start !== -1) {
+      runs.push([start, w]);
+      start = -1;
+    }
+  }
+  //    What counts as "brief" is relative to this take: in a drill of single
+  //    letters every piece is short, so an absolute threshold would throw the
+  //    whole recording away. Compare against the median run instead.
+  if (runs.length > 1) {
+    const lens = runs.map(([a, b]) => b - a).sort((x, y) => x - y);
+    const median = lens[Math.floor(lens.length / 2)];
+    const minRunW = Math.max(Math.round(minRun / 0.01), median * 0.35);
+    const kept = runs.filter(([a, b]) => b - a >= minRunW);
+    if (kept.length >= 1) runs = kept;
+  }
+
+  // 2. Too many pieces: fuse the pair separated by the shortest silence,
+  //    repeatedly, until the count is right.
+  while (runs.length > count) {
+    let best = 0;
+    let bestGap = Infinity;
+    for (let i = 0; i < runs.length - 1; i++) {
+      const g = runs[i + 1][0] - runs[i][1];
+      if (g < bestGap) {
+        bestGap = g;
+        best = i;
+      }
+    }
+    runs.splice(best, 2, [runs[best][0], runs[best + 1][1]]);
+  }
+
+  // 3. Too few: two words were said with no real pause between them. Split
+  //    the longest run at its quietest interior moment and try again.
+  while (runs.length < count) {
+    let longest = 0;
+    for (let i = 1; i < runs.length; i++) {
+      if (runs[i][1] - runs[i][0] > runs[longest][1] - runs[longest][0]) longest = i;
+    }
+    const [a, b] = runs[longest];
+    const margin = Math.max(1, Math.round((b - a) * 0.2)); // never cut at the edges
+    let quietest = -1;
+    let quietestRms = Infinity;
+    for (let w = a + margin; w < b - margin; w++) {
+      if (rms[w] < quietestRms) {
+        quietestRms = rms[w];
+        quietest = w;
+      }
+    }
+    if (quietest < 0) break; // nothing splittable — report what we have
+    runs.splice(longest, 1, [a, quietest], [quietest + 1, b]);
+  }
+
+  const padW = Math.round(pad / 0.01);
+  const segments = runs.map(([a, b]) => [
+    Math.max(0, a - padW) * win,
+    Math.min(n, b + padW) * win,
+  ]);
+  const durations = segments.map(([a, b]) => (b - a) / wav.sampleRate);
+  return {
+    segments,
+    durations,
+    /** True when the pieces are suspiciously uneven — worth a listen. */
+    suspicious: durations.length > 1 && Math.max(...durations) > Math.min(...durations) * 3,
   };
 }
 

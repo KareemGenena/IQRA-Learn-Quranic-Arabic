@@ -31,10 +31,25 @@ export interface PairWord {
 }
 
 export interface LessonSection {
-  type: LamType;
+  /** lesson 2 keys sections by lam type; lesson 3 by an explicit id. */
+  type?: LamType;
+  id?: string;
   title: string;
   titleArabic: string;
   hint: string;
+}
+
+/** Lesson 3 shape: one word per recording, with the taught letter marked. */
+export interface LetterWord {
+  id: number;
+  section: string;
+  text: string;
+  audio: string;
+  timings: Timings;
+  meaning?: string;
+  badges?: string[];
+  /** Which letter to light up, and which occurrence of it. */
+  target?: { letter: string; position: string };
 }
 
 export interface Lesson {
@@ -42,13 +57,27 @@ export interface Lesson {
   title: string;
   titleArabic: string;
   audioPath: string;
-  /** 'words' = lesson 1 style grid, 'pairs' = bare/ال pairs in pages. */
-  kind: 'words' | 'pairs';
-  /** pairs only */
+  /**
+   * 'words'   — lesson 1 style grid
+   * 'pairs'   — a word shown bare and again with ال
+   * 'letters' — sections of single words with the taught letter highlighted
+   */
+  kind: 'words' | 'pairs' | 'letters';
+  /** paged kinds only */
   perPage?: number;
   sections?: LessonSection[];
   quizSize?: number;
-  words: SimpleWord[] | PairWord[];
+  quizHint?: string;
+  words: SimpleWord[] | PairWord[] | LetterWord[];
+}
+
+/** One card on a paged lesson: a heading badge set and one or two forms. */
+export interface LessonItem {
+  id: number;
+  section: string;
+  badges: string[];
+  meaning?: string;
+  forms: Playable[];
 }
 
 /**
@@ -67,6 +96,8 @@ export interface Playable {
   silentClusters: number[];
   /** Leading clusters that form the ال prefix, coloured apart. 0 = none. */
   prefixClusters: number;
+  /** A single cluster to colour as the letter being taught (lesson 3). */
+  highlightCluster?: number;
   /** Set for surah-opening disconnected letters (الٓمٓ، طه) — each character
    *  is read as its full letter name, which changes how long it is held. */
   letterNames?: boolean;
