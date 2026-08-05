@@ -28,7 +28,11 @@ export function AdminGate({ onUnlock }: { onUnlock: () => void }) {
 
   return (
     <form className="admin-gate" onSubmit={submit}>
-      <p>This page is for the teacher. Sign in with the admin account:</p>
+      <p className="gate-title">Sign in</p>
+      <p className="gate-sub">
+        Signing in lets your notes follow you between devices. Teachers get their teaching tools
+        here too. You can keep using every lesson without an account.
+      </p>
       <input
         type="email"
         value={email}

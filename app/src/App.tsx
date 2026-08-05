@@ -6,10 +6,13 @@ import { AdminPage } from './pages/AdminPage';
 import { NotesPage } from './pages/NotesPage';
 import { AdminGate } from './components/AdminGate';
 import { LaserPointer } from './components/LaserPointer';
+import { LessonManager } from './components/LessonManager';
 import { getSession, signOut } from './lib/adminAuth';
 import { storeCloudSnapshot } from './lib/calibration';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
 import { LESSONS, loadLesson } from './lib/lessons';
+import { cachedConfig, canSeeLesson, canUseFeature, fetchConfig, lessonStatus } from './lib/appConfig';
+import type { AppConfig } from './lib/appConfig';
 import type { Lesson } from './types';
 
 type Theme = 'light' | 'dark';
@@ -37,10 +40,10 @@ interface Route {
 function parseRoute(hash: string): Route {
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
-  const m = /^#\/(lesson|admin|calibrate|notes)\/(\d+)/.exec(hash);
+  const m = /^#\/(lesson|admin|calibrate|notes)(?:\/(\d+))?/.exec(hash);
   if (m) {
     const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
-    return { page, lessonId: Number(m[2]) };
+    return { page, lessonId: Number(m[2] ?? 0) };
   }
   return { page: 'home', lessonId: 0 };
 }
@@ -53,6 +56,7 @@ export default function App() {
   const [rate, setRate] = useState<number>(initialRate);
   const [admin, setAdmin] = useState(() => getSession() !== null);
   const [laser, setLaser] = useState(false);
+  const [config, setConfig] = useState<AppConfig>(cachedConfig);
 
   useEffect(() => {
     const onChange = () => setRoute(parseRoute(window.location.hash));
@@ -68,6 +72,14 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('iqra-rate', String(rate));
   }, [rate]);
+
+  // What's published. Soft-fail: the cached copy (or the built-in defaults)
+  // keeps a learner with no network seeing the right lessons.
+  useEffect(() => {
+    fetchConfig()
+      .then(setConfig)
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (route.lessonId === 0) {
@@ -94,18 +106,25 @@ export default function App() {
   }, [lesson]);
 
   const meta = LESSONS.find((l) => l.id === route.lessonId);
+  const showLaser = canUseFeature(config, 'laser', admin);
+  const showNotes = canUseFeature(config, 'notes', admin);
+  const lessonAllowed = route.lessonId === 0 || canSeeLesson(config, route.lessonId, admin);
 
   return (
     <div className={`app ${laser ? 'laser-on' : ''}`}>
-      <LaserPointer active={laser} onExit={() => setLaser(false)} />
-      <button
-        type="button"
-        className={`laser-toggle ${laser ? 'on' : ''}`}
-        aria-pressed={laser}
-        onClick={() => setLaser((v) => !v)}
-      >
-        {laser ? 'Laser on — tap to exit' : 'Laser'}
-      </button>
+      {showLaser && (
+        <>
+          <LaserPointer active={laser} onExit={() => setLaser(false)} />
+          <button
+            type="button"
+            className={`laser-toggle ${laser ? 'on' : ''}`}
+            aria-pressed={laser}
+            onClick={() => setLaser((v) => !v)}
+          >
+            {laser ? 'Laser on — tap to exit' : 'Laser'}
+          </button>
+        </>
+      )}
 
       <header className="app-header">
         <a className="brand" href="#/">
@@ -116,22 +135,27 @@ export default function App() {
           </span>
         </a>
         <div className="header-actions">
-          {/* The installed PWA has no address bar, so the admin page needs a
-              way in that isn't a typed URL. */}
+          {/* The installed PWA has no address bar, so signing in needs a
+              control here rather than a typed URL. */}
           {admin ? (
-            <button
-              type="button"
-              className="account-btn"
-              onClick={() => {
-                signOut();
-                setAdmin(false);
-                window.location.hash = '#/';
-              }}
-            >
-              Sign out
-            </button>
+            <>
+              <a className="account-btn" href="#/admin">
+                Admin
+              </a>
+              <button
+                type="button"
+                className="account-btn"
+                onClick={() => {
+                  signOut();
+                  setAdmin(false);
+                  window.location.hash = '#/';
+                }}
+              >
+                Sign out
+              </button>
+            </>
           ) : (
-            <a className="account-btn" href="#/admin/1">
+            <a className="account-btn" href="#/admin">
               Sign in
             </a>
           )}
@@ -146,70 +170,93 @@ export default function App() {
         </div>
       </header>
 
-      {admin && route.page === 'lesson' && (
-        <p className="admin-bar">
-          <a href={`#/admin/${route.lessonId}`}>Admin — calibrate this lesson&apos;s timings</a>
-        </p>
-      )}
-
-      {route.page === 'home' && <HomePage />}
+      {route.page === 'home' && <HomePage config={config} admin={admin} />}
 
       {route.page !== 'home' && (
         <>
           <nav className="breadcrumb">
             <a href="#/">← All lessons</a>
             <h2>
-              {route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}
-              Lesson {route.lessonId}
-              {meta ? ` — ${meta.title}` : ''}
+              {route.page === 'admin' && route.lessonId === 0
+                ? 'Admin'
+                : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}Lesson ${route.lessonId}${meta ? ` — ${meta.title}` : ''}`}
             </h2>
-            {route.page === 'admin' && admin && (
-              <button
-                type="button"
-                className="signout-btn"
-                onClick={() => {
-                  signOut();
-                  setAdmin(false);
-                }}
-              >
-                Sign out
-              </button>
-            )}
           </nav>
 
-          {error && <p className="loading">Could not load this lesson. Please reload.</p>}
-          {!error && !lesson && <p className="loading">Loading…</p>}
-
-          {lesson && route.page === 'notes' && <NotesPage lesson={lesson} />}
-
-          {lesson && route.page === 'admin' && (
-            admin ? <AdminPage lesson={lesson} /> : <AdminGate onUnlock={() => setAdmin(true)} />
+          {/* Admin home: what's published, and which features are live. */}
+          {route.page === 'admin' && route.lessonId === 0 && (
+            admin ? (
+              <>
+                <LessonManager config={config} onChange={setConfig} />
+                <p className="manager-hint">
+                  To calibrate a lesson's timings, open the lesson and use the admin bar.
+                </p>
+              </>
+            ) : (
+              <AdminGate onUnlock={() => setAdmin(true)} />
+            )
           )}
 
-          {lesson && route.page === 'lesson' && (
+          {route.lessonId > 0 && (
             <>
-              <div className="toolbar">
-                <p className="lesson-ar-head" dir="rtl" lang="ar">
-                  {lesson.titleArabic}
+              {!lessonAllowed && (
+                <p className="loading">
+                  This lesson isn&apos;t published yet.{' '}
+                  <a href="#/">Back to the lessons</a>
                 </p>
-                <div className="rate-group" role="group" aria-label="Playback speed">
-                  {RATES.map((r) => (
-                    <button
-                      key={r}
-                      type="button"
-                      className={`rate-btn ${r === rate ? 'active' : ''}`}
-                      onClick={() => setRate(r)}
-                    >
-                      {r}×
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <p className="notes-link"><a href={`#/notes/${route.lessonId}`}>📝 Open notes for this lesson</a></p>
-              {lesson.kind === 'words' ? (
-                <WordsLesson lesson={lesson} rate={rate} />
-              ) : (
-                <SectionedLesson lesson={lesson} rate={rate} />
+              )}
+              {lessonAllowed && error && (
+                <p className="loading">Could not load this lesson. Please reload.</p>
+              )}
+              {lessonAllowed && !error && !lesson && <p className="loading">Loading…</p>}
+
+              {lessonAllowed && lesson && route.page === 'notes' && showNotes && (
+                <NotesPage lesson={lesson} />
+              )}
+
+              {lessonAllowed && lesson && route.page === 'admin' && (
+                admin ? <AdminPage lesson={lesson} /> : <AdminGate onUnlock={() => setAdmin(true)} />
+              )}
+
+              {lessonAllowed && lesson && route.page === 'lesson' && (
+                <>
+                  {admin && (
+                    <p className="admin-bar">
+                      <span className={`status-pill ${lessonStatus(config, route.lessonId)}`}>
+                        {lessonStatus(config, route.lessonId)}
+                      </span>
+                      <a href={`#/admin/${route.lessonId}`}>Calibrate timings</a>
+                      <a href="#/admin">Manage lessons</a>
+                    </p>
+                  )}
+                  <div className="toolbar">
+                    <p className="lesson-ar-head" dir="rtl" lang="ar">
+                      {lesson.titleArabic}
+                    </p>
+                    <div className="rate-group" role="group" aria-label="Playback speed">
+                      {RATES.map((r) => (
+                        <button
+                          key={r}
+                          type="button"
+                          className={`rate-btn ${r === rate ? 'active' : ''}`}
+                          onClick={() => setRate(r)}
+                        >
+                          {r}×
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  {showNotes && (
+                    <p className="notes-link">
+                      <a href={`#/notes/${route.lessonId}`}>📝 Open notes for this lesson</a>
+                    </p>
+                  )}
+                  {lesson.kind === 'words' ? (
+                    <WordsLesson lesson={lesson} rate={rate} />
+                  ) : (
+                    <SectionedLesson lesson={lesson} rate={rate} />
+                  )}
+                </>
               )}
             </>
           )}

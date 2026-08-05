@@ -17,20 +17,13 @@ export interface Stroke {
   pts: number[];
 }
 
-export interface TextBox {
-  id: string;
-  x: number;
-  y: number;
-  text: string;
-  size: number;
-}
-
 export interface NoteDoc {
   lessonId: number;
   /** Which sheet this is. 'mine' today; 'teacher'/'student' once classes exist. */
   layer: string;
   strokes: Stroke[];
-  texts: TextBox[];
+  /** Typed content, as flowing rich text rather than fixed boxes. */
+  html: string;
   updatedAt: number;
 }
 
@@ -38,7 +31,7 @@ export const emptyNote = (lessonId: number, layer = 'mine'): NoteDoc => ({
   lessonId,
   layer,
   strokes: [],
-  texts: [],
+  html: '',
   updatedAt: 0,
 });
 
@@ -65,7 +58,10 @@ export async function loadNote(lessonId: number, layer = 'mine'): Promise<NoteDo
     const db = await open();
     return await new Promise((resolve, reject) => {
       const req = db.transaction(STORE, 'readonly').objectStore(STORE).get(key(lessonId, layer));
-      req.onsuccess = () => resolve((req.result as NoteDoc) ?? emptyNote(lessonId, layer));
+      req.onsuccess = () => {
+        const got = req.result as Partial<NoteDoc> | undefined;
+        resolve(got ? { ...emptyNote(lessonId, layer), ...got } : emptyNote(lessonId, layer));
+      };
       req.onerror = () => reject(req.error);
     });
   } catch (err) {

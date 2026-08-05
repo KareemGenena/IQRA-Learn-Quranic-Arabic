@@ -590,6 +590,116 @@ body {
   cursor: default;
 }
 
+/* ---------- admin: what the public sees ---------- */
+
+.manager {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.manager h3 {
+  margin: 18px 0 4px;
+  font-size: 17px;
+}
+
+.manager h3:first-child {
+  margin-top: 0;
+}
+
+.manager-hint {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.manager-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.manager-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.manager-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+  font-size: 14px;
+}
+
+.manager-sub {
+  width: 100%;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.manager-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.manager-actions .btn {
+  min-height: 38px;
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.manager-msg {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.status-pill {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-soft) 18%, transparent);
+  color: var(--text-soft);
+}
+
+.status-pill.published {
+  background: color-mix(in srgb, #2e7d32 18%, transparent);
+  color: #2e7d32;
+}
+
+.status-pill.draft {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--accent);
+}
+
+.status-pill.archived {
+  background: color-mix(in srgb, #b4531a 18%, transparent);
+  color: #b4531a;
+}
+
+.admin-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
 /* ---------- notes ---------- */
 
 .notes-link {
@@ -611,45 +721,97 @@ body {
   border-color: var(--accent);
 }
 
-
+/* A single thin row of icons — no labels, no stacked rows of controls. */
 .notes-toolbar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 14px;
   align-items: center;
-  padding: 10px 12px;
+  gap: 8px;
+  padding: 8px 10px;
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: 14px;
   margin-bottom: 10px;
 }
 
-.tool-group {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.tool-btn {
-  min-height: 40px;
-  padding: 8px 12px;
-  border-radius: 10px;
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
   border: 1px solid var(--card-border);
   background: var(--bg);
   color: var(--text);
-  font-size: 13px;
+  font-size: 20px;
+  line-height: 1;
   cursor: pointer;
 }
 
-.tool-btn.active {
+.icon-btn:hover {
+  border-color: var(--accent);
+}
+
+.icon-btn.active {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
 }
 
+.mode-btn {
+  border-color: var(--accent);
+}
+
+.save-state {
+  margin-inline-start: auto;
+  font-size: 12px;
+  color: var(--text-soft);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.save-state.pending,
+.save-state.saved {
+  opacity: 1;
+}
+
+.popover-wrap {
+  position: relative;
+}
+
+.popover {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 6px);
+  inset-inline-start: 0;
+  min-width: 190px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  box-shadow: var(--shadow-lift);
+}
+
+.popover.wide {
+  min-width: min(340px, 88vw);
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.popover-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.popover-row + .popover-row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--card-border);
+}
+
 .swatch {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 2px solid var(--card-border);
   cursor: pointer;
@@ -660,27 +822,41 @@ body {
   outline-offset: 2px;
 }
 
-.save-state {
-  font-size: 12px;
-  color: var(--text-soft);
-  min-width: 120px;
+.width-btn {
+  width: 44px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--bg);
+  cursor: pointer;
 }
+
+.width-btn span {
+  display: block;
+  width: 26px;
+  border-radius: 4px;
+}
+
+.width-btn.active {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+}
+
+.width-btn.text-size {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.width-btn.text-size:nth-child(1) { font-size: 12px; }
+.width-btn.text-size:nth-child(2) { font-size: 15px; }
+.width-btn.text-size:nth-child(3) { font-size: 19px; }
+.width-btn.text-size:nth-child(4) { font-size: 23px; }
 
 .mark-palette {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 16px;
-  padding: 8px 12px;
-  margin-bottom: 10px;
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
-}
-
-.mark-group {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  display: grid;
+  gap: 10px;
 }
 
 .mark-group-label {
@@ -688,12 +864,18 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-soft);
-  margin-inline-end: 4px;
+}
+
+.mark-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
 }
 
 .mark-btn {
-  min-width: 40px;
-  min-height: 40px;
+  min-width: 42px;
+  min-height: 42px;
   border-radius: 10px;
   border: 1px solid var(--card-border);
   background: var(--bg);
@@ -708,13 +890,9 @@ body {
   border-color: var(--accent);
 }
 
-/* The canvas is an overlay pinned to the frame and never scrolls itself —
-   strokes are drawn shifted by the scroll position instead. Text boxes live
-   in the scrolling layer underneath so they move naturally and stay real
-   inputs, which is what gives Arabic proper shaping and a caret. */
 .notes-frame {
   position: relative;
-  height: 70vh;
+  height: 74vh;
   min-height: 420px;
   overflow: hidden;
   background: var(--card);
@@ -727,69 +905,71 @@ body {
   inset: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .notes-content {
   position: relative;
   width: 100%;
+  padding: 14px;
 }
 
+/*
+ * The canvas covers the whole note rather than just the viewport, so there
+ * is no scroll maths at all. pan-y hands one-finger vertical dragging to the
+ * browser to scroll, while a stylus or mouse still reports pointer events —
+ * which is how a finger scrolls and a pen draws.
+ */
 .notes-canvas {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  touch-action: none;
+  z-index: 3;
+  touch-action: pan-y;
+}
+
+.notes-frame.mode-pen .notes-canvas {
   cursor: crosshair;
 }
 
-/* Scroll and Text let taps through: one to scroll, the other so an existing
-   text box can be clicked into. Pen and eraser take the pointer. */
-.notes-frame.tool-hand .notes-canvas,
-.notes-frame.tool-text .notes-canvas {
+/* Typing: the canvas steps aside so the caret can be placed anywhere. */
+.notes-frame.mode-text .notes-canvas {
   pointer-events: none;
 }
 
-.notes-frame.tool-text .notes-content {
-  cursor: text;
-}
-
-.note-text {
-  position: absolute;
-  min-width: 180px;
-  min-height: 48px;
-  padding: 6px 8px;
-  border: 1px dashed transparent;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--text);
-  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
-  line-height: 2;
-  resize: both;
-  overflow: hidden;
+.note-editor {
+  position: relative;
   z-index: 2;
-}
-
-.note-text:hover,
-.note-text:focus {
-  border-color: var(--card-border);
+  min-height: 60vh;
+  padding: 6px 2px;
   outline: none;
-  background: color-mix(in srgb, var(--accent) 5%, transparent);
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  line-height: 2.1;
+  color: var(--text);
 }
 
-/* The lesson's words, sitting under the note and never editable. */
+.notes-frame.mode-pen .note-editor {
+  pointer-events: none;
+}
+
+.note-editor:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-soft);
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
+}
+
+/* The lesson's words, always present and untouchable by any tool. */
 .ref-sheet {
-  position: absolute;
-  inset-inline-start: 16px;
-  top: 16px;
-  width: min(560px, calc(100% - 32px));
+  position: relative;
+  z-index: 1;
   padding: 14px 18px;
   border: 1px solid var(--card-border);
   border-radius: 14px;
   background: var(--bg);
   pointer-events: none;
   user-select: none;
-  z-index: 0;
 }
 
 .ref-sheet h3 {
@@ -838,9 +1018,6 @@ body {
 @media (max-width: 560px) {
   .ref-sheet ol {
     columns: 1;
-  }
-  .save-state {
-    min-width: 0;
   }
 }
 
@@ -1059,6 +1236,21 @@ body {
   gap: 12px;
   padding: 48px 16px;
   color: var(--text-soft);
+}
+
+.gate-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.gate-sub {
+  margin: 0;
+  max-width: 380px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .admin-gate input {

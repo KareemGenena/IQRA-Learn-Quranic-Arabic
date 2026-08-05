@@ -8,6 +8,14 @@ service cloud.firestore {
     // authenticated via Firebase Auth with this exact email — can write,
     // and writes are shape-validated. Clients also re-validate on read
     // (monotonic, letter count) with words.json as the fallback.
+    // What the public sees: which lessons are published and which features
+    // are switched on. Everyone reads it; only the admin changes it.
+    match /config/app {
+      allow read: if true;
+      allow write: if request.auth != null
+        && request.auth.token.email == 'kintegracion@gmail.com';
+    }
+
     match /calibrations/{lessonId}/words/{wordId} {
       allow read: if true;
       allow create, update: if request.auth != null

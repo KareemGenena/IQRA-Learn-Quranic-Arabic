@@ -1,7 +1,7 @@
 /**
  * Quranic marks that no phone or desktop Arabic keyboard offers — the dagger
  * alif, hamzat wasl, the Mushaf sukoon, the madd sign and the waqf marks.
- * Tapping one inserts it at the cursor of the text box being edited.
+ * Tapping one inserts it at the caret.
  */
 
 const GROUPS: { label: string; marks: { ch: string; name: string }[] }[] = [
@@ -48,21 +48,24 @@ export function MarkPalette({ onInsert }: { onInsert: (ch: string) => void }) {
       {GROUPS.map((g) => (
         <div key={g.label} className="mark-group">
           <span className="mark-group-label">{g.label}</span>
-          {g.marks.map((m) => (
-            <button
-              key={m.ch}
-              type="button"
-              className="mark-btn"
-              title={m.name}
-              aria-label={m.name}
-              // Keep focus (and the caret) in the text box being edited.
-              onPointerDown={(e) => e.preventDefault()}
-              onClick={() => onInsert(m.ch)}
-            >
-              {/* A dotted circle gives the combining mark something to sit on. */}
-              <span dir="rtl">{'◌' + m.ch}</span>
-            </button>
-          ))}
+          <div className="mark-row">
+            {g.marks.map((m) => (
+              <button
+                key={m.ch}
+                type="button"
+                className="mark-btn"
+                title={m.name}
+                aria-label={m.name}
+                // Keep the caret where it is instead of stealing focus.
+                onPointerDown={(e) => e.preventDefault()}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => onInsert(m.ch)}
+              >
+                {/* A dotted circle gives the combining mark something to sit on. */}
+                <span dir="rtl">{'◌' + m.ch}</span>
+              </button>
+            ))}
+          </div>
         </div>
       ))}
     </div>
