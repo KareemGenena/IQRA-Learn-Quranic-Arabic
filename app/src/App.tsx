@@ -106,6 +106,8 @@ export default function App() {
   }, [lesson]);
 
   const meta = LESSONS.find((l) => l.id === route.lessonId);
+  /** The bare sign-in screen: no page title, no second sign-in button. */
+  const signingIn = route.page === 'admin' && !admin;
   const showLaser = canUseFeature(config, 'laser', admin);
   const showNotes = canUseFeature(config, 'notes', admin);
   const lessonAllowed = route.lessonId === 0 || canSeeLesson(config, route.lessonId, admin);
@@ -136,8 +138,9 @@ export default function App() {
         </a>
         <div className="header-actions">
           {/* The installed PWA has no address bar, so signing in needs a
-              control here rather than a typed URL. */}
-          {admin ? (
+              control here rather than a typed URL. Hidden on the sign-in
+              page itself, where it would just point at the current page. */}
+          {signingIn ? null : admin ? (
             <>
               <a className="account-btn" href="#/admin">
                 Admin
@@ -176,11 +179,13 @@ export default function App() {
         <>
           <nav className="breadcrumb">
             <a href="#/">← All lessons</a>
-            <h2>
-              {route.page === 'admin' && route.lessonId === 0
-                ? 'Admin'
-                : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}Lesson ${route.lessonId}${meta ? ` — ${meta.title}` : ''}`}
-            </h2>
+            {!signingIn && (
+              <h2>
+                {route.page === 'admin' && route.lessonId === 0
+                  ? 'Admin'
+                  : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}Lesson ${route.lessonId}${meta ? ` — ${meta.title}` : ''}`}
+              </h2>
+            )}
           </nav>
 
           {/* Admin home: what's published, and which features are live. */}

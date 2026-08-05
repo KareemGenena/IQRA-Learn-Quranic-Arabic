@@ -9,9 +9,10 @@ const FEATURES: { key: string; label: string }[] = [
 ];
 
 const NEXT_LABEL: Record<LessonStatus, string> = {
-  draft: 'In progress — only you can see it',
+  draft: 'Not published — only you can see it',
   published: 'Live for everyone',
-  archived: 'Archived — pulled back to admin',
+  archived: 'Taken down — only you can see it',
+  deleted: 'Deleted',
 };
 
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
 /** Admin-only: decides what the public sees, without a redeploy. */
 export function LessonManager({ config, onChange }: Props) {
   const [busy, setBusy] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState<number | null>(null);
   const [msg, setMsg] = useState('');
 
   const push = async (next: AppConfig) => {
@@ -49,38 +51,68 @@ export function LessonManager({ config, onChange }: Props) {
     <section className="manager">
       <h3>Lessons</h3>
       <p className="manager-hint">
-        A lesson is only visible to learners once you publish it. Archiving pulls it back here
+        A lesson is only visible to learners once you publish it. Taking one down hides it again
         without touching its words or recordings.
       </p>
       <ul className="manager-list">
         {LESSONS.map((l) => {
           const status = lessonStatus(config, l.id);
+          if (status === 'deleted') return null;
+          const live = status === 'published';
           return (
             <li key={l.id} className={`manager-row ${status}`}>
               <span className="manager-name">
                 <strong>
                   {l.id}. {l.title}
                 </strong>
-                <span className={`status-pill ${status}`}>{status}</span>
+                <span className={`status-pill ${status}`}>{live ? 'published' : 'hidden'}</span>
                 <span className="manager-sub">{NEXT_LABEL[status]}</span>
               </span>
               <span className="manager-actions">
-                {status !== 'published' && (
-                  <button type="button" className="btn primary" disabled={busy} onClick={() => setLesson(l.id, 'published')}>
-                    Publish
-                  </button>
-                )}
-                {status !== 'archived' && (
-                  <button type="button" className="btn" disabled={busy} onClick={() => setLesson(l.id, 'archived')}>
-                    Archive
-                  </button>
-                )}
-                {status !== 'draft' && (
-                  <button type="button" className="btn" disabled={busy} onClick={() => setLesson(l.id, 'draft')}>
-                    Back to draft
-                  </button>
-                )}
+                {/* One switch, not three overlapping states. */}
+                <button
+                  type="button"
+                  className={live ? 'btn' : 'btn primary'}
+                  disabled={busy}
+                  onClick={() => setLesson(l.id, live ? 'archived' : 'published')}
+                >
+                  {live ? 'Take down' : 'Publish'}
+                </button>
+                <button
+                  type="button"
+                  className="btn danger"
+                  disabled={busy}
+                  onClick={() => setConfirmDelete(l.id)}
+                >
+                  Delete
+                </button>
               </span>
+
+              {confirmDelete === l.id && (
+                <div className="confirm" role="alertdialog" aria-label={`Delete lesson ${l.id}`}>
+                  <p>
+                    <strong>Delete “{l.title}” for good?</strong> It disappears for everyone,
+                    including you, and this cannot be undone from here. Its recordings stay in the
+                    project files until they are removed there.
+                  </p>
+                  <span className="confirm-actions">
+                    <button type="button" className="btn" onClick={() => setConfirmDelete(null)}>
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      className="btn danger solid"
+                      disabled={busy}
+                      onClick={() => {
+                        setConfirmDelete(null);
+                        void setLesson(l.id, 'deleted');
+                      }}
+                    >
+                      Yes, delete it
+                    </button>
+                  </span>
+                </div>
+              )}
             </li>
           );
         })}

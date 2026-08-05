@@ -662,6 +662,37 @@ body {
   font-size: 13px;
 }
 
+.btn.danger {
+  color: #c0392b;
+  border-color: color-mix(in srgb, #c0392b 45%, transparent);
+}
+
+.btn.danger.solid {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #fff;
+}
+
+.confirm {
+  flex-basis: 100%;
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, #c0392b 40%, transparent);
+  background: color-mix(in srgb, #c0392b 8%, transparent);
+}
+
+.confirm p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 8px;
+}
+
 .manager-msg {
   margin: 12px 0 0;
   font-size: 13px;
@@ -723,6 +754,10 @@ body {
 
 /* A single thin row of icons — no labels, no stacked rows of controls. */
 .notes-toolbar {
+  /* Never scrolls away: changing colour should not mean scrolling up. */
+  position: sticky;
+  top: 0;
+  z-index: 40;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -769,8 +804,7 @@ body {
   transition: opacity 0.2s ease;
 }
 
-.save-state.pending,
-.save-state.saved {
+.save-state.shown {
   opacity: 1;
 }
 
@@ -890,6 +924,12 @@ body {
   border-color: var(--accent);
 }
 
+.marks-icon {
+  font-family: 'Uthmanic Hafs', serif;
+  font-size: 22px;
+  line-height: 1;
+}
+
 .notes-frame {
   position: relative;
   height: 74vh;
@@ -926,7 +966,9 @@ body {
   left: 0;
   width: 100%;
   z-index: 3;
-  touch-action: pan-y;
+  /* No input pans this: a finger drag is turned into scrolling in JS, so
+     the stylus can never be stolen mid-stroke by the browser. */
+  touch-action: none;
 }
 
 .notes-frame.mode-pen .notes-canvas {

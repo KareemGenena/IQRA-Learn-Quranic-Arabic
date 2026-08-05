@@ -11,7 +11,7 @@ export function ToolPopover({
   children,
   wide,
 }: {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   children: (close: () => void) => React.ReactNode;
   wide?: boolean;

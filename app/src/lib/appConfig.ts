@@ -13,7 +13,14 @@
 import { getIdToken } from './adminAuth';
 import { API_KEY, PROJECT_ID } from './firebaseConfig';
 
-export type LessonStatus = 'draft' | 'published' | 'archived';
+/**
+ * draft     — built but never published; only the admin sees it
+ * published — live for learners
+ * archived  — was live, pulled back; behaves exactly like draft, and the
+ *             separate word only records that it had been out before
+ * deleted   — gone from every list, admin included
+ */
+export type LessonStatus = 'draft' | 'published' | 'archived' | 'deleted';
 /** 'everyone' = live for learners, 'admin' = still being built. */
 export type FeatureAudience = 'everyone' | 'admin';
 
@@ -93,8 +100,11 @@ export const lessonStatus = (config: AppConfig, id: number): LessonStatus =>
   config.lessons[String(id)] ?? 'draft';
 
 /** Can this visitor open this lesson at all? */
-export const canSeeLesson = (config: AppConfig, id: number, admin: boolean): boolean =>
-  admin || lessonStatus(config, id) === 'published';
+export const canSeeLesson = (config: AppConfig, id: number, admin: boolean): boolean => {
+  const status = lessonStatus(config, id);
+  if (status === 'deleted') return false; // gone for everyone, admin included
+  return admin || status === 'published';
+};
 
 /** Is this feature switched on for this visitor? */
 export const canUseFeature = (config: AppConfig, name: string, admin: boolean): boolean =>
