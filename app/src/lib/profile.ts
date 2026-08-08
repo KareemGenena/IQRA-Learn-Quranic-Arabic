@@ -96,6 +96,26 @@ export async function fetchProfile(): Promise<Profile | null> {
 }
 
 /**
+ * Erase the profile document.
+ *
+ * A 404 counts as success: the goal is that nothing of theirs is left, and a
+ * document that was never written already satisfies that.
+ */
+export async function deleteProfile(): Promise<void> {
+  const session = getSession();
+  if (!session?.uid) throw new Error('not signed in');
+  const token = await getIdToken();
+  if (!token) throw new Error('not signed in');
+
+  const res = await fetch(`${docUrl(session.uid)}?key=${API_KEY}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok && res.status !== 404) throw new Error(`profile delete failed: ${res.status}`);
+  cacheProfile(null);
+}
+
+/**
  * Write the parts of the profile a person may change about themselves.
  *
  * An update mask is used so that writing a role can never blank the name, or

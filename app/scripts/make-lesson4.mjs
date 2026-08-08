@@ -154,6 +154,15 @@ for (const g of GROUPS) {
       problems.push(`${key(bare)}: sits under ${g.id} but its first letter says otherwise`);
     }
 
+    // The id belongs to the TABLE ROW, and is spent whether or not the row has
+    // been recorded. Numbering only the recorded rows would mean that adding
+    // one recording renumbers every word after it — and calibrations are keyed
+    // by these numbers, so they would silently describe the wrong words. Ids
+    // are therefore sparse while rows are unrecorded, which is harmless: they
+    // are keys, not positions.
+    id += 1;
+    const n = String(id).padStart(2, '0');
+
     // Three separate takes win over a combined one: nothing has to be guessed
     // about where one form ends and the next begins. Each is trimmed of its
     // own silence exactly as a single-phrase recording is.
@@ -186,10 +195,6 @@ for (const g of GROUPS) {
       continue;
     }
 
-    // Nothing above this line may consume an id: a burnt id would renumber
-    // every word after it, and calibrations are stored against those numbers.
-    id += 1;
-    const n = String(id).padStart(2, '0');
     const texts = [mushaf(bare), definite(wa, isSun), definite(thumma, isSun)];
 
     // Each form is longer than the one before; anything else is worth a listen.
@@ -231,13 +236,14 @@ const phraseRows = rows.slice(39).map((c) => (c[0] ?? '').trim()).filter(Boolean
 if (phraseRows.length) {
   sections.push({ id: PHRASES.id, title: PHRASES.title, titleArabic: PHRASES.titleArabic, hint: PHRASES.hint });
   for (const raw of phraseRows) {
+    // Same rule as above: the row owns the id, recorded or not.
+    id += 1;
+    const n = String(id).padStart(2, '0');
     const file = single.get(key(raw))?.file;
     if (!file) { notYet.push(key(raw)); continue; }
     used.add(file);
     // Sun or moon is decided by the letter right after the article.
     const isSun = SUN.has(articleLetter(raw));
-    id += 1;
-    const n = String(id).padStart(2, '0');
     const wav = readWav(join(AUDIO_SRC, file));
     const { segments } = splitIntoN(wav, 1);
     const audio = `word${n}a.wav`;
@@ -282,6 +288,19 @@ const unused = readdirSync(AUDIO_SRC)
   .map((f) => f.replace(/\.wav$/i, ''));
 if (unused.length) {
   problems.push(`${unused.length} recording(s) match no row: ${unused.join('، ')}`);
+}
+
+// Clips left over from a previous run — a word that was renumbered or dropped.
+// They are dead weight in the offline precache, so say so rather than let them
+// ride along unnoticed. Listed, not deleted: the author confirms removals.
+const referenced = new Set(words.flatMap((w) => w.forms.map((f) => f.audio)));
+const orphanClips = readdirSync(AUDIO_OUT).filter(
+  (f) => f.toLowerCase().endsWith('.wav') && !referenced.has(f),
+);
+if (orphanClips.length) {
+  problems.push(
+    `${orphanClips.length} generated clip(s) no longer referenced — safe to delete: ${orphanClips.join(', ')}`,
+  );
 }
 
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');

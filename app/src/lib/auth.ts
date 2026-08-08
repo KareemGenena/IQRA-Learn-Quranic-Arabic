@@ -184,6 +184,20 @@ export async function getIdToken(): Promise<string | null> {
   }
 }
 
+/**
+ * Delete the Firebase Auth account itself.
+ *
+ * Firebase refuses this on a stale sign-in (CREDENTIAL_TOO_OLD_LOGIN_AGAIN),
+ * which is why the caller re-authenticates first — deleting an account is
+ * exactly the operation that should require proving it is really you.
+ */
+export async function deleteAuthAccount(): Promise<void> {
+  const token = await getIdToken();
+  if (!token) throw new Error('not signed in');
+  await identityToolkit('delete', { idToken: token });
+  signOut();
+}
+
 /** Turn an Identity Toolkit error code into something a person can act on. */
 export function authMessage(code: string): string {
   switch (code) {
@@ -199,6 +213,9 @@ export function authMessage(code: string): string {
       return "That doesn't look like an email address.";
     case 'TOO_MANY_ATTEMPTS_TRY_LATER':
       return 'Too many attempts. Please wait a minute and try again.';
+    case 'CREDENTIAL_TOO_OLD_LOGIN_AGAIN':
+    case 'TOKEN_EXPIRED':
+      return 'Please enter your password again to confirm this.';
     case 'OPERATION_NOT_ALLOWED':
       return 'Email sign-in is switched off for this project.';
     default:

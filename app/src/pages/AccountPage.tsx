@@ -87,6 +87,102 @@ export function AccountPage({ account }: { account: Account }) {
           Sign out
         </button>
       </section>
+
+      <DeleteAccount account={account} />
     </main>
+  );
+}
+
+/**
+ * Ending the account, for good.
+ *
+ * Kept behind a deliberate second step and a password, and it says plainly
+ * what goes and what stays before asking. Signing out is right next to it, so
+ * anyone who only meant to leave the device has the gentler option in view.
+ */
+function DeleteAccount({ account }: { account: Account }) {
+  const [open, setOpen] = useState(false);
+  const [password, setPassword] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+
+  const teacher = account.profile?.role === 'teacher';
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError('');
+    try {
+      await account.deleteAccount(password);
+      window.location.hash = '#/';
+    } catch (err) {
+      const code = err instanceof Error ? err.message : '';
+      setError(
+        code === 'INVALID_LOGIN_CREDENTIALS' || code === 'INVALID_PASSWORD'
+          ? 'That password is not right.'
+          : `Could not delete the account (${code || 'network error'}). Nothing has been removed.`,
+      );
+    } finally {
+      setBusy(false);
+      setPassword('');
+    }
+  };
+
+  if (!open) {
+    return (
+      <section className="account-card">
+        <h3 className="account-heading">Delete your account</h3>
+        <p className="account-hint">
+          Removes your account and everything it holds. The lessons stay open to you without an
+          account.
+        </p>
+        <button type="button" className="btn danger" onClick={() => setOpen(true)}>
+          Delete my account
+        </button>
+      </section>
+    );
+  }
+
+  return (
+    <section className="account-card danger-zone">
+      <h3 className="account-heading">Delete your account — this cannot be undone</h3>
+      <ul className="account-list">
+        <li>Your name, email and account are erased.</li>
+        <li>Your own notes are erased.</li>
+        {teacher && <li>Notes you wrote for your students stay with them to read.</li>}
+        <li>Every lesson stays open to you, signed out, exactly as it is now.</li>
+      </ul>
+      <form className="delete-form" onSubmit={submit}>
+        <label className="account-hint" htmlFor="confirm-pw">
+          Enter your password to confirm.
+        </label>
+        <input
+          id="confirm-pw"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
+          required
+        />
+        <div className="delete-actions">
+          <button type="submit" className="btn danger solid" disabled={busy || !password}>
+            {busy ? 'Deleting…' : 'Delete for good'}
+          </button>
+          <button
+            type="button"
+            className="btn"
+            disabled={busy}
+            onClick={() => {
+              setOpen(false);
+              setError('');
+              setPassword('');
+            }}
+          >
+            Keep my account
+          </button>
+        </div>
+      </form>
+      {error && <p className="gate-error">{error}</p>}
+    </section>
   );
 }

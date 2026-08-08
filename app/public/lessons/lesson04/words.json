@@ -670,7 +670,7 @@
       ]
     },
     {
-      "id": 23,
+      "id": 47,
       "section": "saakin",
       "lam": "qamariyya",
       "waslSilentIn": [
@@ -682,13 +682,13 @@
       "forms": [
         {
           "text": "قَالَتِ ٱلۡأَعۡرَابُ",
-          "audio": "word23a.wav",
+          "audio": "word47a.wav",
           "timings": null
         }
       ]
     },
     {
-      "id": 24,
+      "id": 48,
       "section": "saakin",
       "lam": "shamsiyya",
       "waslSilentIn": [
@@ -700,13 +700,13 @@
       "forms": [
         {
           "text": "قُمِ ٱللَّيۡلَ إِلَّا قَلِيلًا",
-          "audio": "word24a.wav",
+          "audio": "word48a.wav",
           "timings": null
         }
       ]
     },
     {
-      "id": 25,
+      "id": 49,
       "section": "saakin",
       "lam": "qamariyya",
       "waslSilentIn": [
@@ -718,7 +718,7 @@
       "forms": [
         {
           "text": "قُلِ ٱلۡحَمۡدُ لِلَّهِ",
-          "audio": "word25a.wav",
+          "audio": "word49a.wav",
           "timings": null
         }
       ]

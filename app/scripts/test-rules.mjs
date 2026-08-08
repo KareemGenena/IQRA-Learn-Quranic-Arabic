@@ -101,10 +101,14 @@ const CASES = [
     profile({ createdAt: 9999 }), 'update', stored()),
   write('cannot become admin by updating', 'DENY', STUDENT, 'users/stu1',
     profile({ role: 'admin' }), 'update', stored()),
-  { name: 'nobody deletes a profile', expectation: 'DENY',
+  { name: 'you can delete your own account', expectation: 'ALLOW',
     request: { auth: STUDENT, path: doc('users/stu1'), method: 'delete', time: NOW }, resource: stored() },
-  { name: 'not even the owner deletes a profile', expectation: 'DENY',
+  { name: 'you cannot delete someone else', expectation: 'DENY',
+    request: { auth: STUDENT, path: doc('users/stu2'), method: 'delete', time: NOW }, resource: stored() },
+  { name: 'not even the owner deletes someone else', expectation: 'DENY',
     request: { auth: OWNER, path: doc('users/stu1'), method: 'delete', time: NOW }, resource: stored() },
+  { name: 'anon deletes nothing', expectation: 'DENY',
+    request: { auth: null, path: doc('users/stu1'), method: 'delete', time: NOW }, resource: stored() },
 
   // --- what was already there must not have regressed ---
   read('anyone reads the published config', 'ALLOW', null, 'config/app'),

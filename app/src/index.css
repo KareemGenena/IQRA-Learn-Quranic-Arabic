@@ -1487,6 +1487,41 @@ body {
   color: var(--text-soft);
 }
 
+.danger-zone {
+  border-color: color-mix(in srgb, #c0392b 40%, var(--card-border));
+  background: color-mix(in srgb, #c0392b 6%, var(--card));
+}
+
+.account-list {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+.delete-form {
+  display: grid;
+  gap: 8px;
+}
+
+.delete-form input {
+  font-size: 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  max-width: 260px;
+}
+
+.delete-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
 /* ---------- calibrate page ---------- */
 
 .breadcrumb {

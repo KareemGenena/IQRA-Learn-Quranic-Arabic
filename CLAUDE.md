@@ -63,7 +63,8 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   per card), plus a "two sukoons meeting" section of three ayah phrases.
 - **Accounts and roles** — sign up or sign in at `#/account`; a `users/{uid}`
   profile carries a name and a role of learner or teacher, self-declared.
-  Admin is an email match, never a role.
+  Admin is an email match, never a role. Deleting your own account is there
+  too, behind a password.
 - **Letter-by-letter highlighting** driven by per-letter timings.
 - **Admin**: publish/take-down/delete lessons and toggle features at runtime;
   tap-to-calibrate timings that sync to every device.
@@ -117,14 +118,19 @@ Things that cost real debugging. Do not undo them without reading why.
   broke وسواس, whose bare-word file was cut into three.
 
 **Word ids and calibrations**
-- Lesson 4 numbers words **positionally over the rows that have audio**, so
-  adding or losing a recording renumbers everything after it and silently
-  points existing calibrations at the wrong words. Before regenerating,
-  snapshot the id→word map and diff it afterwards. (Lesson 3 numbers every
-  table row whether recorded or not, so it does not have this hazard.)
+- A word's id belongs to its **table row**, and is spent whether or not the row
+  has been recorded. Both lesson 3 and lesson 4 work this way. Ids are
+  therefore sparse wherever rows are unrecorded — that is correct and must stay
+  so. They are keys, not positions.
+- This was not always true. Lesson 4 used to number only the *recorded* rows,
+  so recording one more word renumbered every word after it and silently
+  pointed calibrations (`calibrations/lesson4/words/{id}{a|b|c}`) at the wrong
+  words. Never reintroduce that: **the audio must not influence the id.**
 - A generator run rewrites every clip, but an unchanged source cuts
   byte-identically — `git status` on the audio folder is the quick check for
   which words were really re-cut, and therefore whose calibration is stale.
+- Generators list clips nothing references any more, so a renumbering leaves no
+  dead weight in the offline precache. They report; the author deletes.
 
 **Timing** (`timing.ts`, one unit = one harakah)
 - Boundaries are in **media time**, so highlights stay correct at any playback
@@ -170,11 +176,10 @@ Open items:
 - **Notes** are device-local. Cloud sync and the teacher/student layers are
   designed but not built.
 - **Classes** (join codes, rosters) are designed but not built. Roles exist.
-- **Account deletion is not possible** — `allow delete: if false` on profiles.
-  Deliberate for now (no UI reaches it, and a deleted profile would dangle from
-  a roster), but it must be answered before real students sign up: deleting the
-  Firebase Auth account would leave the profile document orphaned. See the
-  discussion in section 5.
+- **Account deletion** works for what exists today: profile document, then the
+  Firebase Auth account, in that order and never the reverse. Enrolments and
+  cloud notes must be added to the front of that sequence when they exist —
+  `deleteAccount` in `useAccount.ts` is the single place that ordering lives.
 
 Calibrations live only on lesson 4 — words 12 (فَلَق), 16 (حَطَب), 21 (يَتِيم).
 Everything else uses the automatic estimate.
@@ -199,24 +204,36 @@ and nothing happens yet, because there is no class to own. The agreed flow:
 3. Teacher approves or declines from a roster.
 4. Approved students see the teacher's note layer for each lesson, read-only.
 
-Decisions still owed by the author before the data model is fixed:
-- Can a student belong to more than one class? (Recommend yes — cheap now,
-  painful to retrofit.)
-- Should a join code be rotatable/disable-able? (Recommend yes: a code that
-  grants entry is effectively a password.)
-- What happens to a class when its teacher leaves?
+Decided by the author (2026-08-08), so build to these:
+- **Many-to-many.** A teacher may run several classes; a student may belong to
+  several. Model enrolment as documents (`classes/{classId}/members/{uid}`),
+  never as a field on the profile.
+- **The teacher approves their own students. The admin approves nobody** — not
+  teachers, not students. Anyone may declare themselves a teacher and use this
+  material with their own class.
+- **One join code per class**, shown plainly on the class page and easy to copy.
+  It only gets someone into the *pending* queue, so a leaked code costs nothing
+  but a decline. The teacher deactivates individual students rather than
+  rotating the code.
+- **A deactivated student keeps everything self-paced**: all lessons, their own
+  notes, and the teacher notes written up to that point. They simply stop
+  receiving new ones.
+- **A teacher who deletes their account** keeps their notes alive for their
+  students, read-only. They may hand the class to a successor (a handover code
+  the new teacher accepts) or leave the seat vacant. A vacant class keeps
+  working self-paced. Finding a new teacher later = start a new class.
 
-One design point worth keeping: a student must be able to find a class **by its
-code before they are a member**, so put the lookup in a separate
-`joinCodes/{code}` → classId document that any signed-in user may read. That
-keeps the class document itself private instead of readable by everyone.
+A student must find a class **by its code before they are a member**, so the
+lookup goes in `joinCodes/{code}` → classId — a document readable by any signed
+in user who knows the exact code, but not listable. That keeps the class
+document itself private rather than world-readable.
 
-Then, in order: account deletion done properly (enrolments → notes → profile →
-auth account, ideally a Cloud Function on the `user.delete` trigger), notes
-cloud sync, and the teacher/student layers — student layer private with an
-explicit submit-to-teacher, teacher layer per class per lesson.
+Then: notes cloud sync and the teacher/student layers — student layer private
+with an explicit submit-to-teacher, teacher layer per class per lesson. Fold
+enrolments and notes into `deleteAccount` as each lands.
 
-Also still open: review lessons 3 and 4 and publish them from `#/admin`.
+Also still open: review lessons 3 and 4 and publish them from `#/admin`, and
+record ٱلرَّحِيمِ.
 
 ---
 

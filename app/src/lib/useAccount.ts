@@ -11,9 +11,9 @@
  */
 
 import { useCallback, useEffect, useState } from 'react';
-import { getSession, isAdminEmail, signIn, signOut, signUp } from './auth';
+import { deleteAuthAccount, getSession, isAdminEmail, signIn, signOut, signUp } from './auth';
 import type { Session } from './auth';
-import { cacheProfile, cachedProfile, fetchProfile, saveProfile } from './profile';
+import { cacheProfile, cachedProfile, deleteProfile, fetchProfile, saveProfile } from './profile';
 import type { Profile, Role } from './profile';
 
 export interface Account {
@@ -33,6 +33,8 @@ export interface Account {
   logout: () => void;
   setRole: (role: Role) => Promise<void>;
   setName: (displayName: string) => Promise<void>;
+  /** Erase this account for good. The password re-confirms it is really them. */
+  deleteAccount: (password: string) => Promise<void>;
 }
 
 export function useAccount(): Account {
@@ -102,6 +104,34 @@ export function useAccount(): Account {
     [profile],
   );
 
+  /**
+   * Erase the account, in the only order that cannot strand data.
+   *
+   * Firestore first, Firebase Auth second: the profile can only be deleted
+   * with a valid token, so deleting the account first would leave the person's
+   * name and email sitting in Firestore with no way to ever remove them. If
+   * the second step fails the account still exists and this can be retried —
+   * the recoverable failure, rather than the permanent one.
+   *
+   * When classes exist their enrolments and notes are erased ahead of both,
+   * and that ordering is the reason this belongs in one place.
+   */
+  const deleteAccount = useCallback(
+    async (password: string) => {
+      const email = session?.email;
+      if (!email) throw new Error('not signed in');
+      // Deleting an account demands a fresh sign-in, and proving it is really
+      // them is worth the extra step for something this final.
+      await signIn(email, password);
+      await deleteProfile();
+      await deleteAuthAccount();
+      cacheProfile(null);
+      setSession(null);
+      setProfile(null);
+    },
+    [session?.email],
+  );
+
   const isAdmin = !!session && isAdminEmail(session.email);
 
   return {
@@ -117,5 +147,6 @@ export function useAccount(): Account {
     logout,
     setRole,
     setName,
+    deleteAccount,
   };
 }

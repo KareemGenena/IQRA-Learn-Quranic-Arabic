@@ -43,7 +43,13 @@ service cloud.firestore {
         && validProfile()
         && request.resource.data.createdAt == resource.data.createdAt;
 
-      allow delete: if false;
+      // You may erase yourself, and only yourself. The app deletes this
+      // document *before* the Firebase Auth account, because once the account
+      // is gone there is no token left to authorise this and the profile would
+      // sit here orphaned. Not even the admin may delete someone else's — an
+      // account is the person's to end, and there is no reason for the owner
+      // of the lessons to reach into it.
+      allow delete: if request.auth != null && request.auth.uid == uid;
     }
 
     // Letter-timing calibrations, one doc per word:
