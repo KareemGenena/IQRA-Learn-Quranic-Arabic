@@ -56,6 +56,8 @@ export interface LetterWord {
   forms?: { text: string; audio: string; timings: Timings }[];
   /** Which lam rule applies, for the silent-letter colouring. */
   lam?: LamType;
+  /** A picture that belongs with this card — a waveform, a diagram. */
+  image?: string;
   /** Forms where the ٱ of ٱل is written but not pronounced, because
    *  something precedes it. Indexes into `forms`. */
   waslSilentIn?: number[];
@@ -66,6 +68,7 @@ export interface Lesson {
   title: string;
   titleArabic: string;
   audioPath: string;
+  imagePath?: string;
   /**
    * 'words'   — lesson 1 style grid
    * 'pairs'   — a word shown bare and again with ال
@@ -88,6 +91,8 @@ export interface LessonItem {
   section: string;
   badges: string[];
   meaning?: string;
+  /** Full URL of a picture to show beside the card, if it has one. */
+  image?: string;
   forms: Playable[];
 }
 

@@ -143,43 +143,67 @@ export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15
       start = -1;
     }
   }
-  //    Momentary dips inside a word — between an opening consonant and the
-  //    vowel that follows it — are not real gaps, so glue anything separated
-  //    by less than a breath back together first. Without this the quiet م of
-  //    مُخۡلِصِينَ looks like a click of its own and the word loses its head.
-  const joinW = Math.round(0.12 / 0.01);
-  const joined = [];
-  for (const r of runs) {
-    const last = joined[joined.length - 1];
-    if (last && r[0] - last[1] < joinW) last[1] = r[1];
-    else joined.push([...r]);
-  }
-  runs = joined;
+  //    A click is short in ABSOLUTE terms — a few hundredths of a second.
+  //    Anything longer is speech, however quiet: the وَ of وَٱلتَّكَاثُرُ lasts a
+  //    quarter of a second behind a stop closure, and the م of مُخۡلِصِينَ about
+  //    a fifth. Measuring "short" against the other pieces, as this once did,
+  //    threw those away and beheaded the word.
+  const tickW = Math.round(0.08 / 0.01);
+  const kept = runs.filter(([a, b]) => b - a >= tickW);
+  if (kept.length >= 1) runs = kept;
 
-  //    Only now decide what is a click: a whole sound that is short compared
-  //    with the others AND stands on its own. Judging the pieces before
-  //    gluing them would let a burst of taps pose as a word.
-  if (runs.length > 1) {
+  //    A breath or a chair creak at the very top or tail of a take is longer
+  //    than a click but still not a word. Trim those from the EDGES only,
+  //    and only when a real silence separates them from the content — which
+  //    is what keeps this from eating the وَ of وَٱلتَّكَاثُرُ, since that sits in
+  //    the middle of the take with the rest of its word right behind it.
+  if (runs.length > count) {
     const lens = runs.map(([a, b]) => b - a).sort((x, y) => x - y);
     const median = lens[Math.floor(lens.length / 2)];
-    const minRunW = Math.max(Math.round(minRun / 0.01), median * 0.35);
-    const kept = runs.filter(([a, b]) => b - a >= minRunW);
-    if (kept.length >= 1) runs = kept;
+    const strayW = median * 0.4;
+    const partedW = Math.round(0.25 / 0.01);
+    while (
+      runs.length > count &&
+      runs[0][1] - runs[0][0] < strayW &&
+      runs[1][0] - runs[0][1] > partedW
+    ) {
+      runs.shift();
+    }
+    while (
+      runs.length > count &&
+      runs[runs.length - 1][1] - runs[runs.length - 1][0] < strayW &&
+      runs[runs.length - 1][0] - runs[runs.length - 2][1] > partedW
+    ) {
+      runs.pop();
+    }
   }
 
-  // 2. Too many pieces: fuse the pair separated by the shortest silence,
-  //    repeatedly, until the count is right.
-  while (runs.length > count) {
-    let best = 0;
-    let bestGap = Infinity;
+  // 2. The count is known, so the real word boundaries are simply the
+  //    count-1 longest silences. Everything quieter than those belongs
+  //    inside a word — including the closure of a stop, which is a genuine
+  //    silence in the middle of a syllable. Judging gaps by size alone can't
+  //    tell that closure apart from the pause between words; ranking them
+  //    can.
+  if (runs.length > count) {
+    const gaps = runs
+      .slice(0, -1)
+      .map((r, i) => ({ i, len: runs[i + 1][0] - r[1] }))
+      .sort((a, b) => b.len - a.len)
+      .slice(0, count - 1)
+      .map((g) => g.i);
+    const cuts = new Set(gaps);
+    const merged = [];
+    let cur = [...runs[0]];
     for (let i = 0; i < runs.length - 1; i++) {
-      const g = runs[i + 1][0] - runs[i][1];
-      if (g < bestGap) {
-        bestGap = g;
-        best = i;
+      if (cuts.has(i)) {
+        merged.push(cur);
+        cur = [...runs[i + 1]];
+      } else {
+        cur[1] = runs[i + 1][1];
       }
     }
-    runs.splice(best, 2, [runs[best][0], runs[best + 1][1]]);
+    merged.push(cur);
+    runs = merged;
   }
 
   // 3. Too few: two words were said with no real pause between them. Split

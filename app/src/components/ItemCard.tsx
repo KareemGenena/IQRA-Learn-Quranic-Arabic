@@ -55,6 +55,7 @@ const TIP_EVENT = 'iqra-meaning-open';
 
 export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }: Props) {
   const [showMeaning, setShowMeaning] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   const tipId = useId();
   const headRef = useRef<HTMLDivElement>(null);
 
@@ -63,8 +64,8 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }
   // focus must stay until the reader dismisses it (WCAG 1.4.13), and a timer
   // would snatch it away from anyone reading slowly.
   useEffect(() => {
-    if (!showMeaning) return;
-    const close = () => setShowMeaning(false);
+    if (!showMeaning && !showImage) return;
+    const close = () => { setShowMeaning(false); setShowImage(false); };
     const onPointer = (e: PointerEvent) => {
       if (!headRef.current?.contains(e.target as Node)) close();
     };
@@ -82,7 +83,7 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }
       document.removeEventListener('keydown', onKey);
       window.removeEventListener(TIP_EVENT, onOther);
     };
-  }, [showMeaning, tipId]);
+  }, [showMeaning, showImage, tipId]);
 
   const toggleMeaning = () => {
     setShowMeaning((open) => {
@@ -101,6 +102,35 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }
               {b}
             </span>
           ))}
+        {item.image && (
+          <>
+            <button
+              type="button"
+              className="info-btn"
+              aria-label={`Waveform for ${displayNo}`}
+              title="See the waveform"
+              aria-expanded={showImage}
+              onClick={() => setShowImage((v) => !v)}
+            >
+              {/* a tiny waveform, so it reads as "a picture of the sound" */}
+              <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true">
+                <path
+                  d="M2 10h2M6 6v8M10 3v14M14 6.5v7M18 10h-2"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+            <span className={`image-pop ${showImage ? 'open' : ''}`} role="tooltip">
+              <img src={item.image} alt={`Waveform of drill ${displayNo}`} />
+              <span className="image-cap">
+                The two letters look plainly different — ه spreads, ح is denser.
+              </span>
+            </span>
+          </>
+        )}
         {item.meaning && (
           <>
             <button

@@ -166,6 +166,7 @@ export function toItems(lesson: Lesson): LessonItem[] {
       section: w.section,
       badges: w.badges ?? [],
       meaning: w.meaning,
+      image: w.image ? `${import.meta.env.BASE_URL}${lesson.imagePath ?? ''}${w.image}` : undefined,
       forms: letterPlayables(w),
     }));
   }

@@ -4,6 +4,7 @@
   "titleArabic": "حروف الحلق",
   "kind": "letters",
   "audioPath": "audio/lesson03/",
+  "imagePath": "images/lesson03/",
   "perPage": 4,
   "sections": [
     {
@@ -747,7 +748,8 @@
       "timings": null,
       "badges": [
         "ه / ح"
-      ]
+      ],
+      "image": "drill-ha-hha.png"
     },
     {
       "id": 47,

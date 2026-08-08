@@ -8,8 +8,7 @@
  *
  * LENGTH — one unit is a harakah, the time of one short vowel
  *  · plain letter with a short vowel ............... 1.0
- *  · sukoon inside the word ....................... 1.0  (articulated fully)
- *  · sukoon on the FINAL letter (clipped stop) .... 0.75
+ *  · letter with sukoon — closes a syllable ....... 0.7
  *  · madd leen (وْ / يْ after a fatha) ............. 1.1
  *  · hamzat wasl (the ٱ of ٱل, word-initial) ....... 0.9
  *  · shadda (the letter is doubled) .............. +0.8
@@ -177,7 +176,7 @@ export interface WeightOptions {
 export function clusterWeight(
   cluster: LetterCluster,
   prev: LetterCluster | undefined,
-  isLast: boolean,
+  _isLast: boolean,
   next?: LetterCluster,
   opts: WeightOptions = {},
 ): number {
@@ -198,9 +197,11 @@ export function clusterWeight(
     w = maddLength(cluster, next);
   } else if (hasSukoon(marks)) {
     const leen = (base === 'و' || base === 'ي') && prevMarks.includes(FATHA);
-    // A medial sukoon letter is articulated fully; only stopping on a final
-    // sukoon clips it short.
-    w = leen ? 1.1 : isLast ? 0.75 : 1.0;
+    // A silent letter closes the syllable before it: fully articulated, but
+    // quicker than a letter carrying its own vowel, since it has no vowel to
+    // hold. 0.7 of a harakah — measured against the recordings, where the
+    // highlight used to lag through words like وَسۡوَاسِ.
+    w = leen ? 1.1 : 0.7;
   } else if (marks.includes(MADDAH) && !hasVowel(marks)) {
     // A plain consonant carrying the maddah sign is one of the disconnected
     // letters that open some surahs (الٓمٓ، صٓ، قٓ): madd lazim harfi, 6 harakat.

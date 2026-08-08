@@ -20,6 +20,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
 import { readZipEntry } from './lib/zip.mjs';
+import { addMaddSigns } from './lib/arabic.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
@@ -40,7 +41,7 @@ const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' '
 const SUN = new Set('تثدذرزسشصضطظلن');
 
 /** Mushaf orthography: hamzat wasl, and the sukoon drawn as a head of khah. */
-const mushaf = (s) => s.replaceAll(SUKOON, MUSHAF_SUKOON);
+const mushaf = (s) => addMaddSigns(s.replaceAll(SUKOON, MUSHAF_SUKOON));
 
 /**
  * Where the definite article sits.

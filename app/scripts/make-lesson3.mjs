@@ -16,6 +16,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
 import { readZipEntry } from './lib/zip.mjs';
+import { addMaddSigns } from './lib/arabic.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
@@ -45,6 +46,10 @@ const DRILL_PAIRS = { id: 'pairs', title: 'Pair drills', titleArabic: 'تمار�
 
 /** Each row is two words that differ only in the confusable letter, so the
  *  card carries both and each is playable on its own. */
+/** Waveform screenshots, keyed by the drill they belong to. */
+const IMAGES = { 'ه ح ه ح': 'drill-ha-hha.png' };
+const key0 = (t) => t.replace(/[ً-ٰۖ-ۭـ]/g, '').replace(/\s+/g, ' ').trim();
+
 const DRILL_CONTRAST = { id: 'contrast', title: 'Contrast drills', titleArabic: 'تمارين التمييز', rows: [59, 66],
   take: 'drill-contrast-v2',
   hint: 'Two words, one letter apart. Play them back to back and listen for the switch.' };
@@ -88,7 +93,7 @@ for (const s of SECTIONS) {
     words.push({
       id,
       section: s.id,
-      text: e.text,
+      text: addMaddSigns(e.text),
       audio: `word${String(id).padStart(2, '0')}.wav`,
       timings: null,
       meaning: e.meaning,
@@ -108,10 +113,13 @@ for (const cells of drillRows) {
   words.push({
     id,
     section: DRILL_PAIRS.id,
-    text: cells[1],
+    text: addMaddSigns(cells[1]),
     audio: `word${String(id).padStart(2, '0')}.wav`,
     timings: null,
     badges: [cells[0]],
+    // A picture of this drill's waveform: the ه and ح bursts look plainly
+    // different, which is a teaching point in itself.
+    image: IMAGES[key0(cells[1])],
   });
 }
 
@@ -130,7 +138,7 @@ for (const cells of contrastRows) {
   words.push({
     id,
     section: DRILL_CONTRAST.id,
-    forms: parts.map((text, i) => ({ text, audio: `word${n}${'ab'[i]}.wav`, timings: null })),
+    forms: parts.map((text, i) => ({ text: addMaddSigns(text), audio: `word${n}${'ab'[i]}.wav`, timings: null })),
     badges: [cells[0]],
   });
   contrastClips.push(`word${n}a.wav`, `word${n}b.wav`);
@@ -140,11 +148,11 @@ for (const cells of contrastRows) {
 // Matching on the words themselves rather than a number keeps the folder
 // self-describing: renaming or re-recording a row needs no renumbering.
 const MARKS = /[ً-ٰۖ-ۭـ]/g;
-const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/s+/g, ' ').trim();
+const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' ').trim();
 
 const byName = new Map();
 for (const f of readdirSync(AUDIO_SRC)) {
-  if (f.toLowerCase().endsWith('.wav')) byName.set(key(f.replace(/.wav$/i, '')), f);
+  if (f.toLowerCase().endsWith('.wav')) byName.set(key(f.replace(/\.wav$/i, '')), f);
 }
 
 mkdirSync(AUDIO_OUT, { recursive: true });
@@ -160,11 +168,11 @@ for (const w of words) {
   const wav = readWav(join(AUDIO_SRC, file));
   const { segments, durations, suspicious } = splitIntoN(wav, texts.length);
   if (segments.length !== texts.length) {
-    problems.push();
+    problems.push(`#${w.id} ${file}: split gave ${segments.length} of ${texts.length}`);
     continue;
   }
   if (suspicious && texts.length > 1) {
-    problems.push();
+    problems.push(`#${w.id} ${file}: uneven halves — ${durations.map((d) => d.toFixed(2)).join(' / ')}`);
   }
   const outs = w.forms ? w.forms.map((f) => f.audio) : [w.audio];
   segments.forEach(([a, b], i) => {
@@ -183,6 +191,7 @@ const lesson = {
   titleArabic: 'حروف الحلق',
   kind: 'letters',
   audioPath: 'audio/lesson03/',
+  imagePath: 'images/lesson03/',
   perPage: 4,
   sections,
   words,
