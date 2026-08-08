@@ -140,6 +140,20 @@ Things that cost real debugging. Do not undo them without reading why.
 - Re-cutting a clip invalidates any calibration measured against it — check
   before regenerating audio for a calibrated word.
 
+**Keyboard** (`SectionedLesson`, lessons 2–4)
+- Built for a learner who drives an iPad by voice, so commands must mean the
+  same thing in every lesson. `←`/`→` change page; a **number plays the first
+  form** of that card; **Shift+number steps to the next form**, wrapping, and
+  resets when the plain number is pressed.
+- Shift used to mean "the ال form", which only made sense in lesson 2 and left
+  lesson 4's third form unreachable. A card is a *set* — stepping through it is
+  the only scheme that works whether the card holds one form or three.
+- The hint line is written from the page in front of you (card count, form
+  count), never hardcoded. A hint that describes a different lesson is worse
+  than no hint: someone working by voice cannot see that it is lying.
+- Lesson 1 (`WordsLesson`) is a plain unpaged grid and has **no** keyboard
+  support at all — an open accessibility gap, not a decision.
+
 **App**
 - Accounts are **additive, never a mode**: no account = the full app. Signing in
   only adds sync and, for the admin, tools. There is no "choose your mode" screen.

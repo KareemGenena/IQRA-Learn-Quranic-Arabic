@@ -66,6 +66,8 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
   const headingRef = useRef<HTMLHeadingElement>(null);
   const playersRef = useRef(new Map<string, () => Promise<void>>());
   const cancelAllRef = useRef(false);
+  /** Card index → which form of that card Shift+number will play next. */
+  const formStep = useRef(new Map<number, number>());
 
   const page = pages[pageNo];
 
@@ -129,14 +131,30 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
       if (e.key === 'ArrowRight') goto(pageNo + 1);
       else if (e.key === 'ArrowLeft') goto(pageNo - 1);
       else if (/^[1-9]$/.test(e.key)) {
-        const item = page.items[Number(e.key) - 1];
-        const form = item?.forms[e.shiftKey && item.forms[1] ? 1 : 0];
+        const index = Number(e.key) - 1;
+        const item = page.items[index];
+        if (!item) return;
+        // A card is a set: one word said one, two or three ways. The number
+        // plays the first of the set and Shift steps to the next, wrapping at
+        // the end. Shift used to mean "the ال form", which only made sense in
+        // lesson 2 and left lesson 4's third form unreachable — this works
+        // whatever a card happens to hold, which is what a keyboard-only
+        // learner needs it to do.
+        const at = e.shiftKey ? ((formStep.current.get(index) ?? 0) + 1) % item.forms.length : 0;
+        formStep.current.set(index, at);
+        const form = item.forms[at];
         if (form) void playersRef.current.get(form.key)?.();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [goto, pageNo, page]);
+
+  // Where Shift has walked to on each card. Reset on a page change so the
+  // numbers always mean the same thing on a fresh screen.
+  useEffect(() => {
+    formStep.current.clear();
+  }, [pageNo]);
 
   useEffect(() => () => {
     cancelAllRef.current = true;
@@ -145,6 +163,8 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
 
   if (!page) return <p className="loading">This lesson has no pages yet.</p>;
 
+  const cardCount = page.items.length;
+  const maxForms = page.items.reduce((most, i) => Math.max(most, i.forms.length), 1);
   const heading = page.quiz ? 'Mixed Review' : (page.section?.title ?? '');
   const headingArabic = page.quiz ? 'مراجعة' : (page.section?.titleArabic ?? '');
   const hint = page.quiz
@@ -238,9 +258,19 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
         {heading} — page {page.indexInGroup} of {page.groupSize}
         <span className="page-total"> (screen {pageNo + 1} of {pages.length})</span>
       </p>
+      {/* Written from the page in front of you, not from the lesson: the count
+          of cards and whether they hold more than one form both change between
+          lessons, and a hint that describes a different lesson is worse than
+          none — someone driving this by voice has no way to tell it is lying. */}
       <p className="kbd-hint">
-        Keyboard: <kbd>←</kbd> <kbd>→</kbd> change page, <kbd>1</kbd>–<kbd>4</kbd> play a word,
-        <kbd>Shift</kbd>+number plays it with ال.
+        Keyboard: <kbd>←</kbd> <kbd>→</kbd> change page,{' '}
+        {cardCount === 1 ? <kbd>1</kbd> : <><kbd>1</kbd>–<kbd>{cardCount}</kbd></>} play a word
+        {maxForms > 1 && (
+          <>
+            , <kbd>Shift</kbd>+number steps to its next form ({maxForms} in all)
+          </>
+        )}
+        .
       </p>
     </main>
   );

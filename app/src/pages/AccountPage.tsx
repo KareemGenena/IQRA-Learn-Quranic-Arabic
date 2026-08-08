@@ -12,17 +12,29 @@ import type { Account } from '../lib/useAccount';
 export function AccountPage({ account }: { account: Account }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [saved, setSaved] = useState(false);
 
   if (!account.signedIn) return <SignInPanel account={account} />;
 
   const teacher = account.profile?.role === 'teacher';
 
+  /**
+   * Always write, even when the role looks unchanged.
+   *
+   * Before a profile exists there is nothing to compare against, so "I'm
+   * learning" is drawn as already chosen — and skipping the write made
+   * pressing it look like a dead button while it quietly created the
+   * document. A redundant write costs nothing; a control that appears to do
+   * nothing costs trust.
+   */
   const choose = async (role: 'learner' | 'teacher') => {
-    if (role === account.profile?.role) return;
     setBusy(true);
     setError('');
+    setSaved(false);
     try {
       await account.setRole(role);
+      setSaved(true);
+      window.setTimeout(() => setSaved(false), 2500);
     } catch {
       setError('Could not save that. Check your connection and try again.');
     } finally {
@@ -68,11 +80,15 @@ export function AccountPage({ account }: { account: Account }) {
             <span className="role-sub">Everything above, plus a class</span>
           </button>
         </div>
+        <p className="save-state" aria-live="polite">
+          {busy ? 'Saving…' : saved ? 'Saved.' : ''}
+        </p>
         {error && <p className="gate-error">{error}</p>}
         {teacher && (
           <p className="account-hint">
-            Classes — join codes and a roster — are the next thing being built. Nothing to set up
-            yet.
+            <strong>Classes aren&apos;t built yet</strong> — so there is no join code to hand out
+            and no roster to approve. That is the next thing being built. Nothing you can set up
+            here in the meantime.
           </p>
         )}
       </section>

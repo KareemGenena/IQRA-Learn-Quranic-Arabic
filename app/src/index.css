@@ -1487,6 +1487,15 @@ body {
   color: var(--text-soft);
 }
 
+/* Always present so a confirmation never nudges the buttons as it appears. */
+.save-state {
+  margin: 10px 0 0;
+  min-height: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
 .danger-zone {
   border-color: color-mix(in srgb, #c0392b 40%, var(--card-border));
   background: color-mix(in srgb, #c0392b 6%, var(--card));
