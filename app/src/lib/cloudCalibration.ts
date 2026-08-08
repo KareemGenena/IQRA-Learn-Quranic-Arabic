@@ -11,7 +11,7 @@
  * into words.json or the automatic estimate.
  */
 
-import { getIdToken } from './adminAuth';
+import { getIdToken } from './auth';
 import { API_KEY, PROJECT_ID } from './firebaseConfig';
 import type { CalibrationMap } from './calibration';
 

@@ -1,6 +1,51 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    // The admin is one email, written here and nowhere a client can reach.
+    // No document anyone can create can confer it — which is the whole point
+    // of keeping 'admin' out of the role field below.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'kintegracion@gmail.com';
+    }
+
+    // The shape of a profile, checked against the document as it will be
+    // *after* the write — so a partial update is judged on the merged result
+    // and cannot sneak a bad field past by simply omitting the good ones.
+    function validProfile() {
+      return request.resource.data.keys().hasOnly(['email', 'displayName', 'role', 'createdAt'])
+        && request.resource.data.role in ['learner', 'teacher']
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.displayName is string
+        && request.resource.data.displayName.size() <= 80;
+    }
+
+    // A person's own profile: users/{uid} -> { email, displayName, role, createdAt }
+    //
+    // You may read and write only your own. Teachers self-declare, so 'teacher'
+    // is a role you may give yourself — it grants nothing on its own; authority
+    // over a class will come from owning that class. Any other value, including
+    // anything resembling 'admin', is refused outright.
+    match /users/{uid} {
+      allow read: if isAdmin() || (request.auth != null && request.auth.uid == uid);
+
+      // Create and update are kept apart rather than folded together behind a
+      // `resource == null` test: separating them says exactly the same thing
+      // without depending on what `resource` is when there is no document.
+      allow create: if request.auth != null
+        && request.auth.uid == uid
+        && validProfile()
+        && request.resource.data.createdAt is int;
+
+      // createdAt is stamped once, on create, and never moves again.
+      allow update: if request.auth != null
+        && request.auth.uid == uid
+        && validProfile()
+        && request.resource.data.createdAt == resource.data.createdAt;
+
+      allow delete: if false;
+    }
+
     // Letter-timing calibrations, one doc per word:
     //   calibrations/{lessonId}/words/{wordId}  ->  { b: [boundary seconds] }
     //

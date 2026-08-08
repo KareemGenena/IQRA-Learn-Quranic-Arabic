@@ -150,21 +150,38 @@ for (const cells of contrastRows) {
 const MARKS = /[ً-ٰۖ-ۭـ]/g;
 const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' ').trim();
 
+/**
+ * Recordings, keyed by the words in the filename.
+ *
+ * A re-recording is named after the same words with a take number on the end —
+ * "جئت 2.wav" replaces "جئت.wav" — so the number is stripped before matching
+ * and the highest take wins. Without this a new take is silently ignored and
+ * the row just looks unrecorded, which is exactly how it went unnoticed once.
+ */
 const byName = new Map();
 for (const f of readdirSync(AUDIO_SRC)) {
-  if (f.toLowerCase().endsWith('.wav')) byName.set(key(f.replace(/\.wav$/i, '')), f);
+  if (!f.toLowerCase().endsWith('.wav')) continue;
+  const base = f.replace(/\.wav$/i, '');
+  const numbered = /^(.*?)\s+(\d+)$/.exec(base);
+  const k = key(numbered ? numbered[1] : base);
+  const take = numbered ? Number(numbered[2]) : 1;
+  const prev = byName.get(k);
+  if (!prev || take > prev.take) byName.set(k, { file: f, take });
 }
 
 mkdirSync(AUDIO_OUT, { recursive: true });
 let written = 0;
 const noAudio = [];
+const used = new Set();
 for (const w of words) {
   const texts = w.forms ? w.forms.map((f) => f.text) : [w.text];
-  const file = byName.get(key(texts.join(' ')));
-  if (!file) {
+  const match = byName.get(key(texts.join(' ')));
+  if (!match) {
     noAudio.push(`#${w.id} ${key(texts.join(' '))}`);
     continue;
   }
+  const { file } = match;
+  used.add(file);
   const wav = readWav(join(AUDIO_SRC, file));
   const { segments, durations, suspicious } = splitIntoN(wav, texts.length);
   if (segments.length !== texts.length) {
@@ -182,6 +199,16 @@ for (const w of words) {
 }
 if (noAudio.length) {
   problems.push(`no recording yet for ${noAudio.length} row(s): ${noAudio.join(', ')}`);
+}
+
+// A recording that matches no row is a misnamed file or a word that isn't in
+// the table — either way the author recorded something that will never play,
+// and silence about it is how a new take gets lost.
+const unused = readdirSync(AUDIO_SRC)
+  .filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f))
+  .map((f) => f.replace(/\.wav$/i, ''));
+if (unused.length) {
+  problems.push(`${unused.length} recording(s) match no row: ${unused.join('، ')}`);
 }
 
 // ── write the lesson ──────────────────────────────────────────────────────

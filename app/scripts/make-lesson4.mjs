@@ -105,17 +105,41 @@ const words = [];
 const sections = [];
 let id = 0;
 
-const audioFiles = new Map();
+/**
+ * The recordings, in the two shapes the author makes them.
+ *
+ * `combined` — one take holding the word three times, named "<word> و ثم.wav".
+ * `single`   — one take per form, each named after the words actually said in
+ *              it: "وسواس.wav", "والوسواس.wav", "ثم الوسواس.wav".
+ *
+ * They are kept in separate maps on purpose. Folding them together is what
+ * broke وسواس: its bare-word file keyed to the same name as a combined take,
+ * so a recording of the word said ONCE was being cut into three, and all
+ * three forms played fragments of the single utterance.
+ *
+ * A trailing number is a take number, not part of the word, and the highest
+ * take wins — so a re-recording replaces the old one by being named "… 2".
+ */
+const combined = new Map();
+const single = new Map();
 for (const f of readdirSync(AUDIO_SRC)) {
-  if (f.toLowerCase().endsWith('.wav')) {
-    // Files are named for the bare word plus a "و ثم" tag.
-    audioFiles.set(key(f.replace(/\.wav$/i, '').replace(/\s*و\s*ثم\s*$/, '')), f);
-  }
+  if (!f.toLowerCase().endsWith('.wav')) continue;
+  const base = f.replace(/\.wav$/i, '');
+  const numbered = /^(.*?)\s+(\d+)$/.exec(base);
+  const name = numbered ? numbered[1] : base;
+  const take = numbered ? Number(numbered[2]) : 1;
+
+  const bareTag = /\s*و\s*ثم\s*$/;
+  const target = bareTag.test(name) ? combined : single;
+  const k = key(name.replace(bareTag, ''));
+  const prev = target.get(k);
+  if (!prev || take > prev.take) target.set(k, { file: f, take });
 }
 
 mkdirSync(AUDIO_OUT, { recursive: true });
 let written = 0;
 const notYet = [];
+const used = new Set();
 
 for (const g of GROUPS) {
   sections.push({ id: g.id, title: g.title, titleArabic: g.titleArabic, hint: g.hint });
@@ -130,32 +154,55 @@ for (const g of GROUPS) {
       problems.push(`${key(bare)}: sits under ${g.id} but its first letter says otherwise`);
     }
 
-    const file = audioFiles.get(key(bare));
-    if (!file) {
+    // Three separate takes win over a combined one: nothing has to be guessed
+    // about where one form ends and the next begins. Each is trimmed of its
+    // own silence exactly as a single-phrase recording is.
+    const asSeparate = [key(bare), key(wa), key(thumma)].map((k) => single.get(k)?.file);
+    const asCombined = combined.get(key(bare))?.file;
+
+    let cuts;
+    let sourceLabel;
+    let uneven = false;
+    if (asSeparate.every(Boolean)) {
+      cuts = asSeparate.map((f) => {
+        const wav = readWav(join(AUDIO_SRC, f));
+        used.add(f);
+        return { wav, span: splitIntoN(wav, 1).segments[0] };
+      });
+      sourceLabel = 'three takes';
+    } else if (asCombined) {
+      const wav = readWav(join(AUDIO_SRC, asCombined));
+      const { segments, suspicious } = splitIntoN(wav, 3);
+      if (segments.length !== 3) {
+        problems.push(`${asCombined}: split gave ${segments.length} pieces, expected 3`);
+        continue;
+      }
+      used.add(asCombined);
+      uneven = suspicious;
+      cuts = segments.map((span) => ({ wav, span }));
+      sourceLabel = asCombined;
+    } else {
       notYet.push(key(bare));
       continue;
     }
 
+    // Nothing above this line may consume an id: a burnt id would renumber
+    // every word after it, and calibrations are stored against those numbers.
     id += 1;
     const n = String(id).padStart(2, '0');
     const texts = [mushaf(bare), definite(wa, isSun), definite(thumma, isSun)];
 
-    const wav = readWav(join(AUDIO_SRC, file));
-    const { segments, durations, suspicious } = splitIntoN(wav, 3);
-    if (segments.length !== 3) {
-      problems.push(`${file}: split gave ${segments.length} pieces, expected 3`);
-      continue;
-    }
     // Each form is longer than the one before; anything else is worth a listen.
+    const durations = cuts.map(({ wav, span }) => (span[1] - span[0]) / wav.sampleRate);
     if (!(durations[0] < durations[1] && durations[1] < durations[2])) {
-      problems.push(`${file}: lengths not rising — ${durations.map((d) => d.toFixed(2)).join(' / ')}`);
-    } else if (suspicious) {
-      problems.push(`${file}: uneven — ${durations.map((d) => d.toFixed(2)).join(' / ')}`);
+      problems.push(`${sourceLabel} (${key(bare)}): lengths not rising — ${durations.map((d) => d.toFixed(2)).join(' / ')}`);
+    } else if (uneven) {
+      problems.push(`${sourceLabel}: uneven — ${durations.map((d) => d.toFixed(2)).join(' / ')}`);
     }
 
     const audio = ['a', 'b', 'c'].map((s) => `word${n}${s}.wav`);
-    segments.forEach(([a, b], i) => {
-      writeSegment(wav, a, b, join(AUDIO_OUT, audio[i]), { mono: true });
+    cuts.forEach(({ wav, span }, i) => {
+      writeSegment(wav, span[0], span[1], join(AUDIO_OUT, audio[i]), { mono: true });
       written += 1;
     });
 
@@ -184,8 +231,9 @@ const phraseRows = rows.slice(39).map((c) => (c[0] ?? '').trim()).filter(Boolean
 if (phraseRows.length) {
   sections.push({ id: PHRASES.id, title: PHRASES.title, titleArabic: PHRASES.titleArabic, hint: PHRASES.hint });
   for (const raw of phraseRows) {
-    const file = audioFiles.get(key(raw));
+    const file = single.get(key(raw))?.file;
     if (!file) { notYet.push(key(raw)); continue; }
+    used.add(file);
     // Sun or moon is decided by the letter right after the article.
     const isSun = SUN.has(articleLetter(raw));
     id += 1;
@@ -226,4 +274,14 @@ for (const s of sections) {
   console.log(`  ${s.id.padEnd(11)} ${words.filter((w) => w.section === s.id).length}`);
 }
 if (notYet.length) console.log(`\nnot recorded yet (${notYet.length}): ${notYet.join('، ')}`);
+
+// A recording nothing uses is a misnamed file or a word that isn't in the
+// table. Either way the author recorded something that will never play.
+const unused = readdirSync(AUDIO_SRC)
+  .filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f))
+  .map((f) => f.replace(/\.wav$/i, ''));
+if (unused.length) {
+  problems.push(`${unused.length} recording(s) match no row: ${unused.join('، ')}`);
+}
+
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');

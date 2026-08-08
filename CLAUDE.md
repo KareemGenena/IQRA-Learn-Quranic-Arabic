@@ -61,6 +61,9 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   contrast drills, in 8 sections. The taught letter is coloured inside the word.
 - **Lesson 4** — hamzat wasl: each word alone, after وَ, after ثُمَّ (three forms
   per card), plus a "two sukoons meeting" section of three ayah phrases.
+- **Accounts and roles** — sign up or sign in at `#/account`; a `users/{uid}`
+  profile carries a name and a role of learner or teacher, self-declared.
+  Admin is an email match, never a role.
 - **Letter-by-letter highlighting** driven by per-letter timings.
 - **Admin**: publish/take-down/delete lessons and toggle features at runtime;
   tap-to-calibrate timings that sync to every device.
@@ -103,6 +106,25 @@ Things that cost real debugging. Do not undo them without reading why.
   silences.
 - Audio files are matched to table rows **by the words in the filename**
   (de-diacritized), not by ordinal position. The author need not number them.
+- A **trailing number is a take number**, not part of the word: `جئت 2.wav`
+  replaces `جئت.wav`, and the highest take wins. Before this the new take was
+  silently ignored and the row simply looked unrecorded.
+- Every generator reports **recordings that match no row**. A misnamed file is
+  otherwise invisible — it just quietly never plays.
+- Lesson 4 records a word either as one take said three times
+  (`<word> و ثم.wav`) or as **three separate takes** named for what is said in
+  each. Keep the two kinds in separate maps: folding them together is what
+  broke وسواس, whose bare-word file was cut into three.
+
+**Word ids and calibrations**
+- Lesson 4 numbers words **positionally over the rows that have audio**, so
+  adding or losing a recording renumbers everything after it and silently
+  points existing calibrations at the wrong words. Before regenerating,
+  snapshot the id→word map and diff it afterwards. (Lesson 3 numbers every
+  table row whether recorded or not, so it does not have this hazard.)
+- A generator run rewrites every clip, but an unchanged source cuts
+  byte-identically — `git status` on the audio folder is the quick check for
+  which words were really re-cut, and therefore whose calibration is stale.
 
 **Timing** (`timing.ts`, one unit = one harakah)
 - Boundaries are in **media time**, so highlights stay correct at any playback
@@ -138,16 +160,24 @@ Things that cost real debugging. Do not undo them without reading why.
 **Features:** laser live for everyone; notes admin-only.
 
 Open items:
-- **Lesson 3** — ٱلرَّحِيمِ (row #21, ح section) has no recording. Everything else
-  is complete and verified.
+- **Lesson 3** — ٱلرَّحِيمِ (row #21, ح section) is the one row with no
+  recording. Note it is **not** ٱلرَّحۡمَٰنِ, which is row #20 and is recorded —
+  two different words, adjacent, both in the ح section. Everything else is
+  complete and verified.
 - **Lesson 4** — 24 qamariyya words are unrecorded; the author has decided not to
   record them for now. The generator skips and lists them, so it can simply be
   re-run if that changes.
-- **وسواس** (lesson 4) — the quietest recording in the set (peak 0.010 vs ~0.02).
-  Splits correctly now; if it still sounds wrong it is the source, not the cut.
 - **Notes** are device-local. Cloud sync and the teacher/student layers are
   designed but not built.
-- **Classes** (teacher accounts, join codes, rosters) are designed but not built.
+- **Classes** (join codes, rosters) are designed but not built. Roles exist.
+- **Account deletion is not possible** — `allow delete: if false` on profiles.
+  Deliberate for now (no UI reaches it, and a deleted profile would dangle from
+  a roster), but it must be answered before real students sign up: deleting the
+  Firebase Auth account would leave the profile document orphaned. See the
+  discussion in section 5.
+
+Calibrations live only on lesson 4 — words 12 (فَلَق), 16 (حَطَب), 21 (يَتِيم).
+Everything else uses the automatic estimate.
 
 Designed and agreed, not yet implemented:
 - Notes as three stacked layers — reference (fixed) / teacher / student — so
@@ -161,11 +191,32 @@ Designed and agreed, not yet implemented:
 
 ## 5. Next task
 
-Ask the author. The likely order is:
+**Classes.** Roles are done; a teacher can declare themselves at `#/account`
+and nothing happens yet, because there is no class to own. The agreed flow:
 
-1. Review lessons 3 and 4 in the app and publish them from `#/admin`.
-2. Notes: cloud sync for a signed-in user, then the teacher/student layers.
-3. Classes: teacher role, join codes, roster with approval.
+1. Teacher creates a class (a name, and a generated join code).
+2. Student signs up and enters the code, which files an enrolment request.
+3. Teacher approves or declines from a roster.
+4. Approved students see the teacher's note layer for each lesson, read-only.
+
+Decisions still owed by the author before the data model is fixed:
+- Can a student belong to more than one class? (Recommend yes — cheap now,
+  painful to retrofit.)
+- Should a join code be rotatable/disable-able? (Recommend yes: a code that
+  grants entry is effectively a password.)
+- What happens to a class when its teacher leaves?
+
+One design point worth keeping: a student must be able to find a class **by its
+code before they are a member**, so put the lookup in a separate
+`joinCodes/{code}` → classId document that any signed-in user may read. That
+keeps the class document itself private instead of readable by everyone.
+
+Then, in order: account deletion done properly (enrolments → notes → profile →
+auth account, ideally a Cloud Function on the `user.delete` trigger), notes
+cloud sync, and the teacher/student layers — student layer private with an
+explicit submit-to-teacher, teacher layer per class per lesson.
+
+Also still open: review lessons 3 and 4 and publish them from `#/admin`.
 
 ---
 

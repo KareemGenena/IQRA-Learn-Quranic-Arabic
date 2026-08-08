@@ -10,7 +10,7 @@
  * defaults below, so a learner with no network still sees the right thing.
  */
 
-import { getIdToken } from './adminAuth';
+import { getIdToken } from './auth';
 import { API_KEY, PROJECT_ID } from './firebaseConfig';
 
 /**

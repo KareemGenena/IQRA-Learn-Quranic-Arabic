@@ -4,15 +4,17 @@ import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
 import { AdminPage } from './pages/AdminPage';
 import { NotesPage } from './pages/NotesPage';
-import { AdminGate } from './components/AdminGate';
+import { AccountPage } from './pages/AccountPage';
+import { SignInPanel } from './components/SignInPanel';
 import { LaserPointer } from './components/LaserPointer';
 import { LessonManager } from './components/LessonManager';
-import { getSession, signOut } from './lib/adminAuth';
+import { useAccount } from './lib/useAccount';
 import { storeCloudSnapshot } from './lib/calibration';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
 import { LESSONS, loadLesson } from './lib/lessons';
 import { cachedConfig, canSeeLesson, canUseFeature, fetchConfig, lessonStatus } from './lib/appConfig';
 import type { AppConfig } from './lib/appConfig';
+import type { Account } from './lib/useAccount';
 import type { Lesson } from './types';
 
 type Theme = 'light' | 'dark';
@@ -33,19 +35,40 @@ function initialRate(): number {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'admin' | 'notes';
+  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account';
   lessonId: number;
 }
 
 function parseRoute(hash: string): Route {
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
-  const m = /^#\/(lesson|admin|calibrate|notes)(?:\/(\d+))?/.exec(hash);
+  const m = /^#\/(lesson|admin|calibrate|notes|account)(?:\/(\d+))?/.exec(hash);
   if (m) {
     const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
     return { page, lessonId: Number(m[2] ?? 0) };
   }
   return { page: 'home', lessonId: 0 };
+}
+
+/**
+ * The admin pages belong to one account. Someone signed out is offered the
+ * sign-in form; someone already signed in as themselves is simply told, since
+ * a form they could never satisfy would only look like a puzzle to solve.
+ */
+function NotAdmin({ account }: { account: Account }) {
+  if (!account.signedIn) {
+    return (
+      <SignInPanel
+        account={account}
+        blurb="These are the lesson owner's tools. Sign in to reach them."
+      />
+    );
+  }
+  return (
+    <p className="loading">
+      This page belongs to the lesson owner. <a href="#/">Back to the lessons</a>
+    </p>
+  );
 }
 
 export default function App() {
@@ -54,9 +77,13 @@ export default function App() {
   const [error, setError] = useState(false);
   const [theme, setTheme] = useState<Theme>(initialTheme);
   const [rate, setRate] = useState<number>(initialRate);
-  const [admin, setAdmin] = useState(() => getSession() !== null);
   const [laser, setLaser] = useState(false);
   const [config, setConfig] = useState<AppConfig>(cachedConfig);
+
+  // Who is signed in. `admin` is an email match, never merely "has a session"
+  // — every student will have a session of their own.
+  const account = useAccount();
+  const admin = account.isAdmin;
 
   useEffect(() => {
     const onChange = () => setRoute(parseRoute(window.location.hash));
@@ -107,7 +134,7 @@ export default function App() {
 
   const meta = LESSONS.find((l) => l.id === route.lessonId);
   /** The bare sign-in screen: no page title, no second sign-in button. */
-  const signingIn = route.page === 'admin' && !admin;
+  const signingIn = route.page === 'account' && !account.signedIn;
   const showLaser = canUseFeature(config, 'laser', admin);
   const showNotes = canUseFeature(config, 'notes', admin);
   const lessonAllowed = route.lessonId === 0 || canSeeLesson(config, route.lessonId, admin);
@@ -140,25 +167,19 @@ export default function App() {
           {/* The installed PWA has no address bar, so signing in needs a
               control here rather than a typed URL. Hidden on the sign-in
               page itself, where it would just point at the current page. */}
-          {signingIn ? null : admin ? (
+          {signingIn ? null : account.signedIn ? (
             <>
-              <a className="account-btn" href="#/admin">
-                Admin
+              {admin && (
+                <a className="account-btn" href="#/admin">
+                  Admin
+                </a>
+              )}
+              <a className="account-btn" href="#/account">
+                {account.name || 'Account'}
               </a>
-              <button
-                type="button"
-                className="account-btn"
-                onClick={() => {
-                  signOut();
-                  setAdmin(false);
-                  window.location.hash = '#/';
-                }}
-              >
-                Sign out
-              </button>
             </>
           ) : (
-            <a className="account-btn" href="#/admin">
+            <a className="account-btn" href="#/account">
               Sign in
             </a>
           )}
@@ -181,12 +202,16 @@ export default function App() {
             <a href="#/">← All lessons</a>
             {!signingIn && (
               <h2>
-                {route.page === 'admin' && route.lessonId === 0
-                  ? 'Admin'
-                  : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}Lesson ${route.lessonId}${meta ? ` — ${meta.title}` : ''}`}
+                {route.page === 'account'
+                  ? 'Your account'
+                  : route.page === 'admin' && route.lessonId === 0
+                    ? 'Admin'
+                    : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}Lesson ${route.lessonId}${meta ? ` — ${meta.title}` : ''}`}
               </h2>
             )}
           </nav>
+
+          {route.page === 'account' && <AccountPage account={account} />}
 
           {/* Admin home: what's published, and which features are live. */}
           {route.page === 'admin' && route.lessonId === 0 && (
@@ -198,7 +223,7 @@ export default function App() {
                 </p>
               </>
             ) : (
-              <AdminGate onUnlock={() => setAdmin(true)} />
+              <NotAdmin account={account} />
             )
           )}
 
@@ -220,7 +245,7 @@ export default function App() {
               )}
 
               {lessonAllowed && lesson && route.page === 'admin' && (
-                admin ? <AdminPage lesson={lesson} /> : <AdminGate onUnlock={() => setAdmin(true)} />
+                admin ? <AdminPage lesson={lesson} /> : <NotAdmin account={account} />
               )}
 
               {lessonAllowed && lesson && route.page === 'lesson' && (
