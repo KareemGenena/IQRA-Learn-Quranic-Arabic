@@ -22,6 +22,12 @@
       "title": "Moon Lam",
       "titleArabic": "اللام القمرية",
       "hint": "The ل is always spoken; it is the ٱ before it that drops away."
+    },
+    {
+      "id": "saakin",
+      "title": "Two Sukoons Meeting",
+      "titleArabic": "التخلص من التقاء الساكنين",
+      "hint": "The last letter of the first word is normally saakin. Before ٱل it takes a kasra instead, because Arabic will not let two silent letters meet — and the ٱ itself drops away."
     }
   ],
   "words": [
@@ -659,6 +665,60 @@
         {
           "text": "ثُمَّ ٱلۡمِسۡكِينِ",
           "audio": "word22c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "section": "saakin",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        0
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "قَالَتِ ٱلۡأَعۡرَابُ",
+          "audio": "word23a.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "section": "saakin",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        0
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "قُمِ ٱللَّيۡلَ إِلَّا قَلِيلًا",
+          "audio": "word24a.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "section": "saakin",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        0
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "قُلِ ٱلۡحَمۡدُ لِلَّهِ",
+          "audio": "word25a.wav",
           "timings": null
         }
       ]

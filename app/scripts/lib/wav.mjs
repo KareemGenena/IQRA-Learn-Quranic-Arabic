@@ -143,9 +143,22 @@ export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15
       start = -1;
     }
   }
-  //    What counts as "brief" is relative to this take: in a drill of single
-  //    letters every piece is short, so an absolute threshold would throw the
-  //    whole recording away. Compare against the median run instead.
+  //    Momentary dips inside a word — between an opening consonant and the
+  //    vowel that follows it — are not real gaps, so glue anything separated
+  //    by less than a breath back together first. Without this the quiet م of
+  //    مُخۡلِصِينَ looks like a click of its own and the word loses its head.
+  const joinW = Math.round(0.12 / 0.01);
+  const joined = [];
+  for (const r of runs) {
+    const last = joined[joined.length - 1];
+    if (last && r[0] - last[1] < joinW) last[1] = r[1];
+    else joined.push([...r]);
+  }
+  runs = joined;
+
+  //    Only now decide what is a click: a whole sound that is short compared
+  //    with the others AND stands on its own. Judging the pieces before
+  //    gluing them would let a burst of taps pose as a word.
   if (runs.length > 1) {
     const lens = runs.map(([a, b]) => b - a).sort((x, y) => x - y);
     const median = lens[Math.floor(lens.length / 2)];

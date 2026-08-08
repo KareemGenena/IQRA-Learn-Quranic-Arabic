@@ -42,11 +42,33 @@ const SUN = new Set('تثدذرزسشصضطظلن');
 /** Mushaf orthography: hamzat wasl, and the sukoon drawn as a head of khah. */
 const mushaf = (s) => s.replaceAll(SUKOON, MUSHAF_SUKOON);
 
+/**
+ * Where the definite article sits.
+ *
+ * "ال" also occurs INSIDE words — قَالَتِ has one — so a naive search corrupts
+ * the wrong word. An article that follows a space is unambiguous, so prefer
+ * that; only fall back to the first occurrence for forms like وَالنَّاسِ, where
+ * the article is glued straight onto a prefix letter.
+ */
+function findArticle(text) {
+  for (let i = 0; i < text.length - 1; i++) {
+    if (text[i] === ALIF && text[i + 1] === 'ل' && (i === 0 || /\s/.test(text[i - 1]))) return i;
+  }
+  return text.indexOf(ALIF + 'ل');
+}
+
+/** The letter the article is attached to decides sun or moon. */
+function articleLetter(text) {
+  const i = findArticle(text);
+  if (i === -1) return '';
+  return text.slice(i + 2).replace(MARKS, '')[0] ?? '';
+}
+
 /** Put the ٱ in, and the lam's sukoon when the lam is actually spoken. */
 function definite(text, isSun) {
   // The docx writes the article as plain ا ل; swap in the wasla alif, and for
   // a moon word add the sukoon the source leaves off.
-  const idx = text.indexOf(ALIF + 'ل');
+  const idx = findArticle(text);
   if (idx === -1) return mushaf(text);
   const before = text.slice(0, idx);
   let rest = text.slice(idx + 2);
@@ -145,6 +167,40 @@ for (const g of GROUPS) {
       waslSilentIn: [1, 2],
       badges: [g.id === 'shamsiyya' ? 'Sun ش' : 'Moon ق'],
       forms: texts.map((text, i) => ({ text, audio: audio[i], timings: null })),
+    });
+  }
+}
+
+// ── the three ayah phrases: two sukoons meeting before hamzat wasl ───────
+// Each is one recording of one phrase. The ٱ is silent (a word runs into
+// it) and the letter before it has taken a kasra so two sukoons do not
+// collide — which is the whole point of the section.
+const PHRASES = { id: 'saakin', title: 'Two Sukoons Meeting', titleArabic: 'التخلص من التقاء الساكنين',
+  hint: 'The last letter of the first word is normally saakin. Before ٱل it takes a kasra instead, because Arabic will not let two silent letters meet — and the ٱ itself drops away.' };
+
+// Row 38 is the section's own heading, not a phrase.
+const phraseRows = rows.slice(39).map((c) => (c[0] ?? '').trim()).filter(Boolean);
+if (phraseRows.length) {
+  sections.push({ id: PHRASES.id, title: PHRASES.title, titleArabic: PHRASES.titleArabic, hint: PHRASES.hint });
+  for (const raw of phraseRows) {
+    const file = audioFiles.get(key(raw));
+    if (!file) { notYet.push(key(raw)); continue; }
+    // Sun or moon is decided by the letter right after the article.
+    const isSun = SUN.has(articleLetter(raw));
+    id += 1;
+    const n = String(id).padStart(2, '0');
+    const wav = readWav(join(AUDIO_SRC, file));
+    const { segments } = splitIntoN(wav, 1);
+    const audio = `word${n}a.wav`;
+    writeSegment(wav, segments[0][0], segments[0][1], join(AUDIO_OUT, audio), { mono: true });
+    written += 1;
+    words.push({
+      id,
+      section: PHRASES.id,
+      lam: isSun ? 'shamsiyya' : 'qamariyya',
+      waslSilentIn: [0],
+      badges: [isSun ? 'Sun ش' : 'Moon ق'],
+      forms: [{ text: definite(raw, isSun), audio, timings: null }],
     });
   }
 }
