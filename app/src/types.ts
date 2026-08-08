@@ -50,8 +50,15 @@ export interface LetterWord {
   badges?: string[];
   /** Which letter to light up, and which occurrence of it. */
   target?: { letter: string; position: string };
-  /** Contrast drills carry two words instead of one `text`/`audio`. */
-  pair?: { text: string; audio: string; timings: Timings }[];
+  /** Some rows carry several forms of the same word rather than one
+   *  `text`/`audio` — a contrast pair, or a word said alone then after وَ
+   *  and ثُمَّ. */
+  forms?: { text: string; audio: string; timings: Timings }[];
+  /** Which lam rule applies, for the silent-letter colouring. */
+  lam?: LamType;
+  /** Forms where the ٱ of ٱل is written but not pronounced, because
+   *  something precedes it. Indexes into `forms`. */
+  waslSilentIn?: number[];
 }
 
 export interface Lesson {
@@ -70,6 +77,8 @@ export interface Lesson {
   sections?: LessonSection[];
   quizSize?: number;
   quizHint?: string;
+  /** Caption under each form on a card, e.g. ['alone', 'after وَ']. */
+  formLabels?: string[];
   words: SimpleWord[] | PairWord[] | LetterWord[];
 }
 

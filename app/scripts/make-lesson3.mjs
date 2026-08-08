@@ -11,7 +11,7 @@
  * Run:  node scripts/make-lesson3.mjs
  */
 
-import { mkdirSync, writeFileSync } from 'fs';
+import { mkdirSync, readdirSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
@@ -20,7 +20,7 @@ import { readZipEntry } from './lib/zip.mjs';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
 const DOCX = join(root, 'Word Tables', 'حروف الحلق.docx');
-const AUDIO_SRC = join(root, 'Audio', 'Audio - Huroof Al-Halq');
+const AUDIO_SRC = join(root, 'Audio', 'Audio - Huroof Al-Halq', 'Separated by row - new');
 const AUDIO_OUT = join(here, '..', 'public', 'audio', 'lesson03');
 const LESSON_OUT = join(here, '..', 'public', 'lessons', 'lesson03', 'words.json');
 
@@ -130,46 +130,50 @@ for (const cells of contrastRows) {
   words.push({
     id,
     section: DRILL_CONTRAST.id,
-    pair: parts.map((text, i) => ({ text, audio: `word${n}${'ab'[i]}.wav`, timings: null })),
+    forms: parts.map((text, i) => ({ text, audio: `word${n}${'ab'[i]}.wav`, timings: null })),
     badges: [cells[0]],
   });
   contrastClips.push(`word${n}a.wav`, `word${n}b.wav`);
 }
 
-// ── split the takes ───────────────────────────────────────────────────────
+// ── one recording per table row, named after its words ───────────────────
+// Matching on the words themselves rather than a number keeps the folder
+// self-describing: renaming or re-recording a row needs no renumbering.
+const MARKS = /[ً-ٰۖ-ۭـ]/g;
+const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/s+/g, ' ').trim();
+
+const byName = new Map();
+for (const f of readdirSync(AUDIO_SRC)) {
+  if (f.toLowerCase().endsWith('.wav')) byName.set(key(f.replace(/.wav$/i, '')), f);
+}
+
 mkdirSync(AUDIO_OUT, { recursive: true });
 let written = 0;
-for (const s of [...SECTIONS, DRILL_PAIRS]) {
-  const mine = words.filter((w) => w.section === s.id);
-  const wav = readWav(join(AUDIO_SRC, `${s.take}.wav`));
-  const { segments, durations, suspicious } = splitIntoN(wav, mine.length);
-  if (segments.length !== mine.length) {
-    problems.push(`${s.id}: split gave ${segments.length} pieces for ${mine.length} words`);
+const noAudio = [];
+for (const w of words) {
+  const texts = w.forms ? w.forms.map((f) => f.text) : [w.text];
+  const file = byName.get(key(texts.join(' ')));
+  if (!file) {
+    noAudio.push(`#${w.id} ${key(texts.join(' '))}`);
     continue;
   }
-  if (suspicious) {
-    const d = durations.map((x) => x.toFixed(2)).join(' ');
-    problems.push(`${s.id}: uneven pieces, worth a listen — ${d}`);
+  const wav = readWav(join(AUDIO_SRC, file));
+  const { segments, durations, suspicious } = splitIntoN(wav, texts.length);
+  if (segments.length !== texts.length) {
+    problems.push();
+    continue;
   }
+  if (suspicious && texts.length > 1) {
+    problems.push();
+  }
+  const outs = w.forms ? w.forms.map((f) => f.audio) : [w.audio];
   segments.forEach(([a, b], i) => {
-    writeSegment(wav, a, b, join(AUDIO_OUT, mine[i].audio), { mono: true });
+    writeSegment(wav, a, b, join(AUDIO_OUT, outs[i]), { mono: true });
     written += 1;
   });
 }
-
-// The contrast take runs straight through both words of every row.
-{
-  const wav = readWav(join(AUDIO_SRC, `${DRILL_CONTRAST.take}.wav`));
-  const { segments, durations, suspicious } = splitIntoN(wav, contrastClips.length);
-  if (segments.length !== contrastClips.length) {
-    problems.push(`contrast: split gave ${segments.length} pieces for ${contrastClips.length} words`);
-  } else {
-    if (suspicious) problems.push(`contrast: uneven pieces — ${durations.map((d) => d.toFixed(2)).join(' ')}`);
-    segments.forEach(([a, b], i) => {
-      writeSegment(wav, a, b, join(AUDIO_OUT, contrastClips[i]), { mono: true });
-      written += 1;
-    });
-  }
+if (noAudio.length) {
+  problems.push(`no recording yet for ${noAudio.length} row(s): ${noAudio.join(', ')}`);
 }
 
 // ── write the lesson ──────────────────────────────────────────────────────

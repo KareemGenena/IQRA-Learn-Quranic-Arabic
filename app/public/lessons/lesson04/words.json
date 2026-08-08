@@ -1,0 +1,667 @@
+{
+  "lesson": 4,
+  "title": "Hamzat Wasl after وَ and ثُمَّ",
+  "titleArabic": "همزة الوصل بعد الواو وثم",
+  "kind": "letters",
+  "audioPath": "audio/lesson04/",
+  "perPage": 3,
+  "formLabels": [
+    "alone",
+    "after وَ",
+    "after ثُمَّ"
+  ],
+  "sections": [
+    {
+      "id": "shamsiyya",
+      "title": "Sun Lam",
+      "titleArabic": "اللام الشمسية",
+      "hint": "The ل stays silent throughout — listen for the ٱ disappearing after وَ and ثُمَّ."
+    },
+    {
+      "id": "qamariyya",
+      "title": "Moon Lam",
+      "titleArabic": "اللام القمرية",
+      "hint": "The ل is always spoken; it is the ٱ before it that drops away."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "نَاسِ",
+          "audio": "word01a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلنَّاسِ",
+          "audio": "word01b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلنَّاسِ",
+          "audio": "word01c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "صَمَدُ",
+          "audio": "word02a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلصَّمَدُ",
+          "audio": "word02b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلصَّمَدُ",
+          "audio": "word02c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "دِينِ",
+          "audio": "word03a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلدِّينِ",
+          "audio": "word03b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلدِّينِ",
+          "audio": "word03c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "شِتَاءِ",
+          "audio": "word04a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلشِّتَاءِ",
+          "audio": "word04b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلشِّتَاءِ",
+          "audio": "word04c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "صَيۡفِ",
+          "audio": "word05a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلصَّيۡفِ",
+          "audio": "word05b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلصَّيۡفِ",
+          "audio": "word05c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "صَالِحَاتِ",
+          "audio": "word06a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلصَّالِحَاتِ",
+          "audio": "word06b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلصَّالِحَاتِ",
+          "audio": "word06c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "صَبۡرِ",
+          "audio": "word07a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلصَّبۡرِ",
+          "audio": "word07b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلصَّبۡرِ",
+          "audio": "word07c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "تَكَاثُرُ",
+          "audio": "word08a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلتَّكَاثُرُ",
+          "audio": "word08b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلتَّكَاثُرُ",
+          "audio": "word08c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "نَعِيمِ",
+          "audio": "word09a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلنَّعِيمِ",
+          "audio": "word09b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلنَّعِيمِ",
+          "audio": "word09c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "section": "shamsiyya",
+      "lam": "shamsiyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Sun ش"
+      ],
+      "forms": [
+        {
+          "text": "صُدُورِ",
+          "audio": "word10a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلصُّدُورِ",
+          "audio": "word10b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلصُّدُورِ",
+          "audio": "word10c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "وَسۡوَاسِ",
+          "audio": "word11a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡوَسۡوَاسِ",
+          "audio": "word11b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡوَسۡوَاسِ",
+          "audio": "word11c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "فَلَقِ",
+          "audio": "word12a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡفَلَقِ",
+          "audio": "word12b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡفَلَقِ",
+          "audio": "word12c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "خَنَّاسِ",
+          "audio": "word13a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡخَنَّاسِ",
+          "audio": "word13b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡخَنَّاسِ",
+          "audio": "word13c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "جِنَّةِ",
+          "audio": "word14a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡجِنَّةِ",
+          "audio": "word14b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡجِنَّةِ",
+          "audio": "word14c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "عُقَدِ",
+          "audio": "word15a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡعُقَدِ",
+          "audio": "word15b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡعُقَدِ",
+          "audio": "word15c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "حَطَبِ",
+          "audio": "word16a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡحَطَبِ",
+          "audio": "word16b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡحَطَبِ",
+          "audio": "word16c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "فَتۡحُ",
+          "audio": "word17a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡفَتۡحُ",
+          "audio": "word17b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡفَتۡحُ",
+          "audio": "word17c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "كَافِرُونَ",
+          "audio": "word18a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡكَافِرُونَ",
+          "audio": "word18b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡكَافِرُونَ",
+          "audio": "word18c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "كَوۡثَرَ",
+          "audio": "word19a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡكَوۡثَرَ",
+          "audio": "word19b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡكَوۡثَرَ",
+          "audio": "word19c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "أَبۡتَرُ",
+          "audio": "word20a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡأَبۡتَرُ",
+          "audio": "word20b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡأَبۡتَرُ",
+          "audio": "word20c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "يَتِيمَ",
+          "audio": "word21a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡيَتِيمَ",
+          "audio": "word21b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡيَتِيمَ",
+          "audio": "word21c.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "section": "qamariyya",
+      "lam": "qamariyya",
+      "waslSilentIn": [
+        1,
+        2
+      ],
+      "badges": [
+        "Moon ق"
+      ],
+      "forms": [
+        {
+          "text": "مِسۡكِينِ",
+          "audio": "word22a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلۡمِسۡكِينِ",
+          "audio": "word22b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُمَّ ٱلۡمِسۡكِينِ",
+          "audio": "word22c.wav",
+          "timings": null
+        }
+      ]
+    }
+  ]
+}

@@ -562,6 +562,24 @@ body {
   background: color-mix(in srgb, var(--accent) 9%, transparent);
 }
 
+.form-slot {
+  position: relative;
+}
+
+.form-slot + .form-slot {
+  border-top: 1px dashed var(--card-border);
+}
+
+.form-caption {
+  position: absolute;
+  top: 6px;
+  inset-inline-start: 10px;
+  z-index: 2;
+  font-size: 11px;
+  color: var(--text-soft);
+  pointer-events: none;
+}
+
 .form-btn + .form-btn {
   border-top: 1px dashed var(--card-border);
   border-radius: 14px;

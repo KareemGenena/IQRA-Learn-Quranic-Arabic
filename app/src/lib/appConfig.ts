@@ -30,7 +30,7 @@ export interface AppConfig {
 }
 
 export const DEFAULT_CONFIG: AppConfig = {
-  lessons: { 1: 'published', 2: 'published', 3: 'archived' },
+  lessons: { 1: 'published', 2: 'published', 3: 'draft', 4: 'draft' },
   features: { laser: 'admin', notes: 'admin' },
 };
 

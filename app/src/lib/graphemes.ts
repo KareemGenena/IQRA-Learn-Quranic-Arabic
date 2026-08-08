@@ -86,6 +86,11 @@ export function splitClusters(word: string): LetterCluster[] {
       continue;
     }
 
+    // A space between words is not a letter — drop it so a phrase like
+    // ثُمَّ ٱلنَّاسِ doesn't gain a phantom highlight step. Offsets are absolute
+    // into the string, so the remaining clusters still measure correctly.
+    if (base.trim() === '') continue;
+
     clusters.push({ text, start: seg.index, end: seg.index + text.length });
   }
 

@@ -32,7 +32,7 @@ function ReferenceSheet({ lesson }: { lesson: Lesson }) {
     }
   } else if (lesson.kind === 'letters') {
     for (const w of lesson.words as LetterWord[]) {
-      const text = w.pair ? w.pair.map((p) => p.text).join('   –   ') : w.text;
+      const text = w.forms ? w.forms.map((f) => f.text).join('   –   ') : w.text;
       rows.push({ text, note: w.meaning ?? w.badges?.join(' · ') });
     }
   } else {

@@ -802,7 +802,7 @@
     {
       "id": 52,
       "section": "contrast",
-      "pair": [
+      "forms": [
         {
           "text": "يَهۡدِي",
           "audio": "word52a.wav",
@@ -821,7 +821,7 @@
     {
       "id": 53,
       "section": "contrast",
-      "pair": [
+      "forms": [
         {
           "text": "هَلَكَ",
           "audio": "word53a.wav",
@@ -840,7 +840,7 @@
     {
       "id": 54,
       "section": "contrast",
-      "pair": [
+      "forms": [
         {
           "text": "هَادٍ",
           "audio": "word54a.wav",
@@ -859,7 +859,7 @@
     {
       "id": 55,
       "section": "contrast",
-      "pair": [
+      "forms": [
         {
           "text": "عَلِيمٍ",
           "audio": "word55a.wav",
@@ -878,7 +878,7 @@
     {
       "id": 56,
       "section": "contrast",
-      "pair": [
+      "forms": [
         {
           "text": "عَبَدَ",
           "audio": "word56a.wav",
@@ -897,7 +897,7 @@
     {
       "id": 57,
       "section": "contrast",
-      "pair": [
+      "forms": [
         {
           "text": "غَفُورٌ",
           "audio": "word57a.wav",
@@ -916,7 +916,7 @@
     {
       "id": 58,
       "section": "contrast",
-      "pair": [
+      "forms": [
         {
           "text": "غَيۡرَ",
           "audio": "word58a.wav",
@@ -935,7 +935,7 @@
     {
       "id": 59,
       "section": "contrast",
-      "pair": [
+      "forms": [
         {
           "text": "بَلَغَ",
           "audio": "word59a.wav",

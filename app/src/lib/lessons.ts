@@ -1,7 +1,7 @@
 /** Lesson loading and normalisation into Playables. */
 
 import { splitClusters, baseChar } from './graphemes';
-import type { Lesson, LessonItem, LetterWord, PairWord, Playable, SimpleWord } from '../types';
+import type { LamType, Lesson, LessonItem, LetterWord, PairWord, Playable, SimpleWord } from '../types';
 
 export interface LessonMeta {
   id: number;
@@ -29,6 +29,12 @@ export const LESSONS: LessonMeta[] = [
     title: 'Throat Letters',
     titleArabic: 'حروف الحلق',
     blurb: 'ء ه ح ع غ خ — the six letters of the throat, at the start, middle and end of a word.',
+  },
+  {
+    id: 4,
+    title: 'Hamzat Wasl after وَ and ثُمَّ',
+    titleArabic: 'همزة الوصل بعد الواو وثم',
+    blurb: 'Each word alone, then after وَ and ثُمَّ — hear the ٱ of ٱل drop away.',
   },
 ];
 
@@ -103,15 +109,37 @@ function findTargetCluster(text: string, letter: string, position: string): numb
   return hits[0];
 }
 
+const ALIF_WASLA = 'ٱ';
+const LAM = 'ل';
+
+/**
+ * Letters written but not spoken in this form.
+ *
+ * Two rules meet here: a shamsiyya lam is always silent, and the ٱ of ٱل is
+ * silent whenever something runs into it — which is exactly what وَٱلنَّاسِ and
+ * ثُمَّ ٱلنَّاسِ are teaching.
+ */
+function silentIn(text: string, lam: LamType | undefined, waslSilent: boolean): number[] {
+  const clusters = splitClusters(text);
+  const out: number[] = [];
+  const waslAt = clusters.findIndex((c) => baseChar(c.text) === ALIF_WASLA);
+  if (waslAt === -1) return out;
+  if (waslSilent) out.push(waslAt);
+  const next = clusters[waslAt + 1];
+  if (lam === 'shamsiyya' && next && baseChar(next.text) === LAM) out.push(waslAt + 1);
+  return out;
+}
+
 function letterPlayables(word: LetterWord): Playable[] {
-  // A contrast drill carries two words on one card, each played separately.
-  if (word.pair) {
-    return word.pair.map((f, i) => ({
-      key: `${word.id}${'ab'[i]}`,
+  // Several forms of the same word on one card, each played separately.
+  if (word.forms) {
+    return word.forms.map((f, i) => ({
+      key: `${word.id}${'abc'[i] ?? i}`,
       text: f.text,
       audio: f.audio,
       timings: f.timings,
-      silentClusters: [],
+      silentClusters: silentIn(f.text, word.lam, word.waslSilentIn?.includes(i) ?? false),
+      // The ٱل is coloured apart only where it is actually present.
       prefixClusters: 0,
     }));
   }
@@ -164,7 +192,7 @@ export function allPlayables(lesson: Lesson): { label: string; playable: Playabl
   if (lesson.kind === 'letters') {
     return (lesson.words as LetterWord[]).flatMap((w) =>
       letterPlayables(w).map((playable, i) => ({
-        label: w.pair ? `${w.id}${'ab'[i]}` : `${w.id}`,
+        label: w.forms ? `${w.id}${'abc'[i] ?? i}` : `${w.id}`,
         playable,
       })),
     );

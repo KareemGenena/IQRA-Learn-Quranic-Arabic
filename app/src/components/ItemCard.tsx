@@ -121,16 +121,21 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }
       </div>
 
       <div className="pair-forms">
-        {item.forms.map((form, i) => (
-          <Form
-            key={form.key}
-            lesson={lesson}
-            playable={form}
-            rate={rate}
-            label={i === 0 ? `Play ${displayNo}` : `Play ${displayNo} with al`}
-            register={register}
-          />
-        ))}
+        {item.forms.map((form, i) => {
+          const caption = lesson.formLabels?.[i];
+          return (
+            <div key={form.key} className="form-slot">
+              {caption && <span className="form-caption">{caption}</span>}
+              <Form
+                lesson={lesson}
+                playable={form}
+                rate={rate}
+                label={caption ? `Play ${displayNo} ${caption}` : i === 0 ? `Play ${displayNo}` : `Play ${displayNo} with al`}
+                register={register}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
