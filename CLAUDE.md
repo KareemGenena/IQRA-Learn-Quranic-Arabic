@@ -214,6 +214,16 @@ Open items:
 - **Lesson 4** — 24 qamariyya words are unrecorded; the author has decided not to
   record them for now. The generator skips and lists them, so it can simply be
   re-run if that changes.
+- **Notes stack for a learner**: the teacher's marks are painted first and the
+  learner draws on top, both on the same canvas, with a toggle to hide the
+  layer beneath. Drawing stacks in depth; **typing stacks in reading order**
+  (the teacher's typed text above the learner's own) because two overlapping
+  contenteditable layers render on top of each other and are unreadable.
+  The teacher's strokes live in a separate `base` state that the eraser and
+  undo never touch, so they cannot be rubbed out — by construction, not by a
+  guard. A teacher has no layer beneath, so for them it stays two sheets.
+- Both layers count towards the canvas height, or a teacher's mark further
+  down the page is silently cut off.
 - **Notes** have two sheets. *Class notes* live at
   `classes/{classId}/notes/{lessonId}` — the teacher writes, everyone on the
   roster reads, one sheet per class per lesson. *My notes* stay on the device

@@ -1570,6 +1570,24 @@ body {
   color: var(--text-soft);
 }
 
+.base-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+/* The teacher's typed notes, marked as not yours by a rule down the side
+   rather than by being greyed out — they still have to be easy to read. */
+.note-editor.from-teacher {
+  border-left: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  padding-left: 10px;
+  margin-bottom: 4px;
+  cursor: default;
+}
+
 .sheet-role.can-edit {
   color: var(--accent);
   font-weight: 600;

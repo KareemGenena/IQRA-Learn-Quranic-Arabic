@@ -69,16 +69,27 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
   const active = classes.active;
 
   /**
-   * Which sheet is on screen.
+   * The sheets are stacked, not swapped.
    *
-   * 'class' is the teacher's sheet for the current class — the same one every
-   * learner on that roster sees, and the only one that travels. 'mine' is the
-   * private sheet on this device, which nobody else ever reads.
+   * A learner writes on their own transparent layer over the teacher's marks,
+   * both visible at once — an arrow drawn over the teacher's circle only means
+   * anything if the circle is still there. Both layers sit on the same fixed
+   * reference sheet (the lesson's words), which is what makes the coordinates
+   * line up between two different people's devices.
+   *
+   * A teacher has no layer beneath them, so for them these are two sheets they
+   * switch between: the class one everybody reads, and a private one.
    */
-  const [view, setView] = useState<'class' | 'mine'>('mine');
-  const canEdit = view === 'mine' || active?.youAre === 'teacher';
+  const teaches = active?.youAre === 'teacher';
+  const [teacherView, setTeacherView] = useState<'class' | 'mine'>('class');
+  const [showBase, setShowBase] = useState(true);
+
+  /** Which sheet this person's pen actually writes on. */
+  const editing: 'class' | 'mine' = teaches ? teacherView : 'mine';
 
   const [doc, setDoc] = useState<NoteDoc>(() => emptyNote(lesson.lesson));
+  /** The teacher's sheet, shown underneath a learner's own. Read only. */
+  const [base, setBase] = useState<{ strokes: Stroke[]; html: string } | null>(null);
   const [noteError, setNoteError] = useState('');
   const [mode, setMode] = useState<Mode>('pen');
   const [color, setColor] = useState(COLORS[0]);
@@ -102,23 +113,25 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
   const glideFrame = useRef(0);
   const undoStack = useRef<{ strokes: Stroke[]; html: string }[]>([]);
   const docRef = useRef(doc);
+  const baseRef = useRef<Stroke[]>([]);
   const dirty = useRef(false);
 
   useEffect(() => {
     docRef.current = doc;
   }, [doc]);
 
+  // The sizing pass runs from a ResizeObserver, outside React's render, so it
+  // reads the layer beneath through a ref rather than a captured value.
+  useEffect(() => {
+    baseRef.current = base?.strokes ?? [];
+  }, [base]);
+
   // Depended on as plain strings, not as the object: the class list is rebuilt
   // on every load and a new object each time would restart the sheet underneath
   // whoever is writing on it.
   const activeId = active?.id ?? '';
 
-  // Once there is a class to show, the class sheet is what a learner came for.
-  useEffect(() => {
-    if (activeId) setView((v) => (v === 'mine' && !dirty.current ? 'class' : v));
-  }, [activeId]);
-
-  const layer = view === 'class' && activeId ? classLayer(activeId) : 'mine';
+  const layer = editing === 'class' && activeId ? classLayer(activeId) : 'mine';
 
   useEffect(() => {
     let alive = true;
@@ -136,7 +149,7 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
     // works with no network; the cloud copy replaces it when it arrives.
     void loadNote(lesson.lesson, layer).then((local) => {
       show(local);
-      if (view !== 'class' || !activeId) return;
+      if (editing !== 'class' || !activeId) return;
       void fetchClassNote(activeId, lesson.lesson)
         .then((remote) => {
           if (!alive || !remote) return;
@@ -151,6 +164,27 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
         });
     });
 
+    // The sheet underneath, for a learner. Cached like their own, so the
+    // teacher's marks are still there with no network.
+    if (teaches || !activeId) {
+      setBase(null);
+    } else {
+      const beneath = classLayer(activeId);
+      void loadNote(lesson.lesson, beneath).then((cached) => {
+        if (!alive) return;
+        if (cached.strokes.length || cached.html) setBase({ strokes: cached.strokes, html: cached.html });
+        void fetchClassNote(activeId, lesson.lesson)
+          .then((remote) => {
+            if (!alive || !remote) return;
+            setBase({ strokes: remote.strokes, html: remote.html });
+            void saveNote({ ...remote, layer: beneath });
+          })
+          .catch(() => {
+            if (alive) setNoteError("Showing the last copy of your teacher's notes saved on this device.");
+          });
+      });
+    }
+
     return () => {
       alive = false;
       // Switching sheet or class must not swallow work written in the last
@@ -159,7 +193,7 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
       // place rather than on whatever is opening next.
       if (dirty.current) void saveNote({ ...docRef.current, layer });
     };
-  }, [lesson.lesson, layer, view, activeId]);
+  }, [lesson.lesson, layer, editing, activeId, teaches]);
 
   // ── batched save ────────────────────────────────────────────────────────
   // Deliberately quiet: no running commentary while writing, just a brief
@@ -172,7 +206,7 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
       // lose work that has already been written down.
       void saveNote(current)
         .then(async () => {
-          if (view === 'class' && activeId && canEdit) await saveClassNote(activeId, current);
+          if (editing === 'class' && activeId) await saveClassNote(activeId, current);
           dirty.current = false;
           setJustSaved(true);
           setNoteError('');
@@ -187,7 +221,7 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
         });
     }, SAVE_DELAY);
     return () => clearTimeout(t);
-  }, [doc, layer, view, activeId, canEdit]);
+  }, [doc, layer, editing, activeId]);
 
   useEffect(() => {
     if (!justSaved) return;
@@ -245,8 +279,12 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
     if (!el || typeof ResizeObserver === 'undefined') return;
     const measure = () => {
       let lowest = 0;
-      for (const s of docRef.current.strokes) {
-        for (let i = 1; i < s.pts.length; i += 2) if (s.pts[i] > lowest) lowest = s.pts[i];
+      // Both layers count. Measuring only your own would cut the canvas short
+      // of a teacher's mark further down the page, and it would simply vanish.
+      for (const strokes of [docRef.current.strokes, baseRef.current]) {
+        for (const s of strokes) {
+          for (let i = 1; i < s.pts.length; i += 2) if (s.pts[i] > lowest) lowest = s.pts[i];
+        }
       }
       const needed = Math.max(el.scrollHeight, lowest + PAGE_PAD, 1200);
       setCanvasH((h) => (Math.abs(h - needed) > 40 ? needed : h));
@@ -291,16 +329,26 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
     ctx.clearRect(0, 0, w, h);
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    for (const s of doc.strokes) {
-      ctx.strokeStyle = s.color;
-      ctx.lineWidth = s.width;
-      ctx.beginPath();
-      ctx.moveTo(s.pts[0], s.pts[1]);
-      for (let i = 2; i < s.pts.length; i += 2) ctx.lineTo(s.pts[i], s.pts[i + 1]);
-      if (s.pts.length === 2) ctx.lineTo(s.pts[0] + 0.1, s.pts[1]);
-      ctx.stroke();
-    }
-  }, [doc.strokes]);
+
+    const paint = (strokes: Stroke[]) => {
+      for (const s of strokes) {
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = s.width;
+        ctx.beginPath();
+        ctx.moveTo(s.pts[0], s.pts[1]);
+        for (let i = 2; i < s.pts.length; i += 2) ctx.lineTo(s.pts[i], s.pts[i + 1]);
+        if (s.pts.length === 2) ctx.lineTo(s.pts[0] + 0.1, s.pts[1]);
+        ctx.stroke();
+      }
+    };
+
+    // The teacher's marks go down first so the learner's sit on top of them.
+    // One canvas rather than two: they only ever stack in this order, and a
+    // second full-height canvas would double the memory that made scrolling
+    // heavy in the first place.
+    if (base && showBase) paint(base.strokes);
+    paint(doc.strokes);
+  }, [doc.strokes, base, showBase]);
 
   useLayoutEffect(redraw, [redraw, canvasH]);
 
@@ -405,7 +453,6 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
     // A learner may read their teacher's sheet and never change it. Blocked
     // here as well as in the rules: the rules stop it reaching anyone else,
     // this stops the false impression of having written something.
-    if (!canEdit) return;
     if (mode !== 'pen') return;
     const p = at(e);
     try {
@@ -620,27 +667,31 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
           writing a lesson's notes into the wrong class is the one mistake this
           feature makes easy, and the only guard against it is saying so. */}
       <div className="sheet-bar">
-        <div className="sheet-tabs" role="group" aria-label="Which notes">
-          <button
-            type="button"
-            className={`sheet-tab ${view === 'class' ? 'active' : ''}`}
-            aria-pressed={view === 'class'}
-            disabled={!active}
-            onClick={() => setView('class')}
-          >
-            {active?.youAre === 'teacher' ? 'Class notes' : "Teacher's notes"}
-          </button>
-          <button
-            type="button"
-            className={`sheet-tab ${view === 'mine' ? 'active' : ''}`}
-            aria-pressed={view === 'mine'}
-            onClick={() => setView('mine')}
-          >
-            My notes
-          </button>
-        </div>
+        {/* Only a teacher has two sheets to choose between. A learner has one,
+            with the teacher's underneath it, so a tab strip would only invite
+            them to look for a sheet that isn't there. */}
+        {teaches && (
+          <div className="sheet-tabs" role="group" aria-label="Which notes">
+            <button
+              type="button"
+              className={`sheet-tab ${editing === 'class' ? 'active' : ''}`}
+              aria-pressed={editing === 'class'}
+              onClick={() => setTeacherView('class')}
+            >
+              Class notes
+            </button>
+            <button
+              type="button"
+              className={`sheet-tab ${editing === 'mine' ? 'active' : ''}`}
+              aria-pressed={editing === 'mine'}
+              onClick={() => setTeacherView('mine')}
+            >
+              My notes
+            </button>
+          </div>
+        )}
 
-        {view === 'class' && active && (
+        {active && (
           <div className="sheet-where">
             {classes.options && classes.options.length > 1 ? (
               <label className="class-picker">
@@ -659,36 +710,62 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
                 <span className="join-code-label">Class</span> <strong>{active.name}</strong>
               </span>
             )}
-            <span className={`sheet-role ${canEdit ? 'can-edit' : ''}`}>
-              {canEdit ? 'You are writing these for the class' : 'Read only — written by your teacher'}
+
+            <span className="sheet-role can-edit">
+              {teaches
+                ? editing === 'class'
+                  ? 'You are writing these for the class'
+                  : 'Private to this device'
+                : 'You are writing on top of your teacher’s notes'}
             </span>
+
+            {/* Turning the layer beneath off is the only way to read your own
+                marks clearly once a sheet gets busy. */}
+            {!teaches && base && (
+              <label className="base-toggle">
+                <input type="checkbox" checked={showBase} onChange={(e) => setShowBase(e.target.checked)} />
+                Show teacher’s marks
+              </label>
+            )}
           </div>
         )}
 
-        {view === 'class' && !active && (
-          <p className="account-hint">
-            {account.signedIn
-              ? 'You are not in a class yet. Join one, or start one, from Classes.'
-              : 'Sign in and join a class to see your teacher’s notes.'}{' '}
-            <a href="#/classes">Classes →</a>
-          </p>
-        )}
-
-        {view === 'mine' && (
-          <span className="sheet-role">Private to this device — nobody else sees these</span>
+        {!active && (
+          <span className="sheet-role">
+            Private to this device — nobody else sees these.{' '}
+            {account.signedIn ? (
+              <a href="#/classes">Join a class</a>
+            ) : (
+              <a href="#/account">Sign in</a>
+            )}{' '}
+            to see your teacher’s notes underneath.
+          </span>
         )}
       </div>
 
       {noteError && <p className="gate-error">{noteError}</p>}
 
-      <div className={`notes-frame mode-${mode} ${canEdit ? '' : 'read-only'}`}>
+      <div className={`notes-frame mode-${mode}`}>
         <div className="notes-scroll" ref={scrollRef}>
           <div className="notes-content" ref={contentRef} style={{ minHeight: canvasH }}>
             <ReferenceSheet lesson={lesson} />
+            {/* The teacher's typed notes, above the learner's own and in the
+                same flow. Two overlapping editable text layers would render on
+                top of each other and be unreadable, so typing stacks in reading
+                order while the drawing stacks in depth. */}
+            {!teaches && base?.html && showBase && (
+              <div
+                className="note-editor from-teacher"
+                style={{ fontSize: textSize }}
+                dir="auto"
+                aria-label="Your teacher's typed notes"
+                dangerouslySetInnerHTML={{ __html: base.html }}
+              />
+            )}
             <div
               ref={editorRef}
               className="note-editor"
-              contentEditable={canEdit}
+              contentEditable
               suppressContentEditableWarning
               dir="auto"
               style={{ fontSize: textSize }}
