@@ -246,7 +246,7 @@ export default function App() {
               {lessonAllowed && !error && !lesson && <p className="loading">Loading…</p>}
 
               {lessonAllowed && lesson && route.page === 'notes' && showNotes && (
-                <NotesPage lesson={lesson} />
+                <NotesPage lesson={lesson} account={account} />
               )}
 
               {lessonAllowed && lesson && route.page === 'admin' && (

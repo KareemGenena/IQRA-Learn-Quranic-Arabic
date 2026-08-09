@@ -94,6 +94,23 @@ service cloud.firestore {
 
       allow delete: if request.auth != null && resource.data.teacherUid == request.auth.uid;
 
+      // The class note sheet: one per lesson, written by the teacher and read
+      // by everyone on the roster. A learner's own notes are not here and are
+      // never uploaded — this layer is the teacher's, and only theirs.
+      match /notes/{lessonId} {
+        allow read: if request.auth != null
+          && (classOwner(classId)
+              || exists(/databases/$(database)/documents/classes/$(classId)/members/$(request.auth.uid)));
+
+        allow create, update: if classOwner(classId)
+          && request.resource.data.keys().hasOnly(['body', 'updatedAt'])
+          && request.resource.data.body is string
+          && request.resource.data.body.size() < 1000000
+          && request.resource.data.updatedAt is int;
+
+        allow delete: if classOwner(classId);
+      }
+
       // One learner's standing in this class.
       match /members/{uid} {
         allow read: if request.auth != null && (request.auth.uid == uid || classOwner(classId));

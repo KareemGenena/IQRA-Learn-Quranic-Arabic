@@ -1496,6 +1496,90 @@ body {
   color: var(--accent);
 }
 
+/* ---------- which notes, and whose ---------- */
+
+.sheet-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+.sheet-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.sheet-tab {
+  padding: 7px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sheet-tab.active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+}
+
+.sheet-tab:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.sheet-where {
+  display: flex;
+  align-items: center;
+  gap: 10px 14px;
+  flex-wrap: wrap;
+}
+
+.class-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.class-picker select {
+  font-size: 14px;
+  padding: 6px 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  max-width: 220px;
+}
+
+.class-now strong {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.sheet-role {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.sheet-role.can-edit {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* A sheet you may read but not change should look settled, not broken. */
+.notes-frame.read-only .notes-canvas {
+  cursor: default;
+}
+
 /* ---------- classes ---------- */
 
 .classes-page {

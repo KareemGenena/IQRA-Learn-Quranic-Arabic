@@ -9,6 +9,9 @@ import {
   UndoIcon,
 } from '../components/NoteIcons';
 import { emptyNote, loadNote, newId, saveNote } from '../lib/notesStore';
+import { classLayer, fetchClassNote, NOTE_TOO_BIG, saveClassNote } from '../lib/cloudNotes';
+import { useClasses } from '../lib/useClasses';
+import type { Account } from '../lib/useAccount';
 import type { NoteDoc, Stroke } from '../lib/notesStore';
 import type { Lesson, PairWord, LetterWord, SimpleWord } from '../types';
 
@@ -61,8 +64,22 @@ function ReferenceSheet({ lesson }: { lesson: Lesson }) {
   );
 }
 
-export function NotesPage({ lesson }: { lesson: Lesson }) {
+export function NotesPage({ lesson, account }: { lesson: Lesson; account: Account }) {
+  const classes = useClasses(account);
+  const active = classes.active;
+
+  /**
+   * Which sheet is on screen.
+   *
+   * 'class' is the teacher's sheet for the current class — the same one every
+   * learner on that roster sees, and the only one that travels. 'mine' is the
+   * private sheet on this device, which nobody else ever reads.
+   */
+  const [view, setView] = useState<'class' | 'mine'>('mine');
+  const canEdit = view === 'mine' || active?.youAre === 'teacher';
+
   const [doc, setDoc] = useState<NoteDoc>(() => emptyNote(lesson.lesson));
+  const [noteError, setNoteError] = useState('');
   const [mode, setMode] = useState<Mode>('pen');
   const [color, setColor] = useState(COLORS[0]);
   const [width, setWidth] = useState(PEN_WIDTHS[1]);
@@ -85,18 +102,58 @@ export function NotesPage({ lesson }: { lesson: Lesson }) {
     docRef.current = doc;
   }, [doc]);
 
+  // Depended on as plain strings, not as the object: the class list is rebuilt
+  // on every load and a new object each time would restart the sheet underneath
+  // whoever is writing on it.
+  const activeId = active?.id ?? '';
+
+  // Once there is a class to show, the class sheet is what a learner came for.
+  useEffect(() => {
+    if (activeId) setView((v) => (v === 'mine' && !dirty.current ? 'class' : v));
+  }, [activeId]);
+
+  const layer = view === 'class' && activeId ? classLayer(activeId) : 'mine';
+
   useEffect(() => {
     let alive = true;
-    void loadNote(lesson.lesson).then((d) => {
+    setNoteError('');
+
+    const show = (d: NoteDoc) => {
       if (!alive) return;
       setDoc(d);
       docRef.current = d;
+      dirty.current = false;
       if (editorRef.current) editorRef.current.innerHTML = d.html;
+    };
+
+    // The local copy first, so the sheet is on screen instantly and still
+    // works with no network; the cloud copy replaces it when it arrives.
+    void loadNote(lesson.lesson, layer).then((local) => {
+      show(local);
+      if (view !== 'class' || !activeId) return;
+      void fetchClassNote(activeId, lesson.lesson)
+        .then((remote) => {
+          if (!alive || !remote) return;
+          // Never overwrite unsaved work of the teacher's own with an older
+          // copy of it coming back from the server.
+          if (dirty.current || remote.updatedAt < local.updatedAt) return;
+          show(remote);
+          void saveNote({ ...remote, layer });
+        })
+        .catch(() => {
+          if (alive) setNoteError('Could not fetch the class notes. Showing the last copy on this device.');
+        });
     });
+
     return () => {
       alive = false;
+      // Switching sheet or class must not swallow work written in the last
+      // couple of seconds, before the batched save has fired. This closure
+      // still holds the layer that work belongs to, so it lands in the right
+      // place rather than on whatever is opening next.
+      if (dirty.current) void saveNote({ ...docRef.current, layer });
     };
-  }, [lesson.lesson]);
+  }, [lesson.lesson, layer, view, activeId]);
 
   // ── batched save ────────────────────────────────────────────────────────
   // Deliberately quiet: no running commentary while writing, just a brief
@@ -104,15 +161,27 @@ export function NotesPage({ lesson }: { lesson: Lesson }) {
   useEffect(() => {
     if (!dirty.current) return;
     const t = setTimeout(() => {
-      void saveNote(docRef.current)
-        .then(() => {
+      const current = { ...docRef.current, layer };
+      // Always to this device first: a failed upload must never be able to
+      // lose work that has already been written down.
+      void saveNote(current)
+        .then(async () => {
+          if (view === 'class' && activeId && canEdit) await saveClassNote(activeId, current);
           dirty.current = false;
           setJustSaved(true);
+          setNoteError('');
         })
-        .catch((err) => console.error('note save failed:', err));
+        .catch((err) => {
+          console.error('note save failed:', err);
+          setNoteError(
+            err instanceof Error && err.message === NOTE_TOO_BIG
+              ? 'This sheet is too large to share with the class. Rub out some of it, or start a new lesson sheet.'
+              : 'Saved on this device, but not to the class yet. It will go up next time you write.',
+          );
+        });
     }, SAVE_DELAY);
     return () => clearTimeout(t);
-  }, [doc]);
+  }, [doc, layer, view, activeId, canEdit]);
 
   useEffect(() => {
     if (!justSaved) return;
@@ -120,9 +189,17 @@ export function NotesPage({ lesson }: { lesson: Lesson }) {
     return () => clearTimeout(t);
   }, [justSaved]);
 
+  // Read through a ref so the listener is registered once and still always
+  // knows which sheet is open. Closing over `layer` with empty deps would pin
+  // it to whichever sheet happened to be showing when the page loaded.
+  const layerRef = useRef(layer);
+  useEffect(() => {
+    layerRef.current = layer;
+  }, [layer]);
+
   useEffect(() => {
     const flush = () => {
-      if (dirty.current) void saveNote(docRef.current);
+      if (dirty.current) void saveNote({ ...docRef.current, layer: layerRef.current });
     };
     window.addEventListener('pagehide', flush);
     return () => {
@@ -230,6 +307,10 @@ export function NotesPage({ lesson }: { lesson: Lesson }) {
    * drag is turned into scrolling here instead.
    */
   const onPointerDown = (e: React.PointerEvent) => {
+    // A learner may read their teacher's sheet and never change it. Blocked
+    // here as well as in the rules: the rules stop it reaching anyone else,
+    // this stops the false impression of having written something.
+    if (!canEdit) return;
     if (mode !== 'pen') return;
     if (e.pointerType === 'touch') {
       panning.current = e.clientY;
@@ -423,14 +504,79 @@ export function NotesPage({ lesson }: { lesson: Lesson }) {
         </span>
       </div>
 
-      <div className={`notes-frame mode-${mode}`}>
+      {/* Which class, and whose sheet. Always on screen, never behind a menu:
+          writing a lesson's notes into the wrong class is the one mistake this
+          feature makes easy, and the only guard against it is saying so. */}
+      <div className="sheet-bar">
+        <div className="sheet-tabs" role="group" aria-label="Which notes">
+          <button
+            type="button"
+            className={`sheet-tab ${view === 'class' ? 'active' : ''}`}
+            aria-pressed={view === 'class'}
+            disabled={!active}
+            onClick={() => setView('class')}
+          >
+            {active?.youAre === 'teacher' ? 'Class notes' : "Teacher's notes"}
+          </button>
+          <button
+            type="button"
+            className={`sheet-tab ${view === 'mine' ? 'active' : ''}`}
+            aria-pressed={view === 'mine'}
+            onClick={() => setView('mine')}
+          >
+            My notes
+          </button>
+        </div>
+
+        {view === 'class' && active && (
+          <div className="sheet-where">
+            {classes.options && classes.options.length > 1 ? (
+              <label className="class-picker">
+                <span className="join-code-label">Class</span>
+                <select value={active.id} onChange={(e) => classes.setActive(e.target.value)}>
+                  {classes.options.map((o) => (
+                    <option key={o.id} value={o.id}>
+                      {o.name}
+                      {o.youAre === 'student' ? ` — ${o.teacherName || 'your teacher'}` : ''}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ) : (
+              <span className="class-now">
+                <span className="join-code-label">Class</span> <strong>{active.name}</strong>
+              </span>
+            )}
+            <span className={`sheet-role ${canEdit ? 'can-edit' : ''}`}>
+              {canEdit ? 'You are writing these for the class' : 'Read only — written by your teacher'}
+            </span>
+          </div>
+        )}
+
+        {view === 'class' && !active && (
+          <p className="account-hint">
+            {account.signedIn
+              ? 'You are not in a class yet. Join one, or start one, from Classes.'
+              : 'Sign in and join a class to see your teacher’s notes.'}{' '}
+            <a href="#/classes">Classes →</a>
+          </p>
+        )}
+
+        {view === 'mine' && (
+          <span className="sheet-role">Private to this device — nobody else sees these</span>
+        )}
+      </div>
+
+      {noteError && <p className="gate-error">{noteError}</p>}
+
+      <div className={`notes-frame mode-${mode} ${canEdit ? '' : 'read-only'}`}>
         <div className="notes-scroll" ref={scrollRef}>
           <div className="notes-content" ref={contentRef} style={{ minHeight: canvasH }}>
             <ReferenceSheet lesson={lesson} />
             <div
               ref={editorRef}
               className="note-editor"
-              contentEditable
+              contentEditable={canEdit}
               suppressContentEditableWarning
               dir="auto"
               style={{ fontSize: textSize }}

@@ -169,6 +169,24 @@ function classCases() {
     cls('the teacher can strike someone off', 'ALLOW', TEACHER, M, 'delete', null, membership(), [ownedBy('tch1')]),
     cls('a stranger cannot remove a member', 'DENY', OTHER, M, 'delete', null, membership(), [ownedBy('tch1')]),
 
+    // the class note sheet
+    cls('the teacher writes the class notes', 'ALLOW', TEACHER, 'classes/c1/notes/3', 'create',
+      { body: '{"strokes":[],"html":"<p>hi</p>"}', updatedAt: 5 }, null, [ownedBy('tch1')]),
+    cls('the teacher rewrites them', 'ALLOW', TEACHER, 'classes/c1/notes/3', 'update',
+      { body: '{"strokes":[]}', updatedAt: 6 }, { body: '{}', updatedAt: 5 }, [ownedBy('tch1')]),
+    cls('a learner cannot write the class notes', 'DENY', STUDENT, 'classes/c1/notes/3', 'create',
+      { body: '{}', updatedAt: 5 }, null, [ownedBy('tch1')]),
+    cls('another teacher cannot write them', 'DENY', TEACHER, 'classes/c1/notes/3', 'create',
+      { body: '{}', updatedAt: 5 }, null, [ownedBy('someone-else')]),
+    cls('someone on the roster reads them', 'ALLOW', STUDENT, 'classes/c1/notes/3', 'get',
+      null, { body: '{}', updatedAt: 5 }, [ownedBy('tch1'), memberExists(true)]),
+    cls('a stranger cannot read them', 'DENY', OTHER, 'classes/c1/notes/3', 'get',
+      null, { body: '{}', updatedAt: 5 }, [ownedBy('tch1'), memberExists(false)]),
+    cls('anon cannot read them', 'DENY', null, 'classes/c1/notes/3', 'get',
+      null, { body: '{}', updatedAt: 5 }, [ownedBy('tch1'), memberExists(true)]),
+    cls('no extra fields on a note', 'DENY', TEACHER, 'classes/c1/notes/3', 'create',
+      { body: '{}', updatedAt: 5, secret: 'x' }, null, [ownedBy('tch1')]),
+
     // join codes
     cls('a signed-in person can fetch a code they know', 'ALLOW', STUDENT, 'joinCodes/K7QM4P', 'get',
       null, { classId: 'c1', teacherUid: 'tch1' }),

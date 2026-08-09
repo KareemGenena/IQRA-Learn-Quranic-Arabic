@@ -214,8 +214,16 @@ Open items:
 - **Lesson 4** — 24 qamariyya words are unrecorded; the author has decided not to
   record them for now. The generator skips and lists them, so it can simply be
   re-run if that changes.
-- **Notes** are device-local. Cloud sync and the teacher/student layers are
-  designed but not built.
+- **Notes** have two sheets. *Class notes* live at
+  `classes/{classId}/notes/{lessonId}` — the teacher writes, everyone on the
+  roster reads, one sheet per class per lesson. *My notes* stay on the device
+  in IndexedDB and are never uploaded. The notes page always shows which class
+  and whose sheet, and a teacher with several classes switches between them
+  there. The reference layer and student submit-to-teacher are not built.
+- A class sheet is one JSON string in one document, so **Firestore's 1 MiB
+  limit is the ceiling on a sheet**. Coordinates are rounded to a tenth of a
+  pixel and the teacher is told plainly at ~900 KB. Firebase Storage is the
+  way out if that becomes a real limit.
 - **Classes** work: a teacher creates a class at `#/classes`, gets a six-character
   join code, and approves, declines, deactivates or readmits each learner. A
   learner enters the code and waits. Many-to-many throughout — every
