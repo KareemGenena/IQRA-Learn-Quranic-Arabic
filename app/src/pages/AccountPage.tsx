@@ -52,6 +52,8 @@ export function AccountPage({ account }: { account: Account }) {
         {account.isAdmin && <span className="role-pill admin">Admin</span>}
       </section>
 
+      <NameCard account={account} />
+
       <section className="account-card">
         <h3 className="account-heading">How do you use IQRA?</h3>
         <p className="account-hint">
@@ -104,6 +106,66 @@ export function AccountPage({ account }: { account: Account }) {
 
       <DeleteAccount account={account} />
     </main>
+  );
+}
+
+/**
+ * Your name, as other people see it.
+ *
+ * Worth its own card because it is the only thing about you anyone else reads:
+ * students see their teacher's name, teachers see theirs on the roster. With
+ * none set the app used to fall back to the email address, which put it in
+ * front of every student who joined — so the prompt to set one is pointed.
+ */
+function NameCard({ account }: { account: Account }) {
+  const [draft, setDraft] = useState(account.publicName);
+  const [busy, setBusy] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [error, setError] = useState('');
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError('');
+    setSaved(false);
+    try {
+      await account.setName(draft.trim());
+      setSaved(true);
+      window.setTimeout(() => setSaved(false), 2500);
+    } catch {
+      setError('Could not save that. Check your connection and try again.');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <section className="account-card">
+      <h3 className="account-heading">Your name</h3>
+      <p className="account-hint">
+        {account.publicName
+          ? 'This is what your teacher and classmates see. Your email is never shown to them.'
+          : 'You have not set one. Without it your classes show no name at all — and your email is never shown either way.'}
+      </p>
+      <form className="class-new-row" onSubmit={submit}>
+        <input
+          type="text"
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          placeholder="Your name"
+          autoComplete="name"
+          maxLength={80}
+          aria-label="Your name"
+        />
+        <button type="submit" className="btn primary" disabled={busy || draft.trim() === account.publicName}>
+          {busy ? 'Saving…' : 'Save name'}
+        </button>
+      </form>
+      <p className="save-state" aria-live="polite">
+        {saved ? 'Saved.' : ''}
+      </p>
+      {error && <p className="gate-error">{error}</p>}
+    </section>
   );
 }
 

@@ -161,6 +161,26 @@ Things that cost real debugging. Do not undo them without reading why.
 - Lesson 1 (`WordsLesson`) is a plain unpaged grid and has **no** keyboard
   support at all — an open accessibility gap, not a decision.
 
+**Updates reaching people**
+- The service worker is built with `skipWaiting` + `clientsClaim`, but that only
+  swaps the *worker*: the open page keeps the JavaScript it loaded with. Nothing
+  reloaded it, so an installed PWA could sit on an old build while every deploy
+  passed it by — the author was looking at a months-stale header. `main.tsx`
+  now reloads once on `controllerchange`, and re-checks for a worker whenever
+  the app comes back into view.
+- The reload is guarded on there having been a controller at load, or a first
+  visit would reload itself immediately after installing. Verified across three
+  successive builds: first install does **not** reload, a later update does.
+
+**Names and privacy**
+- `account.name` may fall back to the email so someone recognises their own
+  account. **Anything another person sees uses `publicName`, which never
+  does.** An empty display name once put the teacher's email in front of every
+  student who joined a class.
+- `safeName()` filters anything email-shaped on the way *out* as well, because
+  classes created before the fix still hold one. Data written before a rule
+  existed does not retroactively obey it.
+
 **App**
 - Accounts are **additive, never a mode**: no account = the full app. Signing in
   only adds sync and, for the admin, tools. There is no "choose your mode" screen.

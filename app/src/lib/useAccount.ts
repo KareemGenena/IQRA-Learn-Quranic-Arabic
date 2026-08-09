@@ -25,8 +25,18 @@ export interface Account {
   isAdmin: boolean;
   /** Self-declared teacher (the admin teaches too). */
   isTeacher: boolean;
-  /** Best name to show: profile name, then account name, then the email. */
+  /** Best name to show the person themselves — may fall back to their email. */
   name: string;
+  /**
+   * The name other people may see. Never an email address.
+   *
+   * `name` falls back to the email so a signed-in person recognises their own
+   * account, which is fine on their own screen and a leak anywhere else: an
+   * empty display name once put the teacher's email in front of every student
+   * who joined. Anything shown to somebody else uses this, and an empty string
+   * means "they have not given a name" — say so rather than inventing one.
+   */
+  publicName: string;
   /** True while the profile is being read for the first time. */
   loading: boolean;
   register: (email: string, password: string, displayName: string) => Promise<void>;
@@ -144,6 +154,7 @@ export function useAccount(): Account {
     isAdmin,
     isTeacher: isAdmin || profile?.role === 'teacher',
     name: profile?.displayName || session?.displayName || session?.email || '',
+    publicName: profile?.displayName || session?.displayName || '',
     loading,
     register,
     login,

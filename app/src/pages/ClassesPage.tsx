@@ -9,7 +9,9 @@ import {
   renameClass,
   requestToJoin,
   roster,
+  safeName,
   setMemberStatus,
+  updateTeacherName,
 } from '../lib/classes';
 import type { ClassDoc, Enrolment, Member } from '../lib/classes';
 import type { Account } from '../lib/useAccount';
@@ -54,9 +56,23 @@ function TeacherPanel({ account }: { account: Account }) {
 
   const load = useCallback(() => {
     myClasses()
-      .then(setClasses)
+      .then(async (found) => {
+        // Repair any class still carrying an email as the teacher's name —
+        // students see that field. Only possible once this teacher has given
+        // a name to put there instead.
+        const stale = found.filter((k) => k.teacherName.includes('@'));
+        if (stale.length && account.publicName) {
+          await Promise.all(
+            stale.map((k) => updateTeacherName(k.id, account.publicName).catch(() => null)),
+          );
+          found = found.map((k) =>
+            k.teacherName.includes('@') ? { ...k, teacherName: account.publicName } : k,
+          );
+        }
+        setClasses(found);
+      })
       .catch(() => setError('Could not load your classes. Check your connection.'));
-  }, []);
+  }, [account.publicName]);
 
   useEffect(load, [load]);
 
@@ -66,7 +82,7 @@ function TeacherPanel({ account }: { account: Account }) {
     setBusy(true);
     setError('');
     try {
-      const made = await createClass(name.trim(), account.name);
+      const made = await createClass(name.trim(), account.publicName);
       setClasses((prev) => [...(prev ?? []), made]);
       setName('');
     } catch {
@@ -79,6 +95,13 @@ function TeacherPanel({ account }: { account: Account }) {
   return (
     <section className="class-block">
       <h3 className="account-heading">Classes you teach</h3>
+
+      {!account.publicName && (
+        <p className="account-hint">
+          Your students will see the name on your account. You haven&apos;t set one, so add it in{' '}
+          <a href="#/account">your account</a> — otherwise they just see the class name.
+        </p>
+      )}
 
       {classes === null && <p className="account-hint">Loading…</p>}
       {classes?.length === 0 && (
@@ -213,7 +236,7 @@ function ClassCard({ klass, onRenamed }: { klass: ClassDoc; onRenamed: () => voi
           <ul className="roster">
             {waiting.map((m) => (
               <li key={m.uid} className="roster-row">
-                <span className="roster-name">{m.displayName || 'Unnamed'}</span>
+                <span className="roster-name">{safeName(m.displayName, 'Unnamed')}</span>
                 <span className="roster-actions">
                   <button type="button" className="btn primary" onClick={() => decide(m.uid, 'approved')}>
                     Approve
@@ -234,7 +257,7 @@ function ClassCard({ klass, onRenamed }: { klass: ClassDoc; onRenamed: () => voi
           <ul className="roster">
             {approved.map((m) => (
               <li key={m.uid} className="roster-row">
-                <span className="roster-name">{m.displayName || 'Unnamed'}</span>
+                <span className="roster-name">{safeName(m.displayName, 'Unnamed')}</span>
                 <button type="button" className="btn" onClick={() => decide(m.uid, 'removed')}>
                   Deactivate
                 </button>
@@ -250,7 +273,7 @@ function ClassCard({ klass, onRenamed }: { klass: ClassDoc; onRenamed: () => voi
           <ul className="roster">
             {removed.map((m) => (
               <li key={m.uid} className="roster-row">
-                <span className="roster-name muted">{m.displayName || 'Unnamed'}</span>
+                <span className="roster-name muted">{safeName(m.displayName, 'Unnamed')}</span>
                 <button type="button" className="btn" onClick={() => decide(m.uid, 'approved')}>
                   Let back in
                 </button>
@@ -300,8 +323,9 @@ function LearnerPanel({ account }: { account: Account }) {
     setError('');
     setJoined('');
     try {
-      const klass = await requestToJoin(code, account.name);
-      setJoined(`Asked to join ${klass.name}. ${klass.teacherName || 'The teacher'} will approve you.`);
+      const klass = await requestToJoin(code, account.publicName);
+      const teacher = safeName(klass.teacherName, 'The teacher');
+      setJoined(`Asked to join ${klass.name}. ${teacher} will approve you.`);
       setCode('');
       load();
     } catch (err) {
@@ -343,7 +367,7 @@ function LearnerPanel({ account }: { account: Account }) {
         {enrolments?.map((e) => (
           <li key={e.classId} className={`enrolment ${e.status}`}>
             <span className="enrolment-name">{e.className}</span>
-            <span className="enrolment-teacher">{e.teacherName}</span>
+            <span className="enrolment-teacher">{safeName(e.teacherName, 'Teacher')}</span>
             <span className="enrolment-status">{STATUS_TEXT[e.status]}</span>
             <button type="button" className="link-btn" onClick={() => leave(e.classId)}>
               Leave

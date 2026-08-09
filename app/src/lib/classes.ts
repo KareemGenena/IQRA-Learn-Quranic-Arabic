@@ -125,6 +125,17 @@ function randomCode(): string {
 
 export const normaliseCode = (raw: string): string => raw.toUpperCase().replace(/[^A-Z0-9]/g, '');
 
+/**
+ * A name fit to show somebody else.
+ *
+ * Belt and braces against an email reaching another learner's screen. Writing
+ * one is prevented at the source, but classes created before that fix already
+ * hold one, so anything read back is filtered on the way out too. Cheaper than
+ * a migration and it cannot be undone by old data reappearing.
+ */
+export const safeName = (raw: string, fallback: string): string =>
+  !raw.trim() || raw.includes('@') ? fallback : raw.trim();
+
 // ── teacher ───────────────────────────────────────────────────────────────
 
 /**
@@ -151,7 +162,8 @@ export async function createClass(name: string, teacherName: string): Promise<Cl
   const fields = {
     name: str(name),
     teacherUid: str(uid),
-    teacherName: str(teacherName),
+    // Stored empty rather than as an email: this field is shown to students.
+    teacherName: str(safeName(teacherName, '')),
     joinCode: str(code),
     createdAt: int(Date.now()),
     active: bool(true),
@@ -208,6 +220,23 @@ export async function setMemberStatus(classId: string, uid: string, status: Memb
   await call(
     `/classes/${classId}/members/${uid}?updateMask.fieldPaths=status&updateMask.fieldPaths=decidedAt`,
     { method: 'PATCH', body: JSON.stringify({ fields: { status: str(status), decidedAt: int(Date.now()) } }) },
+    token,
+  );
+}
+
+/**
+ * Put the teacher's name right on a class that holds a bad one.
+ *
+ * Classes made before `safeName` existed stored whatever the app called the
+ * teacher, which for an account with no display name was their email. This
+ * repairs them in place the next time the teacher opens the page, so the
+ * students' copies stop showing it.
+ */
+export async function updateTeacherName(classId: string, teacherName: string): Promise<void> {
+  const { token } = await authed();
+  await call(
+    `/classes/${classId}?updateMask.fieldPaths=teacherName`,
+    { method: 'PATCH', body: JSON.stringify({ fields: { teacherName: str(teacherName) } }) },
     token,
   );
 }
@@ -300,14 +329,21 @@ export async function myEnrolments(): Promise<Enrolment[]> {
 
   return Promise.all(
     rows.map(async (row): Promise<Enrolment> => {
-      // The membership document is the authority on status; the signpost above
-      // only remembers the name it had when they joined.
-      const member = (await call(
-        `/classes/${row.classId}/members/${uid}`,
-        { method: 'GET' },
-        token,
-      ).catch(() => null)) as { fields?: Fields } | null;
-      return { ...row, status: member ? decodeMember(uid, member.fields).status : 'gone' };
+      // The membership document is the authority on status, and the class
+      // itself is the authority on its name — the signpost only remembers what
+      // it was called on the day they joined, so a rename (or a teacher's name
+      // being put right) would never otherwise reach them.
+      const [member, klass] = await Promise.all([
+        call(`/classes/${row.classId}/members/${uid}`, { method: 'GET' }, token).catch(() => null),
+        call(`/classes/${row.classId}`, { method: 'GET' }, token).catch(() => null),
+      ]);
+      const current = klass ? decodeClass(row.classId, (klass as { fields?: Fields }).fields) : null;
+      return {
+        classId: row.classId,
+        className: current?.name || row.className,
+        teacherName: current?.teacherName ?? row.teacherName,
+        status: member ? decodeMember(uid, (member as { fields?: Fields }).fields).status : 'gone',
+      };
     }),
   );
 }
