@@ -5,6 +5,7 @@ import { SectionedLesson } from './pages/SectionedLesson';
 import { AdminPage } from './pages/AdminPage';
 import { NotesPage } from './pages/NotesPage';
 import { AccountPage } from './pages/AccountPage';
+import { ClassesPage } from './pages/ClassesPage';
 import { SignInPanel } from './components/SignInPanel';
 import { LaserPointer } from './components/LaserPointer';
 import { LessonManager } from './components/LessonManager';
@@ -35,14 +36,14 @@ function initialRate(): number {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account';
+  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes';
   lessonId: number;
 }
 
 function parseRoute(hash: string): Route {
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
-  const m = /^#\/(lesson|admin|calibrate|notes|account)(?:\/(\d+))?/.exec(hash);
+  const m = /^#\/(lesson|admin|calibrate|notes|account|classes)(?:\/(\d+))?/.exec(hash);
   if (m) {
     const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
     return { page, lessonId: Number(m[2] ?? 0) };
@@ -134,7 +135,7 @@ export default function App() {
 
   const meta = LESSONS.find((l) => l.id === route.lessonId);
   /** The bare sign-in screen: no page title, no second sign-in button. */
-  const signingIn = route.page === 'account' && !account.signedIn;
+  const signingIn = (route.page === 'account' || route.page === 'classes') && !account.signedIn;
   const showLaser = canUseFeature(config, 'laser', admin);
   const showNotes = canUseFeature(config, 'notes', admin);
   const lessonAllowed = route.lessonId === 0 || canSeeLesson(config, route.lessonId, admin);
@@ -204,7 +205,9 @@ export default function App() {
               <h2>
                 {route.page === 'account'
                   ? 'Your account'
-                  : route.page === 'admin' && route.lessonId === 0
+                  : route.page === 'classes'
+                    ? 'Classes'
+                    : route.page === 'admin' && route.lessonId === 0
                     ? 'Admin'
                     : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}Lesson ${route.lessonId}${meta ? ` — ${meta.title}` : ''}`}
               </h2>
@@ -212,6 +215,8 @@ export default function App() {
           </nav>
 
           {route.page === 'account' && <AccountPage account={account} />}
+
+          {route.page === 'classes' && <ClassesPage account={account} />}
 
           {/* Admin home: what's published, and which features are live. */}
           {route.page === 'admin' && route.lessonId === 0 && (

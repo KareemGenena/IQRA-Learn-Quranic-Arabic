@@ -57,6 +57,7 @@ const doc = (p) => `/databases/(default)/documents/${p}`;
 const who = (uid, email) => ({ uid, token: { email, email_verified: true } });
 
 const STUDENT = who('stu1', 'student@example.com');
+const OTHER = who('stu2', 'other@example.com');
 const OWNER = who('adm1', ADMIN);
 
 /** A stored profile, as the rules see `resource` on an update. */
@@ -75,6 +76,124 @@ const write = (name, expectation, auth, p, data, method = 'create', existing = n
   request: { auth, path: doc(p), method, time: NOW, resource: { data } },
   ...(existing ? { resource: existing } : {}),
 });
+
+const TEACHER = who('tch1', 'teacher@example.com');
+
+/** Stand in for the get()/exists() the class rules perform. */
+const ownedBy = (uid) => ({
+  function: 'get',
+  args: [{ anyValue: {} }],
+  result: { value: { data: { teacherUid: uid } } },
+});
+const memberExists = (yes) => ({
+  function: 'exists',
+  args: [{ anyValue: {} }],
+  result: { value: yes },
+});
+
+const klass = (over = {}) => ({
+  name: 'Tuesday Halaqa',
+  teacherUid: 'tch1',
+  teacherName: 'Teacher',
+  joinCode: 'K7QM4P',
+  createdAt: 1000,
+  active: true,
+  ...over,
+});
+const membership = (over = {}) => ({
+  displayName: 'Aisha',
+  status: 'pending',
+  requestedAt: 1000,
+  decidedAt: 0,
+  ...over,
+});
+
+const cls = (name, expectation, auth, path, method, data, existing, mocks) => ({
+  name,
+  expectation,
+  request: {
+    auth,
+    path: doc(path),
+    method,
+    time: NOW,
+    ...(data ? { resource: { data } } : {}),
+  },
+  ...(existing ? { resource: { data: existing } } : {}),
+  ...(mocks ? { functionMocks: mocks } : {}),
+});
+
+function classCases() {
+  const C = 'classes/c1';
+  const M = 'classes/c1/members/stu1';
+  return [
+    // the class itself
+    cls('a teacher reads their own class', 'ALLOW', TEACHER, C, 'get', null, klass(), [memberExists(false)]),
+    cls('a stranger cannot read a class', 'DENY', STUDENT, C, 'get', null, klass(), [memberExists(false)]),
+    cls('someone who has asked to join can read it', 'ALLOW', STUDENT, C, 'get', null, klass(), [memberExists(true)]),
+    cls('anon cannot read a class', 'DENY', null, C, 'get', null, klass(), [memberExists(true)]),
+
+    cls('a teacher creates their own class', 'ALLOW', TEACHER, C, 'create', klass()),
+    cls('cannot create a class owned by someone else', 'DENY', STUDENT, C, 'create', klass()),
+    cls('a class needs a name', 'DENY', TEACHER, C, 'create', klass({ name: '' })),
+    cls('a class name has a ceiling', 'DENY', TEACHER, C, 'create', klass({ name: 'x'.repeat(200) })),
+    cls('no extra fields on a class', 'DENY', TEACHER, C, 'create', klass({ secret: 'x' })),
+
+    cls('a teacher renames their class', 'ALLOW', TEACHER, C, 'update', klass({ name: 'Thursday' }), klass()),
+    cls('a class cannot change hands silently', 'DENY', TEACHER, C, 'update', klass({ teacherUid: 'stu1' }), klass()),
+    cls('the join code cannot be swapped', 'DENY', TEACHER, C, 'update', klass({ joinCode: 'ZZZZZZ' }), klass()),
+    cls('a stranger cannot rename a class', 'DENY', STUDENT, C, 'update', klass({ name: 'Mine' }), klass()),
+    cls('a teacher deletes their own class', 'ALLOW', TEACHER, C, 'delete', null, klass()),
+    cls('a stranger cannot delete a class', 'DENY', STUDENT, C, 'delete', null, klass()),
+
+    // the roster
+    cls('you enrol yourself, pending', 'ALLOW', STUDENT, M, 'create', membership()),
+    cls('you cannot enrol yourself as approved', 'DENY', STUDENT, M, 'create', membership({ status: 'approved' })),
+    cls('you cannot enrol somebody else', 'DENY', OTHER, M, 'create', membership()),
+    cls('anon cannot enrol', 'DENY', null, M, 'create', membership()),
+
+    cls('the teacher approves a member', 'ALLOW', TEACHER, M, 'update',
+      membership({ status: 'approved', decidedAt: 2000 }), membership(), [ownedBy('tch1')]),
+    cls('the teacher deactivates a member', 'ALLOW', TEACHER, M, 'update',
+      membership({ status: 'removed', decidedAt: 2000 }), membership(), [ownedBy('tch1')]),
+    cls('a learner cannot approve themselves', 'DENY', STUDENT, M, 'update',
+      membership({ status: 'approved' }), membership(), [ownedBy('tch1')]),
+    cls('another teacher cannot approve into this class', 'DENY', TEACHER, M, 'update',
+      membership({ status: 'approved' }), membership(), [ownedBy('someone-else')]),
+    cls('a teacher cannot rewrite a member name', 'DENY', TEACHER, M, 'update',
+      membership({ status: 'approved', displayName: 'Changed' }), membership(), [ownedBy('tch1')]),
+
+    cls('you read your own membership', 'ALLOW', STUDENT, M, 'get', null, membership(), [ownedBy('tch1')]),
+    cls('the teacher reads a membership', 'ALLOW', TEACHER, M, 'get', null, membership(), [ownedBy('tch1')]),
+    cls('a stranger cannot read a membership', 'DENY', OTHER, M, 'get', null, membership(), [ownedBy('tch1')]),
+    cls('you can leave a class', 'ALLOW', STUDENT, M, 'delete', null, membership(), [ownedBy('tch1')]),
+    cls('the teacher can strike someone off', 'ALLOW', TEACHER, M, 'delete', null, membership(), [ownedBy('tch1')]),
+    cls('a stranger cannot remove a member', 'DENY', OTHER, M, 'delete', null, membership(), [ownedBy('tch1')]),
+
+    // join codes
+    cls('a signed-in person can fetch a code they know', 'ALLOW', STUDENT, 'joinCodes/K7QM4P', 'get',
+      null, { classId: 'c1', teacherUid: 'tch1' }),
+    cls('anon cannot fetch a code', 'DENY', null, 'joinCodes/K7QM4P', 'get',
+      null, { classId: 'c1', teacherUid: 'tch1' }),
+    cls('codes cannot be listed', 'DENY', STUDENT, 'joinCodes/K7QM4P', 'list',
+      null, { classId: 'c1', teacherUid: 'tch1' }),
+    cls('a teacher mints a code for their own class', 'ALLOW', TEACHER, 'joinCodes/K7QM4P', 'create',
+      { classId: 'c1', teacherUid: 'tch1' }, null, [ownedBy('tch1')]),
+    cls('nobody mints a code for a class they do not own', 'DENY', STUDENT, 'joinCodes/K7QM4P', 'create',
+      { classId: 'c1', teacherUid: 'stu1' }, null, [ownedBy('tch1')]),
+    cls('a code cannot be repointed', 'DENY', TEACHER, 'joinCodes/K7QM4P', 'update',
+      { classId: 'c9', teacherUid: 'tch1' }, { classId: 'c1', teacherUid: 'tch1' }, [ownedBy('tch1')]),
+    cls('a teacher retires their own code', 'ALLOW', TEACHER, 'joinCodes/K7QM4P', 'delete',
+      null, { classId: 'c1', teacherUid: 'tch1' }),
+    cls('a stranger cannot retire a code', 'DENY', STUDENT, 'joinCodes/K7QM4P', 'delete',
+      null, { classId: 'c1', teacherUid: 'tch1' }),
+
+    // the learner's own list
+    cls('you read your own enrolments', 'ALLOW', STUDENT, 'users/stu1/enrolments/c1', 'get',
+      null, { classId: 'c1', className: 'Tuesday', teacherName: 'T' }),
+    cls('you cannot read anyone else\'s enrolments', 'DENY', OTHER, 'users/stu1/enrolments/c1', 'get',
+      null, { classId: 'c1', className: 'Tuesday', teacherName: 'T' }),
+  ];
+}
 
 const CASES = [
   // --- profiles: users/{uid} ---
@@ -109,6 +228,12 @@ const CASES = [
     request: { auth: OWNER, path: doc('users/stu1'), method: 'delete', time: NOW }, resource: stored() },
   { name: 'anon deletes nothing', expectation: 'DENY',
     request: { auth: null, path: doc('users/stu1'), method: 'delete', time: NOW }, resource: stored() },
+
+  // --- classes ---
+  // functionMocks stand in for the get()/exists() the rules perform, so a
+  // case says exactly which world it is testing rather than depending on
+  // documents existing somewhere.
+  ...classCases(),
 
   // --- what was already there must not have regressed ---
   read('anyone reads the published config', 'ALLOW', null, 'config/app'),

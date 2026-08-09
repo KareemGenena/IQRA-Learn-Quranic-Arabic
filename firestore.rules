@@ -52,6 +52,93 @@ service cloud.firestore {
       allow delete: if request.auth != null && request.auth.uid == uid;
     }
 
+    // A learner's own list of the classes they have asked to join. Nobody
+    // else's business: a teacher reads their roster under the class, not here.
+    match /users/{uid}/enrolments/{classId} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    function classOwner(classId) {
+      return request.auth != null
+        && get(/databases/$(database)/documents/classes/$(classId)).data.teacherUid == request.auth.uid;
+    }
+
+    // A class. Readable by the teacher who owns it and by anyone who has asked
+    // to join — pending learners included, so they can see whose class they
+    // knocked on while they wait.
+    match /classes/{classId} {
+      allow read: if request.auth != null
+        && (resource.data.teacherUid == request.auth.uid
+            || exists(/databases/$(database)/documents/classes/$(classId)/members/$(request.auth.uid)));
+
+      allow create: if request.auth != null
+        && request.resource.data.teacherUid == request.auth.uid
+        && request.resource.data.keys().hasOnly(
+             ['name', 'teacherUid', 'teacherName', 'joinCode', 'createdAt', 'active'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.joinCode is string
+        && request.resource.data.createdAt is int
+        && request.resource.data.active is bool;
+
+      // The owner may rename it or close it. Who owns it, its code and its
+      // age are fixed — a class that could change hands silently would take
+      // its whole roster with it.
+      allow update: if request.auth != null
+        && resource.data.teacherUid == request.auth.uid
+        && request.resource.data.teacherUid == resource.data.teacherUid
+        && request.resource.data.joinCode == resource.data.joinCode
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.name.size() <= 80;
+
+      allow delete: if request.auth != null && resource.data.teacherUid == request.auth.uid;
+
+      // One learner's standing in this class.
+      match /members/{uid} {
+        allow read: if request.auth != null && (request.auth.uid == uid || classOwner(classId));
+
+        // You enrol yourself, and you arrive pending. Nobody can write
+        // themselves in as approved.
+        allow create: if request.auth != null
+          && request.auth.uid == uid
+          && request.resource.data.keys().hasOnly(['displayName', 'status', 'requestedAt', 'decidedAt'])
+          && request.resource.data.status == 'pending'
+          && request.resource.data.displayName is string
+          && request.resource.data.displayName.size() <= 80
+          && request.resource.data.requestedAt is int;
+
+        // Only the teacher decides. A learner cannot promote themselves, and
+        // re-applying after being removed is the teacher's call too.
+        allow update: if classOwner(classId)
+          && request.resource.data.status in ['pending', 'approved', 'removed']
+          && request.resource.data.displayName == resource.data.displayName
+          && request.resource.data.requestedAt == resource.data.requestedAt;
+
+        // A learner may leave; a teacher may strike someone off entirely.
+        allow delete: if request.auth != null && (request.auth.uid == uid || classOwner(classId));
+      }
+    }
+
+    // code → class. Fetchable by anyone signed in who knows the exact code,
+    // and never listable: that is the whole point of keeping it separate from
+    // the class document, which stays private.
+    match /joinCodes/{code} {
+      allow get: if request.auth != null;
+      allow list: if false;
+
+      // Only for a class that already exists and is yours, so nobody can mint
+      // a code that points at someone else's roster.
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['classId', 'teacherUid'])
+        && request.resource.data.teacherUid == request.auth.uid
+        && classOwner(request.resource.data.classId);
+
+      // Codes do not change. Retiring one means deleting it.
+      allow update: if false;
+      allow delete: if request.auth != null && resource.data.teacherUid == request.auth.uid;
+    }
+
     // Letter-timing calibrations, one doc per word:
     //   calibrations/{lessonId}/words/{wordId}  ->  { b: [boundary seconds] }
     //

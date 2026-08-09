@@ -189,7 +189,10 @@ Open items:
   re-run if that changes.
 - **Notes** are device-local. Cloud sync and the teacher/student layers are
   designed but not built.
-- **Classes** (join codes, rosters) are designed but not built. Roles exist.
+- **Classes** work: a teacher creates a class at `#/classes`, gets a six-character
+  join code, and approves, declines, deactivates or readmits each learner. A
+  learner enters the code and waits. Many-to-many throughout — every
+  relationship is a document, never a field.
 - **Account deletion** works for what exists today: profile document, then the
   Firebase Auth account, in that order and never the reverse. Enrolments and
   cloud notes must be added to the front of that sequence when they exist —
@@ -208,17 +211,35 @@ Designed and agreed, not yet implemented:
 
 ---
 
+**Classes, as built**
+```
+classes/{classId}                 name, teacherUid, teacherName, joinCode, createdAt, active
+joinCodes/{code}                  classId, teacherUid   — get-able, never listable
+classes/{classId}/members/{uid}   displayName, status, requestedAt, decidedAt
+users/{uid}/enrolments/{classId}  the learner's own signpost to a class
+```
+- `enrolments` looks redundant and is not. Membership must live under the class
+  so a teacher can read a whole roster; but a learner cannot ask "which classes
+  am I in?" without querying every class in the app. The membership document
+  stays the authority on **status** — the signpost only says where to look.
+- A join code only reaches the **pending** queue, so a leaked one costs a
+  decline, not access. That is why it never needs rotating.
+- A class is written **before** its join code: the rules refuse a code whose
+  class does not already exist and belong to you.
+- `teacherUid`, `joinCode` and `createdAt` are immutable after creation. A class
+  that could change hands silently would take its roster with it.
+
 ## 5. Next task
 
-**Classes.** Roles are done; a teacher can declare themselves at `#/account`
-and nothing happens yet, because there is no class to own. The agreed flow:
+Classes are built (section 4). What remains of that design, unbuilt: **teacher
+succession** — handing a class to a successor by code, or leaving the seat
+vacant while the class carries on self-paced. Nothing blocks it; it simply
+wasn't needed before a class existed to hand over.
 
-1. Teacher creates a class (a name, and a generated join code).
-2. Student signs up and enters the code, which files an enrolment request.
-3. Teacher approves or declines from a roster.
-4. Approved students see the teacher's note layer for each lesson, read-only.
+Then notes: cloud sync, then the three layers — student layer private with an
+explicit submit-to-teacher, teacher layer per class per lesson.
 
-Decided by the author (2026-08-08), so build to these:
+The decisions these were built to (2026-08-08), kept for reference:
 - **Many-to-many.** A teacher may run several classes; a student may belong to
   several. Model enrolment as documents (`classes/{classId}/members/{uid}`),
   never as a field on the profile.

@@ -13,6 +13,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { deleteAuthAccount, getSession, isAdminEmail, signIn, signOut, signUp } from './auth';
 import type { Session } from './auth';
+import { forgetEnrolments } from './classes';
 import { cacheProfile, cachedProfile, deleteProfile, fetchProfile, saveProfile } from './profile';
 import type { Profile, Role } from './profile';
 
@@ -107,14 +108,15 @@ export function useAccount(): Account {
   /**
    * Erase the account, in the only order that cannot strand data.
    *
-   * Firestore first, Firebase Auth second: the profile can only be deleted
-   * with a valid token, so deleting the account first would leave the person's
-   * name and email sitting in Firestore with no way to ever remove them. If
-   * the second step fails the account still exists and this can be retried —
-   * the recoverable failure, rather than the permanent one.
+   * Enrolments first, then the profile, then Firebase Auth. Everything before
+   * the last step needs a valid token to authorise it, so deleting the auth
+   * account first would leave a name, an email and a row on somebody's roster
+   * with no way to ever remove them. A failure partway leaves the account
+   * standing and the whole thing retryable — the recoverable failure rather
+   * than the permanent one.
    *
-   * When classes exist their enrolments and notes are erased ahead of both,
-   * and that ordering is the reason this belongs in one place.
+   * A teacher's classes are deliberately left alone: their students keep the
+   * notes and the class carries on with the teacher's seat vacant.
    */
   const deleteAccount = useCallback(
     async (password: string) => {
@@ -123,6 +125,7 @@ export function useAccount(): Account {
       // Deleting an account demands a fresh sign-in, and proving it is really
       // them is worth the extra step for something this final.
       await signIn(email, password);
+      await forgetEnrolments();
       await deleteProfile();
       await deleteAuthAccount();
       cacheProfile(null);

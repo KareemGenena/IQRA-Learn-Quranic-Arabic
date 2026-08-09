@@ -84,13 +84,11 @@ export function AccountPage({ account }: { account: Account }) {
           {busy ? 'Saving…' : saved ? 'Saved.' : ''}
         </p>
         {error && <p className="gate-error">{error}</p>}
-        {teacher && (
-          <p className="account-hint">
-            <strong>Classes aren&apos;t built yet</strong> — so there is no join code to hand out
-            and no roster to approve. That is the next thing being built. Nothing you can set up
-            here in the meantime.
-          </p>
-        )}
+        <p className="account-hint">
+          <a href="#/classes">
+            {teacher ? 'Your classes and join codes →' : 'Join a class with a code →'}
+          </a>
+        </p>
       </section>
 
       <section className="account-card">

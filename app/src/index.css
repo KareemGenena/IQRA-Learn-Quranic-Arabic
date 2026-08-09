@@ -1496,6 +1496,179 @@ body {
   color: var(--accent);
 }
 
+/* ---------- classes ---------- */
+
+.classes-page {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+.class-block {
+  padding: 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.class-card {
+  margin: 12px 0;
+  padding: 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+}
+
+.class-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.class-name {
+  margin: 0;
+  font-size: 17px;
+  color: var(--text);
+}
+
+.class-rename {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.join-code-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.join-code-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+}
+
+/* The teacher's whole reason for opening this page — big, plain, selectable. */
+.join-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 4px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  user-select: all;
+}
+
+.roster-heading {
+  margin: 14px 0 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-soft);
+}
+
+.roster {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.roster-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+}
+
+.roster-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.roster-name.muted {
+  font-weight: 500;
+  color: var(--text-soft);
+}
+
+.roster-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.class-new {
+  margin-top: 14px;
+}
+
+.class-new-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.class-new input {
+  flex: 1 1 200px;
+  min-width: 0;
+  font-size: 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+}
+
+.code-input {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.enrolment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.enrolment {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+}
+
+.enrolment.approved {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--card-border));
+}
+
+.enrolment-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.enrolment-teacher,
+.enrolment-status {
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
 .danger-zone {
   border-color: color-mix(in srgb, #c0392b 40%, var(--card-border));
   background: color-mix(in srgb, #c0392b 6%, var(--card));
