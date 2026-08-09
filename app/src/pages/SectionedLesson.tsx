@@ -58,18 +58,45 @@ function buildPages(lesson: Lesson): Page[] {
   return pages;
 }
 
+/**
+ * Where the learner had got to, per lesson, kept across visits.
+ *
+ * Someone working hands-free should not have to walk back to their place
+ * every time they open a lesson.
+ */
+const placeKey = (lessonId: number) => `iqra-place-lesson${lessonId}`;
+
+/** -1 means "not started here yet", so the first Next plays the first word. */
+const NOT_STARTED = -1;
+
+function readPlace(lessonId: number): { page: number; step: number } {
+  try {
+    const raw = localStorage.getItem(placeKey(lessonId));
+    const parsed = raw ? (JSON.parse(raw) as { page?: number; step?: number }) : null;
+    return { page: Math.max(0, parsed?.page ?? 0), step: parsed?.step ?? NOT_STARTED };
+  } catch {
+    return { page: 0, step: NOT_STARTED };
+  }
+}
+
 export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number }) {
   const pages = useMemo(() => buildPages(lesson), [lesson]);
-  const [pageNo, setPageNo] = useState(0);
+  // A remembered place can outlive the lesson it was taken in — a rebuild can
+  // leave fewer pages than there were — so it is clamped, never trusted.
+  const [pageNo, setPageNo] = useState(() =>
+    Math.min(readPlace(lesson.lesson).page, Math.max(0, pages.length - 1)),
+  );
   const [playingAll, setPlayingAll] = useState(false);
   const [showContents, setShowContents] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const playersRef = useRef(new Map<string, () => Promise<void>>());
   const cancelAllRef = useRef(false);
-  /** Card index → which form of that card Shift+number will play next. */
-  const formStep = useRef(new Map<number, number>());
+  /** How far along this page's walk the learner is, and where to resume. */
+  const [step, setStep] = useState(() => readPlace(lesson.lesson).step);
+  /** After a page turn, whether to land on its first word or its last. */
+  const landOn = useRef<'first' | 'last' | null>(null);
 
-  const page = pages[pageNo];
+  const page = pages[Math.min(pageNo, pages.length - 1)];
 
   /** Pages grouped by section, for the contents panel. */
   const groups = useMemo(() => {
@@ -104,6 +131,63 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
     headingRef.current?.focus();
   }, [pageNo]);
 
+  /**
+   * Everything on this page, flattened into one reading order.
+   *
+   * A card holds a word said one, two or three ways, and the walk treats each
+   * of those as its own stop. That is what makes Next mean the same thing in
+   * every lesson: the next thing you would say out loud, whether it is the
+   * next form of this word or the first form of the next one.
+   */
+  const sequence = useMemo(
+    () => (page?.items ?? []).flatMap((item, card) => item.forms.map((form, form_) => ({ key: form.key, card, form: form_ }))),
+    [page],
+  );
+
+  const playStep = useCallback(
+    (at: number) => {
+      const target = sequence[at];
+      if (!target) return;
+      setStep(at);
+      void playersRef.current.get(target.key)?.();
+    },
+    [sequence],
+  );
+
+  /** A number goes to that card and starts at the first way of saying it. */
+  const jumpToCard = useCallback(
+    (card: number) => {
+      const at = sequence.findIndex((s) => s.card === card);
+      if (at >= 0) playStep(at);
+    },
+    [sequence, playStep],
+  );
+
+  /**
+   * One step along the walk, running off the end of a page into the next.
+   *
+   * Stopping dead at a page edge would leave someone working hands-free with
+   * no way onward except a different command, so Next simply keeps going.
+   */
+  const walk = useCallback(
+    (delta: number) => {
+      // From "not started", Next lands on the very first word rather than the
+      // second. The remembered step may also point past a shorter page, so it
+      // is clamped before moving.
+      const from = step < 0 ? NOT_STARTED : Math.min(step, sequence.length - 1);
+      const at = from + delta;
+      if (at >= 0 && at < sequence.length) {
+        playStep(at);
+        return;
+      }
+      const nextPage = pageNo + (delta > 0 ? 1 : -1);
+      if (nextPage < 0 || nextPage >= pages.length) return;
+      landOn.current = delta > 0 ? 'first' : 'last';
+      goto(nextPage);
+    },
+    [step, sequence.length, playStep, pageNo, pages.length, goto],
+  );
+
   const playAll = useCallback(async () => {
     if (playingAll) {
       cancelAllRef.current = true;
@@ -128,48 +212,70 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
 
       // Read the PHYSICAL key, not the character it produced. Holding Shift
       // changes the character: on a main row Shift+1 is "!", and on a numeric
-      // keypad Shift flips NumLock so Shift+4 arrives as ArrowLeft. Matching
-      // on e.key therefore made Shift+number do nothing on one keyboard and
-      // silently turn the page on the other. e.code is the key itself and is
-      // the same on every layout. (e.key is kept as a fallback for input that
-      // reports no code at all, such as some on-screen keyboards.)
-      const physical = /^(?:Digit|Numpad)([1-9])$/.exec(e.code)?.[1];
-      const digit = physical ?? (/^[1-9]$/.test(e.key) ? e.key : undefined);
+      // keypad Shift flips NumLock so Shift+4 arrives as ArrowLeft. e.code is
+      // the key itself and is the same on every layout. (e.key is kept as a
+      // fallback for input that reports no code, such as some on-screen
+      // keyboards.)
+      const code = e.code;
+      const digit = /^(?:Digit|Numpad)([1-9])$/.exec(code)?.[1] ?? (/^[1-9]$/.test(e.key) ? e.key : undefined);
 
       // Digits are settled before the arrows, so a keypad key that calls
       // itself ArrowLeft is still treated as the 4 that is printed on it.
-      if (!digit) {
-        if (e.code === 'ArrowRight' || e.key === 'ArrowRight') goto(pageNo + 1);
-        else if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') goto(pageNo - 1);
+      if (digit) {
+        jumpToCard(Number(digit) - 1);
         return;
       }
 
-      const index = Number(digit) - 1;
-      const item = page.items[index];
-      if (!item) return;
-      // A card is a set: one word said one, two or three ways. The number
-      // plays the first of the set and Shift steps to the next, wrapping at
-      // the end. Shift used to mean "the ال form", which only made sense in
-      // lesson 2 and left lesson 4's third form unreachable — this works
-      // whatever a card happens to hold, which is what a keyboard-only
-      // learner needs it to do.
-      const at = e.shiftKey ? ((formStep.current.get(index) ?? 0) + 1) % item.forms.length : 0;
-      formStep.current.set(index, at);
-      const form = item.forms[at];
-      if (form) void playersRef.current.get(form.key)?.();
+      const is = (...names: string[]) => names.includes(code) || names.includes(e.key);
+
+      if (is('KeyN', 'ArrowDown', 'Space', 'n')) {
+        e.preventDefault();
+        walk(1);
+      } else if (is('KeyP', 'ArrowUp', 'p')) {
+        e.preventDefault();
+        walk(-1);
+      } else if (is('ArrowRight')) goto(pageNo + 1);
+      else if (is('ArrowLeft')) goto(pageNo - 1);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [goto, pageNo, page]);
+  }, [goto, pageNo, jumpToCard, walk]);
 
-  // Where Shift has walked to on each card. Reset on a page change so the
-  // numbers always mean the same thing on a fresh screen.
+  // A page reached any other way — an arrow, a Back/Next button, the contents
+  // list — starts from the top, so Next means the first word on it.
+  //
+  // The guard compares the page it last saw rather than counting renders. A
+  // "have I run before?" flag looks equivalent and is not: StrictMode mounts
+  // twice, the ref survives, and the second run threw away the remembered
+  // place every time a lesson was opened.
+  const lastPage = useRef(pageNo);
   useEffect(() => {
-    formStep.current.clear();
+    if (lastPage.current === pageNo) return;
+    lastPage.current = pageNo;
+    if (!landOn.current) setStep(NOT_STARTED);
   }, [pageNo]);
+
+  // After a page turn started by Next or Previous, carry on from the right
+  // end of the new page rather than making the learner find their place.
+  useEffect(() => {
+    if (!landOn.current || !sequence.length) return;
+    const at = landOn.current === 'first' ? 0 : sequence.length - 1;
+    landOn.current = null;
+    playStep(at);
+  }, [sequence, playStep]);
+
+  // Remember the place, so returning to a lesson resumes it.
+  useEffect(() => {
+    try {
+      localStorage.setItem(placeKey(lesson.lesson), JSON.stringify({ page: pageNo, step }));
+    } catch {
+      // A full or blocked store only costs the bookmark; the lesson still works.
+    }
+  }, [lesson.lesson, pageNo, step]);
 
   useEffect(() => () => {
     cancelAllRef.current = true;
@@ -277,15 +383,14 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
           of cards and whether they hold more than one form both change between
           lessons, and a hint that describes a different lesson is worse than
           none — someone driving this by voice has no way to tell it is lying. */}
+      {/* Single keys, no chords: this is read by someone speaking commands to
+          an iPad, where "press N" is one utterance and Shift+number is not
+          reachable at all. */}
       <p className="kbd-hint">
-        Keyboard: <kbd>←</kbd> <kbd>→</kbd> change page,{' '}
-        {cardCount === 1 ? <kbd>1</kbd> : <><kbd>1</kbd>–<kbd>{cardCount}</kbd></>} play a word
-        {maxForms > 1 && (
-          <>
-            , <kbd>Shift</kbd>+number steps to its next form ({maxForms} in all)
-          </>
-        )}
-        .
+        Keyboard: <kbd>N</kbd> next word, <kbd>P</kbd> previous,{' '}
+        {cardCount === 1 ? <kbd>1</kbd> : <><kbd>1</kbd>–<kbd>{cardCount}</kbd></>} start at that
+        word, <kbd>←</kbd> <kbd>→</kbd> change page.
+        {maxForms > 1 && ' Next walks through every way each word is said.'}
       </p>
     </main>
   );

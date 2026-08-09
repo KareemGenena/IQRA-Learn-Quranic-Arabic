@@ -238,10 +238,13 @@ export async function requestToJoin(rawCode: string, displayName: string): Promi
   if (!lookup) throw new Error('NO_SUCH_CODE');
   const classId = readStr(lookup.fields, 'classId');
 
-  const classDoc = (await call(`/classes/${classId}`, { method: 'GET' }, token)) as { fields?: Fields } | null;
-  if (!classDoc) throw new Error('NO_SUCH_CODE');
-  const klass = decodeClass(classId, classDoc.fields);
-
+  // Ask to join FIRST, then read the class.
+  //
+  // A class is readable by its teacher and by anyone who has asked to join,
+  // and by nobody else — which is the point of it. So reading it before
+  // knocking is refused, and doing that in the wrong order is what made this
+  // fail with "check your connection" when the connection was fine. The
+  // membership document is what earns the read.
   await call(
     `/classes/${classId}/members/${uid}`,
     {
@@ -257,6 +260,15 @@ export async function requestToJoin(rawCode: string, displayName: string): Promi
     },
     token,
   );
+
+  const classDoc = (await call(`/classes/${classId}`, { method: 'GET' }, token)) as { fields?: Fields } | null;
+  if (!classDoc) {
+    // The code outlived its class. Take the request back rather than leave a
+    // membership pointing at nothing.
+    await call(`/classes/${classId}/members/${uid}`, { method: 'DELETE' }, token).catch(() => null);
+    throw new Error('NO_SUCH_CODE');
+  }
+  const klass = decodeClass(classId, classDoc.fields);
 
   // The learner's own signpost to this class. Written second: if it fails the
   // request still stands, and the teacher can still see it.

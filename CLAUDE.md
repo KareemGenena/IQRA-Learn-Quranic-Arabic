@@ -141,16 +141,23 @@ Things that cost real debugging. Do not undo them without reading why.
   before regenerating audio for a calibrated word.
 
 **Keyboard** (`SectionedLesson`, lessons 2–4)
-- Built for a learner who drives an iPad by voice, so commands must mean the
-  same thing in every lesson. `←`/`→` change page; a **number plays the first
-  form** of that card; **Shift+number steps to the next form**, wrapping, and
-  resets when the plain number is pressed.
-- Shift used to mean "the ال form", which only made sense in lesson 2 and left
-  lesson 4's third form unreachable. A card is a *set* — stepping through it is
-  the only scheme that works whether the card holds one form or three.
-- The hint line is written from the page in front of you (card count, form
-  count), never hardcoded. A hint that describes a different lesson is worse
-  than no hint: someone working by voice cannot see that it is lying.
+- Built for a learner who drives an iPad by voice. **Single keys only, never
+  chords** — "press N" is one utterance; Shift+number cannot be spoken at all.
+  That rules out modifier combinations as an interface here, permanently.
+- `N` next · `P` previous · `1`–`9` start at that card · `←`/`→` change page.
+  Next walks a flat sequence of *every form of every card* in reading order, so
+  it means the same thing whether a card holds one form or three, and it runs
+  off the end of a page into the next rather than stopping dead.
+- The place (page + step) is remembered per lesson in `localStorage`, so
+  returning to a lesson resumes it. A page reached any other way restarts the
+  walk at the top. `-1` means "not started", so the first Next plays the first
+  word rather than the second.
+- Always read `e.code`, never `e.key`: Shift turns `1` into `!`, and on a
+  numeric keypad it turns `4` into `ArrowLeft` — which used to turn the page.
+  Digits are matched before arrows for exactly that reason.
+- The hint line is written from the page in front of you, never hardcoded. A
+  hint that describes a different lesson is worse than no hint: someone working
+  by voice cannot see that it is lying.
 - Lesson 1 (`WordsLesson`) is a plain unpaged grid and has **no** keyboard
   support at all — an open accessibility gap, not a decision.
 
@@ -226,6 +233,10 @@ users/{uid}/enrolments/{classId}  the learner's own signpost to a class
   decline, not access. That is why it never needs rotating.
 - A class is written **before** its join code: the rules refuse a code whose
   class does not already exist and belong to you.
+- Joining goes **membership first, then read the class**. A class is readable
+  only by its teacher and by those who have asked to join, so reading it before
+  knocking is refused — the membership document is what earns the read. Getting
+  this backwards made joining fail with "check your connection".
 - `teacherUid`, `joinCode` and `createdAt` are immutable after creation. A class
   that could change hands silently would take its roster with it.
 
