@@ -94,6 +94,12 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
   const editorRef = useRef<HTMLDivElement>(null);
   const drawing = useRef<Stroke | null>(null);
   const panning = useRef<number | null>(null);
+  /** Movement waiting to be applied on the next frame, and the fling state. */
+  const pendingPan = useRef(0);
+  const panFrame = useRef(0);
+  const panSpeed = useRef(0);
+  const lastPanAt = useRef(0);
+  const glideFrame = useRef(0);
   const undoStack = useRef<{ strokes: Stroke[]; html: string }[]>([]);
   const docRef = useRef(doc);
   const dirty = useRef(false);
@@ -256,14 +262,32 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const dpr = window.devicePixelRatio || 1;
     const w = canvas.clientWidth;
     const h = canvas.clientHeight;
-    if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
-      canvas.width = Math.floor(w * dpr);
-      canvas.height = Math.floor(h * dpr);
+
+    /**
+     * How sharp this canvas can afford to be.
+     *
+     * The canvas spans the whole note, so its backing store grows with the
+     * note — and a phone reporting devicePixelRatio 3 turns a 3000px note into
+     * roughly ten million device pixels, forty megabytes the compositor has to
+     * move on every scroll. That is why scrolling felt heavy, and it is also
+     * where iOS quietly gives up and paints the canvas blank.
+     *
+     * So the ratio is capped at 2, and capped further once the note is long
+     * enough to blow the pixel budget. A long note ends up very slightly
+     * softer; it stays scrollable, which matters more.
+     */
+    const MAX_PIXELS = 4_000_000;
+    const wanted = Math.min(window.devicePixelRatio || 1, 2);
+    const affordable = Math.sqrt(MAX_PIXELS / Math.max(1, w * h));
+    const scale = Math.max(0.75, Math.min(wanted, affordable));
+
+    if (canvas.width !== Math.floor(w * scale) || canvas.height !== Math.floor(h * scale)) {
+      canvas.width = Math.floor(w * scale);
+      canvas.height = Math.floor(h * scale);
     }
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.setTransform(scale, 0, 0, scale, 0, 0);
     ctx.clearRect(0, 0, w, h);
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -279,6 +303,24 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
   }, [doc.strokes]);
 
   useLayoutEffect(redraw, [redraw, canvasH]);
+
+  // The canvas's CSS size follows the layout, but its backing store only
+  // changes when something redraws it. Turning a phone sideways therefore left
+  // the whole sheet stretched across the wrong shape until the next stroke.
+  useEffect(() => {
+    let frame = 0;
+    const onResize = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(redraw);
+    };
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
+    };
+  }, [redraw]);
 
   const at = (e: React.PointerEvent) => {
     const r = canvasRef.current!.getBoundingClientRect();
@@ -298,6 +340,49 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
     });
   };
 
+  const stopGlide = useCallback(() => {
+    if (glideFrame.current) cancelAnimationFrame(glideFrame.current);
+    glideFrame.current = 0;
+  }, []);
+
+  /**
+   * Carry on after the finger lifts.
+   *
+   * Scrolling here is done in JavaScript rather than by the browser, and the
+   * browser's own momentum comes with it. Without this a flick stops dead the
+   * instant you let go, which reads as the page being heavy even when every
+   * frame is on time.
+   */
+  const startGlide = useCallback(() => {
+    let speed = panSpeed.current; // pixels per millisecond
+    panSpeed.current = 0;
+    if (Math.abs(speed) < 0.05) return;
+
+    let last = performance.now();
+    const step = (now: number) => {
+      const dt = Math.min(now - last, 32);
+      last = now;
+      const scroller = scrollRef.current;
+      if (!scroller) return;
+      scroller.scrollTop -= speed * dt;
+      // Roughly halves the speed every tenth of a second, which is close to
+      // what the platform scrollers feel like.
+      speed *= Math.pow(0.94, dt);
+      if (Math.abs(speed) > 0.02) glideFrame.current = requestAnimationFrame(step);
+      else glideFrame.current = 0;
+    };
+    glideFrame.current = requestAnimationFrame(step);
+  }, []);
+
+  // Nothing should keep animating a page that has gone away.
+  useEffect(
+    () => () => {
+      stopGlide();
+      if (panFrame.current) cancelAnimationFrame(panFrame.current);
+    },
+    [stopGlide],
+  );
+
   /**
    * A stylus draws, a finger scrolls.
    *
@@ -307,15 +392,21 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
    * drag is turned into scrolling here instead.
    */
   const onPointerDown = (e: React.PointerEvent) => {
+    // Scrolling comes first, and applies to every sheet. A read-only sheet
+    // still has to be readable — bailing out before this left a learner
+    // unable to scroll their teacher's notes at all.
+    if (e.pointerType === 'touch') {
+      stopGlide();
+      panning.current = e.clientY;
+      lastPanAt.current = e.timeStamp;
+      panSpeed.current = 0;
+      return;
+    }
     // A learner may read their teacher's sheet and never change it. Blocked
     // here as well as in the rules: the rules stop it reaching anyone else,
     // this stops the false impression of having written something.
     if (!canEdit) return;
     if (mode !== 'pen') return;
-    if (e.pointerType === 'touch') {
-      panning.current = e.clientY;
-      return;
-    }
     const p = at(e);
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
@@ -334,9 +425,27 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
 
   const onPointerMove = (e: React.PointerEvent) => {
     if (panning.current !== null && e.pointerType === 'touch') {
-      const scroller = scrollRef.current;
-      if (scroller) scroller.scrollTop -= e.clientY - panning.current;
+      const dy = e.clientY - panning.current;
       panning.current = e.clientY;
+
+      // Remember how fast the finger is going, so letting go can carry on.
+      const dt = e.timeStamp - lastPanAt.current;
+      if (dt > 0) panSpeed.current = dy / dt;
+      lastPanAt.current = e.timeStamp;
+
+      // Collect the movement and apply it once a frame. A pointermove can
+      // fire far more often than the screen redraws, and every scrollTop
+      // write forces the browser to move a full-note-height canvas.
+      pendingPan.current += dy;
+      if (!panFrame.current) {
+        panFrame.current = requestAnimationFrame(() => {
+          panFrame.current = 0;
+          const scroller = scrollRef.current;
+          if (!scroller) return;
+          scroller.scrollTop -= pendingPan.current;
+          pendingPan.current = 0;
+        });
+      }
       return;
     }
     if (!drawing.current || e.pointerType === 'touch') return;
@@ -350,7 +459,10 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
   };
 
   const onPointerUp = () => {
-    panning.current = null;
+    if (panning.current !== null) {
+      panning.current = null;
+      startGlide();
+    }
     if (!drawing.current) return;
     drawing.current = null;
     const updated = { ...docRef.current };
