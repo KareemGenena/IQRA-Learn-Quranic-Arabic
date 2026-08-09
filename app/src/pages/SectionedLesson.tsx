@@ -128,23 +128,38 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement) return;
-      if (e.key === 'ArrowRight') goto(pageNo + 1);
-      else if (e.key === 'ArrowLeft') goto(pageNo - 1);
-      else if (/^[1-9]$/.test(e.key)) {
-        const index = Number(e.key) - 1;
-        const item = page.items[index];
-        if (!item) return;
-        // A card is a set: one word said one, two or three ways. The number
-        // plays the first of the set and Shift steps to the next, wrapping at
-        // the end. Shift used to mean "the ال form", which only made sense in
-        // lesson 2 and left lesson 4's third form unreachable — this works
-        // whatever a card happens to hold, which is what a keyboard-only
-        // learner needs it to do.
-        const at = e.shiftKey ? ((formStep.current.get(index) ?? 0) + 1) % item.forms.length : 0;
-        formStep.current.set(index, at);
-        const form = item.forms[at];
-        if (form) void playersRef.current.get(form.key)?.();
+
+      // Read the PHYSICAL key, not the character it produced. Holding Shift
+      // changes the character: on a main row Shift+1 is "!", and on a numeric
+      // keypad Shift flips NumLock so Shift+4 arrives as ArrowLeft. Matching
+      // on e.key therefore made Shift+number do nothing on one keyboard and
+      // silently turn the page on the other. e.code is the key itself and is
+      // the same on every layout. (e.key is kept as a fallback for input that
+      // reports no code at all, such as some on-screen keyboards.)
+      const physical = /^(?:Digit|Numpad)([1-9])$/.exec(e.code)?.[1];
+      const digit = physical ?? (/^[1-9]$/.test(e.key) ? e.key : undefined);
+
+      // Digits are settled before the arrows, so a keypad key that calls
+      // itself ArrowLeft is still treated as the 4 that is printed on it.
+      if (!digit) {
+        if (e.code === 'ArrowRight' || e.key === 'ArrowRight') goto(pageNo + 1);
+        else if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') goto(pageNo - 1);
+        return;
       }
+
+      const index = Number(digit) - 1;
+      const item = page.items[index];
+      if (!item) return;
+      // A card is a set: one word said one, two or three ways. The number
+      // plays the first of the set and Shift steps to the next, wrapping at
+      // the end. Shift used to mean "the ال form", which only made sense in
+      // lesson 2 and left lesson 4's third form unreachable — this works
+      // whatever a card happens to hold, which is what a keyboard-only
+      // learner needs it to do.
+      const at = e.shiftKey ? ((formStep.current.get(index) ?? 0) + 1) % item.forms.length : 0;
+      formStep.current.set(index, at);
+      const form = item.forms[at];
+      if (form) void playersRef.current.get(form.key)?.();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
