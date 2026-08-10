@@ -71,6 +71,9 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
 - **Laser pointer** for teaching over a shared screen.
 - **Notes** — endless per-lesson canvas: stylus draws, finger scrolls, typing in
   Uthmanic Hafs with a Quranic-mark palette. Local-only so far.
+- **Audio intake** (`#/intake`, admin, reached from the admin bar) — open a
+  Word sheet, get a recording slot per row, record in the browser, and write
+  correctly named 16-bit WAVs straight into the folder a generator reads.
 
 ---
 
@@ -116,6 +119,55 @@ Things that cost real debugging. Do not undo them without reading why.
   (`<word> و ثم.wav`) or as **three separate takes** named for what is said in
   each. Keep the two kinds in separate maps: folding them together is what
   broke وسواس, whose bare-word file was cut into three.
+
+**Audio intake** (`src/lib/`, `pages/IntakePage.tsx`)
+- The browser's audio processing is **switched off** — `echoCancellation`,
+  `noiseSuppression` and `autoGainControl` all `false`. AGC hunts the gain
+  between words, which destroys the one thing the splitter relies on: a take
+  whose own noise floor is a stable reference. Noise suppression is a spectral
+  gate over exactly the fricative energy the pronunciation work will measure.
+  Neither can be undone afterwards.
+- Capture is an **AudioWorklet**, not `MediaRecorder`. MediaRecorder yields
+  WebM/Opus, which `readWav` rejects and which is lossy above 8 kHz — where ح
+  and خ live. Raw floats → 16-bit PCM → a WAV header written by hand
+  (`wavFile.ts`), matching `writeSegment` field for field.
+- **Nothing is downsampled at intake.** The device rate is kept. Intake is the
+  one irreversible step; downsampling later is always possible.
+- The filename is **derived, never typed** (`audioName.ts`), with the same
+  transformation the generators match on. Checked against `key()` on all 675
+  Arabic strings in the sheets and the audio folders — zero disagreements.
+- `takeCheck.ts` is a **port of `splitIntoN`**, not an approximation, so the
+  intake gate and the generator cut identically —
+  `node scripts/check-take-parity.mjs` proves it over every recording at 1, 2
+  and 3 pieces. Two traps found by that check and worth remembering: the
+  generator's threshold is a share of the peak **window RMS**, not the peak
+  sample (confusing them moved every boundary by ~0.06 s), and *more* stretches
+  of sound than words is normal — the closure inside خَلَقَكُمْ is a real silence,
+  which is the whole reason the splitter ranks gaps instead of thresholding.
+- Warning thresholds are measured against the existing 172 recordings (peaks
+  −32.7…−0.3 dBFS, SNR never below 39 dB) so that none of them can fire on a
+  take that has already proved itself.
+- **Input gain is judged across the batch, never take by take.** One quiet word
+  is a word; thirty is a setting. The advice appears by the end of the speaker
+  profile — five takes in, before the sheet — because the failure it prevents
+  is discovering after 33 words that the input was 14 dB low. Half the existing
+  corpus sits below −20 dBFS, so a per-take threshold there would cry wolf.
+  The meter is scaled in **dBFS, not amplitude**: linear puts every usable
+  speaking level in the leftmost sliver, which is how a quiet input goes
+  unnoticed.
+- Room tone ignores the first and last **0.5 s**. The first take ever made
+  reported speech at 0.21–0.32 s in a room whose floor was −86 dBFS: those were
+  the mouse clicks starting and stopping the recording. Every speaker will make
+  them, every time.
+- The **speaker profile** — room tone, بَا/بِي/بُو, and one carrier phrase —
+  is recorded once per session. It is worthless to the lessons and
+  indispensable to the pronunciation work: vowel formants scale with the vocal
+  tract, so a learner can only be compared to a native distribution after
+  normalising against their own vowel space. It cannot be collected after the
+  fact, which is why it is in the first version.
+- `intake.json` is written beside the audio: sheet, row, text, speaker,
+  consent, levels, take count. The generators ignore it; the corpus cannot be
+  built without it.
 
 **Word ids and calibrations**
 - A word's id belongs to its **table row**, and is spent whether or not the row
@@ -203,17 +255,14 @@ Things that cost real debugging. Do not undo them without reading why.
 
 ## 4. Current state
 
-**Published:** lessons 1 and 2. **Draft (admin-only):** lessons 3 and 4.
-**Features:** laser live for everyone; notes admin-only.
+**Published:** lessons 1–4. **Features:** laser live for everyone; notes
+admin-only.
+
+Lessons 3 and 4 are complete: every clip their `words.json` references is
+present on disk (67 and 69 respectively, checked mechanically). ٱلرَّحِيمِ is
+recorded — an earlier note here claiming otherwise was wrong.
 
 Open items:
-- **Lesson 3** — ٱلرَّحِيمِ (row #21, ح section) is the one row with no
-  recording. Note it is **not** ٱلرَّحۡمَٰنِ, which is row #20 and is recorded —
-  two different words, adjacent, both in the ح section. Everything else is
-  complete and verified.
-- **Lesson 4** — 24 qamariyya words are unrecorded; the author has decided not to
-  record them for now. The generator skips and lists them, so it can simply be
-  re-run if that changes.
 - **Notes stack for a learner**: the teacher's marks are painted first and the
   learner draws on top, both on the same canvas, with a toggle to hide the
   layer beneath. Drawing stacks in depth; **typing stacks in reading order**
@@ -280,8 +329,20 @@ users/{uid}/enrolments/{classId}  the learner's own signpost to a class
 
 ## 5. Next task
 
-Classes are built (section 4). What remains of that design, unbuilt: **teacher
-succession** — handing a class to a successor by code, or leaving the seat
+**Audio intake, next steps.** The tool works locally: sheet → slots → record →
+named WAVs in the folder. What it does not yet do, in the order it will be
+wanted:
+- **Cloud collection.** Storage is deliberately separate from the lesson audio:
+  a volunteer's corpus recording and a published lesson clip have different
+  consent, retention and lifecycles, and merging them would make the strictest
+  rule apply to both. Two buckets, one tool, chosen by the session.
+- **Content creators other than the author** — the same page, but signed in as
+  a teacher rather than the admin, writing to the cloud rather than a folder,
+  with the author reviewing before a lesson is generated.
+- Per-slot `expect` is settable but the sheet cannot yet say "this row is the
+  وَ / ثُمَّ pattern" on its own.
+
+Then classes: what remains of that design, unbuilt — **teacher succession** — handing a class to a successor by code, or leaving the seat
 vacant while the class carries on self-paced. Nothing blocks it; it simply
 wasn't needed before a class existed to hand over.
 
@@ -316,8 +377,11 @@ Then: notes cloud sync and the teacher/student layers — student layer private
 with an explicit submit-to-teacher, teacher layer per class per lesson. Fold
 enrolments and notes into `deleteAccount` as each lands.
 
-Also still open: review lessons 3 and 4 and publish them from `#/admin`, and
-record ٱلرَّحِيمِ.
+Further out, and the reason the intake system stores what it stores:
+**pronunciation feedback** — a learner records a throat letter and is shown how
+their production differs from a native distribution. Acoustic measurement first,
+a trained speech model second, an LLM only at the end to put the measurement
+into words. Not started; it is gated on the corpus, not on code.
 
 ---
 

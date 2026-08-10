@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
@@ -18,6 +18,15 @@ import type { AppConfig } from './lib/appConfig';
 import type { Account } from './lib/useAccount';
 import type { Lesson } from './types';
 
+/**
+ * The intake system is the lesson owner's recording tool, and no learner will
+ * ever open it — so it is split out rather than shipped inside the bundle
+ * every visitor downloads and the service worker precaches.
+ */
+const IntakePage = lazy(() =>
+  import('./pages/IntakePage').then((m) => ({ default: m.IntakePage })),
+);
+
 type Theme = 'light' | 'dark';
 
 // Speed-ups only: the recordings are already at a slow teaching pace, and the
@@ -36,14 +45,14 @@ function initialRate(): number {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes';
+  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'intake';
   lessonId: number;
 }
 
 function parseRoute(hash: string): Route {
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
-  const m = /^#\/(lesson|admin|calibrate|notes|account|classes)(?:\/(\d+))?/.exec(hash);
+  const m = /^#\/(lesson|admin|calibrate|notes|account|classes|intake)(?:\/(\d+))?/.exec(hash);
   if (m) {
     const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
     return { page, lessonId: Number(m[2] ?? 0) };
@@ -207,6 +216,8 @@ export default function App() {
                   ? 'Your account'
                   : route.page === 'classes'
                     ? 'Classes'
+                    : route.page === 'intake'
+                    ? 'Audio intake'
                     : route.page === 'admin' && route.lessonId === 0
                     ? 'Admin'
                     : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}Lesson ${route.lessonId}${meta ? ` — ${meta.title}` : ''}`}
@@ -218,6 +229,19 @@ export default function App() {
 
           {route.page === 'classes' && <ClassesPage account={account} />}
 
+          {/* The intake system records the lessons themselves, so it belongs
+              to whoever owns them. It will open up when volunteers start
+              contributing recordings — the page is already written for a
+              speaker who is not the author. */}
+          {route.page === 'intake' &&
+            (admin ? (
+              <Suspense fallback={<p className="loading">Loading…</p>}>
+                <IntakePage />
+              </Suspense>
+            ) : (
+              <NotAdmin account={account} />
+            ))}
+
           {/* Admin home: what's published, and which features are live. */}
           {route.page === 'admin' && route.lessonId === 0 && (
             admin ? (
@@ -225,6 +249,12 @@ export default function App() {
                 <LessonManager config={config} onChange={setConfig} />
                 <p className="manager-hint">
                   To calibrate a lesson's timings, open the lesson and use the admin bar.
+                </p>
+                <p className="admin-bar">
+                  <a href="#/intake">🎙 Audio intake</a>
+                  <span className="manager-hint">
+                    Record a sheet's words straight into the folder the generators read.
+                  </span>
                 </p>
               </>
             ) : (
@@ -261,6 +291,7 @@ export default function App() {
                         {lessonStatus(config, route.lessonId)}
                       </span>
                       <a href={`#/admin/${route.lessonId}`}>Calibrate timings</a>
+                      <a href="#/intake">Audio intake</a>
                       <a href="#/admin">Manage lessons</a>
                     </p>
                   )}

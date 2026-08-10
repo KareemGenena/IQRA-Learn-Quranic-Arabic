@@ -1971,6 +1971,271 @@ kbd {
   font-size: 14px;
 }
 
+/* ---------- audio intake ---------- */
+
+.intake {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.intake-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.intake-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.intake-field input,
+.intake-field select,
+.intake-field textarea {
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-family: inherit;
+}
+
+.intake-words {
+  /* The words are Arabic and the list is edited right-to-left, but the font
+     here is the plain UI face: this is a working list, not a lesson. */
+  font-size: 20px;
+  line-height: 1.9;
+  resize: vertical;
+}
+
+.intake-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.intake-consent input {
+  margin-top: 3px;
+  flex: none;
+}
+
+.intake-stage {
+  align-items: center;
+  text-align: center;
+}
+
+.intake-progress,
+.intake-kind {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.intake-word {
+  margin: 0;
+  white-space: normal;
+}
+
+.intake-hint {
+  margin: 0;
+  max-width: 46ch;
+}
+
+.intake-filename {
+  margin: 0;
+  font-family: ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+  font-size: 13px;
+  color: var(--text-soft);
+  word-break: break-all;
+}
+
+/* The level meter. Its only job is to show that something is arriving and
+   that it is not slammed against the top — clipping cannot be undone. */
+.intake-meter {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 12px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--text-soft) 20%, transparent);
+  overflow: hidden;
+}
+
+/* The band peaks should land in. Drawn under the fill so the fill reads as
+   "how far along the scale you are" and the band as "where to stop". */
+.intake-meter-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: color-mix(in srgb, #3a8a3a 30%, transparent);
+}
+
+.intake-meter-fill {
+  position: relative;
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 60ms linear;
+}
+
+.intake-meter-fill.hot {
+  background: #c0392b;
+}
+
+/* Peak hold: the loudest moment stays visible after it has passed. */
+.intake-meter-hold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--text);
+}
+
+.intake-meter-hold.hot {
+  background: #c0392b;
+}
+
+.intake-meter-note {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.intake-level.warn {
+  border-color: color-mix(in srgb, #b4531a 45%, var(--card-border));
+}
+
+.intake-level.bad {
+  border-color: color-mix(in srgb, #c0392b 55%, var(--card-border));
+}
+
+.intake-note {
+  max-width: 52ch;
+}
+
+.intake-expect {
+  align-items: center;
+}
+
+.intake-take {
+  padding: 10px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+}
+
+.intake-take.chosen {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.intake-take-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.intake-take-head .btn {
+  padding: 5px 12px;
+  font-size: 13px;
+  margin-left: auto;
+}
+
+.intake-take-head .btn + .btn {
+  margin-left: 0;
+}
+
+.intake-take-meta {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.intake-take-note {
+  margin: 6px 0 0;
+}
+
+.intake-verdict {
+  font-weight: 700;
+  width: 1.2em;
+  text-align: center;
+}
+
+.intake-verdict.good {
+  color: #3a8a3a;
+}
+
+.intake-verdict.warn {
+  color: #b4531a;
+}
+
+.intake-verdict.bad {
+  color: #c0392b;
+}
+
+.intake-verdict.none {
+  color: var(--text-soft);
+}
+
+.intake-slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.intake-slot {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+  text-align: start;
+}
+
+.intake-slot:hover {
+  background: color-mix(in srgb, var(--text-soft) 10%, transparent);
+}
+
+.intake-slot.here {
+  border-color: var(--accent);
+}
+
+.intake-slot-text {
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  font-size: 22px;
+  line-height: 1.8;
+  flex: none;
+  min-width: 6em;
+}
+
+.intake-slot-file {
+  font-family: ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media (max-width: 480px) {
   .word-grid {
     grid-template-columns: repeat(2, 1fr);

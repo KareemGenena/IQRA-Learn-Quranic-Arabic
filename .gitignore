@@ -4,3 +4,11 @@ dev-dist/
 .firebase/
 *.log
 ~$*
+
+# Word's crash-recovery scratch files, which it leaves beside a .docx.
+~WRL*.tmp
+
+# The first run of the audio intake system, kept on the author's machine as a
+# record of that experiment. كلمات is already recorded and published, so these
+# takes are not lesson audio and nothing generates from them.
+Audio/Test Audio Intake System/
