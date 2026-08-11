@@ -26,7 +26,9 @@ import { addMaddSigns, normaliseZeros } from './lib/arabic.mjs';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
 const DOCX = join(root, 'Word Tables', 'مد متصل ومنفصل قبل همزة.docx');
-const AUDIO_SRC = join(root, 'Audio', 'Audio - Madd');
+// Named for the rule, not the lesson number: more madd lessons are coming and
+// they will not all be about a hamza.
+const AUDIO_SRC = join(root, 'Audio', 'Audio - Madd before hamza');
 const AUDIO_OUT = join(here, '..', 'public', 'audio', 'lesson05');
 const LESSON_OUT = join(here, '..', 'public', 'lessons', 'lesson05', 'words.json');
 
@@ -62,6 +64,10 @@ const BADGES = [
   [/silent alif/i, 'Silent alif'],
   [/silent waw/i, 'Silent waw'],
   [/hamzat wasl/i, 'Hamzat wasl'],
+  // The noon of أَن carries no sukoon because it merges into the next word.
+  // Written as a rule on the comment rather than against a row number, so it
+  // keeps working when rows move and fires for the next word that needs it.
+  [/idgh?aam?|idgham/i, 'Idgham — no sukoon'],
 ];
 /** Comments that are an explanation rather than a label. */
 const EXPLAINS = [/hamza written over/i, /conditional silent alif/i, /small yaa/i];
@@ -220,8 +226,11 @@ if (haveAudio) {
   }
   if (noAudio.length) problems.push(`no recording yet for ${noAudio.length}: ${noAudio.join(', ')}`);
 
+  // The intake tool records a speaker profile — room tone, three vowels and a
+  // carrier phrase — beside the words. It belongs to the pronunciation corpus,
+  // not to any lesson row, so it is not a misnamed recording.
   const unused = readdirSync(AUDIO_SRC)
-    .filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f))
+    .filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f) && !f.startsWith('speaker-'))
     .map((f) => f.replace(/\.wav$/i, ''));
   if (unused.length) problems.push(`${unused.length} recording(s) match no row: ${unused.join('، ')}`);
 }
