@@ -178,6 +178,40 @@ export function ArabicWord({
     setPending((prev) => (sameBox(prev, next) ? prev : next));
   }, [measure, pendingIndex, text, revision]);
 
+  /**
+   * Shrink a long phrase until it fits, rather than letting it run out of the
+   * card.
+   *
+   * Wrapping would be the obvious answer and is the wrong one here: every
+   * highlight and every recoloured layer is a horizontal `inset()` taken from
+   * one bounding rect, so a phrase broken across two lines would clip the
+   * wrong region on both. Staying on one line and scaling the type keeps that
+   * geometry exactly as it was. The floor is 0.55 — below that the marks stop
+   * being legible, and a phrase that long wants breaking up in the sheet.
+   */
+  useLayoutEffect(() => {
+    const wrap = wrapRef.current;
+    const el = textRef.current;
+    if (!wrap || !el) return;
+
+    const fit = () => {
+      wrap.style.removeProperty('--fit');
+      const available = wrap.clientWidth;
+      const needed = el.scrollWidth;
+      if (!available || !needed) return;
+      const scale = Math.max(0.55, Math.min(1, available / needed));
+      if (scale >= 1) return; // it already fits; nothing was changed
+      wrap.style.setProperty('--fit', String(scale));
+      // Every layer was measured off the old layout, so take them again.
+      setRevision((r) => r + 1);
+    };
+
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(wrap);
+    return () => ro.disconnect();
+  }, [text]);
+
   return (
     <span ref={wrapRef} className={`arabic-word ${className ?? ''}`}>
       {highlight && (

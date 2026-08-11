@@ -233,7 +233,10 @@ body {
   position: relative;
   z-index: 1;
   font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
-  font-size: clamp(38px, 5vw, 52px);
+  /* --fit is set by ArabicWord when a phrase is too long for its card: the
+     type shrinks so the phrase stays on ONE line, because every highlight is
+     a horizontal clip taken from a single bounding rect. */
+  font-size: calc(clamp(38px, 5vw, 52px) * var(--fit, 1));
   /* Quranic glyphs stack marks well above and below the baseline, so the
      line box must be tall enough that nothing is clipped by the layers. */
   line-height: 2.1;

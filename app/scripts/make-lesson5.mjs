@@ -68,9 +68,21 @@ const BADGES = [
   // Written as a rule on the comment rather than against a row number, so it
   // keeps working when rows move and fires for the next word that needs it.
   [/idgh?aam?|idgham/i, 'Idgham — no sukoon'],
+  // The rectangular zero: silent only if you read on, which is a label in its
+  // own right rather than an explanation — so it is a chip, not a sentence.
+  [/conditional silent alif/i, 'Conditional silent alif'],
 ];
+/**
+ * A badge the sheet carries no comment for yet.
+ *
+ * Lesson text belongs in the docx, not in code. This is a holding place for a
+ * note agreed in conversation, keyed by the words so it survives rows moving.
+ * Put the wording in the comments column and delete the entry.
+ */
+const EXTRA_BADGES = [['قل عسى أن', 'Idgham — no sukoon']];
+
 /** Comments that are an explanation rather than a label. */
-const EXPLAINS = [/hamza written over/i, /conditional silent alif/i, /small yaa/i];
+const EXPLAINS = [/hamza written over/i, /small yaa/i];
 
 function readComment(raw) {
   const text = (raw ?? '').trim();
@@ -90,8 +102,8 @@ function readComment(raw) {
   const badges = [];
   for (const [re, label] of BADGES) {
     if (!re.test(text)) continue;
-    // "Conditional silent alif" is the rectangular zero, a different thing
-    // from a plain silent alif — it gets the sentence, not the label.
+    // The rectangular zero is a different thing from a plain silent alif, so
+    // it must not also collect the plain label.
     if (label === 'Silent alif' && /conditional silent alif/i.test(text)) continue;
     if (!badges.includes(label)) badges.push(label);
   }
@@ -122,6 +134,13 @@ if (tables.length !== 2) {
   console.error(`expected 2 tables, found ${tables.length}`);
   process.exit(1);
 }
+
+const MARKS = /[ً-ٰۖ-ۭـ]/g;
+// Byte-identical to lessons 3 and 4, and therefore to what the intake tool
+// derives a filename with. MARKS already covers U+06D6–U+06ED, so both silent
+// circles fall out here too — stripping them again separately would only hide
+// a future disagreement between the two.
+const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' ').trim();
 
 const problems = [];
 const words = [];
@@ -158,6 +177,11 @@ for (const [index, section] of SECTIONS.entries()) {
       note ??= read.note;
     }
 
+    for (const [phrase, label] of EXTRA_BADGES) {
+      const joined = key(group.rows.map((c) => c[1]).join(' '));
+      if (joined.includes(phrase) && !badges.includes(label)) badges.push(label);
+    }
+
     const entry = { id, section: section.id, badges, timings: null };
     if (note) entry.meaning = note;
 
@@ -179,12 +203,6 @@ for (const [index, section] of SECTIONS.entries()) {
 }
 
 // ── cut the audio ─────────────────────────────────────────────────────────
-const MARKS = /[ً-ٰۖ-ۭـ]/g;
-// Byte-identical to lessons 3 and 4, and therefore to what the intake tool
-// derives a filename with. MARKS already covers U+06D6–U+06ED, so both silent
-// circles fall out here too — stripping them again separately would only hide
-// a future disagreement between the two.
-const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' ').trim();
 
 const byName = new Map();
 let haveAudio = true;
