@@ -21,6 +21,14 @@ export function LaserPointer({ active, onExit }: { active: boolean; onExit: () =
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const store = useRef(new LaserStrokes());
   const rafId = useRef(0);
+  /** Finger-scrolling state, so the laser can stay on while the page moves. */
+  const panning = useRef<number | null>(null);
+  const panTarget = useRef<Element | null>(null);
+  const pendingPan = useRef(0);
+  const panFrame = useRef(0);
+  const panSpeed = useRef(0);
+  const lastPanAt = useRef(0);
+  const glideFrame = useRef(0);
 
   useEffect(() => {
     if (!active) {
@@ -80,7 +88,49 @@ export function LaserPointer({ active, onExit }: { active: boolean; onExit: () =
 
     const point = (e: PointerEvent): Point => ({ x: e.clientX, y: e.clientY });
 
+    /**
+     * The scrollable thing under a finger.
+     *
+     * The overlay is fixed across the whole window, so it is always what
+     * `elementFromPoint` finds; lifting it for one call reveals whatever the
+     * finger is really over — the lesson page, or the notes sheet's own
+     * scroller — so the same drag scrolls whichever it is.
+     */
+    const scrollableUnder = (x: number, y: number): Element => {
+      canvas.style.pointerEvents = 'none';
+      let node = document.elementFromPoint(x, y) as Element | null;
+      canvas.style.pointerEvents = '';
+      while (node && node !== document.body) {
+        const style = getComputedStyle(node);
+        if (/(auto|scroll)/.test(style.overflowY) && node.scrollHeight > node.clientHeight) return node;
+        node = node.parentElement;
+      }
+      return document.scrollingElement ?? document.documentElement;
+    };
+
+    const applyPan = () => {
+      panFrame.current = 0;
+      const target = panTarget.current;
+      if (!target) return;
+      target.scrollTop -= pendingPan.current;
+      pendingPan.current = 0;
+    };
+
     const onDown = (e: PointerEvent) => {
+      // A stylus draws, a finger scrolls — the same split the notes canvas
+      // makes, and for the same reason: `touch-action` would apply to the pen
+      // too, so the overlay keeps `none` and a finger drag is scrolled here.
+      // Before this, teaching over a shared screen meant switching the laser
+      // off to move the page and on again to point at the next word.
+      if (e.pointerType === 'touch') {
+        if (glideFrame.current) cancelAnimationFrame(glideFrame.current);
+        glideFrame.current = 0;
+        panTarget.current = scrollableUnder(e.clientX, e.clientY);
+        panning.current = e.clientY;
+        lastPanAt.current = e.timeStamp;
+        panSpeed.current = 0;
+        return;
+      }
       e.preventDefault();
       try {
         canvas.setPointerCapture(e.pointerId);
@@ -90,13 +140,46 @@ export function LaserPointer({ active, onExit }: { active: boolean; onExit: () =
       store.current.begin(point(e), performance.now());
       kick();
     };
+
     const onMove = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') {
+        if (panning.current === null) return;
+        const dy = e.clientY - panning.current;
+        panning.current = e.clientY;
+        const dt = e.timeStamp - lastPanAt.current;
+        if (dt > 0) panSpeed.current = dy / dt;
+        lastPanAt.current = e.timeStamp;
+        pendingPan.current += dy;
+        if (!panFrame.current) panFrame.current = requestAnimationFrame(applyPan);
+        return;
+      }
       if (!store.current.drawing) return;
       e.preventDefault();
       store.current.extend(point(e), performance.now());
       kick();
     };
-    const onUp = () => {
+
+    const onUp = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') {
+        if (panning.current === null) return;
+        panning.current = null;
+        // Carry on after the finger lifts, as the notes sheet does.
+        let speed = panSpeed.current;
+        panSpeed.current = 0;
+        if (Math.abs(speed) < 0.05) return;
+        let last = performance.now();
+        const step = (now: number) => {
+          const dt = Math.min(now - last, 32);
+          last = now;
+          const target = panTarget.current;
+          if (!target) return;
+          target.scrollTop -= speed * dt;
+          speed *= Math.pow(0.94, dt);
+          glideFrame.current = Math.abs(speed) > 0.02 ? requestAnimationFrame(step) : 0;
+        };
+        glideFrame.current = requestAnimationFrame(step);
+        return;
+      }
       store.current.end(performance.now()); // the one-second clock starts here
       kick();
     };
@@ -114,6 +197,12 @@ export function LaserPointer({ active, onExit }: { active: boolean; onExit: () =
     return () => {
       cancelAnimationFrame(rafId.current);
       rafId.current = 0;
+      // Switching the laser off mid-flick must not leave a page still moving.
+      cancelAnimationFrame(glideFrame.current);
+      cancelAnimationFrame(panFrame.current);
+      glideFrame.current = 0;
+      panFrame.current = 0;
+      panning.current = null;
       canvas.removeEventListener('pointerdown', onDown);
       canvas.removeEventListener('pointermove', onMove);
       canvas.removeEventListener('pointerup', onUp);
