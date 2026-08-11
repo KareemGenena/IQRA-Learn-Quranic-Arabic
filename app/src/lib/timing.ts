@@ -46,7 +46,6 @@ import type { LetterCluster } from './graphemes';
 const FATHA = 'َ';
 const DAMMA = 'ُ';
 const KASRA = 'ِ';
-const SUKOON = 'ْ'; // U+0652
 const MUSHAF_SUKOON = 'ۡ'; // U+06E1
 const SHADDA = 'ّ';
 const TANWEEN = ['ً', 'ٌ', 'ٍ']; // fathatan, dammatan, kasratan
@@ -85,7 +84,15 @@ const BAA = 'ب';
 
 const hasVowel = (marks: string[]) =>
   marks.some((m) => m === FATHA || m === DAMMA || m === KASRA || TANWEEN.includes(m));
-const hasSukoon = (marks: string[]) => marks.includes(SUKOON) || marks.includes(MUSHAF_SUKOON);
+/**
+ * Sukoon is U+06E1 in this font.
+ *
+ * U+0652 is NOT a second spelling of it — in KFGQPC Uthmanic Hafs that slot
+ * carries the round zero, and a letter under one is silent. Silence is handled
+ * by derivedSilent(), which gives it no time at all rather than a short one,
+ * so counting it here would hand a slice of the clip to a letter nobody says.
+ */
+const hasSukoon = (marks: string[]) => marks.includes(MUSHAF_SUKOON);
 const isSaakin = (marks: string[]) => hasSukoon(marks) || !hasVowel(marks);
 
 /** Hamza in any of its written forms, including one written as a mark. */
@@ -197,11 +204,12 @@ export function clusterWeight(
     w = maddLength(cluster, next);
   } else if (hasSukoon(marks)) {
     const leen = (base === 'و' || base === 'ي') && prevMarks.includes(FATHA);
-    // A silent letter closes the syllable before it: fully articulated, but
-    // quicker than a letter carrying its own vowel, since it has no vowel to
-    // hold. 0.7 of a harakah — measured against the recordings, where the
-    // highlight used to lag through words like وَسۡوَاسِ.
-    w = leen ? 1.1 : 0.7;
+    // A saakin letter closes the syllable before it. It carries no vowel, but
+    // it is still held — the closure is audible, and at the end of a word
+    // before the next one it is held longer still. 0.7 made the highlight
+    // skip through وَإِذۡ هُمۡ نَجۡوَىٰٓ almost without stopping on the ذ and the م,
+    // which is where this was caught.
+    w = leen ? 1.3 : 1.2;
   } else if (marks.includes(MADDAH) && !hasVowel(marks)) {
     // A plain consonant carrying the maddah sign is one of the disconnected
     // letters that open some surahs (الٓمٓ، صٓ، قٓ): madd lazim harfi, 6 harakat.

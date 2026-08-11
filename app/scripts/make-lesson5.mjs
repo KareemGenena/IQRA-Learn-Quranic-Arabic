@@ -72,15 +72,6 @@ const BADGES = [
   // own right rather than an explanation — so it is a chip, not a sentence.
   [/conditional silent alif/i, 'Conditional silent alif'],
 ];
-/**
- * A badge the sheet carries no comment for yet.
- *
- * Lesson text belongs in the docx, not in code. This is a holding place for a
- * note agreed in conversation, keyed by the words so it survives rows moving.
- * Put the wording in the comments column and delete the entry.
- */
-const EXTRA_BADGES = [['قل عسى أن', 'Idgham — no sukoon']];
-
 /** Comments that are an explanation rather than a label. */
 const EXPLAINS = [/hamza written over/i, /small yaa/i];
 
@@ -175,11 +166,6 @@ for (const [index, section] of SECTIONS.entries()) {
       const read = readComment(cells[2]);
       for (const b of read.badges) if (!badges.includes(b)) badges.push(b);
       note ??= read.note;
-    }
-
-    for (const [phrase, label] of EXTRA_BADGES) {
-      const joined = key(group.rows.map((c) => c[1]).join(' '));
-      if (joined.includes(phrase) && !badges.includes(label)) badges.push(label);
     }
 
     const entry = { id, section: section.id, badges, timings: null };

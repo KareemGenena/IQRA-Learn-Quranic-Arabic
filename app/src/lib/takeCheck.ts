@@ -256,7 +256,13 @@ export function verdict(report: TakeReport, expected: number): TakeVerdict {
   // Room tone is the one slot where silence is the point, so every test reads
   // backwards for it: quiet is right, and speech is the fault.
   if (expected === 0) {
-    if (report.naturalRuns > 0) {
+    // Judged by how far something stands OUT of the room, not by whether
+    // anything rose above the speech threshold at all. That threshold is 3.5x
+    // a quiet floor, which a chair, a distant car or the click that stops the
+    // recording all clear — so every take failed. Every word take in the
+    // corpus sits at least 39 dB above its own floor; a quiet room with a
+    // stray knock lands around 15-25, so 30 separates them with room to spare.
+    if (report.snr > 30) {
       return { level: 'bad', notes: ['Something was said — this one wants the room on its own.'] };
     }
     if (report.duration < 2) {
