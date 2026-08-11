@@ -16,6 +16,26 @@ const MARK = /[ً-ٰۖ-ۭ]/;
  * should carry it wherever the rule applies rather than only where it was
  * typed by hand.
  */
+/**
+ * Put the silent-letter circles back on canon, as the docx is read.
+ *
+ * A Word document is encoded to match the author's *installed* font rather
+ * than to Unicode canon, so the round zero over a silent letter (صفر مستدير)
+ * arrives as U+0652, the modern sukoon. Left alone it would render as a
+ * sukoon in the app — telling the learner to stop on a letter that is silent.
+ *
+ * Only that one swap. The reverse advice — U+06E1 to U+0652, on the grounds
+ * that canon puts sukoon at U+0652 — must never be applied here: this project
+ * writes sukoon as U+06E1, which is what KFGQPC Uthmanic Hafs draws, and the
+ * swap would silently alter every sukoon in every lesson.
+ *
+ * The rectangular zero U+06E0 (conditional silence, أَنَا۠) already arrives
+ * correctly and is left alone.
+ */
+export function normaliseZeros(text) {
+  return text.replace(/ْ/g, '۟');
+}
+
 export function addMaddSigns(text) {
   const chars = [...text];
   const out = [];

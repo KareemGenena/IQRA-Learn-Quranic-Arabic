@@ -88,6 +88,22 @@ Things that cost real debugging. Do not undo them without reading why.
 - `graphemes.ts` `MARK_RE` must cover **U+06D6–U+06ED** or those marks count as
   letters. Spaces are dropped so multi-word phrases don't gain a phantom step.
 - The madd sign is applied by rule (`scripts/lib/arabic.mjs`), not by hand.
+- **The silent-letter circles are normalised on import, never in the docx.**
+  Word documents are encoded to match the author's *installed* font, so the
+  round zero (صفر مستدير) arrives as **U+0652** where canon says **U+06DF**.
+  `normaliseZeros()` in `scripts/lib/arabic.mjs` does the swap as the docx is
+  read. Two halves of this that must not be confused:
+  - `U+0652 → U+06DF` — **yes**, do this. A silent letter's round zero.
+  - `U+06E1 → U+0652` — **never**. Advice found online says to, because canon
+    puts sukoon at U+0652; this project deliberately uses U+06E1, which is
+    what KFGQPC Uthmanic Hafs draws as a sukoon. Doing it would silently
+    change every sukoon in lessons 1–4.
+  The docx keeps whatever the author's Word produces — it is the source of
+  truth for the *words*, not for the encoding. Fix the pipeline, not the file.
+- The rectangular zero **U+06E0** (صفر مستطيل, conditional silence in أَنَا۠)
+  arrives correctly and needs no swap.
+- Both zeros sit inside `MARK_RE`, so they count as marks. A letter carrying
+  either **is** silent — generators derive that rather than being told.
 
 **Rendering**
 - Never split an Arabic word into per-letter spans — it breaks cursive joining.

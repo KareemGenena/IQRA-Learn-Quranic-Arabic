@@ -1,0 +1,738 @@
+{
+  "lesson": 5,
+  "title": "Madd before a Hamza",
+  "titleArabic": "المد المتصل والمنفصل قبل همزة",
+  "kind": "letters",
+  "audioPath": "audio/lesson05/",
+  "perPage": 4,
+  "sections": [
+    {
+      "id": "muttasil",
+      "title": "Madd Muttasil",
+      "titleArabic": "المد الواجب المتصل",
+      "hint": "The madd and the hamza are in the same word, so the madd is always held — four harakat, every time."
+    },
+    {
+      "id": "munfasil",
+      "title": "Madd Munfasil",
+      "titleArabic": "المد الجائز المنفصل",
+      "hint": "The madd ends one word and the hamza opens the next. Held for four harakat, the same length as muttasil."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "جَآءَ",
+      "audio": "word01.wav"
+    },
+    {
+      "id": 2,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "شَآءَ",
+      "audio": "word02.wav"
+    },
+    {
+      "id": 3,
+      "section": "muttasil",
+      "badges": [
+        "Silent alif"
+      ],
+      "timings": null,
+      "text": "جِا۟يٓءَ",
+      "audio": "word03.wav"
+    },
+    {
+      "id": 4,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "مَآءً",
+      "audio": "word04.wav"
+    },
+    {
+      "id": 5,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "غُثَآءً",
+      "audio": "word05.wav"
+    },
+    {
+      "id": 6,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "عَطَآءً",
+      "audio": "word06.wav"
+    },
+    {
+      "id": 7,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "جَزَآءً",
+      "audio": "word07.wav"
+    },
+    {
+      "id": 8,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "سَوَآءٌ",
+      "audio": "word08.wav"
+    },
+    {
+      "id": 9,
+      "section": "muttasil",
+      "badges": [
+        "Silent waw"
+      ],
+      "timings": null,
+      "text": "أُو۟لَٰٓئِكَ",
+      "audio": "word09.wav"
+    },
+    {
+      "id": 10,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "meaning": "Hamza written over the line of the yaa",
+      "text": "خَطِيٓـَٔةً",
+      "audio": "word10.wav"
+    },
+    {
+      "id": 11,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "meaning": "Hamza written over the line of the yaa",
+      "text": "هَنِيٓـًٔا",
+      "audio": "word11.wav"
+    },
+    {
+      "id": 12,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "meaning": "Hamza written over the line of the yaa",
+      "text": "مَّرِيٓـًٔا",
+      "audio": "word12.wav"
+    },
+    {
+      "id": 13,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "meaning": "Hamza written over the line of the yaa",
+      "text": "سِيٓـَٔتۡ",
+      "audio": "word13.wav"
+    },
+    {
+      "id": 14,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "يَشَآءُ",
+      "audio": "word14.wav"
+    },
+    {
+      "id": 15,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "وَسَآءَ",
+      "audio": "word15.wav"
+    },
+    {
+      "id": 16,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "ضِيَآءً",
+      "audio": "word16.wav"
+    },
+    {
+      "id": 17,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "سُوٓءُ",
+      "audio": "word17.wav"
+    },
+    {
+      "id": 18,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "بَرِىٓءٌ",
+      "audio": "word18.wav"
+    },
+    {
+      "id": 19,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "تَبُوٓءَ",
+      "audio": "word19.wav"
+    },
+    {
+      "id": 20,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "سُوٓءَ",
+      "audio": "word20.wav"
+    },
+    {
+      "id": 21,
+      "section": "muttasil",
+      "badges": [],
+      "timings": null,
+      "text": "نِسَآءَ",
+      "audio": "word21.wav"
+    },
+    {
+      "id": 22,
+      "section": "muttasil",
+      "badges": [
+        "Silent waw"
+      ],
+      "timings": null,
+      "text": "أُو۟لَآءِ",
+      "audio": "word22.wav"
+    },
+    {
+      "id": 23,
+      "section": "muttasil",
+      "badges": [
+        "Sun ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلسَّمَآءِ",
+          "audio": "word23a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَٱلسَّمَآءِ",
+          "audio": "word23b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "section": "muttasil",
+      "badges": [
+        "Sun ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلشِّتَآءِ",
+          "audio": "word24a.wav",
+          "timings": null
+        },
+        {
+          "text": "رِحۡلَةَ ٱلشِّتَآءِ",
+          "audio": "word24b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "section": "muttasil",
+      "badges": [
+        "Moon ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلۡمَآءِ",
+          "audio": "word25a.wav",
+          "timings": null
+        },
+        {
+          "text": "مِنَ ٱلۡمَآءِ",
+          "audio": "word25b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "section": "muttasil",
+      "badges": [
+        "Sun ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلسُّوٓءِ",
+          "audio": "word26a.wav",
+          "timings": null
+        },
+        {
+          "text": "بِٱلسُّوٓءِ",
+          "audio": "word26b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "section": "muttasil",
+      "badges": [
+        "Sun ل",
+        "Ghunna"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلنِّسَآءِ",
+          "audio": "word27a.wav",
+          "timings": null
+        },
+        {
+          "text": "مِنَ ٱلنِّسَآءِ",
+          "audio": "word27b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "section": "muttasil",
+      "badges": [
+        "Sun ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلدُّعَآءِ",
+          "audio": "word28a.wav",
+          "timings": null
+        },
+        {
+          "text": "سَمِيعُ ٱلدُّعَآءِ",
+          "audio": "word28b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "section": "muttasil",
+      "badges": [
+        "Moon ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلۡبَغۡضَآءُ",
+          "audio": "word29a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَدَتِ ٱلۡبَغۡضَآءُ",
+          "audio": "word29b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "section": "muttasil",
+      "badges": [
+        "Sun ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلشُّهَدَآءِ",
+          "audio": "word30a.wav",
+          "timings": null
+        },
+        {
+          "text": "مِنَ ٱلشُّهَدَآءِ",
+          "audio": "word30b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "section": "muttasil",
+      "badges": [
+        "Moon ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلۡأَوۡلِيَآءِ",
+          "audio": "word31a.wav",
+          "timings": null
+        },
+        {
+          "text": "مِنَ ٱلۡأَوۡلِيَآءِ",
+          "audio": "word31b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "section": "muttasil",
+      "badges": [
+        "Moon ل"
+      ],
+      "timings": null,
+      "forms": [
+        {
+          "text": "ٱلۡمَلَٰٓئِكَةُ",
+          "audio": "word32a.wav",
+          "timings": null
+        },
+        {
+          "text": "قَالَتِ ٱلۡمَلَٰٓئِكَةُ",
+          "audio": "word32b.wav",
+          "timings": null
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "section": "muttasil",
+      "badges": [
+        "Qalqala",
+        "Hamzat wasl"
+      ],
+      "timings": null,
+      "text": "عَنۡهُمُ ٱبۡتِغَآءَ",
+      "audio": "word33.wav"
+    },
+    {
+      "id": 34,
+      "section": "munfasil",
+      "badges": [
+        "Ghunna"
+      ],
+      "timings": null,
+      "text": "إِنَّآ أَعۡطَيۡنَٰكَ",
+      "audio": "word34.wav"
+    },
+    {
+      "id": 35,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif"
+      ],
+      "timings": null,
+      "text": "وَمَآ أَدۡرَىٰكَ",
+      "audio": "word35.wav"
+    },
+    {
+      "id": 36,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "فِىٓ أَحۡسَنِ",
+      "audio": "word36.wav"
+    },
+    {
+      "id": 37,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif"
+      ],
+      "timings": null,
+      "text": "يَٰٓأَيُّهَا",
+      "audio": "word37.wav"
+    },
+    {
+      "id": 38,
+      "section": "munfasil",
+      "badges": [
+        "Qalqala",
+        "Silent alif"
+      ],
+      "timings": null,
+      "text": "وَلَا تَقۡتُلُوٓا۟ أَوۡلَٰدَكُم",
+      "audio": "word38.wav"
+    },
+    {
+      "id": 39,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif"
+      ],
+      "timings": null,
+      "text": "مَآ أَغۡنَىٰ",
+      "audio": "word39.wav"
+    },
+    {
+      "id": 40,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif"
+      ],
+      "timings": null,
+      "meaning": "Dagger alif; small yaa for the pronoun (صلة)‎",
+      "text": "إِلَىٰٓ أَهۡلِهِۦ",
+      "audio": "word40.wav"
+    },
+    {
+      "id": 41,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "فِىٓ أَىِّ",
+      "audio": "word41.wav"
+    },
+    {
+      "id": 42,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif"
+      ],
+      "timings": null,
+      "text": "هَٰذَآ إِلَّا",
+      "audio": "word42.wav"
+    },
+    {
+      "id": 43,
+      "section": "munfasil",
+      "badges": [
+        "Silent alif"
+      ],
+      "timings": null,
+      "text": "أُمِرُوٓا۟ إِلَّا",
+      "audio": "word43.wav"
+    },
+    {
+      "id": 44,
+      "section": "munfasil",
+      "badges": [
+        "Ghunna"
+      ],
+      "timings": null,
+      "text": "مِمَّآ أَوۡحَىٰ",
+      "audio": "word44.wav"
+    },
+    {
+      "id": 45,
+      "section": "munfasil",
+      "badges": [
+        "Ghunna",
+        "Silent alif"
+      ],
+      "timings": null,
+      "text": "قَالُوٓا۟ ءَامَنَّا",
+      "audio": "word45.wav"
+    },
+    {
+      "id": 46,
+      "section": "munfasil",
+      "badges": [
+        "Silent alif"
+      ],
+      "timings": null,
+      "text": "قَالُوٓا۟ أَنُؤۡمِنُ",
+      "audio": "word46.wav"
+    },
+    {
+      "id": 47,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif",
+        "Qalqala"
+      ],
+      "timings": null,
+      "text": "إِلَىٰٓ إِبۡرَٰهِيمَ",
+      "audio": "word47.wav"
+    },
+    {
+      "id": 48,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "meaning": "Conditional silent alif in anā (صفر مستطيل)‎",
+      "text": "إِنِّىٓ أَنَا۠",
+      "audio": "word48.wav"
+    },
+    {
+      "id": 49,
+      "section": "munfasil",
+      "badges": [
+        "Qalqala"
+      ],
+      "timings": null,
+      "meaning": "Conditional silent alif in anā (صفر مستطيل)‎, qalqala",
+      "text": "مَآ أَنَا۠ بِبَاسِطٍۢ",
+      "audio": "word49.wav"
+    },
+    {
+      "id": 50,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "وَفِىٓ ءَاذَانِهِمۡ",
+      "audio": "word50.wav"
+    },
+    {
+      "id": 51,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "أَمۡرِىٓ إِلَى",
+      "audio": "word51.wav"
+    },
+    {
+      "id": 52,
+      "section": "munfasil",
+      "badges": [
+        "Silent alif"
+      ],
+      "timings": null,
+      "text": "تُوبُوٓا۟ إِلَى",
+      "audio": "word52.wav"
+    },
+    {
+      "id": 53,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "إِذَآ أَرَادَ",
+      "audio": "word53.wav"
+    },
+    {
+      "id": 54,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif"
+      ],
+      "timings": null,
+      "text": "وَإِذۡ هُمۡ نَجۡوَىٰٓ إِذۡ يَقُولُ",
+      "audio": "word54.wav"
+    },
+    {
+      "id": 55,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif"
+      ],
+      "timings": null,
+      "text": "قُلۡ عَسَىٰٓ أَن",
+      "audio": "word55.wav"
+    },
+    {
+      "id": 56,
+      "section": "munfasil",
+      "badges": [
+        "Silent waw"
+      ],
+      "timings": null,
+      "text": "يَٰٓأُو۟لِى",
+      "audio": "word56.wav"
+    },
+    {
+      "id": 57,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "رَبَّنَآ ءَاتِنَا",
+      "audio": "word57.wav"
+    },
+    {
+      "id": 58,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "بَنِىٓ ءَادَمَ",
+      "audio": "word58.wav"
+    },
+    {
+      "id": 59,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "أَوۡحَيۡنَآ إِلَيۡكَ",
+      "audio": "word59.wav"
+    },
+    {
+      "id": 60,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif",
+        "Qalqala"
+      ],
+      "timings": null,
+      "text": "عَلَىٰٓ أَبۡصَٰرِهِمۡ",
+      "audio": "word60.wav"
+    },
+    {
+      "id": 61,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "كَمَآ ءَامَنَ",
+      "audio": "word61.wav"
+    },
+    {
+      "id": 62,
+      "section": "munfasil",
+      "badges": [
+        "Ghunna"
+      ],
+      "timings": null,
+      "text": "أَلَآ إِنَّهُمۡ",
+      "audio": "word62.wav"
+    },
+    {
+      "id": 63,
+      "section": "munfasil",
+      "badges": [
+        "Silent alif"
+      ],
+      "timings": null,
+      "text": "إِذَآ أَلۡقَوۡا۟",
+      "audio": "word63.wav"
+    },
+    {
+      "id": 64,
+      "section": "munfasil",
+      "badges": [],
+      "timings": null,
+      "text": "وَمَآ أُبَرِّئُ",
+      "audio": "word64.wav"
+    },
+    {
+      "id": 65,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif",
+        "Qalqala"
+      ],
+      "timings": null,
+      "text": "يَٰٓإِبۡرَٰهِيمُ",
+      "audio": "word65.wav"
+    },
+    {
+      "id": 66,
+      "section": "munfasil",
+      "badges": [
+        "Dagger alif"
+      ],
+      "timings": null,
+      "text": "ءَاتَيۡنَآ إِبۡرَٰهِيمَ",
+      "audio": "word66.wav"
+    }
+  ]
+}
