@@ -183,9 +183,13 @@
     {
       "id": 20,
       "section": "muttasil",
-      "badges": [],
+      "badges": [
+        "Munfasil (1st)",
+        "Muttasil (2nd)"
+      ],
       "timings": null,
-      "text": "سُوٓءَ",
+      "meaning": "The first madd is munfasil, the second is mutassil.",
+      "text": "هَـٰٓؤُلآءِ",
       "audio": "word20.wav"
     },
     {

@@ -69,6 +69,17 @@ const EXPLAINS = [/hamza written over/i, /conditional silent alif/i, /small yaa/
 function readComment(raw) {
   const text = (raw ?? '').trim();
   if (!text) return { badges: [], note: undefined };
+
+  // A word carrying BOTH madds is the point of teaching it, and which comes
+  // first is the whole lesson — so it gets a chip each, in order, rather than
+  // a sentence nobody reads mid-drill. The explanation stays in the (i) for
+  // whoever taps it. ("mutassil" is spelled both ways in the sheet.)
+  if (/first madd is munfasil/i.test(text) && /second is mut+a?s+il/i.test(text)) {
+    return { badges: ['Munfasil (1st)', 'Muttasil (2nd)'], note: text };
+  }
+  if (/first madd is mut+a?s+il/i.test(text) && /second is munfasil/i.test(text)) {
+    return { badges: ['Muttasil (1st)', 'Munfasil (2nd)'], note: text };
+  }
   const explains = EXPLAINS.some((re) => re.test(text));
   const badges = [];
   for (const [re, label] of BADGES) {
