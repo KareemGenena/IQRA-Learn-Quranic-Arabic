@@ -96,3 +96,47 @@ export function splitClusters(word: string): LetterCluster[] {
 
   return clusters;
 }
+
+/** The round zero (صفر مستدير): this letter is written but never voiced. */
+const ROUND_ZERO = '\u0652';
+/** The rectangular zero (صفر مستطيل): silent only when reading carries on. */
+const RECT_ZERO = '\u06E0';
+const ALIF_WASLA = '\u0671';
+const SHADDA = '\u0651';
+
+/**
+ * Which letters of a phrase are written but not pronounced.
+ *
+ * Derived from the text alone, so it is one rule for every lesson rather than
+ * a field each generator has to remember to set. Four ways a letter goes
+ * silent, all of them visible in the Mushaf's own marks:
+ *
+ *  1. it carries the round zero;
+ *  2. it carries the rectangular zero AND something follows — that zero means
+ *     "silent only if you read on", so the alif of أَنَا۠ sounds when you stop
+ *     there and vanishes in مَآ أَنَا۠ بِبَاسِطٍ;
+ *  3. it is a hamzat wasl with a letter before it — the ٱ that only exists to
+ *     start a word, and a word running into it does that job instead;
+ *  4. it is the lam of a sun lam — written, but swallowed by the shadda on the
+ *     letter after it.
+ *
+ * Silent letters are greyed by `ArabicWord` and given no time by `timing.ts`,
+ * so the highlight steps straight over them.
+ */
+export function derivedSilent(text: string): number[] {
+  const clusters = splitClusters(text);
+  const out = new Set<number>();
+
+  clusters.forEach((cluster, i) => {
+    if (cluster.text.includes(ROUND_ZERO)) out.add(i);
+    if (cluster.text.includes(RECT_ZERO) && i < clusters.length - 1) out.add(i);
+
+    if (baseChar(cluster.text) !== ALIF_WASLA) return;
+    if (i > 0) out.add(i);
+    const lam = clusters[i + 1];
+    const after = clusters[i + 2];
+    if (lam && baseChar(lam.text) === LAM && after?.text.includes(SHADDA)) out.add(i + 1);
+  });
+
+  return [...out].sort((a, b) => a - b);
+}

@@ -1,7 +1,7 @@
 /** Lesson loading and normalisation into Playables. */
 
-import { splitClusters, baseChar } from './graphemes';
-import type { LamType, Lesson, LessonItem, LetterWord, PairWord, Playable, SimpleWord } from '../types';
+import { splitClusters, baseChar, derivedSilent } from './graphemes';
+import type { Lesson, LessonItem, LetterWord, PairWord, Playable, SimpleWord } from '../types';
 
 export interface LessonMeta {
   id: number;
@@ -66,7 +66,7 @@ export function barePlayable(word: PairWord): Playable {
     text: word.bare.text,
     audio: word.bare.audio,
     timings: word.bare.timings,
-    silentClusters: [],
+    silentClusters: derivedSilent(word.bare.text),
     prefixClusters: 0,
   };
 }
@@ -79,7 +79,7 @@ export function withAlPlayable(word: PairWord): Playable {
     timings: word.withAl.timings,
     // In a shamsiyya word the lam is written but not pronounced — it
     // assimilates into the doubled letter that follows.
-    silentClusters: word.type === 'shamsiyya' ? [1] : [],
+    silentClusters: derivedSilent(word.withAl.text),
     prefixClusters: AL_CLUSTERS,
   };
 }
@@ -90,7 +90,7 @@ export function simplePlayable(word: SimpleWord): Playable {
     text: word.arabic,
     audio: word.audio,
     timings: word.timings,
-    silentClusters: [],
+    silentClusters: derivedSilent(word.arabic),
     prefixClusters: 0,
   };
 }
@@ -115,27 +115,6 @@ function findTargetCluster(text: string, letter: string, position: string): numb
   return hits[0];
 }
 
-const ALIF_WASLA = 'ٱ';
-const LAM = 'ل';
-
-/**
- * Letters written but not spoken in this form.
- *
- * Two rules meet here: a shamsiyya lam is always silent, and the ٱ of ٱل is
- * silent whenever something runs into it — which is exactly what وَٱلنَّاسِ and
- * ثُمَّ ٱلنَّاسِ are teaching.
- */
-function silentIn(text: string, lam: LamType | undefined, waslSilent: boolean): number[] {
-  const clusters = splitClusters(text);
-  const out: number[] = [];
-  const waslAt = clusters.findIndex((c) => baseChar(c.text) === ALIF_WASLA);
-  if (waslAt === -1) return out;
-  if (waslSilent) out.push(waslAt);
-  const next = clusters[waslAt + 1];
-  if (lam === 'shamsiyya' && next && baseChar(next.text) === LAM) out.push(waslAt + 1);
-  return out;
-}
-
 function letterPlayables(word: LetterWord): Playable[] {
   // Several forms of the same word on one card, each played separately.
   if (word.forms) {
@@ -144,7 +123,7 @@ function letterPlayables(word: LetterWord): Playable[] {
       text: f.text,
       audio: f.audio,
       timings: f.timings,
-      silentClusters: silentIn(f.text, word.lam, word.waslSilentIn?.includes(i) ?? false),
+      silentClusters: derivedSilent(f.text),
       // The ٱل is coloured apart only where it is actually present.
       prefixClusters: 0,
     }));
@@ -155,7 +134,7 @@ function letterPlayables(word: LetterWord): Playable[] {
       text: word.text,
       audio: word.audio,
       timings: word.timings,
-      silentClusters: [],
+      silentClusters: derivedSilent(word.text),
       prefixClusters: 0,
       highlightCluster: word.target
         ? findTargetCluster(word.text, word.target.letter, word.target.position)

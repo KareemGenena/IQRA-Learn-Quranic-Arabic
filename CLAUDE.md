@@ -103,8 +103,17 @@ Things that cost real debugging. Do not undo them without reading why.
   row 3 of lesson 5 came back as جِا◉ىٓءَ. `normaliseZeros()` is kept as a
   named no-op so the swap is not reintroduced by the next person to read that
   advice. **The font is the authority, not the codepoint chart.**
-- Both zeros sit inside `MARK_RE`, so they count as marks. A letter carrying
-  either **is** silent — generators derive that rather than being told.
+- Both zeros sit inside `MARK_RE`, so they count as marks.
+- **Silence is derived from the text, never declared per lesson.**
+  `derivedSilent()` in `graphemes.ts` is the single rule, and every lesson goes
+  through it. A letter is silent if it carries the round zero; if it carries
+  the rectangular zero **and something follows** (أَنَا۠ sounds when you stop on
+  it, vanishes in مَآ أَنَا۠ بِبَاسِطٍ); if it is a hamzat wasl **with a letter
+  before it** (so ٱلنِّسَآءِ alone keeps its ٱ, مِنَ ٱلنِّسَآءِ drops it); or if it is
+  the lam of a sun lam. Silent letters are greyed by `ArabicWord` and given no
+  time by `timing.ts`, so the highlight steps straight over them. Lesson 4's
+  `waslSilentIn` field and lesson 2's hardcoded cluster 1 are both subsumed —
+  do not reintroduce either.
 
 **Rendering**
 - Never split an Arabic word into per-letter spans — it breaks cursive joining.
