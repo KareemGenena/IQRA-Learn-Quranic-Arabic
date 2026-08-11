@@ -36,6 +36,12 @@ export const LESSONS: LessonMeta[] = [
     titleArabic: 'همزة الوصل بعد الواو وثم',
     blurb: 'Each word alone, then after وَ and ثُمَّ — hear the ٱ of ٱل drop away.',
   },
+  {
+    id: 5,
+    title: 'Madd before a Hamza',
+    titleArabic: 'المد المتصل والمنفصل قبل همزة',
+    blurb: 'Muttasil and munfasil — both held for four harakat, whether the hamza is in the same word or the next.',
+  },
 ];
 
 const pad = (n: number) => String(n).padStart(2, '0');
