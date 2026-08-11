@@ -17,23 +17,25 @@ const MARK = /[ً-ٰۖ-ۭ]/;
  * typed by hand.
  */
 /**
- * Put the silent-letter circles back on canon, as the docx is read.
+ * DO NOT swap the silent-letter circles. Kept as a named no-op so nobody
+ * reintroduces the swap after reading the same advice again.
  *
- * A Word document is encoded to match the author's *installed* font rather
- * than to Unicode canon, so the round zero over a silent letter (صفر مستدير)
- * arrives as U+0652, the modern sukoon. Left alone it would render as a
- * sukoon in the app — telling the learner to stop on a letter that is silent.
+ * The advice — that canon puts the round zero (صفر مستدير) at U+06DF and a
+ * Word file using U+0652 is therefore mis-encoded — is true of Unicode and
+ * false of this app. KFGQPC Uthmanic Hafs carries the round zero's shape and
+ * its mark positioning on **U+0652**, which is exactly why this project puts
+ * sukoon on U+06E1 rather than U+0652. U+06DF is in the font's cmap but is
+ * not positioned as an attached mark, so swapping to it renders a detached
+ * full-size circle beside the letter instead of a small zero above it.
  *
- * Only that one swap. The reverse advice — U+06E1 to U+0652, on the grounds
- * that canon puts sukoon at U+0652 — must never be applied here: this project
- * writes sukoon as U+06E1, which is what KFGQPC Uthmanic Hafs draws, and the
- * swap would silently alter every sukoon in every lesson.
+ * Verified the wrong way round first: the swap shipped, and row 3 came back
+ * as جِا◉ىٓءَ. The font is the authority here, not the codepoint chart.
  *
- * The rectangular zero U+06E0 (conditional silence, أَنَا۠) already arrives
- * correctly and is left alone.
+ * So: U+0652 is the round zero, U+06E0 the rectangular one, U+06E1 the
+ * sukoon. All three arrive correct from Word and are left alone.
  */
 export function normaliseZeros(text) {
-  return text.replace(/ْ/g, '۟');
+  return text;
 }
 
 export function addMaddSigns(text) {

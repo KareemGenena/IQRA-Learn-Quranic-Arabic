@@ -88,20 +88,21 @@ Things that cost real debugging. Do not undo them without reading why.
 - `graphemes.ts` `MARK_RE` must cover **U+06D6–U+06ED** or those marks count as
   letters. Spaces are dropped so multi-word phrases don't gain a phantom step.
 - The madd sign is applied by rule (`scripts/lib/arabic.mjs`), not by hand.
-- **The silent-letter circles are normalised on import, never in the docx.**
-  Word documents are encoded to match the author's *installed* font, so the
-  round zero (صفر مستدير) arrives as **U+0652** where canon says **U+06DF**.
-  `normaliseZeros()` in `scripts/lib/arabic.mjs` does the swap as the docx is
-  read. Two halves of this that must not be confused:
-  - `U+0652 → U+06DF` — **yes**, do this. A silent letter's round zero.
-  - `U+06E1 → U+0652` — **never**. Advice found online says to, because canon
-    puts sukoon at U+0652; this project deliberately uses U+06E1, which is
-    what KFGQPC Uthmanic Hafs draws as a sukoon. Doing it would silently
-    change every sukoon in lessons 1–4.
-  The docx keeps whatever the author's Word produces — it is the source of
-  truth for the *words*, not for the encoding. Fix the pipeline, not the file.
-- The rectangular zero **U+06E0** (صفر مستطيل, conditional silence in أَنَا۠)
-  arrives correctly and needs no swap.
+- **Do NOT "normalise" the silent-letter circles.** In this font the three
+  marks sit where the author's Word already puts them:
+  - **U+0652** = the round zero (صفر مستدير), a silent letter.
+  - **U+06E0** = the rectangular zero (صفر مستطيل), conditional silence.
+  - **U+06E1** = sukoon (the small head of khah).
+  Advice online says canon puts the round zero at U+06DF and sukoon at U+0652,
+  so a Word file using U+0652 for the zero looks mis-encoded. That is true of
+  Unicode and **false of this app**: KFGQPC Uthmanic Hafs carries the round
+  zero's shape *and its mark positioning* on U+0652 — which is the same reason
+  sukoon lives at U+06E1 here. U+06DF is in the font's cmap but is not
+  positioned as an attached mark, so swapping to it renders a detached
+  full-size circle beside the letter. This was learned by shipping the swap:
+  row 3 of lesson 5 came back as جِا◉ىٓءَ. `normaliseZeros()` is kept as a
+  named no-op so the swap is not reintroduced by the next person to read that
+  advice. **The font is the authority, not the codepoint chart.**
 - Both zeros sit inside `MARK_RE`, so they count as marks. A letter carrying
   either **is** silent — generators derive that rather than being told.
 
