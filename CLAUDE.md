@@ -71,6 +71,11 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
 - **Laser pointer** for teaching over a shared screen.
 - **Notes** — endless per-lesson canvas: stylus draws, finger scrolls, typing in
   Uthmanic Hafs with a Quranic-mark palette. Local-only so far.
+- **Lesson 5** — madd muttasil and munfasil, both held four harakat.
+- **Class recordings** (`#/recordings`) — the teacher posts the link to a
+  recorded session (Zoom or anything else) and the class finds it there instead
+  of scrolling back through a chat thread. A pointer, never a copy: nothing is
+  uploaded and the app never holds the video.
 - **Audio intake** (`#/intake`, admin, reached from the admin bar) — open a
   Word sheet, get a recording slot per row, record in the browser, and write
   correctly named 16-bit WAVs straight into the folder a generator reads.
@@ -213,8 +218,20 @@ Things that cost real debugging. Do not undo them without reading why.
 **Timing** (`timing.ts`, one unit = one harakah)
 - Boundaries are in **media time**, so highlights stay correct at any playback
   speed. Priority: own calibration > cloud calibration > baked > automatic.
-- Sukoon 0.7 · ghunna +0.9 · qalqalah +0.25 · madd 2 / muttasil 4 / lazim 6 ·
-  hamzat wasl 0.9. Silent letters get zero time and are skipped by the highlight.
+- Sukoon 1.2 (leen 1.3) · ghunna +0.9 · qalqalah +0.25 · shadda +0.8 ·
+  tanween +0.5 · madd 2 / muttasil and munfasil 4 / lazim 6 · hamzat wasl 0.9.
+  Silent letters get zero time and are skipped by the highlight.
+- A saakin letter was 0.7 — *less* than a plain letter. It carries no vowel but
+  it is still held, and at a word end before the next it is held longer still.
+- **A madd is paid for once.** A dagger alif on a consonant is consonant + madd
+  (رَٰ = 1 + 2). On a letter that *is* already the long vowel it is the same
+  vowel spelled twice, not a second one — and adding it twice gave the ىٰٓ of
+  نَجۡوَىٰٓ eight harakat, a third of that whole phrase, which starved every letter
+  before it. `clusterWeight` carries a `maddCounted` flag for exactly this.
+  Five phrases in lesson 5 were affected, and يَنۡهَىٰ / يَخۡشَىٰ in lesson 3.
+- The cheap check for this class of fault: run `clusterWeight` over every text
+  in every `words.json` and print any cluster over 6 harakat. Nothing legitimate
+  exceeds madd lazim, so anything that does is two rules firing at once.
 - Re-cutting a clip invalidates any calibration measured against it — check
   before regenerating audio for a calibrated word.
 
@@ -240,15 +257,65 @@ Things that cost real debugging. Do not undo them without reading why.
   support at all — an open accessibility gap, not a decision.
 
 **Updates reaching people**
-- The service worker is built with `skipWaiting` + `clientsClaim`, but that only
-  swaps the *worker*: the open page keeps the JavaScript it loaded with. Nothing
-  reloaded it, so an installed PWA could sit on an old build while every deploy
-  passed it by — the author was looking at a months-stale header. `main.tsx`
-  now reloads once on `controllerchange`, and re-checks for a worker whenever
-  the app comes back into view.
-- The reload is guarded on there having been a controller at load, or a first
-  visit would reload itself immediately after installing. Verified across three
-  successive builds: first install does **not** reload, a later update does.
+
+Three separate things must hold, and this app has been bitten by all three.
+When an update does not arrive, work down the list rather than guessing.
+
+1. *The page must reload.* `skipWaiting` + `clientsClaim` swap the **worker**;
+   the open page keeps the JavaScript it loaded with. `main.tsx` reloads once
+   on `controllerchange`, guarded on there having been a controller at load, or
+   a first visit would reload itself immediately after installing. Verified
+   across three successive builds: first install does not reload, a later
+   update does.
+2. *The browser must look, and must not be answered from cache.* An installed
+   app is reopened for weeks without a navigation the browser counts, so
+   `main.tsx` owns the registration (rather than the one vite-plugin-pwa
+   injects) in order to pass **`updateViaCache: 'none'`**, and asks at launch,
+   on `visibilitychange`, on `focus`, and every 15 minutes. Hosting's default
+   `max-age=3600` on `/`, `index.html`, `sw.js` and the manifest is overridden
+   to `no-cache` in `firebase.json` — an hour of "nothing has changed" is an
+   hour of a learner not getting the lesson.
+3. *The new worker must be able to finish installing.* **This was the real
+   cause.** The precache held all 337 clips, 67 MB, and a Workbox precache
+   install is all-or-nothing: one failed fetch on a phone, or the learner
+   closing the app mid-download, threw the entire update away. That is exactly
+   "refresh a few times and eventually the new lesson appears", and it would
+   have got worse with every lesson. The shell is now **1.6 MB / 34 entries**
+   and audio is fetched on play.
+
+- **Audio is not precached.** It is a runtime `CacheFirst` cache
+  (`iqra-audio-v1`, 300 entries / 30 days, `purgeOnQuotaError`), so a learner
+  holds the clips they have worked through and never the whole library — which
+  matters, because the corpus is heading for thousands of files. Full offline
+  was never asked for; reliable updates were. Dropping audio from the manifest
+  also makes the new worker **delete the 65 MB the old one is holding** on
+  every device.
+- Clip filenames are stable across a re-cut, so a device that already holds one
+  has no way to learn of a new one. **Bump `AUDIO_CACHE` in `vite.config.ts`
+  when clips are re-cut** — the same moment the calibrations need re-checking.
+- **A missing file does not 404 here.** Hosting rewrites `**` to `index.html`,
+  so `/audio/lesson05/typo.wav` answers *200 text/html*. Left alone, CacheFirst
+  would keep that HTML page as the recording for a month. Both layers now check
+  the content type: `cacheableResponse.headers` in the worker, and
+  `getAudioBlob` in the app, which turns a misnamed clip from a player that
+  silently says nothing into a real error. Verified against the live host.
+- The home page carries a **build stamp** (`__BUILD_ID__`, stamped in by
+  `vite.config.ts`). An installed app has no address bar and no way to tell a
+  stale copy from a current one — this answers it by looking at the phone.
+
+**Lesson identity and order**
+- A lesson's **number is its identity, never its position**. It keys
+  `public/lessons/lessonNN/`, `public/audio/lessonNN/`, `#/lesson/N` and
+  `calibrations/lessonN/...`. Renumbering to reorder would silently point every
+  calibration at the wrong word — the same fault lesson 4's word ids already
+  cost this project once, one level up.
+- Reading order is therefore a separate thing: `LessonMeta.order`, read through
+  `orderedLessons()` in `lessons.ts`, which is the one place order is decided.
+  Nothing sets `order` yet — the lessons were written in the order they are
+  read. It exists so the day one moves, the move is a number rather than a
+  renaming of folders, clips and calibration documents.
+- Chapters will be a `chapter` field beside it and a grouping in the same
+  function. Same rule: a lesson changing chapter must not change its number.
 
 **Names and privacy**
 - `account.name` may fall back to the email so someone recognises their own
@@ -281,14 +348,25 @@ Things that cost real debugging. Do not undo them without reading why.
 
 ## 4. Current state
 
-**Published:** lessons 1–4. **Features:** laser live for everyone; notes
-admin-only.
+**Published:** lessons 1–5. **Features:** laser and notes both live for
+everyone. (Read from `config/app` on 2026-08-11: the document names 1–4;
+lesson 5 is published by `DEFAULT_CONFIG` in `appConfig.ts`, which the fetched
+map is merged *over*. Pressing Publish on it would make that explicit.)
 
 Lessons 3 and 4 are complete: every clip their `words.json` references is
 present on disk (67 and 69 respectively, checked mechanically). ٱلرَّحِيمِ is
 recorded — an earlier note here claiming otherwise was wrong.
 
 Open items:
+- **Class recordings**: built and rules-tested, but only the signed-out path
+  was exercised in a browser — the teacher's form and the class's list need a
+  real account and a real class, which this session had no credentials for.
+  Worth ten minutes with your own account before telling students about it.
+- A **deactivated learner** can read the recordings by the rules, and cannot
+  reach them in the app: `useClasses` only offers classes you are *approved*
+  in. Class notes behave the same way. That is narrower than the written
+  decision ("keeps the notes written up to that point"), and it is one filter
+  in `useClasses.ts` if you want it changed.
 - **Notes stack for a learner**: the teacher's marks are painted first and the
   learner draws on top, both on the same canvas, with a toggle to hide the
   layer beneath. Drawing stacks in depth; **typing stacks in reading order**
@@ -337,7 +415,23 @@ classes/{classId}                 name, teacherUid, teacherName, joinCode, creat
 joinCodes/{code}                  classId, teacherUid   — get-able, never listable
 classes/{classId}/members/{uid}   displayName, status, requestedAt, decidedAt
 users/{uid}/enrolments/{classId}  the learner's own signpost to a class
+classes/{classId}/notes/{lesson}  the teacher's sheet for one lesson
+classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
+                                  createdAt, lessonId
 ```
+- Recordings read is **narrower than notes**: the note sheet opens to any
+  membership document, a recording only to `approved` or `removed`. A link to
+  a recording is a way *in* to something, and being on the waiting list is not
+  being in the class.
+- That rule deliberately never mentions `resource`. Firestore re-evaluates a
+  read rule per document on a **list**, and a condition that looked at the
+  document would fail the whole query the moment one row failed it — which is
+  why "only recordings from before you were deactivated" is not expressed here.
+- `https:` only, enforced in the rules as well as in `tidyUrl`. A link posted
+  to a class is a link other people tap, and `javascript:` must not be able to
+  reach that position through a stale client.
+- `createdAt` is immutable; everything else can be corrected in place, because
+  a mistyped passcode is the normal case.
 - `enrolments` looks redundant and is not. Membership must live under the class
   so a teacher can read a whole roster; but a learner cannot ask "which classes
   am I in?" without querying every class in the app. The membership document
@@ -354,6 +448,14 @@ users/{uid}/enrolments/{classId}  the learner's own signpost to a class
   that could change hands silently would take its roster with it.
 
 ## 5. Next task
+
+**Chapters.** Agreed but not built, and the groundwork is in (see "Lesson
+identity and order" above). What is left is the visible part: a `chapter` field
+on `LessonMeta`, grouping in `orderedLessons()`, headings on the home page, and
+— because the author wants to move lessons about — an admin control that writes
+`order`/`chapter` rather than requiring a redeploy. Runtime state belongs in
+`config/app` beside `lessons` and `features`, the same way publishing does.
+The one rule that must survive it: **moving a lesson never changes its number.**
 
 **Audio intake, next steps.** The tool works locally: sheet → slots → record →
 named WAVs in the folder. What it does not yet do, in the order it will be

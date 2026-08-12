@@ -385,6 +385,16 @@ body {
   color: var(--text-soft);
 }
 
+/* Quiet enough to ignore, present enough to read out over the phone. */
+.build-stamp {
+  margin: 28px 0 4px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  opacity: 0.6;
+}
+
 .lesson-ar-head {
   margin: 0;
   font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
@@ -1772,6 +1782,154 @@ body {
 .enrolment-status {
   font-size: 13px;
   color: var(--text-soft);
+}
+
+/* ---------- class recordings ---------- */
+
+.recording-list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.recording {
+  padding: 14px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.recording-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.recording-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.recording-date {
+  font-size: 13px;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+.recording-lesson {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.recording-note {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--text-soft);
+  white-space: pre-wrap;
+  /* A pasted note can carry a very long unbroken string. */
+  overflow-wrap: anywhere;
+}
+
+.recording-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.recording-host {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.recording-pass {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* The join code's treatment, at a size that sits in a row of controls. */
+.join-code.small {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+}
+
+.recording-admin {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--card-border);
+  font-size: 14px;
+}
+
+.recording-admin .account-hint {
+  margin: 0;
+}
+
+.link-btn.danger {
+  color: #c0392b;
+}
+
+.recording-form {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.recording-form input,
+.recording-form select,
+.recording-form textarea {
+  width: 100%;
+  /* 16px keeps iOS from zooming the page when a field takes focus. */
+  font: inherit;
+  font-size: 16px;
+  padding: 9px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.recording-form textarea {
+  resize: vertical;
+}
+
+.recording-form label.account-hint {
+  display: grid;
+  gap: 4px;
+  margin: 6px 0 0;
+}
+
+.recording-form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.recording-form-row > label {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.recording-form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .danger-zone {

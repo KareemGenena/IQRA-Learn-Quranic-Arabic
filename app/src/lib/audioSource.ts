@@ -17,6 +17,14 @@ export function getAudioBlob(url: string): Promise<Blob> {
   if (!p) {
     p = fetch(url).then((r) => {
       if (!r.ok) throw new Error(`audio fetch failed: ${r.status} ${url}`);
+      // A missing clip does not 404 here. Hosting rewrites every unmatched
+      // path to index.html, so a typo in a filename comes back as 200 with an
+      // HTML page, and the player would simply sit there saying nothing. Ask
+      // what the server thinks it sent.
+      const type = r.headers.get('content-type') ?? '';
+      if (!type.startsWith('audio/')) {
+        throw new Error(`not audio: ${type || 'no content-type'} ${url}`);
+      }
       return r.blob();
     });
     p.catch(() => blobs.delete(url)); // transient failures must not stick

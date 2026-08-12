@@ -91,6 +91,9 @@ export function AccountPage({ account }: { account: Account }) {
             {teacher ? 'Your classes and join codes →' : 'Join a class with a code →'}
           </a>
         </p>
+        <p className="account-hint">
+          <a href="#/recordings">Class recordings →</a>
+        </p>
       </section>
 
       <section className="account-card">

@@ -111,6 +111,59 @@ service cloud.firestore {
         allow delete: if classOwner(classId);
       }
 
+      // Links to the teacher's recorded sessions. A pointer, never a copy:
+      // the recording itself lives wherever the teacher put it.
+      //
+      // Read is narrower than the note sheet above, which any membership
+      // document opens. A recording link is a way IN to something, so a
+      // pending request must not carry it — being on the waiting list is not
+      // being in the class. Someone deactivated keeps the archive, the same
+      // way they keep the notes written up to that point.
+      //
+      // Deliberately not written against `resource`: that would make a list
+      // query fail outright the moment one document in it failed, rather than
+      // returning the rest.
+      match /recordings/{recordingId} {
+        function standing() {
+          return get(/databases/$(database)/documents/classes/$(classId)/members/$(request.auth.uid)).data.status;
+        }
+
+        allow read: if request.auth != null
+          && (classOwner(classId)
+              || (exists(/databases/$(database)/documents/classes/$(classId)/members/$(request.auth.uid))
+                  && standing() in ['approved', 'removed']));
+
+        // https only, and checked here as well as in the app: a link posted to
+        // a class is a link other people tap, and `javascript:` or `http:`
+        // must not be able to reach that position through a stale client.
+        function validRecording() {
+          return request.resource.data.keys().hasOnly(
+                   ['title', 'url', 'passcode', 'note', 'recordedAt', 'createdAt', 'lessonId'])
+            && request.resource.data.url is string
+            && request.resource.data.url.matches('^https://.+')
+            && request.resource.data.url.size() <= 500
+            && request.resource.data.title is string
+            && request.resource.data.title.size() <= 120
+            && request.resource.data.passcode is string
+            && request.resource.data.passcode.size() <= 60
+            && request.resource.data.note is string
+            && request.resource.data.note.size() <= 500
+            && request.resource.data.recordedAt is int
+            && request.resource.data.createdAt is int
+            && request.resource.data.lessonId is int;
+        }
+
+        allow create: if classOwner(classId) && validRecording();
+
+        // Corrections are expected — a mistyped passcode, a link that expired
+        // and was re-shared. When it was posted is not one of them.
+        allow update: if classOwner(classId)
+          && validRecording()
+          && request.resource.data.createdAt == resource.data.createdAt;
+
+        allow delete: if classOwner(classId);
+      }
+
       // One learner's standing in this class.
       match /members/{uid} {
         allow read: if request.auth != null && (request.auth.uid == uid || classOwner(classId));

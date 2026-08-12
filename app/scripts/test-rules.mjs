@@ -91,6 +91,31 @@ const memberExists = (yes) => ({
   result: { value: yes },
 });
 
+/**
+ * One mock for both get()s a recordings rule makes.
+ *
+ * `classOwner()` reads `.teacherUid` off the class and `standing()` reads
+ * `.status` off the membership. The harness matches a mock by function name,
+ * and both calls are `get`, so a single document carrying both fields answers
+ * each of them with what it is actually looking for.
+ */
+const classAnd = (teacherUid, status) => ({
+  function: 'get',
+  args: [{ anyValue: {} }],
+  result: { value: { data: { teacherUid, status } } },
+});
+
+const recording = (over = {}) => ({
+  title: 'Tuesday — madd practice',
+  url: 'https://zoom.us/rec/share/abc123',
+  passcode: 'x8?Kq1',
+  note: 'We stopped at row 20.',
+  recordedAt: 1000,
+  createdAt: 1000,
+  lessonId: 5,
+  ...over,
+});
+
 const klass = (over = {}) => ({
   name: 'Tuesday Halaqa',
   teacherUid: 'tch1',
@@ -186,6 +211,62 @@ function classCases() {
       null, { body: '{}', updatedAt: 5 }, [ownedBy('tch1'), memberExists(true)]),
     cls('no extra fields on a note', 'DENY', TEACHER, 'classes/c1/notes/3', 'create',
       { body: '{}', updatedAt: 5, secret: 'x' }, null, [ownedBy('tch1')]),
+
+    // class recordings — links to recorded sessions
+    ...(() => {
+      const R = 'classes/c1/recordings/r1';
+      // Not the teacher, so the read has to be earned by standing in the class.
+      const asMember = (status, exists = true) => [classAnd('someone-else', status), memberExists(exists)];
+      return [
+        cls('the teacher reads the recordings', 'ALLOW', TEACHER, R, 'get', null, recording(),
+          [classAnd('tch1', 'approved')]),
+        cls('an approved learner reads them', 'ALLOW', STUDENT, R, 'get', null, recording(),
+          asMember('approved')),
+        cls('a deactivated learner keeps them', 'ALLOW', STUDENT, R, 'get', null, recording(),
+          asMember('removed')),
+        cls('someone still on the waiting list cannot', 'DENY', STUDENT, R, 'get', null, recording(),
+          asMember('pending')),
+        cls('a stranger cannot read them', 'DENY', OTHER, R, 'get', null, recording(),
+          asMember('approved', false)),
+        cls('anon cannot read them', 'DENY', null, R, 'get', null, recording(),
+          asMember('approved')),
+        // The whole page is a list, so this is the case that matters most.
+        // The read rule deliberately never looks at `resource`: a condition
+        // that did would be re-evaluated per document and fail the entire
+        // query the moment one row failed it.
+        cls('an approved learner can list them', 'ALLOW', STUDENT, R, 'list',
+          null, recording(), asMember('approved')),
+
+        cls('the teacher posts a recording', 'ALLOW', TEACHER, R, 'create', recording(), null,
+          [classAnd('tch1', 'approved')]),
+        cls('a learner cannot post one', 'DENY', STUDENT, R, 'create', recording(), null,
+          asMember('approved')),
+        cls('another teacher cannot post into this class', 'DENY', TEACHER, R, 'create', recording(), null,
+          [classAnd('someone-else', 'approved')]),
+        cls('a plain http link is refused', 'DENY', TEACHER, R, 'create',
+          recording({ url: 'http://zoom.us/rec/share/abc' }), null, [classAnd('tch1', 'approved')]),
+        cls('a javascript: link is refused', 'DENY', TEACHER, R, 'create',
+          recording({ url: 'javascript:alert(1)' }), null, [classAnd('tch1', 'approved')]),
+        cls('a bare https:// with nothing after it is refused', 'DENY', TEACHER, R, 'create',
+          recording({ url: 'https://' }), null, [classAnd('tch1', 'approved')]),
+        cls('no extra fields on a recording', 'DENY', TEACHER, R, 'create',
+          recording({ secret: 'x' }), null, [classAnd('tch1', 'approved')]),
+        cls('a recording note has a ceiling', 'DENY', TEACHER, R, 'create',
+          recording({ note: 'x'.repeat(600) }), null, [classAnd('tch1', 'approved')]),
+
+        cls('the teacher corrects a passcode', 'ALLOW', TEACHER, R, 'update',
+          recording({ passcode: 'fixed1' }), recording(), [classAnd('tch1', 'approved')]),
+        cls('when it was posted does not move', 'DENY', TEACHER, R, 'update',
+          recording({ createdAt: 9999 }), recording(), [classAnd('tch1', 'approved')]),
+        cls('a learner cannot rewrite a recording', 'DENY', STUDENT, R, 'update',
+          recording({ url: 'https://evil.example/x' }), recording(), asMember('approved')),
+
+        cls('the teacher removes a recording', 'ALLOW', TEACHER, R, 'delete', null, recording(),
+          [classAnd('tch1', 'approved')]),
+        cls('a learner cannot remove one', 'DENY', STUDENT, R, 'delete', null, recording(),
+          asMember('approved')),
+      ];
+    })(),
 
     // join codes
     cls('a signed-in person can fetch a code they know', 'ALLOW', STUDENT, 'joinCodes/K7QM4P', 'get',

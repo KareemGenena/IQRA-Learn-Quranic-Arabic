@@ -6,6 +6,7 @@ import { AdminPage } from './pages/AdminPage';
 import { NotesPage } from './pages/NotesPage';
 import { AccountPage } from './pages/AccountPage';
 import { ClassesPage } from './pages/ClassesPage';
+import { RecordingsPage } from './pages/RecordingsPage';
 import { SignInPanel } from './components/SignInPanel';
 import { LaserPointer } from './components/LaserPointer';
 import { LessonManager } from './components/LessonManager';
@@ -45,14 +46,14 @@ function initialRate(): number {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'intake';
+  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'recordings' | 'intake';
   lessonId: number;
 }
 
 function parseRoute(hash: string): Route {
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
-  const m = /^#\/(lesson|admin|calibrate|notes|account|classes|intake)(?:\/(\d+))?/.exec(hash);
+  const m = /^#\/(lesson|admin|calibrate|notes|account|classes|recordings|intake)(?:\/(\d+))?/.exec(hash);
   if (m) {
     const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
     return { page, lessonId: Number(m[2] ?? 0) };
@@ -144,7 +145,9 @@ export default function App() {
 
   const meta = LESSONS.find((l) => l.id === route.lessonId);
   /** The bare sign-in screen: no page title, no second sign-in button. */
-  const signingIn = (route.page === 'account' || route.page === 'classes') && !account.signedIn;
+  const signingIn =
+    (route.page === 'account' || route.page === 'classes' || route.page === 'recordings') &&
+    !account.signedIn;
   const showLaser = canUseFeature(config, 'laser', admin);
   const showNotes = canUseFeature(config, 'notes', admin);
   const lessonAllowed = route.lessonId === 0 || canSeeLesson(config, route.lessonId, admin);
@@ -216,6 +219,8 @@ export default function App() {
                   ? 'Your account'
                   : route.page === 'classes'
                     ? 'Classes'
+                    : route.page === 'recordings'
+                    ? 'Class recordings'
                     : route.page === 'intake'
                     ? 'Audio intake'
                     : route.page === 'admin' && route.lessonId === 0
@@ -228,6 +233,8 @@ export default function App() {
           {route.page === 'account' && <AccountPage account={account} />}
 
           {route.page === 'classes' && <ClassesPage account={account} />}
+
+          {route.page === 'recordings' && <RecordingsPage account={account} />}
 
           {/* The intake system records the lessons themselves, so it belongs
               to whoever owns them. It will open up when volunteers start

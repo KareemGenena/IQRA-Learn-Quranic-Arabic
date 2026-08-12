@@ -34,6 +34,12 @@ export function ClassesPage({ account }: { account: Account }) {
   }
   return (
     <main className="classes-page">
+      {/* Recordings are per class, so this is the page they hang off. Kept at
+          the top rather than inside each class card: a teacher with three
+          classes wants one door, and the page itself says which class. */}
+      <p className="account-hint">
+        <a href="#/recordings">🎥 Class recordings →</a>
+      </p>
       {account.isTeacher && <TeacherPanel account={account} />}
       <LearnerPanel account={account} />
       {!account.isTeacher && (

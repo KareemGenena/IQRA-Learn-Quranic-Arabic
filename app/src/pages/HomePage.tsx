@@ -1,9 +1,9 @@
-import { LESSONS } from '../lib/lessons';
+import { orderedLessons } from '../lib/lessons';
 import { canSeeLesson, lessonStatus } from '../lib/appConfig';
 import type { AppConfig } from '../lib/appConfig';
 
 export function HomePage({ config, admin }: { config: AppConfig; admin: boolean }) {
-  const lessons = LESSONS.filter((l) => canSeeLesson(config, l.id, admin));
+  const lessons = orderedLessons().filter((l) => canSeeLesson(config, l.id, admin));
 
   return (
     <main className="home">
@@ -38,6 +38,11 @@ export function HomePage({ config, admin }: { config: AppConfig; admin: boolean 
         })}
       </ul>
       {lessons.length === 0 && <p className="loading">No lessons are published yet.</p>}
+      {/* Which build this device is actually running. An installed app has no
+          address bar and no way to tell a stale copy from a current one — the
+          author once spent weeks looking at a months-old build. Comparing this
+          line against the deploy answers it in a glance. */}
+      <p className="build-stamp">Version {__BUILD_ID__}</p>
     </main>
   );
 }

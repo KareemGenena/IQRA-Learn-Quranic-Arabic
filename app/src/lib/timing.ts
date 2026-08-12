@@ -193,6 +193,8 @@ export function clusterWeight(
   const bare = marks.length === 0;
 
   let w = 1.0;
+  /** Has this cluster's madd already been paid for? See the dagger alif below. */
+  let maddCounted = false;
 
   if (base === 'ٱ' || (bare && base === 'ا' && !prev)) {
     // Hamzat wasl — the "a" of ٱل. Never a madd: an elongation needs a vowel
@@ -202,6 +204,7 @@ export function clusterWeight(
   } else if (isMaddLetter(cluster, prev)) {
     // The letter IS the long vowel, so its whole duration is the madd.
     w = maddLength(cluster, next);
+    maddCounted = true;
   } else if (hasSukoon(marks)) {
     const leen = (base === 'و' || base === 'ي') && prevMarks.includes(FATHA);
     // A saakin letter closes the syllable before it. It carries no vowel, but
@@ -222,9 +225,14 @@ export function clusterWeight(
   }
 
   if (marks.includes(SHADDA)) w += 0.8;
-  // A dagger alif is the long vowel written as a mark, so the cluster is
-  // consonant + madd, exactly like a written alif would be.
-  if (marks.includes(DAGGER_ALIF)) w += maddLength(cluster, next);
+  // A dagger alif is the long vowel written as a mark, so a CONSONANT carrying
+  // one is consonant + madd, exactly like a written alif would be (رَٰ = 1 + 2).
+  //
+  // On a letter that is already the long vowel it is the same vowel spelled
+  // twice, not a second one: the ىٰ of نَجۡوَىٰٓ is one madd, and adding a second
+  // gave it 8 harakat — a third of that whole phrase's budget, which starved
+  // every letter before it. Only add the madd where nothing has paid for it.
+  if (marks.includes(DAGGER_ALIF) && !maddCounted) w += maddLength(cluster, next);
   if (TANWEEN.some((t) => marks.includes(t))) w += 0.5;
   if (ghunnaFor(cluster, next)) w += GHUNNA_WEIGHT;
   if (QALQALAH.has(base) && hasSukoon(marks)) w += QALQALAH_WEIGHT;

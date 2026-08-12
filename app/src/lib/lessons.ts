@@ -4,13 +4,38 @@ import { splitClusters, baseChar, derivedSilent } from './graphemes';
 import type { Lesson, LessonItem, LetterWord, PairWord, Playable, SimpleWord } from '../types';
 
 export interface LessonMeta {
+  /**
+   * The lesson's IDENTITY, and never its position.
+   *
+   * It is spent the moment a lesson exists, and it is what
+   * `public/lessons/lessonNN/`, `public/audio/lessonNN/`, `#/lesson/N` and
+   * `calibrations/lessonN/...` are all keyed on. Moving a lesson up the menu,
+   * or into a chapter, must therefore never change it: renumbering to reorder
+   * would silently point every calibration at the wrong word, which is exactly
+   * the bug lesson 4's word ids already cost this project once.
+   *
+   * Reading order is `order` below; grouping will be a `chapter` beside it.
+   */
   id: number;
   title: string;
   titleArabic: string;
   blurb: string;
+  /**
+   * Where this lesson sits in the menu, if not simply by id.
+   *
+   * Nothing sets it yet — the lessons were written in the order they are read.
+   * It exists so that the day one moves, the move is a number here rather than
+   * a renaming of folders, clips and calibration documents.
+   */
+  order?: number;
 }
 
-/** The lesson menu on the home page. Add a line here for each new lesson. */
+/**
+ * The lesson menu on the home page. Add a line here for each new lesson.
+ *
+ * Written in reading order today. Read it through `orderedLessons()` rather
+ * than relying on that.
+ */
 export const LESSONS: LessonMeta[] = [
   {
     id: 1,
@@ -43,6 +68,17 @@ export const LESSONS: LessonMeta[] = [
     blurb: 'Muttasil and munfasil — both held for four harakat, whether the hamza is in the same word or the next.',
   },
 ];
+
+/**
+ * The lessons in the order a learner meets them.
+ *
+ * The one place that decides reading order, so that when lessons are grouped
+ * into chapters and shuffled between them, this is what changes — not the
+ * lesson numbers, and not each page that happens to list lessons.
+ */
+export function orderedLessons(lessons: LessonMeta[] = LESSONS): LessonMeta[] {
+  return [...lessons].sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id));
+}
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
