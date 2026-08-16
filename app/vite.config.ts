@@ -89,7 +89,10 @@ export default defineConfig({
         start_url: '.',
         display: 'standalone',
         background_color: '#ffffff',
-        theme_color: '#1c5f8f',
+        // The brand green of the New Logo mark. The in-app accent palette in
+        // index.css is still the old blue — the author has seen that contrast
+        // and chose it; match the bar to the brand, not to the buttons.
+        theme_color: '#14513A',
         icons: [
           { src: 'pwa-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'pwa-512.png', sizes: '512x512', type: 'image/png' },

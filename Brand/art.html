@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="font.css">
+<style>
+  :root{
+    --green:#14513A;      /* deep mushaf green */
+    --green-2:#1E6B4C;
+    --gold:#C1A054;
+    --gold-2:#D8BE84;
+    --gold-dk:#9A7B33;
+    --cream:#F6F3E9;
+    --paper:#FBFAF6;
+    --ink:#14513A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden}
+  body{display:flex;align-items:center;justify-content:center;
+       font-family:'Perpetua Titling MT','Perpetua',Constantia,Georgia,serif;
+       -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+  body.paper{background:var(--paper)}
+  .stage{position:relative;display:flex;align-items:center;justify-content:center}
+  svg{display:block}
+  .wordmark{color:var(--green);text-align:center;line-height:1}
+  .wordmark .name{font-family:'Perpetua Titling MT','Perpetua',Constantia,Georgia,serif;
+                  font-weight:400;letter-spacing:.10em;text-indent:.10em}
+  .wordmark .tag{font-family:'Perpetua','Perpetua Titling MT',Constantia,Georgia,serif;
+                 letter-spacing:.26em;text-indent:.26em;color:var(--green)}
+</style>
+</head>
+<body>
+<script>
+/* ------------------------------------------------------------------ *
+ * The three lines, spelled the way the Mushaf spells them.
+ * Written as escapes so the encoding is unambiguous in the source.
+ *
+ *   L1  wa-rattil   waw+fatha, ra+fatha, ta+shadda+kasra, lam+SUKOON(U+06E1)
+ *   L2  wa-rtaqi    waw+fatha, ALIF WASLA(U+0671), ra+sukoon, ta+fatha, qaf+kasra
+ *   L3  iqra'       ALIF WASLA(U+0671), qaf+sukoon, ra+fatha, hamza-on-alif+sukoon
+ * ------------------------------------------------------------------ */
+const L1 = "وَرَتِّلۡ"; // وَرَتِّلۡ
+const L2 = "وَٱرۡتَقِ"; // وَٱرۡتَقِ
+const L3 = "ٱقۡرَأۡ";             // ٱقۡرَأۡ
+/* The favicon monogram. ChatGPT used أ (hamza on alif); the word actually
+ * begins with ٱ, the alif wasla, whose small صـ head is the single most
+ * recognisable mark in the Mushaf. `?g=hamza` renders the other one to compare. */
+const ALIF = new URLSearchParams(location.search).get('g') === 'hamza' ? "أ" : "ٱ";
+
+/* ---- the mark ---------------------------------------------------- *
+ * viewBox 0 0 200 268.  Arch occupies y 4..196, the book y 196..262.
+ * `opts.lines`  : array of {text, fill} bottom-to-top order top-down
+ * `opts.plate`  : draw the rounded plate behind (app icon)
+ * ------------------------------------------------------------------ */
+function mark(opts){
+  const o = Object.assign({lines:'three', dark:false}, opts||{});
+  const edge = o.dark ? 'var(--gold)'    : 'var(--green)';   // arch outline
+  const rim  = o.dark ? 'var(--gold-dk)' : 'var(--green)';   // book's outer band
+
+  const archOuter = "M 26,238 L 26,100 C 26,64 62,24 100,4 C 138,24 174,64 174,100 L 174,238 Z";
+  const archInner = "M 38,238 L 38,107 C 38,75 68,39 100,21 C 132,39 162,75 162,107 L 162,238 Z";
+
+  /* The open book, as the fore-edge of a stack of pages: three V bands that
+   * share ONE top edge and differ only in how wide they are and how deep the
+   * V runs. Nesting them by offsetting the top edge instead reads as a folded
+   * ribbon, which is what the first attempt looked like.
+   * Drawn AFTER the arch so the book hides the arch's base line — that is what
+   * makes the arch stand IN the book rather than on top of it. */
+  const band = (x, drop, t, y = 238) =>
+    `M ${x},${y} L 100,${y+drop} L ${200-x},${y} L ${200-x},${y+t} L 100,${y+drop+t} L ${x},${y+t} Z`;
+  const bookGreen = band(4,  36, 20);
+  const bookGold  = band(16, 30, 16);
+  /* The page band starts exactly where the arch's feet are, so the arch reads
+   * as a leaf standing on the book rather than as a shape that merges into it.
+   * Same width, same cream: without the hairline it disappears into the arch. */
+  const bookCream = band(28, 24, 12);
+
+  let text = '';
+  if(o.lines === 'three'){
+    /* Line 3 is ٱقۡرَأۡ and the qaf drops a deep bowl below the baseline, so the
+     * last line has to clear the top of the book, not just the arch's base. */
+    const rows = [
+      {t:L1, y: 98, fill:'var(--green)'},
+      {t:L2, y:152, fill:'var(--gold)'},
+      {t:L3, y:206, fill:'var(--green)'},
+    ];
+    text = rows.map(r =>
+      `<text x="100" y="${r.y}" fill="${r.fill}" font-family="UH" font-size="34"
+             text-anchor="middle" direction="rtl" xml:space="preserve">${r.t}</text>`).join('\n');
+  } else if(o.lines === 'one'){
+    text = `<text x="100" y="176" fill="var(--gold)" font-family="UH" font-size="132"
+              text-anchor="middle" direction="rtl">${ALIF}</text>`;
+  }
+
+  return `
+<svg viewBox="0 0 200 296" width="${o.w}" height="${o.w*296/200}" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <path d="${archOuter}" fill="var(--cream)"/>
+    <path d="${archOuter}" fill="none" stroke="${edge}" stroke-width="7" stroke-linejoin="miter"/>
+    <path d="${archInner}" fill="none" stroke="${edge}" stroke-width="1.6" opacity="${o.dark?0.4:0.5}"/>
+    <g transform="translate(100,56) rotate(45)">
+      <rect x="-5" y="-5" width="10" height="10" fill="var(--gold)"/>
+    </g>
+    ${text}
+    <path d="${bookGreen}" fill="${rim}"/>
+    <path d="${bookGold}"  fill="var(--gold)"/>
+    <path d="${bookCream}" fill="var(--cream)" stroke="${edge}" stroke-width="2.2" stroke-linejoin="miter"/>
+  </g>
+</svg>`;
+}
+
+/* ---- the rosette divider used under the wordmark ------------------ */
+const markH = (h, lines, dark) => mark({w: h*200/296, lines: lines||'three', dark: !!dark});
+
+function divider(w){
+  return `
+<svg viewBox="0 0 600 24" width="${w}" height="${w*24/600}" xmlns="http://www.w3.org/2000/svg">
+  <line x1="8" y1="12" x2="258" y2="12" stroke="var(--gold)" stroke-width="1.4"/>
+  <line x1="342" y1="12" x2="592" y2="12" stroke="var(--gold)" stroke-width="1.4"/>
+  <g transform="translate(272,12)"><rect x="-3" y="-3" width="6" height="6" fill="var(--gold)" transform="rotate(45)"/></g>
+  <g transform="translate(328,12)"><rect x="-3" y="-3" width="6" height="6" fill="var(--gold)" transform="rotate(45)"/></g>
+  <g transform="translate(300,12)">
+    <g fill="none" stroke="var(--gold)" stroke-width="1.3">
+      <rect x="-9.5" y="-9.5" width="19" height="19"/>
+      <rect x="-9.5" y="-9.5" width="19" height="19" transform="rotate(45)"/>
+    </g>
+    <circle r="2.4" fill="var(--gold)"/>
+  </g>
+</svg>`;
+}
+
+function wordmark(size){
+  return `<div class="wordmark">
+    <div class="name" style="font-size:${size}px">IQRA</div>
+    <div style="height:${size*0.30}px"></div>
+    ${divider(size*3.9)}
+    <div style="height:${size*0.22}px"></div>
+    <div class="tag" style="font-size:${size*0.235}px">Learn Quranic Arabic</div>
+  </div>`;
+}
+
+/* ---- variants ---------------------------------------------------- */
+const params = new URLSearchParams(location.search);
+const v = params.get('v') || 'sheet';
+const S = Number(params.get('s') || 512);
+const stage = document.createElement('div');
+stage.className = 'stage';
+document.body.appendChild(stage);
+
+function plate(size, radius, inset, content, bg){
+  return `<div style="width:${size}px;height:${size}px;border-radius:${radius}px;
+    background:${bg};display:flex;align-items:center;justify-content:center;overflow:hidden">
+      <div style="transform:scale(${(size-inset*2)/size})">${content}</div>
+    </div>`;
+}
+
+if(v === 'mark'){
+  document.body.style.background = 'transparent';
+  stage.innerHTML = markH(S);
+}
+else if(v === 'lockup'){
+  document.body.classList.add('paper');
+  stage.style.gap = (S*0.16)+'px';
+  stage.innerHTML = markH(S*0.72) + wordmark(S*0.30);
+}
+else if(v === 'icon'){
+  // square app icon: cream mark on deep green, rounded
+  const inner = markH(S*0.70, null, true);
+  document.body.style.background = 'transparent';
+  stage.innerHTML = `<div style="width:${S}px;height:${S}px;border-radius:${S*0.22}px;
+     background:var(--green);display:flex;align-items:center;justify-content:center">
+     <div style="filter:drop-shadow(0 ${S*0.008}px ${S*0.02}px rgba(0,0,0,.25))">${inner}</div></div>`;
+}
+else if(v === 'round'){
+  const inner = markH(S*0.66, null, true);
+  document.body.style.background = 'transparent';
+  stage.innerHTML = `<div style="width:${S}px;height:${S}px;border-radius:50%;
+     background:var(--green);display:flex;align-items:center;justify-content:center">${inner}</div>`;
+}
+else if(v === 'square'){
+  /* apple-touch-icon: FULL BLEED and fully opaque. iOS rounds the corners
+   * itself and composites anything transparent onto black, so a rounded PNG
+   * with clear corners comes out as an icon with four black notches. */
+  const inner = markH(S*0.70, null, true);
+  document.body.style.background = 'transparent';
+  stage.innerHTML = `<div style="width:${S}px;height:${S}px;
+     background:var(--green);display:flex;align-items:center;justify-content:center">${inner}</div>`;
+}
+else if(v === 'maskable'){
+  // everything inside the 80% safe circle
+  const inner = markH(S*0.54, null, true);
+  document.body.style.background = 'transparent';
+  stage.innerHTML = `<div style="width:${S}px;height:${S}px;background:var(--green);
+     display:flex;align-items:center;justify-content:center">${inner}</div>`;
+}
+else if(v === 'favicon'){
+  const inner = markH(S*0.68, params.get('lines')==='none' ? 'none' : 'one', true);
+  document.body.style.background = 'transparent';
+  stage.innerHTML = `<div style="width:${S}px;height:${S}px;border-radius:${S*0.22}px;
+     background:var(--green);display:flex;align-items:center;justify-content:center">${inner}</div>`;
+}
+else if(v === 'sheet'){
+  document.body.classList.add('paper');
+  document.body.style.display = 'block';
+  stage.remove();
+  const cellIcon = (label, html) => `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:26px;flex:1">
+      <div style="font-size:15px;letter-spacing:.16em;color:#6b7c72">${label}</div>
+      ${html}
+    </div>`;
+  document.body.innerHTML = `
+  <div style="width:1536px;height:1024px;background:var(--paper);position:relative;
+              display:flex;flex-direction:column">
+    <div style="flex:0 0 600px;display:flex;align-items:center;justify-content:center;gap:110px">
+      ${markH(430)}
+      ${wordmark(128)}
+    </div>
+    <div style="height:1px;background:#e3e0d6;margin:0 0 0 0"></div>
+    <div style="flex:1;display:flex;align-items:center;padding:0 70px">
+      ${cellIcon('APP ICON', `<div style="width:250px;height:250px;border-radius:56px;background:var(--green);display:flex;align-items:center;justify-content:center">${markH(176, null, true)}</div>`)}
+      ${cellIcon('ADAPTIVE ICON', `<div style="width:250px;height:250px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center">${markH(166, null, true)}</div>`)}
+      ${cellIcon('FAVICON (32×32)', `<div style="width:132px;height:132px;border-radius:30px;background:var(--green);display:flex;align-items:center;justify-content:center">${markH(92,'one',true)}</div>`)}
+      <div style="width:1px;height:300px;background:#e3e0d6;margin:0 40px"></div>
+      ${cellIcon('MANIFEST / PWA', `
+        <div style="width:420px;border-radius:34px;background:#fff;border:1px solid #e6e3da;padding:22px 26px;
+                    box-shadow:0 18px 40px rgba(20,81,58,.08);
+                    font-family:'Segoe UI',system-ui,sans-serif">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;color:#3c4a43;margin-bottom:14px">
+            <span style="font-weight:600">9:41</span>
+            <svg width="54" height="13" viewBox="0 0 54 13" fill="#3c4a43">
+              <rect x="0" y="8" width="3" height="5" rx="1"/><rect x="5" y="6" width="3" height="7" rx="1"/>
+              <rect x="10" y="3.5" width="3" height="9.5" rx="1"/><rect x="15" y="1" width="3" height="12" rx="1"/>
+              <path d="M28 3.2c2.6 0 5 .9 6.9 2.5l-1.5 1.7A8.4 8.4 0 0 0 28 5.4a8.4 8.4 0 0 0-5.4 2l-1.5-1.7A10.8 10.8 0 0 1 28 3.2Zm0 4.1c1.5 0 2.9.5 4 1.4l-1.6 1.8A3.7 3.7 0 0 0 28 9.6c-.9 0-1.7.3-2.4.9L24 8.7a6.1 6.1 0 0 1 4-1.4Z"/>
+              <rect x="40" y="2.5" width="11.5" height="8" rx="2.2" fill="none" stroke="#3c4a43" stroke-width="1.2"/>
+              <rect x="41.6" y="4.1" width="8.3" height="4.8" rx="1.2"/><rect x="52.4" y="5" width="1.4" height="3" rx=".7"/>
+            </svg></div>
+          <div style="background:#f1f0ec;border-radius:16px;padding:9px 16px;font-size:14px;color:#3c4a43;
+                      display:flex;align-items:center;gap:8px;margin-bottom:20px">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="#5b6a63" style="flex:none">
+              <path d="M2.6 5.5V3.9a2.9 2.9 0 0 1 5.8 0v1.6h.6c.6 0 1 .5 1 1v4.4c0 .6-.4 1-1 1H2c-.6 0-1-.4-1-1V6.5c0-.5.4-1 1-1Zm1.4 0h3V3.9a1.5 1.5 0 0 0-3 0Z"/>
+            </svg> iqra---learn-quranic-arabic.web.app</div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <div style="width:74px;height:74px;border-radius:18px;background:var(--green);
+                        display:flex;align-items:center;justify-content:center;flex:none">${markH(54, null, true)}</div>
+            <div style="font-family:Constantia,Georgia,serif">
+              <div style="font-size:22px;color:#14513A;letter-spacing:.04em">IQRA</div>
+              <div style="font-size:14px;color:#6b7c72">Learn Quranic Arabic</div>
+            </div>
+          </div>
+        </div>`)}
+    </div>
+  </div>`;
+}
+else if(v === 'proof'){
+  // large, plain: the three lines at reading size, for checking the marks
+  document.body.classList.add('paper');
+  stage.innerHTML = `<div style="font-family:UH;font-size:110px;color:var(--green);
+      direction:rtl;text-align:center;line-height:2.1">
+      <div>${L1}</div><div style="color:var(--gold)">${L2}</div><div>${L3}</div></div>`;
+}
+document.fonts.ready.then(()=>{ document.documentElement.dataset.ready = '1'; });
+</script>
+</body>
+</html>

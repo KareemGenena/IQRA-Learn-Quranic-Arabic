@@ -433,6 +433,24 @@ Open items:
 Calibrations live only on lesson 4 — words 12 (فَلَق), 16 (حَطَب), 21 (يَتِيم).
 Everything else uses the automatic estimate.
 
+**Branding (2026-08-16).** The app's icons, favicon and manifest now carry the
+author's mihrab-and-book mark — the hadith «ٱقۡرَأۡ وَٱرۡتَقِ وَرَتِّلۡ» read bottom-up,
+green `#14513A`, gold `#C1A054`, on a white plate. Two generations exist:
+- `New Logo/` — the author's Canva exports, which are what **ships**.
+  `make-icons.mjs` cuts all five icons from them (flattens the near-white text
+  boxes with a white-point clip, trims, re-margins; regions are measured
+  against these exact pixels, so re-run and re-measure if the PNGs change).
+- `Brand/` — a font-true rebuild: `art.html` + `build.mjs` render the same
+  design through headless Chrome with the app's own Uthmanic Hafs embedded
+  byte-identically, so every mark is the font's own (the wasl's attached صـ,
+  U+06E1 sukoon). Kept as the vector source of truth if the raster ever needs
+  to change; its favicon differs from the shipped one (the Canva favicon's صـ
+  is a stylised detached ص — the author saw the difference and chose it).
+`theme_color` is the brand green; **the in-app accent palette in `index.css`
+is still the old blue** (`--moon` is a lesson colour — never touch it in a
+rebrand). iOS home-screen icons only update on delete-and-re-add; Android
+re-mints WebAPKs on its own within days.
+
 **The Maktab assessment is finished and print-ready — v1.0, 2026-08-16.**
 The author sits on a local Masjid's education committee and is piloting a
 standardized recitation assessment for its Maktab programme, taught by a
