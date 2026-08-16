@@ -317,6 +317,40 @@ When an update does not arrive, work down the list rather than guessing.
 - Chapters will be a `chapter` field beside it and a grouping in the same
   function. Same rule: a lesson changing chapter must not change its number.
 
+**A roster seat is not an account** *(designed, not built)*
+
+Every roster seat today **is** a Firebase Auth account: membership is keyed
+`classes/{classId}/members/{uid}`. That quietly assumes a one-device-per-learner
+school. It is false of every Maktab and madrasah class — children without
+phones cannot be represented at all, so a teacher cannot enter, mark or track
+them. This surfaced while designing the Maktab assessment (see `Assessment/`),
+and it is a blocker for the LMS regardless of whether that assessment is ever
+built in.
+
+The shape when it is built:
+
+```
+classes/{classId}/roster/{seatId}    displayName, uid ("" until linked),
+                                     active, createdAt
+```
+
+- A **seat** is a place on the roster — one child, created by the teacher
+  typing a name. It exists whether or not anyone ever signs in.
+- A **uid** is a Firebase Auth account id, minted at sign-up, and it is the
+  only identity the app has today. `members/{uid}` therefore *cannot hold a
+  child without an account.* A seat carries `uid` as an optional **field**, so
+  an account can be attached later — or never.
+- **The seat id never changes when an account is linked.** It belongs to the
+  child, not to their account status, and it is spent whether or not it is ever
+  claimed.
+
+That last rule is this project's oldest lesson wearing a third hat: a word's id
+belongs to its table row and is spent whether or not the row was recorded; a
+lesson's number is its identity, never its position. Get it wrong here and
+every assessment record silently points at a different child the day someone
+signs up — the same fault as lesson 4's renumbering, one level up again, and
+this time the corrupted records are children's.
+
 **Names and privacy**
 - `account.name` may fall back to the email so someone recognises their own
   account. **Anything another person sees uses `publicName`, which never
@@ -398,6 +432,21 @@ Open items:
 
 Calibrations live only on lesson 4 — words 12 (فَلَق), 16 (حَطَب), 21 (يَتِيم).
 Everything else uses the automatic estimate.
+
+**The Maktab assessment is a separate project, on paper, on purpose.** The
+author sits on a local Masjid's education committee and is piloting a
+standardized recitation assessment for its Maktab programme, taught by a Qari.
+It lives in `Assessment/` — the instrument, the print-ready sheets, and a
+design note weighing whether it should ever move into this app. The decision
+taken 2026-08-15: **it should not, yet.** Give the instrument on paper first,
+revise it against real results, and only encode a version that has been used.
+Building UI around a draft instrument is the waste, not the complexity — the
+feature itself is smaller than classes or notes. Two things came out of that
+analysis and outlive it: the roster-seat rule above, and the observation that
+the pilot's most valuable output *for this app* is item-level data on which
+tajwīd rules real learners fail, which is the curriculum roadmap the lessons
+currently lack. Do not start integrating it without re-reading
+`Assessment/should-this-live-in-the-app.md`.
 
 Designed and agreed, not yet implemented:
 - Notes as three stacked layers — reference (fixed) / teacher / student — so
