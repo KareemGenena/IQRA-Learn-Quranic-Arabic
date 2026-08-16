@@ -38,7 +38,10 @@ const here = dirname(fileURLToPath(import.meta.url));
 const app = resolve(here, '..', 'app');
 const sharp = createRequire(resolve(app, 'package.json'))('sharp');
 
-const FAV = resolve(here, 'IQRA LMS - FAVICON.png');
+// The third generation of the mark: the author redrew the first FAVICON
+// export with much heavier strokes after seeing the thin ones wash out in a
+// real browser tab. Already cropped to the artwork — no canvas frame to dodge.
+const FAV = resolve(here, 'Thicker Lines', 'Alif Icon Thicker Lines - cropped.png');
 const out = resolve(here, 'out');
 mkdirSync(out, { recursive: true });
 
@@ -46,8 +49,9 @@ const WHITE = { r: 255, g: 255, b: 255 };
 
 /** Flatten near-white to white, then trim to the mark's bounding box. */
 async function mark(file, region) {
-  const flat = await sharp(file)
-    .extract(region)
+  let img = sharp(file).flatten({ background: WHITE }); // drop any alpha first
+  if (region) img = img.extract(region);
+  const flat = await img
     .linear(255 / 248, 0) // white-point clip: ≥248 → 255
     .toBuffer();
   return sharp(flat).trim({ background: '#ffffff', threshold: 12 }).toBuffer();
@@ -135,11 +139,7 @@ async function tile(markBuf, size, frac, file, background) {
   console.log(file.padEnd(22), `${size}×${size}  mark at ${Math.round(frac * 100)}%  ${background ? 'white plate' : 'transparent'}`);
 }
 
-// Region found by scanning for ink; trim() finds the exact box inside it.
-// The bottom stops at y=1345: the book's tip ends there and the Canva canvas
-// edge line sits at y≈1355 — leave it in and the line, not the mark, sets the
-// trim box (it showed as a grey streak under the book in the first favicon).
-const favMark = await mark(FAV, { left: 550, top: 450, width: 900, height: 895 });
+const favMark = await mark(FAV);
 const favMarkClear = await knockout(favMark);
 
 await tile(favMark, 512, 0.84, 'pwa-512.png', WHITE);
