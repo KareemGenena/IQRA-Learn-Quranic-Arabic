@@ -13,6 +13,3 @@ dev-dist/
 # takes are not lesson audio and nothing generates from them.
 Audio/Test Audio Intake System/
 
-# The Maktab assessment is a separate local project (branch: maktab-assessment,
-# never pushed). Main is the app; the instrument does not ride along on a push.
-Assessment/
