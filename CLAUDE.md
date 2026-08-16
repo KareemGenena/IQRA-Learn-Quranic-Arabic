@@ -436,10 +436,17 @@ Everything else uses the automatic estimate.
 **Branding (2026-08-16).** The app's icons, favicon and manifest now carry the
 author's mihrab-and-book mark — the hadith «ٱقۡرَأۡ وَٱرۡتَقِ وَرَتِّلۡ» read bottom-up,
 green `#14513A`, gold `#C1A054`, on a white plate. Two generations exist:
-- `New Logo/` — the author's Canva exports, which are what **ships**.
-  `make-icons.mjs` cuts all five icons from them (flattens the near-white text
-  boxes with a white-point clip, trims, re-margins; regions are measured
-  against these exact pixels, so re-run and re-measure if the PNGs change).
+- `New Logo/` — the author's Canva exports, which are what **ships**. All
+  five icons carry the FAVICON file's mark (the mihrab with a single ٱ): the
+  three-line mark is unreadable at icon sizes, so it serves only as the full
+  logo. `make-icons.mjs` cuts everything (white-point clip, trim, re-margin;
+  regions are measured against these exact pixels, so re-measure if the PNGs
+  change). The favicon is transparent outside the mark — knocked out by flood
+  fill from the border with a morphological seal, never by "remove white",
+  because the mihrab interior is the same white as the background and an
+  unsealed flood travels the channel between the arch's outline strokes and
+  hollows out the whole mark. The interior staying opaque is what makes the
+  favicon read as a light silhouette on dark browser tabs.
 - `Brand/` — a font-true rebuild: `art.html` + `build.mjs` render the same
   design through headless Chrome with the app's own Uthmanic Hafs embedded
   byte-identically, so every mark is the font's own (the wasl's attached صـ,
