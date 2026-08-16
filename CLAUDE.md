@@ -433,20 +433,48 @@ Open items:
 Calibrations live only on lesson 4 — words 12 (فَلَق), 16 (حَطَب), 21 (يَتِيم).
 Everything else uses the automatic estimate.
 
-**The Maktab assessment is a separate project, on paper, on purpose.** The
-author sits on a local Masjid's education committee and is piloting a
-standardized recitation assessment for its Maktab programme, taught by a Qari.
-It lives in `Assessment/` — the instrument, the print-ready sheets, and a
-design note weighing whether it should ever move into this app. The decision
-taken 2026-08-15: **it should not, yet.** Give the instrument on paper first,
-revise it against real results, and only encode a version that has been used.
-Building UI around a draft instrument is the waste, not the complexity — the
-feature itself is smaller than classes or notes. Two things came out of that
-analysis and outlive it: the roster-seat rule above, and the observation that
-the pilot's most valuable output *for this app* is item-level data on which
-tajwīd rules real learners fail, which is the curriculum roadmap the lessons
-currently lack. Do not start integrating it without re-reading
-`Assessment/should-this-live-in-the-app.md`.
+**The Maktab assessment is finished and print-ready — v1.0, 2026-08-16.**
+The author sits on a local Masjid's education committee and is piloting a
+standardized recitation assessment for its Maktab programme, taught by a
+Qari. It is a separate project from this app, on paper, on purpose — the
+decision (2026-08-15) is argued in `Assessment/should-this-live-in-the-app.md`
+and stands: pilot the instrument first, encode only a version that has been
+used. Do not start integrating without re-reading that note.
+
+`Assessment/Print Ready - Aug 2026/` holds the four session files: **Student
+Packet** (Part A hear-and-match ×14 · Part B read-aloud ×13 scored 0/1/2 ·
+Part C ×5 MCQ), **Teacher Sheet** (recitation script — say the *sound*, never
+the letter's name — plus a landscape grid ending in a blind "Your level"
+column), **Helper Sheet**, and **Maktab Results.xlsx**, which imported into
+Google Sheets marks answers, totals, and places automatically. The assessment
+content is the author's, verbatim; the final version carries no āyah
+references or ḥadīth, so the verification warnings on the earlier drafts (in
+git history) no longer apply.
+
+The pieces that took real thought, so they are not undone casually:
+- **Placement is gated, never averaged.** A < 10/14 → Level 1; A ≥ 10 and
+  B < 18/26 → Level 2; both → Level 3. **Part C never gates** — it keeps the
+  room busy during the one-to-one queue, separates "can't apply" from "never
+  heard of it", and informs the teacher's judgment. "I don't know" scores 0
+  but stays distinguishable from a wrong guess in the data.
+- **The override is a workflow, not a column.** The teacher writes a blind
+  1/2/3 as each student walks away; the sheet flags REVIEW where he and the
+  formula disagree; the last ten minutes are spent only on REVIEW rows, and
+  his override wins. The teacher–formula agreement rate is the pilot's
+  validation data for the 10/18 thresholds.
+- **No student audio** — they are minors; the Qari grades live. Student IDs
+  are seat ids (M-01 style): assigned once, never reused, same next year.
+- Everything is merged into main and pushed — the repo is the backup. (A
+  local-only branch was tried and reverted the same day: a folder git
+  half-watches is an error risk, not a boundary.)
+
+Also learned: the author's installed Word font is **"KFGQPC HAFS Uthmanic
+Script"** — a different build from this repo's `UthmanicHafs1-Ver09.otf`,
+whose internal family name is "KFGQPC Uthmanic Script HAFS". Same letterforms,
+different family name; never assume the two are interchangeable. And twice in
+one session a fresh draft reached for U+06DF for the round zero — the
+assessment build scripts now fail on it; the font convention in section 3 is
+the law here too.
 
 Designed and agreed, not yet implemented:
 - Notes as three stacked layers — reference (fixed) / teacher / student — so
@@ -497,6 +525,16 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
   that could change hands silently would take its roster with it.
 
 ## 5. Next task
+
+**Maktab, before the first session (not code).** Print the Student Packet ×
+students and one each of the Teacher and Helper Sheets; import
+`Maktab Results.xlsx` into a Google Sheet — ideally one a Masjid-controlled
+account owns, since these become children's records (ownership, retention and
+export should be agreed with the committee before the data exists); write the
+roster IDs. After the pilot: revisit the 10/18 thresholds against the
+teacher-agreement rate, mine the per-item columns for which rules the class
+actually fails — that is the lesson roadmap this app lacks — and only then
+consider encoding the used instrument, per the design note.
 
 **Chapters.** Agreed but not built, and the groundwork is in (see "Lesson
 identity and order" above). What is left is the visible part: a `chapter` field
