@@ -431,14 +431,15 @@
     {
       "id": 31,
       "section": "silah-kubra",
-      "text": "إِنَّهُۥٓ أَنَا ٱللَّهُ",
+      "text": "إِنَّهُۥٓ أَنَا۠ ٱللَّهُ",
       "audio": "word31.wav",
       "timings": null,
       "badges": [
         "Hāʾ maḍmūma",
         "4 ḥarakāt",
         "Sun ل",
-        "Ghunna"
+        "Ghunna",
+        "Conditional silent alif"
       ],
       "meaning": "“Indeed, it is I, Allah” — An‑Naml 27:9"
     },
@@ -463,7 +464,8 @@
       "timings": null,
       "badges": [
         "Hāʾ maksūra",
-        "4 ḥarakāt"
+        "4 ḥarakāt",
+        "Madd Muttasil"
       ],
       "meaning": "“of His knowledge except for what He wills” — Al‑Baqarah 2:255"
     },
@@ -475,7 +477,8 @@
       "timings": null,
       "badges": [
         "Hāʾ maksūra",
-        "4 ḥarakāt"
+        "4 ḥarakāt",
+        "Madd Muttasil"
       ],
       "meaning": "“other than Him any allies” — Al‑Aʿrāf 7:3"
     },

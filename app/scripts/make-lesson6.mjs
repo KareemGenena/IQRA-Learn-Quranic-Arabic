@@ -167,6 +167,17 @@ function ghunnaBadge(text) {
 }
 
 /**
+ * Madd muttasil: a maddah and its hamza inside ONE word (شَآءَ, أَوۡلِيَآءَ).
+ * Read off the word itself, so a phrase in a ṣilah table still names the madd
+ * it happens to carry. A maddah that ends a word before a hamza opening the
+ * next (هُۥٓ أَ…) is kubrā / munfasil, not this — the space keeps them apart.
+ */
+const MUTTASIL_RE = /(?:آ|ٓ)[ً-ٰۖ-ۭـ]*[ءأؤئ]/;
+function muttasilBadge(text) {
+  return text.split(/\s+/).some((word) => MUTTASIL_RE.test(word)) ? 'Madd Muttasil' : null;
+}
+
+/**
  * Ghunna inside the letter NAMES of a surah opener.
  *
  * Nothing in الٓمٓ is written with a nūn or mīm sākin — but "lām" ends in one,
@@ -290,6 +301,8 @@ for (const block of blocks) {
     if (lam) badges.push(lam);
     const ghunna = ghunnaBadge(cleaned);
     if (ghunna) badges.push(ghunna);
+    const muttasil = muttasilBadge(cleaned);
+    if (muttasil) badges.push(muttasil);
     if (section.letterNames) badges.push(...letterNameBadge(cleaned));
     // The rectangular zero: this alif sounds at a stop and vanishes when the
     // reading carries on (أَنَا۠ ٱللَّهُ). derivedSilent() greys it; this names it.

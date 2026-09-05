@@ -270,6 +270,14 @@ Things that cost real debugging. Do not undo them without reading why.
 - Sukoon 1.2 (leen 1.3) · ghunna +0.9 · qalqalah +0.25 · shadda +0.8 ·
   tanween +0.5 · madd 2 / muttasil and munfasil 4 / lazim 6 · hamzat wasl 0.9.
   Silent letters get zero time and are skipped by the highlight.
+- **The ghunna is paid to the SECOND letter.** A doubled نّ / مّ hums on
+  itself; but the hum of ikhfāʾ, idghām and iqlāb is heard while the letter
+  *after* the nūn sākin / tanween / mīm sākin is being formed, so `ghunnaInto(prev,
+  cluster)` adds the +0.9 to that letter — the highlight moves on to it while
+  the hum sounds instead of sitting on the nūn (أَنتُمۡ: the ت carries it, not
+  the ن). The hidden nūn/mīm ending a letter NAME follows the same rule: in
+  الٓمٓ the hum lands on the مٓ. The author asked for this on lesson 6 and it
+  is the rule for the nūn sākin and tanween lesson that follows.
 - **Ṣilah** rides on the small waw/yeh mark: the هـ carrying one gets +2
   (ṣughrā), or +4 when the next word opens with a hamza or the mark carries a
   maddah (kubrā). Measured directly, not through `maddLength` — ṣilah exists
@@ -497,11 +505,10 @@ probably carries a stray sound; a `الرحيم وقف 2.wav` retake replaces it
 author's review the same day added: the maddah on the final ىٓ of
 تَأۡمُرُوٓنِّىٓ greyed and unread (see section 3), "Hidden Qalqala" on المص /
 كهيعص / ص, and the rectangular zero on the alif of إِنَّهُۥٓ أَنَا۠ ٱللَّهُ with
-its "Conditional silent alif" badge. **That zero is the one edit not yet in
-the sheet**: Word had the docx open (lock file `~$…docx`), so the edited copy
-is waiting in the session scratchpad as `lesson6.docx`; until it is copied
-over `Word Tables/مد لازم صلة عوض +.docx` and the generator re-run, card #31
-has no zero and no badge. Everything else below stands.
+its "Conditional silent alif" badge (the zero is in the sheet — landed once
+Word released the file), "Madd Muttasil" on شَآءَ / أَوۡلِيَآءَ read off the word
+itself, and the ghunna moved to the second letter (section 3). Everything
+else below stands.
 
 `make-lesson6.mjs`
 reads `Word Tables/مد لازم صلة عوض +.docx` — six headed tables, read by their
@@ -687,17 +694,20 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
 
 ## 5. Next task
 
-**Lesson 6, to finish.** (1) Close Word, copy the zero'd sheet over
-`Word Tables/مد لازم صلة عوض +.docx`, re-run `node scripts/make-lesson6.mjs`
-(expect #31 to gain "Conditional silent alif"; clips cut byte-identically),
-build, commit, deploy. If the scratchpad copy is gone, the edit is one
-character: U+06E0 after the alif of أَنَا in the ṣilah kubrā table. (2) Listen
-to the ٱلرَّحِيمِ ʿāriḍ triple (cards 44–46) and retake `الرحيم وقف 2.wav` if
-the first piece carries a stray sound. (3) Listen to row 11 (`ءَآلۡـٔـٰنَ`),
-the ṣilah kubrā rows, #7 (its final ىٓ now a natural 2), and المص (the bounce
-at the end of ṣād). (4) Review the ḥarfī Type/Length columns — the one part
-of the sheet not in the author's words — and the ع held 6 in كهيعص / حم‑عسق
-(many hold it 4). (5) Publish from `#/admin`; it is live as draft.
+**Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
+44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.
+(2) Listen to row 11 (`ءَآلۡـٔـٰنَ`), the ṣilah kubrā rows, #7 (its final ىٓ
+now a natural 2), المص (the hum on the مٓ, the bounce at the end of ṣād).
+(3) Review the ḥarfī Type/Length columns — the one part of the sheet not in
+the author's words — and the ع held 6 in كهيعص / حم‑عسق (many hold it 4).
+(4) Publish from `#/admin`; it is live as draft.
+
+**Lesson 7 — nūn sākin and tanween** (the author's stated next lesson). The
+rules it teaches are already in `timing.ts` (`ghunnaInto`, IZHAR / IKHFA /
+IDGHAM_GHUNNA / BAA) and the hum already lands on the second letter; what a
+generator will add is the badge per row (Iẕhār / Idghām / Iqlāb / Ikhfāʾ,
+derivable from the text the same way `ghunnaInto` decides), and perhaps a
+coloured second letter the way lesson 3 colours its target.
 
 **Maktab, before the first session (not code).** Print the Student Packet ×
 students and one each of the Teacher and Helper Sheets; import

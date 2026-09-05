@@ -156,28 +156,32 @@ function maddLength(cluster: LetterCluster, next: LetterCluster | undefined): nu
   return MADD_NATURAL;
 }
 
-/** Does this cluster earn a ghunna, given the letter written after it? */
-export function ghunnaFor(cluster: LetterCluster, next: LetterCluster | undefined): boolean {
-  const base = baseChar(cluster.text);
-  const marks = marksOf(cluster.text);
-  const nextBase = next ? baseChar(next.text) : '';
-
-  // Noon or meem with shadda always hums, wherever it sits.
-  if (marks.includes(SHADDA) && (base === NOON || base === MEEM)) return true;
+/**
+ * Does the hum of `from` — a nūn sākin, tanween or mīm sākin — carry INTO this
+ * letter? The ruling is decided by the letter that follows, and the ghunna is
+ * heard while that letter is being formed, so its time is paid to the second
+ * letter: the highlight moves on to it while the hum sounds, rather than
+ * sitting on the nūn. (The doubled نّ / مّ hums on itself and is handled in
+ * `clusterWeight` directly.)
+ */
+function ghunnaInto(from: LetterCluster, into: LetterCluster): boolean {
+  const base = baseChar(from.text);
+  const marks = marksOf(from.text);
+  const intoBase = baseChar(into.text);
+  if (!intoBase) return false;
 
   const tanween = TANWEEN.some((t) => marks.includes(t));
 
   // Noon saakin or tanween — the ruling depends on the next letter.
-  if ((base === NOON && isSaakin(marks)) || tanween) {
-    if (!nextBase) return false; // stopping here: no following letter, no ghunna
-    if (IZHAR.has(nextBase)) return false;
-    if (IKHFA.has(nextBase) || IDGHAM_GHUNNA.has(nextBase) || nextBase === BAA) return true;
+  if ((base === NOON && isSaakin(marks) && !marks.includes(SHADDA)) || tanween) {
+    if (IZHAR.has(intoBase)) return false;
+    if (IKHFA.has(intoBase) || IDGHAM_GHUNNA.has(intoBase) || intoBase === BAA) return true;
     return false; // ر ل — merged with no ghunna
   }
 
   // Meem saakin: hums only before ب or م.
   if (base === MEEM && isSaakin(marks) && !marks.includes(SHADDA)) {
-    return nextBase === BAA || nextBase === MEEM;
+    return intoBase === BAA || intoBase === MEEM;
   }
 
   return false;
@@ -291,8 +295,14 @@ export function clusterWeight(
   // every letter before it. Only add the madd where nothing has paid for it.
   if (marks.includes(DAGGER_ALIF) && !maddCounted) w += maddLength(cluster, next);
   if (TANWEEN.some((t) => marks.includes(t))) w += 0.5;
-  if (ghunnaFor(cluster, next)) w += GHUNNA_WEIGHT;
-  else if (opts.letterNames && letterNameGhunna(base, next ? baseChar(next.text) : '')) w += GHUNNA_WEIGHT;
+  // Ghunna. A doubled نّ / مّ hums on itself. The hum of ikhfāʾ, idghām and
+  // iqlāb is heard on the letter AFTER the nūn/tanween/mīm — it is what the
+  // mouth does while forming that letter — so it is paid to this cluster when
+  // the previous one hands it over. The same for the hidden nūn/mīm that ends
+  // a letter NAME (لَام → مِيم in الٓمٓ): the hum lands on the مٓ.
+  if (marks.includes(SHADDA) && (base === NOON || base === MEEM)) w += GHUNNA_WEIGHT;
+  else if (prev && ghunnaInto(prev, cluster)) w += GHUNNA_WEIGHT;
+  else if (opts.letterNames && prev && letterNameGhunna(baseChar(prev.text), base)) w += GHUNNA_WEIGHT;
   if (QALQALAH.has(base) && hasSukoon(marks)) w += QALQALAH_WEIGHT;
   else if (opts.letterNames && NAME_ENDS_IN_QALQALAH.has(base)) w += QALQALAH_WEIGHT;
 
