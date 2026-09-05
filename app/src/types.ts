@@ -65,6 +65,10 @@ export interface LetterWord {
   letterNames?: boolean;
   /** Recorded at a stop: the last vowel is dropped and a madd before it lengthens. */
   waqf?: boolean;
+  /** How long that madd is held at the stop — 2, 4 or 6. */
+  waqfMadd?: number;
+  /** Grey the final letter's vowel: written, and at the stop not said. */
+  dimFinalMark?: boolean;
 }
 
 export interface Lesson {
@@ -126,4 +130,7 @@ export interface Playable {
   letterNames?: boolean;
   /** The clip ends at a stop — see WeightOptions.waqf. */
   waqf?: boolean;
+  waqfMadd?: number;
+  /** Grey the final letter's vowel — the stop that the clip makes. */
+  dimFinalMark?: boolean;
 }

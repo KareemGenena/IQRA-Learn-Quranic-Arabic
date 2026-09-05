@@ -45,6 +45,7 @@ export async function resolveBoundaries(
   return autoBoundaries(clusters, bounds.start, bounds.end, playable.silentClusters, {
     letterNames: playable.letterNames,
     waqf: playable.waqf,
+    waqfMadd: playable.waqfMadd,
   });
 }
 

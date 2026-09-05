@@ -73,8 +73,11 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   Uthmanic Hafs with a Quranic-mark palette. Local-only so far.
 - **Lesson 5** — madd muttasil and munfasil, both held four harakat.
 - **Lesson 6** — madd lāzim (kalimī and ḥarfī), madd ṣilah (ṣughrā and
-  kubrā), and the madds that exist only at a stop (ʿiwaḍ, ʿāriḍ, līn) plus
-  badal. Five sections, one per heading in the sheet; 41 cards. Meanings are
+  kubrā), badal / ʿiwaḍ / līn, and madd ʿāriḍ. Six sections: five are the
+  sheet's headings, one per table; the sixth, ʿāriḍ, is **derived** — the
+  badal, ʿāriḍ and līn words shown three times each, held 2, 4 and 6 at the
+  stop, with the final vowel greyed — until the sheet carries a table for it,
+  at which point the generator reads that instead. 52 cards. Meanings are
   Sahih International's, and the (i) says so under each quotation.
 - **Class recordings** (`#/recordings`) — the teacher posts the link to a
   recorded session (Zoom or anything else) and the class finds it there instead
@@ -167,6 +170,17 @@ Things that cost real debugging. Do not undo them without reading why.
   (`<word> و ثم.wav`) or as **three separate takes** named for what is said in
   each. Keep the two kinds in separate maps: folding them together is what
   broke وسواس, whose bare-word file was cut into three.
+- Lesson 6's ʿāriḍ words use the same device with a different tag: **one take,
+  the word said at the stop three ways — 2, then 4, then 6 — named
+  `<word> وقف.wav`** and split into three cards. The tag is what keeps it from
+  colliding with the same word's single-reading clip in the badal section. In
+  the intake tool that is a slot line reading `<word> وقف` with expect 3; the
+  filename is derived from the line as always, nothing is typed.
+- A sheet correction is applied in the generator and **reported on every
+  run**, never written into the docx (`CORRECTIONS` in `make-lesson2.mjs` and
+  `make-lesson6.mjs`). Spell the find-string out by codepoint from the
+  document itself — the mark order it holds (shadda before damma on جُّ) is not
+  what you would type, and a string typed by eye will silently never match.
 
 **Audio intake** (`src/lib/`, `pages/IntakePage.tsx`)
 - The browser's audio processing is **switched off** — `echoCancellation`,
@@ -256,6 +270,20 @@ Things that cost real debugging. Do not undo them without reading why.
   rule is skipped so the opening alif reads as its name, 2 harakat. The flag
   now survives the trip `words.json → LetterWord → Playable` — it used to be
   dropped in `letterPlayables`, so setting it in a sheet did nothing.
+- **The hum hidden in the names.** Nothing in الٓمٓ is written with a nūn or
+  mīm sākin, but "lām" ends in one and meets the "mīm" after it. The rules of
+  nūn and mīm sākinah apply to the *names* as to written letters:
+  `NAME_ENDS_IN` (ل→م, م→م, س→ن, ع→ن, ن→ن) plus the next letter decides —
+  idghām/iqlāb keep the hum (+0.9, badge "Hidden Ghunna"), ikhfāʾ hides the
+  nūn under one (+0.9, "Hidden Ikhfaa"), iẕhār has none. Gives exactly
+  الم المص المر طسم / كهيعص حم‑عسق. The table lives in both `timing.ts` and
+  the generator and must stay identical.
+- `waqfMadd` (2 | 4 | 6, default 4) says how long the madd before the stop is
+  held; `dimFinalMark` greys the final vowel. `ArabicWord` cannot clip a mark
+  apart from its letter, so the grey is two layers over the last cluster: the
+  whole string in the silent colour, then the same string minus that vowel in
+  the text colour on top — removing a mark does not change shaping, so only
+  the vowel shows through. A `Layer` may therefore carry its own `text`.
 - A saakin letter was 0.7 — *less* than a plain letter. It carries no vowel but
   it is still held, and at a word end before the next it is held longer still.
 - **A madd is paid for once.** A dagger alif on a consonant is consonant + madd
@@ -430,18 +458,21 @@ recorded — an earlier note here claiming otherwise was wrong.
 
 **Lesson 6 is built as text and unrecorded (2026-09-05).** `make-lesson6.mjs`
 reads `Word Tables/مد لازم صلة عوض +.docx` — five headed tables, read by their
-header rows since the columns differ — into 41 cards, draft, registered.
-The audio folder it reads is **`Audio/Audio - Madd lazim and silah`** (not yet
-created); every row derives a distinct filename, checked. Owed by the author
-before recording is judged: (1) whether حَـٰ in أَتُحَـٰجُّوٓنِّى should carry the
-maddah the Madinah Mushaf writes at 6:80 (أَتُحَـٰٓجُّوٓنِّى) — the sheet omits
-it and the engine reads it as lāzim regardless, but it is Quranic text and
-was not touched; (2) that ʿāriḍ and līn at 4 harakat is the recitation; (3)
-whether ٱلۡقُرۡءَانُ (badal, "2 ḥarakāt") is read at a stop — if so its alif is
-ʿāriḍ too and the row wants `waqf`. Side effects of the same day's work: the
-hamza-on-tatweel words in lessons 2 (#19) and 5 (#10–13) get their hamza step
-back, and lesson 5 #40's ṣilah yeh is no longer a separate step. No
-calibration exists on any of those.
+header rows since the columns differ — into 52 cards, draft, registered. The
+sixth section (ʿāriḍ, 12 cards) is derived; the generator says so on every run
+and will read a "Madd ʿĀriḍ" table from the sheet the day one exists. The
+maddah the Mushaf writes on حَـٰٓ in أَتُحَـٰٓجُّوٓنِّى (6:80) is applied as a
+reported `CORRECTION` — the author confirmed it; the docx still lacks it.
+The audio folder is **`Audio/Audio - Madd lazim and silah`** (not yet
+created). Recording is 40 single takes plus 4 ʿāriḍ takes — ٱلۡقُرۡءَانُ,
+ٱلرَّحِيمِ, خَوۡفٍ, ٱلصَّيۡفِ each said at the stop three ways, 2 then 4 then 6, as
+`<word> وقف.wav` with expect 3. Every filename derives distinct, checked.
+Still assumed, not confirmed: that ʿāriḍ's *automatic* default of 4 is the
+recitation for the badal/līn section's own "at waqf" rows (ʿiwaḍ and the two
+līn words). Side effects of the same day's work: the hamza-on-tatweel words
+in lessons 2 (#19) and 5 (#10–13) get their hamza step back, and lesson 5
+#40's ṣilah yeh is no longer a separate step. No calibration exists on any of
+those.
 
 Open items:
 - **Class recordings**: built and rules-tested, but only the signed-out path
@@ -604,10 +635,14 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
 ## 5. Next task
 
 **Lesson 6 audio.** Record into `Audio/Audio - Madd lazim and silah` with the
-intake tool, then `node scripts/make-lesson6.mjs` cuts 41 clips and lists
-anything unmatched. Row 11 (`ءَآلۡـٔـٰنَ`) and the ṣilah kubrā rows are the ones
-to listen back to first — they exercise the two rules added for this lesson.
-Publish from `#/admin` once reviewed; it landed as draft.
+intake tool: the sheet's 40 words as they come, plus four extra slot lines —
+`ٱلۡقُرۡءَانُ وقف`, `ٱلرَّحِيمِ وقف`, `خَوۡفٍ وقف`, `ٱلصَّيۡفِ وقف` — each with expect
+set to 3 and each said at the stop three ways, 2 then 4 then 6. Then
+`node scripts/make-lesson6.mjs` cuts 52 clips and lists anything unmatched or
+any ʿāriḍ take whose three pieces do not lengthen in order. Listen back first
+to row 11 (`ءَآلۡـٔـٰنَ`), the ṣilah kubrā rows, and one ʿāriḍ triple — they
+exercise the rules added for this lesson. Publish from `#/admin` once
+reviewed; it landed as draft.
 
 **Maktab, before the first session (not code).** Print the Student Packet ×
 students and one each of the Teacher and Helper Sheets; import

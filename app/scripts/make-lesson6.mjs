@@ -1,22 +1,31 @@
 /**
- * Builds Lesson 6 — madd lāzim, madd ṣilah, and the madds that appear only at
- * a stop.
+ * Builds Lesson 6 — madd lāzim, madd ṣilah, badal/ʿiwaḍ/līn, and madd ʿāriḍ.
  *
  *   ../Word Tables/مد لازم صلة عوض +.docx
  *   ../Audio/Audio - Madd lazim and silah/*.wav
  *
  * The docx is five tables, each under a heading, and the lesson follows the
- * headings: one section per table, in the order they are written. The tables
- * do not share a column layout, so each is read by its header row rather than
- * by position.
+ * headings: one section per table, in the order written. The tables do not
+ * share a column layout, so each is read by its header row, never by position.
  *
- * Two of the sections need the timing engine told something the text cannot
- * say on its own, and both are carried as flags on the word:
- *  - `letterNames` for the surah-opening letters (الٓمٓ), which are read as
- *    their names — حي طهر hold a natural madd that nothing in the text marks;
- *  - `waqf` for the rows whose Length column says "at waqf only" — ʿiwaḍ,
- *    ʿāriḍ and līn exist only because the reading stops, so the estimate has
- *    to know it stops.
+ * A sixth section, madd ʿāriḍ, is the author's design and is DERIVED unless the
+ * sheet carries a table for it: the badal, ʿāriḍ and līn words of the
+ * badal/ʿiwaḍ/līn table, each shown three times — held 2, 4 and 6 harakat at
+ * the stop. Rows typed ʿāriḍ leave the badal table for it. The moment a table
+ * under a "Madd ʿĀriḍ" heading appears in the sheet, it is read instead and
+ * the derivation stops; the sheet is the source of truth for words, this file
+ * only for rules.
+ *
+ * ʿĀriḍ audio is ONE take per word said three ways, named `<word> وقف.wav`
+ * and split into three — lesson 4's `<word> و ثم` convention. The intake tool
+ * derives that name when the slot's line reads "<word> وقف" with expect 3, so
+ * nothing is typed as a filename and nothing collides with the same word's
+ * single-reading clip in the badal section.
+ *
+ * Two flags carry what the text cannot say to the timing engine:
+ *  - `letterNames` for the surah-opening letters (الٓمٓ), read as their names;
+ *  - `waqf` (+ `waqfMadd`) for rows read at a stop — ʿiwaḍ, ʿāriḍ and līn exist
+ *    only because the reading stops, so the estimate has to know it stops.
  *
  * Meanings are Sahih International's, quoted from the sheet verbatim, and the
  * lesson says so (`meaningSource`); the (i) shows the credit under a quotation.
@@ -38,6 +47,10 @@ const AUDIO_SRC = join(root, 'Audio', 'Audio - Madd lazim and silah');
 const AUDIO_OUT = join(here, '..', 'public', 'audio', 'lesson06');
 const LESSON_OUT = join(here, '..', 'public', 'lessons', 'lesson06', 'words.json');
 
+/** The tag on an ʿāriḍ take's filename: the word said at the stop, three ways. */
+const WAQF_TAG = 'وقف';
+const ARID_LENGTHS = [2, 4, 6];
+
 /** Each heading in the sheet, matched loosely, and the section it becomes. */
 const SECTIONS = [
   {
@@ -46,14 +59,13 @@ const SECTIONS = [
     title: 'Madd Lāzim Kalimī',
     titleArabic: 'المد اللازم الكلمي',
     hint: 'A madd that runs straight into a shadda (muthaqqal) or a permanent sukoon (mukhaffaf). Always six harakat — the longest madd there is.',
-    letterNames: false,
   },
   {
     match: /ḥarf|harf/i,
     id: 'lazim-harfi',
     title: 'Madd Lāzim Ḥarfī',
     titleArabic: 'المد اللازم الحرفي',
-    hint: 'The letters that open some surahs, each read as its name. The names in نقص عسلكم hold six harakat; those in حي طهر only two.',
+    hint: 'The letters that open some surahs, each read as its name. The letters in نقص عسلكم hold six harakat; those in حي طهر only two.',
     letterNames: true,
   },
   {
@@ -61,26 +73,64 @@ const SECTIONS = [
     id: 'silah-sughra',
     title: 'Madd Ṣilah Ṣughrā',
     titleArabic: 'مد الصلة الصغرى',
-    hint: 'The pronoun هُ or هِ between two voiced letters grows a long vowel, written only as a small و or ي. Two harakat.',
-    letterNames: false,
+    hint: 'The pronoun هُ or هِ grows a natural madd when followed by a small و or ي. Two harakat.',
   },
   {
     match: /kubr/i,
     id: 'silah-kubra',
     title: 'Madd Ṣilah Kubrā',
     titleArabic: 'مد الصلة الكبرى',
-    hint: 'The same pronoun, but the next word opens with a hamza — so the small vowel is held four harakat, like munfasil, and the Mushaf marks it with a maddah.',
-    letterNames: false,
+    hint: 'The same pronoun, but the next word opens with a hamza — the madd is held four harakat, like munfasil, and the Mushaf marks it with a maddah.',
   },
   {
-    match: /other/i,
-    id: 'other',
-    title: 'Other Types of Madd',
-    titleArabic: 'أنواع أخرى من المد',
-    hint: 'Badal: a hamza before its own long vowel, two harakat. ʿIwaḍ, ʿāriḍ and līn appear only when you stop — the last vowel goes, and the madd before it may be held two, four or six.',
-    letterNames: false,
+    match: /other|badal/i,
+    id: 'badal-iwad-lin',
+    title: 'Madd Badal, ʿIwaḍ and Līn',
+    titleArabic: 'مد البدل والعوض واللين',
+    hint: 'Badal: a hamza before its own long vowel — two harakat. ʿIwaḍ appears when you stop at a tanween fatḥ and read it as an alif — two harakat. Līn is a و or ي with sukoon after a fatha — two harakat when recitation continues; two, four or six at waqf (see madd ʿāriḍ).',
+    /** Rows typed ʿāriḍ belong to the section below, not here. */
+    exclude: /[āa]ri[dḍ]/i,
   },
 ];
+
+/** The ʿāriḍ section — read from the sheet if it has one, derived otherwise. */
+const ARID = {
+  match: /[āa]ri[dḍ]/i,
+  id: 'arid',
+  title: 'Madd ʿĀriḍ li-s-Sukūn',
+  titleArabic: 'المد العارض للسكون',
+  hint: 'Arises only at waqf. Stopping on a word drops its last vowel, and a natural madd, a līn madd or a badal madd just before that letter can then be held two, four or six harakat. When two reasons for madd meet in one word, the stronger takes precedence.',
+};
+
+/**
+ * Corrections to the sheet, applied to ONE cell each and reported on every run,
+ * so the fix stays visible and the source document is never edited behind the
+ * author's back (the lesson-2 pattern). Spelled out by codepoint because the
+ * mark order in the document is not what you would type.
+ */
+const cp = (...codes) => String.fromCodePoint(...codes);
+const CORRECTIONS = [
+  {
+    // أَتُحَـٰجُّوٓنِّى — the Madinah Mushaf (6:80) writes a maddah over the dagger
+    // alif of حَـٰٓ: the alif runs into the shadda of the jīm, madd lāzim. The
+    // sheet omitted it; the author confirmed on 2026-09-05.
+    // Codepoints as the document actually holds them — the jīm's shadda comes
+    // before its damma, which is not the order you would type.
+    find: cp(0x623, 0x64e, 0x62a, 0x64f, 0x62d, 0x64e, 0x640, 0x670, 0x62c, 0x651, 0x64f, 0x648, 0x653, 0x646, 0x650, 0x651, 0x649),
+    replace: cp(0x623, 0x64e, 0x62a, 0x64f, 0x62d, 0x64e, 0x640, 0x670, 0x653, 0x62c, 0x651, 0x64f, 0x648, 0x653, 0x646, 0x650, 0x651, 0x649),
+    why: 'maddah over the dagger alif of حَـٰٓ — madd lāzim, as the Mushaf writes it',
+  },
+];
+const applied = [];
+const correct = (s) => {
+  for (const c of CORRECTIONS) {
+    if (s === c.find) {
+      applied.push(`${c.find} → ${c.replace}  (${c.why})`);
+      return c.replace;
+    }
+  }
+  return s;
+};
 
 /**
  * The Type / Name column, turned into chips.
@@ -96,7 +146,6 @@ const BADGES = [
   [/maks/i, 'Hāʾ maksūra'],
   [/badal/i, 'Madd Badal'],
   [/iwa[dḍ]/i, 'Madd ʿIwaḍ'],
-  [/[āa]ri[dḍ]/i, 'Madd ʿĀriḍ'],
   [/l[īi]n\b/i, 'Madd Līn'],
 ];
 
@@ -112,6 +161,9 @@ function lengthBadge(length) {
   return out;
 }
 
+const MARKS = /[ً-ٰۖ-ۭـ]/g;
+const SHADDA = 'ّ';
+
 /**
  * The lam rule, read off the text — the same test derivedSilent() makes in
  * the app, so the chip and the greying always agree. A sun lam is ٱل followed
@@ -121,6 +173,45 @@ function lamBadge(text) {
   if (/ٱلۡ/.test(text)) return 'Moon ل';
   if (/ٱل[^\sً-ْٰ]?[ً-ِ]?ّ/.test(text)) return 'Sun ل';
   return null;
+}
+
+/** A doubled nūn or mīm always hums — the ghunna the learner is listening for. */
+function ghunnaBadge(text) {
+  const chars = [...text];
+  for (let i = 0; i < chars.length; i++) {
+    if (chars[i] !== 'ن' && chars[i] !== 'م') continue;
+    for (let j = i + 1; j < chars.length && MARKS.test(chars[j]) && (MARKS.lastIndex = 0, true); j++) {
+      if (chars[j] === SHADDA) return 'Ghunna';
+    }
+  }
+  return null;
+}
+
+/**
+ * Ghunna inside the letter NAMES of a surah opener.
+ *
+ * Nothing in الٓمٓ is written with a nūn or mīm sākin — but "lām" ends in one,
+ * and it meets the "mīm" that follows. The rules of nūn and mīm sākinah apply
+ * to the names exactly as they would to written letters. The same table lives
+ * in timing.ts, which gives the hum its time; this one only labels it.
+ */
+const NAME_ENDS_IN = { ل: 'م', م: 'م', س: 'ن', ع: 'ن', ن: 'ن' };
+const IKHFA = new Set('تثجدذزسشصضطظفقك');
+const IDGHAM_GHUNNA = new Set('ينمو');
+function letterNameBadge(text) {
+  const letters = [...text.replace(MARKS, '').replace(/\s+/g, '')];
+  const found = new Set();
+  for (let i = 0; i + 1 < letters.length; i++) {
+    const end = NAME_ENDS_IN[letters[i]];
+    const next = letters[i + 1];
+    if (!end) continue;
+    if (end === 'م' && (next === 'م' || next === 'ب')) found.add('Hidden Ghunna');
+    if (end === 'ن') {
+      if (IDGHAM_GHUNNA.has(next) || next === 'ب') found.add('Hidden Ghunna');
+      else if (IKHFA.has(next)) found.add('Hidden Ikhfaa');
+    }
+  }
+  return [...found];
 }
 
 // ── read the docx in document order: heading, table, heading, table … ─────
@@ -153,8 +244,9 @@ const words = [];
 const sections = [];
 let id = 0;
 
-/** Uthmani text, madd signs applied by rule. */
-const clean = (s) => addMaddSigns(normaliseZeros(s));
+/** Uthmani text: the sheet's corrections applied, then the madd sign by rule. */
+const clean = (s) => addMaddSigns(normaliseZeros(correct(s.trim())));
+const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' ').trim();
 
 /** Which column holds what, from the header row. */
 function columns(header) {
@@ -168,76 +260,116 @@ function columns(header) {
   };
 }
 
+/** Rows set aside from the badal table for the ʿāriḍ section. */
+const aridSource = [];
+let aridTable = null;
+
 for (const block of blocks) {
+  if (ARID.match.test(block.heading)) {
+    aridTable = block;
+    continue;
+  }
   const section = SECTIONS.find((s) => s.match.test(block.heading));
   if (!section) {
     problems.push(`table under "${block.heading}" matches no known section — skipped`);
     continue;
   }
-  if (sections.some((s) => s.id === section.id)) {
-    problems.push(`two tables under "${block.heading}"`);
-  }
+  if (sections.some((s) => s.id === section.id)) problems.push(`two tables under "${block.heading}"`);
   sections.push({ id: section.id, title: section.title, titleArabic: section.titleArabic, hint: section.hint });
 
   const col = columns(block.rows[0]);
   if (col.word === -1) {
-    problems.push(`"${block.heading}": no Word column found in header [${block.rows[0].join(' | ')}]`);
+    problems.push(`"${block.heading}": no Word column in header [${block.rows[0].join(' | ')}]`);
     continue;
   }
 
   for (const cells of block.rows.slice(1)) {
     const raw = (cells[col.word] ?? '').trim();
     if (!raw) continue;
-
-    // The id belongs to the row and is spent whether or not it is recorded —
-    // calibrations are keyed by it and must never shift underneath them.
-    id += 1;
-    const n = String(id).padStart(2, '0');
-
     const type = col.type >= 0 ? cells[col.type] ?? '' : '';
-    const badges = [];
-    for (const [re, label] of BADGES) if (re.test(type) && !badges.includes(label)) badges.push(label);
-    for (const b of lengthBadge(col.length >= 0 ? cells[col.length] : '')) badges.push(b);
-    const lam = lamBadge(raw);
-    if (lam) badges.push(lam);
-
-    // The (i): a quoted meaning where the sheet has one; for the opening
-    // letters, which mean nothing, where they open.
+    const length = col.length >= 0 ? cells[col.length] ?? '' : '';
     let meaning;
     if (col.meaning >= 0 && cells[col.meaning]) meaning = cells[col.meaning].trim();
     else if (col.location >= 0 && cells[col.location]) meaning = `Opens ${cells[col.location].trim()}`;
 
-    const entry = {
-      id,
-      section: section.id,
-      text: clean(raw),
-      audio: `word${n}.wav`,
-      timings: null,
-      badges,
-    };
+    // Every badal/ʿāriḍ/līn word is also an ʿāriḍ word; the one typed ʿāriḍ
+    // lives nowhere else.
+    if (section.id === 'badal-iwad-lin' && !/iwa[dḍ]/i.test(type)) aridSource.push({ raw, meaning });
+    if (section.exclude?.test(type)) continue;
+
+    // The id belongs to the row and is spent whether or not it is recorded —
+    // calibrations are keyed by it and must never shift underneath them.
+    id += 1;
+    const cleaned = clean(raw);
+    const badges = [];
+    for (const [re, label] of BADGES) if (re.test(type) && !badges.includes(label)) badges.push(label);
+    badges.push(...lengthBadge(length));
+    const lam = lamBadge(cleaned);
+    if (lam) badges.push(lam);
+    const ghunna = ghunnaBadge(cleaned);
+    if (ghunna) badges.push(ghunna);
+    if (section.letterNames) badges.push(...letterNameBadge(cleaned));
+
+    const entry = { id, section: section.id, text: cleaned, audio: `word${String(id).padStart(2, '0')}.wav`, timings: null, badges };
     if (meaning) entry.meaning = meaning;
     if (section.letterNames) entry.letterNames = true;
-    if (col.length >= 0 && /waqf/i.test(cells[col.length] ?? '')) entry.waqf = true;
+    if (/waqf/i.test(length)) entry.waqf = true;
     words.push(entry);
   }
 }
 
-// ── cut the audio ─────────────────────────────────────────────────────────
-const MARKS = /[ً-ٰۖ-ۭـ]/g;
-// Byte-identical to the other generators, and therefore to what the intake
-// tool derives a filename with. MARKS covers U+06D6–U+06ED, so the ṣilah's
-// small waw and yeh fall out here too.
-const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' ').trim();
+// ── the ʿāriḍ section: each word at the stop, held 2, 4 and 6 ─────────────
+sections.push({ id: ARID.id, title: ARID.title, titleArabic: ARID.titleArabic, hint: ARID.hint });
+let aridRows;
+if (aridTable) {
+  const col = columns(aridTable.rows[0]);
+  aridRows = aridTable.rows
+    .slice(1)
+    .map((cells) => ({ raw: (cells[col.word] ?? '').trim(), meaning: col.meaning >= 0 ? cells[col.meaning]?.trim() : undefined }))
+    .filter((r) => r.raw);
+} else {
+  aridRows = aridSource;
+  problems.push(`ʿāriḍ section derived from the badal table (${aridRows.length} words) — a "Madd ʿĀriḍ" table in the sheet would be read instead`);
+}
 
-// Two rows that derive the same filename would share one recording, and one
-// of them would play the wrong word. Caught here, before anyone records.
-{
-  const seen = new Map();
-  for (const w of words) {
-    const k = key(w.text);
-    if (seen.has(k)) problems.push(`#${seen.get(k)} and #${w.id} both derive the filename "${k}"`);
-    else seen.set(k, w.id);
+/** The three cards of one ʿāriḍ word, grouped so one recording feeds all three. */
+const aridGroups = [];
+for (const row of aridRows) {
+  const cleaned = clean(row.raw);
+  const group = { key: key(cleaned), cards: [] };
+  for (const n of ARID_LENGTHS) {
+    id += 1;
+    const entry = {
+      id,
+      section: ARID.id,
+      text: cleaned,
+      audio: `word${String(id).padStart(2, '0')}.wav`,
+      timings: null,
+      badges: ['Madd ʿĀriḍ', `${n} ḥarakāt`],
+      waqf: true,
+      waqfMadd: n,
+      // The last vowel is greyed: it is written, and at the stop it is not said.
+      dimFinalMark: true,
+    };
+    if (row.meaning) entry.meaning = row.meaning;
+    words.push(entry);
+    group.cards.push(entry);
   }
+  aridGroups.push(group);
+}
+
+// ── cut the audio ─────────────────────────────────────────────────────────
+{
+  // Two rows that derive the same filename would share one recording, and one
+  // of them would play the wrong word. The ʿāriḍ cards are meant to share —
+  // they are cut from one take — so they are checked as groups.
+  const seen = new Map();
+  const claim = (k, who) => {
+    if (seen.has(k)) problems.push(`${seen.get(k)} and ${who} both derive the filename "${k}"`);
+    else seen.set(k, who);
+  };
+  for (const w of words) if (w.section !== ARID.id) claim(key(w.text), `#${w.id}`);
+  for (const g of aridGroups) claim(`${g.key} ${WAQF_TAG}`, `ʿāriḍ ${g.cards.map((c) => '#' + c.id).join('/')}`);
 }
 
 const byName = new Map();
@@ -264,6 +396,7 @@ const used = new Set();
 
 if (haveAudio) {
   for (const w of words) {
+    if (w.section === ARID.id) continue;
     const match = byName.get(key(w.text));
     if (!match) {
       noAudio.push(`#${w.id} ${key(w.text)}`);
@@ -274,6 +407,30 @@ if (haveAudio) {
     const { segments } = splitIntoN(wav, 1);
     writeSegment(wav, segments[0][0], segments[0][1], join(AUDIO_OUT, w.audio), { mono: true });
     written += 1;
+  }
+
+  // One take per ʿāriḍ word, said three ways: 2, then 4, then 6. Each should be
+  // longer than the one before; anything else is worth a listen.
+  for (const g of aridGroups) {
+    const match = byName.get(`${g.key} ${WAQF_TAG}`);
+    if (!match) {
+      noAudio.push(`ʿāriḍ ${g.key} ${WAQF_TAG} (one take, said at 2, 4 and 6)`);
+      continue;
+    }
+    used.add(match.file);
+    const wav = readWav(join(AUDIO_SRC, match.file));
+    const { segments, durations } = splitIntoN(wav, ARID_LENGTHS.length);
+    if (segments.length !== ARID_LENGTHS.length) {
+      problems.push(`${match.file}: split gave ${segments.length} pieces, expected ${ARID_LENGTHS.length}`);
+      continue;
+    }
+    if (!(durations[0] < durations[1] && durations[1] < durations[2])) {
+      problems.push(`${match.file}: lengths not rising — ${durations.map((d) => d.toFixed(2)).join(' / ')}`);
+    }
+    segments.forEach(([a, b], i) => {
+      writeSegment(wav, a, b, join(AUDIO_OUT, g.cards[i].audio), { mono: true });
+      written += 1;
+    });
   }
   if (noAudio.length) problems.push(`no recording yet for ${noAudio.length}: ${noAudio.join(', ')}`);
 
@@ -297,7 +454,8 @@ const lesson = {
   kind: 'letters',
   audioPath: 'audio/lesson06/',
   // Three to a page: the ṣilah rows are three-word phrases, and a long phrase
-  // shrinks to fit its card — fewer, wider cards keep that shrink small.
+  // shrinks to fit its card — fewer, wider cards keep that shrink small. It
+  // also puts one ʿāriḍ word's 2 / 4 / 6 side by side on one screen.
   perPage: 3,
   meaningSource: 'Sahih International',
   sections,
@@ -308,8 +466,9 @@ writeFileSync(LESSON_OUT, JSON.stringify(lesson, null, 2), 'utf8');
 
 console.log(`${words.length} cards across ${sections.length} sections`);
 for (const s of sections) {
-  console.log(`  ${s.id.padEnd(13)} ${String(words.filter((w) => w.section === s.id).length).padStart(2)} cards`);
+  console.log(`  ${s.id.padEnd(15)} ${String(words.filter((w) => w.section === s.id).length).padStart(2)} cards`);
 }
 console.log(`flags: ${words.filter((w) => w.letterNames).length} read by letter name, ${words.filter((w) => w.waqf).length} at waqf`);
 console.log(`audio: wrote ${written} clips`);
+if (applied.length) console.log(`\nCORRECTIONS APPLIED (docx unchanged):\n  ${applied.join('\n  ')}`);
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');

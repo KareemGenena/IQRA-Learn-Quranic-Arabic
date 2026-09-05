@@ -265,6 +265,12 @@ body {
   color: var(--silent);
 }
 
+/* The word in its own colour again, laid over a silent layer so that only
+   what this copy leaves out — a final vowel — shows through grey. */
+.layer-plain {
+  color: var(--text);
+}
+
 .letter-highlight {
   position: absolute;
   z-index: 0;

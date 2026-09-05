@@ -33,6 +33,7 @@ function Form({ lesson, playable, rate, label, register }: FormProps) {
         prefixClusters={playable.prefixClusters}
         silentClusters={playable.silentClusters}
         markCluster={playable.highlightCluster}
+        dimFinalMark={playable.dimFinalMark}
       />
       <PlayIcon playing={playing} />
     </button>

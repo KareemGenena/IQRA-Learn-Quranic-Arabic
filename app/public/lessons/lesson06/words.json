@@ -17,25 +17,31 @@
       "id": "lazim-harfi",
       "title": "Madd Lāzim Ḥarfī",
       "titleArabic": "المد اللازم الحرفي",
-      "hint": "The letters that open some surahs, each read as its name. The names in نقص عسلكم hold six harakat; those in حي طهر only two."
+      "hint": "The letters that open some surahs, each read as its name. The letters in نقص عسلكم hold six harakat; those in حي طهر only two."
     },
     {
       "id": "silah-sughra",
       "title": "Madd Ṣilah Ṣughrā",
       "titleArabic": "مد الصلة الصغرى",
-      "hint": "The pronoun هُ or هِ between two voiced letters grows a long vowel, written only as a small و or ي. Two harakat."
+      "hint": "The pronoun هُ or هِ grows a natural madd when followed by a small و or ي. Two harakat."
     },
     {
       "id": "silah-kubra",
       "title": "Madd Ṣilah Kubrā",
       "titleArabic": "مد الصلة الكبرى",
-      "hint": "The same pronoun, but the next word opens with a hamza — so the small vowel is held four harakat, like munfasil, and the Mushaf marks it with a maddah."
+      "hint": "The same pronoun, but the next word opens with a hamza — the madd is held four harakat, like munfasil, and the Mushaf marks it with a maddah."
     },
     {
-      "id": "other",
-      "title": "Other Types of Madd",
-      "titleArabic": "أنواع أخرى من المد",
-      "hint": "Badal: a hamza before its own long vowel, two harakat. ʿIwaḍ, ʿāriḍ and līn appear only when you stop — the last vowel goes, and the madd before it may be held two, four or six."
+      "id": "badal-iwad-lin",
+      "title": "Madd Badal, ʿIwaḍ and Līn",
+      "titleArabic": "مد البدل والعوض واللين",
+      "hint": "Badal: a hamza before its own long vowel — two harakat. ʿIwaḍ appears when you stop at a tanween fatḥ and read it as an alif — two harakat. Līn is a و or ي with sukoon after a fatha — two harakat when recitation continues; two, four or six at waqf (see madd ʿāriḍ)."
+    },
+    {
+      "id": "arid",
+      "title": "Madd ʿĀriḍ li-s-Sukūn",
+      "titleArabic": "المد العارض للسكون",
+      "hint": "Arises only at waqf. Stopping on a word drops its last vowel, and a natural madd, a līn madd or a badal madd just before that letter can then be held two, four or six harakat. When two reasons for madd meet in one word, the stronger takes precedence."
     }
   ],
   "words": [
@@ -93,18 +99,20 @@
       "audio": "word05.wav",
       "timings": null,
       "badges": [
-        "Muthaqqal"
+        "Muthaqqal",
+        "Ghunna"
       ],
       "meaning": "“jinn” — Ar‑Raḥmān 55:39"
     },
     {
       "id": 6,
       "section": "lazim-kalimi",
-      "text": "أَتُحَـٰجُّوٓنِّى",
+      "text": "أَتُحَـٰٓجُّوٓنِّى",
       "audio": "word06.wav",
       "timings": null,
       "badges": [
-        "Muthaqqal"
+        "Muthaqqal",
+        "Ghunna"
       ],
       "meaning": "“Do you argue with me” — Al‑Anʿām 6:80"
     },
@@ -115,7 +123,8 @@
       "audio": "word07.wav",
       "timings": null,
       "badges": [
-        "Muthaqqal"
+        "Muthaqqal",
+        "Ghunna"
       ],
       "meaning": "“you order me [to worship]” — Az‑Zumar 39:64"
     },
@@ -149,7 +158,8 @@
       "timings": null,
       "badges": [
         "Muthaqqal",
-        "Sun ل"
+        "Sun ل",
+        "Ghunna"
       ],
       "meaning": "“those who assume [evil of Allah]” — Al‑Fatḥ 48:6"
     },
@@ -170,7 +180,9 @@
       "text": "الٓمٓ",
       "audio": "word12.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Hidden Ghunna"
+      ],
       "meaning": "Opens Al‑Baqarah 2:1",
       "letterNames": true
     },
@@ -180,7 +192,9 @@
       "text": "الٓمٓصٓ",
       "audio": "word13.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Hidden Ghunna"
+      ],
       "meaning": "Opens Al‑Aʿrāf 7:1",
       "letterNames": true
     },
@@ -200,7 +214,9 @@
       "text": "الٓمٓر",
       "audio": "word15.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Hidden Ghunna"
+      ],
       "meaning": "Opens Ar‑Raʿd 13:1",
       "letterNames": true
     },
@@ -210,7 +226,9 @@
       "text": "كٓهيعٓصٓ",
       "audio": "word16.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Hidden Ikhfaa"
+      ],
       "meaning": "Opens Maryam 19:1",
       "letterNames": true
     },
@@ -220,7 +238,9 @@
       "text": "طسٓمٓ",
       "audio": "word17.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Hidden Ghunna"
+      ],
       "meaning": "Opens Ash‑Shuʿarāʾ 26:1",
       "letterNames": true
     },
@@ -260,7 +280,9 @@
       "text": "حمٓ عٓسٓقٓ",
       "audio": "word21.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Hidden Ikhfaa"
+      ],
       "meaning": "Opens Ash‑Shūrā 42:1–2",
       "letterNames": true
     },
@@ -305,7 +327,8 @@
       "timings": null,
       "badges": [
         "Hāʾ maḍmūma",
-        "Sun ل"
+        "Sun ل",
+        "Ghunna"
       ],
       "meaning": "“Indeed, it is He who is the Accepting of repentance” — Al‑Baqarah 2:37"
     },
@@ -373,7 +396,8 @@
       "timings": null,
       "badges": [
         "Hāʾ maḍmūma",
-        "Sun ل"
+        "Sun ل",
+        "Ghunna"
       ],
       "meaning": "“Indeed, it is I, Allah” — An‑Naml 27:9"
     },
@@ -384,7 +408,8 @@
       "audio": "word32.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maḍmūma"
+        "Hāʾ maḍmūma",
+        "Ghunna"
       ],
       "meaning": "“He is sufficient for him. Indeed…” — Aṭ‑Ṭalāq 65:3"
     },
@@ -429,13 +454,14 @@
       "audio": "word36.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maksūra"
+        "Hāʾ maksūra",
+        "Ghunna"
       ],
       "meaning": "“of His bounty. Indeed…” — An‑Nisāʾ 4:32"
     },
     {
       "id": 37,
-      "section": "other",
+      "section": "badal-iwad-lin",
       "text": "ٱلۡقُرۡءَانُ",
       "audio": "word37.wav",
       "timings": null,
@@ -448,7 +474,7 @@
     },
     {
       "id": 38,
-      "section": "other",
+      "section": "badal-iwad-lin",
       "text": "عَلِيمًا",
       "audio": "word38.wav",
       "timings": null,
@@ -462,24 +488,9 @@
     },
     {
       "id": 39,
-      "section": "other",
-      "text": "ٱلرَّحِيمِ",
-      "audio": "word39.wav",
-      "timings": null,
-      "badges": [
-        "Madd ʿĀriḍ",
-        "2–6 ḥarakāt",
-        "At waqf",
-        "Sun ل"
-      ],
-      "meaning": "“the Especially Merciful” — Al‑Fātiḥah 1:3",
-      "waqf": true
-    },
-    {
-      "id": 40,
-      "section": "other",
+      "section": "badal-iwad-lin",
       "text": "خَوۡفٍ",
-      "audio": "word40.wav",
+      "audio": "word39.wav",
       "timings": null,
       "badges": [
         "Madd Līn",
@@ -490,10 +501,10 @@
       "waqf": true
     },
     {
-      "id": 41,
-      "section": "other",
+      "id": 40,
+      "section": "badal-iwad-lin",
       "text": "ٱلصَّيۡفِ",
-      "audio": "word41.wav",
+      "audio": "word40.wav",
       "timings": null,
       "badges": [
         "Madd Līn",
@@ -503,6 +514,186 @@
       ],
       "meaning": "“the summer” — Quraysh 106:2",
       "waqf": true
+    },
+    {
+      "id": 41,
+      "section": "arid",
+      "text": "ٱلۡقُرۡءَانُ",
+      "audio": "word41.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "2 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 2,
+      "dimFinalMark": true,
+      "meaning": "“the Qur’an” — Al‑Baqarah 2:185"
+    },
+    {
+      "id": 42,
+      "section": "arid",
+      "text": "ٱلۡقُرۡءَانُ",
+      "audio": "word42.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "4 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 4,
+      "dimFinalMark": true,
+      "meaning": "“the Qur’an” — Al‑Baqarah 2:185"
+    },
+    {
+      "id": 43,
+      "section": "arid",
+      "text": "ٱلۡقُرۡءَانُ",
+      "audio": "word43.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "6 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 6,
+      "dimFinalMark": true,
+      "meaning": "“the Qur’an” — Al‑Baqarah 2:185"
+    },
+    {
+      "id": 44,
+      "section": "arid",
+      "text": "ٱلرَّحِيمِ",
+      "audio": "word44.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "2 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 2,
+      "dimFinalMark": true,
+      "meaning": "“the Especially Merciful” — Al‑Fātiḥah 1:3"
+    },
+    {
+      "id": 45,
+      "section": "arid",
+      "text": "ٱلرَّحِيمِ",
+      "audio": "word45.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "4 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 4,
+      "dimFinalMark": true,
+      "meaning": "“the Especially Merciful” — Al‑Fātiḥah 1:3"
+    },
+    {
+      "id": 46,
+      "section": "arid",
+      "text": "ٱلرَّحِيمِ",
+      "audio": "word46.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "6 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 6,
+      "dimFinalMark": true,
+      "meaning": "“the Especially Merciful” — Al‑Fātiḥah 1:3"
+    },
+    {
+      "id": 47,
+      "section": "arid",
+      "text": "خَوۡفٍ",
+      "audio": "word47.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "2 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 2,
+      "dimFinalMark": true,
+      "meaning": "“fear” — Quraysh 106:4"
+    },
+    {
+      "id": 48,
+      "section": "arid",
+      "text": "خَوۡفٍ",
+      "audio": "word48.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "4 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 4,
+      "dimFinalMark": true,
+      "meaning": "“fear” — Quraysh 106:4"
+    },
+    {
+      "id": 49,
+      "section": "arid",
+      "text": "خَوۡفٍ",
+      "audio": "word49.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "6 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 6,
+      "dimFinalMark": true,
+      "meaning": "“fear” — Quraysh 106:4"
+    },
+    {
+      "id": 50,
+      "section": "arid",
+      "text": "ٱلصَّيۡفِ",
+      "audio": "word50.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "2 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 2,
+      "dimFinalMark": true,
+      "meaning": "“the summer” — Quraysh 106:2"
+    },
+    {
+      "id": 51,
+      "section": "arid",
+      "text": "ٱلصَّيۡفِ",
+      "audio": "word51.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "4 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 4,
+      "dimFinalMark": true,
+      "meaning": "“the summer” — Quraysh 106:2"
+    },
+    {
+      "id": 52,
+      "section": "arid",
+      "text": "ٱلصَّيۡفِ",
+      "audio": "word52.wav",
+      "timings": null,
+      "badges": [
+        "Madd ʿĀriḍ",
+        "6 ḥarakāt"
+      ],
+      "waqf": true,
+      "waqfMadd": 6,
+      "dimFinalMark": true,
+      "meaning": "“the summer” — Quraysh 106:2"
     }
   ]
 }

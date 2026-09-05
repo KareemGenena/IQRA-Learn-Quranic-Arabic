@@ -168,6 +168,8 @@ function letterPlayables(word: LetterWord): Playable[] {
       silentClusters: derivedSilent(f.text),
       letterNames: word.letterNames,
       waqf: word.waqf,
+      waqfMadd: word.waqfMadd,
+      dimFinalMark: word.dimFinalMark,
       // The ٱل is coloured apart only where it is actually present.
       prefixClusters: 0,
     }));
@@ -181,6 +183,8 @@ function letterPlayables(word: LetterWord): Playable[] {
       silentClusters: derivedSilent(word.text),
       letterNames: word.letterNames,
       waqf: word.waqf,
+      waqfMadd: word.waqfMadd,
+      dimFinalMark: word.dimFinalMark,
       prefixClusters: 0,
       highlightCluster: word.target
         ? findTargetCluster(word.text, word.target.letter, word.target.position)

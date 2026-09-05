@@ -15,6 +15,8 @@ interface Props {
   silentClusters?: number[];
   /** A single cluster painted as the letter being taught. */
   markCluster?: number;
+  /** Grey the last letter's vowel: it is written, and at the stop it is not said. */
+  dimFinalMark?: boolean;
   className?: string;
 }
 
@@ -29,6 +31,8 @@ interface Box {
 interface Layer {
   className: string;
   clip: string;
+  /** The string this layer draws, when it is not the word itself. */
+  text?: string;
 }
 
 /** Shared so the default prop is a STABLE reference — a fresh `[]` default
@@ -41,7 +45,11 @@ const sameBox = (a: Box | null, b: Box | null) =>
   (!!a && !!b && a.left === b.left && a.top === b.top && a.width === b.width && a.height === b.height);
 
 const sameLayers = (a: Layer[], b: Layer[]) =>
-  a.length === b.length && a.every((l, i) => l.className === b[i].className && l.clip === b[i].clip);
+  a.length === b.length &&
+  a.every((l, i) => l.className === b[i].className && l.clip === b[i].clip && l.text === b[i].text);
+
+/** Short vowels and tanween — what a stop takes off the final letter. */
+const FINAL_VOWEL_RE = /[\u064B-\u0650]/g;
 
 /**
  * Renders an Arabic word as ONE intact text node — never split into spans,
@@ -62,6 +70,7 @@ export function ArabicWord({
   prefixClusters = 0,
   silentClusters = NO_CLUSTERS,
   markCluster,
+  dimFinalMark = false,
   className,
 }: Props) {
   const wrapRef = useRef<HTMLSpanElement>(null);
@@ -156,11 +165,26 @@ export function ArabicWord({
       const clip = clipTo(markCluster, markCluster + 1);
       if (clip) next.push({ className: 'layer-mark', clip });
     }
+    // The final vowel greyed, the letter under it not. A mark cannot be clipped
+    // apart from its letter — they share the same horizontal span — so this is
+    // two layers over the last cluster: the whole string in the silent colour,
+    // and on top of it the same string with that one vowel removed, in the
+    // text colour. Removing a mark does not change the letters' shaping, so
+    // the two copies line up exactly and only the vowel shows through grey.
+    if (dimFinalMark && clusters.length) {
+      const last = clusters[clusters.length - 1];
+      const clip = clipTo(clusters.length - 1, clusters.length);
+      const stripped = text.slice(0, last.start) + last.text.replace(FINAL_VOWEL_RE, '') + text.slice(last.end);
+      if (clip && stripped !== text) {
+        next.push({ className: 'layer-silent', clip });
+        next.push({ className: 'layer-plain', clip, text: stripped });
+      }
+    }
     // Only commit a real change: setting an equal-but-new array would
     // re-render, which would run this effect again.
     setLayers((prev) => (sameLayers(prev, next) ? prev : next));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [measure, prefixClusters, silentKey, markCluster, text, revision]);
+  }, [measure, prefixClusters, silentKey, markCluster, dimFinalMark, clusters, text, revision]);
 
   useLayoutEffect(() => {
     const box = activeIndex === null ? null : measure(activeIndex, activeIndex + 1);
@@ -238,7 +262,7 @@ export function ArabicWord({
           lang="ar"
           aria-hidden="true"
         >
-          {text}
+          {layer.text ?? text}
         </span>
       ))}
     </span>

@@ -194,6 +194,25 @@ export interface WeightOptions {
    * tuned without this — a lesson whose point IS the stop sets it per word.
    */
   waqf?: boolean;
+  /** How long the madd before the stop is held — 2, 4 or 6. Default 4. */
+  waqfMadd?: number;
+}
+
+/**
+ * The nūn or mīm sākin that ends a letter's NAME.
+ *
+ * Nothing in الٓمٓ is written with a nūn or mīm sākin — but "lām" ends in one,
+ * and it meets the "mīm" that follows. The rules of nūn and mīm sākinah apply
+ * to the names exactly as they apply to written letters: idghām and iqlāb keep
+ * the hum, ikhfāʾ hides the nūn under a hum, iẕhār has none. The same table
+ * labels the cards ("Hidden Ghunna" / "Hidden Ikhfaa") in make-lesson6.mjs.
+ */
+const NAME_ENDS_IN: Record<string, string> = { ل: 'م', م: 'م', س: 'ن', ع: 'ن', ن: 'ن' };
+function letterNameGhunna(base: string, nextBase: string): boolean {
+  const end = NAME_ENDS_IN[base];
+  if (!end || !nextBase) return false;
+  if (end === 'م') return nextBase === MEEM || nextBase === BAA;
+  return IDGHAM_GHUNNA.has(nextBase) || nextBase === BAA || IKHFA.has(nextBase);
 }
 
 export function clusterWeight(
@@ -263,6 +282,7 @@ export function clusterWeight(
   if (marks.includes(DAGGER_ALIF) && !maddCounted) w += maddLength(cluster, next);
   if (TANWEEN.some((t) => marks.includes(t))) w += 0.5;
   if (ghunnaFor(cluster, next)) w += GHUNNA_WEIGHT;
+  else if (opts.letterNames && letterNameGhunna(base, next ? baseChar(next.text) : '')) w += GHUNNA_WEIGHT;
   if (QALQALAH.has(base) && hasSukoon(marks)) w += QALQALAH_WEIGHT;
 
   // Merged lam-alif ligature: the alif fused into it needs its own time — a
@@ -295,7 +315,7 @@ export function audibleIndices(clusters: LetterCluster[], silent: number[] = [])
  *
  * Works on the AUDIBLE clusters, since the weights are indexed that way.
  */
-function applyWaqf(weights: number[], clusters: LetterCluster[]): void {
+function applyWaqf(weights: number[], clusters: LetterCluster[], held: number): void {
   const n = clusters.length;
   if (n === 0) return;
   const last = clusters[n - 1];
@@ -315,7 +335,7 @@ function applyWaqf(weights: number[], clusters: LetterCluster[]): void {
   const beforeMarks = before ? marksOf(before.text) : [];
   const leen = hasSukoon(prevMarks) && (prevBase === 'و' || prevBase === 'ي') && beforeMarks.includes(FATHA);
   const natural = isMaddLetter(prev, before) && maddLength(prev, last) === MADD_NATURAL;
-  if (natural || leen) weights[n - 2] = MADD_AT_WAQF;
+  if (natural || leen) weights[n - 2] = held;
 }
 
 /**
@@ -342,7 +362,7 @@ export function autoBoundaries(
       opts,
     ),
   );
-  if (opts.waqf) applyWaqf(weights, audible.map((i) => clusters[i]));
+  if (opts.waqf) applyWaqf(weights, audible.map((i) => clusters[i]), opts.waqfMadd ?? MADD_AT_WAQF);
   const total = weights.reduce((a, b) => a + b, 0) || 1;
   const span = speechEnd - speechStart;
 
