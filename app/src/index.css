@@ -17,6 +17,10 @@
   --accent-strong: #164b72;
   --highlight: rgba(106, 168, 79, 0.4);
   --highlight-border: rgba(76, 137, 72, 0.75);
+  /* The hum: the highlight wears this while a ghunna sounds, then turns green. */
+  --ghunna: #6f3fb0;
+  --highlight-ghunna: rgba(150, 105, 210, 0.42);
+  --highlight-ghunna-border: rgba(111, 63, 176, 0.8);
   --shadow: 0 1px 3px rgba(23, 48, 63, 0.1);
   --shadow-lift: 0 4px 14px rgba(23, 48, 63, 0.16);
   --al-color: #b4531a;
@@ -35,6 +39,9 @@
   --accent-strong: #7cbbe6;
   --highlight: rgba(120, 190, 100, 0.35);
   --highlight-border: rgba(140, 205, 120, 0.7);
+  --ghunna: #c3a0f2;
+  --highlight-ghunna: rgba(170, 130, 230, 0.38);
+  --highlight-ghunna-border: rgba(195, 160, 242, 0.75);
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   --shadow-lift: 0 4px 14px rgba(0, 0, 0, 0.5);
   --al-color: #e8a06a;
@@ -278,8 +285,15 @@ body {
   border-bottom: 3px solid var(--highlight-border);
   border-radius: 8px;
   transition: left 0.13s ease-out, width 0.13s ease-out, top 0.13s ease-out,
-    height 0.13s ease-out;
+    height 0.13s ease-out, background-color 0.08s linear, border-color 0.08s linear;
   pointer-events: none;
+}
+
+/* The hum that opens a letter (ikhfāʾ, idghām, iqlāb, the doubled نّ / مّ):
+   same box, different colour, then the letter's own green takes over. */
+.letter-highlight.phase-ghunna {
+  background: var(--highlight-ghunna);
+  border-bottom-color: var(--highlight-ghunna-border);
 }
 
 .letter-pending {
@@ -470,8 +484,12 @@ body {
 .pair-head {
   position: relative;
   display: flex;
+  /* Badges WRAP onto more lines rather than squeezing: a chip that breaks
+     inside its own text, or one pushed out of the card, is a badge the
+     learner never reads. Six chips on a phone card is normal now. */
+  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px 8px;
   margin-bottom: 4px;
 }
 
@@ -493,6 +511,8 @@ body {
 }
 
 .type-badge {
+  flex: none;
+  white-space: nowrap;
   font-size: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -500,6 +520,11 @@ body {
   border-radius: 999px;
   background: color-mix(in srgb, var(--moon) 14%, transparent);
   color: var(--moon);
+}
+
+.type-badge.badge-ghunna {
+  background: color-mix(in srgb, var(--ghunna) 16%, transparent);
+  color: var(--ghunna);
 }
 
 .pair-card.shamsiyya .type-badge {

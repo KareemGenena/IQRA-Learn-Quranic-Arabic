@@ -270,14 +270,29 @@ Things that cost real debugging. Do not undo them without reading why.
 - Sukoon 1.2 (leen 1.3) · ghunna +0.9 · qalqalah +0.25 · shadda +0.8 ·
   tanween +0.5 · madd 2 / muttasil and munfasil 4 / lazim 6 · hamzat wasl 0.9.
   Silent letters get zero time and are skipped by the highlight.
-- **The ghunna is paid to the SECOND letter.** A doubled نّ / مّ hums on
-  itself; but the hum of ikhfāʾ, idghām and iqlāb is heard while the letter
-  *after* the nūn sākin / tanween / mīm sākin is being formed, so `ghunnaInto(prev,
-  cluster)` adds the +0.9 to that letter — the highlight moves on to it while
-  the hum sounds instead of sitting on the nūn (أَنتُمۡ: the ت carries it, not
-  the ن). The hidden nūn/mīm ending a letter NAME follows the same rule: in
-  الٓمٓ the hum lands on the مٓ. The author asked for this on lesson 6 and it
-  is the rule for the nūn sākin and tanween lesson that follows.
+- **The ghunna is paid to the SECOND letter — all of it.** The hum of
+  ikhfāʾ, idghām and iqlāb is heard while the letter *after* the nūn sākin /
+  tanween / mīm sākin is being formed, and a hidden or merged nūn is not
+  articulated on its own. So `ghunnaInto(prev, cluster)` gives that letter the
+  +0.9 **plus what the nūn hands over** (`handedOver`): a nūn/mīm sākin keeps
+  only a 0.3 onset, a tanween's letter keeps its vowel and gives up the 0.5
+  nasal tail. أَنتُمۡ is ن 0.3 · ت 2.6, of which 1.6 is hum. Giving the second
+  letter only the +0.9 left the nūn holding a third of the hum — the author
+  saw the highlight "half on each letter" and asked for all of it on the
+  second. A doubled نّ / مّ hums on itself (its sākin half + hum, then the
+  vowel). The hidden nūn/mīm ending a letter NAME follows the same rule: in
+  الٓمٓ the hum lands on the مٓ. It is the rule for the nūn sākin and tanween
+  lesson that follows.
+- **The hum has its own colour.** `clusterParts()` returns each letter's
+  weight and the `ghunna` slice at its start; `ghunnaShares()` turns that into
+  a per-letter fraction, `playWithHighlights` reports `'ghunna'` as the phase
+  while the clip is inside that slice, and `ArabicWord` paints the same box
+  in `--highlight-ghunna` (violet) before it turns green. Every ghunna —
+  ikhfāʾ, idghām into ينمو, mutamāthilayn (ن ن, م م), iqlāb, ikhfāʾ shafawī,
+  the doubled نّ / مّ, the hidden hum in letter names. A fraction, not a time,
+  so it applies to a calibrated timing exactly as to the automatic one. The
+  Ghunna / Ikhfaa badges wear the same colour so chip and moment read as one
+  thing. The admin calibration preview does not show the phase.
 - **Ṣilah** rides on the small waw/yeh mark: the هـ carrying one gets +2
   (ṣughrā), or +4 when the next word opens with a hamza or the mark carries a
   maddah (kubrā). Measured directly, not through `maddLength` — ṣilah exists
@@ -469,6 +484,19 @@ this time the corrupted records are children's.
   `setState` updater; StrictMode invokes them twice. Keep a ref.
 - A fresh `[]` as a default prop re-triggers layout effects forever — use a
   module-level constant.
+- **Badges wrap, never squeeze.** `.pair-head` is `flex-wrap: wrap` and a
+  `.type-badge` is `white-space: nowrap; flex: none`. Before that, six chips
+  on a phone broke inside their own text and the last one was pushed out of
+  the card unseen (lesson 6's "Conditional silent alif"). Checked at 375 px
+  with seven chips: three rows, nothing past the card edge.
+- **The in-app Browser pane's `requestAnimationFrame` is asleep** (0 frames in
+  400 ms even when `document.hidden` is false), so a playback highlight never
+  appears when verifying there. `setInterval` runs. To watch the highlight
+  through the pane, patch `requestAnimationFrame = cb => setTimeout(() =>
+  cb(performance.now()), 16)` in the page first — that is how the ghunna
+  phase was verified (مَنفُوشِ: plain 380 ms → ghunna 420 ms → plain 1140 ms,
+  matching the weights). CSS transitions also freeze there, so a measured
+  `left` may not move.
 
 **Wording the learner reads**
 - **Never say "vowel" for a madd.** A long vowel is a *madd* — "natural madd"

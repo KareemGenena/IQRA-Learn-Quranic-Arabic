@@ -5,6 +5,7 @@
 
 import { speechBounds } from './audioAnalysis';
 import { audibleIndices, autoBoundaries } from './timing';
+import type { HighlightPhase } from './timing';
 import { loadCalibration, loadCloudSnapshot } from './calibration';
 import type { LetterCluster } from './graphemes';
 import type { Lesson, Playable } from '../types';
@@ -56,12 +57,16 @@ export interface PlaybackHandle {
 export function playWithHighlights(
   src: string,
   boundaries: number[],
-  /** Receives the CLUSTER index to highlight (silent letters are skipped). */
-  onActiveLetter: (index: number | null) => void,
+  /** Receives the CLUSTER index to highlight (silent letters are skipped),
+   *  and whether the moment is the hum before that letter or the letter. */
+  onActiveLetter: (index: number | null, phase: HighlightPhase) => void,
   onDone: () => void,
   rate = 1,
   /** Maps boundary index → cluster index. Identity when nothing is silent. */
   indexMap?: number[],
+  /** Per boundary index, the share of the letter's time that is ghunna (see
+   *  `ghunnaShares`). Omitted: no letter has a hum phase. */
+  ghunnaShares?: number[],
 ): PlaybackHandle {
   stopActivePlayback();
 
@@ -81,7 +86,7 @@ export function playWithHighlights(
     finished = true;
     cancelAnimationFrame(rafId);
     audio.pause();
-    onActiveLetter(null);
+    onActiveLetter(null, null);
     if (activeStop === stop) activeStop = null;
     onDone();
   };
@@ -97,11 +102,14 @@ export function playWithHighlights(
       return;
     }
     if (t < boundaries[0] || t >= lastBoundary) {
-      onActiveLetter(null);
+      onActiveLetter(null, null);
     } else {
       let i = 0;
       while (i < boundaries.length - 2 && t >= boundaries[i + 1]) i++;
-      onActiveLetter(indexMap ? indexMap[i] : i);
+      // The hum opens the letter: the first `share` of its span is ghunna.
+      const share = ghunnaShares?.[i] ?? 0;
+      const hum = share > 0 && t < boundaries[i] + share * (boundaries[i + 1] - boundaries[i]);
+      onActiveLetter(indexMap ? indexMap[i] : i, hum ? 'ghunna' : null);
     }
     rafId = requestAnimationFrame(tick);
   };

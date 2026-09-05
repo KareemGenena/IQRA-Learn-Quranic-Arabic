@@ -229,6 +229,31 @@ function letterNameGhunna(base: string, nextBase: string): boolean {
   return IDGHAM_GHUNNA.has(nextBase) || nextBase === BAA || IKHFA.has(nextBase);
 }
 
+/**
+ * What a nūn sākin, tanween or mīm sākin HANDS OVER when its hum carries into
+ * the next letter. A hidden or merged nūn is not articulated on its own — the
+ * sound in its place is the hum, and the hum is heard as the next letter
+ * forms — so the nūn keeps only a brief onset and the rest of its time goes
+ * with the hum. A tanween's letter keeps its vowel; only the nasal tail moves.
+ */
+const GHUNNA_ONSET = 0.3;
+const TANWEEN_WEIGHT = 0.5;
+function handedOver(from: LetterCluster): number {
+  const marks = marksOf(from.text);
+  if (TANWEEN.some((t) => marks.includes(t))) return TANWEEN_WEIGHT;
+  return (hasSukoon(marks) ? 1.2 : 1.0) - GHUNNA_ONSET;
+}
+
+/** A letter's weight, and how much of it — at its START — is ghunna. */
+export interface ClusterParts {
+  weight: number;
+  /** Hum at the start of the letter, in the same units; 0 when none. */
+  ghunna: number;
+}
+
+/** What the highlight is showing: the hum before a letter, or the letter. */
+export type HighlightPhase = 'ghunna' | null;
+
 export function clusterWeight(
   cluster: LetterCluster,
   prev: LetterCluster | undefined,
@@ -236,12 +261,23 @@ export function clusterWeight(
   next?: LetterCluster,
   opts: WeightOptions = {},
 ): number {
+  return clusterParts(cluster, prev, next, opts).weight;
+}
+
+export function clusterParts(
+  cluster: LetterCluster,
+  prev: LetterCluster | undefined,
+  next?: LetterCluster,
+  opts: WeightOptions = {},
+): ClusterParts {
   const base = baseChar(cluster.text);
   const marks = marksOf(cluster.text);
   const prevMarks = prev ? marksOf(prev.text) : [];
   const bare = marks.length === 0;
 
   let w = 1.0;
+  /** How much of this letter's time is the hum that opens it. */
+  let ghunna = 0;
   /** Has this cluster's madd already been paid for? See the dagger alif below. */
   let maddCounted = false;
 
@@ -294,15 +330,27 @@ export function clusterWeight(
   // gave it 8 harakat — a third of that whole phrase's budget, which starved
   // every letter before it. Only add the madd where nothing has paid for it.
   if (marks.includes(DAGGER_ALIF) && !maddCounted) w += maddLength(cluster, next);
-  if (TANWEEN.some((t) => marks.includes(t))) w += 0.5;
-  // Ghunna. A doubled نّ / مّ hums on itself. The hum of ikhfāʾ, idghām and
-  // iqlāb is heard on the letter AFTER the nūn/tanween/mīm — it is what the
-  // mouth does while forming that letter — so it is paid to this cluster when
-  // the previous one hands it over. The same for the hidden nūn/mīm that ends
-  // a letter NAME (لَام → مِيم in الٓمٓ): the hum lands on the مٓ.
-  if (marks.includes(SHADDA) && (base === NOON || base === MEEM)) w += GHUNNA_WEIGHT;
-  else if (prev && ghunnaInto(prev, cluster)) w += GHUNNA_WEIGHT;
-  else if (opts.letterNames && prev && letterNameGhunna(baseChar(prev.text), base)) w += GHUNNA_WEIGHT;
+  if (TANWEEN.some((t) => marks.includes(t))) w += TANWEEN_WEIGHT;
+  // Ghunna. A doubled نّ / مّ hums on itself — its sākin half plus the hum,
+  // then the vowel. The hum of ikhfāʾ, idghām and iqlāb is heard on the letter
+  // AFTER the nūn/tanween/mīm — it is what the mouth does while forming that
+  // letter — so ALL of it is paid to this cluster: the +0.9 and the time the
+  // nūn hands over (`handedOver`). The same for the hidden nūn/mīm that ends a
+  // letter NAME (لَام → مِيم in الٓمٓ): the hum lands on the مٓ. `ghunna` is the
+  // slice at the start of this letter that the highlight shows in the ghunna
+  // colour before switching to the letter's own.
+  if (marks.includes(SHADDA) && (base === NOON || base === MEEM)) {
+    w += GHUNNA_WEIGHT;
+    ghunna = GHUNNA_WEIGHT + 0.8;
+  } else if (prev && ghunnaInto(prev, cluster)) {
+    ghunna = GHUNNA_WEIGHT + handedOver(prev);
+    w += ghunna;
+  } else if (opts.letterNames && prev && letterNameGhunna(baseChar(prev.text), base)) {
+    ghunna = GHUNNA_WEIGHT;
+    w += ghunna;
+  }
+  // …and the nūn/tanween/mīm whose hum moved on keeps only its onset.
+  if (next && ghunnaInto(cluster, next)) w -= handedOver(cluster);
   if (QALQALAH.has(base) && hasSukoon(marks)) w += QALQALAH_WEIGHT;
   else if (opts.letterNames && NAME_ENDS_IN_QALQALAH.has(base)) w += QALQALAH_WEIGHT;
 
@@ -311,7 +359,21 @@ export function clusterWeight(
   // when it carries a vowel of its own (لْإِ in ٱلْإِنسَٰنَ).
   if (cluster.ligature) w += cluster.ligatureTailBare ? maddLength(cluster, next) : 1.0;
 
-  return w;
+  return { weight: w, ghunna };
+}
+
+/**
+ * For each AUDIBLE letter, the share of its time (0–1) that is the hum it
+ * opens with — 0 for most letters. Indexed like the segments between
+ * boundaries, so it applies to a calibrated timing as readily as to the
+ * automatic one: the hum is a proportion of the letter, whoever measured the
+ * letter.
+ */
+export function ghunnaShares(clusters: LetterCluster[], silent: number[] = [], opts: WeightOptions = {}): number[] {
+  return audibleIndices(clusters, silent).map((idx) => {
+    const { weight, ghunna } = clusterParts(clusters[idx], clusters[idx - 1], clusters[idx + 1], opts);
+    return weight > 0 ? ghunna / weight : 0;
+  });
 }
 
 /**

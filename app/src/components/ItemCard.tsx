@@ -13,7 +13,7 @@ interface FormProps {
 }
 
 function Form({ lesson, playable, rate, label, register }: FormProps) {
-  const { clusters, activeIndex, playing, play, toggle } = usePlayable(lesson, playable, rate);
+  const { clusters, activeIndex, activePhase, playing, play, toggle } = usePlayable(lesson, playable, rate);
 
   useEffect(() => {
     register?.(playable.key, play);
@@ -30,6 +30,7 @@ function Form({ lesson, playable, rate, label, register }: FormProps) {
         text={playable.text}
         clusters={clusters}
         activeIndex={activeIndex}
+        activePhase={activePhase}
         prefixClusters={playable.prefixClusters}
         silentClusters={playable.silentClusters}
         markCluster={playable.highlightCluster}
@@ -99,7 +100,9 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }
         <span className="word-num">{displayNo}</span>
         {!hideBadges &&
           item.badges.map((b) => (
-            <span key={b} className="type-badge">
+            // A ghunna badge wears the ghunna highlight's colour, so the chip
+            // and the moment in the word read as the same thing.
+            <span key={b} className={`type-badge${/ghunna|ikhfa/i.test(b) ? ' badge-ghunna' : ''}`}>
               {b}
             </span>
           ))}

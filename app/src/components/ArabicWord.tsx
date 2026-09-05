@@ -1,12 +1,16 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { splitClusters, unreadFinalMaddah } from '../lib/graphemes';
 import type { LetterCluster } from '../lib/graphemes';
+import type { HighlightPhase } from '../lib/timing';
 
 interface Props {
   text: string;
   clusters: LetterCluster[];
   /** Cluster to highlight while it is being pronounced, or null. */
   activeIndex: number | null;
+  /** 'ghunna' while the hum that opens the active letter sounds — the
+   *  highlight stays on the letter but changes colour. */
+  activePhase?: HighlightPhase;
   /** Cluster awaiting a calibration tap — marked with an underline. */
   pendingIndex?: number | null;
   /** Leading clusters forming the ال prefix, painted in the accent colour. */
@@ -68,6 +72,7 @@ export function ArabicWord({
   text,
   clusters,
   activeIndex,
+  activePhase = null,
   pendingIndex = null,
   prefixClusters = 0,
   silentClusters = NO_CLUSTERS,
@@ -245,7 +250,7 @@ export function ArabicWord({
     <span ref={wrapRef} className={`arabic-word ${className ?? ''}`}>
       {highlight && (
         <span
-          className="letter-highlight"
+          className={`letter-highlight${activePhase ? ` phase-${activePhase}` : ''}`}
           style={{ left: highlight.left, top: highlight.top, width: highlight.width, height: highlight.height }}
         />
       )}
