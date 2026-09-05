@@ -146,8 +146,12 @@ function maddLength(cluster: LetterCluster, next: LetterCluster | undefined): nu
 
   // The Mushaf writes the maddah sign only over a madd that is longer than
   // natural. With no hamza after it in this word, that means munfasil — the
-  // hamza opens the NEXT word — which is held the same 4 harakat.
-  if (marks.includes(MADDAH)) return MADD_MUTTASIL;
+  // hamza opens the NEXT word — which is held the same 4 harakat. Unless
+  // nothing follows at all: the last letter of a text recorded alone has no
+  // next word to reach (تَأۡمُرُوٓنِّىٓ without its أَعۡبُدُ), so the sign is
+  // unread and the madd is the natural one. `unreadFinalMaddah` in
+  // graphemes.ts greys the sign for the same reason.
+  if (marks.includes(MADDAH)) return next ? MADD_MUTTASIL : MADD_NATURAL;
 
   return MADD_NATURAL;
 }
@@ -208,6 +212,12 @@ export interface WeightOptions {
  * labels the cards ("Hidden Ghunna" / "Hidden Ikhfaa") in make-lesson6.mjs.
  */
 const NAME_ENDS_IN: Record<string, string> = { ل: 'م', م: 'م', س: 'ن', ع: 'ن', ن: 'ن' };
+/**
+ * The same idea for qalqalah: "ṣād" ends in a sākin د, so the ص of الٓمٓصٓ,
+ * كٓهيعٓصٓ and صٓ bounces at the end of its name. No other letter's name ends in
+ * one of ق ط ب ج د. Badged "Hidden Qalqala" by the generator.
+ */
+const NAME_ENDS_IN_QALQALAH = new Set(['ص']);
 function letterNameGhunna(base: string, nextBase: string): boolean {
   const end = NAME_ENDS_IN[base];
   if (!end || !nextBase) return false;
@@ -267,7 +277,7 @@ export function clusterWeight(
   // marks that one with a maddah as well. Never lazim: ṣilah exists only
   // between vowels, so it is measured directly rather than through maddLength.
   if ((marks.includes(SMALL_WAW) || marks.includes(SMALL_YEH)) && !maddCounted) {
-    w += isHamza(next) || marks.includes(MADDAH) ? MADD_MUTTASIL : MADD_NATURAL;
+    w += isHamza(next) || (marks.includes(MADDAH) && next) ? MADD_MUTTASIL : MADD_NATURAL;
     maddCounted = true;
   }
 
@@ -284,6 +294,7 @@ export function clusterWeight(
   if (ghunnaFor(cluster, next)) w += GHUNNA_WEIGHT;
   else if (opts.letterNames && letterNameGhunna(base, next ? baseChar(next.text) : '')) w += GHUNNA_WEIGHT;
   if (QALQALAH.has(base) && hasSukoon(marks)) w += QALQALAH_WEIGHT;
+  else if (opts.letterNames && NAME_ENDS_IN_QALQALAH.has(base)) w += QALQALAH_WEIGHT;
 
   // Merged lam-alif ligature: the alif fused into it needs its own time — a
   // full madd when it is a bare alif (لَا), but only a normal letter's worth

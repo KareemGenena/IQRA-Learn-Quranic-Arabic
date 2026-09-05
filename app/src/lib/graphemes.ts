@@ -140,6 +140,26 @@ const SHADDA = '\u0651';
  * Silent letters are greyed by `ArabicWord` and given no time by `timing.ts`,
  * so the highlight steps straight over them.
  */
+const MADDAH = 'ٓ';
+const MADD_LETTERS = new Set(['ا', 'و', 'ى', 'ي']);
+const SHORT_VOWEL_RE = /[ً-ِْۡ]/;
+
+/**
+ * A maddah on the LAST letter of a text, when that letter is a long vowel,
+ * is a madd munfasil whose hamza opens the next word — تَأۡمُرُوٓنِّىٓ أَعۡبُدُ.
+ * Recorded alone, there is no next word for it to reach, so the sign stands
+ * on the page unread. `ArabicWord` greys it and `timing.ts` gives the letter
+ * a natural madd. Derived from the text, like silence, so no lesson has to
+ * declare it. A letter NAME carrying the maddah (the صٓ of كٓهيعٓصٓ) is a
+ * consonant, not a long vowel, and is not this.
+ */
+export function unreadFinalMaddah(text: string): boolean {
+  const clusters = splitClusters(text);
+  const last = clusters[clusters.length - 1];
+  if (!last || clusters.length < 2 || !last.text.includes(MADDAH)) return false;
+  return MADD_LETTERS.has(baseChar(last.text)) && !SHORT_VOWEL_RE.test(last.text);
+}
+
 export function derivedSilent(text: string): number[] {
   const clusters = splitClusters(text);
   const out = new Set<number>();

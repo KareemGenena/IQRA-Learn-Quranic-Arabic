@@ -139,6 +139,14 @@ Things that cost real debugging. Do not undo them without reading why.
   time by `timing.ts`, so the highlight steps straight over them. Lesson 4's
   `waslSilentIn` field and lesson 2's hardcoded cluster 1 are both subsumed —
   do not reintroduce either.
+- **A maddah on the last letter of a text is unread**, when that letter is a
+  long vowel: it is a munfasil whose hamza opens the *next* word
+  (تَأۡمُرُوٓنِّىٓ أَعۡبُدُ), and a clip of the word alone has no next word to
+  reach. `unreadFinalMaddah()` in `graphemes.ts` derives it from the text;
+  `ArabicWord` greys the sign and `timing.ts` gives the letter a natural 2,
+  not the munfasil 4. Exactly one text in the app triggers it (lesson 6 #7,
+  checked over every `words.json`). A letter *name* carrying the maddah
+  (the صٓ of كٓهيعٓصٓ) is a consonant and is not this.
 
 **Rendering**
 - Never split an Arabic word into per-letter spans — it breaks cursive joining.
@@ -287,7 +295,13 @@ Things that cost real debugging. Do not undo them without reading why.
   idghām/iqlāb keep the hum (+0.9, badge "Hidden Ghunna"), ikhfāʾ hides the
   nūn under one (+0.9, "Hidden Ikhfaa"), iẕhār has none. Gives exactly
   الم المص المر طسم / كهيعص حم‑عسق. The table lives in both `timing.ts` and
-  the generator and must stay identical.
+  the generator and must stay identical. Same idea for qalqalah: "ṣād" ends in
+  a sākin د, so the ص of المص, كهيعص and ص bounces (+0.25, badge "Hidden
+  Qalqala"); no other letter name ends in one of ق ط ب ج د.
+- The "Conditional silent alif" badge is derived from the text (a rectangular
+  zero present), never from a comment column — lesson 5 reads it off the
+  sheet's Type column, lesson 6 off the word itself. `derivedSilent()` does
+  the greying either way.
 - `waqfMadd` (2 | 4 | 6, default 4) says how long the madd before the stop is
   held; `dimFinalMark` greys the final vowel. `ArabicWord` cannot clip a mark
   apart from its letter, so the grey is two layers over the last cluster: the
@@ -474,7 +488,22 @@ Lessons 3 and 4 are complete: every clip their `words.json` references is
 present on disk (67 and 69 respectively, checked mechanically). ٱلرَّحِيمِ is
 recorded — an earlier note here claiming otherwise was wrong.
 
-**Lesson 6 is built as text and unrecorded (2026-09-05).** `make-lesson6.mjs`
+**Lesson 6 is recorded, cut and deployed as draft (2026-09-05).** 44 takes
+in **`Audio/Audio - Madd Lazim Silah +`** (the author's folder name — the
+generator points at it), 52 clips cut, every card has audio. One take to
+listen to: `الرحيم وقف.wav` splits 2.78 / 2.68 / 3.69 — at four pieces the
+first is 1.96 + a 0.37 s fragment after a gap, so the "2 ḥarakāt" card
+probably carries a stray sound; a `الرحيم وقف 2.wav` retake replaces it. The
+author's review the same day added: the maddah on the final ىٓ of
+تَأۡمُرُوٓنِّىٓ greyed and unread (see section 3), "Hidden Qalqala" on المص /
+كهيعص / ص, and the rectangular zero on the alif of إِنَّهُۥٓ أَنَا۠ ٱللَّهُ with
+its "Conditional silent alif" badge. **That zero is the one edit not yet in
+the sheet**: Word had the docx open (lock file `~$…docx`), so the edited copy
+is waiting in the session scratchpad as `lesson6.docx`; until it is copied
+over `Word Tables/مد لازم صلة عوض +.docx` and the generator re-run, card #31
+has no zero and no badge. Everything else below stands.
+
+`make-lesson6.mjs`
 reads `Word Tables/مد لازم صلة عوض +.docx` — six headed tables, read by their
 header rows — into 52 cards, draft, registered. The sheet is the whole source
 now: at the author's request it was edited in place so that every table has
@@ -488,10 +517,9 @@ that edit and not yet reviewed by the author: the ḥarfī Type column
 (Muthaqqal where a letter name's final nūn/mīm merges into the next letter —
 الٓمٓ, الٓمٓصٓ, طسٓمٓ; Mukhaffaf otherwise) and Length column ("6 ḥarakāt
 each" when every letter is from نقص عسلكم, else per letter, e.g. "ا 2 · ل 6
-· م 6"). The audio folder is **`Audio/Audio - Madd lazim and silah`** (not
-yet created). Recording is 40 single takes plus 4 ʿāriḍ takes — the sheet's
-own `<word> وقف` rows, each said at the stop three ways, 2 then 4 then 6,
-expect 3. Every filename derives distinct, checked.
+· م 6"; alif is "no madd" — أَلِف has no long vowel). Recording was 40
+single takes plus 4 ʿāriḍ takes — the sheet's own `<word> وقف` rows, each
+said at the stop three ways, 2 then 4 then 6, expect 3.
 Still assumed, not confirmed: that ʿāriḍ's *automatic* default of 4 is the
 recitation for the badal/līn section's own "at waqf" rows (ʿiwaḍ and the two
 līn words). Side effects of the same day's work: the hamza-on-tatweel words
@@ -659,18 +687,17 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
 
 ## 5. Next task
 
-**Lesson 6 audio.** Open `Word Tables/مد لازم صلة عوض +.docx` in the intake
-tool as it is — no lines to add, none to drop — and record into
-`Audio/Audio - Madd lazim and silah`: 40 single takes, then the four
-`<word> وقف` slots from the last table, each with expect set to 3 and each
-said at the stop three ways, 2 then 4 then 6. Then
-`node scripts/make-lesson6.mjs` cuts 52 clips and lists anything unmatched or
-any ʿāriḍ take whose three pieces do not lengthen in order. Before recording,
-glance over the two columns the edit filled in on the ḥarfī table (Type and
-Length, described in section 4) — they are the one part of the sheet that is
-not the author's own words. Listen back first to row 11 (`ءَآلۡـٔـٰنَ`), the
-ṣilah kubrā rows, and one ʿāriḍ triple — they exercise the rules added for
-this lesson. Publish from `#/admin` once reviewed; it landed as draft.
+**Lesson 6, to finish.** (1) Close Word, copy the zero'd sheet over
+`Word Tables/مد لازم صلة عوض +.docx`, re-run `node scripts/make-lesson6.mjs`
+(expect #31 to gain "Conditional silent alif"; clips cut byte-identically),
+build, commit, deploy. If the scratchpad copy is gone, the edit is one
+character: U+06E0 after the alif of أَنَا in the ṣilah kubrā table. (2) Listen
+to the ٱلرَّحِيمِ ʿāriḍ triple (cards 44–46) and retake `الرحيم وقف 2.wav` if
+the first piece carries a stray sound. (3) Listen to row 11 (`ءَآلۡـٔـٰنَ`),
+the ṣilah kubrā rows, #7 (its final ىٓ now a natural 2), and المص (the bounce
+at the end of ṣād). (4) Review the ḥarfī Type/Length columns — the one part
+of the sheet not in the author's words — and the ع held 6 in كهيعص / حم‑عسق
+(many hold it 4). (5) Publish from `#/admin`; it is live as draft.
 
 **Maktab, before the first session (not code).** Print the Student Packet ×
 students and one each of the Teacher and Helper Sheets; import

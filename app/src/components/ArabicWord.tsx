@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { splitClusters } from '../lib/graphemes';
+import { splitClusters, unreadFinalMaddah } from '../lib/graphemes';
 import type { LetterCluster } from '../lib/graphemes';
 
 interface Props {
@@ -49,7 +49,9 @@ const sameLayers = (a: Layer[], b: Layer[]) =>
   a.every((l, i) => l.className === b[i].className && l.clip === b[i].clip && l.text === b[i].text);
 
 /** Short vowels and tanween — what a stop takes off the final letter. */
-const FINAL_VOWEL_RE = /[\u064B-\u0650]/g;
+const FINAL_VOWEL = '\u064B-\u0650';
+/** The maddah \u2014 unread on a final long vowel with no next word to reach. */
+const MADDAH = '\u0653';
 
 /**
  * Renders an Arabic word as ONE intact text node — never split into spans,
@@ -165,16 +167,19 @@ export function ArabicWord({
       const clip = clipTo(markCluster, markCluster + 1);
       if (clip) next.push({ className: 'layer-mark', clip });
     }
-    // The final vowel greyed, the letter under it not. A mark cannot be clipped
-    // apart from its letter — they share the same horizontal span — so this is
-    // two layers over the last cluster: the whole string in the silent colour,
-    // and on top of it the same string with that one vowel removed, in the
-    // text colour. Removing a mark does not change the letters' shaping, so
-    // the two copies line up exactly and only the vowel shows through grey.
-    if (dimFinalMark && clusters.length) {
+    // A mark on the last letter greyed, the letter under it not: the final
+    // vowel a stop drops (`dimFinalMark`), or a maddah with no next word to
+    // reach (derived from the text). A mark cannot be clipped apart from its
+    // letter — they share the same horizontal span — so this is two layers
+    // over the last cluster: the whole string in the silent colour, and on
+    // top of it the same string with that mark removed, in the text colour.
+    // Removing a mark does not change the letters' shaping, so the two copies
+    // line up exactly and only the mark shows through grey.
+    const dimMarks = (dimFinalMark ? FINAL_VOWEL : '') + (unreadFinalMaddah(text) ? MADDAH : '');
+    if (dimMarks && clusters.length) {
       const last = clusters[clusters.length - 1];
       const clip = clipTo(clusters.length - 1, clusters.length);
-      const stripped = text.slice(0, last.start) + last.text.replace(FINAL_VOWEL_RE, '') + text.slice(last.end);
+      const stripped = text.slice(0, last.start) + last.text.replace(new RegExp(`[${dimMarks}]`, 'g'), '') + text.slice(last.end);
       if (clip && stripped !== text) {
         next.push({ className: 'layer-silent', clip });
         next.push({ className: 'layer-plain', clip, text: stripped });

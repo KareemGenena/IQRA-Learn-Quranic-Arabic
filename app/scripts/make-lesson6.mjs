@@ -2,19 +2,17 @@
  * Builds Lesson 6 — madd lāzim, madd ṣilah, badal/ʿiwaḍ/līn, and madd ʿāriḍ.
  *
  *   ../Word Tables/مد لازم صلة عوض +.docx
- *   ../Audio/Audio - Madd lazim and silah/*.wav
+ *   ../Audio/Audio - Madd Lazim Silah +/*.wav
  *
- * The docx is five tables, each under a heading, and the lesson follows the
- * headings: one section per table, in the order written. The tables do not
- * share a column layout, so each is read by its header row, never by position.
+ * The docx is six tables, each under a heading, and the lesson follows the
+ * headings: one section per table, in the order written. Each is read by its
+ * header row, never by position.
  *
- * A sixth section, madd ʿāriḍ, is the author's design and is DERIVED unless the
- * sheet carries a table for it: the badal, ʿāriḍ and līn words of the
- * badal/ʿiwaḍ/līn table, each shown three times — held 2, 4 and 6 harakat at
- * the stop. Rows typed ʿāriḍ leave the badal table for it. The moment a table
- * under a "Madd ʿĀriḍ" heading appears in the sheet, it is read instead and
- * the derivation stops; the sheet is the source of truth for words, this file
- * only for rules.
+ * The sixth, madd ʿāriḍ, lists the badal and līn words once more with a
+ * `وقف` tag in the Word cell; each becomes three cards — held 2, 4 and 6
+ * harakat at the stop. Were that table ever missing, the section is DERIVED
+ * from the badal table instead and the run says so; the sheet is the source of
+ * truth for words, this file only for rules.
  *
  * ʿĀriḍ audio is ONE take per word said three ways, named `<word> وقف.wav`
  * and split into three — lesson 4's `<word> و ثم` convention. The intake tool
@@ -43,7 +41,7 @@ import { addMaddSigns, normaliseZeros } from './lib/arabic.mjs';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
 const DOCX = join(root, 'Word Tables', 'مد لازم صلة عوض +.docx');
-const AUDIO_SRC = join(root, 'Audio', 'Audio - Madd lazim and silah');
+const AUDIO_SRC = join(root, 'Audio', 'Audio - Madd Lazim Silah +');
 const AUDIO_OUT = join(here, '..', 'public', 'audio', 'lesson06');
 const LESSON_OUT = join(here, '..', 'public', 'lessons', 'lesson06', 'words.json');
 
@@ -143,6 +141,7 @@ function lengthBadge(length) {
 
 const MARKS = /[ً-ٰۖ-ۭـ]/g;
 const SHADDA = 'ّ';
+const RECT_ZERO = '۠';
 
 /**
  * The lam rule, read off the text — the same test derivedSilent() makes in
@@ -176,11 +175,14 @@ function ghunnaBadge(text) {
  * in timing.ts, which gives the hum its time; this one only labels it.
  */
 const NAME_ENDS_IN = { ل: 'م', م: 'م', س: 'ن', ع: 'ن', ن: 'ن' };
+/** "Ṣād" ends in a sākin د — the one letter name that ends in a qalqalah letter. */
+const NAME_ENDS_IN_QALQALAH = new Set('ص');
 const IKHFA = new Set('تثجدذزسشصضطظفقك');
 const IDGHAM_GHUNNA = new Set('ينمو');
 function letterNameBadge(text) {
   const letters = [...text.replace(MARKS, '').replace(/\s+/g, '')];
   const found = new Set();
+  if (letters.some((l) => NAME_ENDS_IN_QALQALAH.has(l))) found.add('Hidden Qalqala');
   for (let i = 0; i + 1 < letters.length; i++) {
     const end = NAME_ENDS_IN[letters[i]];
     const next = letters[i + 1];
@@ -289,6 +291,9 @@ for (const block of blocks) {
     const ghunna = ghunnaBadge(cleaned);
     if (ghunna) badges.push(ghunna);
     if (section.letterNames) badges.push(...letterNameBadge(cleaned));
+    // The rectangular zero: this alif sounds at a stop and vanishes when the
+    // reading carries on (أَنَا۠ ٱللَّهُ). derivedSilent() greys it; this names it.
+    if (cleaned.includes(RECT_ZERO)) badges.push('Conditional silent alif');
 
     const entry = { id, section: section.id, text: cleaned, audio: `word${String(id).padStart(2, '0')}.wav`, timings: null, badges };
     if (meaning) entry.meaning = meaning;
