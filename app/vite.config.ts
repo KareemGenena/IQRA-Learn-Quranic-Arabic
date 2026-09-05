@@ -11,7 +11,10 @@ import { VitePWA } from 'vite-plugin-pwa';
  * again. It costs those learners one re-download of the words they have played,
  * which is the same moment their calibrations need re-checking anyway.
  */
-const AUDIO_CACHE = 'iqra-audio-v1';
+// Bumped whenever a clip is re-cut under an unchanged filename (v2: lesson 6
+// كهيعص retake, 2026-09-05) — a device holding the old clip has no other way
+// to learn of the new one.
+const AUDIO_CACHE = 'iqra-audio-v2';
 
 /**
  * A human-readable stamp of when this bundle was built, shown at the foot of

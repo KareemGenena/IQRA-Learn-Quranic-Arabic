@@ -4,7 +4,7 @@
   "speaker": "Kareem Genena",
   "consent": true,
   "createdAt": "2026-09-05T20:25:52.673Z",
-  "writtenAt": "2026-09-05T21:20:29.241Z",
+  "writtenAt": "2026-09-05T23:41:52.170Z",
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
   "recordings": [
     {
@@ -427,18 +427,18 @@
       "device": "Default - Microphone (Yeti GX) (046d:0afc)",
       "row": 15,
       "expectedUtterances": 1,
-      "take": 14,
-      "takesMade": 14,
+      "take": 15,
+      "takesMade": 15,
       "sampleRate": 48000,
-      "duration": 10.411,
-      "peak": 0.2673,
-      "noiseFloor": 0.000949,
-      "snrDb": 40,
-      "piecesFound": 2,
+      "duration": 9.728,
+      "peak": 0.6563,
+      "noiseFloor": 0.006955,
+      "snrDb": 30.7,
+      "piecesFound": 4,
       "cutInto": [
-        8.69
+        8.11
       ],
-      "recordedAt": "2026-09-05T21:16:45.909Z"
+      "recordedAt": "2026-09-05T23:38:34.676Z"
     },
     {
       "file": "طسم.wav",
