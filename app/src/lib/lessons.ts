@@ -67,6 +67,12 @@ export const LESSONS: LessonMeta[] = [
     titleArabic: 'المد المتصل والمنفصل قبل همزة',
     blurb: 'Muttasil and munfasil — both held for four harakat, whether the hamza is in the same word or the next.',
   },
+  {
+    id: 6,
+    title: 'Madd Lāzim, Ṣilah and More',
+    titleArabic: 'المد اللازم ومد الصلة وغيرهما',
+    blurb: 'The longest madd, the pronoun that grows a vowel, and what happens to a madd when you stop.',
+  },
 ];
 
 /**
@@ -160,6 +166,8 @@ function letterPlayables(word: LetterWord): Playable[] {
       audio: f.audio,
       timings: f.timings,
       silentClusters: derivedSilent(f.text),
+      letterNames: word.letterNames,
+      waqf: word.waqf,
       // The ٱل is coloured apart only where it is actually present.
       prefixClusters: 0,
     }));
@@ -171,6 +179,8 @@ function letterPlayables(word: LetterWord): Playable[] {
       audio: word.audio,
       timings: word.timings,
       silentClusters: derivedSilent(word.text),
+      letterNames: word.letterNames,
+      waqf: word.waqf,
       prefixClusters: 0,
       highlightCluster: word.target
         ? findTargetCluster(word.text, word.target.letter, word.target.position)

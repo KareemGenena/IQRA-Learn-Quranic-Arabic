@@ -72,6 +72,10 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
 - **Notes** — endless per-lesson canvas: stylus draws, finger scrolls, typing in
   Uthmanic Hafs with a Quranic-mark palette. Local-only so far.
 - **Lesson 5** — madd muttasil and munfasil, both held four harakat.
+- **Lesson 6** — madd lāzim (kalimī and ḥarfī), madd ṣilah (ṣughrā and
+  kubrā), and the madds that exist only at a stop (ʿiwaḍ, ʿāriḍ, līn) plus
+  badal. Five sections, one per heading in the sheet; 41 cards. Meanings are
+  Sahih International's, and the (i) says so under each quotation.
 - **Class recordings** (`#/recordings`) — the teacher posts the link to a
   recorded session (Zoom or anything else) and the class finds it there instead
   of scrolling back through a chat thread. A pointer, never a copy: nothing is
@@ -90,8 +94,21 @@ Things that cost real debugging. Do not undo them without reading why.
 - Uthmani encoding is not optional: sukoon is **U+06E1** (Mushaf head-of-khah),
   *not* U+0652; the article's alif is **U+0671** (alif wasla) so the ص appears.
   When something "looks like the wrong font", check the characters first.
-- `graphemes.ts` `MARK_RE` must cover **U+06D6–U+06ED** or those marks count as
-  letters. Spaces are dropped so multi-word phrases don't gain a phantom step.
+- `graphemes.ts` `MARK_RE` is written in `\u` escapes and **enumerated, not
+  spanned**: the annotation range U+06D6–U+06ED also holds the end-of-āyah and
+  sajdah *symbols* (U+06DD, U+06DE, U+06E9), which stand alone and must not be
+  glued to a letter. Anything left out of it is counted as a letter — its own
+  highlight step, its own slice of the clip.
+- The **small waw and small yeh (U+06E5, U+06E6) are marks here** even though
+  Unicode classes them as letters (Lm): the Mushaf uses them as the ṣilah vowel
+  on the pronoun's هـ (هُۥ، هِۦ). Left out, the tiny ۥ was a highlighted "letter"
+  and the هـ never learned it had a madd. Any "combining mark" test misses them
+  — hence the explicit listing.
+- A **hamza seated on a tatweel (ـٔ) is a cluster in its own right** — a real
+  consonant (ءَآلۡـٔـٰنَ, خَطِيٓـَٔةً, أَفۡـِٔدَةِ). Its base letter is empty, and
+  the check that drops spaces used to test the *base*, which threw the hamza
+  away as if it were a space. It tests the segment now. Spaces are dropped so
+  multi-word phrases don't gain a phantom step.
 - The madd sign is applied by rule (`scripts/lib/arabic.mjs`), not by hand.
 - **Do NOT "normalise" the silent-letter circles.** In this font the three
   marks sit where the author's Word already puts them:
@@ -221,6 +238,24 @@ Things that cost real debugging. Do not undo them without reading why.
 - Sukoon 1.2 (leen 1.3) · ghunna +0.9 · qalqalah +0.25 · shadda +0.8 ·
   tanween +0.5 · madd 2 / muttasil and munfasil 4 / lazim 6 · hamzat wasl 0.9.
   Silent letters get zero time and are skipped by the highlight.
+- **Ṣilah** rides on the small waw/yeh mark: the هـ carrying one gets +2
+  (ṣughrā), or +4 when the next word opens with a hamza or the mark carries a
+  maddah (kubrā). Measured directly, not through `maddLength` — ṣilah exists
+  only between vowels and can never be lāzim.
+- **Reading at a stop is a per-word flag** (`waqf` on the word → `Playable` →
+  `WeightOptions`), applied as a pass over the finished weights in
+  `autoBoundaries`, because ʿāriḍ lengthens the *penultimate* letter and
+  `clusterWeight` sees one cluster at a time. At waqf the last letter loses its
+  vowel (1.2, shadda still +0.8), a final tanween fatḥ with no alif written
+  earns ʿiwaḍ (+2), and a natural madd or a leen letter before the final one is
+  held `MADD_AT_WAQF = 4` — the author recites 4; the recording is the
+  authority. **Off by default**: every single-word clip in lessons 1–5 also
+  ends at a stop and their estimates were tuned without it. Lesson 6 sets it
+  on the four rows whose Length column says "at waqf only", not on badal.
+- **Letter names** (`letterNames`, the surah openers الٓمٓ): the hamzat-wasl
+  rule is skipped so the opening alif reads as its name, 2 harakat. The flag
+  now survives the trip `words.json → LetterWord → Playable` — it used to be
+  dropped in `letterPlayables`, so setting it in a sheet did nothing.
 - A saakin letter was 0.7 — *less* than a plain letter. It carries no vowel but
   it is still held, and at a word end before the next it is held longer still.
 - **A madd is paid for once.** A dagger alif on a consonant is consonant + madd
@@ -230,8 +265,10 @@ Things that cost real debugging. Do not undo them without reading why.
   before it. `clusterWeight` carries a `maddCounted` flag for exactly this.
   Five phrases in lesson 5 were affected, and يَنۡهَىٰ / يَخۡشَىٰ in lesson 3.
 - The cheap check for this class of fault: run `clusterWeight` over every text
-  in every `words.json` and print any cluster over 6 harakat. Nothing legitimate
-  exceeds madd lazim, so anything that does is two rules firing at once.
+  in every `words.json` and print any cluster over 6 harakat, then read each
+  one. A *madd* over 6 is two rules firing at once. A **consonant carrying a
+  dagger alif before a shadda legitimately reads 7** — its own 1 plus a lāzim
+  6 — which is exactly the حَـٰجّ of أَتُحَـٰجُّوٓنِّى, and not a fault.
 - Re-cutting a clip invalidates any calibration measured against it — check
   before regenerating audio for a calibrated word.
 
@@ -390,6 +427,21 @@ map is merged *over*. Pressing Publish on it would make that explicit.)
 Lessons 3 and 4 are complete: every clip their `words.json` references is
 present on disk (67 and 69 respectively, checked mechanically). ٱلرَّحِيمِ is
 recorded — an earlier note here claiming otherwise was wrong.
+
+**Lesson 6 is built as text and unrecorded (2026-09-05).** `make-lesson6.mjs`
+reads `Word Tables/مد لازم صلة عوض +.docx` — five headed tables, read by their
+header rows since the columns differ — into 41 cards, draft, registered.
+The audio folder it reads is **`Audio/Audio - Madd lazim and silah`** (not yet
+created); every row derives a distinct filename, checked. Owed by the author
+before recording is judged: (1) whether حَـٰ in أَتُحَـٰجُّوٓنِّى should carry the
+maddah the Madinah Mushaf writes at 6:80 (أَتُحَـٰٓجُّوٓنِّى) — the sheet omits
+it and the engine reads it as lāzim regardless, but it is Quranic text and
+was not touched; (2) that ʿāriḍ and līn at 4 harakat is the recitation; (3)
+whether ٱلۡقُرۡءَانُ (badal, "2 ḥarakāt") is read at a stop — if so its alif is
+ʿāriḍ too and the row wants `waqf`. Side effects of the same day's work: the
+hamza-on-tatweel words in lessons 2 (#19) and 5 (#10–13) get their hamza step
+back, and lesson 5 #40's ṣilah yeh is no longer a separate step. No
+calibration exists on any of those.
 
 Open items:
 - **Class recordings**: built and rules-tested, but only the signed-out path
@@ -550,6 +602,12 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
   that could change hands silently would take its roster with it.
 
 ## 5. Next task
+
+**Lesson 6 audio.** Record into `Audio/Audio - Madd lazim and silah` with the
+intake tool, then `node scripts/make-lesson6.mjs` cuts 41 clips and lists
+anything unmatched. Row 11 (`ءَآلۡـٔـٰنَ`) and the ṣilah kubrā rows are the ones
+to listen back to first — they exercise the two rules added for this lesson.
+Publish from `#/admin` once reviewed; it landed as draft.
 
 **Maktab, before the first session (not code).** Print the Student Packet ×
 students and one each of the Teacher and Helper Sheets; import

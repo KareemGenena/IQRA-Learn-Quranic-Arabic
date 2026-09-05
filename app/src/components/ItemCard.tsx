@@ -145,6 +145,11 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }
             </button>
             <span id={tipId} role="tooltip" className={`meaning-tip ${showMeaning ? 'open' : ''}`}>
               {item.meaning}
+              {/* Only a quotation is somebody's translation; a location or a
+                  note is the author's own and carries no credit line. */}
+              {lesson.meaningSource && /[“"]/.test(item.meaning) && (
+                <span className="meaning-source">Translation: {lesson.meaningSource}</span>
+              )}
             </span>
           </>
         )}

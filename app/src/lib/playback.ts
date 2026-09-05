@@ -44,6 +44,7 @@ export async function resolveBoundaries(
   const bounds = await speechBounds(audioUrl(lesson, playable));
   return autoBoundaries(clusters, bounds.start, bounds.end, playable.silentClusters, {
     letterNames: playable.letterNames,
+    waqf: playable.waqf,
   });
 }
 

@@ -61,6 +61,10 @@ export interface LetterWord {
   /** Forms where the ٱ of ٱل is written but not pronounced, because
    *  something precedes it. Indexes into `forms`. */
   waslSilentIn?: number[];
+  /** Surah-opening disconnected letters (الٓمٓ), each read as its name. */
+  letterNames?: boolean;
+  /** Recorded at a stop: the last vowel is dropped and a madd before it lengthens. */
+  waqf?: boolean;
 }
 
 export interface Lesson {
@@ -82,6 +86,9 @@ export interface Lesson {
   quizHint?: string;
   /** Caption under each form on a card, e.g. ['alone', 'after وَ']. */
   formLabels?: string[];
+  /** Whose translation the (i) meanings quote, e.g. 'Sahih International'.
+   *  Shown under a meaning only when that meaning is a quotation. */
+  meaningSource?: string;
   words: SimpleWord[] | PairWord[] | LetterWord[];
 }
 
@@ -117,4 +124,6 @@ export interface Playable {
   /** Set for surah-opening disconnected letters (الٓمٓ، طه) — each character
    *  is read as its full letter name, which changes how long it is held. */
   letterNames?: boolean;
+  /** The clip ends at a stop — see WeightOptions.waqf. */
+  waqf?: boolean;
 }

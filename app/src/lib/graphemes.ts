@@ -31,14 +31,25 @@ export interface LetterCluster {
 
 const TATWEEL = 'ـ';
 /**
- * Every combining mark Quranic text uses: harakat/tanween/shadda/sukoon
+ * Every mark Quranic text puts ON a letter: harakat/tanween/shadda/sukoon
  * (U+064B–U+065F), the dagger alif (U+0670), and the Quranic annotation
  * marks (U+06D6–U+06ED) — which is where the Mushaf's own sukoon lives
- * (U+06E1, the small head of khah). Miss these and a mark is counted as a
- * letter.
+ * (U+06E1, the small head of khah). Miss one and it is counted as a letter:
+ * it gets its own highlight step and its own slice of the clip.
+ *
+ * Written as escapes so what the class holds can be read, and enumerated
+ * rather than spanned because the annotation range also holds things that
+ * are not marks: the end-of-āyah and sajdah SYMBOLS (U+06DD, U+06DE, U+06E9)
+ * stand alone and must never be glued to a letter.
+ *
+ * U+06E5 and U+06E6 — the small waw and small yeh — are in here on purpose.
+ * Unicode classes them as letters (Lm), so no "combining mark" test finds
+ * them, but the Mushaf uses them as a mark: the ṣilah vowel written over the
+ * pronoun's هـ (هُۥ، هِۦ). Left out, the tiny ۥ became a letter of its own,
+ * highlighted and timed on its own, and the هـ it belongs to never learned it
+ * carried a madd.
  */
-const MARK_RE =
-  /[ً-ٰٟۖ-ۜ۟-۪ۤۧۨ-ۭ]/;
+const MARK_RE = /[\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]/;
 /** Hamza written as a combining mark, which makes its seat a real consonant. */
 const HAMZA_MARK_RE = /[ٕٔ]/;
 const LAM = 'ل';
@@ -89,7 +100,13 @@ export function splitClusters(word: string): LetterCluster[] {
     // A space between words is not a letter — drop it so a phrase like
     // ثُمَّ ٱلنَّاسِ doesn't gain a phantom highlight step. Offsets are absolute
     // into the string, so the remaining clusters still measure correctly.
-    if (base.trim() === '') continue;
+    //
+    // Tested on the segment, not on `base`: a hamza seated on a tatweel (ـٔ)
+    // has no base letter either, and testing the base threw it away as a
+    // space — right after the branch above had gone to the trouble of keeping
+    // it. The hamza of ءَآلۡـٔـٰنَ and of خَطِيٓـَٔةً vanished from the highlight
+    // that way, and the dagger alif behind it landed on the lam instead.
+    if (text.trim() === '') continue;
 
     clusters.push({ text, start: seg.index, end: seg.index + text.length });
   }

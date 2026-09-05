@@ -63,6 +63,16 @@ const MADDAH = 'ٓ';
 const MADD_NATURAL = 2;
 const MADD_MUTTASIL = 4; // munfasil is the same length
 const MADD_LAZIM = 6;
+/**
+ * Read at a stop (waqf) the last letter loses its vowel, and a madd that now
+ * runs into that silence — a natural madd (ʿāriḍ li-s-sukūn) or a leen letter
+ * (madd līn) — may be held 2, 4 or 6. The author recites 4. A recording, not
+ * this number, is the authority; it only shapes the automatic estimate.
+ */
+const MADD_AT_WAQF = 4;
+/** The ṣilah vowel on the pronoun هُ / هِ, written as a small letter. */
+const SMALL_WAW = 'ۥ'; // U+06E5
+const SMALL_YEH = 'ۦ'; // U+06E6
 /** Extra time for the nasal hum — about two counts. */
 const GHUNNA_WEIGHT = 0.9;
 /**
@@ -178,6 +188,12 @@ export interface WeightOptions {
    * which is indistinguishable from an ordinary letter without this flag.
    */
   letterNames?: boolean;
+  /**
+   * The recording stops at the end of this text. Off by default: every
+   * single-word clip in lessons 1–5 ends at a stop too, and their timings were
+   * tuned without this — a lesson whose point IS the stop sets it per word.
+   */
+  waqf?: boolean;
 }
 
 export function clusterWeight(
@@ -196,10 +212,12 @@ export function clusterWeight(
   /** Has this cluster's madd already been paid for? See the dagger alif below. */
   let maddCounted = false;
 
-  if (base === 'ٱ' || (bare && base === 'ا' && !prev)) {
+  if (!opts.letterNames && (base === 'ٱ' || (bare && base === 'ا' && !prev))) {
     // Hamzat wasl — the "a" of ٱل. Never a madd: an elongation needs a vowel
     // before it, and this is the start of the word. (ٱ U+0671 always is one;
-    // a plain bare alif only when it opens the word.)
+    // a plain bare alif only when it opens the word.) Not in a run of letter
+    // names, though: the alif opening الٓمٓ is read as its name, "alif", and
+    // falls through to the letter-name rule below.
     w = 0.9;
   } else if (isMaddLetter(cluster, prev)) {
     // The letter IS the long vowel, so its whole duration is the madd.
@@ -222,6 +240,16 @@ export function clusterWeight(
     // which holds a natural madd of 2. Nothing in the text marks these, hence
     // the flag.
     w = MADD_NATURAL;
+  }
+
+  // Madd ṣilah: the pronoun هُ / هِ grows a long vowel that the Mushaf writes
+  // only as a small waw or yeh (هُۥ، هِۦ). Ṣughrā, between two voiced letters,
+  // is 2; kubrā, when the next word opens with a hamza, is 4 — and the Mushaf
+  // marks that one with a maddah as well. Never lazim: ṣilah exists only
+  // between vowels, so it is measured directly rather than through maddLength.
+  if ((marks.includes(SMALL_WAW) || marks.includes(SMALL_YEH)) && !maddCounted) {
+    w += isHamza(next) || marks.includes(MADDAH) ? MADD_MUTTASIL : MADD_NATURAL;
+    maddCounted = true;
   }
 
   if (marks.includes(SHADDA)) w += 0.8;
@@ -256,6 +284,41 @@ export function audibleIndices(clusters: LetterCluster[], silent: number[] = [])
 }
 
 /**
+ * Adjust the weights of a text read at a stop, in place.
+ *
+ * At waqf the final letter loses its vowel and is read saakin, and a madd
+ * that now meets silence is held longer: a natural madd becomes ʿāriḍ
+ * li-s-sukūn, a leen letter (وۡ / يۡ after a fatha) becomes madd līn. A final
+ * tanween fatḥ is read as an alif instead (ʿiwaḍ) — the Mushaf usually writes
+ * that alif (عَلِيمًا), in which case the alif cluster already carries the 2 and
+ * nothing is added; only a tanween with no alif after it earns one here.
+ *
+ * Works on the AUDIBLE clusters, since the weights are indexed that way.
+ */
+function applyWaqf(weights: number[], clusters: LetterCluster[]): void {
+  const n = clusters.length;
+  if (n === 0) return;
+  const last = clusters[n - 1];
+  const prev = clusters[n - 2];
+  const lastMarks = marksOf(last.text);
+
+  if (hasVowel(lastMarks) && !isMaddLetter(last, prev)) {
+    // Vowel dropped: held like any saakin letter, shadda still counts.
+    weights[n - 1] = 1.2 + (lastMarks.includes(SHADDA) ? 0.8 : 0);
+    if (lastMarks.includes(TANWEEN[0])) weights[n - 1] += MADD_NATURAL; // ʿiwaḍ, no alif written
+  }
+
+  if (!prev) return;
+  const before = clusters[n - 3];
+  const prevBase = baseChar(prev.text);
+  const prevMarks = marksOf(prev.text);
+  const beforeMarks = before ? marksOf(before.text) : [];
+  const leen = hasSukoon(prevMarks) && (prevBase === 'و' || prevBase === 'ي') && beforeMarks.includes(FATHA);
+  const natural = isMaddLetter(prev, before) && maddLength(prev, last) === MADD_NATURAL;
+  if (natural || leen) weights[n - 2] = MADD_AT_WAQF;
+}
+
+/**
  * Build boundary times (length = audible letter count + 1) by distributing
  * the speech span [speechStart, speechEnd] across the audible letters by
  * weight.
@@ -279,6 +342,7 @@ export function autoBoundaries(
       opts,
     ),
   );
+  if (opts.waqf) applyWaqf(weights, audible.map((i) => clusters[i]));
   const total = weights.reduce((a, b) => a + b, 0) || 1;
   const span = speechEnd - speechStart;
 
