@@ -222,6 +222,16 @@ const NAME_ENDS_IN: Record<string, string> = { ل: 'م', م: 'م', س: 'ن', ع:
  * one of ق ط ب ج د. Badged "Hidden Qalqala" by the generator.
  */
 const NAME_ENDS_IN_QALQALAH = new Set(['ص']);
+/**
+ * The hum between two letter NAMES is a merged doubled letter (لَامْ مِيم →
+ * لَامِّيم) or a hidden nūn (عَيْنْ صَاد), held like any such hum: about two
+ * harakat, not the bare 0.9. The name that ends in the nūn/mīm gives up part
+ * of its 6 for it — its closing consonant IS the start of the hum — so the
+ * violet begins as the hum begins rather than after the first name has had its
+ * full six. The author heard it start late and end early at 0.9 / 0.
+ */
+const NAME_HUM = GHUNNA_WEIGHT + 0.8;
+const NAME_HANDED = 0.8;
 function letterNameGhunna(base: string, nextBase: string): boolean {
   const end = NAME_ENDS_IN[base];
   if (!end || !nextBase) return false;
@@ -346,11 +356,12 @@ export function clusterParts(
     ghunna = GHUNNA_WEIGHT + handedOver(prev);
     w += ghunna;
   } else if (opts.letterNames && prev && letterNameGhunna(baseChar(prev.text), base)) {
-    ghunna = GHUNNA_WEIGHT;
+    ghunna = NAME_HUM;
     w += ghunna;
   }
   // …and the nūn/tanween/mīm whose hum moved on keeps only its onset.
   if (next && ghunnaInto(cluster, next)) w -= handedOver(cluster);
+  else if (opts.letterNames && next && letterNameGhunna(base, baseChar(next.text))) w -= NAME_HANDED;
   if (QALQALAH.has(base) && hasSukoon(marks)) w += QALQALAH_WEIGHT;
   else if (opts.letterNames && NAME_ENDS_IN_QALQALAH.has(base)) w += QALQALAH_WEIGHT;
 

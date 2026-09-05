@@ -280,9 +280,14 @@ Things that cost real debugging. Do not undo them without reading why.
   letter only the +0.9 left the nūn holding a third of the hum — the author
   saw the highlight "half on each letter" and asked for all of it on the
   second. A doubled نّ / مّ hums on itself (its sākin half + hum, then the
-  vowel). The hidden nūn/mīm ending a letter NAME follows the same rule: in
-  الٓمٓ the hum lands on the مٓ. It is the rule for the nūn sākin and tanween
-  lesson that follows.
+  vowel). The hidden nūn/mīm ending a letter NAME follows the same rule with
+  its own numbers: the hum between two names is a merged doubled letter
+  (لَامْ مِيم) or a hidden nūn (عَيْنْ صَاد), so it is `NAME_HUM` 1.7, and the
+  first name gives up `NAME_HANDED` 0.8 of its six because its closing
+  consonant *is* the start of the hum — الٓمٓ is ا 2 · ل 5.2 · م 7.7 (hum
+  1.7). At +0.9 with nothing handed over the author heard the violet start
+  late and end early. It is the rule for the nūn sākin and tanween lesson
+  that follows.
 - **The hum has its own colour.** `clusterParts()` returns each letter's
   weight and the `ghunna` slice at its start; `ghunnaShares()` turns that into
   a per-letter fraction, `playWithHighlights` reports `'ghunna'` as the phase
