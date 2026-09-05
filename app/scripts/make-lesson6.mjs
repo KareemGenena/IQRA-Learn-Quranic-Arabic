@@ -87,7 +87,7 @@ const SECTIONS = [
     id: 'badal-iwad-lin',
     title: 'Madd Badal, ʿIwaḍ and Līn',
     titleArabic: 'مد البدل والعوض واللين',
-    hint: 'Badal: a hamza before its own long vowel — two harakat. ʿIwaḍ appears when you stop at a tanween fatḥ and read it as an alif — two harakat. Līn is a و or ي with sukoon after a fatha — two harakat when recitation continues; two, four or six at waqf (see madd ʿāriḍ).',
+    hint: 'Badal: a hamza followed by a natural madd — two harakat. ʿIwaḍ appears when you stop at a tanween fatḥ and read it as an alif — two harakat. Līn is a و or ي with sukoon after a fatha — two harakat when recitation continues; two, four or six at waqf (see madd ʿāriḍ).',
     /** Rows typed ʿāriḍ belong to the section below, not here. */
     exclude: /[āa]ri[dḍ]/i,
   },
@@ -303,7 +303,11 @@ for (const block of blocks) {
     const cleaned = clean(raw);
     const badges = [];
     for (const [re, label] of BADGES) if (re.test(type) && !badges.includes(label)) badges.push(label);
-    badges.push(...lengthBadge(length));
+    // Līn in this section is heard as recitation CONTINUES — two harakat, no
+    // stop — so its "2, 4 or 6 at waqf" cell is read as the two. The stop is
+    // practised in the ʿāriḍ section, where these same words appear again.
+    const linHere = section.id === 'badal-iwad-lin' && /l[īi]n/i.test(type);
+    badges.push(...(linHere ? ['2 ḥarakāt'] : lengthBadge(length)));
     const lam = lamBadge(cleaned);
     if (lam) badges.push(lam);
     const ghunna = ghunnaBadge(cleaned);
@@ -313,7 +317,7 @@ for (const block of blocks) {
     const entry = { id, section: section.id, text: cleaned, audio: `word${String(id).padStart(2, '0')}.wav`, timings: null, badges };
     if (meaning) entry.meaning = meaning;
     if (section.letterNames) entry.letterNames = true;
-    if (/waqf/i.test(length)) entry.waqf = true;
+    if (/waqf/i.test(length) && !linHere) entry.waqf = true;
     words.push(entry);
   }
 }
@@ -345,7 +349,7 @@ for (const row of aridRows) {
       text: cleaned,
       audio: `word${String(id).padStart(2, '0')}.wav`,
       timings: null,
-      badges: ['Madd ʿĀriḍ', `${n} ḥarakāt`],
+      badges: ['Madd ʿĀriḍ', `${n} ḥarakāt`, 'At waqf'],
       waqf: true,
       waqfMadd: n,
       // The last vowel is greyed: it is written, and at the stop it is not said.

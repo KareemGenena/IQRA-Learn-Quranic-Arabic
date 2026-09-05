@@ -438,6 +438,14 @@ this time the corrupted records are children's.
 - A fresh `[]` as a default prop re-triggers layout effects forever — use a
   module-level constant.
 
+**Wording the learner reads**
+- **Never say "vowel" for a madd.** A long vowel is a *madd* — "natural madd"
+  where the length matters (ṣilah *grows a natural madd*, badal is *a hamza
+  followed by a natural madd*). "Vowel" is reserved for the short one: a
+  fatha, damma or kasra, the thing a stop drops from the last letter. This
+  applies to blurbs, section hints, badges and anything else a learner sees;
+  code comments may say what they like.
+
 **Working style the author prefers**
 - Verify behaviour, don't assert it. Mechanical checks over spot-checks.
 - Say plainly what was not verified and why.
@@ -639,7 +647,13 @@ intake tool: the sheet's 40 words as they come, plus four extra slot lines —
 `ٱلۡقُرۡءَانُ وقف`, `ٱلرَّحِيمِ وقف`, `خَوۡفٍ وقف`, `ٱلصَّيۡفِ وقف` — each with expect
 set to 3 and each said at the stop three ways, 2 then 4 then 6. Then
 `node scripts/make-lesson6.mjs` cuts 52 clips and lists anything unmatched or
-any ʿāriḍ take whose three pieces do not lengthen in order. Listen back first
+any ʿāriḍ take whose three pieces do not lengthen in order. Two things about
+the intake list: **drop the plain `ٱلرَّحِيمِ` line** the sheet supplies — that
+word lives only in the ʿāriḍ section now, so a single-reading clip of it would
+match no card; and the sheet's `أَتُحَـٰجُّوٓنِّى` still lacks the maddah the
+generator adds — harmless, since filenames are de-diacritized and the
+generator's correction is what reaches the app, but recite it as the lāzim it
+is. Adding the maddah in Word turns the correction into a no-op, which is fine. Listen back first
 to row 11 (`ءَآلۡـٔـٰنَ`), the ṣilah kubrā rows, and one ʿāriḍ triple — they
 exercise the rules added for this lesson. Publish from `#/admin` once
 reviewed; it landed as draft.

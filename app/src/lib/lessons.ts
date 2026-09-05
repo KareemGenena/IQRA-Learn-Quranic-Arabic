@@ -71,7 +71,7 @@ export const LESSONS: LessonMeta[] = [
     id: 6,
     title: 'Madd Lāzim, Ṣilah and More',
     titleArabic: 'المد اللازم ومد الصلة وغيرهما',
-    blurb: 'The longest madd, the pronoun that grows a vowel, and what happens to a madd when you stop.',
+    blurb: 'The longest madd, the pronoun that grows a natural madd, and what happens to a madd when you stop.',
   },
 ];
 

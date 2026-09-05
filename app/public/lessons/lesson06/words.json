@@ -35,7 +35,7 @@
       "id": "badal-iwad-lin",
       "title": "Madd Badal, ʿIwaḍ and Līn",
       "titleArabic": "مد البدل والعوض واللين",
-      "hint": "Badal: a hamza before its own long vowel — two harakat. ʿIwaḍ appears when you stop at a tanween fatḥ and read it as an alif — two harakat. Līn is a و or ي with sukoon after a fatha — two harakat when recitation continues; two, four or six at waqf (see madd ʿāriḍ)."
+      "hint": "Badal: a hamza followed by a natural madd — two harakat. ʿIwaḍ appears when you stop at a tanween fatḥ and read it as an alif — two harakat. Līn is a و or ي with sukoon after a fatha — two harakat when recitation continues; two, four or six at waqf (see madd ʿāriḍ)."
     },
     {
       "id": "arid",
@@ -494,11 +494,9 @@
       "timings": null,
       "badges": [
         "Madd Līn",
-        "2–6 ḥarakāt",
-        "At waqf"
+        "2 ḥarakāt"
       ],
-      "meaning": "“fear” — Quraysh 106:4",
-      "waqf": true
+      "meaning": "“fear” — Quraysh 106:4"
     },
     {
       "id": 40,
@@ -508,12 +506,10 @@
       "timings": null,
       "badges": [
         "Madd Līn",
-        "2–6 ḥarakāt",
-        "At waqf",
+        "2 ḥarakāt",
         "Sun ل"
       ],
-      "meaning": "“the summer” — Quraysh 106:2",
-      "waqf": true
+      "meaning": "“the summer” — Quraysh 106:2"
     },
     {
       "id": 41,
@@ -523,7 +519,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "2 ḥarakāt"
+        "2 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 2,
@@ -538,7 +535,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "4 ḥarakāt"
+        "4 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 4,
@@ -553,7 +551,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "6 ḥarakāt"
+        "6 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 6,
@@ -568,7 +567,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "2 ḥarakāt"
+        "2 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 2,
@@ -583,7 +583,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "4 ḥarakāt"
+        "4 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 4,
@@ -598,7 +599,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "6 ḥarakāt"
+        "6 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 6,
@@ -613,7 +615,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "2 ḥarakāt"
+        "2 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 2,
@@ -628,7 +631,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "4 ḥarakāt"
+        "4 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 4,
@@ -643,7 +647,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "6 ḥarakāt"
+        "6 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 6,
@@ -658,7 +663,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "2 ḥarakāt"
+        "2 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 2,
@@ -673,7 +679,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "4 ḥarakāt"
+        "4 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 4,
@@ -688,7 +695,8 @@
       "timings": null,
       "badges": [
         "Madd ʿĀriḍ",
-        "6 ḥarakāt"
+        "6 ḥarakāt",
+        "At waqf"
       ],
       "waqf": true,
       "waqfMadd": 6,
