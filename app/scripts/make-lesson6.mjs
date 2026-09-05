@@ -103,34 +103,14 @@ const ARID = {
 };
 
 /**
- * Corrections to the sheet, applied to ONE cell each and reported on every run,
- * so the fix stays visible and the source document is never edited behind the
- * author's back (the lesson-2 pattern). Spelled out by codepoint because the
- * mark order in the document is not what you would type.
+ * Corrections to the sheet — none at present. The pattern, when one is needed:
+ * apply to ONE cell, spelled out by codepoint from the document itself, and
+ * report on every run so the source is never edited behind the author's back
+ * (see make-lesson2.mjs). The maddah on حَـٰٓ lived here for a day before the
+ * author had it put in the sheet.
  */
-const cp = (...codes) => String.fromCodePoint(...codes);
-const CORRECTIONS = [
-  {
-    // أَتُحَـٰجُّوٓنِّى — the Madinah Mushaf (6:80) writes a maddah over the dagger
-    // alif of حَـٰٓ: the alif runs into the shadda of the jīm, madd lāzim. The
-    // sheet omitted it; the author confirmed on 2026-09-05.
-    // Codepoints as the document actually holds them — the jīm's shadda comes
-    // before its damma, which is not the order you would type.
-    find: cp(0x623, 0x64e, 0x62a, 0x64f, 0x62d, 0x64e, 0x640, 0x670, 0x62c, 0x651, 0x64f, 0x648, 0x653, 0x646, 0x650, 0x651, 0x649),
-    replace: cp(0x623, 0x64e, 0x62a, 0x64f, 0x62d, 0x64e, 0x640, 0x670, 0x653, 0x62c, 0x651, 0x64f, 0x648, 0x653, 0x646, 0x650, 0x651, 0x649),
-    why: 'maddah over the dagger alif of حَـٰٓ — madd lāzim, as the Mushaf writes it',
-  },
-];
 const applied = [];
-const correct = (s) => {
-  for (const c of CORRECTIONS) {
-    if (s === c.find) {
-      applied.push(`${c.find} → ${c.replace}  (${c.why})`);
-      return c.replace;
-    }
-  }
-  return s;
-};
+const correct = (s) => s;
 
 /**
  * The Type / Name column, turned into chips.
@@ -303,11 +283,7 @@ for (const block of blocks) {
     const cleaned = clean(raw);
     const badges = [];
     for (const [re, label] of BADGES) if (re.test(type) && !badges.includes(label)) badges.push(label);
-    // Līn in this section is heard as recitation CONTINUES — two harakat, no
-    // stop — so its "2, 4 or 6 at waqf" cell is read as the two. The stop is
-    // practised in the ʿāriḍ section, where these same words appear again.
-    const linHere = section.id === 'badal-iwad-lin' && /l[īi]n/i.test(type);
-    badges.push(...(linHere ? ['2 ḥarakāt'] : lengthBadge(length)));
+    badges.push(...lengthBadge(length));
     const lam = lamBadge(cleaned);
     if (lam) badges.push(lam);
     const ghunna = ghunnaBadge(cleaned);
@@ -317,7 +293,7 @@ for (const block of blocks) {
     const entry = { id, section: section.id, text: cleaned, audio: `word${String(id).padStart(2, '0')}.wav`, timings: null, badges };
     if (meaning) entry.meaning = meaning;
     if (section.letterNames) entry.letterNames = true;
-    if (/waqf/i.test(length) && !linHere) entry.waqf = true;
+    if (/waqf/i.test(length)) entry.waqf = true;
     words.push(entry);
   }
 }
@@ -327,9 +303,13 @@ sections.push({ id: ARID.id, title: ARID.title, titleArabic: ARID.titleArabic, h
 let aridRows;
 if (aridTable) {
   const col = columns(aridTable.rows[0]);
+  // The Word cell reads "<word> وقف": the tag tells the intake tool what to
+  // name the take, and is not part of the word. It comes off for the card and
+  // goes back on for the filename.
+  const untag = (s) => s.replace(new RegExp('\\s*' + WAQF_TAG + '\\s*$'), '').trim();
   aridRows = aridTable.rows
     .slice(1)
-    .map((cells) => ({ raw: (cells[col.word] ?? '').trim(), meaning: col.meaning >= 0 ? cells[col.meaning]?.trim() : undefined }))
+    .map((cells) => ({ raw: untag(cells[col.word] ?? ''), meaning: col.meaning >= 0 ? cells[col.meaning]?.trim() : undefined }))
     .filter((r) => r.raw);
 } else {
   aridRows = aridSource;

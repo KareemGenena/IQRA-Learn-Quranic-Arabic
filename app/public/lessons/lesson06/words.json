@@ -53,6 +53,7 @@
       "timings": null,
       "badges": [
         "Muthaqqal",
+        "6 ḥarakāt",
         "Sun ل"
       ],
       "meaning": "“those who are astray” — Al‑Fātiḥah 1:7"
@@ -65,6 +66,7 @@
       "timings": null,
       "badges": [
         "Muthaqqal",
+        "6 ḥarakāt",
         "Moon ل"
       ],
       "meaning": "“the Inevitable Reality”, One of the names of the Day of Judgment. — Al‑Ḥāqqah 69:1"
@@ -77,6 +79,7 @@
       "timings": null,
       "badges": [
         "Muthaqqal",
+        "6 ḥarakāt",
         "Sun ل"
       ],
       "meaning": "“the Deafening Blast”, One of the names of the Day of Judgment. — ʿAbasa 80:33"
@@ -88,7 +91,8 @@
       "audio": "word04.wav",
       "timings": null,
       "badges": [
-        "Muthaqqal"
+        "Muthaqqal",
+        "6 ḥarakāt"
       ],
       "meaning": "“moving creature” — Al‑Baqarah 2:164"
     },
@@ -100,6 +104,7 @@
       "timings": null,
       "badges": [
         "Muthaqqal",
+        "6 ḥarakāt",
         "Ghunna"
       ],
       "meaning": "“jinn” — Ar‑Raḥmān 55:39"
@@ -112,6 +117,7 @@
       "timings": null,
       "badges": [
         "Muthaqqal",
+        "6 ḥarakāt",
         "Ghunna"
       ],
       "meaning": "“Do you argue with me” — Al‑Anʿām 6:80"
@@ -124,6 +130,7 @@
       "timings": null,
       "badges": [
         "Muthaqqal",
+        "6 ḥarakāt",
         "Ghunna"
       ],
       "meaning": "“you order me [to worship]” — Az‑Zumar 39:64"
@@ -135,7 +142,8 @@
       "audio": "word08.wav",
       "timings": null,
       "badges": [
-        "Muthaqqal"
+        "Muthaqqal",
+        "6 ḥarakāt"
       ],
       "meaning": "“lined up [for sacrifice]” — Al‑Ḥajj 22:36"
     },
@@ -146,7 +154,8 @@
       "audio": "word09.wav",
       "timings": null,
       "badges": [
-        "Muthaqqal"
+        "Muthaqqal",
+        "6 ḥarakāt"
       ],
       "meaning": "“exclusively” — Al‑Anfāl 8:25"
     },
@@ -158,6 +167,7 @@
       "timings": null,
       "badges": [
         "Muthaqqal",
+        "6 ḥarakāt",
         "Sun ل",
         "Ghunna"
       ],
@@ -170,7 +180,8 @@
       "audio": "word11.wav",
       "timings": null,
       "badges": [
-        "Mukhaffaf"
+        "Mukhaffaf",
+        "6 ḥarakāt"
       ],
       "meaning": "“Now?” — Yūnus 10:51"
     },
@@ -181,6 +192,7 @@
       "audio": "word12.wav",
       "timings": null,
       "badges": [
+        "Muthaqqal",
         "Hidden Ghunna"
       ],
       "meaning": "Opens Al‑Baqarah 2:1",
@@ -193,6 +205,7 @@
       "audio": "word13.wav",
       "timings": null,
       "badges": [
+        "Muthaqqal",
         "Hidden Ghunna"
       ],
       "meaning": "Opens Al‑Aʿrāf 7:1",
@@ -204,7 +217,9 @@
       "text": "الٓر",
       "audio": "word14.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Mukhaffaf"
+      ],
       "meaning": "Opens Yūnus 10:1",
       "letterNames": true
     },
@@ -215,6 +230,7 @@
       "audio": "word15.wav",
       "timings": null,
       "badges": [
+        "Muthaqqal",
         "Hidden Ghunna"
       ],
       "meaning": "Opens Ar‑Raʿd 13:1",
@@ -227,6 +243,7 @@
       "audio": "word16.wav",
       "timings": null,
       "badges": [
+        "Mukhaffaf",
         "Hidden Ikhfaa"
       ],
       "meaning": "Opens Maryam 19:1",
@@ -239,6 +256,7 @@
       "audio": "word17.wav",
       "timings": null,
       "badges": [
+        "Muthaqqal",
         "Hidden Ghunna"
       ],
       "meaning": "Opens Ash‑Shuʿarāʾ 26:1",
@@ -250,7 +268,9 @@
       "text": "طسٓ",
       "audio": "word18.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Mukhaffaf"
+      ],
       "meaning": "Opens An‑Naml 27:1",
       "letterNames": true
     },
@@ -260,7 +280,9 @@
       "text": "يسٓ",
       "audio": "word19.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Mukhaffaf"
+      ],
       "meaning": "Opens Yā‑Sīn 36:1",
       "letterNames": true
     },
@@ -270,7 +292,10 @@
       "text": "صٓ",
       "audio": "word20.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Mukhaffaf",
+        "6 ḥarakāt"
+      ],
       "meaning": "Opens Ṣād 38:1",
       "letterNames": true
     },
@@ -281,6 +306,7 @@
       "audio": "word21.wav",
       "timings": null,
       "badges": [
+        "Mukhaffaf",
         "Hidden Ikhfaa"
       ],
       "meaning": "Opens Ash‑Shūrā 42:1–2",
@@ -292,7 +318,10 @@
       "text": "قٓ",
       "audio": "word22.wav",
       "timings": null,
-      "badges": [],
+      "badges": [
+        "Mukhaffaf",
+        "6 ḥarakāt"
+      ],
       "meaning": "Opens Qāf 50:1",
       "letterNames": true
     },
@@ -303,7 +332,8 @@
       "audio": "word23.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maḍmūma"
+        "Hāʾ maḍmūma",
+        "2 ḥarakāt"
       ],
       "meaning": "“his wealth and what he gained” — Al‑Masad 111:2"
     },
@@ -315,6 +345,7 @@
       "timings": null,
       "badges": [
         "Hāʾ maḍmūma",
+        "2 ḥarakāt",
         "Sun ل"
       ],
       "meaning": "“To Him belongs the dominion of the heavens” — Al‑Ḥadīd 57:2"
@@ -327,6 +358,7 @@
       "timings": null,
       "badges": [
         "Hāʾ maḍmūma",
+        "2 ḥarakāt",
         "Sun ل",
         "Ghunna"
       ],
@@ -339,7 +371,8 @@
       "audio": "word26.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maḍmūma"
+        "Hāʾ maḍmūma",
+        "2 ḥarakāt"
       ],
       "meaning": "“and determined for it phases” — Yūnus 10:5"
     },
@@ -351,6 +384,7 @@
       "timings": null,
       "badges": [
         "Hāʾ maksūra",
+        "2 ḥarakāt",
         "Moon ل"
       ],
       "meaning": "“through whom you ask one another, and the wombs” — An‑Nisāʾ 4:1"
@@ -362,7 +396,8 @@
       "audio": "word28.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maksūra"
+        "Hāʾ maksūra",
+        "2 ḥarakāt"
       ],
       "meaning": "“and in His mercy — in that let them rejoice” — Yūnus 10:58"
     },
@@ -373,7 +408,8 @@
       "audio": "word29.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maksūra"
+        "Hāʾ maksūra",
+        "2 ḥarakāt"
       ],
       "meaning": "“and His books and His messengers” — Al‑Baqarah 2:285"
     },
@@ -384,7 +420,8 @@
       "audio": "word30.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maḍmūma"
+        "Hāʾ maḍmūma",
+        "4 ḥarakāt"
       ],
       "meaning": "“that his wealth will make him immortal” — Al‑Humazah 104:3"
     },
@@ -396,6 +433,7 @@
       "timings": null,
       "badges": [
         "Hāʾ maḍmūma",
+        "4 ḥarakāt",
         "Sun ل",
         "Ghunna"
       ],
@@ -409,6 +447,7 @@
       "timings": null,
       "badges": [
         "Hāʾ maḍmūma",
+        "4 ḥarakāt",
         "Ghunna"
       ],
       "meaning": "“He is sufficient for him. Indeed…” — Aṭ‑Ṭalāq 65:3"
@@ -420,7 +459,8 @@
       "audio": "word33.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maksūra"
+        "Hāʾ maksūra",
+        "4 ḥarakāt"
       ],
       "meaning": "“of His knowledge except for what He wills” — Al‑Baqarah 2:255"
     },
@@ -431,7 +471,8 @@
       "audio": "word34.wav",
       "timings": null,
       "badges": [
-        "Hāʾ maksūra"
+        "Hāʾ maksūra",
+        "4 ḥarakāt"
       ],
       "meaning": "“other than Him any allies” — Al‑Aʿrāf 7:3"
     },
@@ -443,6 +484,7 @@
       "timings": null,
       "badges": [
         "Hāʾ maksūra",
+        "4 ḥarakāt",
         "Moon ل"
       ],
       "meaning": "“by it except the defiantly disobedient” — Al‑Baqarah 2:26"
@@ -455,6 +497,7 @@
       "timings": null,
       "badges": [
         "Hāʾ maksūra",
+        "4 ḥarakāt",
         "Ghunna"
       ],
       "meaning": "“of His bounty. Indeed…” — An‑Nisāʾ 4:32"
