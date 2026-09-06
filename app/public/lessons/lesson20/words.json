@@ -1,0 +1,489 @@
+{
+  "lesson": 20,
+  "title": "The Letters — ب to ز",
+  "titleArabic": "الحروف ١",
+  "kind": "letters",
+  "audioPath": "audio/lesson20/",
+  "imagePath": "images/kids/",
+  "perPage": 1,
+  "sections": [
+    {
+      "id": "letters",
+      "title": "The Letters",
+      "titleArabic": "الحروف",
+      "hint": "Its name, then a, u, i — then the letter with a sukoon after نَ."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "letters",
+      "letter": "ب",
+      "name": "بَاء",
+      "makhraj": "Lips الشفتان",
+      "mnemonic": "A boat, with one bubble below it",
+      "image": "ب.png",
+      "badges": [
+        "Lips"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "بَاء",
+          "audio": "word01a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَ",
+          "audio": "word01b.wav",
+          "timings": null
+        },
+        {
+          "text": "بُ",
+          "audio": "word01c.wav",
+          "timings": null
+        },
+        {
+          "text": "بِ",
+          "audio": "word01d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَبۡ",
+          "audio": "word01e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 2,
+      "section": "letters",
+      "letter": "ت",
+      "name": "تَاء",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "The same boat, with two bubbles above it",
+      "image": "ت.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "تَاء",
+          "audio": "word02a.wav",
+          "timings": null
+        },
+        {
+          "text": "تَ",
+          "audio": "word02b.wav",
+          "timings": null
+        },
+        {
+          "text": "تُ",
+          "audio": "word02c.wav",
+          "timings": null
+        },
+        {
+          "text": "تِ",
+          "audio": "word02d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَتۡ",
+          "audio": "word02e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 3,
+      "section": "letters",
+      "letter": "ث",
+      "name": "ثَاء",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "The same boat, with three bubbles above it",
+      "image": "ث.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "ثَاء",
+          "audio": "word03a.wav",
+          "timings": null
+        },
+        {
+          "text": "ثَ",
+          "audio": "word03b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُ",
+          "audio": "word03c.wav",
+          "timings": null
+        },
+        {
+          "text": "ثِ",
+          "audio": "word03d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَثۡ",
+          "audio": "word03e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 4,
+      "section": "letters",
+      "letter": "ج",
+      "name": "جِيم",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "A crescent moon on its back, one bubble inside it",
+      "image": "ج.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "جِيم",
+          "audio": "word04a.wav",
+          "timings": null
+        },
+        {
+          "text": "جَ",
+          "audio": "word04b.wav",
+          "timings": null
+        },
+        {
+          "text": "جُ",
+          "audio": "word04c.wav",
+          "timings": null
+        },
+        {
+          "text": "جِ",
+          "audio": "word04d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَجۡ",
+          "audio": "word04e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 5,
+      "section": "letters",
+      "letter": "ح",
+      "name": "حَاء",
+      "makhraj": "Throat الحلق",
+      "mnemonic": "The same crescent moon, empty",
+      "image": "ح.png",
+      "badges": [
+        "Throat"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "حَاء",
+          "audio": "word05a.wav",
+          "timings": null
+        },
+        {
+          "text": "حَ",
+          "audio": "word05b.wav",
+          "timings": null
+        },
+        {
+          "text": "حُ",
+          "audio": "word05c.wav",
+          "timings": null
+        },
+        {
+          "text": "حِ",
+          "audio": "word05d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَحۡ",
+          "audio": "word05e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 6,
+      "section": "letters",
+      "letter": "خ",
+      "name": "خَاء",
+      "makhraj": "Throat الحلق",
+      "mnemonic": "The same crescent moon, one bubble above it",
+      "image": "خ.png",
+      "badges": [
+        "Throat"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "خَاء",
+          "audio": "word06a.wav",
+          "timings": null
+        },
+        {
+          "text": "خَ",
+          "audio": "word06b.wav",
+          "timings": null
+        },
+        {
+          "text": "خُ",
+          "audio": "word06c.wav",
+          "timings": null
+        },
+        {
+          "text": "خِ",
+          "audio": "word06d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَخۡ",
+          "audio": "word06e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 7,
+      "section": "letters",
+      "letter": "د",
+      "name": "دَال",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "A fishing hook resting on the sand",
+      "image": "د.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "دَال",
+          "audio": "word07a.wav",
+          "timings": null
+        },
+        {
+          "text": "دَ",
+          "audio": "word07b.wav",
+          "timings": null
+        },
+        {
+          "text": "دُ",
+          "audio": "word07c.wav",
+          "timings": null
+        },
+        {
+          "text": "دِ",
+          "audio": "word07d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَدۡ",
+          "audio": "word07e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 8,
+      "section": "letters",
+      "letter": "ذ",
+      "name": "ذَال",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "The same hook on the sand, one bubble above it",
+      "image": "ذ.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "ذَال",
+          "audio": "word08a.wav",
+          "timings": null
+        },
+        {
+          "text": "ذَ",
+          "audio": "word08b.wav",
+          "timings": null
+        },
+        {
+          "text": "ذُ",
+          "audio": "word08c.wav",
+          "timings": null
+        },
+        {
+          "text": "ذِ",
+          "audio": "word08d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَذۡ",
+          "audio": "word08e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 9,
+      "section": "letters",
+      "letter": "ر",
+      "name": "رَاء",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "The same hook, hanging below on its line",
+      "image": "ر.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "رَاء",
+          "audio": "word09a.wav",
+          "timings": null
+        },
+        {
+          "text": "رَ",
+          "audio": "word09b.wav",
+          "timings": null
+        },
+        {
+          "text": "رُ",
+          "audio": "word09c.wav",
+          "timings": null
+        },
+        {
+          "text": "رِ",
+          "audio": "word09d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَرۡ",
+          "audio": "word09e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 10,
+      "section": "letters",
+      "letter": "ز",
+      "name": "زَاي",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "The hanging hook, one bubble above it",
+      "image": "ز.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "زَاي",
+          "audio": "word10a.wav",
+          "timings": null
+        },
+        {
+          "text": "زَ",
+          "audio": "word10b.wav",
+          "timings": null
+        },
+        {
+          "text": "زُ",
+          "audio": "word10c.wav",
+          "timings": null
+        },
+        {
+          "text": "زِ",
+          "audio": "word10d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَزۡ",
+          "audio": "word10e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    }
+  ]
+}

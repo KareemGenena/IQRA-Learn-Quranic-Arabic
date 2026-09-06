@@ -1,9 +1,9 @@
-import { orderedLessons } from '../lib/lessons';
+import { LESSONS, orderedLessons } from '../lib/lessons';
 import { canSeeLesson, lessonStatus } from '../lib/appConfig';
 import type { AppConfig } from '../lib/appConfig';
 
 export function HomePage({ config, admin }: { config: AppConfig; admin: boolean }) {
-  const lessons = orderedLessons().filter((l) => canSeeLesson(config, l.id, admin));
+  const lessons = orderedLessons(LESSONS, 'adults').filter((l) => canSeeLesson(config, l.id, admin));
 
   return (
     <main className="home">

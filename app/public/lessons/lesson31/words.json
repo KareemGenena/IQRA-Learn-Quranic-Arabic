@@ -1,0 +1,202 @@
+{
+  "lesson": 31,
+  "title": "The Alphabet Song — the Names",
+  "titleArabic": "أنشودة الحروف — الأسماء",
+  "kind": "letters",
+  "audioPath": "audio/lesson31/",
+  "imagePath": "images/kids/",
+  "perPage": 1,
+  "sections": [
+    {
+      "id": "song",
+      "title": "The Alphabet Song — the Names",
+      "titleArabic": "أنشودة الحروف — الأسماء",
+      "hint": "The 28 letters in their usual order. Sing along, and press pause whenever you like."
+    }
+  ],
+  "song": {
+    "steps": 28,
+    "letters": [
+      {
+        "letter": "أ",
+        "name": "أَلِف",
+        "group": "lighthouse",
+        "image": "ء.png"
+      },
+      {
+        "letter": "ب",
+        "name": "بَاء",
+        "group": "boat",
+        "image": "ب.png"
+      },
+      {
+        "letter": "ت",
+        "name": "تَاء",
+        "group": "boat",
+        "image": "ت.png"
+      },
+      {
+        "letter": "ث",
+        "name": "ثَاء",
+        "group": "boat",
+        "image": "ث.png"
+      },
+      {
+        "letter": "ج",
+        "name": "جِيم",
+        "group": "crescent moon",
+        "image": "ج.png"
+      },
+      {
+        "letter": "ح",
+        "name": "حَاء",
+        "group": "crescent moon",
+        "image": "ح.png"
+      },
+      {
+        "letter": "خ",
+        "name": "خَاء",
+        "group": "crescent moon",
+        "image": "خ.png"
+      },
+      {
+        "letter": "د",
+        "name": "دَال",
+        "group": "hook on the sand",
+        "image": "د.png"
+      },
+      {
+        "letter": "ذ",
+        "name": "ذَال",
+        "group": "hook on the sand",
+        "image": "ذ.png"
+      },
+      {
+        "letter": "ر",
+        "name": "رَاء",
+        "group": "hanging hook",
+        "image": "ر.png"
+      },
+      {
+        "letter": "ز",
+        "name": "زَاي",
+        "group": "hanging hook",
+        "image": "ز.png"
+      },
+      {
+        "letter": "س",
+        "name": "سِين",
+        "group": "sea snake",
+        "image": "س.png"
+      },
+      {
+        "letter": "ش",
+        "name": "شِين",
+        "group": "sea snake",
+        "image": "ش.png"
+      },
+      {
+        "letter": "ص",
+        "name": "صَاد",
+        "group": "whale",
+        "image": "ص.png"
+      },
+      {
+        "letter": "ض",
+        "name": "ضَاد",
+        "group": "whale",
+        "image": "ض.png"
+      },
+      {
+        "letter": "ط",
+        "name": "طَاء",
+        "group": "spouting whale",
+        "image": "ط.png"
+      },
+      {
+        "letter": "ظ",
+        "name": "ظَاء",
+        "group": "spouting whale",
+        "image": "ظ.png"
+      },
+      {
+        "letter": "ع",
+        "name": "عَيۡن",
+        "group": "seaweed frond",
+        "image": "ع.png"
+      },
+      {
+        "letter": "غ",
+        "name": "غَيۡن",
+        "group": "seaweed frond",
+        "image": "غ.png"
+      },
+      {
+        "letter": "ف",
+        "name": "فَاء",
+        "group": "fishing net",
+        "image": "ف.png"
+      },
+      {
+        "letter": "ق",
+        "name": "قَاف",
+        "group": "fishing net",
+        "image": "ق.png"
+      },
+      {
+        "letter": "ك",
+        "name": "كَاف",
+        "group": "deck chair",
+        "image": "ك.png"
+      },
+      {
+        "letter": "ل",
+        "name": "لَام",
+        "group": "snorkel",
+        "image": "ل.png"
+      },
+      {
+        "letter": "م",
+        "name": "مِيم",
+        "group": "buoy",
+        "image": "م.png"
+      },
+      {
+        "letter": "ن",
+        "name": "نُون",
+        "group": "half-shell",
+        "image": "ن.png"
+      },
+      {
+        "letter": "هـ",
+        "name": "هَاء",
+        "group": "knot",
+        "image": "ه.png"
+      },
+      {
+        "letter": "و",
+        "name": "وَاو",
+        "group": "tadpole",
+        "image": "و.png"
+      },
+      {
+        "letter": "ى",
+        "name": "يَاء",
+        "group": "duck",
+        "image": "ى.png"
+      }
+    ]
+  },
+  "words": [
+    {
+      "id": 1,
+      "section": "song",
+      "text": "أ ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن هـ و ى",
+      "audio": "song-names.wav",
+      "timings": null,
+      "badges": [
+        "28 letters"
+      ]
+    }
+  ]
+}

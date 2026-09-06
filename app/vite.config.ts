@@ -30,11 +30,30 @@ import { VitePWA } from 'vite-plugin-pwa';
 const AUDIO_VERSION = 'v3';
 const AUDIO_CACHE = `iqra-audio-${AUDIO_VERSION}`;
 
-/** Deletes the audio caches of earlier versions when a new worker takes over. */
+/**
+ * The same idea for pictures, and for the same reason.
+ *
+ * IQRA Kids gives every letter a picture, so the image library grows with the
+ * curriculum exactly as the clip library does — and a redrawn picture keeps its
+ * filename, so a device holding the old one has no way to learn of the new one.
+ * Bump this when a picture is redrawn.
+ *
+ * v1: the seaside letter mnemonics, 2026-09-06.
+ */
+const IMAGE_VERSION = 'v1';
+const IMAGE_CACHE = `iqra-images-${IMAGE_VERSION}`;
+
+/** Deletes the audio and image caches of earlier versions when a new worker
+ *  takes over. `cleanupOutdatedCaches` covers the precache only. */
 const SW_CLEANUP = `self.addEventListener('activate', (event) => {
+  const keep = [${JSON.stringify(AUDIO_CACHE)}, ${JSON.stringify(IMAGE_CACHE)}];
   event.waitUntil(
     caches.keys().then((names) =>
-      Promise.all(names.filter((n) => n.startsWith('iqra-audio-') && n !== ${JSON.stringify(AUDIO_CACHE)}).map((n) => caches.delete(n))),
+      Promise.all(
+        names
+          .filter((n) => (n.startsWith('iqra-audio-') || n.startsWith('iqra-images-')) && !keep.includes(n))
+          .map((n) => caches.delete(n)),
+      ),
     ),
   );
 });
@@ -48,7 +67,7 @@ const SW_CLEANUP = `self.addEventListener('activate', (event) => {
 const BUILD_ID = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
 
 export default defineConfig({
-  define: { __BUILD_ID__: JSON.stringify(BUILD_ID), __AUDIO_VERSION__: JSON.stringify(AUDIO_VERSION) },
+  define: { __BUILD_ID__: JSON.stringify(BUILD_ID), __AUDIO_VERSION__: JSON.stringify(AUDIO_VERSION), __IMAGE_VERSION__: JSON.stringify(IMAGE_VERSION) },
   plugins: [
     react(),
     {
@@ -87,7 +106,10 @@ export default defineConfig({
         // listed woff2 only. `woff` is left out on purpose: it is the fallback
         // for browsers with no woff2, and they can fetch it when they need it.
         globPatterns: ['**/*.{js,css,html,svg,png,otf,woff2,json}'],
-        globIgnores: ['**/audio/**'],
+        // Pictures are left out for the same reason clips are: the precache
+        // install is all-or-nothing, and IQRA Kids adds one picture per letter
+        // — a library that grows with the curriculum. The shell must not.
+        globIgnores: ['**/audio/**', '**/images/**'],
         cleanupOutdatedCaches: true,
         // `cleanupOutdatedCaches` covers the precache only; the audio caches of
         // earlier AUDIO_VERSIONs are removed by this script.
@@ -117,6 +139,27 @@ export default defineConfig({
               cacheableResponse: { statuses: [200], headers: { 'Content-Type': 'audio/wav' } },
             },
           },
+          // Letter pictures, waveforms, diagrams — seen once, kept for next
+          // time. Split by type because the clips' lesson applies here too:
+          // Hosting rewrites a missing path to index.html and answers 200 with
+          // HTML, and CacheFirst would keep that as the picture. Workbox can
+          // only match an exact header value, so there is one rule per type
+          // rather than a "starts with image/" test.
+          ...['image/png', 'image/svg+xml'].map((type) => ({
+            urlPattern: ({ url }: { url: URL }) =>
+              url.pathname.includes('/images/') &&
+              url.pathname.endsWith(type === 'image/png' ? '.png' : '.svg'),
+            handler: 'CacheFirst' as const,
+            options: {
+              cacheName: IMAGE_CACHE,
+              expiration: {
+                maxEntries: 200,
+                maxAgeSeconds: 60 * 60 * 24 * 60,
+                purgeOnQuotaError: true,
+              },
+              cacheableResponse: { statuses: [200], headers: { 'Content-Type': type } },
+            },
+          })),
         ],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
       },

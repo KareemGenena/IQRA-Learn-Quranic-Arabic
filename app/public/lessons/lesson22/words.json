@@ -1,0 +1,600 @@
+{
+  "lesson": 22,
+  "title": "The Letters — ك to ا, and لا ة",
+  "titleArabic": "الحروف ٣",
+  "kind": "letters",
+  "audioPath": "audio/lesson22/",
+  "imagePath": "images/kids/",
+  "perPage": 1,
+  "sections": [
+    {
+      "id": "letters",
+      "title": "The Letters",
+      "titleArabic": "الحروف",
+      "hint": "Its name, then a, u, i — then the letter with a sukoon after نَ."
+    },
+    {
+      "id": "special",
+      "title": "The Hamza, the Madd Letters, لا and ة",
+      "titleArabic": "الهمزة وحروف المد",
+      "hint": "These do not behave like the others. Take them slowly."
+    }
+  ],
+  "words": [
+    {
+      "id": 21,
+      "section": "letters",
+      "letter": "ك",
+      "name": "كَاف",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "A deck chair, a cushion in the angle",
+      "image": "ك.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "كَاف",
+          "audio": "word21a.wav",
+          "timings": null
+        },
+        {
+          "text": "كَ",
+          "audio": "word21b.wav",
+          "timings": null
+        },
+        {
+          "text": "كُ",
+          "audio": "word21c.wav",
+          "timings": null
+        },
+        {
+          "text": "كِ",
+          "audio": "word21d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَكۡ",
+          "audio": "word21e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 22,
+      "section": "letters",
+      "letter": "ل",
+      "name": "لَام",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "A snorkel",
+      "image": "ل.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "لَام",
+          "audio": "word22a.wav",
+          "timings": null
+        },
+        {
+          "text": "لَ",
+          "audio": "word22b.wav",
+          "timings": null
+        },
+        {
+          "text": "لُ",
+          "audio": "word22c.wav",
+          "timings": null
+        },
+        {
+          "text": "لِ",
+          "audio": "word22d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَلۡ",
+          "audio": "word22e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 23,
+      "section": "letters",
+      "letter": "م",
+      "name": "مِيم",
+      "makhraj": "Lips الشفتان",
+      "mnemonic": "A buoy, its rope hanging straight down",
+      "image": "م.png",
+      "badges": [
+        "Lips"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "مِيم",
+          "audio": "word23a.wav",
+          "timings": null
+        },
+        {
+          "text": "مَ",
+          "audio": "word23b.wav",
+          "timings": null
+        },
+        {
+          "text": "مُ",
+          "audio": "word23c.wav",
+          "timings": null
+        },
+        {
+          "text": "مِ",
+          "audio": "word23d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَمۡ",
+          "audio": "word23e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 24,
+      "section": "letters",
+      "letter": "ن",
+      "name": "نُون",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "A round half-shell like a bowl, one bubble above it",
+      "image": "ن.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "نُون",
+          "audio": "word24a.wav",
+          "timings": null
+        },
+        {
+          "text": "نَ",
+          "audio": "word24b.wav",
+          "timings": null
+        },
+        {
+          "text": "نُ",
+          "audio": "word24c.wav",
+          "timings": null
+        },
+        {
+          "text": "نِ",
+          "audio": "word24d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَنۡ",
+          "audio": "word24e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 25,
+      "section": "letters",
+      "letter": "هـ",
+      "name": "هَاء",
+      "makhraj": "Throat الحلق",
+      "mnemonic": "A knot tied in a rope",
+      "image": "ه.png",
+      "badges": [
+        "Throat"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "هَاء",
+          "audio": "word25a.wav",
+          "timings": null
+        },
+        {
+          "text": "هَـ",
+          "audio": "word25b.wav",
+          "timings": null
+        },
+        {
+          "text": "هُـ",
+          "audio": "word25c.wav",
+          "timings": null
+        },
+        {
+          "text": "هِـ",
+          "audio": "word25d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَهۡ",
+          "audio": "word25e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 26,
+      "section": "special",
+      "letter": "أ",
+      "name": "هَمۡزَة",
+      "makhraj": "Throat الحلق",
+      "mnemonic": "A wave crest curling over",
+      "image": "ء.png",
+      "badges": [
+        "Throat"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon"
+      ],
+      "forms": [
+        {
+          "text": "هَمۡزَة",
+          "audio": "word26a.wav",
+          "timings": null
+        },
+        {
+          "text": "أَ",
+          "audio": "word26b.wav",
+          "timings": null
+        },
+        {
+          "text": "أُ",
+          "audio": "word26c.wav",
+          "timings": null
+        },
+        {
+          "text": "إِ",
+          "audio": "word26d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَأۡ",
+          "audio": "word26e.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 27,
+      "section": "special",
+      "letter": "ؤ",
+      "makhraj": "Throat الحلق",
+      "badges": [
+        "Throat"
+      ],
+      "labels": [
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "مُؤۡمِن",
+          "audio": "word27a.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 28,
+      "section": "special",
+      "letter": "ئ",
+      "makhraj": "Throat الحلق",
+      "badges": [
+        "Throat"
+      ],
+      "labels": [
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "سُئِلَ",
+          "audio": "word28a.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 29,
+      "section": "special",
+      "letter": "ء",
+      "makhraj": "Throat الحلق",
+      "badges": [
+        "Throat"
+      ],
+      "labels": [
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "جُزۡء",
+          "audio": "word29a.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 30,
+      "section": "special",
+      "letter": "و",
+      "name": "وَاو",
+      "makhraj": "Lips الشفتان / Empty space الجوف",
+      "mnemonic": "A tadpole",
+      "image": "و.png",
+      "badges": [
+        "Lips"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon",
+        "madd"
+      ],
+      "forms": [
+        {
+          "text": "وَاو",
+          "audio": "word30a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَ",
+          "audio": "word30b.wav",
+          "timings": null
+        },
+        {
+          "text": "وُ",
+          "audio": "word30c.wav",
+          "timings": null
+        },
+        {
+          "text": "وِ",
+          "audio": "word30d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَوۡ",
+          "audio": "word30e.wav",
+          "timings": null
+        },
+        {
+          "text": "نُو",
+          "audio": "word30f.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 31,
+      "section": "special",
+      "letter": "يـ",
+      "name": "يَاء",
+      "makhraj": "Tongue اللسان / Empty space الجوف",
+      "mnemonic": "The duck in the boat — two bubbles below",
+      "image": "ي.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "a",
+        "u",
+        "i",
+        "sukoon",
+        "madd"
+      ],
+      "forms": [
+        {
+          "text": "يَاء",
+          "audio": "word31a.wav",
+          "timings": null
+        },
+        {
+          "text": "يَـ",
+          "audio": "word31b.wav",
+          "timings": null
+        },
+        {
+          "text": "يُـ",
+          "audio": "word31c.wav",
+          "timings": null
+        },
+        {
+          "text": "يِـ",
+          "audio": "word31d.wav",
+          "timings": null
+        },
+        {
+          "text": "نَيۡ",
+          "audio": "word31e.wav",
+          "timings": null
+        },
+        {
+          "text": "نِي",
+          "audio": "word31f.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 32,
+      "section": "special",
+      "letter": "ى",
+      "makhraj": "Empty space الجوف",
+      "mnemonic": "A duck",
+      "image": "ى.png",
+      "badges": [
+        "Empty"
+      ],
+      "labels": [
+        "word",
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "فِى",
+          "audio": "word32a.wav",
+          "timings": null
+        },
+        {
+          "text": "مُوسَىٰ",
+          "audio": "word32b.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 33,
+      "section": "special",
+      "letter": "ا",
+      "name": "أَلِف",
+      "makhraj": "Empty space الجوف",
+      "mnemonic": "A lighthouse",
+      "image": "ا.png",
+      "badges": [
+        "Empty"
+      ],
+      "labels": [
+        "its name",
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "أَلِف",
+          "audio": "word33a.wav",
+          "timings": null
+        },
+        {
+          "text": "نَا",
+          "audio": "word33b.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 34,
+      "section": "special",
+      "letter": "لا",
+      "name": "لَام أَلِف",
+      "makhraj": "Tongue اللسان",
+      "mnemonic": "Two oars crossed in a V",
+      "image": "لا.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "word",
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "لَام أَلِف",
+          "audio": "word34a.wav",
+          "timings": null
+        },
+        {
+          "text": "لَا",
+          "audio": "word34b.wav",
+          "timings": null
+        },
+        {
+          "text": "وَلَا",
+          "audio": "word34c.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    },
+    {
+      "id": 35,
+      "section": "special",
+      "letter": "ة",
+      "name": "تَاء مَرۡبُوطَة",
+      "makhraj": "Tongue اللسان (Throat الحلق at a stop)",
+      "mnemonic": "The knot with two bubbles above it",
+      "image": "ة.png",
+      "badges": [
+        "Tongue"
+      ],
+      "labels": [
+        "its name",
+        "word",
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "تَاء مَرۡبُوطَة",
+          "audio": "word35a.wav",
+          "timings": null
+        },
+        {
+          "text": "رَحۡمَةَ",
+          "audio": "word35b.wav",
+          "timings": null
+        },
+        {
+          "text": "نِعۡمَةَ",
+          "audio": "word35c.wav",
+          "timings": null
+        }
+      ],
+      "timings": null
+    }
+  ]
+}

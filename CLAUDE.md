@@ -7,6 +7,14 @@ pronounced. Live at **https://iqra---learn-quranic-arabic.web.app**
 This file is loaded automatically at the start of every session. Keep it
 current — the "Where we are" section at the bottom is the handover note.
 
+> **If the session touches IQRA Kids — the Baghdadi-qaida curriculum for
+> children, lessons 20–30 — read `Design/iqra-kids.md` before doing anything.**
+> It is the design record for that work the way this file is for the app: the
+> 11-lesson plan, what was decided, what is still open, and why. Only that file
+> is loaded on its own; this one is. So: qaida, alphabet, kids, Maktab lessons,
+> letter mnemonics, the kids skin → open it first. This file stays the
+> authority on everything the two share.
+
 ---
 
 ## 1. Architecture
@@ -736,6 +744,25 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
   that could change hands silently would take its roster with it.
 
 ## 5. Next task
+
+**IQRA Kids — lessons 20, 21, 22, 31, 32 exist as drafts (2026-09-06).** A
+second curriculum in the same app: the Baghdadi qaida in 11 lessons plus two
+alphabet songs, for the Masjid's Maktab, taught live by a teacher rather than
+self-paced. Everything about it is in **`Design/iqra-kids.md`** — read it
+before touching any of this. Built so far: the source sheet
+(`Word Tables/الحروف الهجائية.docx`, six tables), `scripts/make-alphabet.mjs`,
+the five `words.json`, 32 letter pictures, and the lessons registered as draft
+with `tracks: ['kids']` so they stay out of the adult menu. **Not yet
+recorded** — 99 takes, in three passes over the sheet with the intake tool.
+Still to build: the `#/kids` menu and the `data-mode="kids"` skin, pause/resume
+on `PlaybackHandle` for the songs, and the makhraj SVG.
+
+Two conventions this added, both in the same spirit as their audio twins:
+**pictures are runtime-cached, never precached** (32 of them took the shell from
+1.6 MB to 6.7 MB and would have broken updates), and **`IMAGE_VERSION` is
+appended to every image URL** because a redrawn picture keeps its filename.
+The rule the whole design rests on: one set of content, two skins — **mode
+never touches an id, a folder, a clip filename or a calibration key.**
 
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.

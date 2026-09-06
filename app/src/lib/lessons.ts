@@ -28,7 +28,18 @@ export interface LessonMeta {
    * a renaming of folders, clips and calibration documents.
    */
   order?: number;
+  /**
+   * Which menu(s) this lesson appears in. A lesson may be in both: the kids
+   * curriculum and the adult one are the same content wearing two skins, and
+   * `mode` never touches an id, a folder, a clip name or a calibration key.
+   * Defaults to the adult track, which is every lesson written before this.
+   */
+  tracks?: Track[];
+  /** Which Level heading it sits under in the kids menu. */
+  kidsLevel?: 1 | 2 | 3;
 }
+
+export type Track = 'adults' | 'kids';
 
 /**
  * The lesson menu on the home page. Add a line here for each new lesson.
@@ -73,6 +84,57 @@ export const LESSONS: LessonMeta[] = [
     titleArabic: 'المد اللازم ومد الصلة وغيرهما',
     blurb: 'The longest madd, the pronoun that grows a natural madd, and what happens to a madd when you stop.',
   },
+
+  // ── IQRA Kids — the Baghdadi qaida. See Design/iqra-kids.md. ────────────
+  // Numbers 20–30 are reserved for the eleven qaida lessons and 31–32 for the
+  // two songs; `order` is what decides where each is read, so a lesson can be
+  // moved without its number — and therefore its clips and calibrations —
+  // moving with it.
+  {
+    id: 31,
+    order: 1,
+    tracks: ['kids'],
+    kidsLevel: 1,
+    title: 'The Alphabet Song — the Names',
+    titleArabic: 'أنشودة الحروف — الأسماء',
+    blurb: 'All 28 letters in order, sung. Press pause whenever you want to stop and learn.',
+  },
+  {
+    id: 20,
+    order: 2,
+    tracks: ['kids'],
+    kidsLevel: 1,
+    title: 'The Letters — ب to ز',
+    titleArabic: 'الحروف ١',
+    blurb: 'Ten letters: its name, then a, u and i, then the letter with a sukoon.',
+  },
+  {
+    id: 21,
+    order: 3,
+    tracks: ['kids'],
+    kidsLevel: 1,
+    title: 'The Letters — س to ق',
+    titleArabic: 'الحروف ٢',
+    blurb: 'Ten more, from the sea snake to the deep fishing net.',
+  },
+  {
+    id: 22,
+    order: 4,
+    tracks: ['kids'],
+    kidsLevel: 1,
+    title: 'The Letters — ك to ا, and لا ة',
+    titleArabic: 'الحروف ٣',
+    blurb: 'The last of them, the hamza on each of its seats, and the three madd letters.',
+  },
+  {
+    id: 32,
+    order: 5,
+    tracks: ['kids'],
+    kidsLevel: 1,
+    title: 'The Alphabet Song — the Sounds',
+    titleArabic: 'أنشودة الحروف — الحركات',
+    blurb: 'Every letter with a, u and i — and where in the mouth each one is made.',
+  },
 ];
 
 /**
@@ -82,8 +144,14 @@ export const LESSONS: LessonMeta[] = [
  * into chapters and shuffled between them, this is what changes — not the
  * lesson numbers, and not each page that happens to list lessons.
  */
-export function orderedLessons(lessons: LessonMeta[] = LESSONS): LessonMeta[] {
-  return [...lessons].sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id));
+export function orderedLessons(
+  lessons: LessonMeta[] = LESSONS,
+  /** Which menu is asking. A lesson with no `tracks` belongs to the adults. */
+  track: Track = 'adults',
+): LessonMeta[] {
+  return lessons
+    .filter((l) => (l.tracks ?? ['adults']).includes(track))
+    .sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id));
 }
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -201,7 +269,12 @@ export function toItems(lesson: Lesson): LessonItem[] {
       section: w.section,
       badges: w.badges ?? [],
       meaning: w.meaning,
-      image: w.image ? `${import.meta.env.BASE_URL}${lesson.imagePath ?? ''}${w.image}` : undefined,
+      // Versioned for the same reason a clip URL is: a redrawn picture keeps
+      // its filename, so without `?v=` the browser's own HTTP cache would go on
+      // serving the old one. See IMAGE_VERSION in vite.config.ts.
+      image: w.image
+        ? `${import.meta.env.BASE_URL}${lesson.imagePath ?? ''}${w.image}?v=${__IMAGE_VERSION__}`
+        : undefined,
       forms: letterPlayables(w),
     }));
   }

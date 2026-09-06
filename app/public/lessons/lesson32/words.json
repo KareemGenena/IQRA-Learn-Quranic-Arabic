@@ -1,0 +1,286 @@
+{
+  "lesson": 32,
+  "title": "The Alphabet Song — the Sounds",
+  "titleArabic": "أنشودة الحروف — الحركات",
+  "kind": "letters",
+  "audioPath": "audio/lesson32/",
+  "imagePath": "images/kids/",
+  "perPage": 1,
+  "sections": [
+    {
+      "id": "song",
+      "title": "The Alphabet Song — the Sounds",
+      "titleArabic": "أنشودة الحروف — الحركات",
+      "hint": "Every letter with a, u and i — and where in the mouth each one is made."
+    }
+  ],
+  "song": {
+    "steps": 84,
+    "letters": [
+      {
+        "letter": "أ",
+        "forms": [
+          "أَ",
+          "أُ",
+          "إِ"
+        ],
+        "makhraj": "Throat الحلق"
+      },
+      {
+        "letter": "ب",
+        "forms": [
+          "بَ",
+          "بُ",
+          "بِ"
+        ],
+        "makhraj": "Lips الشفتان"
+      },
+      {
+        "letter": "ت",
+        "forms": [
+          "تَ",
+          "تُ",
+          "تِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ث",
+        "forms": [
+          "ثَ",
+          "ثُ",
+          "ثِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ج",
+        "forms": [
+          "جَ",
+          "جُ",
+          "جِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ح",
+        "forms": [
+          "حَ",
+          "حُ",
+          "حِ"
+        ],
+        "makhraj": "Throat الحلق"
+      },
+      {
+        "letter": "خ",
+        "forms": [
+          "خَ",
+          "خُ",
+          "خِ"
+        ],
+        "makhraj": "Throat الحلق"
+      },
+      {
+        "letter": "د",
+        "forms": [
+          "دَ",
+          "دُ",
+          "دِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ذ",
+        "forms": [
+          "ذَ",
+          "ذُ",
+          "ذِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ر",
+        "forms": [
+          "رَ",
+          "رُ",
+          "رِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ز",
+        "forms": [
+          "زَ",
+          "زُ",
+          "زِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "س",
+        "forms": [
+          "سَ",
+          "سُ",
+          "سِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ش",
+        "forms": [
+          "شَ",
+          "شُ",
+          "شِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ص",
+        "forms": [
+          "صَ",
+          "صُ",
+          "صِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ض",
+        "forms": [
+          "ضَ",
+          "ضُ",
+          "ضِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ط",
+        "forms": [
+          "طَ",
+          "طُ",
+          "طِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ظ",
+        "forms": [
+          "ظَ",
+          "ظُ",
+          "ظِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ع",
+        "forms": [
+          "عَ",
+          "عُ",
+          "عِ"
+        ],
+        "makhraj": "Throat الحلق"
+      },
+      {
+        "letter": "غ",
+        "forms": [
+          "غَ",
+          "غُ",
+          "غِ"
+        ],
+        "makhraj": "Throat الحلق"
+      },
+      {
+        "letter": "ف",
+        "forms": [
+          "فَ",
+          "فُ",
+          "فِ"
+        ],
+        "makhraj": "Lips الشفتان"
+      },
+      {
+        "letter": "ق",
+        "forms": [
+          "قَ",
+          "قُ",
+          "قِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ك",
+        "forms": [
+          "كَ",
+          "كُ",
+          "كِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "ل",
+        "forms": [
+          "لَ",
+          "لُ",
+          "لِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "م",
+        "forms": [
+          "مَ",
+          "مُ",
+          "مِ"
+        ],
+        "makhraj": "Lips الشفتان"
+      },
+      {
+        "letter": "ن",
+        "forms": [
+          "نَ",
+          "نُ",
+          "نِ"
+        ],
+        "makhraj": "Tongue اللسان"
+      },
+      {
+        "letter": "هـ",
+        "forms": [
+          "هَـ",
+          "هُـ",
+          "هِـ"
+        ],
+        "makhraj": "Throat الحلق"
+      },
+      {
+        "letter": "و",
+        "forms": [
+          "وَ",
+          "وُ",
+          "وِ"
+        ],
+        "makhraj": "Lips الشفتان"
+      },
+      {
+        "letter": "ى",
+        "forms": [
+          "يَـ",
+          "يُـ",
+          "يِـ"
+        ],
+        "makhraj": "Tongue اللسان"
+      }
+    ]
+  },
+  "words": [
+    {
+      "id": 1,
+      "section": "song",
+      "text": "أَ أُ إِ بَ بُ بِ تَ تُ تِ ثَ ثُ ثِ جَ جُ جِ حَ حُ حِ خَ خُ خِ دَ دُ دِ ذَ ذُ ذِ رَ رُ رِ زَ زُ زِ سَ سُ سِ شَ شُ شِ صَ صُ صِ ضَ ضُ ضِ طَ طُ طِ ظَ ظُ ظِ عَ عُ عِ غَ غُ غِ فَ فُ فِ قَ قُ قِ كَ كُ كِ لَ لُ لِ مَ مُ مِ نَ نُ نِ هَـ هُـ هِـ وَ وُ وِ يَـ يُـ يِـ",
+      "audio": "song-sounds.wav",
+      "timings": null,
+      "badges": [
+        "28 letters"
+      ]
+    }
+  ]
+}

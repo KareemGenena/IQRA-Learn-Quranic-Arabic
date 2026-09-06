@@ -8,3 +8,5 @@
 declare const __BUILD_ID__: string;
 /** The audio clips' version (vite.config.ts) — appended to every clip URL. */
 declare const __AUDIO_VERSION__: string;
+/** The pictures' version (vite.config.ts) — appended to every image URL. */
+declare const __IMAGE_VERSION__: string;
