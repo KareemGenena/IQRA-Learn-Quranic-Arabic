@@ -6,3 +6,5 @@
  * by looking at the phone.
  */
 declare const __BUILD_ID__: string;
+/** The audio clips' version (vite.config.ts) — appended to every clip URL. */
+declare const __AUDIO_VERSION__: string;

@@ -408,8 +408,18 @@ When an update does not arrive, work down the list rather than guessing.
   also makes the new worker **delete the 65 MB the old one is holding** on
   every device.
 - Clip filenames are stable across a re-cut, so a device that already holds one
-  has no way to learn of a new one. **Bump `AUDIO_CACHE` in `vite.config.ts`
+  has no way to learn of a new one. **Bump `AUDIO_VERSION` in `vite.config.ts`
   when clips are re-cut** — the same moment the calibrations need re-checking.
+  That one constant is appended to every clip URL as `?v=` (`audioUrl`), names
+  the worker's runtime cache, and is baked into `sw-cleanup.js`, which deletes
+  earlier versions' caches on activate. **There are FOUR caches between a
+  re-cut clip and the ear**, and renaming the runtime cache alone (the old
+  `AUDIO_CACHE` bump) reached only one: Hosting serves `/audio/**` with
+  `max-age=86400`, so the browser's HTTP cache — which a hard refresh does not
+  clear for fetches the app makes — handed the *new* worker the *old* clip,
+  and the worker stored it under the new cache name for thirty days. The
+  author heard the old كهيعص on the web app for that reason while localhost
+  played the new one. A versioned URL is a different key in all four.
 - **A missing file does not 404 here.** Hosting rewrites `**` to `index.html`,
   so `/audio/lesson05/typo.wav` answers *200 text/html*. Left alone, CacheFirst
   would keep that HTML page as the recording for a month. Both layers now check

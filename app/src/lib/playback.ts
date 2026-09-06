@@ -17,8 +17,14 @@ export function stopActivePlayback(): void {
   activeStop = null;
 }
 
+/**
+ * The clip's URL, versioned. Filenames are stable across a re-cut, so the
+ * version is what tells the browser's HTTP cache, the CDN and the worker's
+ * runtime cache that this is a different file — see AUDIO_VERSION in
+ * vite.config.ts. Everything that fetches a clip must go through here.
+ */
 export function audioUrl(lesson: Lesson, playable: Playable): string {
-  return `${import.meta.env.BASE_URL}${lesson.audioPath}${playable.audio}`;
+  return `${import.meta.env.BASE_URL}${lesson.audioPath}${playable.audio}?v=${__AUDIO_VERSION__}`;
 }
 
 /**
