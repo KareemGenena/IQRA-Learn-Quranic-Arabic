@@ -2496,3 +2496,27 @@ kbd {
   display: block;
   margin-bottom: 10px;
 }
+
+.manara-greeting {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.manara-greeting .home-intro {
+  margin: 0;
+  text-align: left;
+  flex: 1;
+}
+
+.manara {
+  width: 72px;
+  height: auto;
+  flex: none;
+}
+
+@media (max-width: 420px) {
+  .manara {
+    width: 56px;
+  }
+}

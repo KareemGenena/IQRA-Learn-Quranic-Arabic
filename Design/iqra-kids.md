@@ -818,3 +818,19 @@ lessons is written fresh. The book's own examples also run long — its tanween
 page uses قَرِيبٌ، مُقِيتٌ، نَصِيرٌ, which are too much for a five-year-old
 meeting tanween for the first time. Build on what the child has already learned;
 do not pile it on.
+
+---
+
+## 10. Manāra, cut and in use — 2026-09-06
+
+Five states, cut from one ChatGPT sheet that carried its own filenames printed
+under each figure. The cut is by **content band**, not by grid: the sheet is
+three across the top and two across the bottom, and the label lines are found
+and discarded by being short (27 px) where the artwork is tall (423–450 px).
+
+`manara.png` · `manara-beam.png` · `manara-dim.png` · `manara-well-done.png` ·
+`manara-close.png` — 31–50 KB each, in `public/images/kids/`. The sheet went to
+`Design/kids-art/` with the letter sheets: source material must not ship.
+
+She greets on `#/kids` today. The rule she is built to, and which the beam
+state exists to serve, stays: **silent and still while anything is playing.**

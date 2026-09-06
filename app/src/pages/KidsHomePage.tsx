@@ -57,10 +57,20 @@ export function KidsHomePage({ config, admin }: { config: AppConfig; admin: bool
 
   return (
     <main className="home">
-      <p className="home-intro">
-        The Arabic letters, from the very beginning. A teacher leads; the app plays, shows and
-        waits.
-      </p>
+      {/* Manāra. She greets and she points, and she is silent and still while
+          anything is playing — the app's whole trick is watching letters light
+          up, and a character animating over that would spoil it. */}
+      <div className="manara-greeting">
+        <img
+          className="manara"
+          src={`${import.meta.env.BASE_URL}images/kids/manara.png?v=${__IMAGE_VERSION__}`}
+          alt=""
+        />
+        <p className="home-intro">
+          The Arabic letters, from the very beginning. A teacher leads; the app plays, shows and
+          waits.
+        </p>
+      </div>
 
       {LEVELS.map(({ level, title, blurb }) => {
         const here = lessons.filter((l) => l.kidsLevel === level);
