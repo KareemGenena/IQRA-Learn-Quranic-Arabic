@@ -374,6 +374,23 @@ if (missing.length) {
 }
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');
 
+// ── the recording plan ────────────────────────────────────────────────────
+// The intake system asks how many pieces a slot holds, and getting it wrong is
+// silent: the take is cut in the wrong places and the clips are simply wrong.
+// So the plan is printed on every run, grouped by that number.
+const plan = new Map();
+for (const t of takes) {
+  const n = t.song ? 'whole (never cut)' : String(t.clips.length);
+  if (!plan.has(n)) plan.set(n, []);
+  plan.get(n).push(`${t.key}.wav`);
+}
+console.log('\nrecording plan — how many pieces each take is cut into');
+for (const n of [...plan.keys()].sort()) {
+  const files = plan.get(n);
+  console.log(`\n  ${n} piece(s) — ${files.length} take(s)`);
+  for (let i = 0; i < files.length; i += 6) console.log('    ' + files.slice(i, i + 6).join('  '));
+}
+
 // Every picture a card asks for must exist, or the card shows a broken image.
 const wantImages = new Set();
 for (const l of LESSONS) for (const w of l.words) if (w.image) wantImages.add(w.image);

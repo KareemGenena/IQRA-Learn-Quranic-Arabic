@@ -62,25 +62,25 @@
       {
         "letter": "د",
         "name": "دَال",
-        "group": "hook on the sand",
+        "group": "hook on the line",
         "image": "د.png"
       },
       {
         "letter": "ذ",
         "name": "ذَال",
-        "group": "hook on the sand",
+        "group": "hook on the line",
         "image": "ذ.png"
       },
       {
         "letter": "ر",
         "name": "رَاء",
-        "group": "hanging hook",
+        "group": "hook on the sand",
         "image": "ر.png"
       },
       {
         "letter": "ز",
         "name": "زَاي",
-        "group": "hanging hook",
+        "group": "hook on the sand",
         "image": "ز.png"
       },
       {

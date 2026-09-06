@@ -2445,3 +2445,54 @@ kbd {
     font-size: 40px;
   }
 }
+
+/* ── IQRA Kids ─────────────────────────────────────────────────────────────
+   The door on the home page, and the Level headings behind it. Levels are the
+   Maktab's cohorts, so they are headings over one list rather than separate
+   places — a lesson can sit in more than one, and moving a child up a level
+   must never change what a lesson is. */
+.kids-door {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  padding: 18px 20px;
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.kids-door:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.kids-door-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.kids-door-title {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.kids-level {
+  margin-top: 26px;
+}
+
+.kids-level h3 {
+  margin: 0 0 2px;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+
+.kids-level .lesson-blurb {
+  display: block;
+  margin-bottom: 10px;
+}

@@ -303,7 +303,7 @@
       "letter": "د",
       "name": "دَال",
       "makhraj": "Tongue اللسان",
-      "mnemonic": "A fishing hook resting on the sand",
+      "mnemonic": "A fishing hook hanging high on its line — it stays up on the line",
       "image": "د.png",
       "badges": [
         "Tongue"
@@ -350,7 +350,7 @@
       "letter": "ذ",
       "name": "ذَال",
       "makhraj": "Tongue اللسان",
-      "mnemonic": "The same hook on the sand, one bubble above it",
+      "mnemonic": "The same hanging hook, one bubble above it",
       "image": "ذ.png",
       "badges": [
         "Tongue"
@@ -397,7 +397,7 @@
       "letter": "ر",
       "name": "رَاء",
       "makhraj": "Tongue اللسان",
-      "mnemonic": "The same hook, hanging below on its line",
+      "mnemonic": "The same hook, down on the sand — this one dips below the line",
       "image": "ر.png",
       "badges": [
         "Tongue"
@@ -444,7 +444,7 @@
       "letter": "ز",
       "name": "زَاي",
       "makhraj": "Tongue اللسان",
-      "mnemonic": "The hanging hook, one bubble above it",
+      "mnemonic": "The hook on the sand, one bubble above it",
       "image": "ز.png",
       "badges": [
         "Tongue"

@@ -311,12 +311,26 @@ Everything below exists and builds. Nothing is recorded yet.
   they are 4 MB of source material and must not ship.
 - **Registered** in `lessons.ts` with `order` 1–5 (song, letters, letters,
   letters, song) and `tracks: ['kids']`, and **draft** in `DEFAULT_CONFIG`.
-- `orderedLessons()` now takes a track; `HomePage` asks for `'adults'`, so the
-  kids lessons do not appear in the adult menu. The `#/kids` menu and the
-  `data-mode="kids"` skin are still to come.
+- **`#/kids`** — the menu, grouped under Level 1–3 headings, reached by a door
+  at the foot of the home page. The door only appears when there is something
+  behind it, so a learner is never sent to an empty room. `orderedLessons()`
+  takes a track; `HomePage` asks for `'adults'`. The `data-mode="kids"` skin is
+  still to come — a kids lesson currently opens in the ordinary lesson page.
 
-Verified in the browser: lesson 20 renders its first card — بَاء · بَ · بُ ·
-بِ · نَبۡ, badged *Lips* — and `/images/kids/ب.png?v=v1` returns 200.
+Verified in the browser: the door leads to `#/kids`, Level 1 lists all five in
+reading order (song · letters · letters · letters · song), lesson 20 renders its
+first card — بَاء · بَ · بُ · بِ · نَبۡ, badged *Lips* — and
+`/images/kids/ب.png?v=v1` returns 200. No console errors.
+
+**The gold stars stay.** The author looked at ج ح خ and decided the night sky
+reads fine; the counting rule stands for anything new, but these are not
+being redrawn.
+
+**د/ذ and ر/ز were the wrong way round** in the first cut and the author
+renamed the files. The principle in §5 was right — د stays up on the line, ر
+dips below it — but the prompt described د as *resting on the sand*, which put
+the low picture on the high letter. The mnemonic text now matches: د ذ are the
+hooks hanging high on the line, ر ز the ones down on the sand.
 
 ### The recording unit is a take, not a form
 
@@ -338,6 +352,18 @@ different column each time:
 
 plus the irregular rows in table 4 one at a time, and the two songs recorded
 straight to `song-names.wav` and `song-sounds.wav`. **99 takes in all.**
+
+`make-alphabet.mjs` prints the whole plan on every run, grouped by how many
+pieces a take is cut into — because the intake system asks for that number and
+getting it wrong is silent: the take is cut in the wrong places and the clips
+are simply wrong. The shape of it:
+
+| pieces | takes | which |
+|---|---|---|
+| **3** | 28 | the bare letters: `ب.wav` … `ي.wav` — each is بَ بُ بِ |
+| **2** | 2 | `نو.wav` (نَوۡ نُو) and `ني.wav` (نَيۡ نِي) — leen, then madd |
+| **1** | 67 | every name (`باء.wav`), every sukoon (`نب.wav`), and the ten words |
+| whole | 2 | the two songs — never cut |
 
 ### The precache, again
 

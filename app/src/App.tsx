@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
+import { KidsHomePage } from './pages/KidsHomePage';
 import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
 import { AdminPage } from './pages/AdminPage';
@@ -46,14 +47,14 @@ function initialRate(): number {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'recordings' | 'intake';
+  page: 'home' | 'kids' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'recordings' | 'intake';
   lessonId: number;
 }
 
 function parseRoute(hash: string): Route {
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
-  const m = /^#\/(lesson|admin|calibrate|notes|account|classes|recordings|intake)(?:\/(\d+))?/.exec(hash);
+  const m = /^#\/(kids|lesson|admin|calibrate|notes|account|classes|recordings|intake)(?:\/(\d+))?/.exec(hash);
   if (m) {
     const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
     return { page, lessonId: Number(m[2] ?? 0) };
@@ -209,7 +210,9 @@ export default function App() {
 
       {route.page === 'home' && <HomePage config={config} admin={admin} />}
 
-      {route.page !== 'home' && (
+      {route.page === 'kids' && <KidsHomePage config={config} admin={admin} />}
+
+      {route.page !== 'home' && route.page !== 'kids' && (
         <>
           <nav className="breadcrumb">
             <a href="#/">← All lessons</a>
