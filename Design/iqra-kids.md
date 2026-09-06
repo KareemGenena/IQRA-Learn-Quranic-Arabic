@@ -9,7 +9,10 @@ first time.** Challenging enough to learn from, never enough to discourage.
 `CLAUDE.md` is the authority on the app. This file is the authority on the kids
 curriculum: what was decided, what is still open, and why. Read both.
 
-Status: **design, iteration 2** (2026-09-06). Nothing is built yet.
+Status (2026-09-06): **lessons 20, 21, 22, 31 and 32 exist as drafts**, with the
+sheet, the generator, 32 letter pictures, the mascot and the `#/kids` menu.
+Nothing is recorded — 99 takes, see §8. Still to build: the `data-mode="kids"`
+skin, pause/resume for the songs, and the makhraj SVG.
 
 ---
 
