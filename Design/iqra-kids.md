@@ -9,10 +9,12 @@ first time.** Challenging enough to learn from, never enough to discourage.
 `CLAUDE.md` is the authority on the app. This file is the authority on the kids
 curriculum: what was decided, what is still open, and why. Read both.
 
-Status (2026-09-06): **lessons 20, 21, 22, 31 and 32 exist as drafts**, with the
-sheet, the generator, 32 letter pictures, the mascot and the `#/kids` menu.
-Nothing is recorded — 99 takes, see §8. Still to build: the `data-mode="kids"`
-skin, pause/resume for the songs, and the makhraj SVG.
+Status (2026-09-06, evening): **lessons 20, 21, 22, 31 and 32 exist as drafts
+in the kids skin** — the door, `#/kids/lesson/N`, `LetterCard`, `SongCards`
+with pause and seek, Manāra pointing. Nothing is recorded: **140 takes**, and
+the generator prints the plan on every run (§9b). Outstanding assets: the
+three makhraj pictures for song 2. Then the author records, and the generator
+says what to tap.
 
 ---
 
@@ -884,6 +886,67 @@ her beam swings to the picture at "it looks like a boat" and to the letter at
 **Build order, agreed:** all of the above in one pass — the door and the
 route, `LetterCard`, `SongCards` with pause and seek, badges off, the generator
 reading the script table — and then the author calibrates the two songs.
+
+### Built — iteration 5, 2026-09-06
+
+All of it, verified in the browser with the lessons temporarily published:
+
+- **The door** is the first thing on the home page: Manāra, "IQRA Kids", a
+  subtitle, nothing card-shaped. `#/kids/lesson/N` opens the kids skin
+  (`data-mode="kids"` on `<html>`), the breadcrumb reads *← IQRA Kids* and
+  leads to `#/kids`; the brand logo still leads home.
+- **`LetterCard`** — picture · Manāra · big bare letter in brand gold, the
+  sounds as small cards beneath (right-to-left: a, u, i, sukoon), the name
+  small in the corner, two buttons: *About this letter*, *Say it*. No
+  badges. The adult `ItemCard` and its waveform button are untouched and
+  never appear here. `SectionedLesson` takes a `Card` prop, so paging, the
+  remembered place and the single-key walk are not written twice; the walk
+  now runs intro → forms line → each sound.
+- **`SongCards`** — one family per card in song 1 (17 cards), one letter's
+  three harakat per card in song 2 (28 cards, the makhraj picture beside),
+  the sung letter green, each letter its own span. Back · Play/Pause · Next;
+  Space and the arrow keys. Next mid-song seeks the audio to that card.
+- **The engine** grew `pause()`, `resume()` and `seek()` on
+  `PlaybackHandle`, and `play(startAt)`. Nothing else in it changed.
+- **Manāra points.** During the intro her beam is mirrored to point left at
+  the picture; during the forms line it points right at the sounds. The
+  tower is symmetrical enough that the mirror is invisible — so the beam
+  moves and she stays, which is what a lighthouse does.
+- **The forms line lights whole sound-cards.** It highlights *letters*
+  (نَبۡ is two clusters), so `LetterCard` maps each cluster to the form it
+  belongs to by counting clusters form by form.
+
+**The generating script is retired.** `make-sheet.mjs` bootstrapped the
+docx; the author now edits it in Word, and it is the source of truth the way
+every other sheet is. It was regenerated one last time with the author's two
+edits folded in (meem's rope, the nabra) after a cell-by-cell diff showed
+those were the only changes.
+
+**Corrections from the author's review, in the sheet now:** no pictures in
+either song (song 1 is the letters themselves grouped by shape; song 2 is
+the makhraj head); the name is displayed, not recorded — the intro says it,
+song 1 sings it, and 31 takes went away; the yaa runs **ى (the duck) → يـ
+(the duck jumps into the boat) → ىٰ (an alif in disguise, مُوسَىٰ)**, a third
+row with its own slot `ى ألف`; ة opens with ءَاخِرَةِ, the standalone
+shape, then رَحۡمَةَ as "sometimes looks like this".
+
+### What still needs the author — and when the generator will say so
+
+`make-alphabet.mjs` now prints two things on every run, so nothing here has
+to be remembered:
+
+1. **The recording plan** — every take grouped by how many pieces the intake
+   system must cut it into. 140 takes: **28 of three** (the bare letters),
+   **2 of two** (`نو`, `ني`), **38 whole** (the 36 spoken lines and the 2
+   songs — set the intake tool to 1 and it only trims the silence), and **72
+   of one** (every sukoon and every word).
+2. **What needs tap calibration**, listed only once it is recorded: the two
+   songs and the 36 forms lines. A forms line's taps are per *letter* of its
+   Arabic — `بَ بُ بِ نَبۡ` is five taps, not four.
+
+The makhraj pictures are the one asset outstanding: `makhraj-lips.png`,
+`makhraj-tongue.png`, `makhraj-throat.png` are what song 2 asks for (jawf and
+nose never occur in it).
 
 ## 9c. The makhraj pictures — prompt
 

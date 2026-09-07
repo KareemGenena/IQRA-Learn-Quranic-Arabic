@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { ComponentType } from 'react';
 import { ItemCard } from '../components/ItemCard';
 import { stopActivePlayback } from '../lib/playback';
 import { sectionKey, toItems } from '../lib/lessons';
@@ -79,7 +80,28 @@ function readPlace(lessonId: number): { page: number; step: number } {
   }
 }
 
-export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number }) {
+/** What a card component receives — ItemCard's props, and the kids LetterCard's. */
+export interface CardProps {
+  lesson: Lesson;
+  item: LessonItem;
+  rate: number;
+  displayNo: number;
+  register?: (key: string, play: () => Promise<void>) => void;
+  hideBadges?: boolean;
+}
+
+export function SectionedLesson({
+  lesson,
+  rate,
+  /** The card to render. The kids skin swaps in LetterCard and keeps every
+   *  bit of the navigation — paging, the remembered place, the single-key
+   *  walk — which is the point of not writing a second lesson page. */
+  Card = ItemCard,
+}: {
+  lesson: Lesson;
+  rate: number;
+  Card?: ComponentType<CardProps>;
+}) {
   const pages = useMemo(() => buildPages(lesson), [lesson]);
   // A remembered place can outlive the lesson it was taken in — a rebuild can
   // leave fewer pages than there were — so it is clamped, never trusted.
@@ -140,7 +162,12 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
    * next form of this word or the first form of the next one.
    */
   const sequence = useMemo(
-    () => (page?.items ?? []).flatMap((item, card) => item.forms.map((form, form_) => ({ key: form.key, card, form: form_ }))),
+    () =>
+      (page?.items ?? []).flatMap((item, card) =>
+        // A kids card walks its spoken lines first — hear about the letter,
+        // hear it said — and then each sound on its own.
+        [...(item.extras ?? []), ...item.forms].map((form, form_) => ({ key: form.key, card, form: form_ })),
+      ),
     [page],
   );
 
@@ -198,7 +225,7 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
     cancelAllRef.current = false;
     setPlayingAll(true);
     for (const item of page.items) {
-      for (const key of item.forms.map((f) => f.key)) {
+      for (const key of [...(item.extras ?? []), ...item.forms].map((f) => f.key)) {
         if (cancelAllRef.current) break;
         await playersRef.current.get(key)?.();
         if (cancelAllRef.current) break;
@@ -306,7 +333,7 @@ export function SectionedLesson({ lesson, rate }: { lesson: Lesson; rate: number
 
       <div className="pair-grid">
         {page.items.map((item, i) => (
-          <ItemCard
+          <Card
             key={item.id}
             lesson={lesson}
             item={item}

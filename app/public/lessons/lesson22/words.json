@@ -11,7 +11,7 @@
       "id": "letters",
       "title": "The Letters",
       "titleArabic": "الحروف",
-      "hint": "Its name, then a, u, i — then the letter with a sukoon after نَ."
+      "hint": "Listen to the intro, then the letter with a, u and i — then with a sukoon after نَ."
     },
     {
       "id": "special",
@@ -29,11 +29,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "A deck chair, a cushion in the angle",
       "image": "ك.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -41,31 +38,38 @@
       ],
       "forms": [
         {
-          "text": "كَاف",
+          "text": "كَ",
           "audio": "word21a.wav",
           "timings": null
         },
         {
-          "text": "كَ",
+          "text": "كُ",
           "audio": "word21b.wav",
           "timings": null
         },
         {
-          "text": "كُ",
+          "text": "كِ",
           "audio": "word21c.wav",
           "timings": null
         },
         {
-          "text": "كِ",
-          "audio": "word21d.wav",
-          "timings": null
-        },
-        {
           "text": "نَكۡ",
-          "audio": "word21e.wav",
+          "audio": "word21d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ك",
+        "script": "This is the letter kaaf. It looks like a deck chair with a cushion in it. Look — no bubbles at all. Kaaf has no dots.",
+        "audio": "word21i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "كَ كُ كِ نَكۡ",
+        "script": "With a fatha it's كَ. With a damma it's كُ. With a kasra it's كِ. And with a sukoon after نَ, it's نَكۡ.",
+        "audio": "word21l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -76,11 +80,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "A snorkel",
       "image": "ل.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -88,31 +89,38 @@
       ],
       "forms": [
         {
-          "text": "لَام",
+          "text": "لَ",
           "audio": "word22a.wav",
           "timings": null
         },
         {
-          "text": "لَ",
+          "text": "لُ",
           "audio": "word22b.wav",
           "timings": null
         },
         {
-          "text": "لُ",
+          "text": "لِ",
           "audio": "word22c.wav",
           "timings": null
         },
         {
-          "text": "لِ",
-          "audio": "word22d.wav",
-          "timings": null
-        },
-        {
           "text": "نَلۡ",
-          "audio": "word22e.wav",
+          "audio": "word22d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ل",
+        "script": "This is the letter laam. It looks like a snorkel. Look — no bubbles at all. Laam has no dots.",
+        "audio": "word22i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "لَ لُ لِ نَلۡ",
+        "script": "With a fatha it's لَ. With a damma it's لُ. With a kasra it's لِ. And with a sukoon after نَ, it's نَلۡ.",
+        "audio": "word22l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -121,13 +129,10 @@
       "letter": "م",
       "name": "مِيم",
       "makhraj": "Lips الشفتان",
-      "mnemonic": "A buoy, its rope hanging straight down",
+      "mnemonic": "A buoy, its rope to its left",
       "image": "م.png",
-      "badges": [
-        "Lips"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -135,31 +140,38 @@
       ],
       "forms": [
         {
-          "text": "مِيم",
+          "text": "مَ",
           "audio": "word23a.wav",
           "timings": null
         },
         {
-          "text": "مَ",
+          "text": "مُ",
           "audio": "word23b.wav",
           "timings": null
         },
         {
-          "text": "مُ",
+          "text": "مِ",
           "audio": "word23c.wav",
           "timings": null
         },
         {
-          "text": "مِ",
-          "audio": "word23d.wav",
-          "timings": null
-        },
-        {
           "text": "نَمۡ",
-          "audio": "word23e.wav",
+          "audio": "word23d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "م",
+        "script": "This is the letter meem. It looks like a buoy with its rope to its left. Look — no bubbles at all. Meem has no dots.",
+        "audio": "word23i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "مَ مُ مِ نَمۡ",
+        "script": "With a fatha it's مَ. With a damma it's مُ. With a kasra it's مِ. And with a sukoon after نَ, it's نَمۡ.",
+        "audio": "word23l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -170,11 +182,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "A round half-shell like a bowl, one bubble above it",
       "image": "ن.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -182,31 +191,38 @@
       ],
       "forms": [
         {
-          "text": "نُون",
+          "text": "نَ",
           "audio": "word24a.wav",
           "timings": null
         },
         {
-          "text": "نَ",
+          "text": "نُ",
           "audio": "word24b.wav",
           "timings": null
         },
         {
-          "text": "نُ",
+          "text": "نِ",
           "audio": "word24c.wav",
           "timings": null
         },
         {
-          "text": "نِ",
-          "audio": "word24d.wav",
-          "timings": null
-        },
-        {
           "text": "نَنۡ",
-          "audio": "word24e.wav",
+          "audio": "word24d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ن",
+        "script": "This is the letter noon. It looks like a round bowl. Look — one bubble on top. Noon has one dot on top.",
+        "audio": "word24i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "نَ نُ نِ نَنۡ",
+        "script": "With a fatha it's نَ. With a damma it's نُ. With a kasra it's نِ. And with a sukoon after نَ, it's نَنۡ.",
+        "audio": "word24l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -217,11 +233,8 @@
       "makhraj": "Throat الحلق",
       "mnemonic": "A knot tied in a rope",
       "image": "ه.png",
-      "badges": [
-        "Throat"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -229,31 +242,38 @@
       ],
       "forms": [
         {
-          "text": "هَاء",
+          "text": "هَـ",
           "audio": "word25a.wav",
           "timings": null
         },
         {
-          "text": "هَـ",
+          "text": "هُـ",
           "audio": "word25b.wav",
           "timings": null
         },
         {
-          "text": "هُـ",
+          "text": "هِـ",
           "audio": "word25c.wav",
           "timings": null
         },
         {
-          "text": "هِـ",
-          "audio": "word25d.wav",
-          "timings": null
-        },
-        {
           "text": "نَهۡ",
-          "audio": "word25e.wav",
+          "audio": "word25d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "هـ",
+        "script": "This is the letter haa. It looks like a knot in a rope. Look — no bubbles at all. Haa has no dots.",
+        "audio": "word25i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "هَـ هُـ هِـ نَهۡ",
+        "script": "With a fatha it's هَـ. With a damma it's هُـ. With a kasra it's هِـ. And with a sukoon after نَ, it's نَهۡ.",
+        "audio": "word25l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -264,11 +284,8 @@
       "makhraj": "Throat الحلق",
       "mnemonic": "A wave crest curling over",
       "image": "ء.png",
-      "badges": [
-        "Throat"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -276,31 +293,38 @@
       ],
       "forms": [
         {
-          "text": "هَمۡزَة",
+          "text": "أَ",
           "audio": "word26a.wav",
           "timings": null
         },
         {
-          "text": "أَ",
+          "text": "أُ",
           "audio": "word26b.wav",
           "timings": null
         },
         {
-          "text": "أُ",
+          "text": "إِ",
           "audio": "word26c.wav",
           "timings": null
         },
         {
-          "text": "إِ",
-          "audio": "word26d.wav",
-          "timings": null
-        },
-        {
           "text": "نَأۡ",
-          "audio": "word26e.wav",
+          "audio": "word26d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "أ",
+        "script": "This is the hamza. It looks like a little wave curling over. The hamza likes to sit on other letters — here it is sitting on an alif. The hamza has no dots.",
+        "audio": "word26i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "أَ أُ إِ نَأۡ",
+        "script": "With a fatha it's أَ. With a damma it's أُ. With a kasra it sits under the alif — إِ. And with a sukoon after نَ, it's نَأۡ.",
+        "audio": "word26l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -308,9 +332,7 @@
       "section": "special",
       "letter": "ؤ",
       "makhraj": "Throat الحلق",
-      "badges": [
-        "Throat"
-      ],
+      "badges": [],
       "labels": [
         "word"
       ],
@@ -321,6 +343,18 @@
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ؤ",
+        "script": "Here the hamza is sitting on a waw.",
+        "audio": "word27i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "مُؤۡمِن",
+        "script": "Listen: مُؤۡمِن.",
+        "audio": "word27l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -328,9 +362,7 @@
       "section": "special",
       "letter": "ئ",
       "makhraj": "Throat الحلق",
-      "badges": [
-        "Throat"
-      ],
+      "badges": [],
       "labels": [
         "word"
       ],
@@ -341,6 +373,18 @@
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ئ",
+        "script": "Here the hamza is sitting on a nabra.",
+        "audio": "word28i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "سُئِلَ",
+        "script": "Listen: سُئِلَ.",
+        "audio": "word28l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -348,9 +392,7 @@
       "section": "special",
       "letter": "ء",
       "makhraj": "Throat الحلق",
-      "badges": [
-        "Throat"
-      ],
+      "badges": [],
       "labels": [
         "word"
       ],
@@ -361,6 +403,18 @@
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ء",
+        "script": "And here the hamza sits on nothing at all — all by itself on the sand.",
+        "audio": "word29i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "جُزۡء",
+        "script": "Listen: جُزۡء.",
+        "audio": "word29l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -371,11 +425,8 @@
       "makhraj": "Lips الشفتان / Empty space الجوف",
       "mnemonic": "A tadpole",
       "image": "و.png",
-      "badges": [
-        "Lips"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -384,51 +435,87 @@
       ],
       "forms": [
         {
-          "text": "وَاو",
+          "text": "وَ",
           "audio": "word30a.wav",
           "timings": null
         },
         {
-          "text": "وَ",
+          "text": "وُ",
           "audio": "word30b.wav",
           "timings": null
         },
         {
-          "text": "وُ",
+          "text": "وِ",
           "audio": "word30c.wav",
           "timings": null
         },
         {
-          "text": "وِ",
+          "text": "نَوۡ",
           "audio": "word30d.wav",
           "timings": null
         },
         {
-          "text": "نَوۡ",
-          "audio": "word30e.wav",
-          "timings": null
-        },
-        {
           "text": "نُو",
-          "audio": "word30f.wav",
+          "audio": "word30e.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "و",
+        "script": "This is the letter waw. It looks like a tadpole — a round body with a tail sweeping to the side. Waw has no dots.",
+        "audio": "word30i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "وَ وُ وِ نَوۡ نُو",
+        "script": "With a fatha it's وَ. With a damma it's وُ. With a kasra it's وِ. After نَ with a sukoon it's نَوۡ. And after نُ it stretches — نُو.",
+        "audio": "word30l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
       "id": 31,
+      "section": "special",
+      "letter": "ى",
+      "makhraj": "Empty space الجوف",
+      "mnemonic": "A duck",
+      "image": "ى.png",
+      "badges": [],
+      "labels": [
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "فِى",
+          "audio": "word31a.wav",
+          "timings": null
+        }
+      ],
+      "intro": {
+        "text": "ى",
+        "script": "This is the letter yaa — but look, it has no dots. It looks like a duck floating on the water. You will see it at the end of a word, like فِى.",
+        "audio": "word31i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "فِى",
+        "script": "Listen: فِى.",
+        "audio": "word31l.wav",
+        "timings": null
+      },
+      "timings": null
+    },
+    {
+      "id": 32,
       "section": "special",
       "letter": "يـ",
       "name": "يَاء",
       "makhraj": "Tongue اللسان / Empty space الجوف",
       "mnemonic": "The duck in the boat — two bubbles below",
       "image": "ي.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -437,163 +524,186 @@
       ],
       "forms": [
         {
-          "text": "يَاء",
-          "audio": "word31a.wav",
-          "timings": null
-        },
-        {
           "text": "يَـ",
-          "audio": "word31b.wav",
-          "timings": null
-        },
-        {
-          "text": "يُـ",
-          "audio": "word31c.wav",
-          "timings": null
-        },
-        {
-          "text": "يِـ",
-          "audio": "word31d.wav",
-          "timings": null
-        },
-        {
-          "text": "نَيۡ",
-          "audio": "word31e.wav",
-          "timings": null
-        },
-        {
-          "text": "نِي",
-          "audio": "word31f.wav",
-          "timings": null
-        }
-      ],
-      "timings": null
-    },
-    {
-      "id": 32,
-      "section": "special",
-      "letter": "ى",
-      "makhraj": "Empty space الجوف",
-      "mnemonic": "A duck",
-      "image": "ى.png",
-      "badges": [
-        "Empty"
-      ],
-      "labels": [
-        "word",
-        "word"
-      ],
-      "forms": [
-        {
-          "text": "فِى",
           "audio": "word32a.wav",
           "timings": null
         },
         {
-          "text": "مُوسَىٰ",
+          "text": "يُـ",
           "audio": "word32b.wav",
+          "timings": null
+        },
+        {
+          "text": "يِـ",
+          "audio": "word32c.wav",
+          "timings": null
+        },
+        {
+          "text": "نَيۡ",
+          "audio": "word32d.wav",
+          "timings": null
+        },
+        {
+          "text": "نِي",
+          "audio": "word32e.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "يـ",
+        "script": "Now the duck jumps into the boat! When yaa joins the letter after it, it looks like the boat, with two bubbles under it. Yaa has two dots under it.",
+        "audio": "word32i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "يَـ يُـ يِـ نَيۡ نِي",
+        "script": "With a fatha it's يَ. With a damma it's يُ. With a kasra it's يِ. After نَ with a sukoon it's نَيۡ. And after نِ it stretches — نِي.",
+        "audio": "word32l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
       "id": 33,
+      "section": "special",
+      "letter": "ىٰ",
+      "makhraj": "Empty space الجوف",
+      "mnemonic": "A duck",
+      "image": "ى.png",
+      "badges": [],
+      "labels": [
+        "word"
+      ],
+      "forms": [
+        {
+          "text": "مُوسَىٰ",
+          "audio": "word33a.wav",
+          "timings": null
+        }
+      ],
+      "intro": {
+        "text": "ىٰ",
+        "script": "Here is the duck again. But this time it is not a yaa at all — it is an alif in disguise! You can tell by the little alif sitting on top. Listen: مُوسَىٰ.",
+        "audio": "word33i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "مُوسَىٰ",
+        "script": "Listen: مُوسَىٰ.",
+        "audio": "word33l.wav",
+        "timings": null
+      },
+      "timings": null
+    },
+    {
+      "id": 34,
       "section": "special",
       "letter": "ا",
       "name": "أَلِف",
       "makhraj": "Empty space الجوف",
       "mnemonic": "A lighthouse",
       "image": "ا.png",
-      "badges": [
-        "Empty"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "word"
       ],
       "forms": [
         {
-          "text": "أَلِف",
-          "audio": "word33a.wav",
-          "timings": null
-        },
-        {
           "text": "نَا",
-          "audio": "word33b.wav",
+          "audio": "word34a.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ا",
+        "script": "This is the letter alif. It looks like a lighthouse — tall and straight. Alif has no dots, and no fatha, damma or kasra of its own. It makes the letter before it long.",
+        "audio": "word34i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "نَا",
+        "script": "After نَ it stretches — نَا.",
+        "audio": "word34l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
-      "id": 34,
+      "id": 35,
       "section": "special",
       "letter": "لا",
       "name": "لَام أَلِف",
       "makhraj": "Tongue اللسان",
       "mnemonic": "Two oars crossed in a V",
       "image": "لا.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "word",
         "word"
       ],
       "forms": [
         {
-          "text": "لَام أَلِف",
-          "audio": "word34a.wav",
-          "timings": null
-        },
-        {
           "text": "لَا",
-          "audio": "word34b.wav",
+          "audio": "word35a.wav",
           "timings": null
         },
         {
           "text": "وَلَا",
-          "audio": "word34c.wav",
+          "audio": "word35b.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "لا",
+        "script": "This is laam and alif holding hands. It looks like two oars crossed. Two letters, one shape.",
+        "audio": "word35i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "لَا وَلَا",
+        "script": "We read it لَا. And in a word — وَلَا.",
+        "audio": "word35l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
-      "id": 35,
+      "id": 36,
       "section": "special",
       "letter": "ة",
       "name": "تَاء مَرۡبُوطَة",
       "makhraj": "Tongue اللسان (Throat الحلق at a stop)",
       "mnemonic": "The knot with two bubbles above it",
       "image": "ة.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "word",
         "word"
       ],
       "forms": [
         {
-          "text": "تَاء مَرۡبُوطَة",
-          "audio": "word35a.wav",
+          "text": "ءَاخِرَةِ",
+          "audio": "word36a.wav",
           "timings": null
         },
         {
           "text": "رَحۡمَةَ",
-          "audio": "word35b.wav",
-          "timings": null
-        },
-        {
-          "text": "نِعۡمَةَ",
-          "audio": "word35c.wav",
+          "audio": "word36b.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ة",
+        "script": "This is the taa marbuta — a taa wearing the haa's shape. It looks like the knot with two bubbles above it. Taa marbuta has two dots on top.",
+        "audio": "word36i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "ءَاخِرَةِ رَحۡمَةَ",
+        "script": "Listen: ءَاخِرَةِ. Taa marbuta sometimes looks like this — رَحۡمَةَ.",
+        "audio": "word36l.wav",
+        "timings": null
+      },
       "timings": null
     }
   ]

@@ -69,6 +69,31 @@ export interface LetterWord {
   waqfMadd?: number;
   /** Grey the final letter's vowel: written, and at the stop not said. */
   dimFinalMark?: boolean;
+
+  // ── IQRA Kids letter cards (Design/iqra-kids.md) ──────────────────────
+  /** The bare letter as taught — هـ and يـ already in their joined form. */
+  letter?: string;
+  /** Its name, displayed only: the intro says it, song 1 sings it. */
+  name?: string;
+  /** Which of the five places it is made — kept for song 2, never a badge. */
+  makhraj?: string;
+  /** The one line under the picture, e.g. "A boat, with one bubble below it". */
+  mnemonic?: string;
+  /** One caption per form: 'a', 'u', 'i', 'sukoon', 'madd', 'word'. */
+  labels?: string[];
+  /** The English intro, in the teacher's voice, played whole. */
+  intro?: WordForm & { script?: string };
+  /** The forms line — "With a fatha it's بَ…" — played whole, its Arabic
+   *  lighting as each form is said. `text` is just that Arabic. */
+  line?: WordForm & { script?: string };
+}
+
+/** One step of an alphabet song: what to show, which card it sits on, and
+ *  for the sounds song which place in the mouth to light. */
+export interface SongStep {
+  text: string;
+  group: number;
+  zone?: string;
 }
 
 export interface Lesson {
@@ -93,6 +118,8 @@ export interface Lesson {
   /** Whose translation the (i) meanings quote, e.g. 'Sahih International'.
    *  Shown under a meaning only when that meaning is a quotation. */
   meaningSource?: string;
+  /** Set on the two alphabet songs: one recording, shown as a run of cards. */
+  song?: { mode: 'names' | 'sounds'; steps: SongStep[] };
   words: SimpleWord[] | PairWord[] | LetterWord[];
 }
 
@@ -105,6 +132,14 @@ export interface LessonItem {
   /** Full URL of a picture to show beside the card, if it has one. */
   image?: string;
   forms: Playable[];
+  // ── IQRA Kids letter cards ────────────────────────────────────────────
+  letter?: string;
+  name?: string;
+  mnemonic?: string;
+  labels?: string[];
+  /** The spoken lines — intro then forms line — walked BEFORE the forms, so
+   *  Next means: hear about it, hear it said, then drill each sound. */
+  extras?: Playable[];
 }
 
 /**

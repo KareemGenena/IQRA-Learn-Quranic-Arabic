@@ -757,6 +757,18 @@ recorded** — 99 takes, in three passes over the sheet with the intake tool.
 Still to build: the `#/kids` menu and the `data-mode="kids"` skin, pause/resume
 on `PlaybackHandle` for the songs, and the makhraj SVG.
 
+**Iteration 5 (2026-09-06, later):** the author reviewed the first drafts on
+screen and the kids skin was built to them — `#/kids/lesson/N` switches
+`data-mode="kids"`; `LetterCard` (picture · Manāra · big bare letter · four
+small sound cards, no badges) replaces `ItemCard` through a `Card` prop on
+`SectionedLesson`; `SongCards` shows a song as a run of cards driven by the
+active step the engine already reports; `PlaybackHandle` gained
+`pause/resume/seek`. The sheet has a seventh table of spoken lines (an
+English intro and a forms line per letter, slots `ب مقدمة` / `ب حركات`), and
+**the sheet-generating script is retired — the docx is the author's now.**
+`make-alphabet.mjs` prints the recording plan (pieces per take) and the tap-
+calibration list on every run; 140 takes, 38 of them whole.
+
 Two conventions this added, both in the same spirit as their audio twins:
 **pictures are runtime-cached, never precached** (32 of them took the shell from
 1.6 MB to 6.7 MB and would have broken updates), and **`IMAGE_VERSION` is

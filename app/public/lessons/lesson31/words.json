@@ -15,175 +15,119 @@
     }
   ],
   "song": {
-    "steps": 28,
-    "letters": [
+    "mode": "names",
+    "steps": [
       {
-        "letter": "أ",
-        "name": "أَلِف",
-        "group": "lighthouse",
-        "image": "ء.png"
+        "text": "أ",
+        "group": 0
       },
       {
-        "letter": "ب",
-        "name": "بَاء",
-        "group": "boat",
-        "image": "ب.png"
+        "text": "ب",
+        "group": 1
       },
       {
-        "letter": "ت",
-        "name": "تَاء",
-        "group": "boat",
-        "image": "ت.png"
+        "text": "ت",
+        "group": 1
       },
       {
-        "letter": "ث",
-        "name": "ثَاء",
-        "group": "boat",
-        "image": "ث.png"
+        "text": "ث",
+        "group": 1
       },
       {
-        "letter": "ج",
-        "name": "جِيم",
-        "group": "crescent moon",
-        "image": "ج.png"
+        "text": "ج",
+        "group": 2
       },
       {
-        "letter": "ح",
-        "name": "حَاء",
-        "group": "crescent moon",
-        "image": "ح.png"
+        "text": "ح",
+        "group": 2
       },
       {
-        "letter": "خ",
-        "name": "خَاء",
-        "group": "crescent moon",
-        "image": "خ.png"
+        "text": "خ",
+        "group": 2
       },
       {
-        "letter": "د",
-        "name": "دَال",
-        "group": "hook on the line",
-        "image": "د.png"
+        "text": "د",
+        "group": 3
       },
       {
-        "letter": "ذ",
-        "name": "ذَال",
-        "group": "hook on the line",
-        "image": "ذ.png"
+        "text": "ذ",
+        "group": 3
       },
       {
-        "letter": "ر",
-        "name": "رَاء",
-        "group": "hook on the sand",
-        "image": "ر.png"
+        "text": "ر",
+        "group": 4
       },
       {
-        "letter": "ز",
-        "name": "زَاي",
-        "group": "hook on the sand",
-        "image": "ز.png"
+        "text": "ز",
+        "group": 4
       },
       {
-        "letter": "س",
-        "name": "سِين",
-        "group": "sea snake",
-        "image": "س.png"
+        "text": "س",
+        "group": 5
       },
       {
-        "letter": "ش",
-        "name": "شِين",
-        "group": "sea snake",
-        "image": "ش.png"
+        "text": "ش",
+        "group": 5
       },
       {
-        "letter": "ص",
-        "name": "صَاد",
-        "group": "whale",
-        "image": "ص.png"
+        "text": "ص",
+        "group": 6
       },
       {
-        "letter": "ض",
-        "name": "ضَاد",
-        "group": "whale",
-        "image": "ض.png"
+        "text": "ض",
+        "group": 6
       },
       {
-        "letter": "ط",
-        "name": "طَاء",
-        "group": "spouting whale",
-        "image": "ط.png"
+        "text": "ط",
+        "group": 7
       },
       {
-        "letter": "ظ",
-        "name": "ظَاء",
-        "group": "spouting whale",
-        "image": "ظ.png"
+        "text": "ظ",
+        "group": 7
       },
       {
-        "letter": "ع",
-        "name": "عَيۡن",
-        "group": "seaweed frond",
-        "image": "ع.png"
+        "text": "ع",
+        "group": 8
       },
       {
-        "letter": "غ",
-        "name": "غَيۡن",
-        "group": "seaweed frond",
-        "image": "غ.png"
+        "text": "غ",
+        "group": 8
       },
       {
-        "letter": "ف",
-        "name": "فَاء",
-        "group": "fishing net",
-        "image": "ف.png"
+        "text": "ف",
+        "group": 9
       },
       {
-        "letter": "ق",
-        "name": "قَاف",
-        "group": "fishing net",
-        "image": "ق.png"
+        "text": "ق",
+        "group": 9
       },
       {
-        "letter": "ك",
-        "name": "كَاف",
-        "group": "deck chair",
-        "image": "ك.png"
+        "text": "ك",
+        "group": 10
       },
       {
-        "letter": "ل",
-        "name": "لَام",
-        "group": "snorkel",
-        "image": "ل.png"
+        "text": "ل",
+        "group": 11
       },
       {
-        "letter": "م",
-        "name": "مِيم",
-        "group": "buoy",
-        "image": "م.png"
+        "text": "م",
+        "group": 12
       },
       {
-        "letter": "ن",
-        "name": "نُون",
-        "group": "half-shell",
-        "image": "ن.png"
+        "text": "ن",
+        "group": 13
       },
       {
-        "letter": "هـ",
-        "name": "هَاء",
-        "group": "knot",
-        "image": "ه.png"
+        "text": "هـ",
+        "group": 14
       },
       {
-        "letter": "و",
-        "name": "وَاو",
-        "group": "tadpole",
-        "image": "و.png"
+        "text": "و",
+        "group": 15
       },
       {
-        "letter": "ى",
-        "name": "يَاء",
-        "group": "duck",
-        "image": "ى.png"
+        "text": "ى",
+        "group": 16
       }
     ]
   },
@@ -194,9 +138,7 @@
       "text": "أ ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن هـ و ى",
       "audio": "song-names.wav",
       "timings": null,
-      "badges": [
-        "28 letters"
-      ]
+      "badges": []
     }
   ]
 }

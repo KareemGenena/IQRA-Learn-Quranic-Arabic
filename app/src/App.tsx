@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { KidsHomePage } from './pages/KidsHomePage';
+import { KidsLesson } from './pages/KidsLesson';
 import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
 import { AdminPage } from './pages/AdminPage';
@@ -49,17 +50,27 @@ function initialRate(): number {
 interface Route {
   page: 'home' | 'kids' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'recordings' | 'intake';
   lessonId: number;
+  /**
+   * The kids skin. Carried by the route — #/kids/lesson/N — so a bookmark, a
+   * shared link and the teacher's home-screen shortcut all reopen the right
+   * clothes, and the breadcrumb knows to lead back to the kids menu. The
+   * lesson underneath is the same one #/lesson/N opens: same number, same
+   * clips, same calibrations.
+   */
+  kids: boolean;
 }
 
 function parseRoute(hash: string): Route {
+  const k = /^#\/kids\/lesson\/(\d+)/.exec(hash);
+  if (k) return { page: 'lesson', lessonId: Number(k[1]), kids: true };
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
   const m = /^#\/(kids|lesson|admin|calibrate|notes|account|classes|recordings|intake)(?:\/(\d+))?/.exec(hash);
   if (m) {
     const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
-    return { page, lessonId: Number(m[2] ?? 0) };
+    return { page, lessonId: Number(m[2] ?? 0), kids: page === 'kids' };
   }
-  return { page: 'home', lessonId: 0 };
+  return { page: 'home', lessonId: 0, kids: false };
 }
 
 /**
@@ -107,6 +118,13 @@ export default function App() {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('iqra-theme', theme);
   }, [theme]);
+
+  // The kids skin rides on the route, the way the theme rides on a setting:
+  // one attribute on <html>, and a scoped block in index.css does the rest.
+  useEffect(() => {
+    if (route.kids) document.documentElement.dataset.mode = 'kids';
+    else delete document.documentElement.dataset.mode;
+  }, [route.kids]);
 
   useEffect(() => {
     localStorage.setItem('iqra-rate', String(rate));
@@ -215,7 +233,10 @@ export default function App() {
       {route.page !== 'home' && route.page !== 'kids' && (
         <>
           <nav className="breadcrumb">
-            <a href="#/">← All lessons</a>
+            {/* Inside a kids lesson the way back is the kids menu; the brand
+                logo in the header still leads to the main home, so both are
+                always one tap away. */}
+            <a href={route.kids ? '#/kids' : '#/'}>{route.kids ? '← IQRA Kids' : '← All lessons'}</a>
             {!signingIn && (
               <h2>
                 {route.page === 'account'
@@ -327,7 +348,9 @@ export default function App() {
                       <a href={`#/notes/${route.lessonId}`}>📝 Open notes for this lesson</a>
                     </p>
                   )}
-                  {lesson.kind === 'words' ? (
+                  {route.kids ? (
+                    <KidsLesson lesson={lesson} rate={rate} />
+                  ) : lesson.kind === 'words' ? (
                     <WordsLesson lesson={lesson} rate={rate} />
                   ) : (
                     <SectionedLesson lesson={lesson} rate={rate} />

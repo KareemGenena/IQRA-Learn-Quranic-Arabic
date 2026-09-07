@@ -15,259 +15,427 @@
     }
   ],
   "song": {
-    "steps": 84,
-    "letters": [
+    "mode": "sounds",
+    "steps": [
       {
-        "letter": "أ",
-        "forms": [
-          "أَ",
-          "أُ",
-          "إِ"
-        ],
-        "makhraj": "Throat الحلق"
+        "text": "أَ",
+        "group": 0,
+        "zone": "throat"
       },
       {
-        "letter": "ب",
-        "forms": [
-          "بَ",
-          "بُ",
-          "بِ"
-        ],
-        "makhraj": "Lips الشفتان"
+        "text": "أُ",
+        "group": 0,
+        "zone": "throat"
       },
       {
-        "letter": "ت",
-        "forms": [
-          "تَ",
-          "تُ",
-          "تِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "إِ",
+        "group": 0,
+        "zone": "throat"
       },
       {
-        "letter": "ث",
-        "forms": [
-          "ثَ",
-          "ثُ",
-          "ثِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "بَ",
+        "group": 1,
+        "zone": "lips"
       },
       {
-        "letter": "ج",
-        "forms": [
-          "جَ",
-          "جُ",
-          "جِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "بُ",
+        "group": 1,
+        "zone": "lips"
       },
       {
-        "letter": "ح",
-        "forms": [
-          "حَ",
-          "حُ",
-          "حِ"
-        ],
-        "makhraj": "Throat الحلق"
+        "text": "بِ",
+        "group": 1,
+        "zone": "lips"
       },
       {
-        "letter": "خ",
-        "forms": [
-          "خَ",
-          "خُ",
-          "خِ"
-        ],
-        "makhraj": "Throat الحلق"
+        "text": "تَ",
+        "group": 2,
+        "zone": "tongue"
       },
       {
-        "letter": "د",
-        "forms": [
-          "دَ",
-          "دُ",
-          "دِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "تُ",
+        "group": 2,
+        "zone": "tongue"
       },
       {
-        "letter": "ذ",
-        "forms": [
-          "ذَ",
-          "ذُ",
-          "ذِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "تِ",
+        "group": 2,
+        "zone": "tongue"
       },
       {
-        "letter": "ر",
-        "forms": [
-          "رَ",
-          "رُ",
-          "رِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "ثَ",
+        "group": 3,
+        "zone": "tongue"
       },
       {
-        "letter": "ز",
-        "forms": [
-          "زَ",
-          "زُ",
-          "زِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "ثُ",
+        "group": 3,
+        "zone": "tongue"
       },
       {
-        "letter": "س",
-        "forms": [
-          "سَ",
-          "سُ",
-          "سِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "ثِ",
+        "group": 3,
+        "zone": "tongue"
       },
       {
-        "letter": "ش",
-        "forms": [
-          "شَ",
-          "شُ",
-          "شِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "جَ",
+        "group": 4,
+        "zone": "tongue"
       },
       {
-        "letter": "ص",
-        "forms": [
-          "صَ",
-          "صُ",
-          "صِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "جُ",
+        "group": 4,
+        "zone": "tongue"
       },
       {
-        "letter": "ض",
-        "forms": [
-          "ضَ",
-          "ضُ",
-          "ضِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "جِ",
+        "group": 4,
+        "zone": "tongue"
       },
       {
-        "letter": "ط",
-        "forms": [
-          "طَ",
-          "طُ",
-          "طِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "حَ",
+        "group": 5,
+        "zone": "throat"
       },
       {
-        "letter": "ظ",
-        "forms": [
-          "ظَ",
-          "ظُ",
-          "ظِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "حُ",
+        "group": 5,
+        "zone": "throat"
       },
       {
-        "letter": "ع",
-        "forms": [
-          "عَ",
-          "عُ",
-          "عِ"
-        ],
-        "makhraj": "Throat الحلق"
+        "text": "حِ",
+        "group": 5,
+        "zone": "throat"
       },
       {
-        "letter": "غ",
-        "forms": [
-          "غَ",
-          "غُ",
-          "غِ"
-        ],
-        "makhraj": "Throat الحلق"
+        "text": "خَ",
+        "group": 6,
+        "zone": "throat"
       },
       {
-        "letter": "ف",
-        "forms": [
-          "فَ",
-          "فُ",
-          "فِ"
-        ],
-        "makhraj": "Lips الشفتان"
+        "text": "خُ",
+        "group": 6,
+        "zone": "throat"
       },
       {
-        "letter": "ق",
-        "forms": [
-          "قَ",
-          "قُ",
-          "قِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "خِ",
+        "group": 6,
+        "zone": "throat"
       },
       {
-        "letter": "ك",
-        "forms": [
-          "كَ",
-          "كُ",
-          "كِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "دَ",
+        "group": 7,
+        "zone": "tongue"
       },
       {
-        "letter": "ل",
-        "forms": [
-          "لَ",
-          "لُ",
-          "لِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "دُ",
+        "group": 7,
+        "zone": "tongue"
       },
       {
-        "letter": "م",
-        "forms": [
-          "مَ",
-          "مُ",
-          "مِ"
-        ],
-        "makhraj": "Lips الشفتان"
+        "text": "دِ",
+        "group": 7,
+        "zone": "tongue"
       },
       {
-        "letter": "ن",
-        "forms": [
-          "نَ",
-          "نُ",
-          "نِ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "ذَ",
+        "group": 8,
+        "zone": "tongue"
       },
       {
-        "letter": "هـ",
-        "forms": [
-          "هَـ",
-          "هُـ",
-          "هِـ"
-        ],
-        "makhraj": "Throat الحلق"
+        "text": "ذُ",
+        "group": 8,
+        "zone": "tongue"
       },
       {
-        "letter": "و",
-        "forms": [
-          "وَ",
-          "وُ",
-          "وِ"
-        ],
-        "makhraj": "Lips الشفتان"
+        "text": "ذِ",
+        "group": 8,
+        "zone": "tongue"
       },
       {
-        "letter": "ى",
-        "forms": [
-          "يَـ",
-          "يُـ",
-          "يِـ"
-        ],
-        "makhraj": "Tongue اللسان"
+        "text": "رَ",
+        "group": 9,
+        "zone": "tongue"
+      },
+      {
+        "text": "رُ",
+        "group": 9,
+        "zone": "tongue"
+      },
+      {
+        "text": "رِ",
+        "group": 9,
+        "zone": "tongue"
+      },
+      {
+        "text": "زَ",
+        "group": 10,
+        "zone": "tongue"
+      },
+      {
+        "text": "زُ",
+        "group": 10,
+        "zone": "tongue"
+      },
+      {
+        "text": "زِ",
+        "group": 10,
+        "zone": "tongue"
+      },
+      {
+        "text": "سَ",
+        "group": 11,
+        "zone": "tongue"
+      },
+      {
+        "text": "سُ",
+        "group": 11,
+        "zone": "tongue"
+      },
+      {
+        "text": "سِ",
+        "group": 11,
+        "zone": "tongue"
+      },
+      {
+        "text": "شَ",
+        "group": 12,
+        "zone": "tongue"
+      },
+      {
+        "text": "شُ",
+        "group": 12,
+        "zone": "tongue"
+      },
+      {
+        "text": "شِ",
+        "group": 12,
+        "zone": "tongue"
+      },
+      {
+        "text": "صَ",
+        "group": 13,
+        "zone": "tongue"
+      },
+      {
+        "text": "صُ",
+        "group": 13,
+        "zone": "tongue"
+      },
+      {
+        "text": "صِ",
+        "group": 13,
+        "zone": "tongue"
+      },
+      {
+        "text": "ضَ",
+        "group": 14,
+        "zone": "tongue"
+      },
+      {
+        "text": "ضُ",
+        "group": 14,
+        "zone": "tongue"
+      },
+      {
+        "text": "ضِ",
+        "group": 14,
+        "zone": "tongue"
+      },
+      {
+        "text": "طَ",
+        "group": 15,
+        "zone": "tongue"
+      },
+      {
+        "text": "طُ",
+        "group": 15,
+        "zone": "tongue"
+      },
+      {
+        "text": "طِ",
+        "group": 15,
+        "zone": "tongue"
+      },
+      {
+        "text": "ظَ",
+        "group": 16,
+        "zone": "tongue"
+      },
+      {
+        "text": "ظُ",
+        "group": 16,
+        "zone": "tongue"
+      },
+      {
+        "text": "ظِ",
+        "group": 16,
+        "zone": "tongue"
+      },
+      {
+        "text": "عَ",
+        "group": 17,
+        "zone": "throat"
+      },
+      {
+        "text": "عُ",
+        "group": 17,
+        "zone": "throat"
+      },
+      {
+        "text": "عِ",
+        "group": 17,
+        "zone": "throat"
+      },
+      {
+        "text": "غَ",
+        "group": 18,
+        "zone": "throat"
+      },
+      {
+        "text": "غُ",
+        "group": 18,
+        "zone": "throat"
+      },
+      {
+        "text": "غِ",
+        "group": 18,
+        "zone": "throat"
+      },
+      {
+        "text": "فَ",
+        "group": 19,
+        "zone": "lips"
+      },
+      {
+        "text": "فُ",
+        "group": 19,
+        "zone": "lips"
+      },
+      {
+        "text": "فِ",
+        "group": 19,
+        "zone": "lips"
+      },
+      {
+        "text": "قَ",
+        "group": 20,
+        "zone": "tongue"
+      },
+      {
+        "text": "قُ",
+        "group": 20,
+        "zone": "tongue"
+      },
+      {
+        "text": "قِ",
+        "group": 20,
+        "zone": "tongue"
+      },
+      {
+        "text": "كَ",
+        "group": 21,
+        "zone": "tongue"
+      },
+      {
+        "text": "كُ",
+        "group": 21,
+        "zone": "tongue"
+      },
+      {
+        "text": "كِ",
+        "group": 21,
+        "zone": "tongue"
+      },
+      {
+        "text": "لَ",
+        "group": 22,
+        "zone": "tongue"
+      },
+      {
+        "text": "لُ",
+        "group": 22,
+        "zone": "tongue"
+      },
+      {
+        "text": "لِ",
+        "group": 22,
+        "zone": "tongue"
+      },
+      {
+        "text": "مَ",
+        "group": 23,
+        "zone": "lips"
+      },
+      {
+        "text": "مُ",
+        "group": 23,
+        "zone": "lips"
+      },
+      {
+        "text": "مِ",
+        "group": 23,
+        "zone": "lips"
+      },
+      {
+        "text": "نَ",
+        "group": 24,
+        "zone": "tongue"
+      },
+      {
+        "text": "نُ",
+        "group": 24,
+        "zone": "tongue"
+      },
+      {
+        "text": "نِ",
+        "group": 24,
+        "zone": "tongue"
+      },
+      {
+        "text": "هَـ",
+        "group": 25,
+        "zone": "throat"
+      },
+      {
+        "text": "هُـ",
+        "group": 25,
+        "zone": "throat"
+      },
+      {
+        "text": "هِـ",
+        "group": 25,
+        "zone": "throat"
+      },
+      {
+        "text": "وَ",
+        "group": 26,
+        "zone": "lips"
+      },
+      {
+        "text": "وُ",
+        "group": 26,
+        "zone": "lips"
+      },
+      {
+        "text": "وِ",
+        "group": 26,
+        "zone": "lips"
+      },
+      {
+        "text": "يَـ",
+        "group": 27,
+        "zone": "tongue"
+      },
+      {
+        "text": "يُـ",
+        "group": 27,
+        "zone": "tongue"
+      },
+      {
+        "text": "يِـ",
+        "group": 27,
+        "zone": "tongue"
       }
     ]
   },
@@ -278,9 +446,7 @@
       "text": "أَ أُ إِ بَ بُ بِ تَ تُ تِ ثَ ثُ ثِ جَ جُ جِ حَ حُ حِ خَ خُ خِ دَ دُ دِ ذَ ذُ ذِ رَ رُ رِ زَ زُ زِ سَ سُ سِ شَ شُ شِ صَ صُ صِ ضَ ضُ ضِ طَ طُ طِ ظَ ظُ ظِ عَ عُ عِ غَ غُ غِ فَ فُ فِ قَ قُ قِ كَ كُ كِ لَ لُ لِ مَ مُ مِ نَ نُ نِ هَـ هُـ هِـ وَ وُ وِ يَـ يُـ يِـ",
       "audio": "song-sounds.wav",
       "timings": null,
-      "badges": [
-        "28 letters"
-      ]
+      "badges": []
     }
   ]
 }

@@ -5,8 +5,31 @@ import type { AppConfig } from '../lib/appConfig';
 export function HomePage({ config, admin }: { config: AppConfig; admin: boolean }) {
   const lessons = orderedLessons(LESSONS, 'adults').filter((l) => canSeeLesson(config, l.id, admin));
 
+  const kidsVisible = orderedLessons(LESSONS, 'kids').some((l) => canSeeLesson(config, l.id, admin));
+
   return (
     <main className="home">
+      {/* A door, never a mode-choice screen — the same lessons, a different
+          menu and a different skin. At the top so it cannot be mistaken for
+          another lesson, and only shown when there is something behind it,
+          so a learner is never sent to an empty room. */}
+      {kidsVisible && (
+        <a className="kids-door" href="#/kids">
+          <img
+            className="kids-door-manara"
+            src={`${import.meta.env.BASE_URL}images/kids/manara.png?v=${__IMAGE_VERSION__}`}
+            alt=""
+          />
+          <span className="kids-door-body">
+            <span className="kids-door-title">IQRA Kids</span>
+            <span className="kids-door-sub">The Arabic letters from the very beginning</span>
+          </span>
+          <span className="lesson-go" aria-hidden="true">
+            ›
+          </span>
+        </a>
+      )}
+
       <p className="home-intro">
         Choose a lesson. Tap any word to hear it — each letter lights up exactly as it is
         pronounced.
@@ -38,23 +61,6 @@ export function HomePage({ config, admin }: { config: AppConfig; admin: boolean 
         })}
       </ul>
       {lessons.length === 0 && <p className="loading">No lessons are published yet.</p>}
-
-      {/* A door, never a mode-choice screen — the same lessons, a different
-          menu and a different skin. Only shown when there is something behind
-          it, so a learner is never sent to an empty room. */}
-      {orderedLessons(LESSONS, 'kids').some((l) => canSeeLesson(config, l.id, admin)) && (
-        <a className="kids-door" href="#/kids">
-          <span className="kids-door-body">
-            <span className="kids-door-title">IQRA Kids</span>
-            <span className="lesson-blurb">
-              The Arabic letters from the very beginning — for a teacher and a small group.
-            </span>
-          </span>
-          <span className="lesson-go" aria-hidden="true">
-            ›
-          </span>
-        </a>
-      )}
       {/* Which build this device is actually running. An installed app has no
           address bar and no way to tell a stale copy from a current one — the
           author once spent weeks looking at a months-old build. Comparing this

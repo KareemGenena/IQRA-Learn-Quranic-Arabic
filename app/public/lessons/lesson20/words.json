@@ -11,7 +11,7 @@
       "id": "letters",
       "title": "The Letters",
       "titleArabic": "الحروف",
-      "hint": "Its name, then a, u, i — then the letter with a sukoon after نَ."
+      "hint": "Listen to the intro, then the letter with a, u and i — then with a sukoon after نَ."
     }
   ],
   "words": [
@@ -23,11 +23,8 @@
       "makhraj": "Lips الشفتان",
       "mnemonic": "A boat, with one bubble below it",
       "image": "ب.png",
-      "badges": [
-        "Lips"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -35,31 +32,38 @@
       ],
       "forms": [
         {
-          "text": "بَاء",
+          "text": "بَ",
           "audio": "word01a.wav",
           "timings": null
         },
         {
-          "text": "بَ",
+          "text": "بُ",
           "audio": "word01b.wav",
           "timings": null
         },
         {
-          "text": "بُ",
+          "text": "بِ",
           "audio": "word01c.wav",
           "timings": null
         },
         {
-          "text": "بِ",
-          "audio": "word01d.wav",
-          "timings": null
-        },
-        {
           "text": "نَبۡ",
-          "audio": "word01e.wav",
+          "audio": "word01d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ب",
+        "script": "This is the letter baa. It looks like a boat. Look — one bubble under it. Baa has one dot under it.",
+        "audio": "word01i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "بَ بُ بِ نَبۡ",
+        "script": "With a fatha it's بَ. With a damma it's بُ. With a kasra it's بِ. And with a sukoon after نَ, it's نَبۡ.",
+        "audio": "word01l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -70,11 +74,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "The same boat, with two bubbles above it",
       "image": "ت.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -82,31 +83,38 @@
       ],
       "forms": [
         {
-          "text": "تَاء",
+          "text": "تَ",
           "audio": "word02a.wav",
           "timings": null
         },
         {
-          "text": "تَ",
+          "text": "تُ",
           "audio": "word02b.wav",
           "timings": null
         },
         {
-          "text": "تُ",
+          "text": "تِ",
           "audio": "word02c.wav",
           "timings": null
         },
         {
-          "text": "تِ",
-          "audio": "word02d.wav",
-          "timings": null
-        },
-        {
           "text": "نَتۡ",
-          "audio": "word02e.wav",
+          "audio": "word02d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ت",
+        "script": "This is the letter taa. It looks like the same boat. Look — two bubbles on top. Taa has two dots on top.",
+        "audio": "word02i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "تَ تُ تِ نَتۡ",
+        "script": "With a fatha it's تَ. With a damma it's تُ. With a kasra it's تِ. And with a sukoon after نَ, it's نَتۡ.",
+        "audio": "word02l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -117,11 +125,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "The same boat, with three bubbles above it",
       "image": "ث.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -129,31 +134,38 @@
       ],
       "forms": [
         {
-          "text": "ثَاء",
+          "text": "ثَ",
           "audio": "word03a.wav",
           "timings": null
         },
         {
-          "text": "ثَ",
+          "text": "ثُ",
           "audio": "word03b.wav",
           "timings": null
         },
         {
-          "text": "ثُ",
+          "text": "ثِ",
           "audio": "word03c.wav",
           "timings": null
         },
         {
-          "text": "ثِ",
-          "audio": "word03d.wav",
-          "timings": null
-        },
-        {
           "text": "نَثۡ",
-          "audio": "word03e.wav",
+          "audio": "word03d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ث",
+        "script": "This is the letter thaa. It looks like the same boat. Look — three bubbles on top. Thaa has three dots on top.",
+        "audio": "word03i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "ثَ ثُ ثِ نَثۡ",
+        "script": "With a fatha it's ثَ. With a damma it's ثُ. With a kasra it's ثِ. And with a sukoon after نَ, it's نَثۡ.",
+        "audio": "word03l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -164,11 +176,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "A crescent moon on its back, one bubble inside it",
       "image": "ج.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -176,31 +185,38 @@
       ],
       "forms": [
         {
-          "text": "جِيم",
+          "text": "جَ",
           "audio": "word04a.wav",
           "timings": null
         },
         {
-          "text": "جَ",
+          "text": "جُ",
           "audio": "word04b.wav",
           "timings": null
         },
         {
-          "text": "جُ",
+          "text": "جِ",
           "audio": "word04c.wav",
           "timings": null
         },
         {
-          "text": "جِ",
-          "audio": "word04d.wav",
-          "timings": null
-        },
-        {
           "text": "نَجۡ",
-          "audio": "word04e.wav",
+          "audio": "word04d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ج",
+        "script": "This is the letter jeem. It looks like a crescent moon lying on its back. Look — one bubble inside it. Jeem has one dot under it.",
+        "audio": "word04i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "جَ جُ جِ نَجۡ",
+        "script": "With a fatha it's جَ. With a damma it's جُ. With a kasra it's جِ. And with a sukoon after نَ, it's نَجۡ.",
+        "audio": "word04l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -211,11 +227,8 @@
       "makhraj": "Throat الحلق",
       "mnemonic": "The same crescent moon, empty",
       "image": "ح.png",
-      "badges": [
-        "Throat"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -223,31 +236,38 @@
       ],
       "forms": [
         {
-          "text": "حَاء",
+          "text": "حَ",
           "audio": "word05a.wav",
           "timings": null
         },
         {
-          "text": "حَ",
+          "text": "حُ",
           "audio": "word05b.wav",
           "timings": null
         },
         {
-          "text": "حُ",
+          "text": "حِ",
           "audio": "word05c.wav",
           "timings": null
         },
         {
-          "text": "حِ",
-          "audio": "word05d.wav",
-          "timings": null
-        },
-        {
           "text": "نَحۡ",
-          "audio": "word05e.wav",
+          "audio": "word05d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ح",
+        "script": "This is the letter ḥaa. It looks like the same crescent moon. Look — no bubbles at all. Ḥaa has no dots.",
+        "audio": "word05i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "حَ حُ حِ نَحۡ",
+        "script": "With a fatha it's حَ. With a damma it's حُ. With a kasra it's حِ. And with a sukoon after نَ, it's نَحۡ.",
+        "audio": "word05l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -258,11 +278,8 @@
       "makhraj": "Throat الحلق",
       "mnemonic": "The same crescent moon, one bubble above it",
       "image": "خ.png",
-      "badges": [
-        "Throat"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -270,31 +287,38 @@
       ],
       "forms": [
         {
-          "text": "خَاء",
+          "text": "خَ",
           "audio": "word06a.wav",
           "timings": null
         },
         {
-          "text": "خَ",
+          "text": "خُ",
           "audio": "word06b.wav",
           "timings": null
         },
         {
-          "text": "خُ",
+          "text": "خِ",
           "audio": "word06c.wav",
           "timings": null
         },
         {
-          "text": "خِ",
-          "audio": "word06d.wav",
-          "timings": null
-        },
-        {
           "text": "نَخۡ",
-          "audio": "word06e.wav",
+          "audio": "word06d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "خ",
+        "script": "This is the letter khaa. It looks like the same crescent moon. Look — one bubble on top. Khaa has one dot on top.",
+        "audio": "word06i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "خَ خُ خِ نَخۡ",
+        "script": "With a fatha it's خَ. With a damma it's خُ. With a kasra it's خِ. And with a sukoon after نَ, it's نَخۡ.",
+        "audio": "word06l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -305,11 +329,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "A fishing hook hanging high on its line — it stays up on the line",
       "image": "د.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -317,31 +338,38 @@
       ],
       "forms": [
         {
-          "text": "دَال",
+          "text": "دَ",
           "audio": "word07a.wav",
           "timings": null
         },
         {
-          "text": "دَ",
+          "text": "دُ",
           "audio": "word07b.wav",
           "timings": null
         },
         {
-          "text": "دُ",
+          "text": "دِ",
           "audio": "word07c.wav",
           "timings": null
         },
         {
-          "text": "دِ",
-          "audio": "word07d.wav",
-          "timings": null
-        },
-        {
           "text": "نَدۡ",
-          "audio": "word07e.wav",
+          "audio": "word07d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "د",
+        "script": "This is the letter daal. It looks like a fishing hook hanging high on its line. Look — no bubbles at all. Daal has no dots.",
+        "audio": "word07i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "دَ دُ دِ نَدۡ",
+        "script": "With a fatha it's دَ. With a damma it's دُ. With a kasra it's دِ. And with a sukoon after نَ, it's نَدۡ.",
+        "audio": "word07l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -352,11 +380,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "The same hanging hook, one bubble above it",
       "image": "ذ.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -364,31 +389,38 @@
       ],
       "forms": [
         {
-          "text": "ذَال",
+          "text": "ذَ",
           "audio": "word08a.wav",
           "timings": null
         },
         {
-          "text": "ذَ",
+          "text": "ذُ",
           "audio": "word08b.wav",
           "timings": null
         },
         {
-          "text": "ذُ",
+          "text": "ذِ",
           "audio": "word08c.wav",
           "timings": null
         },
         {
-          "text": "ذِ",
-          "audio": "word08d.wav",
-          "timings": null
-        },
-        {
           "text": "نَذۡ",
-          "audio": "word08e.wav",
+          "audio": "word08d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ذ",
+        "script": "This is the letter dhaal. It looks like the same hanging hook. Look — one bubble on top. Dhaal has one dot on top.",
+        "audio": "word08i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "ذَ ذُ ذِ نَذۡ",
+        "script": "With a fatha it's ذَ. With a damma it's ذُ. With a kasra it's ذِ. And with a sukoon after نَ, it's نَذۡ.",
+        "audio": "word08l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -399,11 +431,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "The same hook, down on the sand — this one dips below the line",
       "image": "ر.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -411,31 +440,38 @@
       ],
       "forms": [
         {
-          "text": "رَاء",
+          "text": "رَ",
           "audio": "word09a.wav",
           "timings": null
         },
         {
-          "text": "رَ",
+          "text": "رُ",
           "audio": "word09b.wav",
           "timings": null
         },
         {
-          "text": "رُ",
+          "text": "رِ",
           "audio": "word09c.wav",
           "timings": null
         },
         {
-          "text": "رِ",
-          "audio": "word09d.wav",
-          "timings": null
-        },
-        {
           "text": "نَرۡ",
-          "audio": "word09e.wav",
+          "audio": "word09d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ر",
+        "script": "This is the letter raa. It looks like a fishing hook lying down on the sand. Look — no bubbles at all. Raa has no dots.",
+        "audio": "word09i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "رَ رُ رِ نَرۡ",
+        "script": "With a fatha it's رَ. With a damma it's رُ. With a kasra it's رِ. And with a sukoon after نَ, it's نَرۡ.",
+        "audio": "word09l.wav",
+        "timings": null
+      },
       "timings": null
     },
     {
@@ -446,11 +482,8 @@
       "makhraj": "Tongue اللسان",
       "mnemonic": "The hook on the sand, one bubble above it",
       "image": "ز.png",
-      "badges": [
-        "Tongue"
-      ],
+      "badges": [],
       "labels": [
-        "its name",
         "a",
         "u",
         "i",
@@ -458,31 +491,38 @@
       ],
       "forms": [
         {
-          "text": "زَاي",
+          "text": "زَ",
           "audio": "word10a.wav",
           "timings": null
         },
         {
-          "text": "زَ",
+          "text": "زُ",
           "audio": "word10b.wav",
           "timings": null
         },
         {
-          "text": "زُ",
+          "text": "زِ",
           "audio": "word10c.wav",
           "timings": null
         },
         {
-          "text": "زِ",
-          "audio": "word10d.wav",
-          "timings": null
-        },
-        {
           "text": "نَزۡ",
-          "audio": "word10e.wav",
+          "audio": "word10d.wav",
           "timings": null
         }
       ],
+      "intro": {
+        "text": "ز",
+        "script": "This is the letter zaay. It looks like the same hook on the sand. Look — one bubble on top. Zaay has one dot on top.",
+        "audio": "word10i.wav",
+        "timings": null
+      },
+      "line": {
+        "text": "زَ زُ زِ نَزۡ",
+        "script": "With a fatha it's زَ. With a damma it's زُ. With a kasra it's زِ. And with a sukoon after نَ, it's نَزۡ.",
+        "audio": "word10l.wav",
+        "timings": null
+      },
       "timings": null
     }
   ]

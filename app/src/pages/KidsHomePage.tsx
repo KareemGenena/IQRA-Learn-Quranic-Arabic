@@ -29,7 +29,7 @@ function LessonList({ lessons, config }: { lessons: LessonMeta[]; config: AppCon
         const status = lessonStatus(config, l.id);
         return (
           <li key={l.id}>
-            <a className="lesson-card" href={`#/lesson/${l.id}`}>
+            <a className="lesson-card" href={`#/kids/lesson/${l.id}`}>
               <span className="lesson-no">{i + 1}</span>
               <span className="lesson-body">
                 <span className="lesson-title">

@@ -58,6 +58,19 @@ export async function resolveBoundaries(
 
 export interface PlaybackHandle {
   stop: () => void;
+  /**
+   * Pause and resume, for the songs and the spoken lines.
+   *
+   * Every word in the adult lessons is a couple of seconds long, so "stop and
+   * play again" was always enough. A song is a minute long and a teacher
+   * wants to hold it mid-card; a child wants to catch up. The element pauses
+   * natively — what matters here is not calling `finish`, so the highlight
+   * and the card stay exactly where they are.
+   */
+  pause: () => void;
+  resume: () => void;
+  /** Jump to a media time, e.g. the first letter of a song card. */
+  seek: (time: number) => void;
 }
 
 export function playWithHighlights(
@@ -73,6 +86,8 @@ export function playWithHighlights(
   /** Per boundary index, the share of the letter's time that is ghunna (see
    *  `ghunnaShares`). Omitted: no letter has a hum phase. */
   ghunnaShares?: number[],
+  /** Begin part-way through — a song resumed at the card the teacher chose. */
+  startAt = 0,
 ): PlaybackHandle {
   stopActivePlayback();
 
@@ -86,6 +101,7 @@ export function playWithHighlights(
 
   let rafId = 0;
   let finished = false;
+  let paused = false;
 
   const finish = () => {
     if (finished) return;
@@ -100,6 +116,21 @@ export function playWithHighlights(
   const stop = () => finish();
 
   const lastBoundary = boundaries[boundaries.length - 1];
+
+  /** What the highlight should show at media time t. */
+  const report = (t: number) => {
+    if (t < boundaries[0] || t >= lastBoundary) {
+      onActiveLetter(null, null);
+      return;
+    }
+    let i = 0;
+    while (i < boundaries.length - 2 && t >= boundaries[i + 1]) i++;
+    // The hum opens the letter: the first `share` of its span is ghunna.
+    const share = ghunnaShares?.[i] ?? 0;
+    const hum = share > 0 && t < boundaries[i] + share * (boundaries[i + 1] - boundaries[i]);
+    onActiveLetter(indexMap ? indexMap[i] : i, hum ? 'ghunna' : null);
+  };
+
   const tick = () => {
     const t = audio.currentTime;
     // Recordings can have a long silent tail; stop soon after speech ends.
@@ -107,17 +138,34 @@ export function playWithHighlights(
       finish();
       return;
     }
-    if (t < boundaries[0] || t >= lastBoundary) {
-      onActiveLetter(null, null);
-    } else {
-      let i = 0;
-      while (i < boundaries.length - 2 && t >= boundaries[i + 1]) i++;
-      // The hum opens the letter: the first `share` of its span is ghunna.
-      const share = ghunnaShares?.[i] ?? 0;
-      const hum = share > 0 && t < boundaries[i] + share * (boundaries[i + 1] - boundaries[i]);
-      onActiveLetter(indexMap ? indexMap[i] : i, hum ? 'ghunna' : null);
-    }
+    report(t);
     rafId = requestAnimationFrame(tick);
+  };
+
+  const pause = () => {
+    if (finished || paused) return;
+    paused = true;
+    cancelAnimationFrame(rafId);
+    audio.pause();
+  };
+
+  const resume = () => {
+    if (finished || !paused) return;
+    paused = false;
+    void audio
+      .play()
+      .then(() => {
+        rafId = requestAnimationFrame(tick);
+      })
+      .catch(finish);
+  };
+
+  // While paused the frame loop is not running, so the highlight is brought
+  // up to date by hand — otherwise the old card would sit there until play.
+  const seek = (time: number) => {
+    if (finished) return;
+    audio.currentTime = Math.max(0, time);
+    if (paused) report(audio.currentTime);
   };
 
   audio.addEventListener('ended', finish);
@@ -125,6 +173,7 @@ export function playWithHighlights(
     console.error('audio playback error:', audio.error?.code, audio.error?.message);
     finish();
   });
+  if (startAt > 0) audio.currentTime = startAt;
   void audio
     .play()
     .then(() => {
@@ -133,5 +182,5 @@ export function playWithHighlights(
     .catch(finish);
 
   activeStop = stop;
-  return { stop };
+  return { stop, pause, resume, seek };
 }

@@ -2520,3 +2520,305 @@ kbd {
     width: 56px;
   }
 }
+
+/* ── IQRA Kids — the skin ────────────────────────────────────────────────
+   Switched on by the route (#/kids/lesson/N sets data-mode="kids" on <html>),
+   the same way the theme rides on data-theme. The lesson underneath is the
+   same one the adult route opens; only the clothes change. */
+
+/* The door: a large button at the top of the home page, Manāra on the left,
+   nothing about it shaped like a lesson card. */
+.kids-door {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 26px;
+  padding: 16px 22px;
+  background: linear-gradient(135deg, #fbf7ee, #f2ebd9);
+  border: 2px solid #c1a054;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #14513a;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+:root[data-theme='dark'] .kids-door {
+  background: linear-gradient(135deg, #1f3a2f, #16283a);
+  color: #e8f0f6;
+}
+
+.kids-door:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.kids-door-manara {
+  width: 64px;
+  height: auto;
+  flex: none;
+}
+
+.kids-door-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.kids-door-title {
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+}
+
+.kids-door-sub {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* ── the letter card ── */
+.letter-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 16px 18px 18px;
+  box-shadow: var(--shadow);
+}
+
+.letter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.letter-top .letter-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.letter-name {
+  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-size: 22px;
+  color: var(--text-soft);
+}
+
+/* picture · Manāra · letter, in three columns */
+.letter-stage {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 240px;
+}
+
+.letter-pic {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.letter-pic img {
+  max-height: 240px;
+  width: auto;
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.letter-pic figcaption {
+  font-size: 13px;
+  color: var(--text-soft);
+  text-align: center;
+  max-width: 24ch;
+}
+
+.letter-big {
+  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-size: clamp(120px, 22vw, 200px);
+  line-height: 1.1;
+  text-align: center;
+  color: #c1a054;
+}
+
+/* Manāra between them. The beam drawing points right; mirrored, it points
+   left at the picture. She is still whenever nothing plays. */
+.manara-spot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 84px;
+}
+
+.manara-spot .manara {
+  width: 84px;
+  transition: opacity 0.2s;
+}
+
+.manara-spot.beam-picture .manara {
+  transform: scaleX(-1);
+}
+
+/* the four sounds */
+.letter-forms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.small-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 96px;
+  padding: 10px 14px 8px;
+  background: var(--card);
+  border: 2px solid var(--card-border);
+  border-radius: 14px;
+  cursor: pointer;
+  color: var(--text);
+  transition: border-color 0.15s, background 0.2s;
+}
+
+.small-form .arabic-word {
+  font-size: 44px;
+}
+
+.small-form:hover {
+  border-color: var(--accent);
+}
+
+.small-form.playing {
+  border-color: var(--highlight-border);
+}
+
+/* lit by the forms line saying this sound — the app's one highlight colour */
+.small-form.lit {
+  background: var(--highlight);
+  border-color: var(--highlight-border);
+}
+
+.small-label {
+  font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+}
+
+.letter-spoken {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.spoken-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.spoken-btn.playing {
+  border-color: var(--highlight-border);
+  background: var(--highlight);
+}
+
+@media (max-width: 640px) {
+  .letter-stage {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'pic letter' 'manara manara';
+    min-height: 0;
+  }
+  .letter-pic { grid-area: pic; }
+  .letter-big { grid-area: letter; font-size: clamp(96px, 30vw, 140px); }
+  .manara-spot { grid-area: manara; width: auto; }
+  .manara-spot .manara { width: 64px; }
+  .letter-pic img { max-height: 170px; }
+}
+
+/* ── the song cards ── */
+.song-lesson {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.song-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  min-height: 300px;
+  padding: 28px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  animation: song-in 0.25s ease-out;
+}
+
+@keyframes song-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.song-letters {
+  display: flex;
+  gap: 0.35em;
+  justify-content: center;
+  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-size: clamp(88px, 18vw, 160px);
+  line-height: 1.2;
+}
+
+.song-card.sounds .song-letters {
+  font-size: clamp(72px, 14vw, 120px);
+}
+
+/* each letter its own span — they are standalone and do not join */
+.song-letter {
+  padding: 0 0.08em;
+  border-radius: 0.12em;
+  color: var(--text);
+  transition: background 0.15s, color 0.15s;
+}
+
+.song-letter.on {
+  background: var(--highlight);
+  box-shadow: 0 0 0 2px var(--highlight-border);
+}
+
+.makhraj-pic {
+  width: 200px;
+  max-width: 40%;
+  height: auto;
+  flex: none;
+}
+
+@media (max-width: 640px) {
+  .song-card { flex-direction: column; gap: 16px; min-height: 0; }
+  .makhraj-pic { width: 150px; max-width: 60%; }
+}
+
+/* Under the skin, the ordinary chrome steps back a little. */
+:root[data-mode='kids'] .rate-group {
+  display: none;
+}
