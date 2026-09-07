@@ -824,6 +824,110 @@ do not pile it on.
 
 ---
 
+## 9b. Iteration 5 — the author's review of the first drafts, 2026-09-06
+
+Seven corrections after seeing lessons 20, 22 and 31 on screen. Each is a
+design decision, not a bug, so they are recorded here before the build.
+
+**The door goes to the top of the home page** — large, Manāra on the left,
+"IQRA Kids" as a title, nothing about it shaped like a lesson card. Kids
+lessons open at **`#/kids/lesson/N`**, not `#/lesson/N`: the breadcrumb then
+reads *← IQRA Kids* and goes to `#/kids`, the brand logo still goes to the main
+home, and the route is what switches the skin on. Same number, same clips.
+
+**A song is a succession of cards, never a line.** `playWithHighlights`
+already reports the active letter every frame; a `SongCards` component takes
+that one number and derives the rest — the card is the *shape family* holding
+the active letter (17 cards for song 1), the sung letter is green as in every
+other lesson, and the family's picture stays beside it. Song 2 is the same
+component grouped by *letter* — 28 cards of three forms, the makhraj head
+beside them with that letter's place lit.
+
+- Colouring one sister apart from the others is safe: the letters on a song
+  card are **standalone** and do not join, so the never-split-a-word rule —
+  which protects joining — is not touched. Each letter is its own span.
+- Animation is two CSS transitions: the sung letter's colour (150 ms), and a
+  crossfade when the card changes (250 ms). No library, no keyframes.
+- **Pause is the one engine change** — `pause()`/`resume()` on the handle —
+  and `seek()` goes in with it so Back/Next on a song jump to a family.
+- **Automatic timings are meaningless for a song.** The cards turn at the right
+  moments only after the song is calibrated by tapping along. For words,
+  calibration is a refinement; for the songs it is the whole timing.
+
+**The letter card is picture left, big bare letter right, four small cards
+below, the name small in a corner** — a new `LetterCard` for the kids skin.
+`ItemCard` and its waveform button stay with the adult lessons and never
+appear here. The special rows of lesson 22 degrade on their own: one word,
+one small card; و and يـ, five.
+
+**No makhraj badges on a letter card.** The field stays in the data for song
+2; nothing renders it here.
+
+**Two spoken recordings per letter**, in the teacher's voice: an English
+*intro* ("This is the letter baa. It looks like a boat…") and a *forms line*
+("With a fatha it's بَ…") recorded whole and played whole, its Arabic lighting
+as each form is said. The script for all 35 rows is the sheet's **seventh
+table**. The slot cell names the file the way lesson 6's `<word> وقف` does —
+**`ب مقدمة`**, **`ب حركات`** — so nothing is typed. 70 more takes.
+
+- The forms line's highlight text is just its Arabic (`بَ بُ بِ نَبۡ`, four
+  steps), calibrated at the four moments they are said; the English between is
+  time. A letter therefore stays lit until the next begins. If that reads
+  wrongly, the ghunna-phase mechanism — a per-letter *fraction* — gives a
+  "lit, then dark" phase in ten lines. Try the simple version first.
+
+**Manāra does not speak.** The author felt a talking minaret would look odd,
+and she was designed not to. The voice is the teacher's; **Manāra points** —
+her beam swings to the picture at "it looks like a boat" and to the letter at
+"baa has one dot". That is what `manara-beam` was drawn for.
+
+**Build order, agreed:** all of the above in one pass — the door and the
+route, `LetterCard`, `SongCards` with pause and seek, badges off, the generator
+reading the script table — and then the author calibrates the two songs.
+
+## 9c. The makhraj pictures — prompt
+
+The author chose ChatGPT images over a hand-traced SVG. Six pictures of **one
+identical head**: a base with nothing lit, then one per place. The whole
+difficulty is consistency, so the prompt insists on it, and the counting rule
+applies — nothing coloured except the one region.
+
+```
+STYLE — identical for all six images. They are six frames of ONE drawing:
+the head must not change in any way between them; only the coloured region
+does.
+
+A young child's head in side profile, facing left, drawn as a simple flat
+vector cutaway — thick even outlines, no gradients, no shadows, no texture.
+NO face: no eye, no eyebrow, no ear detail, no hair detail — just the smooth
+outline of the head and neck, in warm off-white #FAF7F0 with a deep green
+#14513A outline. Inside the head, the mouth and throat are shown as a simple
+cutaway: the lips at the front, the tongue as one soft shape, the teeth as a
+plain row, the throat as a passage going down into the neck, the nasal
+passage above the mouth, and the open space of the mouth and throat together.
+Everything inside is drawn in thin deep-green outline only, uncoloured, so it
+reads as a diagram a five-year-old can look at without being alarmed.
+Plain white background. Centred, generous margin, readable at 200x200 px.
+NO lettering, NO text, NO arrows, NO labels, NO numerals of any kind.
+
+IMAGE 1  makhraj.png            nothing coloured — the plain cutaway.
+IMAGE 2  makhraj-lips.png       the same drawing, with ONLY the lips filled in
+                                soft gold #C1A054.
+IMAGE 3  makhraj-tongue.png     the same drawing, with ONLY the tongue filled
+                                in soft gold #C1A054.
+IMAGE 4  makhraj-throat.png     the same drawing, with ONLY the throat passage
+                                filled in soft gold #C1A054.
+IMAGE 5  makhraj-jawf.png       the same drawing, with ONLY the open space of
+                                the mouth and throat together filled in a very
+                                pale gold, so it reads as empty air.
+IMAGE 6  makhraj-nose.png       the same drawing, with ONLY the nasal passage
+                                filled in soft gold #C1A054.
+```
+
+Ask for all six in one conversation, and ask for image 1 first — then every
+later one is "the same drawing, with only X filled". If any frame drifts,
+regenerate that frame alone with image 1 attached as the reference.
+
 ## 10. Manāra, cut and in use — 2026-09-06
 
 Five states, cut from one ChatGPT sheet that carried its own filenames printed
