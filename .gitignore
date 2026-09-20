@@ -13,3 +13,7 @@ dev-dist/
 # takes are not lesson audio and nothing generates from them.
 Audio/Test Audio Intake System/
 
+
+# The morphology corpus is committed as the verbatim zip, notices inside.
+# An extracted copy is 6 MB of the same bytes; the scripts read the zip.
+Grammar/Corpus/*.txt

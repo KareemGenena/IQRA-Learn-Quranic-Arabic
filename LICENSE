@@ -1,0 +1,40 @@
+IQRA — Learn Quranic Arabic
+============================
+
+The author's work in this repository — the lessons, the Word tables, the
+recordings, the pictures, the application code, the scripts, the design notes
+and the assessment materials — is dedicated to the public domain under the
+Creative Commons CC0 1.0 Universal Public Domain Dedication.
+
+    https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+To the extent possible under law, the author has waived all copyright and
+related or neighbouring rights to this work. You may copy, modify, distribute
+and use it, for any purpose, without asking permission and without
+attribution. It is offered as ṣadaqah jāriyah: no rights reserved.
+
+Third-party materials
+---------------------
+
+The dedication above covers only the author's own work. The following are
+included under their own terms, which travel with them and are not changed by
+this file:
+
+- **KFGQPC Uthmanic Script HAFS font** (`app/public/fonts/`), copyright King
+  Fahd Glorious Quran Printing Complex. Redistributed unmodified under the
+  licence in `app/public/fonts/LICENSE.txt`, which forbids modification.
+
+- **Quranic Arabic Corpus, morphology v0.4** (`Grammar/Corpus/`), copyright
+  Kais Dukes, GNU General Public License with the terms of use in the file's
+  own header: verbatim copies only, never changed, credited with a link to
+  http://corpus.quran.com. The notice inside the file is part of it.
+
+- **Tanzil Quran Text (Uthmani)**, copyright Tanzil.info, Creative Commons
+  BY-ND 3.0 with the terms of use in its header: verbatim copies only, never
+  changed, credited with a link to http://tanzil.info. It is carried inside
+  the corpus file above.
+
+- **Sahih International** translation: short quotations on some lesson cards,
+  attributed where they appear.
+
+The Quran itself is the word of Allah and belongs to no one.

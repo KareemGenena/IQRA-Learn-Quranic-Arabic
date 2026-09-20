@@ -14,6 +14,13 @@ current — the "Where we are" section at the bottom is the handover note.
 > is loaded on its own; this one is. So: qaida, alphabet, kids, Maktab lessons,
 > letter mnemonics, the kids skin → open it first. This file stays the
 > authority on everything the two share.
+>
+> **If the session touches the Grammar track — nahw and sarf for adults who
+> already read the mushaf — read `Grammar/IQRA_GRAMMAR_TRACK_SPEC.md` first,
+> then `Grammar/M0-recon.md`.** The spec is the pedagogy and the build order
+> (milestones M0–M6); the recon report maps its data model onto this app and
+> lists the decisions that block M1. Only M0 is done (2026-09-19). So: grammar,
+> nahw, sarf, parsing, فاعل, corpus, Quran text, sessions → open both first.
 
 ---
 
@@ -744,6 +751,31 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
   that could change hands silently would take its roster with it.
 
 ## 5. Next task
+
+**Grammar track — M0 recon done and its decisions answered; nothing built
+(2026-09-19).** A third track: Arabic grammar for adults who already read the
+Quran, taught through a growing verbal sentence (سَجَدَ → سَجَدَ مُسْلِمٌ → …).
+Claude chat produced the spec at `Grammar/IQRA_GRAMMAR_TRACK_SPEC.md` (29
+sessions, concept registry, data model, Session 1 fully authored);
+`Grammar/M0-recon.md` is this app's answer to it, and its §5 records the
+author's decisions. Parked until the author picks it up. What was decided:
+sessions are ids 101–129 in `LESSONS` with `tracks: ['grammar']`; **a
+session is authored as a Word file like every other lesson**, and a generator
+turns its tables into the session JSON (the spec's §11.3 shape is the
+generated form, not the authored one); the morphology corpus is committed
+verbatim at `Grammar/Corpus/` as a build-time tool and is never modified —
+the app ships only approved fragment tokens and precomputed coverage numbers,
+with an attribution screen crediting corpus.quran.com and tanzil.info; the
+author reviews every teaching text and every guessed role. Next is M1: read
+the corpus (Buckwalter, one line per segment), align the Tanzil text it
+carries, and verify every fragment in the spec against it, reporting failures
+and never correcting them. The three traps the recon found, so they are not
+rediscovered: standard-spelling sukoon is U+0652, which this app treats as
+the silent round zero — constructed sentences must never go through
+`derivedSilent()`; the app has **no Quran text source** of its own, so the
+Tanzil text is stored verbatim and its codepoints mapped for the font in
+memory, never written back; and grammar data must be runtime-cached like
+audio, never precached.
 
 **IQRA Kids — lessons 20, 21, 22, 31, 32 exist as drafts (2026-09-06).** A
 second curriculum in the same app: the Baghdadi qaida in 11 lessons plus two
