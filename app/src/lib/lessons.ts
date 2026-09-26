@@ -88,7 +88,7 @@ export const LESSONS: LessonMeta[] = [
     id: 7,
     title: 'Nūn Sākinah, Tanwīn and Mīm Sākinah',
     titleArabic: 'أحكام النون الساكنة والتنوين والميم الساكنة',
-    blurb: 'Iẕhār, idghām, iqlāb and ikhfāʾ — where the hum lives and where it does not, with the tanwīn written the way the Mushaf writes it.',
+    blurb: 'Iẕhār, ikhfāʾ, iqlāb and idghām.',
   },
 
   // ── IQRA Kids — the Baghdadi qaida. See Design/iqra-kids.md. ────────────

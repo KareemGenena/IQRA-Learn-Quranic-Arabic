@@ -11,44 +11,44 @@
       "id": "meem-sakinah",
       "title": "Mīm Sākinah",
       "titleArabic": "أحكام الميم الساكنة",
-      "hint": "A mīm with no vowel. Before another mīm it merges and hums (idghām shafawī); before ب it is hidden with a hum (ikhfāʾ shafawī); before every other letter it is said clearly (iẕhār shafawī). First, because iqlāb below turns a nūn into exactly this mīm."
+      "hint": "Before another mīm it merges, with ghunna (idghām shafawī); before ب it is hidden, with ghunna (ikhfāʾ shafawī); before every other letter it is said clearly (iẕhār shafawī). First, because iqlāb below turns a nūn into exactly this mīm."
     },
     {
       "id": "izhar",
       "title": "Iẕhār Ḥalqī",
       "titleArabic": "الإظهار الحلقي",
-      "hint": "Before the six throat letters — ء ه ع ح غ خ — the nūn sākinah or tanwīn is said clearly, with no hum. The tanwīn is written stacked."
+      "hint": "Before the six throat letters — ء ه ع ح غ خ — the nūn sākinah or tanwīn is said clearly, with no ghunna. The tanwīn is written stacked."
     },
     {
       "id": "idgham-ghunnah",
       "title": "Idghām bi-Ghunnah",
       "titleArabic": "الإدغام بغنة",
-      "hint": "Before ي ن م و the nūn or tanwīn merges into the next letter and the hum stays — two harakat of ghunna on the merged letter."
+      "hint": "Before ي ن م و the nūn or tanwīn merges into the next letter and the ghunna stays, on the merged letter."
     },
     {
       "id": "idgham-no-ghunnah",
       "title": "Idghām bilā Ghunnah",
       "titleArabic": "الإدغام بغير غنة",
-      "hint": "Before ل and ر the nūn or tanwīn merges completely — a doubled letter with no hum at all."
+      "hint": "Before ل and ر the nūn or tanwīn merges completely — a doubled letter with no ghunna at all."
     },
     {
       "id": "ikhfa",
       "title": "Ikhfāʾ Ḥaqīqī",
       "titleArabic": "الإخفاء الحقيقي",
-      "hint": "Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the hum is heard — two harakat — while the mouth shapes the next letter. The tanwīn is written staggered. صِفۡ ذَا ثَنَا كَمۡ جَادَ شَخۡصٌ قَدۡ سَمَا  •  دُمۡ طَيِّبًا زِدۡ فِي تُقًى ضَعۡ ظَالِمَا"
+      "hint": "Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The tanwīn is written staggered. صِفۡ ذَا ثَنَا كَمۡ جَادَ شَخۡصٌ قَدۡ سَمَا  •  دُمۡ طَيِّبًا زِدۡ فِي تُقًى ضَعۡ ظَالِمَا"
     },
     {
       "id": "iqlab",
       "title": "Iqlāb",
       "titleArabic": "الإقلاب",
-      "hint": "Before ب the nūn sākinah or tanwīn turns into a hidden mīm with a hum. The Mushaf writes a small mīm in place of the sukoon, and the tanwīn gives up one of its two marks for it."
+      "hint": "Before ب the nūn sākinah or tanwīn turns into a hidden mīm, with ghunna. The Mushaf writes a small mīm in place of the sukoon, and the tanwīn gives up one of its two marks for it."
     }
   ],
   "words": [
     {
       "id": 1,
       "section": "meem-sakinah",
-      "text": "كَم مِّن فِئَةٍ",
+      "text": "كَم مِّن",
       "audio": "word001.wav",
       "timings": null,
       "badges": [
@@ -56,12 +56,12 @@
         "م",
         "Ghunna"
       ],
-      "meaning": "“How many a small company” — al-Baqarah 2:249"
+      "meaning": "“How many” — al-Baqarah 2:249"
     },
     {
       "id": 2,
       "section": "meem-sakinah",
-      "text": "لَهُم مَّغۡفِرَةٌ",
+      "text": "لَهُم مَّغۡفِرَةࣱ",
       "audio": "word002.wav",
       "timings": null,
       "badges": [
@@ -74,7 +74,7 @@
     {
       "id": 3,
       "section": "meem-sakinah",
-      "text": "عَلَيۡهِم مُّؤۡصَدَةٌ",
+      "text": "عَلَيۡهِم مُّؤۡصَدَةُۢ",
       "audio": "word003.wav",
       "timings": null,
       "badges": [
@@ -87,7 +87,7 @@
     {
       "id": 4,
       "section": "meem-sakinah",
-      "text": "تَرۡمِيهِم بِحِجَارَةٍ",
+      "text": "تَرۡمِيهِم بِحِجَارَةࣲ",
       "audio": "word004.wav",
       "timings": null,
       "badges": [
@@ -204,7 +204,7 @@
     {
       "id": 13,
       "section": "izhar",
-      "text": "عَذَابٌ أَلِيمٌ",
+      "text": "عَذَابٌ أَلِيمُۢ",
       "audio": "word013.wav",
       "timings": null,
       "badges": [
@@ -231,7 +231,7 @@
     {
       "id": 15,
       "section": "izhar",
-      "text": "رَسُولٌ أَمِينٌ",
+      "text": "رَسُولٌ أَمِينࣱ",
       "audio": "word015.wav",
       "timings": null,
       "badges": [
@@ -258,7 +258,7 @@
     {
       "id": 17,
       "section": "izhar",
-      "text": "جُرُفٍ هَارٍ",
+      "text": "جُرُفٍ هَارࣲ",
       "audio": "word017.wav",
       "timings": null,
       "badges": [
@@ -312,7 +312,7 @@
     {
       "id": 21,
       "section": "izhar",
-      "text": "قَوۡمٍ هَادٍ",
+      "text": "قَوۡمٍ هَادࣲ",
       "audio": "word021.wav",
       "timings": null,
       "badges": [
@@ -339,7 +339,7 @@
     {
       "id": 23,
       "section": "izhar",
-      "text": "سَمِيعٌ عَلِيمٌ",
+      "text": "سَمِيعٌ عَلِيمࣱ",
       "audio": "word023.wav",
       "timings": null,
       "badges": [
@@ -353,7 +353,7 @@
     {
       "id": 24,
       "section": "izhar",
-      "text": "مِنۡ عِلۡمٍ",
+      "text": "مِنۡ عِلۡمࣲ",
       "audio": "word024.wav",
       "timings": null,
       "badges": [
@@ -366,7 +366,7 @@
     {
       "id": 25,
       "section": "izhar",
-      "text": "وَٰسِعٌ عَلِيمٌ",
+      "text": "وَٰسِعٌ عَلِيمࣱ",
       "audio": "word025.wav",
       "timings": null,
       "badges": [
@@ -393,7 +393,7 @@
     {
       "id": 27,
       "section": "izhar",
-      "text": "أَجۡرٌ عَظِيمٌ",
+      "text": "أَجۡرٌ عَظِيمࣱ",
       "audio": "word027.wav",
       "timings": null,
       "badges": [
@@ -447,7 +447,7 @@
     {
       "id": 31,
       "section": "izhar",
-      "text": "غَفُورٌ حَلِيمٌ",
+      "text": "غَفُورٌ حَلِيمࣱ",
       "audio": "word031.wav",
       "timings": null,
       "badges": [
@@ -461,7 +461,7 @@
     {
       "id": 32,
       "section": "izhar",
-      "text": "حَكِيمٍ حَمِيدٍ",
+      "text": "حَكِيمٍ حَمِيدࣲ",
       "audio": "word032.wav",
       "timings": null,
       "badges": [
@@ -474,7 +474,7 @@
     {
       "id": 33,
       "section": "izhar",
-      "text": "نَارًا حَامِيَةً",
+      "text": "نَارًا حَامِيَةࣰ",
       "audio": "word033.wav",
       "timings": null,
       "badges": [
@@ -515,7 +515,7 @@
     {
       "id": 36,
       "section": "izhar",
-      "text": "مِنۡ غِلٍّ",
+      "text": "مِنۡ غِلࣲّ",
       "audio": "word036.wav",
       "timings": null,
       "badges": [
@@ -555,7 +555,7 @@
     {
       "id": 39,
       "section": "izhar",
-      "text": "عَذَابٌ غَلِيظٌ",
+      "text": "عَذَابٌ غَلِيظࣱ",
       "audio": "word039.wav",
       "timings": null,
       "badges": [
@@ -583,7 +583,7 @@
     {
       "id": 41,
       "section": "izhar",
-      "text": "عَلِيمٌ خَبِيرٌ",
+      "text": "عَلِيمٌ خَبِيرࣱ",
       "audio": "word041.wav",
       "timings": null,
       "badges": [
@@ -597,7 +597,7 @@
     {
       "id": 42,
       "section": "izhar",
-      "text": "مِنۡ خَيۡرٍ",
+      "text": "مِنۡ خَيۡرࣲ",
       "audio": "word042.wav",
       "timings": null,
       "badges": [
@@ -753,7 +753,7 @@
     {
       "id": 53,
       "section": "idgham-ghunnah",
-      "text": "يَوۡمَئِذࣲ نَّاعِمَةٌ",
+      "text": "يَوۡمَئِذࣲ نَّاعِمَةࣱ",
       "audio": "word053.wav",
       "timings": null,
       "badges": [
@@ -826,7 +826,7 @@
     {
       "id": 58,
       "section": "idgham-ghunnah",
-      "text": "مِن مَّسَدٍ",
+      "text": "مِن مَّسَدِۢ",
       "audio": "word058.wav",
       "timings": null,
       "badges": [
@@ -840,7 +840,7 @@
     {
       "id": 59,
       "section": "idgham-ghunnah",
-      "text": "صِرَٰطࣲ مُّسۡتَقِيمٍ",
+      "text": "صِرَٰطࣲ مُّسۡتَقِيمࣲ",
       "audio": "word059.wav",
       "timings": null,
       "badges": [
@@ -869,7 +869,7 @@
     {
       "id": 61,
       "section": "idgham-ghunnah",
-      "text": "عَذَابࣰا مُّهِينًا",
+      "text": "عَذَابࣰا مُّهِينࣰا",
       "audio": "word061.wav",
       "timings": null,
       "badges": [
@@ -884,7 +884,7 @@
     {
       "id": 62,
       "section": "idgham-ghunnah",
-      "text": "مِن مَّنَاصٍ",
+      "text": "مِن مَّنَاصࣲ",
       "audio": "word062.wav",
       "timings": null,
       "badges": [
@@ -898,7 +898,7 @@
     {
       "id": 63,
       "section": "idgham-ghunnah",
-      "text": "قَوۡلࣰا مَّعۡرُوفًا",
+      "text": "قَوۡلࣰا مَّعۡرُوفࣰا",
       "audio": "word063.wav",
       "timings": null,
       "badges": [
@@ -927,7 +927,7 @@
     {
       "id": 65,
       "section": "idgham-ghunnah",
-      "text": "عَذَابࣲ وَاقِعٍ",
+      "text": "عَذَابࣲ وَاقِعࣲ",
       "audio": "word065.wav",
       "timings": null,
       "badges": [
@@ -942,7 +942,7 @@
     {
       "id": 66,
       "section": "idgham-ghunnah",
-      "text": "مِن وَّلِيٍّ",
+      "text": "مِن وَّلِيࣲّ",
       "audio": "word066.wav",
       "timings": null,
       "badges": [
@@ -956,7 +956,7 @@
     {
       "id": 67,
       "section": "idgham-ghunnah",
-      "text": "جَنَّٰتࣲ وَعُيُونٍ",
+      "text": "جَنَّٰتࣲ وَعُيُونࣲ",
       "audio": "word067.wav",
       "timings": null,
       "badges": [
@@ -971,7 +971,7 @@
     {
       "id": 68,
       "section": "idgham-ghunnah",
-      "text": "مِن وَّاقٍ",
+      "text": "مِن وَّاقࣲ",
       "audio": "word068.wav",
       "timings": null,
       "badges": [
@@ -1020,7 +1020,8 @@
         "Idghām bilā Ghunnah",
         "ل",
         "Tanwīn",
-        "Tanwīn Mutatābiʿ"
+        "Tanwīn Mutatābiʿ",
+        "Moon ل"
       ],
       "meaning": "“a guidance for the righteous” — al-Baqarah 2:2  (+ lām qamariyyah)"
     },
@@ -1074,7 +1075,8 @@
         "Idghām bilā Ghunnah",
         "ل",
         "Tanwīn",
-        "Tanwīn Mutatābiʿ"
+        "Tanwīn Mutatābiʿ",
+        "Sun ل"
       ],
       "meaning": "“a guidance for the people” — al-Baqarah 2:185  (+ lām shamsiyyah)"
     },
@@ -1108,7 +1110,7 @@
     {
       "id": 78,
       "section": "idgham-no-ghunnah",
-      "text": "مِن رَّسُولٍ",
+      "text": "مِن رَّسُولࣲ",
       "audio": "word078.wav",
       "timings": null,
       "badges": [
@@ -1121,7 +1123,7 @@
     {
       "id": 79,
       "section": "idgham-no-ghunnah",
-      "text": "رَءُوفࣱ رَّحِيمٌ",
+      "text": "رَءُوفࣱ رَّحِيمࣱ",
       "audio": "word079.wav",
       "timings": null,
       "badges": [
@@ -1148,7 +1150,7 @@
     {
       "id": 81,
       "section": "idgham-no-ghunnah",
-      "text": "غَفُورࣰا رَّحِيمًا",
+      "text": "غَفُورࣰا رَّحِيمࣰا",
       "audio": "word081.wav",
       "timings": null,
       "badges": [
@@ -1176,7 +1178,7 @@
     {
       "id": 83,
       "section": "ikhfa",
-      "text": "عَمَلࣰا صَٰلِحًا",
+      "text": "عَمَلࣰا صَٰلِحࣰا",
       "audio": "word083.wav",
       "timings": null,
       "badges": [
@@ -1191,7 +1193,7 @@
     {
       "id": 84,
       "section": "ikhfa",
-      "text": "مِن صَلۡصَٰلٍ",
+      "text": "مِن صَلۡصَٰلࣲ",
       "audio": "word084.wav",
       "timings": null,
       "badges": [
@@ -1205,7 +1207,7 @@
     {
       "id": 85,
       "section": "ikhfa",
-      "text": "رِيحࣰا صَرۡصَرًا",
+      "text": "رِيحࣰا صَرۡصَرࣰا",
       "audio": "word085.wav",
       "timings": null,
       "badges": [
@@ -1249,7 +1251,7 @@
     {
       "id": 88,
       "section": "ikhfa",
-      "text": "مُنذِرٌ",
+      "text": "مُنذِرࣱ",
       "audio": "word088.wav",
       "timings": null,
       "badges": [
@@ -1307,7 +1309,7 @@
     {
       "id": 92,
       "section": "ikhfa",
-      "text": "مِن ذَكَرٍ",
+      "text": "مِن ذَكَرࣲ",
       "audio": "word092.wav",
       "timings": null,
       "badges": [
@@ -1350,7 +1352,7 @@
     {
       "id": 95,
       "section": "ikhfa",
-      "text": "مَّآءࣲ ثَجَّاجًا",
+      "text": "مَّآءࣰ ثَجَّاجࣰا",
       "audio": "word095.wav",
       "timings": null,
       "badges": [
@@ -1366,7 +1368,7 @@
     {
       "id": 96,
       "section": "ikhfa",
-      "text": "مِن ثَمَرَةٍ",
+      "text": "مِن ثَمَرَةࣲ",
       "audio": "word096.wav",
       "timings": null,
       "badges": [
@@ -1380,7 +1382,7 @@
     {
       "id": 97,
       "section": "ikhfa",
-      "text": "شِهَابࣱ ثَاقِبٌ",
+      "text": "شِهَابࣱ ثَاقِبࣱ",
       "audio": "word097.wav",
       "timings": null,
       "badges": [
@@ -1409,7 +1411,7 @@
     {
       "id": 99,
       "section": "ikhfa",
-      "text": "خَيۡرࣱ ثَوَابًا",
+      "text": "خَيۡرࣱ ثَوَابࣰا",
       "audio": "word099.wav",
       "timings": null,
       "badges": [
@@ -1467,7 +1469,7 @@
     {
       "id": 103,
       "section": "ikhfa",
-      "text": "قَوۡلࣰا كَرِيمًا",
+      "text": "قَوۡلࣰا كَرِيمࣰا",
       "audio": "word103.wav",
       "timings": null,
       "badges": [
@@ -1496,7 +1498,7 @@
     {
       "id": 105,
       "section": "ikhfa",
-      "text": "رِزۡقࣱ كَرِيمٌ",
+      "text": "رِزۡقࣱ كَرِيمࣱ",
       "audio": "word105.wav",
       "timings": null,
       "badges": [
@@ -1540,7 +1542,7 @@
     {
       "id": 108,
       "section": "ikhfa",
-      "text": "مِن جُوعٍ",
+      "text": "مِن جُوعࣲ",
       "audio": "word108.wav",
       "timings": null,
       "badges": [
@@ -1554,7 +1556,7 @@
     {
       "id": 109,
       "section": "ikhfa",
-      "text": "صَبۡرࣱ جَمِيلٌ",
+      "text": "صَبۡرࣱ جَمِيلࣱ",
       "audio": "word109.wav",
       "timings": null,
       "badges": [
@@ -1599,7 +1601,7 @@
     {
       "id": 112,
       "section": "ikhfa",
-      "text": "مَّنشُورًا",
+      "text": "مَّنشُورࣰا",
       "audio": "word112.wav",
       "timings": null,
       "badges": [
@@ -1613,7 +1615,7 @@
     {
       "id": 113,
       "section": "ikhfa",
-      "text": "غَفُورࣱ شَكُورٌ",
+      "text": "غَفُورࣱ شَكُورࣱ",
       "audio": "word113.wav",
       "timings": null,
       "badges": [
@@ -1642,7 +1644,7 @@
     {
       "id": 115,
       "section": "ikhfa",
-      "text": "عَذَابࣲ شَدِيدٍ",
+      "text": "عَذَابࣲ شَدِيدࣲ",
       "audio": "word115.wav",
       "timings": null,
       "badges": [
@@ -1701,7 +1703,7 @@
     {
       "id": 119,
       "section": "ikhfa",
-      "text": "سَمِيعࣱ قَرِيبٌ",
+      "text": "سَمِيعࣱ قَرِيبࣱ",
       "audio": "word119.wav",
       "timings": null,
       "badges": [
@@ -1730,7 +1732,7 @@
     {
       "id": 121,
       "section": "ikhfa",
-      "text": "شَىۡءࣲ قَدِيرٌ",
+      "text": "شَىۡءࣲ قَدِيرࣱ",
       "audio": "word121.wav",
       "timings": null,
       "badges": [
@@ -1804,7 +1806,7 @@
     {
       "id": 126,
       "section": "ikhfa",
-      "text": "مِن سُلَٰلَةٍ",
+      "text": "مِن سُلَٰلَةࣲ",
       "audio": "word126.wav",
       "timings": null,
       "badges": [
@@ -1818,7 +1820,7 @@
     {
       "id": 127,
       "section": "ikhfa",
-      "text": "بَشَرࣰا سَوِيًّا",
+      "text": "بَشَرࣰا سَوِيࣰّا",
       "audio": "word127.wav",
       "timings": null,
       "badges": [
@@ -1847,7 +1849,7 @@
     {
       "id": 129,
       "section": "ikhfa",
-      "text": "رَجُلࣰا سَلَمًا",
+      "text": "رَجُلࣰا سَلَمࣰا",
       "audio": "word129.wav",
       "timings": null,
       "badges": [
@@ -1862,7 +1864,7 @@
     {
       "id": 130,
       "section": "ikhfa",
-      "text": "أَندَادًا",
+      "text": "أَندَادࣰا",
       "audio": "word130.wav",
       "timings": null,
       "badges": [
@@ -1876,7 +1878,7 @@
     {
       "id": 131,
       "section": "ikhfa",
-      "text": "قِنۡوَانࣱ دَانِيَةٌ",
+      "text": "قِنۡوَانࣱ دَانِيَةࣱ",
       "audio": "word131.wav",
       "timings": null,
       "badges": [
@@ -1905,7 +1907,7 @@
     {
       "id": 133,
       "section": "ikhfa",
-      "text": "كَأۡسࣰا دِهَاقًا",
+      "text": "كَأۡسࣰا دِهَاقࣰا",
       "audio": "word133.wav",
       "timings": null,
       "badges": [
@@ -1934,7 +1936,7 @@
     {
       "id": 135,
       "section": "ikhfa",
-      "text": "مَّآءࣲ دَافِقٍ",
+      "text": "مَّآءࣲ دَافِقࣲ",
       "audio": "word135.wav",
       "timings": null,
       "badges": [
@@ -1964,7 +1966,7 @@
     {
       "id": 137,
       "section": "ikhfa",
-      "text": "صَعِيدࣰا طَيِّبًا",
+      "text": "صَعِيدࣰا طَيِّبࣰا",
       "audio": "word137.wav",
       "timings": null,
       "badges": [
@@ -1993,7 +1995,7 @@
     {
       "id": 139,
       "section": "ikhfa",
-      "text": "بَلۡدَةࣱ طَيِّبَةٌ",
+      "text": "بَلۡدَةࣱ طَيِّبَةࣱ",
       "audio": "word139.wav",
       "timings": null,
       "badges": [
@@ -2080,7 +2082,7 @@
     {
       "id": 145,
       "section": "ikhfa",
-      "text": "يَوۡمَئِذࣲ زُرۡقًا",
+      "text": "يَوۡمَئِذࣲ زُرۡقࣰا",
       "audio": "word145.wav",
       "timings": null,
       "badges": [
@@ -2095,7 +2097,7 @@
     {
       "id": 146,
       "section": "ikhfa",
-      "text": "مِن زَوَالٍ",
+      "text": "مِن زَوَالࣲ",
       "audio": "word146.wav",
       "timings": null,
       "badges": [
@@ -2117,8 +2119,7 @@
         "ز",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna",
-        "Iqlāb inside"
+        "Ghunna"
       ],
       "meaning": "“a pure soul” — al-Kahf 18:74  (+ iqlāb)"
     },
@@ -2299,7 +2300,7 @@
     {
       "id": 160,
       "section": "ikhfa",
-      "text": "مَّنضُودٍ",
+      "text": "مَّنضُودࣲ",
       "audio": "word160.wav",
       "timings": null,
       "badges": [
@@ -2313,7 +2314,7 @@
     {
       "id": 161,
       "section": "ikhfa",
-      "text": "عَذَابࣰا ضِعۡفًا",
+      "text": "عَذَابࣰا ضِعۡفࣰا",
       "audio": "word161.wav",
       "timings": null,
       "badges": [
@@ -2328,7 +2329,7 @@
     {
       "id": 162,
       "section": "ikhfa",
-      "text": "مِن ضَرِيعٍ",
+      "text": "مِن ضَرِيعࣲ",
       "audio": "word162.wav",
       "timings": null,
       "badges": [
@@ -2342,7 +2343,7 @@
     {
       "id": 163,
       "section": "ikhfa",
-      "text": "مَّسۡجِدࣰا ضِرَارًا",
+      "text": "مَّسۡجِدࣰا ضِرَارࣰا",
       "audio": "word163.wav",
       "timings": null,
       "badges": [
@@ -2371,7 +2372,7 @@
     {
       "id": 165,
       "section": "ikhfa",
-      "text": "قُوَّةࣲ ضَعۡفًا",
+      "text": "قُوَّةࣲ ضَعۡفࣰا",
       "audio": "word165.wav",
       "timings": null,
       "badges": [
@@ -2415,7 +2416,7 @@
     {
       "id": 168,
       "section": "ikhfa",
-      "text": "مِن ظَهِيرٍ",
+      "text": "مِن ظَهِيرࣲ",
       "audio": "word168.wav",
       "timings": null,
       "badges": [
@@ -2429,7 +2430,7 @@
     {
       "id": 169,
       "section": "ikhfa",
-      "text": "قُرࣰى ظَٰهِرَةً",
+      "text": "قُرࣰى ظَٰهِرَةࣰ",
       "audio": "word169.wav",
       "timings": null,
       "badges": [
@@ -2472,7 +2473,7 @@
     {
       "id": 173,
       "section": "iqlab",
-      "text": "سَمِيعَۢا بَصِيرًا",
+      "text": "سَمِيعَۢا بَصِيرࣰا",
       "audio": "word173.wav",
       "timings": null,
       "badges": [
@@ -2528,7 +2529,7 @@
     {
       "id": 177,
       "section": "iqlab",
-      "text": "كِرَامِۭ بَرَرَةٍ",
+      "text": "كِرَامِۢ بَرَرَةࣲ",
       "audio": "word177.wav",
       "timings": null,
       "badges": [

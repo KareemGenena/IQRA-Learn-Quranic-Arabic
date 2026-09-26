@@ -99,10 +99,11 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   (iẕhār · idghām with ghunna · idghām without · ikhfāʾ · iqlāb · mīm). Every
   nūn-table row has TWO example columns, Nūn Sākinah and Tanwīn, so it makes
   two cards; ids belong to cells. The tanwīn is written the way the Mushaf
-  writes it — stacked before a throat letter, staggered (U+08F0–08F2) before
-  a letter of idghām or ikhfāʾ — by rule in the generator, since the author's
-  Word font has no staggered glyph. Badges: the rule, the letter, the form,
-  the tanwīn shape, Ghunna where the rule hums. Draft, text only, unrecorded.
+  writes it — stacked, staggered or small-mīm, from the letter that follows,
+  read from the Mushaf itself for a card's last word and greyed there — by
+  rule in the generator (section 3). Badges: the rule, the letter, the form,
+  the tanwīn shape, Ghunna where the rule has one. Draft, text only,
+  unrecorded.
 - **Class recordings** (`#/recordings`) — the teacher posts the link to a
   recorded session (Zoom or anything else) and the class finds it there instead
   of scrolling back through a chat thread. A pointer, never a copy: nothing is
@@ -163,19 +164,50 @@ Things that cost real debugging. Do not undo them without reading why.
   time by `timing.ts`, so the highlight steps straight over them. Lesson 4's
   `waslSilentIn` field and lesson 2's hardcoded cluster 1 are both subsumed —
   do not reintroduce either.
-- **The tanwīn has two shapes, and the generator writes them.** Stacked
-  (مُتَرَاكِب, U+064B–064D) before a throat letter and at a stop, where it is
-  read in full; staggered (مُتَتَابِع, U+08F0–08F2) before a letter of idghām or
-  ikhfāʾ, where the nūn merges or hides; before ب the Mushaf writes a small
-  mīm instead (U+06E2 high / U+06ED low), which the sheet already carries.
-  The author's Word font ("KFGQPC HAFS Uthmanic Script") has no glyph for
-  the staggered form, so every sheet holds plain marks and `openTanween()` in
-  `make-lesson7.mjs` writes the shape from the next word's first letter —
-  the same test `ghunnaInto` makes. The app's font (`UthmanicHafs1-Ver09.otf`)
-  does have them: checked with `document.fonts.check` and a zero-advance
-  measurement on 2026-09-26, drawn as attached marks. Both shapes are in
-  `MARK_RE`, `TANWEEN`, `audioName.MARKS` and every generator's `MARKS`, so
-  a filename derives the same from either.
+- **The tanwīn has three shapes, and the generator writes them from the
+  Mushaf.** Stacked (مُتَرَاكِب, U+064B–064D) before a throat letter; staggered
+  (مُتَتَابِع, U+08F0–08F2) before a letter of idghām or ikhfāʾ, where the nūn
+  merges or hides; a vowel plus small mīm before ب (iqlāb). The shape is
+  decided by the word that FOLLOWS — inside a card by the text, and for the
+  card's last word by the Mushaf itself: `scripts/lib/mushaf.mjs` reads the
+  Quranic Arabic Corpus (`Grammar/Corpus/…zip`, verbatim, Tanzil text; credit
+  corpus.quran.com and tanzil.info) and `letterAfter(phrase, sura, aya)`
+  returns the next word's first letter — the next āyah's first word at an
+  āyah end, the basmalah's ب at a sūrah end, exactly as the Mushaf assumes
+  (مِن مَّسَدٍ ends sūrah 111 and is written مَّسَدِۢ). The sūrah:āyah comes from
+  the meaning cell, so a wrong location in the sheet surfaces as "not found"
+  (lesson 7 #29 عَلِيمٌ حَكِيمٌ is cited at 4:11, which reads عَلِيمًا حَكِيمًا).
+  `shapeTanween()` in `make-lesson7.mjs` prints every final decision on every
+  run for the author to review. The sheets hold plain stacked marks
+  throughout: the author's Word font cannot draw the other shapes.
+- **Neither KFGQPC Hafs font on this machine has a staggered-tanwīn glyph.**
+  The app's `UthmanicHafs1-Ver09.otf` and the author's `UthmanicHafs1Ver18`
+  both map only U+064B–064D (checked in the cmap and every GSUB rule; the
+  earlier `document.fonts.check` "yes" was wrong — that API does not test
+  glyph coverage). A browser that lacks the glyph falls back to another font
+  for the WHOLE letter, which is what the author saw. So `ArabicWord` keeps
+  U+08F0–08F2 in the data (the timing engine and the greying read them) but
+  DISPLAYS the single vowel in their place and draws the second stroke from
+  the font's own vowel glyph, on a no-break space, offset up-left
+  (`.tanwin-extra`, `--tanwin-dx/-dy`). Same font, same colour, the لا
+  ligature survives. Verified at 4× zoom on فَتحتان, كَسرتان and the greyed
+  finals.
+- **The low iqlāb mīm is kasra + U+06E2 in this font**, not U+06ED. v09 draws
+  U+06ED as an unattached placeholder (the author saw a dotted circle under
+  كِرَامِۭ) and forms the real low mīm through its `liga` afii57456_uni06E2 —
+  kasra followed by the HIGH small mīm. The sheet writes U+06ED as Unicode
+  intends; `lowMeem()` in the generator maps it. Ver18 does it the other way
+  round, which is why Word shows the sheet correctly. The font is the
+  authority, again.
+- **The nasal mark the Mushaf wrote for the NEXT word is greyed when the card
+  stops before it** — `unreadFinalNasal()` in `graphemes.ts`: a staggered
+  tanwīn, or a vowel + small mīm, on the last word (or on the letter before
+  the tanwīn alif). Derived from the text, so no card carries a flag; 70 of
+  lesson 7's 176 cards have one. A stacked final tanwīn is left black, as the
+  author asked. Timing is unchanged — those cards are recorded at a stop like
+  every single-word clip before them.
+- Both tanwīn shapes are in `MARK_RE`, `TANWEEN`, `audioName.MARKS` and every
+  generator's `MARKS`, so a filename derives the same from either.
 - **The tanwīn alif is silent when the reading carries on** — rule 5 of
   `derivedSilent()` (`isTanwinAlif`): the ا or ى after a tanwīn fatḥ, or after
   a fatḥa + small mīm, is a spelling letter — عَذَابًا مُّهِينًا is read
@@ -185,6 +217,11 @@ Things that cost real debugging. Do not undo them without reading why.
   the مّ and not on nothing. No text in lessons 1–6 is affected (checked). A
   letter carrying a vowel and a small mīm is a tanwīn for every timing rule
   (`isTanwin`): سَمِيعَۢا بَصِيرًا hums into the ب.
+- **The article's lam after لِ is a sun or moon lam too** — rule 4b of
+  `derivedSilent()`: a bare lam in second position of a word that opens with
+  a lam, followed by a shadda (لِّلنَّاسِ), is silent and badged "Sun ل";
+  لِّلۡمُتَّقِينَ is "Moon ل". `lamBadge` in the generator and the rule in the
+  app make the same test. Fires on one text in the app (lesson 7 #75).
 - **The lam-alif ligature merges only when the two letters touch.** It used
   to merge across a space — رَسُولٌ أَمِينٌ became one cluster لٌأَ — which
   handed the tanwīn's ruling to the wrong letter (a hum before a hamza). A
@@ -573,6 +610,9 @@ this time the corrupted records are children's.
   `left` may not move.
 
 **Wording the learner reads**
+- **Say "ghunna", never "hum"**, in every hint, badge and blurb — the author
+  teaches the term itself. And **never give the ghunna a length** ("two
+  harakat"): the author does not teach it as a count. (2026-09-26.)
 - **Never say "vowel" for a madd.** A long vowel is a *madd* — "natural madd"
   where the length matters (ṣilah *grows a natural madd*, badal is *a hamza
   followed by a natural madd*). "Vowel" is reserved for the short one: a
@@ -582,6 +622,10 @@ this time the corrupted records are children's.
 
 **Working style the author prefers**
 - Verify behaviour, don't assert it. Mechanical checks over spot-checks.
+- `npx tsc --noEmit -p .` checks NOTHING here — `tsconfig.json` is a solution
+  file (`files: []`, references). Use `npm run build` (`tsc -b`) or
+  `npx tsc --noEmit -p tsconfig.app.json`. A "TSC-OK" from the former let a
+  missing definition reach the dev server on 2026-09-26.
 - Say plainly what was not verified and why.
 - Never silently "fix" Quranic text — report and confirm.
 
@@ -852,20 +896,23 @@ appended to every image URL** because a redrawn picture keeps its filename.
 The rule the whole design rests on: one set of content, two skins — **mode
 never touches an id, a folder, a clip filename or a calibration key.**
 
-**Lesson 7 — record it (2026-09-26).** Built as text, draft, 176 cards; the
-generator is `make-lesson7.mjs` and reads `Word Tables/ميم نون ساكنة
-وتنوين.docx`. Open that sheet in the intake tool — it ticks columns 2 and 3
+**Lesson 7 — record it (2026-09-26, after the author's 21-point review).**
+Built as text, draft, 176 cards; the generator is `make-lesson7.mjs` and
+reads `Word Tables/ميم نون ساكنة وتنوين.docx` (the author changed كَم مِّن
+فِئَةٍ to كَم مِّن; at his request the sheet's مَّآءٍ ثَجَّاجًا was corrected to
+مَّآءً in place). Open that sheet in the intake tool — it ticks columns 2 and 3
 (Nūn Sākinah, Tanwīn) by itself, 176 slots in card order, one utterance each
 — and record into **`Audio/Audio - Meem Noon Sakinah Tanween`** (the folder
 the generator reads; name it exactly so, or change `AUDIO_SRC`). Then
 `node scripts/make-lesson7.mjs` cuts 176 clips. The em-dash cell (tanwīn + ظ,
-id 171) is a spent id with no card, by design. Listen first to a staggered
-tanwīn card (بَرۡقࣱ يَجۡعَلُونَ), an iqlāb tanwīn (سَمِيعَۢا بَصِيرًا — the ب
-carries the hum), and a tanwīn-alif phrase (عَذَابًا مُّهِينًا — the alif is
-grey and skipped). Two decisions from the build the author has not yet
-confirmed: greying the tanwīn alif mid-phrase (section 3), and the "Iqlāb
-inside" badge on the two examples that carry a second rule (رَبُّهُم
-بِذَنۢبِهِمۡ, نَفۡسࣰا زَكِيَّةَۢ). Publish from `#/admin` when reviewed.
+id 171) is a spent id with no card, by design. Every final-tanwīn shape is
+printed on each run under "FINAL TANWĪN" — the author has asked for these to
+follow the Mushaf's next word and has not yet reviewed the list; **#29
+عَلِيمٌ حَكِيمٌ is cited at 4:11, where the text reads عَلِيمًا حَكِيمًا**, so its
+location (or the example) needs fixing in the sheet and it is left stacked
+until then. Still unconfirmed: greying the tanwīn alif mid-phrase (section
+3) and the "Iqlāb inside" badge on رَبُّهُم بِذَنۢبِهِمۡ. Publish from
+`#/admin` when reviewed.
 
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.

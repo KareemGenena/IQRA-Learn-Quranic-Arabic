@@ -198,6 +198,17 @@ export function derivedSilent(text: string): number[] {
     if (cluster.text.includes(RECT_ZERO) && i < clusters.length - 1) out.add(i);
     // 5. the alif of a tanwīn fatḥ, when the reading carries on past it
     if (isTanwinAlif(clusters, i) && i < clusters.length - 1) out.add(i);
+    // 4b. the article's lam without its alif, after the preposition لِ
+    //     (لِّلنَّاسِ): a bare lam at the second position of a word that opens
+    //     with a lam, swallowed by the shadda after it.
+    const prev = clusters[i - 1];
+    const next = clusters[i + 1];
+    if (
+      prev && next &&
+      baseChar(cluster.text) === LAM && marksOf(cluster.text).length === 0 &&
+      baseChar(prev.text) === LAM && (prev.start === 0 || text[prev.start - 1] === ' ') &&
+      next.text.includes(SHADDA)
+    ) out.add(i);
 
     if (baseChar(cluster.text) !== ALIF_WASLA) return;
     if (i > 0) out.add(i);
@@ -207,4 +218,31 @@ export function derivedSilent(text: string): number[] {
   });
 
   return [...out].sort((a, b) => a - b);
+}
+
+const STAGGERED_RE = /[ࣰ-ࣲ]/;
+const SHORT_VOWEL_ONLY_RE = /[َُِ]/;
+
+/**
+ * The nasal mark on the LAST word of a text that is written for a word the
+ * text does not reach. The Mushaf shapes a tanwīn for the word that follows
+ * in the āyah — staggered before a letter of idghām or ikhfāʾ, a small mīm
+ * before ب — and a card that stops on that word shows the shape but does not
+ * perform the rule. So the mark is greyed: the staggered tanwīn, or the vowel
+ * and small mīm of the iqlāb form. Found on the last cluster, or on the
+ * cluster before a tanwīn alif (عَذَابࣰا). A stacked tanwīn is left alone.
+ */
+export function unreadFinalNasal(text: string): { index: number; marks: string } | null {
+  const clusters = splitClusters(text);
+  if (!clusters.length) return null;
+  let i = clusters.length - 1;
+  if (isTanwinAlif(clusters, i)) i -= 1;
+  const marks = marksOf(clusters[i].text);
+  const staggered = marks.find((m) => STAGGERED_RE.test(m));
+  if (staggered) return { index: i, marks: staggered };
+  if (marks.includes(SMALL_HIGH_MEEM)) {
+    const vowel = marks.find((m) => SHORT_VOWEL_ONLY_RE.test(m));
+    if (vowel) return { index: i, marks: vowel + SMALL_HIGH_MEEM };
+  }
+  return null;
 }

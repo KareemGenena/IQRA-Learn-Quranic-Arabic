@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { splitClusters, unreadFinalMaddah } from '../lib/graphemes';
+import { splitClusters, unreadFinalMaddah, unreadFinalNasal } from '../lib/graphemes';
 import type { LetterCluster } from '../lib/graphemes';
 import type { HighlightPhase } from '../lib/timing';
 
@@ -53,9 +53,33 @@ const sameLayers = (a: Layer[], b: Layer[]) =>
   a.every((l, i) => l.className === b[i].className && l.clip === b[i].clip && l.text === b[i].text);
 
 /** Short vowels and tanween — what a stop takes off the final letter. */
-const FINAL_VOWEL = '\u064B-\u0650\u08F0-\u08F2';
+const FINAL_VOWEL = '\u064B-\u0650';
 /** The maddah \u2014 unread on a final long vowel with no next word to reach. */
 const MADDAH = '\u0653';
+
+/**
+ * The STAGGERED tanw\u012bn (\u0645\u064f\u062a\u064e\u062a\u064e\u0627\u0628\u0650\u0639, U+08F0\u201308F2) is not in this font \u2014 KFGQPC
+ * Uthmanic Hafs v09 has only the stacked forms, and a browser that cannot find
+ * the glyph falls back to another font for the whole letter. So the text is
+ * DISPLAYED with the single vowel in its place, and the second stroke is drawn
+ * beside it from the same font's own vowel glyph (`tanwin-extra`), sitting on
+ * a no-break space and offset up and to the left. The data keeps U+08F0\u201308F2:
+ * that is what the timing engine and the greying read.
+ */
+const STAGGERED_TO_VOWEL: Record<string, string> = { '\u08f0': '\u064e', '\u08f1': '\u064f', '\u08f2': '\u0650' };
+const STAGGERED_RE = /[\u08f0-\u08f2]/g;
+const toDisplay = (s: string) => s.replace(STAGGERED_RE, (m) => STAGGERED_TO_VOWEL[m]);
+
+/** The second stroke of a staggered tanw\u012bn, placed over (or under) one cluster. */
+interface Extra extends Box {
+  vowel: string;
+  below: boolean;
+  dim: boolean;
+}
+
+const sameExtras = (a: Extra[], b: Extra[]) =>
+  a.length === b.length &&
+  a.every((e, i) => sameBox(e, b[i]) && e.vowel === b[i].vowel && e.dim === b[i].dim);
 
 /**
  * Renders an Arabic word as ONE intact text node — never split into spans,
@@ -85,6 +109,10 @@ export function ArabicWord({
   const [highlight, setHighlight] = useState<Box | null>(null);
   const [pending, setPending] = useState<Box | null>(null);
   const [layers, setLayers] = useState<Layer[]>([]);
+  const [extras, setExtras] = useState<Extra[]>([]);
+  /** What is drawn: the staggered tanwīn shown as its single vowel. Same
+   *  length as `text`, so every cluster offset still applies. */
+  const displayText = toDisplay(text);
   /** Bumped when the webfont finishes loading or the box resizes, so every
    *  measurement is redone against the real glyphs. */
   const [revision, setRevision] = useState(0);
@@ -172,24 +200,45 @@ export function ArabicWord({
       const clip = clipTo(markCluster, markCluster + 1);
       if (clip) next.push({ className: 'layer-mark', clip });
     }
-    // A mark on the last letter greyed, the letter under it not: the final
-    // vowel a stop drops (`dimFinalMark`), or a maddah with no next word to
-    // reach (derived from the text). A mark cannot be clipped apart from its
-    // letter — they share the same horizontal span — so this is two layers
-    // over the last cluster: the whole string in the silent colour, and on
-    // top of it the same string with that mark removed, in the text colour.
-    // Removing a mark does not change the letters' shaping, so the two copies
-    // line up exactly and only the mark shows through grey.
-    const dimMarks = (dimFinalMark ? FINAL_VOWEL : '') + (unreadFinalMaddah(text) ? MADDAH : '');
-    if (dimMarks && clusters.length) {
-      const last = clusters[clusters.length - 1];
-      const clip = clipTo(clusters.length - 1, clusters.length);
-      const stripped = text.slice(0, last.start) + last.text.replace(new RegExp(`[${dimMarks}]`, 'g'), '') + text.slice(last.end);
-      if (clip && stripped !== text) {
+    // A mark greyed, the letter under it not: the final vowel a stop drops
+    // (`dimFinalMark`), a maddah with no next word to reach, or the nasal mark
+    // the Mushaf wrote for a word the card does not reach (both derived from
+    // the text). A mark cannot be clipped apart from its letter — they share
+    // the same horizontal span — so each is two layers over that cluster: the
+    // whole string in the silent colour, and on top of it the same string
+    // with the mark removed, in the text colour. Removing a mark does not
+    // change the letters' shaping, so the two copies line up exactly and only
+    // the mark shows through grey.
+    const dims: { index: number; marks: string }[] = [];
+    if (clusters.length) {
+      const lastIdx = clusters.length - 1;
+      if (dimFinalMark) dims.push({ index: lastIdx, marks: FINAL_VOWEL });
+      if (unreadFinalMaddah(text)) dims.push({ index: lastIdx, marks: MADDAH });
+      const nasal = unreadFinalNasal(text);
+      if (nasal) dims.push({ index: nasal.index, marks: toDisplay(nasal.marks) });
+    }
+    for (const { index, marks } of dims) {
+      const c = clusters[index];
+      const clip = clipTo(index, index + 1);
+      const stripped =
+        displayText.slice(0, c.start) + displayText.slice(c.start, c.end).replace(new RegExp(`[${marks}]`, 'g'), '') + displayText.slice(c.end);
+      if (clip && stripped !== displayText) {
         next.push({ className: 'layer-silent', clip });
         next.push({ className: 'layer-plain', clip, text: stripped });
       }
     }
+    // The second stroke of every staggered tanwīn, over its own cluster; grey
+    // when that tanwīn is the unread final one.
+    const nasal = unreadFinalNasal(text);
+    const nextExtras: Extra[] = [];
+    clusters.forEach((c, i) => {
+      const m = c.text.match(STAGGERED_RE);
+      if (!m) return;
+      const box = measure(i, i + 1);
+      if (!box) return;
+      nextExtras.push({ ...box, vowel: STAGGERED_TO_VOWEL[m[0]], below: m[0] === 'ࣲ', dim: nasal?.index === i });
+    });
+    setExtras((prev) => (sameExtras(prev, nextExtras) ? prev : nextExtras));
     // Only commit a real change: setting an equal-but-new array would
     // re-render, which would run this effect again.
     setLayers((prev) => (sameLayers(prev, next) ? prev : next));
@@ -261,7 +310,7 @@ export function ArabicWord({
         />
       )}
       <span ref={textRef} className="arabic-text" dir="rtl" lang="ar">
-        {text}
+        {displayText}
       </span>
       {layers.map((layer, i) => (
         <span
@@ -272,7 +321,19 @@ export function ArabicWord({
           lang="ar"
           aria-hidden="true"
         >
-          {layer.text ?? text}
+          {layer.text ?? displayText}
+        </span>
+      ))}
+      {extras.map((e, i) => (
+        <span
+          key={`extra-${i}`}
+          className={`arabic-text tanwin-extra${e.below ? ' below' : ''}${e.dim ? ' dim' : ''}`}
+          style={{ left: e.left, top: e.top, width: e.width, height: e.height }}
+          dir="rtl"
+          lang="ar"
+          aria-hidden="true"
+        >
+          {' ' + e.vowel}
         </span>
       ))}
     </span>

@@ -34,6 +34,7 @@ import { dirname, join } from 'path';
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
 import { readZipEntry } from './lib/zip.mjs';
 import { addMaddSigns, normaliseZeros } from './lib/arabic.mjs';
+import { letterAfter } from './lib/mushaf.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
@@ -53,7 +54,7 @@ const SECTIONS = [
     id: 'meem-sakinah',
     title: 'Mīm Sākinah',
     titleArabic: 'أحكام الميم الساكنة',
-    hint: 'A mīm with no vowel. Before another mīm it merges and hums (idghām shafawī); before ب it is hidden with a hum (ikhfāʾ shafawī); before every other letter it is said clearly (iẕhār shafawī). First, because iqlāb below turns a nūn into exactly this mīm.',
+    hint: 'Before another mīm it merges, with ghunna (idghām shafawī); before ب it is hidden, with ghunna (ikhfāʾ shafawī); before every other letter it is said clearly (iẕhār shafawī). First, because iqlāb below turns a nūn into exactly this mīm.',
     ruleFromCell: true,
   },
   {
@@ -61,7 +62,7 @@ const SECTIONS = [
     id: 'izhar',
     title: 'Iẕhār Ḥalqī',
     titleArabic: 'الإظهار الحلقي',
-    hint: 'Before the six throat letters — ء ه ع ح غ خ — the nūn sākinah or tanwīn is said clearly, with no hum. The tanwīn is written stacked.',
+    hint: 'Before the six throat letters — ء ه ع ح غ خ — the nūn sākinah or tanwīn is said clearly, with no ghunna. The tanwīn is written stacked.',
     rule: 'Iẕhār',
     ghunna: false,
     tanwin: 'Mutarākib',
@@ -71,13 +72,13 @@ const SECTIONS = [
     id: 'idgham',
     title: 'Idghām',
     titleArabic: 'الإدغام',
-    hint: 'Before the six letters of يرملون the nūn sākinah or tanwīn merges into the next letter, which takes a shadda. With ي ن م و the merge keeps its hum; with ل ر it has none. The tanwīn is written staggered.',
+    hint: 'Before the six letters of يرملون the nūn sākinah or tanwīn merges into the next letter, which takes a shadda. With ي ن م و the merge keeps its ghunna; with ل ر it has none. The tanwīn is written staggered.',
     rule: 'Idghām',
     tanwin: 'Mutatābiʿ',
     /** The table's own sub-heading rows split it into two sections. */
     split: [
-      { when: /بغنة|with ghunna/i, id: 'idgham-ghunnah', title: 'Idghām bi-Ghunnah', titleArabic: 'الإدغام بغنة', rule: 'Idghām bi-Ghunnah', ghunna: true, hint: 'Before ي ن م و the nūn or tanwīn merges into the next letter and the hum stays — two harakat of ghunna on the merged letter.' },
-      { when: /بغير غنة|without ghunna/i, id: 'idgham-no-ghunnah', title: 'Idghām bilā Ghunnah', titleArabic: 'الإدغام بغير غنة', rule: 'Idghām bilā Ghunnah', ghunna: false, hint: 'Before ل and ر the nūn or tanwīn merges completely — a doubled letter with no hum at all.' },
+      { when: /بغنة|with ghunna/i, id: 'idgham-ghunnah', title: 'Idghām bi-Ghunnah', titleArabic: 'الإدغام بغنة', rule: 'Idghām bi-Ghunnah', ghunna: true, hint: 'Before ي ن م و the nūn or tanwīn merges into the next letter and the ghunna stays, on the merged letter.' },
+      { when: /بغير غنة|without ghunna/i, id: 'idgham-no-ghunnah', title: 'Idghām bilā Ghunnah', titleArabic: 'الإدغام بغير غنة', rule: 'Idghām bilā Ghunnah', ghunna: false, hint: 'Before ل and ر the nūn or tanwīn merges completely — a doubled letter with no ghunna at all.' },
     ],
   },
   {
@@ -85,7 +86,7 @@ const SECTIONS = [
     id: 'ikhfa',
     title: 'Ikhfāʾ Ḥaqīqī',
     titleArabic: 'الإخفاء الحقيقي',
-    hint: 'Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the hum is heard — two harakat — while the mouth shapes the next letter. The tanwīn is written staggered.',
+    hint: 'Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The tanwīn is written staggered.',
     rule: 'Ikhfāʾ',
     ghunna: true,
     tanwin: 'Mutatābiʿ',
@@ -97,7 +98,7 @@ const SECTIONS = [
     id: 'iqlab',
     title: 'Iqlāb',
     titleArabic: 'الإقلاب',
-    hint: 'Before ب the nūn sākinah or tanwīn turns into a hidden mīm with a hum. The Mushaf writes a small mīm in place of the sukoon, and the tanwīn gives up one of its two marks for it.',
+    hint: 'Before ب the nūn sākinah or tanwīn turns into a hidden mīm, with ghunna. The Mushaf writes a small mīm in place of the sukoon, and the tanwīn gives up one of its two marks for it.',
     rule: 'Iqlāb',
     ghunna: true,
   },
@@ -127,40 +128,92 @@ const BAA = 'ب';
 const ALIF_WASLA = 'ٱ';
 
 const conversions = [];
+const finals = [];
+/** The tanwīn's vowel half, for the iqlāb form (vowel + small mīm). */
+const VOWEL_OF = { 'ً': 'َ', 'ٌ': 'ُ', 'ٍ': 'ِ' };
+const SMALL_HIGH_MEEM = 'ۢ';
+
+/** The shape a tanwīn takes before `next`: 'stacked' | 'staggered' | 'meem'. */
+function shapeBefore(next) {
+  if (!next || IZHAR.has(next)) return 'stacked';
+  if (next === BAA) return 'meem';
+  return 'staggered';
+}
+
+/** Rewrite the stacked tanwīn at chars[i] into `shape`. */
+function reshape(chars, i, shape) {
+  if (shape === 'staggered') chars[i] = STAGGERED[chars[i]];
+  else if (shape === 'meem') chars[i] = VOWEL_OF[chars[i]] + SMALL_HIGH_MEEM;
+}
+
 /**
- * Write the tanwīn the way the Mushaf does: stacked before a throat letter
+ * Write every tanwīn the way the Mushaf does: stacked before a throat letter
  * (read in full), staggered before a letter of idghām or ikhfāʾ (the nūn hides
- * or merges). A tanwīn with nothing after it — the end of the text — stays
- * stacked: a pause reads it in full. Before ب the sheet writes the small mīm;
- * a plain tanwīn there is reported, not changed.
+ * or merges), a vowel plus small mīm before ب (iqlāb). Inside the card the
+ * next letter is in the text; for the card's LAST word it is read from the
+ * Mushaf (`letterAfter`), because the Mushaf writes the shape for the word
+ * that follows in the āyah even though the recording stops here — the app
+ * then greys that final mark (`unreadFinalNasal`). The sheet already writes
+ * the small mīm before ب inside a card; a plain tanwīn there is reported.
  */
-function openTanween(text, where) {
+function shapeTanween(text, where, sura, aya) {
   const chars = [...text];
   for (let i = 0; i < chars.length; i++) {
-    const to = STAGGERED[chars[i]];
-    if (!to) continue;
+    if (!STAGGERED[chars[i]]) continue;
     // The next letter that is actually read: past marks, the tanwīn-fatḥ alif
     // or yeh, spaces, and a silent hamzat wasl.
     let j = i + 1;
     while (j < chars.length && (MARK_ONE.test(chars[j]) || chars[j] === 'ا' || chars[j] === 'ى' || chars[j] === ' ')) j++;
     if (j < chars.length && chars[j] === ALIF_WASLA) j++;
-    const next = chars[j];
-    if (!next) continue; // a stop: written in full
-    if (IZHAR.has(next)) continue;
-    if (next === BAA) {
+    let next = chars[j];
+    if (!next) {
+      // The card ends here: ask the Mushaf what follows.
+      if (!sura) {
+        finals.push(`${where}: no location — left stacked`);
+        continue;
+      }
+      const r = letterAfter(text, sura, aya);
+      if (!r.letter) {
+        finals.push(`${where}: ${r.why} — left stacked`);
+        problems.push(`${where}: could not read the next word in the Mushaf (${r.why})`);
+        continue;
+      }
+      next = r.letter;
+      const shape = shapeBefore(next);
+      finals.push(`${where}: next word ${r.next} (${r.where}) → ${shape}`);
+      reshape(chars, i, shape);
+      continue;
+    }
+    const shape = shapeBefore(next);
+    if (shape === 'meem') {
       problems.push(`${where}: a plain tanwīn before ب — the Mushaf writes a small mīm there`);
       continue;
     }
-    chars[i] = to;
-    conversions.push(`${where} → staggered before ${next}`);
+    if (shape === 'staggered') {
+      reshape(chars, i, shape);
+      conversions.push(`${where} → staggered before ${next}`);
+    }
   }
   return chars.join('');
 }
 
+/**
+ * The low small mīm (iqlāb after a kasra). Unicode has U+06ED for it and the
+ * sheet writes that; this app's font draws U+06ED as an unattached placeholder
+ * and forms the real low mīm from kasra + U+06E2 (its `liga` afii57456_uni06E2).
+ * The font is the authority: the app carries the font's spelling.
+ */
+const lowMeem = (s) => s.replace(/ۭ/g, SMALL_HIGH_MEEM);
+
 // ── badges read off the text ──────────────────────────────────────────────
+/**
+ * The article's lam, read off the text — as ٱل, or without its alif after the
+ * preposition لِ (لِّلنَّاسِ, لِّلۡمُتَّقِينَ). Same test derivedSilent() makes in
+ * the app, so the chip and the greying always agree.
+ */
 function lamBadge(text) {
-  if (/ٱلۡ/.test(text)) return 'Moon ل';
-  if (/ٱل[^\sً-ْٰ]?[ً-ِ]?ّ/.test(text)) return 'Sun ل';
+  if (/ٱلۡ/.test(text) || /(^|\s)ل[ً-ٰۖ-ۭ]*لۡ/.test(text)) return 'Moon ل';
+  if (/ٱل[^\sً-ْٰ]?[ً-ِ]?ّ/.test(text) || /(^|\s)ل[ً-ٰۖ-ۭ]*ل[^\sً-ٰۖ-ۭ][ً-ٰۖ-ۭ]*ّ/.test(text)) return 'Sun ل';
   return null;
 }
 const MUTTASIL_RE = /(?:آ|ٓ)[ً-ٰۖ-ۭـ]*[ءأؤئ]/;
@@ -198,7 +251,13 @@ const sections = [];
 let id = 0;
 
 /** Uthmani text: corrections, the madd sign by rule, then the tanwīn shape by rule. */
-const clean = (s, where) => openTanween(addMaddSigns(normaliseZeros(correct(s.trim()))), where);
+const clean = (s, where, sura, aya) => shapeTanween(lowMeem(addMaddSigns(normaliseZeros(correct(s.trim())))), where, sura, aya);
+/** "al-Baqarah 2:249" → [2, 249]; the LAST such pair in a meaning cell. */
+function locationOf(meaning) {
+  const all = [...(meaning ?? '').matchAll(/(\d+):(\d+)/g)];
+  const m = all[all.length - 1];
+  return m ? [Number(m[1]), Number(m[2])] : [null, null];
+}
 const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' ').trim();
 
 function columns(header) {
@@ -270,7 +329,9 @@ for (const block of blocks) {
         return;
       }
       const where = `#${id} ${raw}`;
-      const cleaned = clean(raw, where);
+      const meaning = meanings[k] ?? meanings[0];
+      const [sura, aya] = locationOf(meaning);
+      const cleaned = clean(raw, where, sura, aya);
       const badges = [ruleInfo.rule];
       if (letter) badges.push(letter);
       if (ex.form) badges.push(ex.form);
@@ -280,11 +341,13 @@ for (const block of blocks) {
       if (lam) badges.push(lam);
       const muttasil = muttasilBadge(cleaned);
       if (muttasil) badges.push(muttasil);
-      if (SMALL_MEEM.test(cleaned) && section.id !== 'iqlab') badges.push('Iqlāb inside');
+      // A small mīm READ inside the card — not the greyed one the Mushaf puts
+      // on the card's last word for the ب that follows it.
+      const inside = cleaned.replace(/[َُِ]ۢا?$/, '');
+      if (SMALL_MEEM.test(inside) && section.id !== 'iqlab') badges.push('Iqlāb inside');
       if (cleaned.includes(RECT_ZERO)) badges.push('Conditional silent alif');
 
       const entry = { id, section: section.id, text: cleaned, audio: `word${String(id).padStart(3, '0')}.wav`, timings: null, badges };
-      const meaning = meanings[k] ?? meanings[0];
       if (meaning) entry.meaning = meaning;
       words.push(entry);
     });
@@ -367,7 +430,8 @@ console.log(`${words.length} cards across ${sections.length} sections (ids 1–$
 for (const s of sections) {
   console.log(`  ${s.id.padEnd(18)} ${String(words.filter((w) => w.section === s.id).length).padStart(3)} cards`);
 }
-console.log(`tanwīn written staggered on ${conversions.length} cards`);
+console.log(`tanwīn written staggered inside ${conversions.length} cards`);
+console.log(`\nFINAL TANWĪN — the shape the Mushaf gives the card's last word, from the word after it (review these):\n  ${finals.join('\n  ')}`);
 console.log(`audio: wrote ${written} clips`);
 if (applied.length) console.log(`\nCORRECTIONS APPLIED (docx unchanged):\n  ${applied.join('\n  ')}`);
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');

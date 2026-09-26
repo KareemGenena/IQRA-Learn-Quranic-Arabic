@@ -264,6 +264,37 @@ body {
   user-select: none;
 }
 
+/* The second stroke of a STAGGERED tanwīn (مُتَتَابِع). The font has no glyph
+   for it, so ArabicWord shows the single vowel on the letter and draws this
+   copy of the same vowel beside it — on a no-break space, in the same font,
+   shifted up and to the left (down and to the left for a kasra). The box is
+   the cluster's own; the offsets are in em so they scale with --fit. */
+.tanwin-extra {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* The box is the cluster's Range rect — the font's content area, not the
+     2.1 line box — so `normal` puts this baseline exactly on the word's. */
+  line-height: normal;
+  pointer-events: none;
+  user-select: none;
+  --tanwin-dx: 0.3em;
+  --tanwin-dy: 0.14em;
+  transform: translate(calc(-1 * var(--tanwin-dx)), calc(-1 * var(--tanwin-dy)));
+}
+
+/* A kasra on a space already hangs lower than one under a letter, so the
+   second kasra needs no downward shift of its own. */
+.tanwin-extra.below {
+  transform: translate(calc(-1 * var(--tanwin-dx)), 0);
+}
+
+.tanwin-extra.dim {
+  color: var(--silent);
+}
+
 .layer-prefix {
   color: var(--al-color);
 }
