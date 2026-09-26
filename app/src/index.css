@@ -270,29 +270,23 @@ body {
    shifted up and to the left (down and to the left for a kasra). The box is
    the cluster's own; the offsets are in em so they scale with --fit. */
 .tanwin-extra {
+  /* A layer: the whole string, shifted left by ArabicWord's inline transform
+     and clipped to the band that holds one vowel. */
+  z-index: 2;
+}
+
+.tanwin-extra.dim,
+.tanwin-meem.dim {
+  color: var(--silent);
+}
+
+/* The small مـ of a low iqlāb mīm, drawn under the kasra at ~0.42 em. */
+.tanwin-meem {
   position: absolute;
   z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  /* The box is the cluster's Range rect — the font's content area, not the
-     2.1 line box — so `normal` puts this baseline exactly on the word's. */
   line-height: normal;
   pointer-events: none;
   user-select: none;
-  --tanwin-dx: 0.3em;
-  --tanwin-dy: 0.14em;
-  transform: translate(calc(-1 * var(--tanwin-dx)), calc(-1 * var(--tanwin-dy)));
-}
-
-/* A kasra on a space already hangs lower than one under a letter, so the
-   second kasra needs no downward shift of its own. */
-.tanwin-extra.below {
-  transform: translate(calc(-1 * var(--tanwin-dx)), 0);
-}
-
-.tanwin-extra.dim {
-  color: var(--silent);
 }
 
 .layer-prefix {
@@ -505,6 +499,8 @@ body {
 }
 
 .pair-card {
+  display: flex;
+  flex-direction: column;
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: 18px;
@@ -655,6 +651,10 @@ body {
 .pair-forms {
   display: grid;
   gap: 8px;
+  /* The words sit at the BOTTOM of the card, so three cards in a row show
+     their words on one level however many rows of badges each one wraps to
+     — the grid already stretches every card to the row's height. */
+  margin-top: auto;
 }
 
 .form-btn {

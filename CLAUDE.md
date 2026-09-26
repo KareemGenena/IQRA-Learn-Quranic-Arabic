@@ -174,11 +174,14 @@ Things that cost real debugging. Do not undo them without reading why.
   corpus.quran.com and tanzil.info) and `letterAfter(phrase, sura, aya)`
   returns the next word's first letter — the next āyah's first word at an
   āyah end, the basmalah's ب at a sūrah end, exactly as the Mushaf assumes
-  (مِن مَّسَدٍ ends sūrah 111 and is written مَّسَدِۢ). The sūrah:āyah comes from
-  the meaning cell, so a wrong location in the sheet surfaces as "not found"
-  (lesson 7 #29 عَلِيمٌ حَكِيمٌ is cited at 4:11, which reads عَلِيمًا حَكِيمًا).
-  `shapeTanween()` in `make-lesson7.mjs` prints every final decision on every
-  run for the author to review. The sheets hold plain stacked marks
+  (مِن مَّسَدٍ ends sūrah 111 and is written مَّسَدِۢ). **The whole phrase must
+  stand in the cited āyah, word after word** — matching on the last word
+  alone put عَلَيۡهِم مُّؤۡصَدَةٌ at 90:20 (which reads عَلَيۡهِمۡ نَارٞ مُّؤۡصَدَةٌ) and
+  gave it a small mīm. When the cited āyah does not hold the phrase the whole
+  Qurʾān is searched: one occurrence is used and reported as a sheet
+  correction (that card is 104:8); several or none are reported and the
+  tanwīn left stacked for the author to decide. `shapeTanween()` prints every
+  final decision on every run. The sheets hold plain stacked marks
   throughout: the author's Word font cannot draw the other shapes.
 - **Neither KFGQPC Hafs font on this machine has a staggered-tanwīn glyph.**
   The app's `UthmanicHafs1-Ver09.otf` and the author's `UthmanicHafs1Ver18`
@@ -187,18 +190,36 @@ Things that cost real debugging. Do not undo them without reading why.
   glyph coverage). A browser that lacks the glyph falls back to another font
   for the WHOLE letter, which is what the author saw. So `ArabicWord` keeps
   U+08F0–08F2 in the data (the timing engine and the greying read them) but
-  DISPLAYS the single vowel in their place and draws the second stroke from
-  the font's own vowel glyph, on a no-break space, offset up-left
-  (`.tanwin-extra`, `--tanwin-dx/-dy`). Same font, same colour, the لا
-  ligature survives. Verified at 4× zoom on فَتحتان, كَسرتان and the greyed
-  finals.
-- **The low iqlāb mīm is kasra + U+06E2 in this font**, not U+06ED. v09 draws
-  U+06ED as an unattached placeholder (the author saw a dotted circle under
-  كِرَامِۭ) and forms the real low mīm through its `liga` afii57456_uni06E2 —
-  kasra followed by the HIGH small mīm. The sheet writes U+06ED as Unicode
-  intends; `lowMeem()` in the generator maps it. Ver18 does it the other way
-  round, which is why Word shows the sheet correctly. The font is the
-  authority, again.
+  DISPLAYS the single vowel in their place and draws the second stroke as a
+  **copy of the whole string shifted left and clipped to that one mark**
+  (`.tanwin-extra`). Where the mark is comes from a pixel diff on a canvas:
+  the cluster drawn with and without the vowel, in its joining form (zero-
+  width joiners stand in for the neighbours), and the differing pixels ARE
+  the mark — its height and width exactly as the font placed it on that
+  letter. Bounding boxes cannot do this (a kasra under a final ع lies inside
+  the letter's own tail), and a vowel on a no-break space sat at the wrong
+  height (the author saw the two ḍammas "one above the other"). The shift is
+  the mark's own width plus 0.06 em, so the two strokes sit side by side on
+  one level. Same font, same colour, the لا ligature survives. Verified at
+  4× on fatḥatān (incl. لࣰا), ḍammatān, kasratān under a descender, and the
+  greyed finals.
+- **The low iqlāb mīm is kasra + U+06E2 in this font**, not U+06ED — v09
+  draws U+06ED as an unattached placeholder (the dotted circle the author saw
+  under كِرَامِۭ) and forms a low mīm from kasra + the HIGH small mīm through
+  its `liga`. But that glyph carries a vertical stem the Mushaf's does not
+  (the Mushaf writes a small مـ), so the pair is displayed as the kasra alone
+  and `ArabicWord` draws a 0.42 em `م‍` (mīm + ZWJ, the initial form) centred
+  under the kasra's pixel box (`.tanwin-meem`). The data keeps kasra + U+06E2:
+  `lowMeem()` in the generator maps the sheet's U+06ED to it. Ver18 does it
+  the other way round, which is why Word shows the sheet correctly.
+- **Greying layers are unclipped.** A mark can overhang its letter's box —
+  clipped to the cluster, the small mīm of مُّؤۡصَدَةُۢ stayed black while its
+  ḍamma went grey. The grey full string and the black stripped string now
+  cover the whole word and go FIRST, so the prefix/silent/mark layers still
+  paint over them.
+- **Words sit at the bottom of their cards** (`.pair-card` is a flex column,
+  `.pair-forms { margin-top: auto }`): with badges wrapping to one, two or
+  three rows, three cards in a row still show their words on one level.
 - **The nasal mark the Mushaf wrote for the NEXT word is greyed when the card
   stops before it** — `unreadFinalNasal()` in `graphemes.ts`: a staggered
   tanwīn, or a vowel + small mīm, on the last word (or on the letter before
@@ -906,13 +927,17 @@ reads `Word Tables/ميم نون ساكنة وتنوين.docx` (the author chang
 the generator reads; name it exactly so, or change `AUDIO_SRC`). Then
 `node scripts/make-lesson7.mjs` cuts 176 clips. The em-dash cell (tanwīn + ظ,
 id 171) is a spent id with no card, by design. Every final-tanwīn shape is
-printed on each run under "FINAL TANWĪN" — the author has asked for these to
-follow the Mushaf's next word and has not yet reviewed the list; **#29
-عَلِيمٌ حَكِيمٌ is cited at 4:11, where the text reads عَلِيمًا حَكِيمًا**, so its
-location (or the example) needs fixing in the sheet and it is left stacked
-until then. Still unconfirmed: greying the tanwīn alif mid-phrase (section
-3) and the "Iqlāb inside" badge on رَبُّهُم بِذَنۢبِهِمۡ. Publish from
-`#/admin` when reviewed.
+printed on each run under "FINAL TANWĪN" (65 staggered · 2 small mīm · 16
+stacked). **Five meaning cells cite the wrong place and need fixing in the
+sheet**: #3 عَلَيۡهِم مُّؤۡصَدَةٌ says 90:20, is 104:8 (used, and shaped from
+there); #24 مِنۡ عِلۡمٍ says 2:120 (which has مِنَ ٱلۡعِلۡمِ) — it occurs at 4:157,
+6:148, 18:5, 38:69, 43:20, 45:24, 46:4, 53:28; #29 عَلِيمٌ حَكِيمٌ says 4:11
+(عَلِيمًا حَكِيمًا) — fifteen places; #43 لَطِيفٌ خَبِيرٌ says 67:14 (ٱللَّطِيفُ
+ٱلۡخَبِيرُ) — 22:63 or 31:16; #62 مِن مَّنَاصٍ says 38:3, whose text is وَّلَاتَ
+حِينَ مَنَاصٍ — the example itself is not in the Qurʾān. The last four are
+left stacked until the sheet says which. Still unconfirmed: greying the
+tanwīn alif mid-phrase (section 3) and the "Iqlāb inside" badge on رَبُّهُم
+بِذَنۢبِهِمۡ. Publish from `#/admin` when reviewed.
 
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.

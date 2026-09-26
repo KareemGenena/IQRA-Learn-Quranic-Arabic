@@ -74,7 +74,7 @@
     {
       "id": 3,
       "section": "meem-sakinah",
-      "text": "عَلَيۡهِم مُّؤۡصَدَةُۢ",
+      "text": "عَلَيۡهِم مُّؤۡصَدَةࣱ",
       "audio": "word003.wav",
       "timings": null,
       "badges": [
@@ -353,7 +353,7 @@
     {
       "id": 24,
       "section": "izhar",
-      "text": "مِنۡ عِلۡمࣲ",
+      "text": "مِنۡ عِلۡمٍ",
       "audio": "word024.wav",
       "timings": null,
       "badges": [
@@ -884,7 +884,7 @@
     {
       "id": 62,
       "section": "idgham-ghunnah",
-      "text": "مِن مَّنَاصࣲ",
+      "text": "مِن مَّنَاصٍ",
       "audio": "word062.wav",
       "timings": null,
       "badges": [

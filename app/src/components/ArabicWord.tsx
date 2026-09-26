@@ -68,18 +68,110 @@ const MADDAH = '\u0653';
  */
 const STAGGERED_TO_VOWEL: Record<string, string> = { '\u08f0': '\u064e', '\u08f1': '\u064f', '\u08f2': '\u0650' };
 const STAGGERED_RE = /[\u08f0-\u08f2]/g;
-const toDisplay = (s: string) => s.replace(STAGGERED_RE, (m) => STAGGERED_TO_VOWEL[m]);
+/**
+ * The low iql\u0101b m\u012bm is kasra + U+06E2 in this font's own spelling, but the
+ * glyph the font makes of that pair carries a vertical stem the Mushaf's does
+ * not (the Mushaf writes a small \u0645\u0640). So the pair is displayed as the kasra
+ * alone and the small \u0645\u0640 is drawn beneath it by hand (`tanwin-meem`).
+ */
+const KASRA_MEEM_RE = /\u0650\u06e2/g;
+const KASRA = '\u0650';
+const toDisplay = (s: string) =>
+  s.replace(STAGGERED_RE, (m) => STAGGERED_TO_VOWEL[m]).replace(KASRA_MEEM_RE, KASRA);
 
-/** The second stroke of a staggered tanw\u012bn, placed over (or under) one cluster. */
-interface Extra extends Box {
-  vowel: string;
-  below: boolean;
-  dim: boolean;
-}
+/**
+ * Something drawn by hand over one cluster: the second stroke of a staggered
+ * tanw\u012bn (a copy of the whole string, shifted left and clipped to the band
+ * that holds only that vowel), or the small \u0645\u0640 of a low iql\u0101b m\u012bm.
+ */
+type Extra =
+  | { kind: 'stroke'; clip: string; dx: number; dim: boolean }
+  | { kind: 'meem'; left: number; top: number; size: number; dim: boolean };
 
 const sameExtras = (a: Extra[], b: Extra[]) =>
-  a.length === b.length &&
-  a.every((e, i) => sameBox(e, b[i]) && e.vowel === b[i].vowel && e.dim === b[i].dim);
+  a.length === b.length && a.every((e, i) => JSON.stringify(e) === JSON.stringify(b[i]));
+
+/** Letters that join to the letter after them. */
+const JOINS_FORWARD = /[\u0628\u062a-\u062e\u0633-\u063a\u0641-\u0648\u064a\u0626]/;
+const lastLetter = (s: string) => [...s.replace(/[\u064b-\u065f\u0670\u06d6-\u06ed\u08f0-\u08f2]/g, '')].pop() ?? '';
+const NO_JOIN_FORWARD = /[\u0627\u0622\u0623\u0625\u0671\u062f\u0630\u0631\u0632\u0648\u0624\u0629\u0649\u0621]/;
+
+/**
+ * One cluster's display text in the joining form it has inside the word, so
+ * a canvas can measure the same glyphs the page shows: a zero-width joiner
+ * stands in for the letters either side.
+ */
+function shapedForm(clusters: LetterCluster[], i: number, display: string): string {
+  const c = clusters[i];
+  const seg = display.slice(c.start, c.end);
+  const prev = clusters[i - 1];
+  const next = clusters[i + 1];
+  const joinsPrev = !!prev && prev.end === c.start && !NO_JOIN_FORWARD.test(lastLetter(prev.text)) && JOINS_FORWARD.test(lastLetter(prev.text));
+  const joinsNext = !!next && next.start === c.end && JOINS_FORWARD.test(lastLetter(c.text)) && !NO_JOIN_FORWARD.test(lastLetter(c.text));
+  return (joinsPrev ? '\u200d' : '') + seg + (joinsNext ? '\u200d' : '');
+}
+
+let inkCtx: CanvasRenderingContext2D | null | undefined;
+function ctx2d() {
+  if (inkCtx === undefined) inkCtx = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+  return inkCtx;
+}
+/** Ink bounds of a string in a font, from the canvas. */
+function ink(font: string, s: string) {
+  const c = ctx2d();
+  if (!c) return null;
+  c.font = font;
+  const m = c.measureText(s);
+  return { asc: m.actualBoundingBoxAscent, desc: m.actualBoundingBoxDescent, fontAsc: m.fontBoundingBoxAscent, width: m.width };
+}
+
+/**
+ * Where ONE mark sits: the pixels that differ between a cluster drawn with
+ * the mark and drawn without it. Bounding boxes cannot tell \u2014 a kasra under
+ * a final \u0639 lies inside the letter's own tail \u2014 but the difference image can.
+ * Returns the mark's box relative to the baseline (y, up negative) and to the
+ * left edge of the drawn run (x), in CSS px.
+ */
+function markBox(font: string, fontPx: number, withMark: string, without: string) {
+  const c = ctx2d();
+  if (!c) return null;
+  const pad = Math.ceil(fontPx);
+  c.font = font;
+  const w = Math.ceil(Math.max(c.measureText(withMark).width, c.measureText(without).width)) + pad * 2;
+  const h = pad * 3;
+  const cv = c.canvas;
+  if (cv.width !== w || cv.height !== h) {
+    cv.width = w;
+    cv.height = h;
+  }
+  const baseline = pad * 1.6;
+  const draw = (s: string) => {
+    c.clearRect(0, 0, w, h);
+    c.font = font;
+    c.direction = 'ltr';
+    c.textAlign = 'left';
+    c.textBaseline = 'alphabetic';
+    c.fillStyle = '#000';
+    c.fillText(s, pad, baseline);
+    return c.getImageData(0, 0, w, h).data;
+  };
+  const a = draw(withMark);
+  const b = draw(without);
+  let x0 = w, x1 = -1, y0 = h, y1 = -1;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = (y * w + x) * 4 + 3;
+      if ((a[i] > 40) !== (b[i] > 40)) {
+        if (x < x0) x0 = x;
+        if (x > x1) x1 = x;
+        if (y < y0) y0 = y;
+        if (y > y1) y1 = y;
+      }
+    }
+  }
+  if (x1 < 0) return null;
+  return { top: y0 - baseline, bottom: y1 + 1 - baseline, left: x0 - pad, right: x1 + 1 - pad };
+}
 
 /**
  * Renders an Arabic word as ONE intact text node — never split into spans,
@@ -188,6 +280,34 @@ export function ArabicWord({
     };
 
     const next: Layer[] = [];
+    // A mark greyed, the letter under it not: the final vowel a stop drops
+    // (`dimFinalMark`), a maddah with no next word to reach, or the nasal mark
+    // the Mushaf wrote for a word the card does not reach (both derived from
+    // the text). A mark cannot be clipped apart from its letter, so each is
+    // two UNCLIPPED layers: the whole string in the silent colour, and on top
+    // of it the same string with the mark removed, in the text colour.
+    // Removing a mark does not change the letters' shaping, so the two copies
+    // line up exactly and only the mark shows through grey. Unclipped, because
+    // a mark may overhang its letter's box — clipped to the cluster, the mīm
+    // of مُّؤۡصَدَةُۢ stayed black while its ḍamma went grey. These go FIRST so
+    // the coloured layers below still paint over them.
+    const dims: { index: number; marks: string }[] = [];
+    const nasal = unreadFinalNasal(text);
+    if (clusters.length) {
+      const lastIdx = clusters.length - 1;
+      if (dimFinalMark) dims.push({ index: lastIdx, marks: FINAL_VOWEL });
+      if (unreadFinalMaddah(text)) dims.push({ index: lastIdx, marks: MADDAH });
+      if (nasal) dims.push({ index: nasal.index, marks: toDisplay(nasal.marks) });
+    }
+    for (const { index, marks } of dims) {
+      const c = clusters[index];
+      const stripped =
+        displayText.slice(0, c.start) + displayText.slice(c.start, c.end).replace(new RegExp(`[${marks}]`, 'g'), '') + displayText.slice(c.end);
+      if (stripped !== displayText) {
+        next.push({ className: 'layer-silent', clip: 'none' });
+        next.push({ className: 'layer-plain', clip: 'none', text: stripped });
+      }
+    }
     if (prefixClusters > 0) {
       const clip = clipTo(0, prefixClusters);
       if (clip) next.push({ className: 'layer-prefix', clip });
@@ -200,44 +320,65 @@ export function ArabicWord({
       const clip = clipTo(markCluster, markCluster + 1);
       if (clip) next.push({ className: 'layer-mark', clip });
     }
-    // A mark greyed, the letter under it not: the final vowel a stop drops
-    // (`dimFinalMark`), a maddah with no next word to reach, or the nasal mark
-    // the Mushaf wrote for a word the card does not reach (both derived from
-    // the text). A mark cannot be clipped apart from its letter — they share
-    // the same horizontal span — so each is two layers over that cluster: the
-    // whole string in the silent colour, and on top of it the same string
-    // with the mark removed, in the text colour. Removing a mark does not
-    // change the letters' shaping, so the two copies line up exactly and only
-    // the mark shows through grey.
-    const dims: { index: number; marks: string }[] = [];
-    if (clusters.length) {
-      const lastIdx = clusters.length - 1;
-      if (dimFinalMark) dims.push({ index: lastIdx, marks: FINAL_VOWEL });
-      if (unreadFinalMaddah(text)) dims.push({ index: lastIdx, marks: MADDAH });
-      const nasal = unreadFinalNasal(text);
-      if (nasal) dims.push({ index: nasal.index, marks: toDisplay(nasal.marks) });
-    }
-    for (const { index, marks } of dims) {
-      const c = clusters[index];
-      const clip = clipTo(index, index + 1);
-      const stripped =
-        displayText.slice(0, c.start) + displayText.slice(c.start, c.end).replace(new RegExp(`[${marks}]`, 'g'), '') + displayText.slice(c.end);
-      if (clip && stripped !== displayText) {
-        next.push({ className: 'layer-silent', clip });
-        next.push({ className: 'layer-plain', clip, text: stripped });
-      }
-    }
-    // The second stroke of every staggered tanwīn, over its own cluster; grey
-    // when that tanwīn is the unread final one.
-    const nasal = unreadFinalNasal(text);
+
+    // Drawn by hand, from canvas measurements of the very glyphs on screen:
+    //  - the second stroke of a staggered tanwīn: a copy of the string shifted
+    //    left, clipped to the cluster's width and to the vertical band the
+    //    vowel adds above (or below) the letter — so it is the font's own
+    //    mark, in the letter's own form, at exactly the letter's own height;
+    //  - the small مـ of a low iqlāb mīm, under the kasra.
+    // Grey when the mark is the unread final one.
     const nextExtras: Extra[] = [];
-    clusters.forEach((c, i) => {
-      const m = c.text.match(STAGGERED_RE);
-      if (!m) return;
-      const box = measure(i, i + 1);
-      if (!box) return;
-      nextExtras.push({ ...box, vowel: STAGGERED_TO_VOWEL[m[0]], below: m[0] === 'ࣲ', dim: nasal?.index === i });
-    });
+    const textEl = textRef.current;
+    const wrapHeight = wrap.getBoundingClientRect().height;
+    if (textEl && clusters.length) {
+      const cs = getComputedStyle(textEl);
+      const font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      const fontPx = parseFloat(cs.fontSize) || 40;
+      clusters.forEach((c, i) => {
+        const box = measure(i, i + 1);
+        if (!box) return;
+        const dim = nasal?.index === i;
+        const staggered = c.text.match(STAGGERED_RE);
+        const form = shapedForm(clusters, i, displayText);
+        const metrics = ink(font, form);
+        if (!metrics) return;
+        const baseline = box.top + metrics.fontAsc;
+        // The drawn run starts where the cluster's box does, less the cluster's
+        // own left side bearing — close enough that a 2 px margin covers it.
+        const runLeft = box.left;
+        if (staggered) {
+          const vowel = STAGGERED_TO_VOWEL[staggered[0]];
+          const mb = markBox(font, fontPx, form, form.replace(vowel, ''));
+          if (!mb) return;
+          const gap = fontPx * 0.06;
+          const top = baseline + mb.top - 1;
+          const bottom = baseline + mb.bottom + 1;
+          const left = runLeft + mb.left - 2;
+          const right = runLeft + mb.right + 2;
+          const clip = `inset(${Math.max(0, top).toFixed(2)}px ${Math.max(0, wrapWidth - right).toFixed(2)}px ${Math.max(0, wrapHeight - bottom).toFixed(2)}px ${Math.max(0, left).toFixed(2)}px)`;
+          nextExtras.push({ kind: 'stroke', clip, dx: Math.round(mb.right - mb.left + gap), dim });
+        }
+        if (KASRA_MEEM_RE.test(c.text)) {
+          KASRA_MEEM_RE.lastIndex = 0;
+          // The kasra's own box, then the small مـ centred just under it.
+          const mb = markBox(font, fontPx, form, form.replace(KASRA, ''));
+          const size = fontPx * 0.42;
+          const mini = ink(`${cs.fontStyle} ${cs.fontWeight} ${size}px ${cs.fontFamily}`, 'م‍');
+          if (!mb || !mini) return;
+          const inkTop = baseline + mb.bottom + fontPx * 0.04;
+          const centre = runLeft + (mb.left + mb.right) / 2;
+          nextExtras.push({
+            kind: 'meem',
+            left: Math.round(centre - mini.width / 2),
+            top: Math.round(inkTop - (mini.fontAsc - mini.asc)),
+            size: Math.round(size * 10) / 10,
+            dim,
+          });
+        }
+        KASRA_MEEM_RE.lastIndex = 0;
+      });
+    }
     setExtras((prev) => (sameExtras(prev, nextExtras) ? prev : nextExtras));
     // Only commit a real change: setting an equal-but-new array would
     // re-render, which would run this effect again.
@@ -324,18 +465,31 @@ export function ArabicWord({
           {layer.text ?? displayText}
         </span>
       ))}
-      {extras.map((e, i) => (
-        <span
-          key={`extra-${i}`}
-          className={`arabic-text tanwin-extra${e.below ? ' below' : ''}${e.dim ? ' dim' : ''}`}
-          style={{ left: e.left, top: e.top, width: e.width, height: e.height }}
-          dir="rtl"
-          lang="ar"
-          aria-hidden="true"
-        >
-          {' ' + e.vowel}
-        </span>
-      ))}
+      {extras.map((e, i) =>
+        e.kind === 'stroke' ? (
+          <span
+            key={`extra-${i}`}
+            className={`arabic-text arabic-layer tanwin-extra${e.dim ? ' dim' : ''}`}
+            style={{ clipPath: e.clip, transform: `translateX(${-e.dx}px)` }}
+            dir="rtl"
+            lang="ar"
+            aria-hidden="true"
+          >
+            {displayText}
+          </span>
+        ) : (
+          <span
+            key={`extra-${i}`}
+            className={`arabic-text tanwin-meem${e.dim ? ' dim' : ''}`}
+            style={{ left: e.left, top: e.top, fontSize: e.size }}
+            dir="rtl"
+            lang="ar"
+            aria-hidden="true"
+          >
+            {'م‍'}
+          </span>
+        ),
+      )}
     </span>
   );
 }

@@ -180,7 +180,9 @@ function shapeTanween(text, where, sura, aya) {
       }
       next = r.letter;
       const shape = shapeBefore(next);
-      finals.push(`${where}: next word ${r.next} (${r.where}) → ${shape}`);
+      const note = r.corrected ? ` [SHEET SAYS ${r.cited} — the phrase is at ${r.corrected}]` : '';
+      if (r.corrected) problems.push(`${where}: the sheet cites ${r.cited}; the phrase is at ${r.corrected} — the meaning cell needs correcting`);
+      finals.push(`${where}: next word ${r.next} (${r.where})${note} → ${shape}`);
       reshape(chars, i, shape);
       continue;
     }
