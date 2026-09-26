@@ -12,8 +12,9 @@
  * identical — hence this file is the single place it is written down.
  */
 
-/** Diacritics, Quranic annotation marks and tatweel: U+064B–U+0670, U+06D6–U+06ED, U+0640. */
-const MARKS = /[ً-ٰۖ-ۭـ]/g;
+/** Diacritics, Quranic annotation marks, the staggered tanwīn and tatweel:
+ *  U+064B–U+0670, U+06D6–U+06ED, U+08F0–U+08F2, U+0640. */
+const MARKS = /[ً-ٰۖ-ۭـࣰ-ࣲ]/g;
 
 /** Characters Windows refuses in a filename. Arabic has none of them, but a
  *  stray one pasted from a table would make the write fail with no clue why. */

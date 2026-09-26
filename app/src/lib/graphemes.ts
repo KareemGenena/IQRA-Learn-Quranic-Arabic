@@ -49,7 +49,9 @@ const TATWEEL = 'ـ';
  * highlighted and timed on its own, and the هـ it belongs to never learned it
  * carried a madd.
  */
-const MARK_RE = /[\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED]/;
+// U+08F0\u201308F2 are the STAGGERED tanw\u012Bn (\u0645\u064F\u062A\u064E\u062A\u064E\u0627\u0628\u0650\u0639), which the Mushaf writes
+// before a letter of idgh\u0101m or ikhf\u0101\u02BE; the generators produce them by rule.
+const MARK_RE = /[\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E8\u06EA-\u06ED\u08F0-\u08F2]/;
 /** Hamza written as a combining mark, which makes its seat a real consonant. */
 const HAMZA_MARK_RE = /[ٕٔ]/;
 const LAM = 'ل';
@@ -88,8 +90,10 @@ export function splitClusters(word: string): LetterCluster[] {
     }
 
     // Lam-alif ligature: lam followed by any alif always renders as one glyph,
-    // whatever mark the lam carries, so it must be one highlight unit.
-    if (prev && ALIFS.has(base) && baseChar(prev.text) === LAM) {
+    // whatever mark the lam carries, so it must be one highlight unit. Only
+    // when the two touch: across a space (رَسُولٌ أَمِينٌ) they are two words,
+    // and merging them handed the tanwīn's ruling to the wrong letter.
+    if (prev && ALIFS.has(base) && baseChar(prev.text) === LAM && prev.end === seg.index) {
       prev.ligatureTailBare = marksOf(text).length === 0;
       prev.text += text;
       prev.end = seg.index + text.length;
@@ -135,7 +139,10 @@ const SHADDA = '\u0651';
  *  3. it is a hamzat wasl with a letter before it — the ٱ that only exists to
  *     start a word, and a word running into it does that job instead;
  *  4. it is the lam of a sun lam — written, but swallowed by the shadda on the
- *     letter after it.
+ *     letter after it;
+ *  5. it is the alif (or yeh) written after a tanwīn fatḥ AND something
+ *     follows — عَذَابًا مُّهِينًا is read ʿadhāban-mmuhīnan; the alif sounds
+ *     only at a stop, as the ʿiwaḍ alif (see `isTanwinAlif`).
  *
  * Silent letters are greyed by `ArabicWord` and given no time by `timing.ts`,
  * so the highlight steps straight over them.
@@ -160,6 +167,28 @@ export function unreadFinalMaddah(text: string): boolean {
   return MADD_LETTERS.has(baseChar(last.text)) && !SHORT_VOWEL_RE.test(last.text);
 }
 
+const FATHATAN_RE = /[ًࣰ]/;
+const SMALL_HIGH_MEEM = 'ۢ';
+const FATHA = 'َ';
+
+/**
+ * Is cluster `i` the alif (or yeh) the Mushaf writes after a tanwīn fatḥ —
+ * عَذَابًا, هُدًى, سَمِيعَۢا? A spelling letter: when the reading carries on it is
+ * not said at all (ʿadhāban-mmuhīnan), and only at a stop does it sound, as the
+ * ʿiwaḍ alif. So it is silent exactly when something follows — the same shape
+ * as the rectangular zero — and the rules of nūn sākinah look straight past it
+ * to the next word's first letter.
+ */
+export function isTanwinAlif(clusters: LetterCluster[], i: number): boolean {
+  const c = clusters[i];
+  const prev = clusters[i - 1];
+  if (!c || !prev) return false;
+  const base = baseChar(c.text);
+  if ((base !== 'ا' && base !== 'ى') || marksOf(c.text).length) return false;
+  const pm = prev.text;
+  return FATHATAN_RE.test(pm) || (pm.includes(FATHA) && pm.includes(SMALL_HIGH_MEEM));
+}
+
 export function derivedSilent(text: string): number[] {
   const clusters = splitClusters(text);
   const out = new Set<number>();
@@ -167,6 +196,8 @@ export function derivedSilent(text: string): number[] {
   clusters.forEach((cluster, i) => {
     if (cluster.text.includes(ROUND_ZERO)) out.add(i);
     if (cluster.text.includes(RECT_ZERO) && i < clusters.length - 1) out.add(i);
+    // 5. the alif of a tanwīn fatḥ, when the reading carries on past it
+    if (isTanwinAlif(clusters, i) && i < clusters.length - 1) out.add(i);
 
     if (baseChar(cluster.text) !== ALIF_WASLA) return;
     if (i > 0) out.add(i);

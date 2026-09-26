@@ -94,6 +94,15 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   the take, the generator strips it for the card and shows each word three
   times, held 2, 4 and 6 at the stop with the final vowel greyed. 52 cards.
   Meanings are Sahih International's, and the (i) says so under each quotation.
+- **Lesson 7** — nūn sākinah, tanwīn and mīm sākinah: five headed tables
+  (mīm sākinah first — iqlāb turns a nūn into one), 176 cards in six sections
+  (iẕhār · idghām with ghunna · idghām without · ikhfāʾ · iqlāb · mīm). Every
+  nūn-table row has TWO example columns, Nūn Sākinah and Tanwīn, so it makes
+  two cards; ids belong to cells. The tanwīn is written the way the Mushaf
+  writes it — stacked before a throat letter, staggered (U+08F0–08F2) before
+  a letter of idghām or ikhfāʾ — by rule in the generator, since the author's
+  Word font has no staggered glyph. Badges: the rule, the letter, the form,
+  the tanwīn shape, Ghunna where the rule hums. Draft, text only, unrecorded.
 - **Class recordings** (`#/recordings`) — the teacher posts the link to a
   recorded session (Zoom or anything else) and the class finds it there instead
   of scrolling back through a chat thread. A pointer, never a copy: nothing is
@@ -154,6 +163,32 @@ Things that cost real debugging. Do not undo them without reading why.
   time by `timing.ts`, so the highlight steps straight over them. Lesson 4's
   `waslSilentIn` field and lesson 2's hardcoded cluster 1 are both subsumed —
   do not reintroduce either.
+- **The tanwīn has two shapes, and the generator writes them.** Stacked
+  (مُتَرَاكِب, U+064B–064D) before a throat letter and at a stop, where it is
+  read in full; staggered (مُتَتَابِع, U+08F0–08F2) before a letter of idghām or
+  ikhfāʾ, where the nūn merges or hides; before ب the Mushaf writes a small
+  mīm instead (U+06E2 high / U+06ED low), which the sheet already carries.
+  The author's Word font ("KFGQPC HAFS Uthmanic Script") has no glyph for
+  the staggered form, so every sheet holds plain marks and `openTanween()` in
+  `make-lesson7.mjs` writes the shape from the next word's first letter —
+  the same test `ghunnaInto` makes. The app's font (`UthmanicHafs1-Ver09.otf`)
+  does have them: checked with `document.fonts.check` and a zero-advance
+  measurement on 2026-09-26, drawn as attached marks. Both shapes are in
+  `MARK_RE`, `TANWEEN`, `audioName.MARKS` and every generator's `MARKS`, so
+  a filename derives the same from either.
+- **The tanwīn alif is silent when the reading carries on** — rule 5 of
+  `derivedSilent()` (`isTanwinAlif`): the ا or ى after a tanwīn fatḥ, or after
+  a fatḥa + small mīm, is a spelling letter — عَذَابًا مُّهِينًا is read
+  ʿadhāban-mmuhīnan — and sounds only at a stop, as the ʿiwaḍ alif. The nūn
+  rules look straight past it: `readNeighbours()` in `timing.ts` hands
+  `clusterParts` the next word's first letter as `next`, so the hum lands on
+  the مّ and not on nothing. No text in lessons 1–6 is affected (checked). A
+  letter carrying a vowel and a small mīm is a tanwīn for every timing rule
+  (`isTanwin`): سَمِيعَۢا بَصِيرًا hums into the ب.
+- **The lam-alif ligature merges only when the two letters touch.** It used
+  to merge across a space — رَسُولٌ أَمِينٌ became one cluster لٌأَ — which
+  handed the tanwīn's ruling to the wrong letter (a hum before a hamza). A
+  cluster may never span a space; the all-lessons check asserts it.
 - **A maddah on the last letter of a text is unread**, when that letter is a
   long vowel: it is a munfasil whose hamza opens the *next* word
   (تَأۡمُرُوٓنِّىٓ أَعۡبُدُ), and a clip of the word alone has no next word to
@@ -231,6 +266,15 @@ Things that cost real debugging. Do not undo them without reading why.
 - The filename is **derived, never typed** (`audioName.ts`), with the same
   transformation the generators match on. Checked against `key()` on all 675
   Arabic strings in the sheets and the audio folders — zero disagreements.
+- **A sheet may have several word columns.** `guessWordColumns()` picks every
+  column whose Arabic cells are mostly words (two or more letters) and scores
+  at least two fifths of the best — the nūn sākinah sheet records both its
+  Nūn Sākinah and Tanwīn columns — and the page shows them as checkboxes.
+  Slots come row by row, left to right within a row, so the list is in the
+  generator's id order; with several columns ticked a lone letter is a label
+  (the mīm table's Letter column) and is dropped, while a single-column sheet
+  of letters (the alphabet) still records letter by letter. Checked: the
+  replicated slot list for lesson 7 equals the 176 cards, in order.
 - `takeCheck.ts` is a **port of `splitIntoN`**, not an approximation, so the
   intake gate and the generator cut identically —
   `node scripts/check-take-parity.mjs` proves it over every recording at 1, 2
@@ -808,6 +852,21 @@ appended to every image URL** because a redrawn picture keeps its filename.
 The rule the whole design rests on: one set of content, two skins — **mode
 never touches an id, a folder, a clip filename or a calibration key.**
 
+**Lesson 7 — record it (2026-09-26).** Built as text, draft, 176 cards; the
+generator is `make-lesson7.mjs` and reads `Word Tables/ميم نون ساكنة
+وتنوين.docx`. Open that sheet in the intake tool — it ticks columns 2 and 3
+(Nūn Sākinah, Tanwīn) by itself, 176 slots in card order, one utterance each
+— and record into **`Audio/Audio - Meem Noon Sakinah Tanween`** (the folder
+the generator reads; name it exactly so, or change `AUDIO_SRC`). Then
+`node scripts/make-lesson7.mjs` cuts 176 clips. The em-dash cell (tanwīn + ظ,
+id 171) is a spent id with no card, by design. Listen first to a staggered
+tanwīn card (بَرۡقࣱ يَجۡعَلُونَ), an iqlāb tanwīn (سَمِيعَۢا بَصِيرًا — the ب
+carries the hum), and a tanwīn-alif phrase (عَذَابًا مُّهِينًا — the alif is
+grey and skipped). Two decisions from the build the author has not yet
+confirmed: greying the tanwīn alif mid-phrase (section 3), and the "Iqlāb
+inside" badge on the two examples that carry a second rule (رَبُّهُم
+بِذَنۢبِهِمۡ, نَفۡسࣰا زَكِيَّةَۢ). Publish from `#/admin` when reviewed.
+
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.
 (2) Listen to row 11 (`ءَآلۡـٔـٰنَ`), the ṣilah kubrā rows, #7 (its final ىٓ
@@ -815,13 +874,6 @@ now a natural 2), المص (the hum on the مٓ, the bounce at the end of ṣād
 (3) Review the ḥarfī Type/Length columns — the one part of the sheet not in
 the author's words — and the ع held 6 in كهيعص / حم‑عسق (many hold it 4).
 (4) Publish from `#/admin`; it is live as draft.
-
-**Lesson 7 — nūn sākin and tanween** (the author's stated next lesson). The
-rules it teaches are already in `timing.ts` (`ghunnaInto`, IZHAR / IKHFA /
-IDGHAM_GHUNNA / BAA) and the hum already lands on the second letter; what a
-generator will add is the badge per row (Iẕhār / Idghām / Iqlāb / Ikhfāʾ,
-derivable from the text the same way `ghunnaInto` decides), and perhaps a
-coloured second letter the way lesson 3 colours its target.
 
 **Maktab, before the first session (not code).** Print the Student Packet ×
 students and one each of the Teacher and Helper Sheets; import
@@ -832,6 +884,34 @@ roster IDs. After the pilot: revisit the 10/18 thresholds against the
 teacher-agreement rate, mine the per-item columns for which rules the class
 actually fails — that is the lesson roadmap this app lacks — and only then
 consider encoding the used instrument, per the design note.
+
+**A cheap device to house the content — researched, nothing committed
+(2026-09-21).** The author asked whether the app could ship on a basic
+touchscreen-and-speaker device a parent buys for **$25**, not for profit, so a
+family that cannot buy an iPad still has the lessons in the house. The
+feasibility work is `Device/feasibility-charter.md` — read it before costing
+any of this again. The finding: **$25 is reachable as a BOM at 5,000 units
+($20–31) and not as a price to a parent** — freight, a 12.5–37.5% 2026 tariff
+on Chinese electronics, $10–20k of fixed certification (CPSIA, FCC, UN38.3,
+CE/UKCA, liability) and fulfilment put every route at **$33–52 delivered with
+zero margin**. So the question is not whether it can be built for $25 but
+**who pays the other $15**: a waqf, a sponsor, or the Masjid buying a class
+set. Recommended first step is no hardware at all — a Kids Mode kiosk lock
+plus per-lesson offline download plus a printed "use the phone in your drawer"
+card, which is also the demand test; then ~30 tablets for the Maktab with the
+Masjid paying. Two things from it worth knowing even if no device is ever
+built: the **Grammar track can never run on an MCU** (runtime layout and
+parsing — it decides the cheap-Android route by itself), and **the port is far
+cheaper than it looks** because this app never uses a text shaper. LVGL's
+Arabic joining is documented-broken, but `ArabicWord` already renders the full
+string and stacks clipped copies measured with the Range API — so a generator
+can pre-render each word in headless Chrome (as `Brand/build.mjs` already
+does) and emit bitmaps plus per-letter pixel offsets, leaving the firmware to
+blit a bitmap and a coloured strip. Pixel-identical to the web app, no font
+modification, and storage is free (84 MB of bitmaps beside the 85 MB of audio
+already on disk). The risk the charter puts first: **a firmware port would
+consume the content work**, and there is one author of every lesson, sheet and
+recording.
 
 **Chapters.** Agreed but not built, and the groundwork is in (see "Lesson
 identity and order" above). What is left is the visible part: a `chapter` field

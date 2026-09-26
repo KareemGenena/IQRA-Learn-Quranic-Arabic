@@ -53,7 +53,7 @@ const sameLayers = (a: Layer[], b: Layer[]) =>
   a.every((l, i) => l.className === b[i].className && l.clip === b[i].clip && l.text === b[i].text);
 
 /** Short vowels and tanween — what a stop takes off the final letter. */
-const FINAL_VOWEL = '\u064B-\u0650';
+const FINAL_VOWEL = '\u064B-\u0650\u08F0-\u08F2';
 /** The maddah \u2014 unread on a final long vowel with no next word to reach. */
 const MADDAH = '\u0653';
 

@@ -84,6 +84,12 @@ export const LESSONS: LessonMeta[] = [
     titleArabic: 'المد اللازم ومد الصلة وغيرهما',
     blurb: 'The longest madd, the pronoun that grows a natural madd, and what happens to a madd when you stop.',
   },
+  {
+    id: 7,
+    title: 'Nūn Sākinah, Tanwīn and Mīm Sākinah',
+    titleArabic: 'أحكام النون الساكنة والتنوين والميم الساكنة',
+    blurb: 'Iẕhār, idghām, iqlāb and ikhfāʾ — where the hum lives and where it does not, with the tanwīn written the way the Mushaf writes it.',
+  },
 
   // ── IQRA Kids — the Baghdadi qaida. See Design/iqra-kids.md. ────────────
   // Numbers 20–30 are reserved for the eleven qaida lessons and 31–32 for the

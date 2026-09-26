@@ -41,6 +41,7 @@
  */
 
 import { baseChar, marksOf } from './graphemes';
+import { isTanwinAlif } from './graphemes';
 import type { LetterCluster } from './graphemes';
 
 const FATHA = 'َ';
@@ -48,7 +49,21 @@ const DAMMA = 'ُ';
 const KASRA = 'ِ';
 const MUSHAF_SUKOON = 'ۡ'; // U+06E1
 const SHADDA = 'ّ';
-const TANWEEN = ['ً', 'ٌ', 'ٍ']; // fathatan, dammatan, kasratan
+// Fathatan, dammatan, kasratan — stacked (U+064B–064D, before a throat letter
+// or a stop) and staggered (U+08F0–08F2, before a letter of idghām or ikhfāʾ).
+// Same sound, same weight; the shape is the Mushaf telling the reader which
+// rule applies, and the generators write it by rule.
+const TANWEEN = ['ً', 'ٌ', 'ٍ', 'ࣰ', 'ࣱ', 'ࣲ'];
+const FATHATAN = ['ً', 'ࣰ'];
+/**
+ * The small mīm of iqlāb (high after a fatḥa/ḍamma, low after a kasra). On a
+ * nūn it stands where the sukoon would; on a tanwīn it REPLACES one of the two
+ * marks (سَمِيعَۢا, كِرَامِۭ) — so a letter carrying a vowel and a small mīm is a
+ * tanwīn for every rule below.
+ */
+const SMALL_MEEM = ['ۢ', 'ۭ'];
+/** A letter that ends in the nasal of a tanwīn — written as two marks or as vowel + small mīm. */
+const isTanwin = (marks: string[]) => TANWEEN.some((t) => marks.includes(t)) || SMALL_MEEM.some((m) => marks.includes(m));
 const DAGGER_ALIF = 'ٰ';
 const MADDAH = 'ٓ';
 
@@ -170,7 +185,7 @@ function ghunnaInto(from: LetterCluster, into: LetterCluster): boolean {
   const intoBase = baseChar(into.text);
   if (!intoBase) return false;
 
-  const tanween = TANWEEN.some((t) => marks.includes(t));
+  const tanween = isTanwin(marks);
 
   // Noon saakin or tanween — the ruling depends on the next letter.
   if ((base === NOON && isSaakin(marks) && !marks.includes(SHADDA)) || tanween) {
@@ -250,7 +265,7 @@ const GHUNNA_ONSET = 0.3;
 const TANWEEN_WEIGHT = 0.5;
 function handedOver(from: LetterCluster): number {
   const marks = marksOf(from.text);
-  if (TANWEEN.some((t) => marks.includes(t))) return TANWEEN_WEIGHT;
+  if (isTanwin(marks)) return TANWEEN_WEIGHT;
   return (hasSukoon(marks) ? 1.2 : 1.0) - GHUNNA_ONSET;
 }
 
@@ -340,7 +355,7 @@ export function clusterParts(
   // gave it 8 harakat — a third of that whole phrase's budget, which starved
   // every letter before it. Only add the madd where nothing has paid for it.
   if (marks.includes(DAGGER_ALIF) && !maddCounted) w += maddLength(cluster, next);
-  if (TANWEEN.some((t) => marks.includes(t))) w += TANWEEN_WEIGHT;
+  if (isTanwin(marks) && !(hasSukoon(marks) || !hasVowel(marks))) w += TANWEEN_WEIGHT;
   // Ghunna. A doubled نّ / مّ hums on itself — its sākin half plus the hum,
   // then the vowel. The hum of ikhfāʾ, idghām and iqlāb is heard on the letter
   // AFTER the nūn/tanween/mīm — it is what the mouth does while forming that
@@ -368,9 +383,30 @@ export function clusterParts(
   // Merged lam-alif ligature: the alif fused into it needs its own time — a
   // full madd when it is a bare alif (لَا), but only a normal letter's worth
   // when it carries a vowel of its own (لْإِ in ٱلْإِنسَٰنَ).
-  if (cluster.ligature) w += cluster.ligatureTailBare ? maddLength(cluster, next) : 1.0;
+  //
+  // Unless the alif is the one a tanwīn fatḥ writes (قَوۡلًا مَّعۡرُوفًا): read on,
+  // it is not said at all — it is the ʿiwaḍ alif, heard only at a stop.
+  if (cluster.ligature) {
+    const tanwinTail = cluster.ligatureTailBare && isTanwin(marks) && !!next;
+    w += tanwinTail ? 0 : cluster.ligatureTailBare ? maddLength(cluster, next) : 1.0;
+  }
 
   return { weight: w, ghunna };
+}
+
+/**
+ * The letters a rule actually sees either side of cluster `idx`: the written
+ * neighbours, except that the tanwīn alif is looked straight past — the nūn
+ * rules are decided by the next word's first letter, and the alif is not
+ * read. Silent letters otherwise stay in view: a madd before a silent hamzat
+ * wasl is still just a madd.
+ */
+function readNeighbours(clusters: LetterCluster[], idx: number): { prev?: LetterCluster; next?: LetterCluster } {
+  let p = idx - 1;
+  if (isTanwinAlif(clusters, p)) p -= 1;
+  let n = idx + 1;
+  if (isTanwinAlif(clusters, n) && n < clusters.length - 1) n += 1;
+  return { prev: clusters[p], next: clusters[n] };
 }
 
 /**
@@ -382,7 +418,8 @@ export function clusterParts(
  */
 export function ghunnaShares(clusters: LetterCluster[], silent: number[] = [], opts: WeightOptions = {}): number[] {
   return audibleIndices(clusters, silent).map((idx) => {
-    const { weight, ghunna } = clusterParts(clusters[idx], clusters[idx - 1], clusters[idx + 1], opts);
+    const { prev, next } = readNeighbours(clusters, idx);
+    const { weight, ghunna } = clusterParts(clusters[idx], prev, next, opts);
     return weight > 0 ? ghunna / weight : 0;
   });
 }
@@ -419,7 +456,7 @@ function applyWaqf(weights: number[], clusters: LetterCluster[], held: number): 
   if (hasVowel(lastMarks) && !isMaddLetter(last, prev)) {
     // Vowel dropped: held like any saakin letter, shadda still counts.
     weights[n - 1] = 1.2 + (lastMarks.includes(SHADDA) ? 0.8 : 0);
-    if (lastMarks.includes(TANWEEN[0])) weights[n - 1] += MADD_NATURAL; // ʿiwaḍ, no alif written
+    if (FATHATAN.some((t) => lastMarks.includes(t))) weights[n - 1] += MADD_NATURAL; // ʿiwaḍ, no alif written
   }
 
   if (!prev) return;
@@ -445,17 +482,13 @@ export function autoBoundaries(
   opts: WeightOptions = {},
 ): number[] {
   const audible = audibleIndices(clusters, silent);
-  // Elongation and ghunna depend on the letters WRITTEN either side, not the
+  // Elongation and ghunna depend on the letters WRITTEN either side (bar the
+  // tanwīn alif, which `readNeighbours` looks past), not the
   // audible ones, so pass the visual neighbours.
-  const weights = audible.map((idx, n) =>
-    clusterWeight(
-      clusters[idx],
-      clusters[idx - 1],
-      n === audible.length - 1,
-      clusters[idx + 1],
-      opts,
-    ),
-  );
+  const weights = audible.map((idx, n) => {
+    const { prev, next } = readNeighbours(clusters, idx);
+    return clusterWeight(clusters[idx], prev, n === audible.length - 1, next, opts);
+  });
   if (opts.waqf) applyWaqf(weights, audible.map((i) => clusters[i]), opts.waqfMadd ?? MADD_AT_WAQF);
   const total = weights.reduce((a, b) => a + b, 0) || 1;
   const span = speechEnd - speechStart;

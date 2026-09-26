@@ -22,7 +22,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { audioFileName, nameProblem } from '../lib/audioName';
-import { readDocx, guessWordColumn } from '../lib/docxTable';
+import { readDocx, guessWordColumns } from '../lib/docxTable';
 import {
   canWriteToFolder,
   download,
@@ -131,7 +131,8 @@ export function IntakePage() {
 function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
   const [source, setSource] = useState('typed by hand');
   const [rows, setRows] = useState<string[][]>([]);
-  const [column, setColumn] = useState(0);
+  /** The sheet columns being recorded — a nūn sākinah row has two examples. */
+  const [columns, setColumns] = useState<number[]>([]);
   const [words, setWords] = useState('');
   const [batch, setBatch] = useState('');
   const [speaker, setSpeaker] = useState('');
@@ -139,13 +140,23 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
   const [expect, setExpect] = useState(1);
   const [error, setError] = useState('');
 
-  /** Pull a column out of the table and drop the rows with nothing in it. */
-  const fill = (table: string[][], col: number) => {
-    const arabic = /[ء-ي]/;
+  /**
+   * Pull the chosen columns out of the table, row by row and left to right
+   * within a row, dropping cells with no Arabic in them (headers, em-dashes,
+   * sub-heading rows). The order is the order the sheet is read, so the slot
+   * list and the generator's ids agree.
+   */
+  const fill = (table: string[][], cols: number[]) => {
+    const arabic = /[ء-ي]/g;
+    // With several columns ticked, a lone letter in one of them is a label
+    // (the mīm table's Letter column sits where the nūn tables' examples do),
+    // not a word to record. A single-column sheet of letters is still a sheet
+    // of letters — the alphabet is recorded one letter at a time.
+    const minLetters = cols.length > 1 ? 2 : 1;
     setWords(
       table
-        .map((r) => (r[col] ?? '').trim())
-        .filter((t) => t && arabic.test(t))
+        .flatMap((r) => cols.map((c) => (r[c] ?? '').trim()))
+        .filter((t) => t && (t.match(arabic) ?? []).length >= minLetters)
         .join('\n'),
     );
   };
@@ -156,10 +167,10 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
       const { rows: table, paragraphs } = await readDocx(file);
       setSource(file.name);
       if (table.length) {
-        const col = guessWordColumn(table);
+        const cols = guessWordColumns(table);
         setRows(table);
-        setColumn(col);
-        fill(table, col);
+        setColumns(cols);
+        fill(table, cols);
       } else {
         // Not every sheet is a Word table — some are written as plain
         // paragraphs. Those land in the same editable list, so the rest of the
@@ -229,28 +240,32 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
         {error && <p className="gate-error">{error}</p>}
 
         {rows.length > 0 && (
-          <label className="intake-field">
-            <span>Which column holds the words</span>
-            <select
-              value={column}
-              onChange={(e) => {
-                const col = Number(e.target.value);
-                setColumn(col);
-                fill(rows, col);
-              }}
-            >
-              {Array.from({ length: Math.max(...rows.map((r) => r.length)) }, (_, c) => (
-                <option key={c} value={c}>
+          <fieldset className="intake-field intake-columns">
+            <legend>Which columns hold the words — a sheet may have more than one</legend>
+            {Array.from({ length: Math.max(...rows.map((r) => r.length)) }, (_, c) => (
+              <label key={c} className="intake-column">
+                <input
+                  type="checkbox"
+                  checked={columns.includes(c)}
+                  onChange={(e) => {
+                    const next = e.target.checked
+                      ? [...columns, c].sort((a, b) => a - b)
+                      : columns.filter((x) => x !== c);
+                    setColumns(next);
+                    fill(rows, next);
+                  }}
+                />
+                <span>
                   Column {c + 1} —{' '}
                   {rows
                     .map((r) => r[c])
                     .filter(Boolean)
                     .slice(0, 3)
                     .join('، ') || '(empty)'}
-                </option>
-              ))}
-            </select>
-          </label>
+                </span>
+              </label>
+            ))}
+          </fieldset>
         )}
 
         <label className="intake-field">

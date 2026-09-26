@@ -131,3 +131,30 @@ export function guessWordColumn(rows: string[][]): number {
   }
   return best;
 }
+
+/**
+ * Every column that holds words — not just the best one.
+ *
+ * The nūn sākinah sheet has TWO example columns per row, Nūn Sākinah and
+ * Tanwīn, and both are recorded. A column counts when its Arabic cells are
+ * mostly words rather than single letters (the Letter column) and it carries
+ * at least two fifths of the best column's score, so a meaning column with a
+ * stray Arabic letter in a note does not qualify. Read in row order, the slots
+ * follow the sheet left to right within each row.
+ */
+export function guessWordColumns(rows: string[][]): number[] {
+  const arabicLetters = /[ء-ي]/g;
+  const width = Math.max(0, ...rows.map((r) => r.length));
+  const scores: number[] = [];
+  for (let c = 0; c < width; c++) {
+    let score = 0;
+    for (const row of rows) {
+      const letters = ((row[c] ?? '').match(arabicLetters) ?? []).length;
+      if (letters >= 2) score += Math.min(letters, 12);
+    }
+    scores.push(score);
+  }
+  const best = Math.max(0, ...scores);
+  const picked = scores.map((s, c) => (best > 0 && s >= best * 0.4 ? c : -1)).filter((c) => c >= 0);
+  return picked.length ? picked : [guessWordColumn(rows)];
+}
