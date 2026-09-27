@@ -49,6 +49,8 @@ interface Layer {
   clip?: string;
   mask?: Mask;
   dx?: number;
+  /** Lifts the strokes of a pair clear of a ط ظ stem. */
+  dy?: number;
 }
 
 /** The small مـ of a low iqlāb mīm, placed under its kasra. */
@@ -213,6 +215,12 @@ const INK = 40;
  * glyph would sit at the wrong height.
  */
 function diffMask(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0: number, x1: number): Uint8ClampedArray | null {
+  const raw = rawDiff(stage, a, b, x0, x1);
+  return raw && dilate(stage, raw, b);
+}
+
+/** The exact difference — ink in `a` and not in `b` — within a window, ungrown. */
+function rawDiff(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0: number, x1: number): Uint8ClampedArray | null {
   const pw = Math.ceil(stage.w * stage.dpr);
   const ph = Math.ceil(stage.h * stage.dpr);
   const px0 = Math.max(0, Math.floor((x0 - stage.originX) * stage.dpr));
@@ -228,16 +236,27 @@ function diffMask(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0: 
       }
     }
   }
-  if (!any) return null;
-  // Dilate by one device pixel — but never onto ink that is there WITHOUT
-  // the thing (a neighbouring letter, the stem a kasra crosses): erasing or
-  // greying those pixels notched the mīm's tail under مُّسۡتَقِيمࣲ and fringed
-  // every letter a mark touches.
+  return any ? raw : null;
+}
+
+/**
+ * Grow a mask by one device pixel so anti-aliased edges are covered — but
+ * never onto ink that is there WITHOUT the thing (a neighbouring letter, the
+ * stem a kasra crosses): erasing or greying those pixels notched the mīm's
+ * tail under مُّسۡتَقِيمࣲ and fringed every letter a mark touches.
+ */
+function dilate(stage: Stage, raw: Uint8ClampedArray, b: Uint8ClampedArray): Uint8ClampedArray {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
   const out = new Uint8ClampedArray(pw * ph);
   for (let y = 0; y < ph; y++) {
     for (let x = 0; x < pw; x++) {
       const i = y * pw + x;
       if (!raw[i]) continue;
+      // Every pixel of the mask itself stays, whatever `b` has there: the
+      // foot put back under a stem lies on the joiner's stub in `b`, and
+      // only the GROWTH is kept off ink.
+      out[i] = 255;
       for (let dy = -1; dy <= 1; dy++) {
         const yy = y + dy;
         if (yy < 0 || yy >= ph) continue;
@@ -248,6 +267,307 @@ function diffMask(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0: 
           if (b[j] <= INK / 2) out[j] = 255;
         }
       }
+    }
+  }
+  return out;
+}
+
+/**
+ * A mask for a layer that will be SHIFTED by (sx, sy) device pixels: drop
+ * every pixel that would land on ink of `b` once moved. The second stroke of
+ * a staggered pair is the first one's pixels moved sideways, and its
+ * anti-aliased edge, moved, fell on the tail of the مࣲ of مُّسۡتَقِيمࣲ and
+ * lightened it — the layer paints over the base, and the base is only ever
+ * erased where the UNSHIFTED mark was.
+ */
+function offInk(stage: Stage, m: Uint8ClampedArray, b: Uint8ClampedArray, sx: number, sy: number): Uint8ClampedArray {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const out = new Uint8ClampedArray(pw * ph);
+  for (let y = 0; y < ph; y++) {
+    const yy = y + sy;
+    if (yy < 0 || yy >= ph) continue;
+    for (let x = 0; x < pw; x++) {
+      const i = y * pw + x;
+      if (!m[i]) continue;
+      const xx = x + sx;
+      if (xx < 0 || xx >= pw) continue;
+      if (b[yy * pw + xx] <= INK / 2) out[i] = m[i];
+    }
+  }
+  return out;
+}
+
+/** A run of columns, with the top of the tallest run in them (device px). */
+interface Band {
+  left: number;
+  right: number;
+  top: number;
+}
+
+/**
+ * The STEM of a mask: the contiguous band of columns around the tallest
+ * vertical run whose own longest run is at least `share` of it. A silent alif
+ * is found as the difference between the word drawn with it and without it,
+ * and in this font the letter BEFORE a final alif takes a raised joining
+ * form: so that difference also held the neighbour's changed join, the
+ * underside of its bowl, its vowel moved a few pixels — and, standing on
+ * their own further along, vertical pieces of the neighbour tall enough to
+ * pass for a stem (a stripe through the ع of سِرَاعࣰا, the kāf's arm of
+ * مَلِكࣰا). Hence ONE band, and only the one the tallest run is in. A leaning
+ * stroke's per-column runs are shorter than its height, which is why the
+ * share is 0.35 and not 0.5.
+ */
+function stemBand(stage: Stage, m: Uint8ClampedArray, share: number): Band | null {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const run = new Int32Array(pw);
+  const runTop = new Int32Array(pw);
+  let tallest = 0, at = -1;
+  for (let x = 0; x < pw; x++) {
+    let cur = 0;
+    for (let y = 0; y <= ph; y++) {
+      if (y < ph && m[y * pw + x]) {
+        cur++;
+        continue;
+      }
+      if (cur > run[x]) {
+        run[x] = cur;
+        runTop[x] = y - cur;
+      }
+      cur = 0;
+    }
+    if (run[x] > tallest) {
+      tallest = run[x];
+      at = x;
+    }
+  }
+  if (!tallest) return null;
+  let left = at, right = at, top = runTop[at];
+  while (left > 0 && run[left - 1] >= share * tallest) {
+    left--;
+    if (runTop[left] < top) top = runTop[left];
+  }
+  while (right < pw - 1 && run[right + 1] >= share * tallest) {
+    right++;
+    if (runTop[right] < top) top = runTop[right];
+  }
+  return { left, right, top };
+}
+
+/** `m` restricted to the band's columns. */
+function inBand(stage: Stage, m: Uint8ClampedArray, band: Band): Uint8ClampedArray {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const out = new Uint8ClampedArray(pw * ph);
+  for (let y = 0; y < ph; y++) for (let x = band.left; x <= band.right; x++) out[y * pw + x] = m[y * pw + x];
+  return out;
+}
+
+/**
+ * Ink of `a` inside the band's columns, from the stem's top down: the
+ * letter's own foot, which the joiner's stub in the drawing without the
+ * letter had taken out of the difference (black under the stem of the lam of
+ * لِّلنَّاسِ). Nothing above the stem's top — that could only be a neighbour's
+ * vowel leaning over.
+ */
+function bandInk(stage: Stage, a: Uint8ClampedArray, band: Band): Uint8ClampedArray {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const out = new Uint8ClampedArray(pw * ph);
+  for (let y = band.top; y < ph; y++) for (let x = band.left; x <= band.right; x++) if (a[y * pw + x] > INK) out[y * pw + x] = 255;
+  return out;
+}
+
+/** `m` inside columns [x0, x1] and above row y1 (device px). */
+function clipRect(stage: Stage, m: Uint8ClampedArray, x0: number, x1: number, y1: number): Uint8ClampedArray {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const out = new Uint8ClampedArray(pw * ph);
+  for (let y = 0; y < Math.min(ph, y1); y++) for (let x = Math.max(0, x0); x <= Math.min(pw - 1, x1); x++) out[y * pw + x] = m[y * pw + x];
+  return out;
+}
+
+/** 4-connected components of a mask. */
+interface Components {
+  label: Int32Array;
+  size: number[];
+  box: { x0: number; y0: number; x1: number; y1: number }[];
+}
+function components(stage: Stage, m: Uint8ClampedArray): Components {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const label = new Int32Array(pw * ph).fill(-1);
+  const size: number[] = [];
+  const box: Components['box'] = [];
+  const stack: number[] = [];
+  for (let i = 0; i < m.length; i++) {
+    if (!m[i] || label[i] >= 0) continue;
+    const id = size.length;
+    size.push(0);
+    box.push({ x0: pw, y0: ph, x1: -1, y1: -1 });
+    stack.push(i);
+    label[i] = id;
+    while (stack.length) {
+      const j = stack.pop() as number;
+      const x = j % pw, y = (j - x) / pw;
+      size[id]++;
+      const b = box[id];
+      if (x < b.x0) b.x0 = x;
+      if (x > b.x1) b.x1 = x;
+      if (y < b.y0) b.y0 = y;
+      if (y > b.y1) b.y1 = y;
+      const nb = [x > 0 ? j - 1 : -1, x < pw - 1 ? j + 1 : -1, y > 0 ? j - pw : -1, y < ph - 1 ? j + pw : -1];
+      for (const k of nb) {
+        if (k >= 0 && m[k] && label[k] < 0) {
+          label[k] = id;
+          stack.push(k);
+        }
+      }
+    }
+  }
+  return { label, size, box };
+}
+
+/** `m` without its components of fewer than `minPx` pixels — anti-aliased leftovers of a cut. */
+function dropSpecks(stage: Stage, m: Uint8ClampedArray, minPx: number): Uint8ClampedArray {
+  const { label, size } = components(stage, m);
+  const out = new Uint8ClampedArray(m.length);
+  for (let i = 0; i < m.length; i++) if (m[i] && size[label[i]] >= minPx) out[i] = 255;
+  return out;
+}
+
+/**
+ * `d` without the components that have a counterpart in `r` within `dist`
+ * device pixels: a letter part that MOVED between two drawings shows up as a
+ * piece in each difference, close together — the dots of ة, which the
+ * composite glyph of ةَۢ sets a few pixels away from where the bare ة has
+ * them. A mark that is simply absent from the other drawing has no
+ * counterpart and stays.
+ */
+function dropMoved(stage: Stage, d: Uint8ClampedArray, r: Uint8ClampedArray, dist: number): Uint8ClampedArray {
+  const cd = components(stage, d);
+  const cr = components(stage, r);
+  // A counterpart is close AND the same shape — a box of the same width and
+  // height, a similar number of pixels: the composite's outline differs from
+  // the bare glyph's by slivers all over the body, and the fatḥa sitting
+  // right above the moved dots is not to be taken for them.
+  const near = (a: number, b: number) => Math.abs(a - b) <= Math.max(3, 0.3 * Math.max(a, b));
+  const moved = cd.box.map((b, i) =>
+    cr.box.some((o, j) => {
+      const ratio = cr.size[j] / cd.size[i];
+      return (
+        ratio > 0.5 && ratio < 2 &&
+        near(b.x1 - b.x0, o.x1 - o.x0) && near(b.y1 - b.y0, o.y1 - o.y0) &&
+        o.x0 - dist <= b.x1 && o.x1 + dist >= b.x0 && o.y0 - dist <= b.y1 && o.y1 + dist >= b.y0
+      );
+    }),
+  );
+  const out = new Uint8ClampedArray(d.length);
+  for (let i = 0; i < d.length; i++) if (d[i] && !moved[cd.label[i]]) out[i] = 255;
+  return out;
+}
+
+/** How many pixels of `m` land on ink of `b` once shifted by (sx, sy) device px. */
+function collisions(stage: Stage, m: Uint8ClampedArray, b: Uint8ClampedArray, sx: number, sy: number): number {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  let n = 0;
+  for (let y = 0; y < ph; y++) {
+    const yy = y + sy;
+    if (yy < 0 || yy >= ph) continue;
+    for (let x = 0; x < pw; x++) {
+      if (!m[y * pw + x]) continue;
+      const xx = x + sx;
+      if (xx >= 0 && xx < pw && b[yy * pw + xx] > INK / 2) n++;
+    }
+  }
+  return n;
+}
+
+/**
+ * The alif of a lam-alif ligature, by the ligature's geometry. In this font
+ * the lam is the upright stroke on the right, running from the top down to
+ * the base — one vertical run above and below the junction alike — and the
+ * alif is the arm that comes in from its rounded head at the top-left and
+ * touches the lam part-way down (قَوۡلࣰا, وَرَجُلࣰا) or near the base (عَمَلࣰا,
+ * ظِلࣰّا). What leaves the junction downwards to the left is the lam's foot,
+ * black. So the alif is, row by row from the arm's first row, the ink left
+ * of the right-hand run, down to the row where the arm's right edge stops
+ * advancing towards the lam — either because the two have merged into one
+ * run (then the arm's tip is the merged run's part left of the lam's edge,
+ * as long as that run's own left edge still advances) or because the left
+ * run has begun to draw back into the foot. Runs are counted on the FULL
+ * drawing: the joiner's stub in the drawing without the ligature punches a
+ * hole through the lam's stroke. Null when the two arms are never seen.
+ */
+function ligatureAlif(stage: Stage, ink: Uint8ClampedArray, full: Uint8ClampedArray, box: Box, pad: number): Uint8ClampedArray | null {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const px0 = Math.max(0, Math.floor((box.left - pad - stage.originX) * stage.dpr));
+  // The ligature's own box on the right: past it lies the join from the letter before.
+  const px1 = Math.min(pw, Math.ceil((box.left + box.width - stage.originX) * stage.dpr));
+  const rows: [number, number][][] = [];
+  for (let y = 0; y < ph; y++) {
+    const runs: [number, number][] = [];
+    let start = -1, gap = 0;
+    for (let x = px0; x <= px1; x++) {
+      const on = x < px1 && full[y * pw + x] > INK;
+      if (on) {
+        if (start < 0) start = x;
+        gap = 0;
+      } else if (start >= 0) {
+        // A gap of a pixel or two inside a stroke is anti-aliasing, not a split.
+        if (++gap > 2 || x === px1) {
+          runs.push([start, x - gap]);
+          start = -1;
+          gap = 0;
+        }
+      }
+    }
+    rows.push(runs);
+  }
+  const firstTwo = rows.findIndex((r) => r.length >= 2);
+  if (firstTwo < 0) return null;
+  const [l0, r0] = rows[firstTwo];
+  const gap0 = (l0[1] + r0[0]) / 2;
+  // Walk down the arm. `edge` is how far right it has reached.
+  const cut = new Float64Array(ph).fill(NaN); // per row: the alif is ink left of this x
+  let edge = -Infinity;
+  let lamLeft = r0[0];
+  for (let y = firstTwo; y < ph; y++) {
+    const runs = rows[y];
+    if (!runs.length) break;
+    if (runs.length >= 2) {
+      // Everything but the right-hand run is the arm: a gap of anti-aliasing
+      // inside it (where the head's curl meets the stroke) splits it in two.
+      const arm = runs[runs.length - 2], right = runs[runs.length - 1];
+      if (arm[1] < edge - 1) break; // drawing back: the foot has begun
+      if (arm[1] > edge) edge = arm[1];
+      lamLeft = right[0];
+      cut[y] = right[0];
+    } else {
+      // Merged: the arm's tip lies left of the lam's edge, while the run's
+      // own left edge still advances; once it draws back, the foot has begun.
+      const run = runs[0];
+      if (run[0] < edge - 1 && rows[y - 1].length === 1) break;
+      if (run[0] > edge) edge = run[0];
+      cut[y] = lamLeft;
+      // A merged run followed by two runs again is the junction of an arm
+      // meeting the lam part-way down: stop there.
+      if (y + 1 < ph && rows[y + 1].length >= 2) break;
+    }
+  }
+  const out = new Uint8ClampedArray(pw * ph);
+  for (let yy = 0; yy < ph; yy++) {
+    const runs = rows[yy];
+    for (let x = 0; x < pw; x++) {
+      const i = yy * pw + x;
+      if (!ink[i]) continue;
+      let alif = false;
+      if (yy < firstTwo) alif = runs.length === 1 && (runs[0][0] + runs[0][1]) / 2 < gap0;
+      else if (!Number.isNaN(cut[yy])) alif = x < cut[yy];
+      if (alif) out[i] = 255;
     }
   }
   return out;
@@ -357,8 +677,8 @@ const STAGGER = 0.7;
  *  where the font hangs a single mark. */
 const STEM_LEFT = /[طظ]/; // ط ظ
 
-/** The x (canvas px) of the topmost ink in a mask-like alpha array within a window — a stem's top. */
-function topInkX(stage: Stage, a: Uint8ClampedArray, x0: number, x1: number): number | null {
+/** The topmost ink in an alpha array within a window — a stem's top — in wrap CSS px. */
+function topInk(stage: Stage, a: Uint8ClampedArray, x0: number, x1: number): { x: number; y: number } | null {
   const pw = Math.ceil(stage.w * stage.dpr);
   const ph = Math.ceil(stage.h * stage.dpr);
   const px0 = Math.max(0, Math.floor((x0 - stage.originX) * stage.dpr));
@@ -366,10 +686,13 @@ function topInkX(stage: Stage, a: Uint8ClampedArray, x0: number, x1: number): nu
   for (let y = 0; y < ph; y++) {
     let sum = 0, n = 0;
     for (let x = px0; x < px1; x++) if (a[y * pw + x] > INK) { sum += x; n++; }
-    if (n) return stage.originX + sum / n / stage.dpr;
+    if (n) return { x: stage.originX + sum / n / stage.dpr, y: y / stage.dpr };
   }
   return null;
 }
+
+/** How far the pair must clear a ط ظ stem, in em. */
+const STEM_GAP = 0.04;
 
 /** Ink pixels of `a` that `b` lacks, within a window — how far two renderings disagree. */
 function countExtra(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0: number, x1: number): number {
@@ -536,8 +859,8 @@ export function ArabicWord({
         const grey: Uint8ClampedArray[] = [];
         const boxOf = (i: number) => measure(i, i + 1);
         const window_ = (b: Box) => [b.left - fontPx * 0.5, b.left + b.width + fontPx * 0.5] as const;
-        /** The pixels of the marks `re` takes off cluster i. */
-        const markPixels = (i: number, re: RegExp, from = displayText) => {
+        /** The pixels of the marks `re` takes off cluster i, and the drawing without them. */
+        const markPair = (i: number, re: RegExp, from = displayText): { m: Uint8ClampedArray; without: Uint8ClampedArray } | null => {
           const b = boxOf(i);
           if (!b) return null;
           const without = withoutMarks(from, clusters[i], re);
@@ -546,8 +869,11 @@ export function ArabicWord({
           const bb = drawAlpha(stage, without);
           if (!a || !bb) return null;
           const [x0, x1] = window_(b);
-          return diffMask(stage, a, bb, x0, x1);
+          const m = diffMask(stage, a, bb, x0, x1);
+          return m && { m, without: bb };
         };
+        const markPixels = (i: number, re: RegExp, from = displayText) => markPair(i, re, from)?.m ?? null;
+        const devPx = (v: number) => Math.round(v * stage.dpr);
 
         clusters.forEach((c, i) => {
           const isFinalNasal = nasal?.index === i;
@@ -556,7 +882,8 @@ export function ArabicWord({
           const staggered = c.text.match(STAGGERED_RE);
           if (staggered) {
             const vowel = STAGGERED_TO_VOWEL[staggered[0]];
-            let m = markPixels(i, new RegExp(vowel, 'g'));
+            const pair = markPair(i, new RegExp(vowel, 'g'));
+            let m = pair?.m ?? null;
             // Over a shadda the font composes shadda + vowel into one glyph,
             // whose shadda half differs a little from the plain shadda — and
             // those differences would be taken for the vowel and nicked out
@@ -566,26 +893,59 @@ export function ArabicWord({
               const shaddaOnly = withoutMarks(displayText, c, new RegExp(vowel, 'g'));
               const s = markPixels(i, /ّ/g, shaddaOnly);
               const sb = s && bounds(stage, s);
-              if (sb) m = above(stage, m, sb.top + fontPx * 0.04);
+              // The cut leaves anti-aliased specks of the composite's shadda
+              // half behind; nothing of a vowel is that small.
+              if (sb) m = dropSpecks(stage, above(stage, m, sb.top + fontPx * 0.04), 8);
             }
             const bb = m && bounds(stage, m);
-            if (m && bb) {
+            if (m && bb && pair) {
               erase.push(m);
-              const mask = toMask(stage, m, 0, 0);
-              if (mask) {
-                const half = (bb.width * STAGGER) / 2;
-                // Centred on the single mark's place — except over ط ظ, where
-                // the first stroke goes above the stem and the second past it.
-                let shift = 0;
-                const b = boxOf(i);
-                if (b && STEM_LEFT.test(lettersOf(c.text)[0] ?? '') && vowel !== KASRA) {
-                  const bare = drawAlpha(stage, withoutMarks(displayText, c, new RegExp(vowel, 'g')));
-                  const stemX = bare && topInkX(stage, bare, b.left - fontPx * 0.1, b.left + b.width + fontPx * 0.1);
-                  if (stemX !== null && stemX !== undefined) shift = stemX - (bb.left + bb.width / 2 + half);
+              const half = (bb.width * STAGGER) / 2;
+              // Centred on the single mark's place — except over ط ظ, where
+              // the first stroke goes above the stem and the second past it,
+              // and the pair is lifted so that neither tail touches the stem.
+              let shift = 0;
+              let lift = 0;
+              const b = boxOf(i);
+              if (b && STEM_LEFT.test(lettersOf(c.text)[0] ?? '') && vowel !== KASRA) {
+                const stem = topInk(stage, pair.without, b.left - fontPx * 0.1, b.left + b.width + fontPx * 0.1);
+                if (stem) {
+                  shift = stem.x - (bb.left + bb.width / 2 + half);
+                  const clear = stem.y - fontPx * STEM_GAP;
+                  if (bb.top + bb.height > clear) lift = clear - (bb.top + bb.height);
                 }
-                const cls = `layer-stroke${isFinalNasal ? ' layer-silent' : ''}`;
-                next.push({ className: cls, mask, dx: shift + half });
-                next.push({ className: cls, mask, dx: shift - half });
+              }
+              // A stroke must not run into a neighbour's ink: shifted out from
+              // under the single mark, the kasra pair of رَّسُولࣲ met the tail
+              // of the و. Slide both strokes away from the side that collides,
+              // a device pixel at a time, as far as 0.15 em, keeping the best.
+              let slide = 0;
+              {
+                const sy = devPx(lift);
+                const hits = (d: number) =>
+                  collisions(stage, m, pair.without, devPx(shift + half + d), sy) +
+                  collisions(stage, m, pair.without, devPx(shift - half + d), sy);
+                let best = hits(0);
+                if (best > 0) {
+                  const right = collisions(stage, m, pair.without, devPx(shift + half), sy);
+                  const left = collisions(stage, m, pair.without, devPx(shift - half), sy);
+                  const dir = right >= left ? -1 : 1;
+                  for (let d = 1 / stage.dpr; d <= fontPx * 0.15; d += 1 / stage.dpr) {
+                    const h = hits(dir * d);
+                    if (h < best) {
+                      best = h;
+                      slide = dir * d;
+                    }
+                    if (h === 0) break;
+                  }
+                }
+              }
+              const cls = `layer-stroke${isFinalNasal ? ' layer-silent' : ''}`;
+              for (const dx of [shift + slide + half, shift + slide - half]) {
+                // Each stroke is masked to the vowel's pixels minus any that
+                // would still land on a letter once shifted.
+                const mask = toMask(stage, offInk(stage, m, pair.without, devPx(dx), devPx(lift)), 0, 0);
+                if (mask) next.push({ className: cls, mask, dx, dy: lift || undefined });
               }
             }
           }
@@ -615,13 +975,26 @@ export function ArabicWord({
           KASRA_MEEM_RE.lastIndex = 0;
 
           // A final iqlāb mīm on a fatḥa or ḍamma: the font's own glyph, greyed
-          // (vowel and mīm, found separately so the composite glyph is never
-          // compared with the plain letter).
+          // — vowel and mīm together, as the difference against the BARE
+          // letter. The font composes ة + fatḥa + mīm into one glyph that sets
+          // the ة's dots a few pixels from where the bare ة has them, so the
+          // difference also holds the moved dots: a piece in each direction,
+          // close together, which `dropMoved` takes out. (Removing the mīm
+          // alone compared the composite with the plain ةَ and greyed the dots
+          // of زَكِيَّةَۢ.)
           if (isFinalNasal && !staggered && c.text.includes(SMALL_HIGH_MEEM) && !KASRA_MEEM_RE.test(c.text)) {
-            const meem = markPixels(i, /ۢ/g);
-            const withoutMeem = withoutMarks(displayText, c, /ۢ/g);
-            const vowel = markPixels(i, /[َُ]/g, withoutMeem);
-            for (const m of [meem, vowel]) if (m) { erase.push(m); grey.push(m); }
+            const b = boxOf(i);
+            const bare = drawAlpha(stage, withoutMarks(displayText, c, /[َُۢ]/g));
+            if (b && bare) {
+              const [x0, x1] = window_(b);
+              const d = rawDiff(stage, base, bare, x0, x1);
+              const r = rawDiff(stage, bare, base, x0, x1);
+              if (d) {
+                const m = dilate(stage, r ? dropMoved(stage, d, r, Math.round(fontPx * 0.1 * stage.dpr)) : d, bare);
+                erase.push(m);
+                grey.push(m);
+              }
+            }
           }
           KASRA_MEEM_RE.lastIndex = 0;
 
@@ -629,10 +1002,23 @@ export function ArabicWord({
           // word follows: silent, and half of one glyph — its left half is greyed.
           if (isTanwinLigature(clusters, i) && i < clusters.length - 1) {
             const b = boxOf(i);
-            const m = b && leftHalfMask(stage, base, b, 0.5);
-            if (m) {
-              erase.push(m);
-              grey.push(m);
+            if (b) {
+              // The ligature's own ink, marks off, and the alif told from the
+              // lam by the strokes' geometry (`ligatureAlif`). A straight cut
+              // at the middle greyed the alif's head and the lam's foot and
+              // left the alif's arm black.
+              const letters = displayText.slice(0, c.start) + displayText.slice(c.start, c.end).replace(MARKS_RE, '');
+              const [, without] = letterPair(displayText, clusters, i);
+              const aa = drawAlpha(stage, letters);
+              const ww = drawAlpha(stage, without);
+              const [x0, x1] = [b.left - fontPx * 0.08, b.left + b.width + fontPx * 0.08];
+              const ink = aa && ww && rawDiff(stage, aa, ww, x0, x1);
+              const split = ink && aa && ww && ligatureAlif(stage, ink, aa, b, fontPx * 0.08);
+              const m = split && ww ? dilate(stage, split, ww) : leftHalfMask(stage, base, b, 0.5);
+              if (m) {
+                erase.push(m);
+                grey.push(m);
+              }
             }
           }
 
@@ -647,9 +1033,66 @@ export function ArabicWord({
               // A tight window: the letter before this one may take a different
               // contextual form when it is not followed by it (ع before alif),
               // and that letter's marks then move — they must not be swept in.
-              const x0 = b.left - fontPx * 0.08;
-              const x1 = b.left + b.width + fontPx * 0.08;
-              const m = diffMask(stage, aa, bb, x0, x1);
+              // A lam keeps to its own box, base stroke and all; an alif is
+              // reduced to its stem, since the raised join of the letter before
+              // it lands inside even a tight window.
+              const letter = lettersOf(c.text)[0] ?? '';
+              const stem = /[اٱ]/.test(letter);
+              const pad = letter === 'ل' ? 0 : fontPx * 0.08;
+              const x0 = b.left - pad;
+              const x1 = b.left + b.width + pad;
+              let raw = rawDiff(stage, aa, bb, x0, x1);
+              let against = bb;
+              if (raw && letter === 'ل') {
+                // The lam keeps its whole difference inside its box, and gets
+                // back the foot under its stem that the joiner's stub took out.
+                const band = stemBand(stage, raw, 0.35);
+                if (band) {
+                  const cols = { left: Math.floor((x0 - stage.originX) * stage.dpr), right: Math.ceil((x1 - stage.originX) * stage.dpr), top: band.top };
+                  raw = union([raw, bandInk(stage, base, cols)]);
+                }
+              }
+              if (raw && stem) {
+                // The letter before may have ink where the alif stands once the
+                // alif is not there to fuse with — a plain medial kāf's arm
+                // crosses the whole of مَلِكࣰا's alif, which the subtraction then
+                // cut into fragments. Then the pair is taken one letter further
+                // back, and the stem filter finds the alif in the ligature.
+                const prev = clusters[i - 1];
+                const pp = clusters[i - 2];
+                const intrudes = countExtra(stage, bb, aa, x0, x1);
+                const size = raw.reduce((n, v) => n + (v ? 1 : 0), 0);
+                if (prev && prev.end === c.start && intrudes > size * 0.05) {
+                  const joined = !!pp && pp.end === prev.start && JOINS_FORWARD.test(lettersOf(pp.text).pop() ?? '');
+                  const bb2 = drawAlpha(stage, displayText.slice(0, prev.start) + (joined ? ZWJ : ''));
+                  if (bb2) {
+                    raw = rawDiff(stage, aa, bb2, x0, x1);
+                    against = bb2;
+                  }
+                }
+                // The alif is its stem's columns and the foot beneath them,
+                // plus its own marks (a zero) and, for ٱ, the waṣl sign — each
+                // found as marks are, by the difference its removal makes,
+                // never as "whatever stands above the stem": that was the
+                // neighbour's fatḥa leaning over the alif of فَٱنقَلَبُواْ.
+                const band = raw && stemBand(stage, raw, 0.35);
+                if (raw && band) {
+                  const parts = [inBand(stage, raw, band), bandInk(stage, base, band)];
+                  const own = markPixels(i, MARKS_RE);
+                  if (own) parts.push(own);
+                  if (letter === 'ٱ') {
+                    const plain = drawAlpha(stage, displayText.slice(0, c.start) + c.text.replace('ٱ', 'ا') + displayText.slice(c.end));
+                    // Only what stands over the stem: ا is narrower than ٱ, so
+                    // every letter after it moves, and the difference held a
+                    // crescent of the nūn's tooth in فَٱنقَلَبُواْ.
+                    const pad = Math.round(fontPx * 0.1 * stage.dpr);
+                    const sign = plain && diffMask(stage, base, plain, x0, x1);
+                    if (sign) parts.push(clipRect(stage, sign, band.left - pad, band.right + pad, band.top + 2));
+                  }
+                  raw = union(parts);
+                }
+              }
+              const m = raw && dilate(stage, raw, against);
               // The prefix drawing must agree with the word itself in that
               // window. When the letter is part of a ligature the font forms
               // only with what FOLLOWS (the لله of بِٱللَّهِ), it does not, and the
@@ -778,7 +1221,7 @@ export function ArabicWord({
           style={{
             ...(layer.clip ? { clipPath: layer.clip } : {}),
             ...maskStyle(layer.mask),
-            ...(layer.dx ? { transform: `translateX(${layer.dx.toFixed(2)}px)` } : {}),
+            ...(layer.dx || layer.dy ? { transform: `translate(${(layer.dx ?? 0).toFixed(2)}px, ${(layer.dy ?? 0).toFixed(2)}px)` } : {}),
           }}
           dir="rtl"
           lang="ar"

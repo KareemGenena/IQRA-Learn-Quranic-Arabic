@@ -193,8 +193,14 @@ Things that cost real debugging. Do not undo them without reading why.
   DISPLAYS the single vowel in their place, ERASES that vowel's pixels from
   the base text, and draws it twice — two copies of the same string, each
   masked to the vowel's pixels and shifted half a stroke right and left
-  (`.layer-stroke`, `STAGGER = 0.85` of the stroke's width). Same font, same
+  (`.layer-stroke`, `STAGGER = 0.7` of the stroke's width). Same font, same
   string, the pair centred where the font put the single mark, on one level.
+  Each stroke's mask drops every pixel that would land on a LETTER once
+  shifted (`offInk`): the moved stroke's anti-aliased edge fell on the tail
+  of مُّسۡتَقِيمࣲ's mīm and lightened it, because a layer paints over the base
+  and the base is only erased where the unshifted mark was. Over ط ظ the
+  pair is also LIFTED (`dy`, `STEM_GAP` 0.04 em) until neither tail touches
+  the stem's tip — set over the stem, the first ḍamma sat on it.
 - **Every recoloured or redrawn mark is a MASK over the same string** — never
   a stripped copy. `ArabicWord` draws the word on a canvas at device
   resolution, exactly where the page draws it (right-aligned at the text's
@@ -219,13 +225,36 @@ Things that cost real debugging. Do not undo them without reading why.
   its first stroke stands above the stem (`STEM_LEFT`, the stem found as the
   letter's topmost ink), since the font hangs a single mark over the loop.
   The pair's strokes sit 0.7 of a stroke apart (`STAGGER`) — the first's tail
-  runs into the second's head, as in the Mushaf.
-- **The alif of a lam-alif ligature after a tanwīn fatḥ is half a glyph.**
-  قَوۡلࣰا, عَمَلࣰا, ظِلࣰّا: the fused alif is the tanwīn alif, silent when a word
-  follows, but it is never a cluster of its own. `isTanwinLigature()` names
-  it; `timing.ts` already gives that half no time, and `ArabicWord` greys the
-  left half of the ligature's ink (`leftHalfMask`). Before this the ligature
-  stayed wholly black on six cards.
+  runs into the second's head, as in the Mushaf. **Layer order** is prefix,
+  then the grey mask, then the strokes and clipped fallbacks, then the marked
+  letter: the ٱل prefix painted last put lesson 2's silent sun lam back in
+  orange with a grey sliver at its foot.
+- **The alif of a lam-alif ligature after a tanwīn fatḥ is one arm of a
+  glyph.** قَوۡلࣰا, عَمَلࣰا, ظِلࣰّا: the fused alif is the tanwīn alif, silent
+  when a word follows, but it is never a cluster of its own.
+  `isTanwinLigature()` names it; `timing.ts` gives that arm no time, and
+  `ArabicWord` greys it by the ligature's GEOMETRY (`ligatureAlif`), because
+  a straight cut at the box's middle greyed the alif's head and the lam's
+  foot and left the alif's arm black. In this font the lam is the upright
+  stroke on the right — one vertical run of pixels above and below the
+  junction alike, from the top down to the base — and the alif is the arm
+  that comes in from its rounded head at the top-left and touches the lam
+  part-way down (قَوۡلࣰا, وَرَجُلࣰا) or near the base (عَمَلࣰا, ظِلࣰّا). What
+  leaves the junction downwards to the left is the lam's foot. So the alif
+  is, row by row from the arm's first row, the ink left of the right-hand
+  run, down to where the arm's right edge stops advancing towards the lam.
+  Two false readings cost a round each, so: the strokes do NOT cross (the
+  8× zoom of a vertical-cut render made it look as if the alif carried on
+  below the junction to the base — the run trace at 2× shows the right-hand
+  run at the same x above and below), and the runs must be counted on the
+  FULL drawing, never on the difference: the joiner's stub in the drawing
+  without the ligature punches a hole through the lam's stroke, and the arms
+  then never seemed to meet before the base (the same trace at device ratio
+  1 in the Browser pane looked fine — verify at 2×, which is what
+  `snap-proof` uses). Everything left of the right-hand run is the arm: a
+  gap of anti-aliasing where the head's curl meets the stroke splits it into
+  two runs in one row, which read as "drawing back" and stopped وَرَجُلࣰا's
+  arm a third of the way down.
 - **A silent letter's pixels come from a prefix pair, never from removing
   it.** Taking a letter out of the full string shifts every word after it
   into the picture (مُّهِينࣰا was erased when the alif of عَذَابࣰا was). So the
@@ -233,14 +262,65 @@ Things that cost real debugging. Do not undo them without reading why.
   text up to the letter before — each ending in a joiner where the cut letter
   joined — both drawn from the right edge, where a glyph's place depends only
   on what precedes it. The diff window is tight (±0.08 em around the Range
-  box): the letter BEFORE takes a different contextual form when the cut
-  letter no longer follows (ع before alif), and its marks move with it. And
-  when the prefix drawing disagrees with the word itself inside that window
+  box; a lam keeps to its box exactly, base stroke and all). And when the
+  prefix drawing disagrees with the word itself inside that window
   (`countExtra` > 5 % of the mask) — the font formed a ligature with what
   FOLLOWS, as لله in بِٱللَّهِ — the letter falls back to the old clipped box.
   Rect-clipped layers otherwise remain only for the ٱل prefix colour and the
   taught letter; every silent letter, final vowel, maddah and nasal mark is
   masked.
+- **Before a final alif every joining letter takes a raised form in this
+  font** — ب ع م ك س ح ق ف all rise to meet it (`scratchpad` probe,
+  2026-09-27) — and their vowels move with them. So the pair's difference
+  holds, besides the alif, the neighbour's changed join, the underside of its
+  bowl and a crescent of its moved fatḥa: عَذَابࣰا carried a grey ghost of its
+  own fatḥa, سَمِيعَۢا a grey small mīm, and every join a grey fringe. A silent
+  alif (ا ٱ) is therefore reduced to its STEM (`stemBand`): the ONE
+  contiguous band of columns around the tallest vertical run whose own
+  longest run is at least 0.35 of it — one band, because vertical pieces of
+  the neighbour further along passed for a stem too (a stripe through the ع
+  of سِرَاعࣰا, the kāf's arm of مَلِكࣰا, the mīm's stem over سَمِيعَۢا) — plus the
+  ink of the full drawing inside that band from the stem's top down (the
+  foot the joiner's stub had taken out of the difference; the lam of
+  لِّلنَّاسِ gets the same), plus the letter's own marks and, for ٱ, the waṣl
+  sign, each found as marks are, by the difference its removal makes — the
+  sign kept to the columns over the stem, because ا is narrower than ٱ and
+  every letter after it moves, which put a crescent of the nūn's tooth of
+  فَٱنقَلَبُواْ into the difference. Never "whatever stands above the stem":
+  that was the neighbour's fatḥa leaning over the same alif. Where the join
+  meets the stem the boundary is a clean vertical edge, black to grey, and
+  that is correct. The foot is taken from the WORD's own drawing, not from
+  the prefix drawing (the prefix's medial lam has no base under its stem;
+  the word's does), and `dilate` keeps every pixel of the mask it is handed
+  whatever the "without" drawing has there — it used to write only where
+  that drawing was empty, which silently dropped the foot put back over the
+  joiner's stub and left the lam of لِّلنَّاسِ standing on a black base. Two more things
+  the ligature كا taught: the plain medial kāf's arm crosses the whole alif,
+  so the subtraction cut the alif into fragments — when the drawing without
+  the alif has ink inside the alif's window that the drawing with it lacks
+  (more than 5 %), the pair is taken one letter further back and the stem
+  filter finds the alif in the ligature; and a leaning stroke's per-column
+  runs are shorter than its height, which is why the share is 0.35 and not
+  0.5.
+- **A final mīm on a fatḥa or ḍamma is the difference against the BARE
+  letter, with moved pieces dropped.** The font composes ة + fatḥa + mīm into
+  one glyph that sets the dots a few pixels from where the bare ة has them;
+  removing the mīm alone compared that composite with the plain ةَ and greyed
+  the dots of زَكِيَّةَۢ (a dark pair and a grey pair, offset). Now the
+  difference is taken against the letter with all its marks off, and any
+  component of it that has a counterpart in the reverse difference — close,
+  the same width and height, a similar pixel count — is a letter part that
+  moved and is dropped (`dropMoved`); the mīm and the vowel have no
+  counterpart and stay. Shape, not just proximity: the fatḥa sits right
+  above the moved dots and is of a similar size.
+- **A staggered pair slides away from a neighbour it would touch**: shifted
+  out from under the single mark, the kasra pair of رَّسُولࣲ met the tail of
+  the و. Both strokes move together, a device pixel at a time, up to 0.15
+  em, away from the side that collides (`collisions`), keeping the shift
+  with the fewest hits; `offInk` then still trims anything that lands on
+  ink. And the shadda cut (`above`) leaves anti-aliased specks of the
+  composite's shadda half behind — `dropSpecks` removes components under 8
+  device pixels.
 - **The display string must keep the data string's length.** Cluster offsets
   index both — the Range measurements the DOM one, the masks the other. The
   small mīm's place is held by a zero-width space (kasra + U+06E2 → kasra +
@@ -913,7 +993,22 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
   that could change hands silently would take its roster with it.
 
 
-**Stopped by the usage limit (2026-09-27, ~06:50).** Committed but NOT built or deployed: the layer-order fix in `ArabicWord.tsx` (the ال prefix layer now goes under the grey mask layer — with the masks the prefix had been painted last, and lesson 2's silent sun lam came out orange with a grey sliver; verified fixed on the lesson 2 and 4 proof sheets, lessons 5/6/20 unchanged), the ligature-alif half, dilation protection and shadda cut in the same file, `isTanwinLigature` in `graphemes.ts`, and this file. Next: `npm run build`, `firebase deploy --only hosting`, check the live bundle carries `layer-stroke`, and read the second lesson 7 review (workflow wf_46fa3e12-f56, journal under the session's `subagents/workflows/`) — its reviewers were still running when the limit hit; verify any confirmed finding by zoom before fixing.
+**Lesson 7 rendering, third pass (2026-09-27).** The second parallel review
+(`wf_46fa3e12-f56`, 22 of 44 agents finished before a usage limit) confirmed
+one root cause behind most of its findings — the raised joining form every
+letter takes before a final alif — and four smaller ones; all are fixed and
+recorded in section 3 (`stemOnly`, the kāf fallback, the two lam-alif forms
+in `crossSplit`, `offInk` for the strokes, the ط ظ lift, the layer order).
+The third review (`wf_40c0c8ae-116`, 28 agents, all finished) confirmed 14
+more, all fixed: a second stem band inside the neighbour (57, 93, 123, 173),
+the neighbour's fatḥa kept above a marked alif (122), the lam-alif split
+below the junction (129, 167 — the "crossed form" was a misreading), the
+ة composite's dots (147), the lam's foot under the stub (75), the kasra pair
+touching a tail (78), shadda specks (167). Lessons 2, 4, 5, 6 and 20 were
+re-photographed and pixel-compared against their previous renders after each
+round: the sun lam's grey base now stops at the lam's own box edge and
+covers the foot under its stem; nothing else moved. A fourth review ran on
+the final render — see section 5 for its result.
 
 ## 5. Next task
 
