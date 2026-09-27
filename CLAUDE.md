@@ -997,8 +997,8 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
 (`wf_46fa3e12-f56`, 22 of 44 agents finished before a usage limit) confirmed
 one root cause behind most of its findings — the raised joining form every
 letter takes before a final alif — and four smaller ones; all are fixed and
-recorded in section 3 (`stemOnly`, the kāf fallback, the two lam-alif forms
-in `crossSplit`, `offInk` for the strokes, the ط ظ lift, the layer order).
+recorded in section 3 (`stemBand`, the kāf fallback, `ligatureAlif`,
+`offInk` for the strokes, the ط ظ lift, the layer order).
 The third review (`wf_40c0c8ae-116`, 28 agents, all finished) confirmed 14
 more, all fixed: a second stem band inside the neighbour (57, 93, 123, 173),
 the neighbour's fatḥa kept above a marked alif (122), the lam-alif split
@@ -1007,8 +1007,15 @@ below the junction (129, 167 — the "crossed form" was a misreading), the
 touching a tail (78), shadda specks (167). Lessons 2, 4, 5, 6 and 20 were
 re-photographed and pixel-compared against their previous renders after each
 round: the sun lam's grey base now stops at the lam's own box edge and
-covers the foot under its stem; nothing else moved. A fourth review ran on
-the final render — see section 5 for its result.
+covers the foot under its stem; nothing else moved. The fourth review
+(`wf_55242162-50c`) confirmed two more — the lam's foot black under its
+stem (75) and the nūn's tooth greyed after ٱ (122), both from the same
+cause: `dilate` dropped every pixel the "without" drawing had ink under —
+fixed, verified by zoom, and deployed as 27f6192. A fifth review of the
+final render was started twice and lost both times to the usage limit; it
+is not needed to ship, but it is the cheap way to be sure — the script is
+`workflows/scripts/proof-lesson7-cards-v5-wf_48080c44-296.js` under the
+session's directory, and it costs about 1.5 M subagent tokens a run.
 
 ## 5. Next task
 
@@ -1068,8 +1075,8 @@ appended to every image URL** because a redrawn picture keeps its filename.
 The rule the whole design rests on: one set of content, two skins — **mode
 never touches an id, a folder, a clip filename or a calibration key.**
 
-**Lesson 7 — record it (2026-09-26, after the author's 21-point and 18-point
-reviews).** Built as text, draft, 176 cards; the generator is
+**Lesson 7 — record it (2026-09-27; rendering reviewed four times over,
+live as draft at 27f6192).** Built as text, draft, 176 cards; the generator is
 `make-lesson7.mjs` and reads `Word Tables/ميم نون ساكنة وتنوين.docx` — the
 sheet Claude-for-Word rebuilt for the author, whose locations all check out
 against the corpus (the five wrong ones are gone; مِن مَّنَاصٍ became مِن
