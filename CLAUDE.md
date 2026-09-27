@@ -210,6 +210,22 @@ Things that cost real debugging. Do not undo them without reading why.
   letter-plus-mark pairs (the iqlāb composites, ة + ḍamma + mīm → `gly019`),
   the two copies no longer coincided, and زَكِيَّةَۢ blurred. Layers carry
   `padding: inherit` so their text starts exactly where the base text does.
+  Three refinements the proof sheets forced: the mask's one-pixel growth
+  never lands on ink that is there WITHOUT the mark (it notched the tail a
+  kasra pair crossed under مُّسۡتَقِيمࣲ and fringed every letter a mark touched);
+  over a shadda the vowel's mask is cut at the plain shadda's top, because
+  the font composes shadda + vowel into one glyph whose shadda half differs a
+  little and would be nicked out of the base; and over ط ظ the pair is set so
+  its first stroke stands above the stem (`STEM_LEFT`, the stem found as the
+  letter's topmost ink), since the font hangs a single mark over the loop.
+  The pair's strokes sit 0.7 of a stroke apart (`STAGGER`) — the first's tail
+  runs into the second's head, as in the Mushaf.
+- **The alif of a lam-alif ligature after a tanwīn fatḥ is half a glyph.**
+  قَوۡلࣰا, عَمَلࣰا, ظِلࣰّا: the fused alif is the tanwīn alif, silent when a word
+  follows, but it is never a cluster of its own. `isTanwinLigature()` names
+  it; `timing.ts` already gives that half no time, and `ArabicWord` greys the
+  left half of the ligature's ink (`leftHalfMask`). Before this the ligature
+  stayed wholly black on six cards.
 - **A silent letter's pixels come from a prefix pair, never from removing
   it.** Taking a letter out of the full string shifts every word after it
   into the picture (مُّهِينࣰا was erased when the alif of عَذَابࣰا was). So the
@@ -218,9 +234,13 @@ Things that cost real debugging. Do not undo them without reading why.
   joined — both drawn from the right edge, where a glyph's place depends only
   on what precedes it. The diff window is tight (±0.08 em around the Range
   box): the letter BEFORE takes a different contextual form when the cut
-  letter no longer follows (ع before alif), and its marks move with it.
-  Rect-clipped layers remain only for the ٱل prefix colour and the taught
-  letter; every silent letter, final vowel, maddah and nasal mark is masked.
+  letter no longer follows (ع before alif), and its marks move with it. And
+  when the prefix drawing disagrees with the word itself inside that window
+  (`countExtra` > 5 % of the mask) — the font formed a ligature with what
+  FOLLOWS, as لله in بِٱللَّهِ — the letter falls back to the old clipped box.
+  Rect-clipped layers otherwise remain only for the ٱل prefix colour and the
+  taught letter; every silent letter, final vowel, maddah and nasal mark is
+  masked.
 - **The display string must keep the data string's length.** Cluster offsets
   index both — the Range measurements the DOM one, the masks the other. The
   small mīm's place is held by a zero-width space (kasra + U+06E2 → kasra +
@@ -892,6 +912,9 @@ classes/{classId}/recordings/{id} title, url, passcode, note, recordedAt,
 - `teacherUid`, `joinCode` and `createdAt` are immutable after creation. A class
   that could change hands silently would take its roster with it.
 
+
+**Stopped by the usage limit (2026-09-27, ~06:50).** Committed but NOT built or deployed: the layer-order fix in `ArabicWord.tsx` (the ال prefix layer now goes under the grey mask layer — with the masks the prefix had been painted last, and lesson 2's silent sun lam came out orange with a grey sliver; verified fixed on the lesson 2 and 4 proof sheets, lessons 5/6/20 unchanged), the ligature-alif half, dilation protection and shadda cut in the same file, `isTanwinLigature` in `graphemes.ts`, and this file. Next: `npm run build`, `firebase deploy --only hosting`, check the live bundle carries `layer-stroke`, and read the second lesson 7 review (workflow wf_46fa3e12-f56, journal under the session's `subagents/workflows/`) — its reviewers were still running when the limit hit; verify any confirmed finding by zoom before fixing.
+
 ## 5. Next task
 
 **Grammar track — M0 recon done and its decisions answered; nothing built
@@ -1090,13 +1113,13 @@ loads `CLAUDE.md` into context automatically at the start of every session — a
 differently named file would have to be found and read first, which is exactly
 the step that gets forgotten.
 
-**Where the 2026-09-26 session stopped (usage limit).** The mask-based
-`ArabicWord` is committed and deployed; lesson 7's 176 cards and lessons 2, 4,
-5, 6 were photographed through the proof sheet and read — staggered pairs,
-greyed finals, the small مـ, the silent alif and sun lām all render as the
-author described. A parallel review of the lesson 7 sheets was still running
-(`workflows/wf_b41b63fc-f70`, its `journal.jsonl` holds each reviewer's
-findings); it was launched against an earlier render, so re-photograph and
-re-review before acting on it. Not yet confirmed by the author: the ط/ظ pair
-placement (first stroke over the stem), the 0.7 stroke spacing, and the
-small مـ's exact drop below the kasra.
+**How the rendering was verified (2026-09-26/27).** Every card of lesson 7,
+and of lessons 2, 4, 5 and 6, was photographed through the proof sheet and
+read; then fifteen parallel reviewers each read one 12-card sheet against
+the rules above and a skeptic re-read the sheet for every finding
+(`workflows/wf_b41b63fc-f70`, then `wf_46fa3e12-f56` on the corrected
+render; each `journal.jsonl` holds the findings). The first round found
+the notched tail, the ligature alif, the shadda nick and the ط ظ placement
+recorded in section 3. Not yet confirmed by the author: the ط ظ pair
+placement, the 0.7 stroke spacing, and the small مـ's exact drop below the
+kasra.

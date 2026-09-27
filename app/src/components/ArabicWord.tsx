@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { splitClusters, unreadFinalMaddah, unreadFinalNasal } from '../lib/graphemes';
+import { isTanwinLigature, splitClusters, unreadFinalMaddah, unreadFinalNasal } from '../lib/graphemes';
 import type { LetterCluster } from '../lib/graphemes';
 import type { HighlightPhase } from '../lib/timing';
 
@@ -229,7 +229,10 @@ function diffMask(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0: 
     }
   }
   if (!any) return null;
-  // Dilate by one device pixel.
+  // Dilate by one device pixel — but never onto ink that is there WITHOUT
+  // the thing (a neighbouring letter, the stem a kasra crosses): erasing or
+  // greying those pixels notched the mīm's tail under مُّسۡتَقِيمࣲ and fringed
+  // every letter a mark touches.
   const out = new Uint8ClampedArray(pw * ph);
   for (let y = 0; y < ph; y++) {
     for (let x = 0; x < pw; x++) {
@@ -240,12 +243,44 @@ function diffMask(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0: 
         if (yy < 0 || yy >= ph) continue;
         for (let dx = -1; dx <= 1; dx++) {
           const xx = x + dx;
-          if (xx >= 0 && xx < pw) out[yy * pw + xx] = 255;
+          if (xx < 0 || xx >= pw) continue;
+          const j = yy * pw + xx;
+          if (b[j] <= INK / 2) out[j] = 255;
         }
       }
     }
   }
   return out;
+}
+
+/** Drop every mask pixel at or below a y (wrap CSS px). */
+function above(stage: Stage, m: Uint8ClampedArray, y: number): Uint8ClampedArray {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const py = Math.max(0, Math.min(ph, Math.round(y * stage.dpr)));
+  const out = new Uint8ClampedArray(m);
+  out.fill(0, py * pw);
+  return out;
+}
+
+/** The base's ink in the left `share` of a cluster's box — the alif half of a lam-alif ligature. */
+function leftHalfMask(stage: Stage, base: Uint8ClampedArray, box: Box, share: number): Uint8ClampedArray | null {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const px0 = Math.max(0, Math.floor((box.left - stage.originX) * stage.dpr));
+  const px1 = Math.min(pw, Math.ceil((box.left + box.width * share - stage.originX) * stage.dpr));
+  const out = new Uint8ClampedArray(pw * ph);
+  let any = false;
+  for (let y = 0; y < ph; y++) {
+    for (let x = px0; x < px1; x++) {
+      const i = y * pw + x;
+      if (base[i] > INK / 2) {
+        out[i] = 255;
+        any = true;
+      }
+    }
+  }
+  return any ? out : null;
 }
 
 /** Bounding box of a mask, in wrap CSS px. */
@@ -468,6 +503,15 @@ export function ArabicWord({
     const nextMeems: MiniMeem[] = [];
     let nextBase: Mask | null = null;
 
+    // The ال prefix goes under everything else. A silent sun lam sits INSIDE
+    // it (ٱلنَّاسِ), and the grey must win there — this was the order before
+    // the masks too: prefix, then silent, then the marked letter on top.
+    if (prefixClusters > 0) {
+      const clip = clipTo(0, prefixClusters);
+      if (clip) next.push({ className: 'layer-prefix', clip });
+    }
+    const underPixels = next.length;
+
     // ── the pixel-exact layers ───────────────────────────────────────────
     const cs = getComputedStyle(textEl);
     const font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
@@ -512,7 +556,18 @@ export function ArabicWord({
           const staggered = c.text.match(STAGGERED_RE);
           if (staggered) {
             const vowel = STAGGERED_TO_VOWEL[staggered[0]];
-            const m = markPixels(i, new RegExp(vowel, 'g'));
+            let m = markPixels(i, new RegExp(vowel, 'g'));
+            // Over a shadda the font composes shadda + vowel into one glyph,
+            // whose shadda half differs a little from the plain shadda — and
+            // those differences would be taken for the vowel and nicked out
+            // of the base. The vowel sits wholly above the shadda, so keep
+            // only what lies above the plain shadda's top.
+            if (m && vowel !== KASRA && c.text.includes('ّ')) {
+              const shaddaOnly = withoutMarks(displayText, c, new RegExp(vowel, 'g'));
+              const s = markPixels(i, /ّ/g, shaddaOnly);
+              const sb = s && bounds(stage, s);
+              if (sb) m = above(stage, m, sb.top + fontPx * 0.04);
+            }
             const bb = m && bounds(stage, m);
             if (m && bb) {
               erase.push(m);
@@ -570,6 +625,17 @@ export function ArabicWord({
           }
           KASRA_MEEM_RE.lastIndex = 0;
 
+          // The alif fused into a lam-alif ligature after a tanwīn fatḥ, when a
+          // word follows: silent, and half of one glyph — its left half is greyed.
+          if (isTanwinLigature(clusters, i) && i < clusters.length - 1) {
+            const b = boxOf(i);
+            const m = b && leftHalfMask(stage, base, b, 0.5);
+            if (m) {
+              erase.push(m);
+              grey.push(m);
+            }
+          }
+
           // A silent letter: greyed to its own pixels, not to a box that its
           // neighbours' ink runs into (the ع before a tanwīn alif).
           if (silentClusters.includes(i)) {
@@ -613,7 +679,8 @@ export function ArabicWord({
 
         if (grey.length) {
           const mask = toMask(stage, union(grey), 0, 0);
-          if (mask) next.unshift({ className: 'layer-silent', mask });
+          // Under the strokes and the clipped fallbacks, over the prefix.
+          if (mask) next.splice(underPixels, 0, { className: 'layer-silent', mask });
         }
         if (erase.length) {
           nextBase = toMask(stage, union(erase), textRect.left - wrapRect.left, textRect.top - wrapRect.top, true);
@@ -621,11 +688,7 @@ export function ArabicWord({
       }
     }
 
-    // ── the clipped layers ───────────────────────────────────────────────
-    if (prefixClusters > 0) {
-      const clip = clipTo(0, prefixClusters);
-      if (clip) next.push({ className: 'layer-prefix', clip });
-    }
+    // ── the marked letter, over everything ──────────────────────────────
     if (markCluster !== undefined) {
       const clip = clipTo(markCluster, markCluster + 1);
       if (clip) next.push({ className: 'layer-mark', clip });

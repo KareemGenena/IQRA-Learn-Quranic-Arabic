@@ -189,6 +189,18 @@ export function isTanwinAlif(clusters: LetterCluster[], i: number): boolean {
   return FATHATAN_RE.test(pm) || (pm.includes(FATHA) && pm.includes(SMALL_HIGH_MEEM));
 }
 
+/**
+ * A lam-alif ligature whose lam carries a tanwīn fatḥ — قَوۡلࣰا, عَمَلࣰا, ظِلࣰّا.
+ * The fused alif is the tanwīn alif: silent when the reading carries on, but
+ * it is half of one glyph, so it is never a cluster of its own. `timing.ts`
+ * gives that half no time when a word follows; `ArabicWord` greys the left
+ * half of the ligature's ink.
+ */
+export function isTanwinLigature(clusters: LetterCluster[], i: number): boolean {
+  const c = clusters[i];
+  return !!c && !!c.ligature && !!c.ligatureTailBare && FATHATAN_RE.test(c.text);
+}
+
 export function derivedSilent(text: string): number[] {
   const clusters = splitClusters(text);
   const out = new Set<number>();
