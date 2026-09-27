@@ -190,33 +190,66 @@ Things that cost real debugging. Do not undo them without reading why.
   glyph coverage). A browser that lacks the glyph falls back to another font
   for the WHOLE letter, which is what the author saw. So `ArabicWord` keeps
   U+08F0–08F2 in the data (the timing engine and the greying read them) but
-  DISPLAYS the single vowel in their place and draws the second stroke as a
-  **copy of the whole string shifted left and clipped to that one mark**
-  (`.tanwin-extra`). Where the mark is comes from a pixel diff on a canvas:
-  the cluster drawn with and without the vowel, in its joining form (zero-
-  width joiners stand in for the neighbours), and the differing pixels ARE
-  the mark — its height and width exactly as the font placed it on that
-  letter. Bounding boxes cannot do this (a kasra under a final ع lies inside
-  the letter's own tail), and a vowel on a no-break space sat at the wrong
-  height (the author saw the two ḍammas "one above the other"). The shift is
-  the mark's own width plus 0.06 em, so the two strokes sit side by side on
-  one level. Same font, same colour, the لا ligature survives. Verified at
-  4× on fatḥatān (incl. لࣰا), ḍammatān, kasratān under a descender, and the
-  greyed finals.
+  DISPLAYS the single vowel in their place, ERASES that vowel's pixels from
+  the base text, and draws it twice — two copies of the same string, each
+  masked to the vowel's pixels and shifted half a stroke right and left
+  (`.layer-stroke`, `STAGGER = 0.85` of the stroke's width). Same font, same
+  string, the pair centred where the font put the single mark, on one level.
+- **Every recoloured or redrawn mark is a MASK over the same string** — never
+  a stripped copy. `ArabicWord` draws the word on a canvas at device
+  resolution, exactly where the page draws it (right-aligned at the text's
+  right edge, baseline from `fontBoundingBoxAscent`), with and without the
+  mark; the pixels present only WITH it are the mark, wherever the font put
+  it on that letter. That difference, grown by one device pixel, becomes a
+  CSS `mask-image` (data-URL PNG) on a layer of the identical string, and
+  its inverse is the mask on the base text. Three things forced this:
+  bounding boxes cannot find a kasra inside a final ع's tail; a vowel drawn
+  on a no-break space sits at a different height than on a letter (the
+  author saw the ḍammas "one above the other"); and **stripping a mark out
+  of a copy is not safe in this font** — it swaps letter glyphs for some
+  letter-plus-mark pairs (the iqlāb composites, ة + ḍamma + mīm → `gly019`),
+  the two copies no longer coincided, and زَكِيَّةَۢ blurred. Layers carry
+  `padding: inherit` so their text starts exactly where the base text does.
+- **A silent letter's pixels come from a prefix pair, never from removing
+  it.** Taking a letter out of the full string shifts every word after it
+  into the picture (مُّهِينࣰا was erased when the alif of عَذَابࣰا was). So the
+  letter is the difference between the text up to and including it and the
+  text up to the letter before — each ending in a joiner where the cut letter
+  joined — both drawn from the right edge, where a glyph's place depends only
+  on what precedes it. The diff window is tight (±0.08 em around the Range
+  box): the letter BEFORE takes a different contextual form when the cut
+  letter no longer follows (ع before alif), and its marks move with it.
+  Rect-clipped layers remain only for the ٱل prefix colour and the taught
+  letter; every silent letter, final vowel, maddah and nasal mark is masked.
+- **The display string must keep the data string's length.** Cluster offsets
+  index both — the Range measurements the DOM one, the masks the other. The
+  small mīm's place is held by a zero-width space (kasra + U+06E2 → kasra +
+  U+200B); a card whose display came out shorter lost every layer, because
+  its last cluster could not be measured. `ArabicWord` throws if the lengths
+  differ.
 - **The low iqlāb mīm is kasra + U+06E2 in this font**, not U+06ED — v09
   draws U+06ED as an unattached placeholder (the dotted circle the author saw
   under كِرَامِۭ) and forms a low mīm from kasra + the HIGH small mīm through
-  its `liga`. But that glyph carries a vertical stem the Mushaf's does not
-  (the Mushaf writes a small مـ), so the pair is displayed as the kasra alone
-  and `ArabicWord` draws a 0.42 em `م‍` (mīm + ZWJ, the initial form) centred
-  under the kasra's pixel box (`.tanwin-meem`). The data keeps kasra + U+06E2:
-  `lowMeem()` in the generator maps the sheet's U+06ED to it. Ver18 does it
-  the other way round, which is why Word shows the sheet correctly.
-- **Greying layers are unclipped.** A mark can overhang its letter's box —
-  clipped to the cluster, the small mīm of مُّؤۡصَدَةُۢ stayed black while its
-  ḍamma went grey. The grey full string and the black stripped string now
-  cover the whole word and go FIRST, so the prefix/silent/mark layers still
-  paint over them.
+  its `liga`. Both KFGQPC builds give that glyph a vertical stem; the author
+  wants the Mushaf's small مـ. So the pair is displayed as the kasra and
+  `ArabicWord` draws a 0.42 em `م‍` (mīm + ZWJ, the initial form) directly
+  under the kasra's pixel box (`.tanwin-meem`, grey when it is the unread
+  final). The data keeps kasra + U+06E2: `lowMeem()` in the generator maps the
+  sheet's U+06ED to it. Ver18 does it the other way round, which is why Word
+  shows the sheet correctly.
+- **The proof sheet.** `#/proof/N?from=&to=` (dev only, mounted in
+  `main.tsx`) draws cards A–B of a lesson large, one per row, through the
+  real `ArabicWord`; `node scripts/snap-proof.mjs N <dir> 12` photographs it
+  with headless Chrome at 2× in chunks of twelve. Read the PNGs — this is how
+  every mark on every card gets checked without paging through the lesson,
+  and how a fan-out of reviewers can check them in parallel. The in-app
+  Browser pane cannot do this: its rAF is asleep and its screenshots lag.
+- **Vite can serve a stale module after a Write.** The dev server kept
+  serving the previous `ArabicWord.tsx` (with classes the file no longer
+  had) across an HMR update AND a restart, from `node_modules/.vite`. When a
+  change does not appear, `curl` the module URL and grep for a new
+  identifier; if it is missing, stop the server, delete `node_modules/.vite`,
+  start again. Cost an hour of "why does the new code not run".
 - **Words sit at the bottom of their cards** (`.pair-card` is a flex column,
   `.pair-forms { margin-top: auto }`): with badges wrapping to one, two or
   three rows, three cards in a row still show their words on one level.
@@ -917,27 +950,25 @@ appended to every image URL** because a redrawn picture keeps its filename.
 The rule the whole design rests on: one set of content, two skins — **mode
 never touches an id, a folder, a clip filename or a calibration key.**
 
-**Lesson 7 — record it (2026-09-26, after the author's 21-point review).**
-Built as text, draft, 176 cards; the generator is `make-lesson7.mjs` and
-reads `Word Tables/ميم نون ساكنة وتنوين.docx` (the author changed كَم مِّن
-فِئَةٍ to كَم مِّن; at his request the sheet's مَّآءٍ ثَجَّاجًا was corrected to
-مَّآءً in place). Open that sheet in the intake tool — it ticks columns 2 and 3
+**Lesson 7 — record it (2026-09-26, after the author's 21-point and 18-point
+reviews).** Built as text, draft, 176 cards; the generator is
+`make-lesson7.mjs` and reads `Word Tables/ميم نون ساكنة وتنوين.docx` — the
+sheet Claude-for-Word rebuilt for the author, whose locations all check out
+against the corpus (the five wrong ones are gone; مِن مَّنَاصٍ became مِن
+مَّحِيصٍ). Every card was photographed through the proof sheet and read; the
+nūn sections are titled "Nūn Sākinah and Tanwīn — …" and the idghām badges
+read "with Ghunna / without Ghunna". Open that sheet in the intake tool — it ticks columns 2 and 3
 (Nūn Sākinah, Tanwīn) by itself, 176 slots in card order, one utterance each
 — and record into **`Audio/Audio - Meem Noon Sakinah Tanween`** (the folder
 the generator reads; name it exactly so, or change `AUDIO_SRC`). Then
 `node scripts/make-lesson7.mjs` cuts 176 clips. The em-dash cell (tanwīn + ظ,
 id 171) is a spent id with no card, by design. Every final-tanwīn shape is
-printed on each run under "FINAL TANWĪN" (65 staggered · 2 small mīm · 16
-stacked). **Five meaning cells cite the wrong place and need fixing in the
-sheet**: #3 عَلَيۡهِم مُّؤۡصَدَةٌ says 90:20, is 104:8 (used, and shaped from
-there); #24 مِنۡ عِلۡمٍ says 2:120 (which has مِنَ ٱلۡعِلۡمِ) — it occurs at 4:157,
-6:148, 18:5, 38:69, 43:20, 45:24, 46:4, 53:28; #29 عَلِيمٌ حَكِيمٌ says 4:11
-(عَلِيمًا حَكِيمًا) — fifteen places; #43 لَطِيفٌ خَبِيرٌ says 67:14 (ٱللَّطِيفُ
-ٱلۡخَبِيرُ) — 22:63 or 31:16; #62 مِن مَّنَاصٍ says 38:3, whose text is وَّلَاتَ
-حِينَ مَنَاصٍ — the example itself is not in the Qurʾān. The last four are
-left stacked until the sheet says which. Still unconfirmed: greying the
-tanwīn alif mid-phrase (section 3) and the "Iqlāb inside" badge on رَبُّهُم
-بِذَنۢبِهِمۡ. Publish from `#/admin` when reviewed.
+printed on each run under "FINAL TANWĪN" — with the rebuilt sheet every
+phrase is found where its meaning cell says. To see any card as the app
+draws it: `node scripts/snap-proof.mjs 7 <dir>` with the dev server up, then
+read the PNGs (section 3, "The proof sheet"). Still unconfirmed by the
+author: the "Iqlāb inside" badge on رَبُّهُم بِذَنۢبِهِمۡ. Publish from `#/admin`
+when reviewed.
 
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.
@@ -1058,3 +1089,14 @@ This lives in `CLAUDE.md` rather than a `PROJECT_CONTEXT.md` because Claude Code
 loads `CLAUDE.md` into context automatically at the start of every session — a
 differently named file would have to be found and read first, which is exactly
 the step that gets forgotten.
+
+**Where the 2026-09-26 session stopped (usage limit).** The mask-based
+`ArabicWord` is committed and deployed; lesson 7's 176 cards and lessons 2, 4,
+5, 6 were photographed through the proof sheet and read — staggered pairs,
+greyed finals, the small مـ, the silent alif and sun lām all render as the
+author described. A parallel review of the lesson 7 sheets was still running
+(`workflows/wf_b41b63fc-f70`, its `journal.jsonl` holds each reviewer's
+findings); it was launched against an earlier render, so re-photograph and
+re-review before acting on it. Not yet confirmed by the author: the ط/ظ pair
+placement (first stroke over the stem), the 0.7 stroke spacing, and the
+small مـ's exact drop below the kasra.

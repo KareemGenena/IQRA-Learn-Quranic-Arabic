@@ -15,32 +15,32 @@
     },
     {
       "id": "izhar",
-      "title": "Iẕhār Ḥalqī",
-      "titleArabic": "الإظهار الحلقي",
+      "title": "Nūn Sākinah and Tanwīn — Iẕhār Ḥalqī",
+      "titleArabic": "النون الساكنة والتنوين — الإظهار الحلقي",
       "hint": "Before the six throat letters — ء ه ع ح غ خ — the nūn sākinah or tanwīn is said clearly, with no ghunna. The tanwīn is written stacked."
     },
     {
       "id": "idgham-ghunnah",
-      "title": "Idghām bi-Ghunnah",
-      "titleArabic": "الإدغام بغنة",
+      "title": "Nūn Sākinah and Tanwīn — Idghām with Ghunna",
+      "titleArabic": "النون الساكنة والتنوين — الإدغام بغنة",
       "hint": "Before ي ن م و the nūn or tanwīn merges into the next letter and the ghunna stays, on the merged letter."
     },
     {
       "id": "idgham-no-ghunnah",
-      "title": "Idghām bilā Ghunnah",
-      "titleArabic": "الإدغام بغير غنة",
+      "title": "Nūn Sākinah and Tanwīn — Idghām without Ghunna",
+      "titleArabic": "النون الساكنة والتنوين — الإدغام بغير غنة",
       "hint": "Before ل and ر the nūn or tanwīn merges completely — a doubled letter with no ghunna at all."
     },
     {
       "id": "ikhfa",
-      "title": "Ikhfāʾ Ḥaqīqī",
-      "titleArabic": "الإخفاء الحقيقي",
+      "title": "Nūn Sākinah and Tanwīn — Ikhfāʾ Ḥaqīqī",
+      "titleArabic": "النون الساكنة والتنوين — الإخفاء الحقيقي",
       "hint": "Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The tanwīn is written staggered. صِفۡ ذَا ثَنَا كَمۡ جَادَ شَخۡصٌ قَدۡ سَمَا  •  دُمۡ طَيِّبًا زِدۡ فِي تُقًى ضَعۡ ظَالِمَا"
     },
     {
       "id": "iqlab",
-      "title": "Iqlāb",
-      "titleArabic": "الإقلاب",
+      "title": "Nūn Sākinah and Tanwīn — Iqlāb",
+      "titleArabic": "النون الساكنة والتنوين — الإقلاب",
       "hint": "Before ب the nūn sākinah or tanwīn turns into a hidden mīm, with ghunna. The Mushaf writes a small mīm in place of the sukoon, and the tanwīn gives up one of its two marks for it."
     }
   ],
@@ -82,7 +82,7 @@
         "م",
         "Ghunna"
       ],
-      "meaning": "“closed in upon them” — al-Balad 90:20"
+      "meaning": "“closed down upon them” — al-Humazah 104:8"
     },
     {
       "id": 4,
@@ -147,7 +147,7 @@
         "Iẕhār Shafawī",
         "ف"
       ],
-      "meaning": "“they will abide therein” — al-Baqarah 2:25  (ف — guard against ikhfāʾ)"
+      "meaning": "“they will abide therein” — al-Baqarah 2:39  (ف — guard against ikhfāʾ)"
     },
     {
       "id": 9,
@@ -199,7 +199,7 @@
         "ء",
         "Nūn Sākinah"
       ],
-      "meaning": "“of Our signs” — al-Isrāʾ 17:1"
+      "meaning": "“[some] of Our signs” — Ṭā Hā 20:23"
     },
     {
       "id": 13,
@@ -218,7 +218,7 @@
     {
       "id": 14,
       "section": "izhar",
-      "text": "مَنۡ أَظۡلَمُ",
+      "text": "وَمَنۡ أَظۡلَمُ",
       "audio": "word014.wav",
       "timings": null,
       "badges": [
@@ -226,7 +226,7 @@
         "ء",
         "Nūn Sākinah"
       ],
-      "meaning": "“who is more unjust” — al-Baqarah 2:140"
+      "meaning": "“And who is more unjust” — al-Baqarah 2:140"
     },
     {
       "id": 15,
@@ -307,7 +307,7 @@
         "هـ",
         "Nūn Sākinah"
       ],
-      "meaning": "“they forbid” — al-Anʿām 6:26"
+      "meaning": "“they prevent [others]” — al-Anʿām 6:26"
     },
     {
       "id": 21,
@@ -348,7 +348,7 @@
         "Tanwīn",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Hearing, Knowing” — al-Baqarah 2:181"
+      "meaning": "“Hearing and Knowing” — al-Baqarah 2:181"
     },
     {
       "id": 24,
@@ -361,7 +361,7 @@
         "ع",
         "Nūn Sākinah"
       ],
-      "meaning": "“of knowledge” — al-Baqarah 2:120"
+      "meaning": "“[no] knowledge” — an-Nisāʾ 4:157"
     },
     {
       "id": 25,
@@ -375,7 +375,7 @@
         "Tanwīn",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“all-Encompassing, Knowing” — al-Baqarah 2:115"
+      "meaning": "“all-Encompassing and Knowing” — al-Baqarah 2:115"
     },
     {
       "id": 26,
@@ -420,7 +420,7 @@
     {
       "id": 29,
       "section": "izhar",
-      "text": "عَلِيمٌ حَكِيمٌ",
+      "text": "عَلِيمٌ حَكِيمࣱ",
       "audio": "word029.wav",
       "timings": null,
       "badges": [
@@ -429,7 +429,7 @@
         "Tanwīn",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Knowing, Wise” — an-Nisāʾ 4:11"
+      "meaning": "“Knowing and Wise” — an-Nisāʾ 4:26"
     },
     {
       "id": 30,
@@ -442,7 +442,7 @@
         "ح",
         "Nūn Sākinah"
       ],
-      "meaning": "“you carve out” — al-Aʿrāf 7:74"
+      "meaning": "“you carve” — aṣ-Ṣāffāt 37:95"
     },
     {
       "id": 31,
@@ -456,12 +456,12 @@
         "Tanwīn",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Forgiving, Forbearing” — al-Baqarah 2:225"
+      "meaning": "“Forgiving and Forbearing” — al-Baqarah 2:225"
     },
     {
       "id": 32,
       "section": "izhar",
-      "text": "حَكِيمٍ حَمِيدࣲ",
+      "text": "مِنۡ حَيۡثُ",
       "audio": "word032.wav",
       "timings": null,
       "badges": [
@@ -469,7 +469,7 @@
         "ح",
         "Nūn Sākinah"
       ],
-      "meaning": "“a Wise, Praiseworthy” — Fuṣṣilat 41:42"
+      "meaning": "“from where” — al-Baqarah 2:222"
     },
     {
       "id": 33,
@@ -496,7 +496,7 @@
         "غ",
         "Nūn Sākinah"
       ],
-      "meaning": "“they will shake (their heads)” — al-Isrāʾ 17:51"
+      "meaning": "“they will nod [their heads]” — al-Isrāʾ 17:51"
     },
     {
       "id": 35,
@@ -510,7 +510,7 @@
         "Tanwīn",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Exalted in Might, Forgiving” — Fāṭir 35:28"
+      "meaning": "“Exalted in Might and Forgiving” — Fāṭir 35:28"
     },
     {
       "id": 36,
@@ -569,7 +569,7 @@
     {
       "id": 40,
       "section": "izhar",
-      "text": "ٱلۡمُنۡخَنِقَةُ",
+      "text": "وَٱلۡمُنۡخَنِقَةُ",
       "audio": "word040.wav",
       "timings": null,
       "badges": [
@@ -578,7 +578,7 @@
         "Nūn Sākinah",
         "Moon ل"
       ],
-      "meaning": "“the strangled” — al-Māʾidah 5:3"
+      "meaning": "“and [those animals] killed by strangling” — al-Māʾidah 5:3"
     },
     {
       "id": 41,
@@ -592,7 +592,7 @@
         "Tanwīn",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Knowing, Acquainted” — al-Ḥujurāt 49:13"
+      "meaning": "“Knowing and Acquainted” — al-Ḥujurāt 49:13"
     },
     {
       "id": 42,
@@ -610,7 +610,7 @@
     {
       "id": 43,
       "section": "izhar",
-      "text": "لَطِيفٌ خَبِيرٌ",
+      "text": "لَطِيفٌ خَبِيرࣱ",
       "audio": "word043.wav",
       "timings": null,
       "badges": [
@@ -619,7 +619,7 @@
         "Tanwīn",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Subtle, Acquainted” — al-Mulk 67:14"
+      "meaning": "“Subtle and Acquainted” — al-Ḥajj 22:63"
     },
     {
       "id": 44,
@@ -655,7 +655,7 @@
       "audio": "word046.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ي",
         "Nūn Sākinah",
         "Ghunna"
@@ -665,17 +665,17 @@
     {
       "id": 47,
       "section": "idgham-ghunnah",
-      "text": "بَرۡقࣱ يَجۡعَلُونَ",
+      "text": "وَبَرۡقࣱ يَجۡعَلُونَ",
       "audio": "word047.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ي",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“lightning… they put” — al-Baqarah 2:19"
+      "meaning": "“and lightning. They put…” — al-Baqarah 2:19"
     },
     {
       "id": 48,
@@ -684,7 +684,7 @@
       "audio": "word048.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ي",
         "Nūn Sākinah",
         "Ghunna",
@@ -695,31 +695,31 @@
     {
       "id": 49,
       "section": "idgham-ghunnah",
-      "text": "قَوۡمࣲ يُؤۡمِنُونَ",
+      "text": "لِقَوۡمࣲ يُؤۡمِنُونَ",
       "audio": "word049.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ي",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“a people who believe” — al-Anʿām 6:99"
+      "meaning": "“for a people who believe” — al-Anʿām 6:99"
     },
     {
       "id": 50,
       "section": "idgham-ghunnah",
-      "text": "مَن يَعۡمَلۡ",
+      "text": "فَمَن يَعۡمَلۡ",
       "audio": "word050.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ي",
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“whoever does” — az-Zalzalah 99:7"
+      "meaning": "“So whoever does” — az-Zalzalah 99:7"
     },
     {
       "id": 51,
@@ -728,13 +728,13 @@
       "audio": "word051.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ي",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“that Day, people will depart” — az-Zalzalah 99:6"
+      "meaning": "“That Day, the people will depart” — az-Zalzalah 99:6"
     },
     {
       "id": 52,
@@ -743,7 +743,7 @@
       "audio": "word052.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ن",
         "Nūn Sākinah",
         "Ghunna"
@@ -757,13 +757,13 @@
       "audio": "word053.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ن",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“that Day, will be pleased” — al-Ghāshiyah 88:8"
+      "meaning": "“that Day, will show pleasure” — al-Ghāshiyah 88:8"
     },
     {
       "id": 54,
@@ -772,7 +772,7 @@
       "audio": "word054.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ن",
         "Nūn Sākinah",
         "Ghunna"
@@ -786,7 +786,7 @@
       "audio": "word055.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ن",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
@@ -797,16 +797,16 @@
     {
       "id": 56,
       "section": "idgham-ghunnah",
-      "text": "مِن نَّاصِرِينَ",
+      "text": "مِن نَّذِيرࣲ",
       "audio": "word056.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ن",
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“any helpers” — Āl ʿImrān 3:22"
+      "meaning": "“any warner” — Sabaʾ 34:44"
     },
     {
       "id": 57,
@@ -815,7 +815,7 @@
       "audio": "word057.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "ن",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
@@ -830,12 +830,12 @@
       "audio": "word058.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "م",
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“of twisted fiber” — al-Masad 111:5"
+      "meaning": "“of [twisted] fiber” — al-Masad 111:5"
     },
     {
       "id": 59,
@@ -844,7 +844,7 @@
       "audio": "word059.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "م",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
@@ -859,7 +859,7 @@
       "audio": "word060.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "م",
         "Nūn Sākinah",
         "Ghunna"
@@ -873,7 +873,7 @@
       "audio": "word061.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "م",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
@@ -884,16 +884,16 @@
     {
       "id": 62,
       "section": "idgham-ghunnah",
-      "text": "مِن مَّنَاصٍ",
+      "text": "مِن مَّحِيصٍ",
       "audio": "word062.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "م",
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“no time for escape” — Ṣād 38:3"
+      "meaning": "“any place of escape” — Qāf 50:36"
     },
     {
       "id": 63,
@@ -902,7 +902,7 @@
       "audio": "word063.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "م",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
@@ -913,11 +913,11 @@
     {
       "id": 64,
       "section": "idgham-ghunnah",
-      "text": "مِن وَّالٍ",
+      "text": "مِن وَالٍ",
       "audio": "word064.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "و",
         "Nūn Sākinah",
         "Ghunna"
@@ -927,26 +927,26 @@
     {
       "id": 65,
       "section": "idgham-ghunnah",
-      "text": "عَذَابࣲ وَاقِعࣲ",
+      "text": "بِعَذَابࣲ وَاقِعࣲ",
       "audio": "word065.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "و",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“a punishment about to fall” — al-Maʿārij 70:1"
+      "meaning": "“for a punishment bound to happen” — al-Maʿārij 70:1"
     },
     {
       "id": 66,
       "section": "idgham-ghunnah",
-      "text": "مِن وَّلِيࣲّ",
+      "text": "مِن وَلِىࣲّ",
       "audio": "word066.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "و",
         "Nūn Sākinah",
         "Ghunna"
@@ -960,7 +960,7 @@
       "audio": "word067.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "و",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
@@ -971,11 +971,11 @@
     {
       "id": 68,
       "section": "idgham-ghunnah",
-      "text": "مِن وَّاقࣲ",
+      "text": "مِن وَاقࣲ",
       "audio": "word068.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "و",
         "Nūn Sākinah",
         "Ghunna"
@@ -989,7 +989,7 @@
       "audio": "word069.wav",
       "timings": null,
       "badges": [
-        "Idghām bi-Ghunnah",
+        "Idghām with Ghunna",
         "و",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
@@ -1004,7 +1004,7 @@
       "audio": "word070.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ل",
         "Nūn Sākinah"
       ],
@@ -1017,26 +1017,26 @@
       "audio": "word071.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ل",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
         "Moon ل"
       ],
-      "meaning": "“a guidance for the righteous” — al-Baqarah 2:2  (+ lām qamariyyah)"
+      "meaning": "“a guidance for those conscious of Allah” — al-Baqarah 2:2  (+ lām qamariyyah)"
     },
     {
       "id": 72,
       "section": "idgham-no-ghunnah",
-      "text": "لَٰكِن لَّا",
+      "text": "وَلَٰكِن لَّا",
       "audio": "word072.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ل",
         "Nūn Sākinah"
       ],
-      "meaning": "“but not…” — al-Baqarah 2:12"
+      "meaning": "“but they perceive [it] not” — al-Baqarah 2:12"
     },
     {
       "id": 73,
@@ -1045,7 +1045,7 @@
       "audio": "word073.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ل",
         "Tanwīn",
         "Tanwīn Mutatābiʿ"
@@ -1059,7 +1059,7 @@
       "audio": "word074.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ل",
         "Nūn Sākinah"
       ],
@@ -1072,7 +1072,7 @@
       "audio": "word075.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ل",
         "Tanwīn",
         "Tanwīn Mutatābiʿ",
@@ -1087,7 +1087,7 @@
       "audio": "word076.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ر",
         "Nūn Sākinah"
       ],
@@ -1100,7 +1100,7 @@
       "audio": "word077.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ر",
         "Tanwīn",
         "Tanwīn Mutatābiʿ"
@@ -1114,7 +1114,7 @@
       "audio": "word078.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ر",
         "Nūn Sākinah"
       ],
@@ -1127,12 +1127,12 @@
       "audio": "word079.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ر",
         "Tanwīn",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“Kind and Merciful” — al-Baqarah 2:143"
+      "meaning": "“Kind and Merciful” — at-Tawbah 9:117"
     },
     {
       "id": 80,
@@ -1141,7 +1141,7 @@
       "audio": "word080.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ر",
         "Nūn Sākinah"
       ],
@@ -1154,7 +1154,7 @@
       "audio": "word081.wav",
       "timings": null,
       "badges": [
-        "Idghām bilā Ghunnah",
+        "Idghām without Ghunna",
         "ر",
         "Tanwīn",
         "Tanwīn Mutatābiʿ"
@@ -1231,7 +1231,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“that they barred you” — al-Māʾidah 5:2"
+      "meaning": "“[for] having obstructed you” — al-Māʾidah 5:2"
     },
     {
       "id": 87,
@@ -1275,7 +1275,7 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“a shade of three columns” — al-Mursalāt 77:30"
+      "meaning": "“a shadow [of smoke] having…” — al-Mursalāt 77:30"
     },
     {
       "id": 90,
@@ -1318,7 +1318,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“from a male” — al-Ḥujurāt 49:13"
+      "meaning": "“from male” — al-Ḥujurāt 49:13"
     },
     {
       "id": 93,
@@ -1333,12 +1333,12 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“hastening — that is an easy gathering” — Qāf 50:44"
+      "meaning": "“rapidly; that is a gathering…” — Qāf 50:44"
     },
     {
       "id": 94,
       "section": "ikhfa",
-      "text": "مَّنثُورًا",
+      "text": "مَنثُورًا",
       "audio": "word094.wav",
       "timings": null,
       "badges": [
@@ -1347,12 +1347,12 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“dispersed dust” — al-Furqān 25:23"
+      "meaning": "“dispersed” — al-Furqān 25:23"
     },
     {
       "id": 95,
       "section": "ikhfa",
-      "text": "مَّآءࣰ ثَجَّاجࣰا",
+      "text": "مَآءࣰ ثَجَّاجࣰا",
       "audio": "word095.wav",
       "timings": null,
       "badges": [
@@ -1435,7 +1435,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“they break their word” — al-Aʿrāf 7:135"
+      "meaning": "“they broke their word” — al-Aʿrāf 7:135"
     },
     {
       "id": 101,
@@ -1464,7 +1464,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“of every” — al-Baqarah 2:25"
+      "meaning": "“from every” — al-Baqarah 2:266"
     },
     {
       "id": 103,
@@ -1498,7 +1498,7 @@
     {
       "id": 105,
       "section": "ikhfa",
-      "text": "رِزۡقࣱ كَرِيمࣱ",
+      "text": "وَرِزۡقࣱ كَرِيمࣱ",
       "audio": "word105.wav",
       "timings": null,
       "badges": [
@@ -1508,12 +1508,12 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“a noble provision” — al-Anfāl 8:74"
+      "meaning": "“and noble provision” — al-Anfāl 8:74"
     },
     {
       "id": 106,
       "section": "ikhfa",
-      "text": "أَنجَيۡنَٰكُمۡ",
+      "text": "فَأَنجَيۡنَٰكُمۡ",
       "audio": "word106.wav",
       "timings": null,
       "badges": [
@@ -1522,7 +1522,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“We saved you” — al-Baqarah 2:49"
+      "meaning": "“and saved you” — al-Baqarah 2:50"
     },
     {
       "id": 107,
@@ -1556,7 +1556,7 @@
     {
       "id": 109,
       "section": "ikhfa",
-      "text": "صَبۡرࣱ جَمِيلࣱ",
+      "text": "فَصَبۡرࣱ جَمِيلࣱ",
       "audio": "word109.wav",
       "timings": null,
       "badges": [
@@ -1566,7 +1566,7 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“beautiful patience” — Yūsuf 12:18"
+      "meaning": "“so patience is most fitting” — Yūsuf 12:18"
     },
     {
       "id": 110,
@@ -1596,12 +1596,12 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“a people of tyrannical force” — al-Māʾidah 5:22"
+      "meaning": "“a people of tyrannical strength” — al-Māʾidah 5:22"
     },
     {
       "id": 112,
       "section": "ikhfa",
-      "text": "مَّنشُورࣰا",
+      "text": "مَنشُورࣰا",
       "audio": "word112.wav",
       "timings": null,
       "badges": [
@@ -1684,7 +1684,7 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“Witness over all things” — al-Burūj 85:9"
+      "meaning": "“over all things, is Witness” — al-Burūj 85:9"
     },
     {
       "id": 118,
@@ -1747,7 +1747,7 @@
     {
       "id": 122,
       "section": "ikhfa",
-      "text": "فَٱنقَلَبُوا",
+      "text": "فَٱنقَلَبُواْ",
       "audio": "word122.wav",
       "timings": null,
       "badges": [
@@ -1761,7 +1761,7 @@
     {
       "id": 123,
       "section": "ikhfa",
-      "text": "رِزۡقࣰا قَالُوا",
+      "text": "رِزۡقࣰا قَالُواْ",
       "audio": "word123.wav",
       "timings": null,
       "badges": [
@@ -1849,7 +1849,7 @@
     {
       "id": 129,
       "section": "ikhfa",
-      "text": "رَجُلࣰا سَلَمࣰا",
+      "text": "وَرَجُلࣰا سَلَمࣰا",
       "audio": "word129.wav",
       "timings": null,
       "badges": [
@@ -1859,7 +1859,7 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“a man belonging to one” — az-Zumar 39:29"
+      "meaning": "“and another belonging exclusively” — az-Zumar 39:29"
     },
     {
       "id": 130,
@@ -1907,7 +1907,7 @@
     {
       "id": 133,
       "section": "ikhfa",
-      "text": "كَأۡسࣰا دِهَاقࣰا",
+      "text": "وَكَأۡسࣰا دِهَاقࣰا",
       "audio": "word133.wav",
       "timings": null,
       "badges": [
@@ -1917,7 +1917,7 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“a full cup” — an-Nabaʾ 78:34"
+      "meaning": "“And a full cup” — an-Nabaʾ 78:34"
     },
     {
       "id": 134,
@@ -1936,7 +1936,7 @@
     {
       "id": 135,
       "section": "ikhfa",
-      "text": "مَّآءࣲ دَافِقࣲ",
+      "text": "مَآءࣲ دَافِقࣲ",
       "audio": "word135.wav",
       "timings": null,
       "badges": [
@@ -1981,7 +1981,7 @@
     {
       "id": 138,
       "section": "ikhfa",
-      "text": "ٱنطَلِقُوا",
+      "text": "ٱنطَلِقُواْ",
       "audio": "word138.wav",
       "timings": null,
       "badges": [
@@ -2039,7 +2039,7 @@
     {
       "id": 142,
       "section": "ikhfa",
-      "text": "أَنزَلَ",
+      "text": "وَأَنزَلَ",
       "audio": "word142.wav",
       "timings": null,
       "badges": [
@@ -2048,7 +2048,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“He sent down” — al-Baqarah 2:22"
+      "meaning": "“and sent down” — al-Baqarah 2:22"
     },
     {
       "id": 143,
@@ -2063,7 +2063,7 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“smooth ground” — al-Kahf 18:40"
+      "meaning": "“a smooth, dusty ground” — al-Kahf 18:40"
     },
     {
       "id": 144,
@@ -2164,7 +2164,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“of the bounty of” — al-Baqarah 2:90"
+      "meaning": "“from the bounty of” — al-Jumuʿah 62:10"
     },
     {
       "id": 151,
@@ -2179,12 +2179,12 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“all of you; and when…” — al-Baqarah 2:38"
+      "meaning": "“all of you. And when…” — al-Baqarah 2:38"
     },
     {
       "id": 152,
       "section": "ikhfa",
-      "text": "إِن فَاتَكُمۡ",
+      "text": "وَإِن فَاتَكُمۡ",
       "audio": "word152.wav",
       "timings": null,
       "badges": [
@@ -2193,7 +2193,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“if you have lost” — al-Mumtaḥanah 60:11"
+      "meaning": "“And if you have lost” — al-Mumtaḥanah 60:11"
     },
     {
       "id": 153,
@@ -2280,7 +2280,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“you (pl.)” — al-Baqarah 2:22"
+      "meaning": "“you (pl.)” — al-Baqarah 2:85"
     },
     {
       "id": 159,
@@ -2300,7 +2300,7 @@
     {
       "id": 160,
       "section": "ikhfa",
-      "text": "مَّنضُودࣲ",
+      "text": "مَنضُودࣲ",
       "audio": "word160.wav",
       "timings": null,
       "badges": [
@@ -2309,7 +2309,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“layered” — al-Wāqiʿah 56:29"
+      "meaning": "“layered [with fruit]” — al-Wāqiʿah 56:29"
     },
     {
       "id": 161,
@@ -2338,12 +2338,12 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“except thorn” — al-Ghāshiyah 88:6"
+      "meaning": "“from a poisonous, thorny plant” — al-Ghāshiyah 88:6"
     },
     {
       "id": 163,
       "section": "ikhfa",
-      "text": "مَّسۡجِدࣰا ضِرَارࣰا",
+      "text": "مَسۡجِدࣰا ضِرَارࣰا",
       "audio": "word163.wav",
       "timings": null,
       "badges": [
@@ -2353,12 +2353,12 @@
         "Tanwīn Mutatābiʿ",
         "Ghunna"
       ],
-      "meaning": "“a mosque for harm” — at-Tawbah 9:107"
+      "meaning": "“a mosque for causing harm” — at-Tawbah 9:107"
     },
     {
       "id": 164,
       "section": "ikhfa",
-      "text": "مَّن ضَلَّ",
+      "text": "مَن ضَلَّ",
       "audio": "word164.wav",
       "timings": null,
       "badges": [
@@ -2367,7 +2367,7 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“those who go astray” — al-Māʾidah 5:105"
+      "meaning": "“those who have gone astray” — al-Māʾidah 5:105"
     },
     {
       "id": 165,

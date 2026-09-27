@@ -1,9 +1,12 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import '@fontsource/noto-naskh-arabic/400.css';
 import '@fontsource/noto-naskh-arabic/700.css';
 import './index.css';
 import App from './App';
+
+/** Dev only, and loaded only when asked for — it never joins the shell. */
+const ProofPage = import.meta.env.DEV ? lazy(() => import('./pages/ProofPage').then((m) => ({ default: m.ProofPage }))) : null;
 
 // A crash that blanks the page is otherwise invisible to the learner and to
 // anyone debugging on a device with no console.
@@ -75,8 +78,22 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
     });
 }
 
+/**
+ * The proof sheet, dev only: `#/proof/N?from=A&to=B` draws cards A–B of
+ * lesson N large, one per row, for `scripts/snap-proof.mjs` to photograph.
+ * It never reaches a build — a draft lesson's text is already public in its
+ * words.json, but the page has no place in the app.
+ */
+const proof = import.meta.env.DEV ? /^#\/proof\/(\d+)(?:\?from=(\d+)&to=(\d+))?/.exec(window.location.hash) : null;
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    {proof && ProofPage ? (
+      <Suspense fallback={null}>
+        <ProofPage lessonId={Number(proof[1])} from={Number(proof[2] ?? 1)} to={Number(proof[3] ?? 9999)} />
+      </Suspense>
+    ) : (
+      <App />
+    )}
   </StrictMode>,
 );

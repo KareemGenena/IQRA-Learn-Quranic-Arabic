@@ -1,0 +1,45 @@
+import { useEffect, useState } from 'react';
+import { ArabicWord } from '../components/ArabicWord';
+import { loadLesson, toItems } from '../lib/lessons';
+import { splitClusters } from '../lib/graphemes';
+import type { Lesson, LessonItem } from '../types';
+
+/**
+ * A proof sheet: every card of a lesson drawn large, one per row, with its id
+ * — exactly as `ArabicWord` draws it in the lesson, minus the audio. Dev only
+ * (`#/proof/N?from=&to=`); `scripts/snap-proof.mjs` photographs it with
+ * headless Chrome so every mark on every card can be checked without paging
+ * through the lesson by hand.
+ */
+export function ProofPage({ lessonId, from, to }: { lessonId: number; from: number; to: number }) {
+  const [lesson, setLesson] = useState<Lesson | null>(null);
+  useEffect(() => {
+    void loadLesson(lessonId).then(setLesson);
+  }, [lessonId]);
+  if (!lesson) return <p className="loading">…</p>;
+  const items = toItems(lesson).filter((it) => it.id >= from && it.id <= to);
+  return (
+    <main className="proof">
+      {items.map((item: LessonItem) => (
+        <div key={item.id} className="proof-row">
+          <span className="proof-id">{item.id}</span>
+          <span className="proof-badges">{item.badges.join(' · ')}</span>
+          <div className="proof-forms">
+            {item.forms.map((form) => (
+              <ArabicWord
+                key={form.key}
+                text={form.text}
+                clusters={splitClusters(form.text)}
+                activeIndex={null}
+                prefixClusters={form.prefixClusters}
+                silentClusters={form.silentClusters}
+                markCluster={form.highlightCluster}
+                dimFinalMark={form.dimFinalMark}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </main>
+  );
+}
