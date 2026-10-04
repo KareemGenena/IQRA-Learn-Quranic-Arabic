@@ -1160,6 +1160,20 @@ is approved.** When it is, record there:
   THIS FILE wins — the skill describes what Word can draw, not what the app
   draws.
 
+The phone-scale review of all 176 cards (`wf_96410d8e-63f`, 8 reviewers,
+3.2 M tokens) confirmed six findings, all of them the stem-band foot above,
+fixed and re-photographed. Its verify stage died on the usage limit with
+nineteen findings unverified; by class they are the same foot (122, 123,
+127, 138 — re-rendered, fine), the same head bevel (1, 2, 133, 141, 147,
+151, 153, 161, 173 — re-rendered, fine), and four not looked at: 129 (the
+grey lam-alif arm a few rows into the lam's upright at the junction), 147
+(a one-pixel grey line along the ة's lower-left edge), 167 (faint specks by
+the lam-alif's marks), 177 (the small mīm said to overlap the cut
+descender — it does not in the zoom). Cards 29, 39, 43, 97 and 153 came out
+half-size or overflowing ON THE PROOF PAGE at 420 px: that is `--fit` and
+the proof row's fixed id column, not the card. Not re-run: the author asked
+for economy.
+
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.
 (2) Listen to row 11 (`ءَآلۡـٔـٰنَ`), the ṣilah kubrā rows, #7 (its final ىٓ
