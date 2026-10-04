@@ -17,6 +17,36 @@ window.addEventListener('error', (e) => {
 /** How often to ask again while the app is left open. */
 const UPDATE_INTERVAL_MS = 15 * 60 * 1000;
 
+/** How long to give the new worker after a newer build is known to exist. */
+const WORKER_GRACE_MS = 12 * 1000;
+
+/**
+ * Ask the server which build it is serving — a tiny `version.json` written
+ * at build time, left out of the precache and served `no-cache` — and compare
+ * it with the build this page was loaded with. The worker's own update check
+ * is what should notice a new build, but a phone sat on the 27 September
+ * build through several refreshes on 4 October: whatever a browser decides
+ * about a worker's update check, a fetch with `no-store` reaches the server.
+ * If the server is ahead, the worker is asked to update; if the page is
+ * still the old one after a grace period, it reloads itself — once per build,
+ * so a server that is ahead of a worker that cannot update never loops.
+ */
+async function pollVersion(registration: ServiceWorkerRegistration): Promise<void> {
+  try {
+    const res = await fetch(`${import.meta.env.BASE_URL}version.json?_=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) return;
+    const { build } = (await res.json()) as { build?: string };
+    if (!build || build === __BUILD_ID__) return;
+    const key = 'iqra-reloaded-for';
+    if (sessionStorage.getItem(key) === build) return;
+    sessionStorage.setItem(key, build);
+    await registration.update().catch(() => undefined);
+    window.setTimeout(() => window.location.reload(), WORKER_GRACE_MS);
+  } catch {
+    // Offline. The next check will do.
+  }
+}
+
 /**
  * Take a new version as soon as one lands.
  *
@@ -66,6 +96,7 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
         void registration.update().catch(() => {
           // Offline, or the check was throttled. The next one will do.
         });
+        void pollVersion(registration);
       };
       checkForUpdate();
       document.addEventListener('visibilitychange', checkForUpdate);
@@ -90,7 +121,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {proof && ProofPage ? (
       <Suspense fallback={null}>
-        <ProofPage lessonId={Number(proof[1])} from={Number(proof[2] ?? 1)} to={Number(proof[3] ?? 9999)} />
+        <ProofPage lessonId={Number(proof[1])} from={Number(proof[2] ?? 1)} to={Number(proof[3] ?? 9999)} px={proof[4] ? Number(proof[4]) : undefined} />
       </Suspense>
     ) : (
       <App />

@@ -145,7 +145,7 @@ const RECT_ZERO = '۠';
 
 /**
  * The lam rule, read off the text — the same test derivedSilent() makes in
- * the app, so the chip and the greying always agree. A sun lam is ٱل followed
+ * the app, so the chip and the graying always agree. A sun lam is ٱل followed
  * by a doubled letter; a moon lam carries its own sukoon.
  */
 function lamBadge(text) {
@@ -305,7 +305,7 @@ for (const block of blocks) {
     if (muttasil) badges.push(muttasil);
     if (section.letterNames) badges.push(...letterNameBadge(cleaned));
     // The rectangular zero: this alif sounds at a stop and vanishes when the
-    // reading carries on (أَنَا۠ ٱللَّهُ). derivedSilent() greys it; this names it.
+    // reading carries on (أَنَا۠ ٱللَّهُ). derivedSilent() grays it; this names it.
     if (cleaned.includes(RECT_ZERO)) badges.push('Conditional silent alif');
 
     const entry = { id, section: section.id, text: cleaned, audio: `word${String(id).padStart(2, '0')}.wav`, timings: null, badges };
@@ -350,7 +350,7 @@ for (const row of aridRows) {
       badges: ['Madd ʿĀriḍ', `${n} ḥarakāt`, 'At waqf'],
       waqf: true,
       waqfMadd: n,
-      // The last vowel is greyed: it is written, and at the stop it is not said.
+      // The last vowel is grayed: it is written, and at the stop it is not said.
       dimFinalMark: true,
     };
     if (row.meaning) entry.meaning = row.meaning;

@@ -244,7 +244,7 @@ function letterPlayables(word: LetterWord): Playable[] {
       waqf: word.waqf,
       waqfMadd: word.waqfMadd,
       dimFinalMark: word.dimFinalMark,
-      // The ٱل is coloured apart only where it is actually present.
+      // The ٱل is colored apart only where it is actually present.
       prefixClusters: 0,
     }));
   }

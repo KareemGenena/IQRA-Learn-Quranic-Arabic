@@ -9,17 +9,17 @@ interface Props {
   /** Cluster to highlight while it is being pronounced, or null. */
   activeIndex: number | null;
   /** 'ghunna' while the ghunna that opens the active letter sounds — the
-   *  highlight stays on the letter but changes colour. */
+   *  highlight stays on the letter but changes color. */
   activePhase?: HighlightPhase;
   /** Cluster awaiting a calibration tap — marked with an underline. */
   pendingIndex?: number | null;
-  /** Leading clusters forming the ال prefix, painted in the accent colour. */
+  /** Leading clusters forming the ال prefix, painted in the accent color. */
   prefixClusters?: number;
   /** Clusters written but not pronounced — painted faded. */
   silentClusters?: number[];
   /** A single cluster painted as the letter being taught. */
   markCluster?: number;
-  /** Grey the last letter's vowel: it is written, and at the stop it is not said. */
+  /** Gray the last letter's vowel: it is written, and at the stop it is not said. */
   dimFinalMark?: boolean;
   className?: string;
 }
@@ -39,7 +39,7 @@ interface Mask {
 }
 
 /**
- * A copy of the text painted in another colour. `clip` limits it to a
+ * A copy of the text painted in another color. `clip` limits it to a
  * horizontal range (the ال prefix, the taught letter); `mask` limits it to the
  * exact pixels of a mark or a letter; `dx` shifts it sideways (the strokes of
  * a staggered tanwīn).
@@ -86,7 +86,7 @@ const MADDAH_RE = /ٓ/g;
  * DISPLAYED with the single vowel in its place; that vowel's pixels are then
  * erased from the base text and drawn twice, side by side, from masked copies
  * of the very same string. The data keeps U+08F0–08F2: that is what the
- * timing engine and the greying read.
+ * timing engine and the graying read.
  *
  * The low iqlāb mīm is kasra + U+06E2 in this font's own spelling, but the
  * glyph the font makes of that pair carries a vertical stem the author's
@@ -96,6 +96,7 @@ const MADDAH_RE = /ٓ/g;
 const STAGGERED_TO_VOWEL: Record<string, string> = { 'ࣰ': 'َ', 'ࣱ': 'ُ', 'ࣲ': 'ِ' };
 const STAGGERED_RE = /[ࣰ-ࣲ]/g;
 const KASRA_MEEM_RE = /ِۢ/g;
+const STAGGERED_KASRA = 'ࣲ';
 const KASRA = 'ِ';
 const SMALL_HIGH_MEEM = 'ۢ';
 const ZWJ = '‍';
@@ -113,7 +114,7 @@ const lettersOf = (s: string) => [...s.replace(MARKS_RE, '')];
 /**
  * Two strings whose difference is exactly one letter: the text up to and
  * including cluster i, and the text up to the letter before it — each with a
- * joiner where the cut letter joined, so the neighbours keep the forms they
+ * joiner where the cut letter joined, so the neighbors keep the forms they
  * have in the whole word. Both are drawn from the RIGHT edge, and in Arabic a
  * glyph's place depends only on what precedes it, so the letter lands where
  * it lands in the full text and nothing else moves. Taking the letter out of
@@ -180,7 +181,7 @@ function miniMetrics(font: string): MiniMetrics | null {
 
 /**
  * Where to put a small م so that its ink's RIGHT edge stands at `inkRightX`
- * and its ink's top at `inkTopY` (wrap CSS px). The span is centred on
+ * and its ink's top at `inkTopY` (wrap CSS px). The span is centered on
  * `left` by its own transform and its top is a line box, not the glyph's
  * ink, hence the two corrections.
  */
@@ -203,8 +204,11 @@ function placeMini(mini: MiniMetrics, inkRightX: number, inkTopY: number, size: 
  *  shadda, the glyph's full length. */
 const MINI_MEEM = 'م';
 const MINI_SIZE = 0.5;
-const MINI_SIZE_DAMMA = 0.575;
-const MINI_KEEP = 0.75;
+const MINI_SIZE_DAMMA = 0.45;
+const MINI_KEEP = 0.7;
+/** How far below the baseline a final mīm's descender is kept, in em, where
+ *  a kasra pair or a low mīm sits under the letter. */
+const MEEM_TAIL = 0.1;
 const FATHA = 'َ';
 const DAMMA = 'ُ';
 
@@ -289,8 +293,8 @@ function rawDiff(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0: n
 
 /**
  * Grow a mask by one device pixel so anti-aliased edges are covered — but
- * never onto ink that is there WITHOUT the thing (a neighbouring letter, the
- * stem a kasra crosses): erasing or greying those pixels notched the mīm's
+ * never onto ink that is there WITHOUT the thing (a neighboring letter, the
+ * stem a kasra crosses): erasing or graying those pixels notched the mīm's
  * tail under مُّسۡتَقِيمࣲ and fringed every letter a mark touches.
  */
 function dilate(stage: Stage, raw: Uint8ClampedArray, b: Uint8ClampedArray): Uint8ClampedArray {
@@ -358,9 +362,9 @@ interface Band {
  * vertical run whose own longest run is at least `share` of it. A silent alif
  * is found as the difference between the word drawn with it and without it,
  * and in this font the letter BEFORE a final alif takes a raised joining
- * form: so that difference also held the neighbour's changed join, the
+ * form: so that difference also held the neighbor's changed join, the
  * underside of its bowl, its vowel moved a few pixels — and, standing on
- * their own further along, vertical pieces of the neighbour tall enough to
+ * their own further along, vertical pieces of the neighbor tall enough to
  * pass for a stem (a stripe through the ع of سِرَاعࣰا, the kāf's arm of
  * مَلِكࣰا). Hence ONE band, and only the one the tallest run is in. A leaning
  * stroke's per-column runs are shorter than its height, which is why the
@@ -416,14 +420,33 @@ function inBand(stage: Stage, m: Uint8ClampedArray, band: Band): Uint8ClampedArr
  * Ink of `a` inside the band's columns, from the stem's top down: the
  * letter's own foot, which the joiner's stub in the drawing without the
  * letter had taken out of the difference (black under the stem of the lam of
- * لِّلنَّاسِ). Nothing above the stem's top — that could only be a neighbour's
+ * لِّلنَّاسِ). Nothing above the stem's top — that could only be a neighbor's
  * vowel leaning over.
  */
 function bandInk(stage: Stage, a: Uint8ClampedArray, band: Band): Uint8ClampedArray {
   const pw = Math.ceil(stage.w * stage.dpr);
   const ph = Math.ceil(stage.h * stage.dpr);
   const out = new Uint8ClampedArray(pw * ph);
-  for (let y = band.top; y < ph; y++) for (let x = band.left; x <= band.right; x++) if (a[y * pw + x] > INK) out[y * pw + x] = 255;
+  // Down from the stem's top only as far as the ink is CONTIGUOUS: the
+  // letter's own foot joins its stem, but a neighbour's tail sweeping under
+  // the alif (the و of وَٱنۡحَرۡ, the ر of نَارًا) lies below a blank row and
+  // was greyed with it.
+  let yEnd = band.top;
+  for (let y = band.top; y < ph; y++) {
+    let any = false;
+    for (let x = band.left; x <= band.right; x++) if (a[y * pw + x] > INK) { any = true; out[y * pw + x] = 255; }
+    if (!any && y > band.top) break;
+    yEnd = y;
+  }
+  // The head of a final alif bevels to the LEFT of its stem — a run of
+  // pixels too short for the band, which stayed black on the grey letter.
+  // In the head's rows, take the ink running left from the band's edge.
+  // Only the head: lower down, what runs out of the band is the neighbour's join.
+  const headRows = Math.max(1, Math.round((yEnd - band.top) * 0.25));
+  for (let y = band.top; y < Math.min(ph, band.top + headRows); y++) {
+    if (!(a[y * pw + band.left] > INK)) continue;
+    for (let x = band.left - 1; x >= 0 && a[y * pw + x] > INK; x--) out[y * pw + x] = 255;
+  }
   return out;
 }
 
@@ -514,14 +537,23 @@ function dropMoved(stage: Stage, d: Uint8ClampedArray, r: Uint8ClampedArray, dis
   // the bare glyph's by slivers all over the body, and the fatḥa sitting
   // right above the moved dots is not to be taken for them.
   const near = (a: number, b: number) => Math.abs(a - b) <= Math.max(3, 0.3 * Math.max(a, b));
+  const area = (b: { x0: number; y0: number; x1: number; y1: number }) => (b.x1 + 1 - b.x0) * (b.y1 + 1 - b.y0);
   const moved = cd.box.map((b, i) =>
     cr.box.some((o, j) => {
       const ratio = cr.size[j] / cd.size[i];
-      return (
+      const sameShape =
         ratio > 0.5 && ratio < 2 &&
         near(b.x1 - b.x0, o.x1 - o.x0) && near(b.y1 - b.y0, o.y1 - o.y0) &&
-        o.x0 - dist <= b.x1 && o.x1 + dist >= b.x0 && o.y0 - dist <= b.y1 && o.y1 + dist >= b.y0
-      );
+        o.x0 - dist <= b.x1 && o.x1 + dist >= b.x0 && o.y0 - dist <= b.y1 && o.y1 + dist >= b.y0;
+      if (sameShape) return true;
+      // Or the two boxes overlap by most of the smaller one: a piece that
+      // shifted a few pixels still lies mostly over its old self, however
+      // the anti-aliasing split or merged it at this size (the two dots of
+      // ة become one component on a phone). A mark set above the letter
+      // overlaps nothing of the bare drawing.
+      const ix = Math.min(b.x1, o.x1) - Math.max(b.x0, o.x0) + 1;
+      const iy = Math.min(b.y1, o.y1) - Math.max(b.y0, o.y0) + 1;
+      return ix > 0 && iy > 0 && ix * iy >= 0.4 * Math.min(area(b), area(o)) && ratio > 0.33 && ratio < 3;
     }),
   );
   const out = new Uint8ClampedArray(d.length);
@@ -555,7 +587,7 @@ function collisions(stage: Stage, m: Uint8ClampedArray, b: Uint8ClampedArray, sx
  * ظِلࣰّا). What leaves the junction downwards to the left is the lam's foot,
  * black. So the alif is, row by row from the arm's first row, the ink left
  * of the right-hand run, down to the row where the arm's right edge stops
- * advancing towards the lam — either because the two have merged into one
+ * advancing toward the lam — either because the two have merged into one
  * run (then the arm's tip is the merged run's part left of the lam's edge,
  * as long as that run's own left edge still advances) or because the left
  * run has begun to draw back into the foot. Runs are counted on the FULL
@@ -682,10 +714,38 @@ function bounds(stage: Stage, m: Uint8ClampedArray): Box | null {
   return { left: stage.originX + x0 / stage.dpr, top: y0 / stage.dpr, width: (x1 + 1 - x0) / stage.dpr, height: (y1 + 1 - y0) / stage.dpr };
 }
 
+/** Ink of `a` inside columns [x0, x1] (wrap CSS px) and below row `y` (canvas CSS px). */
+function below(stage: Stage, a: Uint8ClampedArray, x0: number, x1: number, y: number): Uint8ClampedArray | null {
+  const pw = Math.ceil(stage.w * stage.dpr);
+  const ph = Math.ceil(stage.h * stage.dpr);
+  const px0 = Math.max(0, Math.floor((x0 - stage.originX) * stage.dpr));
+  const px1 = Math.min(pw - 1, Math.ceil((x1 - stage.originX) * stage.dpr));
+  const py = Math.max(0, Math.round(y * stage.dpr));
+  const out = new Uint8ClampedArray(pw * ph);
+  let any = false;
+  // Every pixel with any ink at all, grown by one device pixel: the stroke's
+  // anti-aliased edge otherwise stays behind as a faint line.
+  for (let yy = py; yy < ph; yy++) {
+    for (let x = px0; x <= px1; x++) {
+      if (!a[yy * pw + x]) continue;
+      any = true;
+      for (let dy = -1; dy <= 1; dy++) {
+        const y2 = yy + dy;
+        if (y2 < py || y2 >= ph) continue;
+        for (let dx = -1; dx <= 1; dx++) {
+          const x2 = x + dx;
+          if (x2 >= 0 && x2 < pw) out[y2 * pw + x2] = 255;
+        }
+      }
+    }
+  }
+  return any ? out : null;
+}
+
 /** `a` without the pixels of `b`. */
 const minus = (a: Uint8ClampedArray, b: Uint8ClampedArray): Uint8ClampedArray => {
   const out = new Uint8ClampedArray(a.length);
-  for (let i = 0; i < a.length; i++) if (a[i] && !b[i]) out[i] = 255;
+  for (let i = 0; i < a.length; i++) if (a[i] && !b[i]) out[i] = a[i];
   return out;
 };
 
@@ -729,15 +789,21 @@ const maskStyle = (m: Mask | undefined): React.CSSProperties =>
         maskSize: m.size,
         maskPosition: m.position,
         maskRepeat: 'no-repeat',
+        // A mask clips to the border box by default, and the waṣl sign over
+        // an initial ٱ overhangs the span's box: it was cut flush at that
+        // edge (ٱنطَلِقُواْ on a phone). The mask image already covers the
+        // margins either side, so let it paint there.
+        maskClip: 'no-clip',
         WebkitMaskImage: m.image,
         WebkitMaskSize: m.size,
         WebkitMaskPosition: m.position,
         WebkitMaskRepeat: 'no-repeat',
+        WebkitMaskClip: 'no-clip',
       }
     : {};
 
-/** How far apart the two strokes of a staggered tanwīn sit (centre to
- *  centre), as a share of one stroke's width: the first stroke's tail runs
+/** How far apart the two strokes of a staggered tanwīn sit (center to
+ *  center), as a share of one stroke's width: the first stroke's tail runs
  *  into the second's head, as in the Mushaf. */
 const STAGGER = 0.7;
 /** Letters whose stem stands LEFT of the body: the Mushaf sets the pair's
@@ -779,9 +845,9 @@ function countExtra(stage: Stage, a: Uint8ClampedArray, b: Uint8ClampedArray, x0
  *
  *  - the active letter's highlight, an absolutely positioned box measured
  *    with the Range API;
- *  - recoloured letter ranges (the ال prefix, the taught letter), each a full
+ *  - recolored letter ranges (the ال prefix, the taught letter), each a full
  *    copy of the same string clipped to that range;
- *  - recoloured or redrawn MARKS and silent letters, each a full copy of the
+ *  - recolored or redrawn MARKS and silent letters, each a full copy of the
  *    same string masked to that thing's own pixels — the same string, so the
  *    shaping is identical and the copy lands exactly on the original; the
  *    base text has those pixels erased, so nothing shows through underneath.
@@ -895,7 +961,7 @@ export function ArabicWord({
     let nextBase: Mask | null = null;
 
     // The ال prefix goes under everything else. A silent sun lam sits INSIDE
-    // it (ٱلنَّاسِ), and the grey must win there — this was the order before
+    // it (ٱلنَّاسِ), and the gray must win there — this was the order before
     // the masks too: prefix, then silent, then the marked letter on top.
     if (prefixClusters > 0) {
       const clip = clipTo(0, prefixClusters);
@@ -924,7 +990,7 @@ export function ArabicWord({
       if (base) {
         const nasal = unreadFinalNasal(text);
         const erase: Uint8ClampedArray[] = [];
-        const grey: Uint8ClampedArray[] = [];
+        const gray: Uint8ClampedArray[] = [];
         const boxOf = (i: number) => measure(i, i + 1);
         const window_ = (b: Box) => [b.left - fontPx * 0.5, b.left + b.width + fontPx * 0.5] as const;
         /** The pixels of the marks `re` takes off cluster i, and the drawing without them. */
@@ -945,6 +1011,27 @@ export function ArabicWord({
 
         clusters.forEach((c, i) => {
           const isFinalNasal = nasal?.index === i;
+
+          // A final مـ carrying a kasra pair or a low iqlāb mīm (لِقَوۡمࣲ,
+          // مُّسۡتَقِيمࣲ, كِرَامِۭ): the font hangs a long straight descender
+          // from its loop, which pushed the pair out from under the letter
+          // and the small mīm far from its kasra. The Mushaf's final mīm ends
+          // in a short tail, with the marks set beneath the loop. So the
+          // descender is cut `MEEM_TAIL` below the baseline — erased, not
+          // grayed — and the collision tests below see the letter without it.
+          let cut: Uint8ClampedArray | null = null;
+          const endsWord = c.end >= displayText.length || displayText[c.end] === ' ';
+          if (endsWord && lettersOf(c.text)[0] === 'م' && (c.text.includes(STAGGERED_KASRA) || KASRA_MEEM_RE.test(c.text))) {
+            const b = boxOf(i);
+            const bare = b && drawAlpha(stage, withoutMarks(displayText, c, MARKS_RE));
+            if (b && bare) {
+              cut = below(stage, bare, b.left - fontPx * 0.1, b.left + b.width + fontPx * 0.1, stage.baseline + fontPx * MEEM_TAIL);
+              if (cut) erase.push(cut);
+            }
+          }
+          KASRA_MEEM_RE.lastIndex = 0;
+          /** The drawing `a` with the cut descender taken out. */
+          const sansTail = (a: Uint8ClampedArray) => (cut ? minus(a, cut) : a);
 
           // A staggered tanwīn: erase the single vowel, draw it twice.
           const staggered = c.text.match(STAGGERED_RE);
@@ -971,16 +1058,17 @@ export function ArabicWord({
               // Where each stroke goes, from the single mark's place (CSS px).
               // The Mushaf steps the pair DOWN TO THE LEFT: the second stroke
               // about 0.6 of the mark's width left of the first and 0.75 below
-              // it for a fatḥa (measured on عَذَابࣰا and قَوۡلࣰا), a shallower
-              // 0.55 / 0.45 for a kasra (بِعَذَابࣲ); ḍammas sit side by side. The
-              // stroke nearer the letter keeps the mark's own height — the lower
-              // one of a fatḥa pair, the upper one of a kasra pair.
+              // it for a fatḥa (measured on عَذَابࣰا and قَوۡلࣰا), a tighter
+              // 0.35 / 0.45 for a kasra, the strokes overlapping (لِقَوۡمࣲ,
+              // مُّسۡتَقِيمࣲ); ḍammas sit side by side. The stroke nearer the
+              // letter keeps the mark's own height — the lower one of a fatḥa
+              // pair, the upper one of a kasra pair.
               const w = bb.width;
               const strokes =
                 vowel === FATHA
                   ? [{ x: 0.3 * w, y: -0.75 * w }, { x: -0.3 * w, y: 0 }]
                   : vowel === KASRA
-                    ? [{ x: 0.275 * w, y: 0 }, { x: -0.275 * w, y: 0.45 * w }]
+                    ? [{ x: 0.175 * w, y: 0 }, { x: -0.175 * w, y: 0.45 * w }]
                     : [{ x: (w * STAGGER) / 2, y: 0 }, { x: -(w * STAGGER) / 2, y: 0 }];
               const [s1, s2] = strokes;
               // Except over ط ظ, where the first stroke goes above the stem and
@@ -998,14 +1086,14 @@ export function ArabicWord({
                   if (bottom > clear) lift = clear - bottom;
                 }
               }
-              // A stroke must not run into a neighbour's ink: shifted out from
+              // A stroke must not run into a neighbor's ink: shifted out from
               // under the single mark, the kasra pair of رَّسُولࣲ met the tail
               // of the و. Slide both strokes away from the side that collides,
               // a device pixel at a time, as far as 0.15 em, keeping the best.
               let slide = 0;
               {
                 const hit = (s: { x: number; y: number }, d: number) =>
-                  collisions(stage, m, pair.without, devPx(shift + s.x + d), devPx(lift + s.y));
+                  collisions(stage, m, sansTail(pair.without), devPx(shift + s.x + d), devPx(lift + s.y));
                 const hits = (d: number) => hit(s1, d) + hit(s2, d);
                 let best = hits(0);
                 if (best > 0) {
@@ -1026,13 +1114,13 @@ export function ArabicWord({
                 // would still land on a letter once shifted.
                 const dx = shift + slide + s.x;
                 const dy = lift + s.y;
-                const mask = toMask(stage, offInk(stage, m, pair.without, devPx(dx), devPx(dy)), 0, 0);
+                const mask = toMask(stage, offInk(stage, m, sansTail(pair.without), devPx(dx), devPx(dy)), 0, 0);
                 if (mask) next.push({ className: cls, mask, dx, dy: dy || undefined });
               }
             }
           }
 
-          // A low iqlāb mīm: the kasra stays (grey if final); the مـ is drawn.
+          // A low iqlāb mīm: the kasra stays (gray if final); the مـ is drawn.
           if (KASRA_MEEM_RE.test(c.text)) {
             KASRA_MEEM_RE.lastIndex = 0;
             const m = markPixels(i, /ِ/g);
@@ -1040,25 +1128,26 @@ export function ArabicWord({
             if (m && bb) {
               if (isFinalNasal) {
                 erase.push(m);
-                grey.push(m);
+                gray.push(m);
               }
-              // The Mushaf sets the small م to the LEFT of the kasra, a gap of
-              // about 0.6 of the kasra's length between them, its head level
-              // with the kasra and its tail reaching about a kasra's length
-              // below it (measured on كِرَامِۭ بَرَرَةٍ).
+              // The Mushaf sets the small م to the LEFT of the kasra, close —
+              // about a third of the kasra's length between them — its head
+              // level with the kasra and its tail reaching about a kasra's
+              // length below it (measured on كِرَامِۭ بَرَرَةٍ).
               const size = fontPx * MINI_SIZE;
               const mini = miniMetrics(`${cs.fontStyle} ${cs.fontWeight} ${size}px ${cs.fontFamily}`);
-              if (mini) nextMeems.push(placeMini(mini, bb.left - 0.55 * bb.width, bb.top + fontPx * 0.02, size, isFinalNasal, MINI_KEEP));
+              if (mini) nextMeems.push(placeMini(mini, bb.left - 0.35 * bb.width, bb.top + fontPx * 0.02, size, isFinalNasal, MINI_KEEP));
             }
           }
           KASRA_MEEM_RE.lastIndex = 0;
 
           // A small high mīm on a ḍamma (صُمُّۢ بُكۡمٌ, عَذَابٌ أَلِيمُۢ): the font
           // sets a flat small mīm beside the ḍamma's shadda; the Mushaf sets
-          // a small م to the LEFT of the ḍamma, its head's top above the
-          // ḍamma's, its tail hanging down past the shadda (measured on
-          // صُمُّۢ). So the font's mīm is erased and the small م drawn. On a
-          // fatḥa the font's glyph stands.
+          // a small م close to the LEFT of the ḍamma, its head level with the
+          // ḍamma's top, its tail hanging down beside the shadda (صُمُّۢ; the
+          // author asked for it smaller, lower and nearer than the first
+          // reading of the page gave). So the font's mīm is erased and the
+          // small م drawn. On a fatḥa the font's glyph stands.
           let dammaMeem: Uint8ClampedArray | null = null;
           if (c.text.includes(DAMMA) && c.text.includes(SMALL_HIGH_MEEM) && !KASRA_MEEM_RE.test(c.text)) {
             KASRA_MEEM_RE.lastIndex = 0;
@@ -1090,20 +1179,20 @@ export function ArabicWord({
                   const db = toBox(stage, damma.box);
                   const size = fontPx * MINI_SIZE_DAMMA;
                   const mini = miniMetrics(`${cs.fontStyle} ${cs.fontWeight} ${size}px ${cs.fontFamily}`);
-                  if (mini) nextMeems.push(placeMini(mini, db.left - 0.3 * db.width, db.top - 0.4 * db.height, size, isFinalNasal));
+                  if (mini) nextMeems.push(placeMini(mini, db.left - 0.15 * db.width, db.top + 0.1 * db.height, size, isFinalNasal));
                 }
               }
             }
           }
           KASRA_MEEM_RE.lastIndex = 0;
 
-          // A final iqlāb mīm on a fatḥa or ḍamma: the font's own glyph, greyed
+          // A final iqlāb mīm on a fatḥa or ḍamma: the font's own glyph, grayed
           // — vowel and mīm together, as the difference against the BARE
           // letter. The font composes ة + fatḥa + mīm into one glyph that sets
           // the ة's dots a few pixels from where the bare ة has them, so the
           // difference also holds the moved dots: a piece in each direction,
           // close together, which `dropMoved` takes out. (Removing the mīm
-          // alone compared the composite with the plain ةَ and greyed the dots
+          // alone compared the composite with the plain ةَ and grayed the dots
           // of زَكِيَّةَۢ.)
           if (isFinalNasal && !staggered && c.text.includes(SMALL_HIGH_MEEM) && !KASRA_MEEM_RE.test(c.text)) {
             const b = boxOf(i);
@@ -1115,21 +1204,21 @@ export function ArabicWord({
               if (d) {
                 const m = dilate(stage, r ? dropMoved(stage, d, r, Math.round(fontPx * 0.1 * stage.dpr)) : d, bare);
                 erase.push(m);
-                // On a ḍamma the font's mīm is erased and redrawn, not greyed in place.
-                grey.push(dammaMeem ? minus(m, dammaMeem) : m);
+                // On a ḍamma the font's mīm is erased and redrawn, not grayed in place.
+                gray.push(dammaMeem ? minus(m, dammaMeem) : m);
               }
             }
           }
           KASRA_MEEM_RE.lastIndex = 0;
 
           // The alif fused into a lam-alif ligature after a tanwīn fatḥ, when a
-          // word follows: silent, and half of one glyph — its left half is greyed.
+          // word follows: silent, and half of one glyph — its left half is grayed.
           if (isTanwinLigature(clusters, i) && i < clusters.length - 1) {
             const b = boxOf(i);
             if (b) {
               // The ligature's own ink, marks off, and the alif told from the
               // lam by the strokes' geometry (`ligatureAlif`). A straight cut
-              // at the middle greyed the alif's head and the lam's foot and
+              // at the middle grayed the alif's head and the lam's foot and
               // left the alif's arm black.
               const letters = displayText.slice(0, c.start) + displayText.slice(c.start, c.end).replace(MARKS_RE, '');
               const [, without] = letterPair(displayText, clusters, i);
@@ -1141,13 +1230,13 @@ export function ArabicWord({
               const m = split && ww ? dilate(stage, split, ww) : leftHalfMask(stage, base, b, 0.5);
               if (m) {
                 erase.push(m);
-                grey.push(m);
+                gray.push(m);
               }
             }
           }
 
-          // A silent letter: greyed to its own pixels, not to a box that its
-          // neighbours' ink runs into (the ع before a tanwīn alif).
+          // A silent letter: grayed to its own pixels, not to a box that its
+          // neighbors' ink runs into (the ع before a tanwīn alif).
           if (silentClusters.includes(i)) {
             const b = boxOf(i);
             const [withLetter, without] = letterPair(displayText, clusters, i);
@@ -1198,7 +1287,7 @@ export function ArabicWord({
                 // plus its own marks (a zero) and, for ٱ, the waṣl sign — each
                 // found as marks are, by the difference its removal makes,
                 // never as "whatever stands above the stem": that was the
-                // neighbour's fatḥa leaning over the alif of فَٱنقَلَبُواْ.
+                // neighbor's fatḥa leaning over the alif of فَٱنقَلَبُواْ.
                 const band = raw && stemBand(stage, raw, 0.35);
                 if (raw && band) {
                   const parts = [inBand(stage, raw, band), bandInk(stage, base, band)];
@@ -1220,12 +1309,12 @@ export function ArabicWord({
               // The prefix drawing must agree with the word itself in that
               // window. When the letter is part of a ligature the font forms
               // only with what FOLLOWS (the لله of بِٱللَّهِ), it does not, and the
-              // mask would grey the wrong pixels — fall back to a clipped box.
+              // mask would gray the wrong pixels — fall back to a clipped box.
               const disagree = countExtra(stage, aa, base, x0, x1);
               const size = m ? m.reduce((n, v) => n + (v ? 1 : 0), 0) : 0;
               if (m && disagree <= size * 0.05) {
                 erase.push(m);
-                grey.push(m);
+                gray.push(m);
               } else {
                 const clip = clipTo(i, i + 1);
                 if (clip) next.push({ className: 'layer-silent', clip });
@@ -1237,15 +1326,15 @@ export function ArabicWord({
         const last = clusters.length - 1;
         if (dimFinalMark) {
           const m = markPixels(last, FINAL_VOWEL_RE);
-          if (m) { erase.push(m); grey.push(m); }
+          if (m) { erase.push(m); gray.push(m); }
         }
         if (unreadFinalMaddah(text)) {
           const m = markPixels(last, MADDAH_RE);
-          if (m) { erase.push(m); grey.push(m); }
+          if (m) { erase.push(m); gray.push(m); }
         }
 
-        if (grey.length) {
-          const mask = toMask(stage, union(grey), 0, 0);
+        if (gray.length) {
+          const mask = toMask(stage, union(gray), 0, 0);
           // Under the strokes and the clipped fallbacks, over the prefix.
           if (mask) next.splice(underPixels, 0, { className: 'layer-silent', mask });
         }
@@ -1290,7 +1379,7 @@ export function ArabicWord({
    * card.
    *
    * Wrapping would be the obvious answer and is the wrong one here: every
-   * highlight and every recoloured layer is measured off one bounding rect,
+   * highlight and every recolored layer is measured off one bounding rect,
    * so a phrase broken across two lines would clip the wrong region on both.
    * Staying on one line and scaling the type keeps that geometry exactly as
    * it was. The floor is 0.55 — below that the marks stop being legible, and

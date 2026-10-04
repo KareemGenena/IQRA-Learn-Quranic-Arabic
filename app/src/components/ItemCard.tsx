@@ -100,7 +100,7 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }
         <span className="word-num">{displayNo}</span>
         {!hideBadges &&
           item.badges.map((b) => (
-            // A ghunna badge wears the ghunna highlight's colour, so the chip
+            // A ghunna badge wears the ghunna highlight's color, so the chip
             // and the moment in the word read as the same thing.
             <span key={b} className={`type-badge${/ghunna|ikhfa/i.test(b) ? ' badge-ghunna' : ''}`}>
               {b}

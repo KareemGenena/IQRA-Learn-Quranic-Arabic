@@ -14,7 +14,7 @@ import type { Lesson } from '../types';
  * mouth is lit. The cards turn themselves; nothing is scheduled.
  *
  * The letters on a card are STANDALONE and do not join, so each can be its
- * own span with its own colour. The never-split-a-word rule protects cursive
+ * own span with its own color. The never-split-a-word rule protects cursive
  * joining, and there is none here to protect.
  *
  * Until the song is calibrated by tapping along, the automatic timings —

@@ -144,7 +144,7 @@ const SHADDA = '\u0651';
  *     follows — عَذَابًا مُّهِينًا is read ʿadhāban-mmuhīnan; the alif sounds
  *     only at a stop, as the ʿiwaḍ alif (see `isTanwinAlif`).
  *
- * Silent letters are greyed by `ArabicWord` and given no time by `timing.ts`,
+ * Silent letters are grayed by `ArabicWord` and given no time by `timing.ts`,
  * so the highlight steps straight over them.
  */
 const MADDAH = 'ٓ';
@@ -155,7 +155,7 @@ const SHORT_VOWEL_RE = /[ً-ِْۡ]/;
  * A maddah on the LAST letter of a text, when that letter is a long vowel,
  * is a madd munfasil whose hamza opens the next word — تَأۡمُرُوٓنِّىٓ أَعۡبُدُ.
  * Recorded alone, there is no next word for it to reach, so the sign stands
- * on the page unread. `ArabicWord` greys it and `timing.ts` gives the letter
+ * on the page unread. `ArabicWord` grays it and `timing.ts` gives the letter
  * a natural madd. Derived from the text, like silence, so no lesson has to
  * declare it. A letter NAME carrying the maddah (the صٓ of كٓهيعٓصٓ) is a
  * consonant, not a long vowel, and is not this.
@@ -193,7 +193,7 @@ export function isTanwinAlif(clusters: LetterCluster[], i: number): boolean {
  * A lam-alif ligature whose lam carries a tanwīn fatḥ — قَوۡلࣰا, عَمَلࣰا, ظِلࣰّا.
  * The fused alif is the tanwīn alif: silent when the reading carries on, but
  * it is half of one glyph, so it is never a cluster of its own. `timing.ts`
- * gives that half no time when a word follows; `ArabicWord` greys the left
+ * gives that half no time when a word follows; `ArabicWord` grays the left
  * half of the ligature's ink.
  */
 export function isTanwinLigature(clusters: LetterCluster[], i: number): boolean {
@@ -240,7 +240,7 @@ const SHORT_VOWEL_ONLY_RE = /[َُِ]/;
  * text does not reach. The Mushaf shapes a tanwīn for the word that follows
  * in the āyah — staggered before a letter of idghām or ikhfāʾ, a small mīm
  * before ب — and a card that stops on that word shows the shape but does not
- * perform the rule. So the mark is greyed: the staggered tanwīn, or the vowel
+ * perform the rule. So the mark is grayed: the staggered tanwīn, or the vowel
  * and small mīm of the iqlāb form. Found on the last cluster, or on the
  * cluster before a tanwīn alif (عَذَابࣰا). A stacked tanwīn is left alone.
  */

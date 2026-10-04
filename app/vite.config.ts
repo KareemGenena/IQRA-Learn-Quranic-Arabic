@@ -76,6 +76,10 @@ export default defineConfig({
       name: 'iqra-sw-cleanup',
       generateBundle() {
         this.emitFile({ type: 'asset', fileName: 'sw-cleanup.js', source: SW_CLEANUP });
+        // The build the server is serving, for main.tsx's version poll. Not
+        // precached (see globIgnores) and served no-cache (firebase.json), or
+        // it would answer with the very build it is meant to supersede.
+        this.emitFile({ type: 'asset', fileName: 'version.json', source: JSON.stringify({ build: BUILD_ID }) });
       },
     },
     VitePWA({
@@ -109,7 +113,7 @@ export default defineConfig({
         // Pictures are left out for the same reason clips are: the precache
         // install is all-or-nothing, and IQRA Kids adds one picture per letter
         // — a library that grows with the curriculum. The shell must not.
-        globIgnores: ['**/audio/**', '**/images/**'],
+        globIgnores: ['**/audio/**', '**/images/**', '**/version.json'],
         cleanupOutdatedCaches: true,
         // `cleanupOutdatedCaches` covers the precache only; the audio caches of
         // earlier AUDIO_VERSIONs are removed by this script.

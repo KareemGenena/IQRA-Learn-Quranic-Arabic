@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { ArabicWord } from '../components/ArabicWord';
 import { loadLesson, toItems } from '../lib/lessons';
 import { splitClusters } from '../lib/graphemes';
@@ -11,7 +11,7 @@ import type { Lesson, LessonItem } from '../types';
  * headless Chrome so every mark on every card can be checked without paging
  * through the lesson by hand.
  */
-export function ProofPage({ lessonId, from, to }: { lessonId: number; from: number; to: number }) {
+export function ProofPage({ lessonId, from, to, px }: { lessonId: number; from: number; to: number; px?: number }) {
   const [lesson, setLesson] = useState<Lesson | null>(null);
   useEffect(() => {
     void loadLesson(lessonId).then(setLesson);
@@ -19,7 +19,7 @@ export function ProofPage({ lessonId, from, to }: { lessonId: number; from: numb
   if (!lesson) return <p className="loading">…</p>;
   const items = toItems(lesson).filter((it) => it.id >= from && it.id <= to);
   return (
-    <main className="proof">
+    <main className="proof" style={px ? ({ '--proof-px': `${px}px` } as CSSProperties) : undefined}>
       {items.map((item: LessonItem) => (
         <div key={item.id} className="proof-row">
           <span className="proof-id">{item.id}</span>

@@ -55,7 +55,7 @@ export const PASSCODE_MAX = 60;
  * `https:` only, and parsed rather than pattern-matched. A teacher pasting from
  * a mail client can easily bring along a `javascript:` or `data:` URL, and the
  * page renders these as links other people click. The rules refuse anything
- * that is not https as well, so this is the message rather than the defence.
+ * that is not https as well, so this is the message rather than the defense.
  */
 export function tidyUrl(raw: string): string | null {
   const text = raw.trim();

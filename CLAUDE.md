@@ -1094,34 +1094,71 @@ draws it: `node scripts/snap-proof.mjs 7 <dir>` with the dev server up, then
 read the PNGs (section 3, "The proof sheet"). Publish from `#/admin`
 when reviewed.
 
-**Awaiting the author's approval (2026-10-03, live as draft at 1a3aec2).**
-The author reviewed lesson 7 against the Mushaf (screenshots, Mushaf first,
-app second) and asked for twelve changes; all are built, verified by zoom at
-2× on cards 13, 58, 59, 61, 63, 65, 75, 122, 138, 141, 147, 175, 177, and
-deployed. **The rules behind them are NOT yet written into section 3 — the
-author asked for that only once the result is approved.** When it is, record
-there: the staggered fatḥa pair (upper stroke to the RIGHT of the lower,
-strokes at (+0.3w, −0.75w) and (−0.3w, 0) of the single mark), the kasra
-pair (lower stroke to the LEFT, (+0.275w, 0) and (−0.275w, +0.45w)), the
-ḍamma pair level; the small iqlāb mīm as the font's isolated م at 0.5 em
-beside its mark, placed by its INK (`placeMini`): under a kasra 0.55 kasra
-to its left, head level with it, tail cut at 0.75 of the glyph
-(`MINI_KEEP`) — the Mushaf's short tail, not the font's long stem; beside a
-ḍamma at 0.575 em, head top 0.4 ḍamma-heights above the ḍamma's top, 0.3
-ḍamma-widths to its left, full tail, the font's own flat mīm erased (it is
-the LEFTMOST mark of the cluster — the topmost is the ḍamma; removing the
-mīm alone moved the ḍamma into its place and `dropMoved` then dropped it);
-and the badge rules in `make-lesson7.mjs` (no Ghunna chip in the idghām-
-with-ghunna section, Heavy/Light Ghunna by the ikhfāʾ letter — ص ض ط ق ظ
-heavy — no bare Tanwīn beside Tanwīn Mutatābiʿ, "Iqlāb" never "Iqlāb
-inside"). The author also said: where the Word skill
-(`quranic-word-tables-v3`) and this file disagree, THIS FILE wins — the
-skill describes what Word can draw, not what the app draws. Two of the
-author's screenshots (the clipped waṣl sign on ٱنطَلِقُواْ, card 138, and a
-stem-bearing low mīm on كِرَامِۭ) could not be reproduced from the deployed
-code of 27f6192 and were most likely a stale copy on the author's device;
-both cards are correct at 2× now, so check them on the author's own screen
-after this deploy before looking further.
+**Awaiting the author's approval (2026-10-04).** The author reviewed
+lesson 7 against the Mushaf twice (screenshots, Mushaf first, app second);
+everything asked for is built and deployed. **The rules behind it are NOT
+yet written into section 3 — the author asked for that only once the result
+is approved.** When it is, record there:
+- The staggered fatḥa pair: upper stroke to the RIGHT of the lower, strokes
+  at (+0.3w, −0.75w) and (−0.3w, 0) of the single mark, w its width — the
+  Mushaf's own offsets (36/37). The kasra pair: lower stroke to the LEFT,
+  (+0.175w, 0) and (−0.175w, +0.45w), the strokes overlapping — the first
+  pass had 0.55w between them and the author saw the pair reach under the
+  letter before (لِقَوۡمࣲ). Ḍamma pair level.
+- The small iqlāb mīm is the font's isolated م, placed by its INK
+  (`placeMini`), never by its advance. Under a kasra: 0.5 em, 0.35 kasra to
+  the kasra's left, head level with it, tail cut at 0.7 of the glyph
+  (`MINI_KEEP`, a `clip-path`) — the Mushaf's short tail. Beside a ḍamma:
+  0.45 em, head level with the ḍamma's top, 0.15 ḍamma-widths to its left,
+  full tail hanging beside the shadda (صُمُّۢ; the first pass sat it higher,
+  further left and larger and the author sent it back). The font's own flat
+  mīm is erased: it is the LEFTMOST mark of the cluster, the topmost being
+  the ḍamma — removing the mīm alone moved the ḍamma into its place and
+  `dropMoved` dropped it as "moved".
+- **A final mīm's descender is cut** (`MEEM_TAIL`, 0.1 em below the
+  baseline, erased not greyed, grown over its anti-aliased edge) when a
+  kasra pair or a low mīm sits under the letter — لِقَوۡمࣲ, مُّسۡتَقِيمࣲ,
+  كِرَامِۭ. The font's long straight descender pushed the pair out from under
+  the loop and the small mīm away from its kasra; the Mushaf's final mīm
+  ends in a short tail with the marks beneath the loop, and the author asked
+  twice for "the stick" to be cut. The collision and `offInk` tests see the
+  letter without it (`sansTail`). A stacked kasratān (أَثِيمٍ) leaves the
+  descender alone.
+- **Masks are `mask-clip: no-clip`.** A mask clips to the border box by
+  default, and the waṣl sign over an initial ٱ overhangs the span's box: it
+  was cut flush at that edge on the author's phone (ٱنطَلِقُواْ) and in
+  headless Chrome at 38 px, and not at the proof page's 64 px.
+- `dropMoved` also drops a piece whose box overlaps a counterpart's by 40 %
+  of the smaller — the two dots of ة merge into one component at phone
+  sizes and failed the same-shape test, so they were greyed beside the
+  black ones (نَفۡسࣰا زَكِيَّةَۢ on the phone, never at 64 px).
+- **A silent alif's foot is CONTIGUOUS ink, and its head bevels left.**
+  `bandInk` used to take every pixel of the drawing in the stem band's
+  columns from the stem's top down, which greyed the tip of a neighbour's
+  tail sweeping under the alif (the و of وَٱنۡحَرۡ, the ر of نَارًا and
+  غَفُورࣰا — five cards, found only at phone scale by the review
+  `wf_96410d8e-63f`). It now stops at the first blank row. And in the top
+  quarter of the stem it takes the ink running LEFT out of the band — the
+  final alif's head bevel, too short a run for the band, which stayed black
+  on the grey letter (سِرَاعࣰا and eight more).
+- **Verify at phone scale, not only at 2×.** `#/proof/N?from=&to=&px=38`
+  sets the proof page's font size; headless Chrome at
+  `--force-device-scale-factor=3 --window-size=420,190` is a phone. Three
+  of this round's defects existed only there.
+- Badges (`make-lesson7.mjs`): no Ghunna chip in the idghām-with-ghunna
+  section; Heavy / Light Ghunna by the ikhfāʾ letter (ص ض ط ق ظ heavy), and
+  the hint says so plainly; no bare Tanwīn beside Tanwīn Mutatābiʿ; "Iqlāb",
+  never "Iqlāb inside".
+- **US spelling everywhere the learner reads, and in the code too** (color,
+  gray, center, neighbor…); the author asked for it systematically.
+- **`version.json`** is written at build, left out of the precache and
+  served `no-store`; `main.tsx` polls it at launch, on focus and every 15
+  minutes and, if the server is ahead of the page, asks the worker to update
+  and reloads once per build after 12 s. The author's phone sat on the 27
+  September build through several refreshes.
+- Where the Word skill (`quranic-word-tables-v3`) and this file disagree,
+  THIS FILE wins — the skill describes what Word can draw, not what the app
+  draws.
 
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.

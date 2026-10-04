@@ -30,7 +30,7 @@ export interface Account {
   /**
    * The name other people may see. Never an email address.
    *
-   * `name` falls back to the email so a signed-in person recognises their own
+   * `name` falls back to the email so a signed-in person recognizes their own
    * account, which is fine on their own screen and a leak anywhere else: an
    * empty display name once put the teacher's email in front of every student
    * who joined. Anything shown to somebody else uses this, and an empty string

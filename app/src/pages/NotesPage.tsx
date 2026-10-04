@@ -565,7 +565,7 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
 
         {mode === 'pen' ? (
           <>
-            <ToolPopover icon={<PenSettingsIcon color={color} />} label="Stylus colour and thickness">
+            <ToolPopover icon={<PenSettingsIcon color={color} />} label="Stylus color and thickness">
               {() => (
                 <>
                   <div className="popover-row">
@@ -576,7 +576,7 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
                         className={`swatch ${c === color ? 'active' : ''}`}
                         style={{ background: c }}
                         title={c}
-                        aria-label={`Stylus colour ${c}`}
+                        aria-label={`Stylus color ${c}`}
                         onClick={() => setColor(c)}
                       />
                     ))}
@@ -610,7 +610,7 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
           </>
         ) : (
           <>
-            <ToolPopover icon={<TextStyleIcon color={color} />} label="Text colour and size">
+            <ToolPopover icon={<TextStyleIcon color={color} />} label="Text color and size">
               {() => (
                 <>
                   <div className="popover-row">
@@ -621,7 +621,7 @@ export function NotesPage({ lesson, account }: { lesson: Lesson; account: Accoun
                         className="swatch"
                         style={{ background: c }}
                         title={c}
-                        aria-label={`Text colour ${c}`}
+                        aria-label={`Text color ${c}`}
                         onClick={() => {
                           setColor(c);
                           styleSelection('foreColor', c);

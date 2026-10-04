@@ -40,7 +40,7 @@ export function StylusIcon() {
   );
 }
 
-/** The pen's own settings: a nib with a coloured stroke coming off the tip. */
+/** The pen's own settings: a nib with a colored stroke coming off the tip. */
 export function PenSettingsIcon({ color }: { color: string }) {
   return (
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
@@ -70,7 +70,7 @@ export function UndoIcon() {
   );
 }
 
-/** Text colour and size. */
+/** Text color and size. */
 export function TextStyleIcon({ color }: { color: string }) {
   return (
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">

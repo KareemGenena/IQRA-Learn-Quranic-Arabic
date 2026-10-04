@@ -1,5 +1,5 @@
 /* KFGQPC Uthmanic Script HAFS — the Madinah Mushaf face. Served as the
-   original, unmodified file: its licence forbids modification, which rules
+   original, unmodified file: its license forbids modification, which rules
    out subsetting or WOFF2 conversion. See public/fonts/LICENSE.txt. */
 @font-face {
   font-family: 'Uthmanic Hafs';
@@ -257,7 +257,7 @@ body {
   unicode-bidi: plaintext;
 }
 
-/* Recoloured copies of the same string, clipped to one letter range.
+/* Recolored copies of the same string, clipped to one letter range.
    Identical text means identical shaping, so joining is never broken. */
 .arabic-layer {
   position: absolute;
@@ -279,13 +279,13 @@ body {
    the cluster's own; the offsets are in em so they scale with --fit. */
 /* One stroke of a staggered tanwīn: the whole string, masked to that vowel's
    pixels and shifted half a stroke sideways by ArabicWord. Two of them make
-   the pair; `layer-silent` on top greys a final one. */
+   the pair; `layer-silent` on top grays a final one. */
 .layer-stroke {
   z-index: 2;
 }
 
 /* The small مـ of a low iqlāb mīm, drawn under the kasra at ~0.42 em; its
-   `left` is the kasra's centre, hence the translate. */
+   `left` is the kasra's center, hence the translate. */
 .tanwin-meem {
   position: absolute;
   z-index: 2;
@@ -303,8 +303,8 @@ body {
   color: var(--silent);
 }
 
-/* The word in its own colour again, laid over a silent layer so that only
-   what this copy leaves out — a final vowel — shows through grey. */
+/* The word in its own color again, laid over a silent layer so that only
+   what this copy leaves out — a final vowel — shows through gray. */
 /* ---------- the proof sheet (dev only, see ProofPage.tsx) ---------- */
 
 .proof {
@@ -341,7 +341,13 @@ body {
 }
 
 .proof .arabic-text {
-  font-size: 64px;
+  font-size: var(--proof-px, 64px);
+}
+
+/* The wrap scales with the text (its padding is in em), as on a lesson card;
+   without px= it keeps the card's own size, so older proof renders compare. */
+.proof .arabic-word {
+  font-size: var(--proof-px, calc(clamp(38px, 5vw, 52px) * var(--fit, 1)));
 }
 
 .letter-highlight {
@@ -356,7 +362,7 @@ body {
 }
 
 /* The hum that opens a letter (ikhfāʾ, idghām, iqlāb, the doubled نّ / مّ):
-   same box, different colour, then the letter's own green takes over. */
+   same box, different color, then the letter's own green takes over. */
 .letter-highlight.phase-ghunna {
   background: var(--highlight-ghunna);
   border-bottom-color: var(--highlight-ghunna-border);
@@ -932,7 +938,7 @@ body {
 
 /* A single thin row of icons — no labels, no stacked rows of controls. */
 .notes-toolbar {
-  /* Never scrolls away: changing colour should not mean scrolling up. */
+  /* Never scrolls away: changing color should not mean scrolling up. */
   position: sticky;
   top: 0;
   z-index: 40;
@@ -1704,7 +1710,7 @@ body {
 }
 
 /* The teacher's typed notes, marked as not yours by a rule down the side
-   rather than by being greyed out — they still have to be easy to read. */
+   rather than by being grayed out — they still have to be easy to read. */
 .note-editor.from-teacher {
   border-left: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
   padding-left: 10px;
@@ -2805,7 +2811,7 @@ kbd {
   border-color: var(--highlight-border);
 }
 
-/* lit by the forms line saying this sound — the app's one highlight colour */
+/* lit by the forms line saying this sound — the app's one highlight color */
 .small-form.lit {
   background: var(--highlight);
   border-color: var(--highlight-border);

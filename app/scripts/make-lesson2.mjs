@@ -173,7 +173,7 @@ const words = entries.map((e, i) => {
     id,
     type: e.type,
     meaning: e.meaning,
-    // How many leading characters are the ال prefix, for colouring:
+    // How many leading characters are the ال prefix, for coloring:
     // shamsiyya ا+ل = 2 (the shadda belongs to the root letter),
     // qamariyya ا+ل+sukoon = 3.
     alLength,

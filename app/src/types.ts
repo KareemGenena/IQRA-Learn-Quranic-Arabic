@@ -54,7 +54,7 @@ export interface LetterWord {
    *  `text`/`audio` — a contrast pair, or a word said alone then after وَ
    *  and ثُمَّ. */
   forms?: { text: string; audio: string; timings: Timings }[];
-  /** Which lam rule applies, for the silent-letter colouring. */
+  /** Which lam rule applies, for the silent-letter coloring. */
   lam?: LamType;
   /** A picture that belongs with this card — a waveform, a diagram. */
   image?: string;
@@ -67,7 +67,7 @@ export interface LetterWord {
   waqf?: boolean;
   /** How long that madd is held at the stop — 2, 4 or 6. */
   waqfMadd?: number;
-  /** Grey the final letter's vowel: written, and at the stop not said. */
+  /** Gray the final letter's vowel: written, and at the stop not said. */
   dimFinalMark?: boolean;
 
   // ── IQRA Kids letter cards (Design/iqra-kids.md) ──────────────────────
@@ -156,9 +156,9 @@ export interface Playable {
   /** Cluster indices that are written but NOT pronounced (the silent
    *  shamsiyya lam). They are never highlighted and get no time. */
   silentClusters: number[];
-  /** Leading clusters that form the ال prefix, coloured apart. 0 = none. */
+  /** Leading clusters that form the ال prefix, colored apart. 0 = none. */
   prefixClusters: number;
-  /** A single cluster to colour as the letter being taught (lesson 3). */
+  /** A single cluster to color as the letter being taught (lesson 3). */
   highlightCluster?: number;
   /** Set for surah-opening disconnected letters (الٓمٓ، طه) — each character
    *  is read as its full letter name, which changes how long it is held. */
@@ -166,6 +166,6 @@ export interface Playable {
   /** The clip ends at a stop — see WeightOptions.waqf. */
   waqf?: boolean;
   waqfMadd?: number;
-  /** Grey the final letter's vowel — the stop that the clip makes. */
+  /** Gray the final letter's vowel — the stop that the clip makes. */
   dimFinalMark?: boolean;
 }

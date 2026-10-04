@@ -86,7 +86,7 @@ const SECTIONS = [
     id: 'ikhfa',
     title: 'Nūn Sākinah and Tanwīn — Ikhfāʾ Ḥaqīqī',
     titleArabic: 'النون الساكنة والتنوين — الإخفاء الحقيقي',
-    hint: 'Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The ghunna takes the colour of that letter: heavy before ص ض ط ق ظ, light before the rest. The tanwīn is written staggered.',
+    hint: 'Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The ghunna is heavy before ص ض ط ق ظ and light before the rest. The tanwīn is written staggered.',
     rule: 'Ikhfāʾ',
     ghunna: true,
     tanwin: 'Mutatābiʿ',
@@ -155,7 +155,7 @@ function reshape(chars, i, shape) {
  * next letter is in the text; for the card's LAST word it is read from the
  * Mushaf (`letterAfter`), because the Mushaf writes the shape for the word
  * that follows in the āyah even though the recording stops here — the app
- * then greys that final mark (`unreadFinalNasal`). The sheet already writes
+ * then grays that final mark (`unreadFinalNasal`). The sheet already writes
  * the small mīm before ب inside a card; a plain tanwīn there is reported.
  */
 function shapeTanween(text, where, sura, aya) {
@@ -213,7 +213,7 @@ const lowMeem = (s) => s.replace(/ۭ/g, SMALL_HIGH_MEEM);
 /**
  * The article's lam, read off the text — as ٱل, or without its alif after the
  * preposition لِ (لِّلنَّاسِ, لِّلۡمُتَّقِينَ). Same test derivedSilent() makes in
- * the app, so the chip and the greying always agree.
+ * the app, so the chip and the graying always agree.
  */
 function lamBadge(text) {
   if (/ٱلۡ/.test(text) || /(^|\s)ل[ً-ٰۖ-ۭ]*لۡ/.test(text)) return 'Moon ل';
@@ -320,7 +320,7 @@ for (const block of blocks) {
     if (def.ruleFromCell) {
       const cell = cells[col.rule] ?? '';
       const hit = MEEM_RULES.find(([re]) => re.test(cell));
-      if (!hit) problems.push(`"${def.title}": rule cell "${cell}" not recognised`);
+      if (!hit) problems.push(`"${def.title}": rule cell "${cell}" not recognized`);
       else ruleInfo = hit[1];
     }
 
@@ -352,7 +352,7 @@ for (const block of blocks) {
       if (lam) badges.push(lam);
       const muttasil = muttasilBadge(cleaned);
       if (muttasil) badges.push(muttasil);
-      // A small mīm READ inside the card — not the greyed one the Mushaf puts
+      // A small mīm READ inside the card — not the grayed one the Mushaf puts
       // on the card's last word for the ب that follows it.
       const inside = cleaned.replace(/[َُِ]ۢا?$/, '');
       if (SMALL_MEEM.test(inside) && section.id !== 'iqlab') badges.push('Iqlāb');

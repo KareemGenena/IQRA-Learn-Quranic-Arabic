@@ -12,7 +12,7 @@
  *   sit far from an adult man's for the identical sound. Normalising against
  *   each speaker's *own* vowel space fixes that, which needs the three corners
  *   /aː/ /iː/ /uː/ from every speaker — native and learner alike. Recorded
- *   after ب, which is bilabial and colours neither vowel; ق would have
+ *   after ب, which is bilabial and colors neither vowel; ق would have
  *   pharyngealised all three and moved the corners it was meant to locate.
  *
  * - **Loudness is a property of the room and the microphone**, not of the

@@ -165,7 +165,7 @@ function maddLength(cluster: LetterCluster, next: LetterCluster | undefined): nu
   // nothing follows at all: the last letter of a text recorded alone has no
   // next word to reach (تَأۡمُرُوٓنِّىٓ without its أَعۡبُدُ), so the sign is
   // unread and the madd is the natural one. `unreadFinalMaddah` in
-  // graphemes.ts greys the sign for the same reason.
+  // graphemes.ts grays the sign for the same reason.
   if (marks.includes(MADDAH)) return next ? MADD_MUTTASIL : MADD_NATURAL;
 
   return MADD_NATURAL;
@@ -363,7 +363,7 @@ export function clusterParts(
   // nūn hands over (`handedOver`). The same for the hidden nūn/mīm that ends a
   // letter NAME (لَام → مِيم in الٓمٓ): the hum lands on the مٓ. `ghunna` is the
   // slice at the start of this letter that the highlight shows in the ghunna
-  // colour before switching to the letter's own.
+  // color before switching to the letter's own.
   if (marks.includes(SHADDA) && (base === NOON || base === MEEM)) {
     w += GHUNNA_WEIGHT;
     ghunna = GHUNNA_WEIGHT + 0.8;
@@ -396,7 +396,7 @@ export function clusterParts(
 
 /**
  * The letters a rule actually sees either side of cluster `idx`: the written
- * neighbours, except that the tanwīn alif is looked straight past — the nūn
+ * neighbors, except that the tanwīn alif is looked straight past — the nūn
  * rules are decided by the next word's first letter, and the alif is not
  * read. Silent letters otherwise stay in view: a madd before a silent hamzat
  * wasl is still just a madd.
@@ -484,7 +484,7 @@ export function autoBoundaries(
   const audible = audibleIndices(clusters, silent);
   // Elongation and ghunna depend on the letters WRITTEN either side (bar the
   // tanwīn alif, which `readNeighbours` looks past), not the
-  // audible ones, so pass the visual neighbours.
+  // audible ones, so pass the visual neighbors.
   const weights = audible.map((idx, n) => {
     const { prev, next } = readNeighbours(clusters, idx);
     return clusterWeight(clusters[idx], prev, n === audible.length - 1, next, opts);

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * An icon button that opens a small panel of options — the pen's colours and
+ * An icon button that opens a small panel of options — the pen's colors and
  * widths, the text styles, the diacritics. Keeps the toolbar to a single thin
  * row instead of three rows of permanently visible buttons.
  */

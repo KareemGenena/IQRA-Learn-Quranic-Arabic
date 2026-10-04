@@ -3,7 +3,7 @@ import { LaserStrokes } from '../lib/laserStrokes';
 import type { Point } from '../lib/laserStrokes';
 
 /**
- * A teaching laser pointer, modelled on the one in Samsung Notes.
+ * A teaching laser pointer, modeled on the one in Samsung Notes.
  *
  * Strokes are drawn solid red and simply stay on screen; they are not wiped
  * when the pen lifts. Everything currently on screen disappears together

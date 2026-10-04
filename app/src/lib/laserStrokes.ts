@@ -1,6 +1,6 @@
 /**
  * The laser pointer's stroke store and fade clock, kept free of the DOM so
- * the behaviour can be tested directly.
+ * the behavior can be tested directly.
  *
  * Marks stay fully visible for HOLD_MS after the last one is made — not
  * after each stroke ends — so pointing again before the second is up adds to
