@@ -1091,9 +1091,37 @@ id 171) is a spent id with no card, by design. Every final-tanwīn shape is
 printed on each run under "FINAL TANWĪN" — with the rebuilt sheet every
 phrase is found where its meaning cell says. To see any card as the app
 draws it: `node scripts/snap-proof.mjs 7 <dir>` with the dev server up, then
-read the PNGs (section 3, "The proof sheet"). Still unconfirmed by the
-author: the "Iqlāb inside" badge on رَبُّهُم بِذَنۢبِهِمۡ. Publish from `#/admin`
+read the PNGs (section 3, "The proof sheet"). Publish from `#/admin`
 when reviewed.
+
+**Awaiting the author's approval (2026-10-03, live as draft at 1a3aec2).**
+The author reviewed lesson 7 against the Mushaf (screenshots, Mushaf first,
+app second) and asked for twelve changes; all are built, verified by zoom at
+2× on cards 13, 58, 59, 61, 63, 65, 75, 122, 138, 141, 147, 175, 177, and
+deployed. **The rules behind them are NOT yet written into section 3 — the
+author asked for that only once the result is approved.** When it is, record
+there: the staggered fatḥa pair (upper stroke to the RIGHT of the lower,
+strokes at (+0.3w, −0.75w) and (−0.3w, 0) of the single mark), the kasra
+pair (lower stroke to the LEFT, (+0.275w, 0) and (−0.275w, +0.45w)), the
+ḍamma pair level; the small iqlāb mīm as the font's isolated م at 0.5 em
+beside its mark, placed by its INK (`placeMini`): under a kasra 0.55 kasra
+to its left, head level with it, tail cut at 0.75 of the glyph
+(`MINI_KEEP`) — the Mushaf's short tail, not the font's long stem; beside a
+ḍamma at 0.575 em, head top 0.4 ḍamma-heights above the ḍamma's top, 0.3
+ḍamma-widths to its left, full tail, the font's own flat mīm erased (it is
+the LEFTMOST mark of the cluster — the topmost is the ḍamma; removing the
+mīm alone moved the ḍamma into its place and `dropMoved` then dropped it);
+and the badge rules in `make-lesson7.mjs` (no Ghunna chip in the idghām-
+with-ghunna section, Heavy/Light Ghunna by the ikhfāʾ letter — ص ض ط ق ظ
+heavy — no bare Tanwīn beside Tanwīn Mutatābiʿ, "Iqlāb" never "Iqlāb
+inside"). The author also said: where the Word skill
+(`quranic-word-tables-v3`) and this file disagree, THIS FILE wins — the
+skill describes what Word can draw, not what the app draws. Two of the
+author's screenshots (the clipped waṣl sign on ٱنطَلِقُواْ, card 138, and a
+stem-bearing low mīm on كِرَامِۭ) could not be reproduced from the deployed
+code of 27f6192 and were most likely a stale copy on the author's device;
+both cards are correct at 2× now, so check them on the author's own screen
+after this deploy before looking further.
 
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.
