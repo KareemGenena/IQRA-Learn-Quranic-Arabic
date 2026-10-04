@@ -35,7 +35,7 @@
       "id": "ikhfa",
       "title": "Nūn Sākinah and Tanwīn — Ikhfāʾ Ḥaqīqī",
       "titleArabic": "النون الساكنة والتنوين — الإخفاء الحقيقي",
-      "hint": "Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The tanwīn is written staggered. صِفۡ ذَا ثَنَا كَمۡ جَادَ شَخۡصٌ قَدۡ سَمَا  •  دُمۡ طَيِّبًا زِدۡ فِي تُقًى ضَعۡ ظَالِمَا"
+      "hint": "Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The ghunna takes the colour of that letter: heavy before ص ض ط ق ظ, light before the rest. The tanwīn is written staggered. صِفۡ ذَا ثَنَا كَمۡ جَادَ شَخۡصٌ قَدۡ سَمَا  •  دُمۡ طَيِّبًا زِدۡ فِي تُقًى ضَعۡ ظَالِمَا"
     },
     {
       "id": "iqlab",
@@ -107,7 +107,7 @@
         "Ikhfāʾ Shafawī",
         "ب",
         "Ghunna",
-        "Iqlāb inside"
+        "Iqlāb"
       ],
       "meaning": "“their Lord for their sin” — ash-Shams 91:14  (+ iqlāb)"
     },
@@ -183,7 +183,6 @@
       "badges": [
         "Iẕhār",
         "ء",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“sinning disbeliever” — al-Baqarah 2:276"
@@ -210,7 +209,6 @@
       "badges": [
         "Iẕhār",
         "ء",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“a painful punishment” — al-Baqarah 2:10"
@@ -237,7 +235,6 @@
       "badges": [
         "Iẕhār",
         "ء",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“a trustworthy messenger” — ash-Shuʿarāʾ 26:107"
@@ -264,7 +261,6 @@
       "badges": [
         "Iẕhār",
         "هـ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“the edge of a bank about to collapse” — at-Tawbah 9:109"
@@ -291,7 +287,6 @@
       "badges": [
         "Iẕhār",
         "هـ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“Peace it is” — al-Qadr 97:5"
@@ -318,7 +313,6 @@
       "badges": [
         "Iẕhār",
         "هـ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“…every people is a guide” — ar-Raʿd 13:7"
@@ -345,7 +339,6 @@
       "badges": [
         "Iẕhār",
         "ع",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“Hearing and Knowing” — al-Baqarah 2:181"
@@ -372,7 +365,6 @@
       "badges": [
         "Iẕhār",
         "ع",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“all-Encompassing and Knowing” — al-Baqarah 2:115"
@@ -399,7 +391,6 @@
       "badges": [
         "Iẕhār",
         "ع",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“a great reward” — Āl ʿImrān 3:172"
@@ -426,7 +417,6 @@
       "badges": [
         "Iẕhār",
         "ح",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“Knowing and Wise” — an-Nisāʾ 4:26"
@@ -453,7 +443,6 @@
       "badges": [
         "Iẕhār",
         "ح",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“Forgiving and Forbearing” — al-Baqarah 2:225"
@@ -480,7 +469,6 @@
       "badges": [
         "Iẕhār",
         "ح",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“an intensely hot Fire” — al-Ghāshiyah 88:4"
@@ -507,7 +495,6 @@
       "badges": [
         "Iẕhār",
         "غ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“Exalted in Might and Forgiving” — Fāṭir 35:28"
@@ -534,7 +521,6 @@
       "badges": [
         "Iẕhār",
         "غ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“Pardoning and Forgiving” — an-Nisāʾ 4:43"
@@ -561,7 +547,6 @@
       "badges": [
         "Iẕhār",
         "غ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“a harsh punishment” — Ibrāhīm 14:17"
@@ -589,7 +574,6 @@
       "badges": [
         "Iẕhār",
         "خ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“Knowing and Acquainted” — al-Ḥujurāt 49:13"
@@ -616,7 +600,6 @@
       "badges": [
         "Iẕhār",
         "خ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“Subtle and Acquainted” — al-Ḥajj 22:63"
@@ -643,7 +626,6 @@
       "badges": [
         "Iẕhār",
         "خ",
-        "Tanwīn",
         "Tanwīn Mutarākib"
       ],
       "meaning": "“…that Day, will be humbled” — al-Ghāshiyah 88:2"
@@ -657,8 +639,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ي",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“who says” — al-Baqarah 2:8"
     },
@@ -671,9 +652,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ي",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“and lightning. They put…” — al-Baqarah 2:19"
     },
@@ -687,7 +666,6 @@
         "Idghām with Ghunna",
         "ي",
         "Nūn Sākinah",
-        "Ghunna",
         "Madd Muttasil"
       ],
       "meaning": "“whom He wills” — al-Baqarah 2:105  (+ madd muttaṣil)"
@@ -701,9 +679,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ي",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“for a people who believe” — al-Anʿām 6:99"
     },
@@ -716,8 +692,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ي",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“So whoever does” — az-Zalzalah 99:7"
     },
@@ -730,9 +705,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ي",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“That Day, the people will depart” — az-Zalzalah 99:6"
     },
@@ -745,8 +718,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ن",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“If We willed” — ash-Shuʿarāʾ 26:4"
     },
@@ -759,9 +731,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ن",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“that Day, will show pleasure” — al-Ghāshiyah 88:8"
     },
@@ -774,8 +744,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ن",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“we can never endure” — al-Baqarah 2:61"
     },
@@ -788,9 +757,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ن",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“‘Relieve us’ — We will forgive” — al-Baqarah 2:58"
     },
@@ -803,8 +770,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ن",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“any warner” — Sabaʾ 34:44"
     },
@@ -817,9 +783,7 @@
       "badges": [
         "Idghām with Ghunna",
         "ن",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“a king, and we will fight” — al-Baqarah 2:246"
     },
@@ -832,8 +796,7 @@
       "badges": [
         "Idghām with Ghunna",
         "م",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“of [twisted] fiber” — al-Masad 111:5"
     },
@@ -846,9 +809,7 @@
       "badges": [
         "Idghām with Ghunna",
         "م",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“a straight path” — al-Baqarah 2:142"
     },
@@ -861,8 +822,7 @@
       "badges": [
         "Idghām with Ghunna",
         "م",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“from our sleeping place” — Yā Sīn 36:52"
     },
@@ -875,9 +835,7 @@
       "badges": [
         "Idghām with Ghunna",
         "م",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“a humiliating punishment” — an-Nisāʾ 4:102"
     },
@@ -890,8 +848,7 @@
       "badges": [
         "Idghām with Ghunna",
         "م",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“any place of escape” — Qāf 50:36"
     },
@@ -904,9 +861,7 @@
       "badges": [
         "Idghām with Ghunna",
         "م",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“an appropriate word” — al-Baqarah 2:235"
     },
@@ -919,8 +874,7 @@
       "badges": [
         "Idghām with Ghunna",
         "و",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“any protector” — ar-Raʿd 13:11"
     },
@@ -933,9 +887,7 @@
       "badges": [
         "Idghām with Ghunna",
         "و",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“for a punishment bound to happen” — al-Maʿārij 70:1"
     },
@@ -948,8 +900,7 @@
       "badges": [
         "Idghām with Ghunna",
         "و",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“any protector” — al-Baqarah 2:107"
     },
@@ -962,9 +913,7 @@
       "badges": [
         "Idghām with Ghunna",
         "و",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“gardens and springs” — ad-Dukhān 44:52"
     },
@@ -977,8 +926,7 @@
       "badges": [
         "Idghām with Ghunna",
         "و",
-        "Nūn Sākinah",
-        "Ghunna"
+        "Nūn Sākinah"
       ],
       "meaning": "“no protector” — ar-Raʿd 13:34"
     },
@@ -991,9 +939,7 @@
       "badges": [
         "Idghām with Ghunna",
         "و",
-        "Tanwīn",
-        "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“a veil. And for them…” — al-Baqarah 2:7"
     },
@@ -1019,7 +965,6 @@
       "badges": [
         "Idghām without Ghunna",
         "ل",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
         "Moon ل"
       ],
@@ -1047,7 +992,6 @@
       "badges": [
         "Idghām without Ghunna",
         "ل",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“Woe to every…” — al-Humazah 104:1"
@@ -1074,7 +1018,6 @@
       "badges": [
         "Idghām without Ghunna",
         "ل",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
         "Sun ل"
       ],
@@ -1102,7 +1045,6 @@
       "badges": [
         "Idghām without Ghunna",
         "ر",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“Forgiving and Merciful” — al-Baqarah 2:173"
@@ -1129,7 +1071,6 @@
       "badges": [
         "Idghām without Ghunna",
         "ر",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“Kind and Merciful” — at-Tawbah 9:117"
@@ -1156,7 +1097,6 @@
       "badges": [
         "Idghām without Ghunna",
         "ر",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ"
       ],
       "meaning": "“Forgiving and Merciful” — al-Furqān 25:70"
@@ -1171,7 +1111,7 @@
         "Ikhfāʾ",
         "ص",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“they will be aided” — al-Baqarah 2:48"
     },
@@ -1184,9 +1124,8 @@
       "badges": [
         "Ikhfāʾ",
         "ص",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“righteous work” — al-Kahf 18:110"
     },
@@ -1200,7 +1139,7 @@
         "Ikhfāʾ",
         "ص",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“from clay” — al-Ḥijr 15:26"
     },
@@ -1213,9 +1152,8 @@
       "badges": [
         "Ikhfāʾ",
         "ص",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“a screaming wind” — Fuṣṣilat 41:16"
     },
@@ -1229,7 +1167,7 @@
         "Ikhfāʾ",
         "ص",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“[for] having obstructed you” — al-Māʾidah 5:2"
     },
@@ -1242,9 +1180,8 @@
       "badges": [
         "Ikhfāʾ",
         "ص",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“a righteous people” — Yūsuf 12:9"
     },
@@ -1258,7 +1195,7 @@
         "Ikhfāʾ",
         "ذ",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a warner” — ar-Raʿd 13:7"
     },
@@ -1271,9 +1208,8 @@
       "badges": [
         "Ikhfāʾ",
         "ذ",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a shadow [of smoke] having…” — al-Mursalāt 77:30"
     },
@@ -1287,7 +1223,7 @@
         "Ikhfāʾ",
         "ذ",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“of gold” — az-Zukhruf 43:53"
     },
@@ -1300,9 +1236,8 @@
       "badges": [
         "Ikhfāʾ",
         "ذ",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“Exalted in Might, Owner of Retribution” — Āl ʿImrān 3:4"
     },
@@ -1316,7 +1251,7 @@
         "Ikhfāʾ",
         "ذ",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“from male” — al-Ḥujurāt 49:13"
     },
@@ -1329,9 +1264,8 @@
       "badges": [
         "Ikhfāʾ",
         "ذ",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“rapidly; that is a gathering…” — Qāf 50:44"
     },
@@ -1345,7 +1279,7 @@
         "Ikhfāʾ",
         "ث",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“dispersed” — al-Furqān 25:23"
     },
@@ -1358,9 +1292,8 @@
       "badges": [
         "Ikhfāʾ",
         "ث",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna",
+        "Light Ghunna",
         "Madd Muttasil"
       ],
       "meaning": "“pouring water” — an-Nabaʾ 78:14"
@@ -1375,7 +1308,7 @@
         "Ikhfāʾ",
         "ث",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“of fruit” — al-Baqarah 2:25"
     },
@@ -1388,9 +1321,8 @@
       "badges": [
         "Ikhfāʾ",
         "ث",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a piercing flame” — aṣ-Ṣāffāt 37:10"
     },
@@ -1404,7 +1336,7 @@
         "Ikhfāʾ",
         "ث",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“that We strengthened you” — al-Isrāʾ 17:74"
     },
@@ -1417,9 +1349,8 @@
       "badges": [
         "Ikhfāʾ",
         "ث",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“better in reward” — al-Kahf 18:44"
     },
@@ -1433,7 +1364,7 @@
         "Ikhfāʾ",
         "ك",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“they broke their word” — al-Aʿrāf 7:135"
     },
@@ -1446,9 +1377,8 @@
       "badges": [
         "Ikhfāʾ",
         "ك",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a noble letter” — an-Naml 27:29"
     },
@@ -1462,7 +1392,7 @@
         "Ikhfāʾ",
         "ك",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“from every” — al-Baqarah 2:266"
     },
@@ -1475,9 +1405,8 @@
       "badges": [
         "Ikhfāʾ",
         "ك",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a noble word” — al-Isrāʾ 17:23"
     },
@@ -1491,7 +1420,7 @@
         "Ikhfāʾ",
         "ك",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“because he is” — al-Qalam 68:14"
     },
@@ -1504,9 +1433,8 @@
       "badges": [
         "Ikhfāʾ",
         "ك",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“and noble provision” — al-Anfāl 8:74"
     },
@@ -1520,7 +1448,7 @@
         "Ikhfāʾ",
         "ج",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“and saved you” — al-Baqarah 2:50"
     },
@@ -1533,9 +1461,8 @@
       "badges": [
         "Ikhfāʾ",
         "ج",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a new creation” — ar-Raʿd 13:5"
     },
@@ -1549,7 +1476,7 @@
         "Ikhfāʾ",
         "ج",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“from hunger” — Quraysh 106:4"
     },
@@ -1562,9 +1489,8 @@
       "badges": [
         "Ikhfāʾ",
         "ج",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“so patience is most fitting” — Yūsuf 12:18"
     },
@@ -1578,7 +1504,7 @@
         "Ikhfāʾ",
         "ج",
         "Nūn Sākinah",
-        "Ghunna",
+        "Light Ghunna",
         "Madd Muttasil"
       ],
       "meaning": "“if there comes to you” — al-Ḥujurāt 49:6  (+ madd muttaṣil)"
@@ -1592,9 +1518,8 @@
       "badges": [
         "Ikhfāʾ",
         "ج",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a people of tyrannical strength” — al-Māʾidah 5:22"
     },
@@ -1608,7 +1533,7 @@
         "Ikhfāʾ",
         "ش",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“spread open” — al-Isrāʾ 17:13"
     },
@@ -1621,9 +1546,8 @@
       "badges": [
         "Ikhfāʾ",
         "ش",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“Forgiving and Appreciative” — Fāṭir 35:30"
     },
@@ -1637,7 +1561,7 @@
         "Ikhfāʾ",
         "ش",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“from the evil of” — al-Falaq 113:2"
     },
@@ -1650,9 +1574,8 @@
       "badges": [
         "Ikhfāʾ",
         "ش",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a severe punishment” — Ibrāhīm 14:2"
     },
@@ -1666,7 +1589,7 @@
         "Ikhfāʾ",
         "ش",
         "Nūn Sākinah",
-        "Ghunna",
+        "Light Ghunna",
         "Madd Muttasil"
       ],
       "meaning": "“if He wills” — al-Baqarah 2:70  (+ madd muttaṣil)"
@@ -1680,9 +1603,8 @@
       "badges": [
         "Ikhfāʾ",
         "ش",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“over all things, is Witness” — al-Burūj 85:9"
     },
@@ -1696,7 +1618,7 @@
         "Ikhfāʾ",
         "ق",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“they save me” — Yā Sīn 36:23"
     },
@@ -1709,9 +1631,8 @@
       "badges": [
         "Ikhfāʾ",
         "ق",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“Hearing and near” — Sabaʾ 34:50"
     },
@@ -1725,7 +1646,7 @@
         "Ikhfāʾ",
         "ق",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“before” — al-Baqarah 2:25"
     },
@@ -1738,9 +1659,8 @@
       "badges": [
         "Ikhfāʾ",
         "ق",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“over all things competent” — al-Baqarah 2:20"
     },
@@ -1754,7 +1674,7 @@
         "Ikhfāʾ",
         "ق",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“so they returned” — Āl ʿImrān 3:174"
     },
@@ -1767,9 +1687,8 @@
       "badges": [
         "Ikhfāʾ",
         "ق",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“provision, they will say” — al-Baqarah 2:25"
     },
@@ -1783,7 +1702,7 @@
         "Ikhfāʾ",
         "س",
         "Nūn Sākinah",
-        "Ghunna",
+        "Light Ghunna",
         "Moon ل"
       ],
       "meaning": "“man” — al-Qiyāmah 75:3"
@@ -1797,9 +1716,8 @@
       "badges": [
         "Ikhfāʾ",
         "س",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“appropriate words” — an-Nisāʾ 4:9"
     },
@@ -1813,7 +1731,7 @@
         "Ikhfāʾ",
         "س",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“from an extract” — as-Sajdah 32:8"
     },
@@ -1826,9 +1744,8 @@
       "badges": [
         "Ikhfāʾ",
         "س",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a well-proportioned man” — Maryam 19:17"
     },
@@ -1842,7 +1759,7 @@
         "Ikhfāʾ",
         "س",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“that there will be” — al-Muzzammil 73:20"
     },
@@ -1855,9 +1772,8 @@
       "badges": [
         "Ikhfāʾ",
         "س",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“and another belonging exclusively” — az-Zumar 39:29"
     },
@@ -1871,7 +1787,7 @@
         "Ikhfāʾ",
         "د",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“equals / rivals” — al-Baqarah 2:22"
     },
@@ -1884,9 +1800,8 @@
       "badges": [
         "Ikhfāʾ",
         "د",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“clusters hanging low” — al-Anʿām 6:99"
     },
@@ -1900,7 +1815,7 @@
         "Ikhfāʾ",
         "د",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“with their Lord” — al-Baqarah 2:62"
     },
@@ -1913,9 +1828,8 @@
       "badges": [
         "Ikhfāʾ",
         "د",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“And a full cup” — an-Nabaʾ 78:34"
     },
@@ -1929,7 +1843,7 @@
         "Ikhfāʾ",
         "د",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“other than” — al-Baqarah 2:23"
     },
@@ -1942,9 +1856,8 @@
       "badges": [
         "Ikhfāʾ",
         "د",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna",
+        "Light Ghunna",
         "Madd Muttasil"
       ],
       "meaning": "“a fluid, ejected” — aṭ-Ṭāriq 86:6"
@@ -1959,7 +1872,7 @@
         "Ikhfāʾ",
         "ط",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“they speak” — al-Anbiyāʾ 21:63"
     },
@@ -1972,9 +1885,8 @@
       "badges": [
         "Ikhfāʾ",
         "ط",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“clean earth” — an-Nisāʾ 4:43"
     },
@@ -1988,7 +1900,7 @@
         "Ikhfāʾ",
         "ط",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“proceed” — al-Mursalāt 77:29"
     },
@@ -2001,9 +1913,8 @@
       "badges": [
         "Ikhfāʾ",
         "ط",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“a good land” — Sabaʾ 34:15"
     },
@@ -2017,7 +1928,7 @@
         "Ikhfāʾ",
         "ط",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“from the good things” — al-Baqarah 2:172"
     },
@@ -2030,9 +1941,8 @@
       "badges": [
         "Ikhfāʾ",
         "ط",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“a purifying drink” — al-Insān 76:21"
     },
@@ -2046,7 +1956,7 @@
         "Ikhfāʾ",
         "ز",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“and sent down” — al-Baqarah 2:22"
     },
@@ -2059,9 +1969,8 @@
       "badges": [
         "Ikhfāʾ",
         "ز",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a smooth, dusty ground” — al-Kahf 18:40"
     },
@@ -2075,7 +1984,7 @@
         "Ikhfāʾ",
         "ز",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“sent down (angels)” — Āl ʿImrān 3:124"
     },
@@ -2088,9 +1997,8 @@
       "badges": [
         "Ikhfāʾ",
         "ز",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“blue-eyed that Day” — Ṭā Hā 20:102"
     },
@@ -2104,7 +2012,7 @@
         "Ikhfāʾ",
         "ز",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“no decline” — Ibrāhīm 14:44"
     },
@@ -2117,9 +2025,8 @@
       "badges": [
         "Ikhfāʾ",
         "ز",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a pure soul” — al-Kahf 18:74  (+ iqlāb)"
     },
@@ -2133,7 +2040,7 @@
         "Ikhfāʾ",
         "ف",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“yourselves” — al-Baqarah 2:54"
     },
@@ -2146,9 +2053,8 @@
       "badges": [
         "Ikhfāʾ",
         "ف",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“abiding eternally therein” — an-Nisāʾ 4:93"
     },
@@ -2162,7 +2068,7 @@
         "Ikhfāʾ",
         "ف",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“from the bounty of” — al-Jumuʿah 62:10"
     },
@@ -2175,9 +2081,8 @@
       "badges": [
         "Ikhfāʾ",
         "ف",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“all of you. And when…” — al-Baqarah 2:38"
     },
@@ -2191,7 +2096,7 @@
         "Ikhfāʾ",
         "ف",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“And if you have lost” — al-Mumtaḥanah 60:11"
     },
@@ -2204,9 +2109,8 @@
       "badges": [
         "Ikhfāʾ",
         "ف",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“righteousness — for themselves” — ar-Rūm 30:44"
     },
@@ -2220,7 +2124,7 @@
         "Ikhfāʾ",
         "ت",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“you are / were” — al-Baqarah 2:23"
     },
@@ -2233,9 +2137,8 @@
       "badges": [
         "Ikhfāʾ",
         "ت",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“gardens beneath which rivers flow” — al-Baqarah 2:25"
     },
@@ -2249,7 +2152,7 @@
         "Ikhfāʾ",
         "ت",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“from beneath it” — al-Baqarah 2:25"
     },
@@ -2262,9 +2165,8 @@
       "badges": [
         "Ikhfāʾ",
         "ت",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“a soul that pleads” — an-Naḥl 16:111"
     },
@@ -2278,7 +2180,7 @@
         "Ikhfāʾ",
         "ت",
         "Nūn Sākinah",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“you (pl.)” — al-Baqarah 2:85"
     },
@@ -2291,9 +2193,8 @@
       "badges": [
         "Ikhfāʾ",
         "ت",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Light Ghunna"
       ],
       "meaning": "“of good — you will find it” — al-Muzzammil 73:20"
     },
@@ -2307,7 +2208,7 @@
         "Ikhfāʾ",
         "ض",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“layered [with fruit]” — al-Wāqiʿah 56:29"
     },
@@ -2320,9 +2221,8 @@
       "badges": [
         "Ikhfāʾ",
         "ض",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“a double punishment” — al-Aʿrāf 7:38"
     },
@@ -2336,7 +2236,7 @@
         "Ikhfāʾ",
         "ض",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“from a poisonous, thorny plant” — al-Ghāshiyah 88:6"
     },
@@ -2349,9 +2249,8 @@
       "badges": [
         "Ikhfāʾ",
         "ض",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“a mosque for causing harm” — at-Tawbah 9:107"
     },
@@ -2365,7 +2264,7 @@
         "Ikhfāʾ",
         "ض",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“those who have gone astray” — al-Māʾidah 5:105"
     },
@@ -2378,9 +2277,8 @@
       "badges": [
         "Ikhfāʾ",
         "ض",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“after strength, weakness” — ar-Rūm 30:54"
     },
@@ -2394,7 +2292,7 @@
         "Ikhfāʾ",
         "ظ",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“they look / wait” — al-Baqarah 2:210"
     },
@@ -2407,9 +2305,8 @@
       "badges": [
         "Ikhfāʾ",
         "ظ",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“abundant shade” — an-Nisāʾ 4:57"
     },
@@ -2423,7 +2320,7 @@
         "Ikhfāʾ",
         "ظ",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“any assistant” — Sabaʾ 34:22"
     },
@@ -2436,9 +2333,8 @@
       "badges": [
         "Ikhfāʾ",
         "ظ",
-        "Tanwīn",
         "Tanwīn Mutatābiʿ",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“visible cities” — Sabaʾ 34:18"
     },
@@ -2452,7 +2348,7 @@
         "Ikhfāʾ",
         "ظ",
         "Nūn Sākinah",
-        "Ghunna"
+        "Heavy Ghunna"
       ],
       "meaning": "“wait for us” — al-Baqarah 2:104"
     },

@@ -53,12 +53,14 @@ interface Layer {
   dy?: number;
 }
 
-/** The small مـ of a low iqlāb mīm, placed under its kasra. */
+/** The small م of an iqlāb mīm, drawn beside its kasra or ḍamma. */
 interface MiniMeem {
   left: number;
   top: number;
   size: number;
   dim: boolean;
+  /** Where the glyph is cut off, in px from the span's top: a short tail. */
+  cutAt?: number;
 }
 
 /** Shared so the default prop is a STABLE reference — a fresh `[]` default
@@ -152,13 +154,59 @@ function fontAscent(font: string): number | null {
 }
 
 /** Where the small مـ's ink sits inside its own line box, at its own size. */
-function miniMetrics(font: string): { fontAsc: number; asc: number } | null {
+interface MiniMetrics {
+  fontAsc: number;
+  asc: number;
+  /** The advance, which is the span's width, and where the ink ends inside it. */
+  width: number;
+  inkRight: number;
+  desc: number;
+}
+function miniMetrics(font: string): MiniMetrics | null {
   const c = ctx2d();
   if (!c) return null;
   c.font = font;
-  const m = c.measureText('م' + ZWJ);
-  return { fontAsc: m.fontBoundingBoxAscent, asc: m.actualBoundingBoxAscent };
+  c.direction = 'ltr';
+  c.textAlign = 'start';
+  const m = c.measureText(MINI_MEEM);
+  return {
+    fontAsc: m.fontBoundingBoxAscent,
+    asc: m.actualBoundingBoxAscent,
+    desc: m.actualBoundingBoxDescent,
+    width: m.width,
+    inkRight: m.actualBoundingBoxRight,
+  };
 }
+
+/**
+ * Where to put a small م so that its ink's RIGHT edge stands at `inkRightX`
+ * and its ink's top at `inkTopY` (wrap CSS px). The span is centred on
+ * `left` by its own transform and its top is a line box, not the glyph's
+ * ink, hence the two corrections.
+ */
+function placeMini(mini: MiniMetrics, inkRightX: number, inkTopY: number, size: number, dim: boolean, keep?: number): MiniMeem {
+  const inkTop = mini.fontAsc - mini.asc;
+  return {
+    left: inkRightX - mini.inkRight + mini.width / 2,
+    top: inkTopY - inkTop,
+    size,
+    dim,
+    // `keep` is the share of the glyph's ink height that stays: the font's
+    // isolated م hangs a long stem, the Mushaf's small mīm a short tail.
+    cutAt: keep === undefined ? undefined : inkTop + keep * (mini.asc + mini.desc),
+  };
+}
+
+/** The small iqlāb mīm the Mushaf writes: an isolated م at half the text
+ *  size — a head with a tail hanging from it. Under a kasra the tail is
+ *  short (`MINI_KEEP` of the glyph); beside a ḍamma it runs down past the
+ *  shadda, the glyph's full length. */
+const MINI_MEEM = 'م';
+const MINI_SIZE = 0.5;
+const MINI_SIZE_DAMMA = 0.575;
+const MINI_KEEP = 0.75;
+const FATHA = 'َ';
+const DAMMA = 'ُ';
 
 /**
  * Everything the pixel work needs to draw a string exactly where the page
@@ -429,6 +477,19 @@ function components(stage: Stage, m: Uint8ClampedArray): Components {
   return { label, size, box };
 }
 
+/** One component of `m`, by its label. */
+function pick(stage: Stage, m: Uint8ClampedArray, label: Int32Array, id: number): Uint8ClampedArray {
+  const out = new Uint8ClampedArray(m.length);
+  for (let i = 0; i < m.length; i++) if (m[i] && label[i] === id) out[i] = 255;
+  void stage;
+  return out;
+}
+
+/** A component's box in wrap CSS px. */
+function toBox(stage: Stage, b: { x0: number; y0: number; x1: number; y1: number }): Box {
+  return { left: stage.originX + b.x0 / stage.dpr, top: b.y0 / stage.dpr, width: (b.x1 + 1 - b.x0) / stage.dpr, height: (b.y1 + 1 - b.y0) / stage.dpr };
+}
+
 /** `m` without its components of fewer than `minPx` pixels — anti-aliased leftovers of a cut. */
 function dropSpecks(stage: Stage, m: Uint8ClampedArray, minPx: number): Uint8ClampedArray {
   const { label, size } = components(stage, m);
@@ -620,6 +681,13 @@ function bounds(stage: Stage, m: Uint8ClampedArray): Box | null {
   if (x1 < 0) return null;
   return { left: stage.originX + x0 / stage.dpr, top: y0 / stage.dpr, width: (x1 + 1 - x0) / stage.dpr, height: (y1 + 1 - y0) / stage.dpr };
 }
+
+/** `a` without the pixels of `b`. */
+const minus = (a: Uint8ClampedArray, b: Uint8ClampedArray): Uint8ClampedArray => {
+  const out = new Uint8ClampedArray(a.length);
+  for (let i = 0; i < a.length; i++) if (a[i] && !b[i]) out[i] = 255;
+  return out;
+};
 
 const union = (ms: Uint8ClampedArray[]): Uint8ClampedArray => {
   const out = new Uint8ClampedArray(ms[0].length);
@@ -900,19 +968,34 @@ export function ArabicWord({
             const bb = m && bounds(stage, m);
             if (m && bb && pair) {
               erase.push(m);
-              const half = (bb.width * STAGGER) / 2;
-              // Centred on the single mark's place — except over ط ظ, where
-              // the first stroke goes above the stem and the second past it,
-              // and the pair is lifted so that neither tail touches the stem.
+              // Where each stroke goes, from the single mark's place (CSS px).
+              // The Mushaf steps the pair DOWN TO THE LEFT: the second stroke
+              // about 0.6 of the mark's width left of the first and 0.75 below
+              // it for a fatḥa (measured on عَذَابࣰا and قَوۡلࣰا), a shallower
+              // 0.55 / 0.45 for a kasra (بِعَذَابࣲ); ḍammas sit side by side. The
+              // stroke nearer the letter keeps the mark's own height — the lower
+              // one of a fatḥa pair, the upper one of a kasra pair.
+              const w = bb.width;
+              const strokes =
+                vowel === FATHA
+                  ? [{ x: 0.3 * w, y: -0.75 * w }, { x: -0.3 * w, y: 0 }]
+                  : vowel === KASRA
+                    ? [{ x: 0.275 * w, y: 0 }, { x: -0.275 * w, y: 0.45 * w }]
+                    : [{ x: (w * STAGGER) / 2, y: 0 }, { x: -(w * STAGGER) / 2, y: 0 }];
+              const [s1, s2] = strokes;
+              // Except over ط ظ, where the first stroke goes above the stem and
+              // the second past it, and the pair is lifted so that neither tail
+              // touches the stem.
               let shift = 0;
               let lift = 0;
               const b = boxOf(i);
               if (b && STEM_LEFT.test(lettersOf(c.text)[0] ?? '') && vowel !== KASRA) {
                 const stem = topInk(stage, pair.without, b.left - fontPx * 0.1, b.left + b.width + fontPx * 0.1);
                 if (stem) {
-                  shift = stem.x - (bb.left + bb.width / 2 + half);
+                  shift = stem.x - (bb.left + bb.width / 2 + s1.x);
                   const clear = stem.y - fontPx * STEM_GAP;
-                  if (bb.top + bb.height > clear) lift = clear - (bb.top + bb.height);
+                  const bottom = bb.top + bb.height + Math.max(s1.y, s2.y);
+                  if (bottom > clear) lift = clear - bottom;
                 }
               }
               // A stroke must not run into a neighbour's ink: shifted out from
@@ -921,15 +1004,12 @@ export function ArabicWord({
               // a device pixel at a time, as far as 0.15 em, keeping the best.
               let slide = 0;
               {
-                const sy = devPx(lift);
-                const hits = (d: number) =>
-                  collisions(stage, m, pair.without, devPx(shift + half + d), sy) +
-                  collisions(stage, m, pair.without, devPx(shift - half + d), sy);
+                const hit = (s: { x: number; y: number }, d: number) =>
+                  collisions(stage, m, pair.without, devPx(shift + s.x + d), devPx(lift + s.y));
+                const hits = (d: number) => hit(s1, d) + hit(s2, d);
                 let best = hits(0);
                 if (best > 0) {
-                  const right = collisions(stage, m, pair.without, devPx(shift + half), sy);
-                  const left = collisions(stage, m, pair.without, devPx(shift - half), sy);
-                  const dir = right >= left ? -1 : 1;
+                  const dir = hit(s1, 0) >= hit(s2, 0) ? -1 : 1;
                   for (let d = 1 / stage.dpr; d <= fontPx * 0.15; d += 1 / stage.dpr) {
                     const h = hits(dir * d);
                     if (h < best) {
@@ -941,11 +1021,13 @@ export function ArabicWord({
                 }
               }
               const cls = `layer-stroke${isFinalNasal ? ' layer-silent' : ''}`;
-              for (const dx of [shift + slide + half, shift + slide - half]) {
+              for (const s of strokes) {
                 // Each stroke is masked to the vowel's pixels minus any that
                 // would still land on a letter once shifted.
-                const mask = toMask(stage, offInk(stage, m, pair.without, devPx(dx), devPx(lift)), 0, 0);
-                if (mask) next.push({ className: cls, mask, dx, dy: lift || undefined });
+                const dx = shift + slide + s.x;
+                const dy = lift + s.y;
+                const mask = toMask(stage, offInk(stage, m, pair.without, devPx(dx), devPx(dy)), 0, 0);
+                if (mask) next.push({ className: cls, mask, dx, dy: dy || undefined });
               }
             }
           }
@@ -960,16 +1042,57 @@ export function ArabicWord({
                 erase.push(m);
                 grey.push(m);
               }
-              // The span's top is its line box, not the glyph's ink: pull it up
-              // by the gap between the two so the مـ starts just under the kasra.
-              const size = fontPx * 0.42;
+              // The Mushaf sets the small م to the LEFT of the kasra, a gap of
+              // about 0.6 of the kasra's length between them, its head level
+              // with the kasra and its tail reaching about a kasra's length
+              // below it (measured on كِرَامِۭ بَرَرَةٍ).
+              const size = fontPx * MINI_SIZE;
               const mini = miniMetrics(`${cs.fontStyle} ${cs.fontWeight} ${size}px ${cs.fontFamily}`);
-              nextMeems.push({
-                left: bb.left + bb.width / 2,
-                top: bb.top + bb.height + fontPx * 0.02 - (mini ? mini.fontAsc - mini.asc : 0),
-                size,
-                dim: isFinalNasal,
-              });
+              if (mini) nextMeems.push(placeMini(mini, bb.left - 0.55 * bb.width, bb.top + fontPx * 0.02, size, isFinalNasal, MINI_KEEP));
+            }
+          }
+          KASRA_MEEM_RE.lastIndex = 0;
+
+          // A small high mīm on a ḍamma (صُمُّۢ بُكۡمٌ, عَذَابٌ أَلِيمُۢ): the font
+          // sets a flat small mīm beside the ḍamma's shadda; the Mushaf sets
+          // a small م to the LEFT of the ḍamma, its head's top above the
+          // ḍamma's, its tail hanging down past the shadda (measured on
+          // صُمُّۢ). So the font's mīm is erased and the small م drawn. On a
+          // fatḥa the font's glyph stands.
+          let dammaMeem: Uint8ClampedArray | null = null;
+          if (c.text.includes(DAMMA) && c.text.includes(SMALL_HIGH_MEEM) && !KASRA_MEEM_RE.test(c.text)) {
+            KASRA_MEEM_RE.lastIndex = 0;
+            const b = boxOf(i);
+            // All the cluster's marks at once, against the bare letter, with
+            // the letter parts the composite glyph moves dropped: taking the
+            // mīm out alone moved the ḍamma up into its place, and the mīm then
+            // passed for a moved ḍamma. The font sets the mīm to the LEFT of
+            // the other marks (مُّۢ: ḍamma over shadda, mīm beside them), or
+            // else above them; the ḍamma is the topmost of the rest.
+            const bare = b && drawAlpha(stage, withoutMarks(displayText, c, MARKS_RE));
+            if (b && bare) {
+              const [x0, x1] = window_(b);
+              const d = rawDiff(stage, base, bare, x0, x1);
+              const r = rawDiff(stage, bare, base, x0, x1);
+              const marks = d ? (r ? dropMoved(stage, d, r, Math.round(fontPx * 0.1 * stage.dpr)) : d) : null;
+              const parts = marks && components(stage, marks);
+              if (parts) {
+                const pieces = parts.size
+                  .map((n, id) => ({ id, n, box: parts.box[id] }))
+                  .filter((p) => p.n >= 6)
+                  .sort((p, q) => p.box.y0 - q.box.y0);
+                const leftOfAll = pieces.find((p) => pieces.every((q) => q === p || p.box.x1 < q.box.x0));
+                const meem = leftOfAll ?? pieces[0];
+                const damma = pieces.find((p) => p !== meem);
+                if (meem && damma) {
+                  dammaMeem = dilate(stage, pick(stage, marks, parts.label, meem.id), bare);
+                  erase.push(dammaMeem);
+                  const db = toBox(stage, damma.box);
+                  const size = fontPx * MINI_SIZE_DAMMA;
+                  const mini = miniMetrics(`${cs.fontStyle} ${cs.fontWeight} ${size}px ${cs.fontFamily}`);
+                  if (mini) nextMeems.push(placeMini(mini, db.left - 0.3 * db.width, db.top - 0.4 * db.height, size, isFinalNasal));
+                }
+              }
             }
           }
           KASRA_MEEM_RE.lastIndex = 0;
@@ -992,7 +1115,8 @@ export function ArabicWord({
               if (d) {
                 const m = dilate(stage, r ? dropMoved(stage, d, r, Math.round(fontPx * 0.1 * stage.dpr)) : d, bare);
                 erase.push(m);
-                grey.push(m);
+                // On a ḍamma the font's mīm is erased and redrawn, not greyed in place.
+                grey.push(dammaMeem ? minus(m, dammaMeem) : m);
               }
             }
           }
@@ -1234,12 +1358,17 @@ export function ArabicWord({
         <span
           key={`meem-${i}`}
           className={`arabic-text tanwin-meem${m.dim ? ' layer-silent' : ''}`}
-          style={{ left: m.left, top: m.top, fontSize: m.size }}
+          style={{
+            left: m.left,
+            top: m.top,
+            fontSize: m.size,
+            ...(m.cutAt === undefined ? {} : { clipPath: `polygon(-100% 0, 200% 0, 200% ${m.cutAt.toFixed(2)}px, -100% ${m.cutAt.toFixed(2)}px)` }),
+          }}
           dir="rtl"
           lang="ar"
           aria-hidden="true"
         >
-          {'م' + ZWJ}
+          {MINI_MEEM}
         </span>
       ))}
     </span>

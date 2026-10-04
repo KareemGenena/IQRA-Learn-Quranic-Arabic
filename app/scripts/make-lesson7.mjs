@@ -86,7 +86,7 @@ const SECTIONS = [
     id: 'ikhfa',
     title: 'Nūn Sākinah and Tanwīn — Ikhfāʾ Ḥaqīqī',
     titleArabic: 'النون الساكنة والتنوين — الإخفاء الحقيقي',
-    hint: 'Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The tanwīn is written staggered.',
+    hint: 'Before the fifteen remaining letters the nūn is hidden: the tongue does not touch, and only the ghunna is heard while the mouth shapes the next letter. The ghunna takes the colour of that letter: heavy before ص ض ط ق ظ, light before the rest. The tanwīn is written staggered.',
     rule: 'Ikhfāʾ',
     ghunna: true,
     tanwin: 'Mutatābiʿ',
@@ -121,6 +121,8 @@ const MARK_ONE = /[ً-ٰۖ-ۭـࣰ-ࣲ]/;
 const SHADDA = 'ّ';
 const RECT_ZERO = '۠';
 const SMALL_MEEM = /[ۭۢ]/;
+/** The heavy (mufakhkham) letters among those of ikhfāʾ: the ghunna before them is heavy. */
+const HEAVY = /[صضطقظ]/;
 /** Stacked tanwīn → its staggered twin. */
 const STAGGERED = { 'ً': 'ࣰ', 'ٌ': 'ࣱ', 'ٍ': 'ࣲ' };
 const IZHAR = new Set('ءأإآهعحغخ');
@@ -336,9 +338,16 @@ for (const block of blocks) {
       const cleaned = clean(raw, where, sura, aya);
       const badges = [ruleInfo.rule];
       if (letter) badges.push(letter);
-      if (ex.form) badges.push(ex.form);
+      // The form once: a tanwīn's shape badge already says "Tanwīn" (the
+      // author struck the bare one beside it, 2026-10-03).
       if (ex.form === 'Tanwīn' && section.tanwin) badges.push(`Tanwīn ${section.tanwin}`);
-      if (ruleInfo.ghunna) badges.push('Ghunna');
+      else if (ex.form) badges.push(ex.form);
+      // Ghunna: not beside a rule badge that already says it (Idghām with
+      // Ghunna); in ikhfāʾ it takes the weight of the letter it hides before —
+      // heavy before ص ض ط ق ظ, light before the rest.
+      if (ruleInfo.ghunna && section.id !== 'idgham-ghunnah') {
+        badges.push(section.id === 'ikhfa' ? (HEAVY.test(letter ?? '') ? 'Heavy Ghunna' : 'Light Ghunna') : 'Ghunna');
+      }
       const lam = lamBadge(cleaned);
       if (lam) badges.push(lam);
       const muttasil = muttasilBadge(cleaned);
@@ -346,7 +355,7 @@ for (const block of blocks) {
       // A small mīm READ inside the card — not the greyed one the Mushaf puts
       // on the card's last word for the ب that follows it.
       const inside = cleaned.replace(/[َُِ]ۢا?$/, '');
-      if (SMALL_MEEM.test(inside) && section.id !== 'iqlab') badges.push('Iqlāb inside');
+      if (SMALL_MEEM.test(inside) && section.id !== 'iqlab') badges.push('Iqlāb');
       if (cleaned.includes(RECT_ZERO)) badges.push('Conditional silent alif');
 
       const entry = { id, section: section.id, text: cleaned, audio: `word${String(id).padStart(3, '0')}.wav`, timings: null, badges };
