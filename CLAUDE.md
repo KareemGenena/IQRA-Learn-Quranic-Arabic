@@ -700,7 +700,7 @@ Every roster seat today **is** a Firebase Auth account: membership is keyed
 `classes/{classId}/members/{uid}`. That quietly assumes a one-device-per-learner
 school. It is false of every Maktab and madrasah class — children without
 phones cannot be represented at all, so a teacher cannot enter, mark or track
-them. This surfaced while designing the Maktab assessment (see `Assessment/`),
+them. This surfaced while designing the Maktab assessment (section 4),
 and it is a blocker for the LMS regardless of whether that assessment is ever
 built in.
 
@@ -905,11 +905,16 @@ re-mints WebAPKs on its own within days.
 The author sits on a local Masjid's education committee and is piloting a
 standardized recitation assessment for its Maktab programme, taught by a
 Qari. It is a separate project from this app, on paper, on purpose — the
-decision (2026-08-15) is argued in `Assessment/should-this-live-in-the-app.md`
-and stands: pilot the instrument first, encode only a version that has been
-used. Do not start integrating without re-reading that note.
+decision (2026-08-15) is argued in `should-this-live-in-the-app.md` and
+stands: pilot the instrument first, encode only a version that has been used.
+Do not start integrating without re-reading that note.
 
-`Assessment/Print Ready - Aug 2026/` holds the four session files: **Student
+**The assessment is no longer in this repo.** At the author's request
+(2026-10-04) it lives at
+`D:\ICN-BM Islamic Center of Nashville Bellevue Mosque\Maktab Program\Assessment\`,
+beside the workbooks; earlier versions remain in git history. Do not copy it
+back in — a folder git half-watches is an error risk. There,
+`Print Ready - Aug 2026/` holds the four session files: **Student
 Packet** (Part A hear-and-match ×14 · Part B read-aloud ×13 scored 0/1/2 ·
 Part C ×5 MCQ), **Teacher Sheet** (recitation script — say the *sound*, never
 the letter's name — plus a landscape grid ending in a blind "Your level"
@@ -932,9 +937,8 @@ The pieces that took real thought, so they are not undone casually:
   validation data for the 10/18 thresholds.
 - **No student audio** — they are minors; the Qari grades live. Student IDs
   are seat ids (M-01 style): assigned once, never reused, same next year.
-- Everything is merged into main and pushed — the repo is the backup. (A
-  local-only branch was tried and reverted the same day: a folder git
-  half-watches is an error risk, not a boundary.)
+- The repo is no longer its backup (see above): the D: folder is, so that
+  folder must be backed up on its own.
 
 Also learned: the author's installed Word font is **"KFGQPC HAFS Uthmanic
 Script"** — a different build from this repo's `UthmanicHafs1-Ver09.otf`,
