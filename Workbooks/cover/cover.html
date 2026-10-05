@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;background:#fff}
+  svg{display:block}
+  .tt{font-family:'Perpetua Titling MT','Perpetua',serif}
+  .pp{font-family:'Perpetua',serif}
+</style></head>
+<body>
+<!-- 1 unit = 0.01 in. US Letter = 850 x 1100. Rendered at 3 px/unit = 300 dpi. -->
+<svg id="s" width="2550" height="3300" viewBox="0 0 850 1100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 8-fold star lattice, line-art only: crisp in greyscale, no tone to smudge -->
+    <!-- stars and crosses: regular octagrams whose tips touch, the gaps between
+         them forming crosses. Paths are written by the script below. -->
+    <pattern id="stars" width="56" height="56" patternUnits="userSpaceOnUse" x="5" y="18">
+      <g fill="none" stroke="#CDB277" stroke-width="1.1" stroke-linejoin="miter">
+        <path id="starOuter"/>
+        <path id="starInner"/>
+        <path id="cornerGem"/>
+      </g>
+      <circle cx="28" cy="28" r="1.8" fill="#CDB277"/>
+    </pattern>
+    <clipPath id="frameIn"><rect x="47" y="47" width="756" height="1006"/></clipPath>
+  </defs>
+
+  <!-- ornamental surround: the pattern fills the frame, the arch is the window -->
+  <rect x="47" y="47" width="756" height="1006" fill="url(#stars)" clip-path="url(#frameIn)"/>
+
+  <!-- page frame -->
+  <rect x="34" y="34" width="782" height="1032" fill="none" stroke="#14513A" stroke-width="2.6"/>
+  <rect x="44" y="44" width="762" height="1012" fill="none" stroke="#C1A054" stroke-width="1.1"/>
+
+  <!-- the mihrab: white window with a green and gold double line -->
+  <path d="M104,1012 L104,336 C104,214 330,170 425,98 C520,170 746,214 746,336 L746,1012 Z"
+        fill="#fff" stroke="#14513A" stroke-width="3.2" stroke-linejoin="miter"/>
+  <path d="M116,1000 L116,339 C116,224 335,184 425,114 C515,184 734,224 734,339 L734,1000 Z"
+        fill="none" stroke="#C1A054" stroke-width="1.2"/>
+  <!-- keystone diamond at the apex -->
+  <path d="M425,84 L433,94 L425,104 L417,94 Z" fill="#C1A054"/>
+
+  <!-- the IQRA 1447 mark -->
+  <image href="art/iqra-mark.png" x="354" y="166" width="142" height="181"/>
+
+  <!-- wordmark -->
+  <text x="425" y="424" text-anchor="middle" class="tt" font-size="44" font-weight="300"
+        letter-spacing="7" fill="#14513A">IQRA 1447</text>
+
+  <!-- divider -->
+  <g stroke="#C1A054" stroke-width="1.3">
+    <line x1="318" y1="454" x2="410" y2="454"/><line x1="440" y1="454" x2="532" y2="454"/>
+  </g>
+  <path d="M425,446 L433,454 L425,462 L417,454 Z" fill="#C1A054"/>
+
+  <!-- title -->
+  <text x="425" y="562" text-anchor="middle" class="pp" font-size="86" font-weight="700"
+        fill="#14513A">Quranic Arabic</text>
+  <text x="425" y="640" text-anchor="middle" class="pp" font-size="62" font-weight="700"
+        word-spacing="10" fill="#8C6C2A">Practice Workbook</text>
+
+  <!-- level badge -->
+  <g stroke="#C1A054" stroke-width="1.3">
+    <line x1="196" y1="728" x2="318" y2="728"/><line x1="532" y1="728" x2="654" y2="728"/>
+  </g>
+  <path d="M190,728 L196,722 L202,728 L196,734 Z M648,728 L654,722 L660,728 L654,734 Z" fill="#C1A054"/>
+  <rect x="325" y="701" width="200" height="54" rx="27" fill="#14513A"/>
+  <rect x="330" y="706" width="190" height="44" rx="22" fill="none" stroke="#C1A054" stroke-width="1"/>
+  <text id="lvl" x="425" y="738" text-anchor="middle" class="tt" font-size="29" font-weight="700"
+        letter-spacing="4" fill="#fff">LEVEL 2</text>
+
+  <!-- printed by -->
+  <rect x="222" y="842" width="406" height="124" rx="10" fill="#fff" stroke="#C1A054" stroke-width="1.4"/>
+  <rect x="356" y="834" width="138" height="16" fill="#fff"/>
+  <text x="425" y="847" text-anchor="middle" class="tt" font-size="14" font-weight="700"
+        letter-spacing="3.2" fill="#14513A">PRINTED BY</text>
+
+  <g id="printer"></g>
+</svg>
+<script>
+  // octagram {8/2}: tips at R, notches at R*cos45/cos22.5
+  const star = (cx, cy, R) => {
+    const r = R * Math.cos(Math.PI / 4) / Math.cos(Math.PI / 8); let d = '';
+    for (let k = 0; k < 16; k++) { const a = k * Math.PI / 8, rr = k % 2 ? r : R;
+      d += (k ? 'L' : 'M') + (cx + rr * Math.cos(a)).toFixed(2) + ',' + (cy + rr * Math.sin(a)).toFixed(2); }
+    return d + 'Z';
+  };
+  document.getElementById('starOuter').setAttribute('d', star(28, 28, 28));
+  document.getElementById('starInner').setAttribute('d', star(28, 28, 13));
+  // a small diamond at the heart of each cross (the tile corners)
+  const gem = (x, y, s) => `M${x - s},${y}L${x},${y - s}L${x + s},${y}L${x},${y + s}Z`;
+  document.getElementById('cornerGem').setAttribute('d', [gem(0, 0, 4), gem(56, 0, 4), gem(0, 56, 4), gem(56, 56, 4)].join(''));
+</script>
+<script>
+  const p = new URLSearchParams(location.search);
+  document.getElementById('lvl').textContent = 'LEVEL ' + (p.get('level') || '2');
+  if (p.get('printer') === 'icnbm') {
+    document.getElementById('printer').innerHTML = `
+      <image href="art/icnbm-logo.png" x="246" y="862" width="96" height="85"/>
+      <text x="358" y="899" class="pp" font-size="27" font-weight="700" fill="#14513A">ICN Bellevue Masjid</text>
+      <text x="358" y="931" class="pp" font-size="23" fill="#14513A">Maktab Program</text>`;
+  }
+</script>
+</body></html>

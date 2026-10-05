@@ -1,0 +1,2 @@
+# a build that stopped half-way (make-editions.mjs writes .tmp, then renames)
+*.docx.tmp

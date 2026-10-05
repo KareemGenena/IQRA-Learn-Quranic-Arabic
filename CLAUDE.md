@@ -901,6 +901,36 @@ is still the old blue** (`--moon` is a lesson colour — never touch it in a
 rebrand). iOS home-screen icons only update on delete-and-re-add; Android
 re-mints WebAPKs on its own within days.
 
+**Practice workbooks and licensing (2026-10-04).** The author's Maktab
+practice workbooks (Levels 1–3, built in Word with Claude in Word) now live in
+`Workbooks/` as **generic IQRA 1447 masters** — the only files anyone edits.
+`Workbooks/ICNBM/` holds the ICN Bellevue editions, **generated** from the
+masters by `node Workbooks/build/make-editions.mjs icnbm`; never edit them.
+An edition differs only in its cover. The cover is one full-page 300 dpi image
+(`Workbooks/cover/`, rendered by `render.mjs`: line art on white so greyscale
+printing has nothing to smudge) with a "PRINTED BY" box — an empty Word text
+box in the master that a masjid types its name into; the ICNBM edition has
+their logo and name in the image instead. Page 2 is a native-Word copyright
+page (CC BY 4.0, edition line, `iqra.muslimbynature.org` — **which must be
+connected before anyone prints**). Page tops read "IQRA 1447 · Quranic Arabic
+Practice Workbook · Level N"; section openers carry the IQRA mark. The footer
+field is `IF PAGE > 2 … = PAGE - 2`, so the typed Table of Contents numbers
+are physical page − 2 (all 24 section starts checked in Word). The builder
+Claude in Word stores in each file (`iqraBuilder5–7`, `iqraLogo`,
+`iqraHandover`) was rewritten to match; **the `iqra-workbook-v4` skill outside
+this repo still writes ICN Bellevue headers** — have Claude in Word make a v5
+before it builds new pages. PDFs for printing: *Microsoft Print to PDF*, as
+before (the skill records that Word's own PDF export garbles the Arabic).
+`Workbooks/build/word-pages.ps1` opens a .docx in a private, invisible Word,
+reports its page count and draws chosen pages to PNG — the way to verify an
+edit to these files (it kills only the Word it started).
+
+Licensing (`LICENSE`): the author's content — lessons, sheets, recordings,
+pictures, workbooks — is **CC BY 4.0**; the code is **MIT**; versions published
+19 Sep – 4 Oct 2026 were CC0 and stay so. Names and logos (IQRA 1447's and any
+printer's) are licensed under neither. The author's wish behind it: use or
+change anything, credit IQRA 1447, never present a changed version as ours.
+
 **The Maktab assessment is finished and print-ready — v1.0, 2026-08-16.**
 The author sits on a local Masjid's education committee and is piloting a
 standardized recitation assessment for its Maktab programme, taught by a
