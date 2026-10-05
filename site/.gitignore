@@ -1,0 +1,2 @@
+# build output: site/build.mjs copies the PDFs from Workbooks/ here at deploy
+public/workbooks/

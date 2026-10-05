@@ -59,7 +59,7 @@ re-run — never edit `words.json` by hand.
 ```bash
 node scripts/make-lesson3.mjs     # rebuild one lesson
 npm run build                     # tsc + vite
-firebase deploy --only hosting    # from 1447 H/
+firebase deploy --only hosting:app   # from 1447 H/ (hosting:home = the landing page)
 ```
 
 Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin`,
@@ -924,6 +924,29 @@ before (the skill records that Word's own PDF export garbles the Arabic).
 `Workbooks/build/word-pages.ps1` opens a .docx in a private, invisible Word,
 reports its page count and draws chosen pages to PNG — the way to verify an
 edit to these files (it kills only the Word it started).
+
+**The landing page — `iqra.muslimbynature.org` (2026-10-05).** A second
+Hosting site in the same Firebase project: site `iqra1447` (also served at
+`iqra1447.web.app`), deploy target `home`, source in `site/`. The app stays at
+`iqra---learn-quranic-arabic.web.app` (target `app`) and the page links to it.
+- `site/public/` — one static page: logo, the three workbook PDFs, a link to the
+  app, a contact form. Same palette and star geometry as the cover.
+- `site/build.mjs` runs as the `home` predeploy: copies the generic PDFs from
+  `Workbooks/IQRA 1447 Practice Workbook - Level N.pdf` to `/workbooks/…` and
+  writes `meta.json` (pages, size) that the page shows. Never a masjid's edition.
+- `site/functions/` (codebase `site`, Node 22) — `contact`, reached through
+  the rewrite `/api/contact`: a message becomes a row in the author's Notion
+  database (Name · Email · Topic · Message) and an email to the IQRA mailbox
+  with Reply-To set to the sender. Secrets `NOTION_TOKEN`, `NOTION_DATABASE_ID`,
+  `GMAIL_APP_PASSWORD` are in Secret Manager, set by the author — never in the
+  repo, never typed by Claude. Spam: a hidden trap field and a minimum time on
+  the page; Turnstile if that stops being enough.
+- Deploy: `firebase deploy --only hosting:app` (the app),
+  `--only hosting:home` (the page), `--only functions:site` (the form).
+  A bare `--only hosting` now deploys both sites.
+- The domain itself is connected in the Firebase console (site `iqra1447` →
+  Add custom domain) with the records it gives added at Namecheap; the root
+  `muslimbynature.org` is not built and needs nothing for the subdomain to work.
 
 Licensing (`LICENSE`): the author's content — lessons, sheets, recordings,
 pictures, workbooks — is **CC BY 4.0**; the code is **MIT**; versions published

@@ -2,20 +2,48 @@
   "firestore": {
     "rules": "firestore.rules"
   },
-  "hosting": {
-    "public": "app/dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [{ "source": "**", "destination": "/index.html" }],
-    "headers": [
-      { "source": "/", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
-      { "source": "**/*.html", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
-      { "source": "/sw.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
-      { "source": "/manifest.webmanifest", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
-      { "source": "/version.json", "headers": [{ "key": "Cache-Control", "value": "no-store" }] },
-      { "source": "/lessons/**", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
-      { "source": "/assets/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-      { "source": "/fonts/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-      { "source": "/audio/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }] }
-    ]
-  }
+  "functions": [
+    {
+      "source": "site/functions",
+      "codebase": "site",
+      "runtime": "nodejs22",
+      "ignore": ["node_modules", ".git", "*.log"]
+    }
+  ],
+  "hosting": [
+    {
+      "target": "app",
+      "public": "app/dist",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [{ "source": "**", "destination": "/index.html" }],
+      "headers": [
+        { "source": "/", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "**/*.html", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "/sw.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "/manifest.webmanifest", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "/version.json", "headers": [{ "key": "Cache-Control", "value": "no-store" }] },
+        { "source": "/lessons/**", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "/assets/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+        { "source": "/fonts/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+        { "source": "/audio/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }] }
+      ]
+    },
+    {
+      "target": "home",
+      "public": "site/public",
+      "predeploy": ["node site/build.mjs"],
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "rewrites": [
+        { "source": "/api/contact", "function": { "functionId": "contact", "region": "us-central1" } }
+      ],
+      "headers": [
+        { "source": "/", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "**/*.@(html|js|css|json)", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "/workbooks/**", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "/img/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
+      ]
+    }
+  ]
 }

@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "iqra---learn-quranic-arabic"
-  }
+  },
+  "targets": {
+    "iqra---learn-quranic-arabic": {
+      "hosting": {
+        "app": [
+          "iqra---learn-quranic-arabic"
+        ],
+        "home": [
+          "iqra1447"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

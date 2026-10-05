@@ -1,0 +1,14 @@
+{
+  "name": "iqra-1447-site-functions",
+  "description": "The landing page's contact form: a message becomes a row in Notion and an email.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "engines": { "node": "22" },
+  "dependencies": {
+    "firebase-admin": "^14.5.0",
+    "firebase-functions": "^7.4.0",
+    "nodemailer": "^10.0.15"
+  }
+}
