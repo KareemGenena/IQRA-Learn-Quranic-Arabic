@@ -168,8 +168,8 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
       },
       manifest: {
-        name: 'IQRA — Learn Quranic Arabic',
-        short_name: 'IQRA',
+        name: 'IQRA 1447',
+        short_name: 'IQRA 1447',
         description: 'Learn to read and pronounce Quranic Arabic, letter by letter.',
         start_url: '.',
         display: 'standalone',

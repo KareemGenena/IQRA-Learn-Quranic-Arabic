@@ -191,7 +191,7 @@ export default function App() {
         <a className="brand" href="#/">
           <img src={`${import.meta.env.BASE_URL}pwa-192.png`} alt="" className="logo" />
           <span className="titles">
-            <span className="brand-name">IQRA</span>
+            <span className="brand-name">IQRA 1447</span>
             <span className="brand-sub">Learn Quranic Arabic</span>
           </span>
         </a>

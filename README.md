@@ -1,4 +1,4 @@
-# IQRA — Learn Quranic Arabic
+# IQRA 1447 — Learn Quranic Arabic
 
 A progressive web app that teaches Quranic Arabic pronunciation to English
 speakers. Tap a word, hear it recited, and watch each letter light up exactly as

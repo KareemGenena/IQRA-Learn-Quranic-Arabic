@@ -55,7 +55,7 @@ export function AccountPage({ account }: { account: Account }) {
       <NameCard account={account} />
 
       <section className="account-card">
-        <h3 className="account-heading">How do you use IQRA?</h3>
+        <h3 className="account-heading">How do you use IQRA 1447?</h3>
         <p className="account-hint">
           You can change this at any time. Learners keep their own notes; teachers can also run a
           class.
