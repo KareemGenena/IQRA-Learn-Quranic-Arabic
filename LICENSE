@@ -1,22 +1,53 @@
-IQRA — Learn Quranic Arabic
-============================
+IQRA 1447 — Learn Quranic Arabic
+=================================
 
-The author's work in this repository — the lessons, the Word tables, the
-recordings, the pictures, the application code, the scripts, the design notes
-and the assessment materials — is dedicated to the public domain under the
-Creative Commons CC0 1.0 Universal Public Domain Dedication.
+Content: Creative Commons Attribution 4.0 International (CC BY 4.0)
+---------------------------------------------------------------------
+
+The author's content in this repository — the lessons, the Word tables, the
+recordings, the pictures, the practice workbooks, the tips and explanations,
+and the design notes — is licensed under CC BY 4.0.
+
+    https://creativecommons.org/licenses/by/4.0/legalcode
+
+In plain words (the licence itself governs):
+
+- You may copy, share, print, adapt and even sell it, for any purpose.
+- You must credit IQRA 1447 and link to the licence and to this project:
+  https://github.com/KareemGenena/IQRA-Learn-Quranic-Arabic
+- If you change anything, you must say so. A changed version is yours, not
+  IQRA 1447's, and must not be presented as ours or as endorsed by us.
+
+It is offered freely, as ṣadaqah jāriyah.
+
+Code
+----
+
+The application code and the scripts remain dedicated to the public domain
+under CC0 1.0 Universal, as before:
 
     https://creativecommons.org/publicdomain/zero/1.0/legalcode
 
-To the extent possible under law, the author has waived all copyright and
-related or neighbouring rights to this work. You may copy, modify, distribute
-and use it, for any purpose, without asking permission and without
-attribution. It is offered as ṣadaqah jāriyah: no rights reserved.
+Earlier versions
+----------------
+
+Versions of this repository published from 19 September 2026 until this
+change dedicated all of the author's work, content included, to the public
+domain under CC0 1.0. That dedication cannot be withdrawn and still applies to
+those versions. This file governs everything published from now on.
+
+Names and logos
+---------------
+
+The name IQRA 1447 and its logo (`New Logo/`, `Brand/`, the app's icons) are
+not licensed under CC BY 4.0 or CC0, and neither is the name or logo of any
+other organization. They identify who made a thing; please do not use them on
+work that is not ours.
 
 Third-party materials
 ---------------------
 
-The dedication above covers only the author's own work. The following are
+The licences above cover only the author's own work. The following are
 included under their own terms, which travel with them and are not changed by
 this file:
 
