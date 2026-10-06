@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IQRA 1447 — Quranic Arabic, letter by letter</title>
-  <meta name="description" content="Free Quranic Arabic practice workbooks for Maktab classes and homes, and an app where every letter lights up as it is pronounced.">
+  <meta name="description" content="Free Quranic Arabic practice workbooks for Maktab classes and homes.">
   <meta name="theme-color" content="#14513A">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:title" content="IQRA 1447 — Quranic Arabic, letter by letter">
-  <meta property="og:description" content="Free practice workbooks and an app for learning to read the Quran.">
+  <meta property="og:description" content="Free practice workbooks for learning to read the Quran.">
   <meta property="og:image" content="/img/cover-level-1.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
   </a>
   <nav class="top-nav" aria-label="Sections">
     <a href="#workbooks">Workbooks</a>
-    <a href="#app">App</a>
+    <a class="app-only" href="#app">App</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -57,11 +57,9 @@
       <div class="arch-content">
         <img class="lockup" src="/img/iqra-1447-lockup.png" alt="IQRA 1447" width="380" height="230">
         <h1>Learn to read the Quran, letter by letter</h1>
-        <p class="lead">Free practice workbooks for Maktab classes and homes, and an app
-          where every letter lights up as it is pronounced.</p>
         <div class="cta">
           <a class="btn btn-solid" href="#workbooks">Get the workbooks</a>
-          <a class="btn btn-line" href="https://iqra---learn-quranic-arabic.web.app" rel="noopener">Open the app</a>
+          <a class="btn btn-line app-only" href="https://iqra---learn-quranic-arabic.web.app" rel="noopener">Open the app</a>
         </div>
       </div>
     </div>
@@ -117,12 +115,14 @@
         <h3>For masajid and schools</h3>
         <p>Print as many copies as you need. Write or stamp your masjid's name in the
           <b>Printed by</b> box on the cover. Found a mistake? <a href="#contact">Tell us</a> —
-          corrections go into the next edition, which will always be here.</p>
+          corrections go into the next edition, which will be here in shaa Allah.</p>
       </aside>
     </div>
   </section>
 
-  <section id="app" class="band band-tint">
+  <!-- The three .app-only elements are hidden until config/site says appVisible
+       (switched at /admin); main.js reads it on every load. -->
+  <section id="app" class="band band-tint app-only">
     <div class="wrap app-row">
       <div>
         <h2>The IQRA 1447 app</h2>
@@ -136,14 +136,12 @@
 
   <section id="contact" class="band">
     <div class="wrap narrow">
-      <h2>Contact us</h2>
-      <p class="section-lead">A question, a correction, or a request to translate or adapt the
-        workbooks — we read every message.</p>
+      <h2 class="contact-heading">Contact us</h2>
 
       <form id="contact-form" class="form" novalidate>
         <div class="field">
-          <label for="f-name">Your name</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+          <label for="f-name">Your name <span class="opt">(optional)</span></label>
+          <input id="f-name" name="name" type="text" autocomplete="name" maxlength="100">
         </div>
         <div class="field">
           <label for="f-email">Your email</label>
@@ -152,10 +150,8 @@
         <div class="field">
           <label for="f-topic">About</label>
           <select id="f-topic" name="topic" required>
-            <option>A question</option>
-            <option>A correction in a workbook</option>
-            <option>A correction in the app</option>
-            <option>Permission or translation</option>
+            <option>Question</option>
+            <option>Feedback</option>
             <option>Something else</option>
           </select>
         </div>

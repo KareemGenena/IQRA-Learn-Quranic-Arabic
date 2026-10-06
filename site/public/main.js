@@ -1,4 +1,16 @@
-// IQRA 1447 landing page: workbook sizes from the build, and the contact form.
+// IQRA 1447 landing page: the app switch, workbook sizes from the build, and the contact form.
+
+// Whether the page shows the app (header link, hero button, app section) is the
+// author's switch at /admin, kept in Firestore at config/site. Hidden unless the
+// document says appVisible: true — so an error, or no document yet, keeps it hidden.
+// Hiding the links does not make the app private: its own address still works.
+fetch('https://firestore.googleapis.com/v1/projects/iqra---learn-quranic-arabic/databases/(default)/documents/config/site',
+  { cache: 'no-store' })
+  .then(r => (r.ok ? r.json() : null))
+  .then(doc => {
+    if (doc?.fields?.appVisible?.booleanValue === true) document.documentElement.classList.add('app-on');
+  })
+  .catch(() => {});
 
 // Page counts and sizes are written by site/build.mjs at deploy time, so they
 // follow the PDFs without anyone editing this page.
@@ -29,7 +41,6 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const data = Object.fromEntries(new FormData(form));
   const name = (data.name || '').trim(), email = (data.email || '').trim(), message = (data.message || '').trim();
-  if (!name) return say('Please tell us your name.', 'err');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return say('Please check your email address.', 'err');
   if (message.length < 10) return say('Please write a little more in your message.', 'err');
 

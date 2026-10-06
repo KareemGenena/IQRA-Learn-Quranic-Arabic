@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>IQRA 1447 — website settings</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="top-brand" href="/">
+    <img src="/img/iqra-1447-mark.png" alt="" width="38" height="48">
+    <span>IQRA 1447</span>
+  </a>
+</header>
+
+<main class="band admin">
+  <div class="wrap narrow">
+    <h2>Website settings</h2>
+
+    <!-- Sign-in: the IQRA admin account. The password goes straight to Google's
+         sign-in service and is never stored here. -->
+    <form id="signin" class="form admin-card" novalidate>
+      <p class="fine">Sign in with the IQRA 1447 admin account.</p>
+      <div class="field">
+        <label for="a-email">Email</label>
+        <input id="a-email" type="email" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="a-password">Password</label>
+        <input id="a-password" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn btn-solid" type="submit">Sign in</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <section id="panel" class="admin-card" hidden>
+      <div class="switch-row">
+        <label class="switch">
+          <input id="app-visible" type="checkbox" role="switch" aria-describedby="app-visible-help">
+          <span class="slider" aria-hidden="true"></span>
+          <span class="sr-only">Show the app on the website</span>
+        </label>
+        <div>
+          <p class="switch-title">Show the app on the website</p>
+          <p id="app-visible-help" class="fine">The App link in the header, the “Open the app”
+            button, and the app section.</p>
+        </div>
+      </div>
+      <p class="form-status" id="save-status" role="status" aria-live="polite"></p>
+      <p class="admin-links"><a href="/" target="_blank" rel="noopener">Open the website</a>
+        · <button id="signout" class="linkish" type="button">Sign out</button></p>
+      <p class="fine">Hiding the app removes the links from this website only. The app itself
+        still opens for anyone who has its address.</p>
+    </section>
+  </div>
+</main>
+
+<script src="/admin.js" defer></script>
+</body>
+</html>

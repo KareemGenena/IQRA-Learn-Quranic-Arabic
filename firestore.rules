@@ -224,6 +224,16 @@ service cloud.firestore {
         && request.auth.token.email == 'kintegracion@gmail.com';
     }
 
+    // The landing page (iqra.muslimbynature.org, site/): whether it shows the
+    // app. Its own document, because the app's admin rewrites config/app whole
+    // and would erase a field kept there. Switched at the page's /admin.
+    match /config/site {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['appVisible', 'updatedAt'])
+        && request.resource.data.appVisible is bool;
+    }
+
     match /calibrations/{lessonId}/words/{wordId} {
       allow read: if true;
       allow create, update: if request.auth != null

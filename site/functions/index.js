@@ -32,7 +32,7 @@ const NOTION_DATABASE_ID = defineSecret('NOTION_DATABASE_ID');
 const GMAIL_APP_PASSWORD = defineSecret('GMAIL_APP_PASSWORD');
 
 const MAILBOX = 'kintegracion@gmail.com';            // the app's admin account (app/src/lib/auth.ts)
-const TOPICS = ['A question', 'A correction in a workbook', 'A correction in the app', 'Permission or translation', 'Something else'];
+const TOPICS = ['Question', 'Feedback', 'Something else'];
 const MIN_MS_ON_PAGE = 2500;
 
 const oneLine = s => String(s ?? '').replace(/[\u0000-\u001F\u007F]+/g, ' ').replace(/\s+/g, ' ').trim();
@@ -62,7 +62,7 @@ async function saveToNotion({ name, email, topic, message }) {
     body: JSON.stringify({
       parent: { database_id: databaseId(NOTION_DATABASE_ID.value()) },
       properties: {
-        Name: { title: [{ text: { content: name } }] },
+        Name: { title: [{ text: { content: name || email } }] },     // the name is optional
         Email: { email },
         Topic: { select: { name: topic } },
         Message: { rich_text: [{ text: { content: message.slice(0, 2000) } }] },
@@ -83,9 +83,9 @@ async function sendMail({ name, email, topic, message }, notionError) {
   await transport.sendMail({
     from: `"IQRA 1447 website" <${MAILBOX}>`,
     to: MAILBOX,
-    replyTo: `"${name.replace(/"/g, "'")}" <${email}>`,
-    subject: `[IQRA 1447] ${topic} — ${name}`.slice(0, 180),
-    text: `From: ${name} <${email}>\nAbout: ${topic}\n\n${message}\n\n— Sent from the contact form at iqra.muslimbynature.org` +
+    replyTo: name ? `"${name.replace(/"/g, "'")}" <${email}>` : email,
+    subject: `[IQRA 1447] ${topic} — ${name || email}`.slice(0, 180),
+    text: `From: ${name ? `${name} <${email}>` : email}\nAbout: ${topic}\n\n${message}\n\n— Sent from the contact form at iqra.muslimbynature.org` +
       (notionError ? `\n\nNOTE: this message was NOT saved to Notion: ${notionError}` : ''),
   });
 }
@@ -110,8 +110,8 @@ export const contact = onRequest(
       topic: TOPICS.includes(oneLine(b.topic)) ? oneLine(b.topic) : 'Something else',
       message: multiLine(b.message).slice(0, 5000),
     };
-    if (!msg.name || !EMAIL_RE.test(msg.email) || msg.message.length < 10) {
-      return res.status(400).json({ ok: false, error: 'Please fill in your name, a valid email and a message.' });
+    if (!EMAIL_RE.test(msg.email) || msg.message.length < 10) {
+      return res.status(400).json({ ok: false, error: 'Please give a valid email and a message.' });
     }
 
     let notionError = '';
