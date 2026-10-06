@@ -911,8 +911,8 @@ An edition differs only in its cover. The cover is one full-page 300 dpi image
 printing has nothing to smudge) with a "PRINTED BY" box — an empty Word text
 box in the master that a masjid types its name into; the ICNBM edition has
 their logo and name in the image instead. Page 2 is a native-Word copyright
-page (CC BY 4.0, edition line, `iqra.muslimbynature.org` — **which must be
-connected before anyone prints**). Page tops read "IQRA 1447 · Quranic Arabic
+page (CC BY 4.0, edition line, `iqra.muslimbynature.org` — live since
+2026-10-06, so the workbooks may be printed). Page tops read "IQRA 1447 · Quranic Arabic
 Practice Workbook · Level N"; section openers carry the IQRA mark. The footer
 field is `IF PAGE > 2 … = PAGE - 2`, so the typed Table of Contents numbers
 are physical page − 2 (all 24 section starts checked in Word). The builder
@@ -953,9 +953,13 @@ Hosting site in the same Firebase project: site `iqra1447` (also served at
 - Deploy: `firebase deploy --only hosting:app` (the app),
   `--only hosting:home` (the page), `--only functions:site` (the form).
   A bare `--only hosting` now deploys both sites.
-- The domain itself is connected in the Firebase console (site `iqra1447` →
-  Add custom domain) with the records it gives added at Namecheap; the root
-  `muslimbynature.org` is not built and needs nothing for the subdomain to work.
+- The domain is connected (2026-10-06): a CNAME `iqra` → `iqra1447.web.app` at
+  Namecheap, the certificate issued by Firebase. The root `muslimbynature.org`
+  is not built and needs nothing for the subdomain to work.
+- The form was tested live the same day: a message reached both Notion and
+  Gmail; a missing email is refused (400); the trap field and a sub-2.5 s
+  submit are answered "sent" and dropped. Artifact Registry in us-central1
+  deletes old function images after 1 day (`functions:artifacts:setpolicy`).
 
 Licensing (`LICENSE`): the author's content — lessons, sheets, recordings,
 pictures, workbooks — is **CC BY 4.0**; the code is **MIT**; versions published
