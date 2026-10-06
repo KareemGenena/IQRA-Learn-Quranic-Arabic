@@ -941,6 +941,14 @@ Hosting site in the same Firebase project: site `iqra1447` (also served at
   `GMAIL_APP_PASSWORD` are in Secret Manager, set by the author — never in the
   repo, never typed by Claude. Spam: a hidden trap field and a minimum time on
   the page; Turnstile if that stops being enough.
+- **The app is hidden on the page unless the author switches it on** at
+  `/admin` (not linked; signs in with the IQRA admin account over the same
+  REST APIs the app uses). The switch is Firestore `config/site`
+  `{ appVisible, updatedAt }` with its own rule — public read, admin-only
+  boolean write — because the app's admin PATCHes `config/app` whole and would
+  erase a field kept there. Off is the default: no document, or an error, keeps
+  the App link, the hero button and the app section hidden. Hiding is not
+  restricting: the app's own address still works.
 - Deploy: `firebase deploy --only hosting:app` (the app),
   `--only hosting:home` (the page), `--only functions:site` (the form).
   A bare `--only hosting` now deploys both sites.
