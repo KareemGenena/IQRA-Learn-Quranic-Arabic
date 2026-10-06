@@ -39,9 +39,13 @@ const oneLine = s => String(s ?? '').replace(/[\u0000-\u001F\u007F]+/g, ' ').rep
 const multiLine = s => String(s ?? '').replace(/\r\n?/g, '\n').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').trim();
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/** The id is the last 32 hex characters of the link's last path segment — a bare id,
+ *  a dashed UUID or a whole "Copy link" URL all work. Searching the whole URL for the
+ *  first 32 hex characters would not: a title slug ending in a-f letters runs into the id. */
 function databaseId(raw) {
-  const hex = String(raw).replace(/-/g, '').match(/[0-9a-f]{32}/i);
-  if (!hex) throw new Error('NOTION_DATABASE_ID does not contain a 32-character database id');
+  const last = String(raw).trim().split(/[?#]/)[0].split('/').pop().replace(/-/g, '');
+  const hex = last.match(/[0-9a-f]{32}$/i);
+  if (!hex) throw new Error('NOTION_DATABASE_ID does not end in a 32-character database id');
   return hex[0];
 }
 
