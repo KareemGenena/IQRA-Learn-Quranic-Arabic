@@ -4,9 +4,10 @@
  * Hosting rewrites POST /api/contact to this function (firebase.json, target
  * "home"), so the page and the form share one origin and no CORS is needed.
  * A message becomes:
- *   1. a row in the author's Notion database — columns Name (title), Email
- *      (email), Topic (select), Message (text); the full message also goes in
- *      the page body, since a Notion text property holds 2,000 characters;
+ *   1. a row in the author's Notion database — columns Message (the title),
+ *      Email (email), Category (multi-select: Question / Feedback / Something
+ *      else), Name (text, may be empty), Created time (automatic); the message
+ *      also goes in the page body with its paragraphs kept, since a title is one line;
  *   2. an email to the IQRA mailbox, with Reply-To set to the sender, so a
  *      reply is one click.
  * Either one is enough for the sender to be told "sent"; a failure of the
@@ -61,11 +62,13 @@ async function saveToNotion({ name, email, topic, message }) {
     },
     body: JSON.stringify({
       parent: { database_id: databaseId(NOTION_DATABASE_ID.value()) },
+      // The author's columns, names and types exactly: Message is the title (a name is
+      // optional and may be empty), Created time fills itself in.
       properties: {
-        Name: { title: [{ text: { content: name || email } }] },     // the name is optional
+        Message: { title: chunks(oneLine(message), 2000).map(c => ({ text: { content: c } })) },
         Email: { email },
-        Topic: { select: { name: topic } },
-        Message: { rich_text: [{ text: { content: message.slice(0, 2000) } }] },
+        Category: { multi_select: [{ name: topic }] },
+        Name: { rich_text: name ? [{ text: { content: name } }] : [] },
       },
       children: message.split(/\n{2,}/).flatMap(p => chunks(p, 2000)).slice(0, 90).map(p => ({
         object: 'block', type: 'paragraph', paragraph: { rich_text: [{ type: 'text', text: { content: p } }] },

@@ -936,7 +936,8 @@ Hosting site in the same Firebase project: site `iqra1447` (also served at
   writes `meta.json` (pages, size) that the page shows. Never a masjid's edition.
 - `site/functions/` (codebase `site`, Node 22) — `contact`, reached through
   the rewrite `/api/contact`: a message becomes a row in the author's Notion
-  database (Name · Email · Topic · Message) and an email to the IQRA mailbox
+  database (Message as the title · Email · Category multi-select · Name text
+  · Created time — the author's own columns) and an email to the IQRA mailbox
   with Reply-To set to the sender. Secrets `NOTION_TOKEN`, `NOTION_DATABASE_ID`,
   `GMAIL_APP_PASSWORD` are in Secret Manager, set by the author — never in the
   repo, never typed by Claude. Spam: a hidden trap field and a minimum time on
