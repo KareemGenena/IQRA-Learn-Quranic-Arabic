@@ -1273,7 +1273,12 @@ the lam-alif's marks), 177 (the small mīm said to overlap the cut
 descender — it does not in the zoom). Cards 29, 39, 43, 97 and 153 came out
 half-size or overflowing ON THE PROOF PAGE at 420 px: that is `--fit` and
 the proof row's fixed id column, not the card. Not re-run: the author asked
-for economy.
+for economy. The third round's review (`wf_dade2834-b07`, 2026-10-10, four
+reviewers over 176 cards at a true 38 px / 3×, 0.95 M tokens) confirmed
+nothing; its one finding was a 3 %-grey speck above the small mīm of
+أَلِيمُۢ, invisible without stretching the levels. Lessons 2, 4, 5, 6 and 20
+were re-photographed and pixel-compared: 2, 6 and 20 identical, 4 and 5
+changed only where a neighbour's tail tip under a grey alif is now black.
 
 **Lesson 6, to finish.** (1) Listen to the ٱلرَّحِيمِ ʿāriḍ triple (cards
 44–46) and retake `الرحيم وقف 2.wav` if the first piece carries a stray sound.
