@@ -1,0 +1,15 @@
+{
+  "_": "Which app lessons a workbook section matches. Section ids are L<level>S<section>, as printed in each master's Table of Contents. Lesson ids are the app's lesson numbers (lessons.ts). Edit by hand, then run: node Workbooks/build/make-crosswalk.mjs",
+  "L1S1": [31, 20],
+  "L1S2": [31, 20],
+  "L1S3": [20, 32],
+  "L2S5": [3],
+  "L2S6": [5, 6],
+  "L3S1": [6],
+  "L3S2": [2],
+  "L3S3": [4],
+  "L3S4": [4],
+  "L3S5": [33, 3],
+  "L3S6": [7],
+  "L3S7": [7]
+}

@@ -8,6 +8,12 @@
       "port": 5173
     },
     {
+      "name": "iqra-dev-b",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "app", "run", "dev", "--", "--port", "5174", "--strictPort"],
+      "port": 5174
+    },
+    {
       "name": "iqra-preview",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "app", "run", "preview"],

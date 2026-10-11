@@ -184,3 +184,10 @@ textarea { resize: vertical; min-height: 140px; }
 .admin-links { margin: 18px 0 8px; }
 .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--green); text-decoration: underline; cursor: pointer; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* workbook ↔ app crosswalk, under each workbook card (app-only) */
+.app-on .app-lessons.app-only { display: block; }
+.app-lessons { margin-top: 12px; font-size: 0.9rem; }
+.app-lessons ul { margin: 0; padding-left: 1.1em; }
+.app-lessons li { margin: 4px 0; }
+.app-lessons-section { font-weight: 600; }

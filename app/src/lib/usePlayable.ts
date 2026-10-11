@@ -31,9 +31,10 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
   }, []);
 
   /** Resolves when playback has finished, so callers can chain words.
-   *  `startAt` begins part-way through, in media seconds. */
+   *  `start` begins part-way through: media seconds, or `{ cluster }` to
+   *  begin where that letter is said — a kids card tapped on بُ. */
   const play = useCallback(
-    async (startAt = 0): Promise<void> => {
+    async (start: number | { cluster: number } = 0): Promise<void> => {
       stopActivePlayback();
       setPlaying(true);
       setPaused(false);
@@ -45,6 +46,8 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
         ]);
         setBoundaries(bounds);
         const indexMap = audibleIndices(clusters, playable.silentClusters);
+        const startAt =
+          typeof start === 'number' ? start : (bounds[indexMap.indexOf(start.cluster)] ?? 0);
         const shares = ghunnaShares(clusters, playable.silentClusters, {
           letterNames: playable.letterNames,
           waqf: playable.waqf,

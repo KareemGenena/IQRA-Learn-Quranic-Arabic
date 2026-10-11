@@ -66,10 +66,7 @@ export function KidsHomePage({ config, admin }: { config: AppConfig; admin: bool
           src={`${import.meta.env.BASE_URL}images/kids/manara.png?v=${__IMAGE_VERSION__}`}
           alt=""
         />
-        <p className="home-intro">
-          The Arabic letters, from the very beginning. A teacher leads; the app plays, shows and
-          waits.
-        </p>
+        <p className="home-intro">The Arabic letters, from the very beginning.</p>
       </div>
 
       {LEVELS.map(({ level, title, blurb }) => {

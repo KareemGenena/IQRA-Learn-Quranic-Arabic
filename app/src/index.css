@@ -2989,3 +2989,54 @@ kbd {
 :root[data-mode='kids'] .rate-group {
   display: none;
 }
+
+/* ── IQRA Kids, iteration 6 (2026-10-10) ──────────────────────────────────
+   Family colors: a letter wears the color of its shape family everywhere in
+   the kids skin — on the song strip, as the big letter on its card, on the
+   places page. Seven colors cycled over the seventeen families, so neighbors
+   never match; the green box stays the one meaning of "being said now". */
+:root {
+  --fam-0: #d9534f; --fam-1: #e8842c; --fam-2: #b8860b; --fam-3: #1f8a8a;
+  --fam-4: #2f6fbf; --fam-5: #7a4fbf; --fam-6: #c2407f;
+}
+:root[data-theme='dark'] {
+  --fam-0: #f08c89; --fam-1: #f5a95d; --fam-2: #e0b84a; --fam-3: #4fc3c3;
+  --fam-4: #7fb2f0; --fam-5: #b394f0; --fam-6: #f07bb5;
+}
+.fam-0 { color: var(--fam-0); } .fam-1 { color: var(--fam-1); } .fam-2 { color: var(--fam-2); }
+.fam-3 { color: var(--fam-3); } .fam-4 { color: var(--fam-4); } .fam-5 { color: var(--fam-5); }
+.fam-6 { color: var(--fam-6); }
+
+/* the letter card: picture | letter, one Play button, no mascot */
+.letter-stage { grid-template-columns: 1fr 1fr; gap: 20px; }
+.letter-pic img { transition: box-shadow 0.2s; }
+.letter-pic.glow img { box-shadow: 0 0 0 4px var(--highlight-border), 0 0 26px var(--highlight-border); }
+.small-form-text { font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif; font-size: 44px; line-height: 1.3; }
+.letter-actions { display: flex; justify-content: center; margin-top: 16px; }
+.play-letter { display: inline-flex; align-items: center; gap: 8px; }
+@media (max-width: 640px) {
+  .letter-stage { grid-template-areas: 'pic letter'; }
+}
+
+/* the song strip: one long line of letters that glides so the sung one is centered */
+.song-view { position: relative; overflow: hidden; height: 250px; background: var(--card); border: 1px solid var(--card-border); border-radius: 20px; box-shadow: var(--shadow); }
+.song-strip { position: absolute; right: 0; top: 0; height: 100%; display: inline-flex; align-items: center; gap: 0.3em; white-space: nowrap; font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif; font-size: clamp(88px, 16vw, 150px); line-height: 1.2; transition: transform 0.35s ease; will-change: transform; }
+.song-view.sounds .song-strip { font-size: clamp(64px, 12vw, 110px); }
+.song-letter { padding: 0 0.08em; border-radius: 0.12em; transition: background 0.15s, box-shadow 0.15s; }
+.song-letter.on { background: var(--highlight); box-shadow: 0 0 0 2px var(--highlight-border); }
+.song-letter.group-start { margin-inline-start: 0.9em; }
+
+/* the places page — the workbook's makhraj page, one place per card */
+.place-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 16px 18px 18px; box-shadow: var(--shadow); }
+.place-title { font-weight: 700; font-size: 18px; display: inline-flex; gap: 10px; align-items: baseline; }
+.place-title-ar { font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif; font-weight: 400; font-size: 20px; color: var(--text-soft); }
+.place-stage { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 10px; }
+.place-pic { width: 220px; max-width: 45%; height: auto; }
+.place-letters { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25em; font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif; font-size: clamp(44px, 7vw, 68px); line-height: 1.3; max-width: 100%; }
+.place-note { text-align: center; color: var(--text-soft); margin: 10px 0 0; }
+
+/* the workbook, from a lesson */
+.workbook-links { list-style: none; margin: 4px 0 10px; padding: 0; font-size: 14px; }
+.workbook-links li { margin: 2px 0; }
+.workbook-links a { color: var(--accent); }
+.workbook-section { color: var(--text-soft); }

@@ -34,7 +34,7 @@ export const DEFAULT_CONFIG: AppConfig = {
     1: 'published', 2: 'published', 3: 'draft', 4: 'draft', 5: 'published', 6: 'draft', 7: 'draft',
     // IQRA Kids — the qaida. Draft until they have been recorded and used in
     // a real class. See Design/iqra-kids.md.
-    20: 'draft', 21: 'draft', 22: 'draft', 31: 'draft', 32: 'draft',
+    20: 'draft', 31: 'draft', 32: 'draft', 33: 'draft',
   },
   features: { laser: 'admin', notes: 'admin' },
 };

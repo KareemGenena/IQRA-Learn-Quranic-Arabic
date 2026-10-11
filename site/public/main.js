@@ -62,3 +62,23 @@ form.addEventListener('submit', async (e) => {
     button.disabled = false;
   }
 });
+
+// The workbook ↔ app crosswalk (/workbooks/crosswalk.json, generated from the
+// masters' own Tables of Contents): under each workbook, which app lessons
+// match its sections — "for listening practice, see the app". It is app-only,
+// so it stays hidden until config/site says the app is visible.
+fetch('/workbooks/crosswalk.json', { cache: 'no-cache' })
+  .then((r) => (r.ok ? r.json() : null))
+  .then((cw) => {
+    if (!cw) return;
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    for (const [level, lv] of Object.entries(cw.levels)) {
+      const el = document.querySelector(`[data-app-lessons="${level}"]`);
+      if (!el) continue;
+      const rows = lv.sections
+        .filter((s) => s.lessons.length)
+        .map((s) => `<li><span class="app-lessons-section">Section ${s.section} · ${esc(s.title)}</span> — for listening practice, see the app: ${s.lessons.map((l) => `<a href="${esc(l.url)}" rel="noopener">${esc(l.title)}</a>`).join(', ')}</li>`);
+      if (rows.length) el.innerHTML = `<ul>${rows.join('')}</ul>`;
+    }
+  })
+  .catch(() => {});

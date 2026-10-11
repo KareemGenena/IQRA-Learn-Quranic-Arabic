@@ -4,29 +4,22 @@
  *   ../Word Tables/الحروف الهجائية.docx
  *   ../Audio/Audio - Kids Alphabet/*.wav
  *
- * Seven headed tables in, five lessons out:
+ * Seven headed tables in, four lessons out:
  *
- *   20  the letters ب ت ث ج ح خ د ذ ر ز
- *   21  the letters س ش ص ض ط ظ ع غ ف ق
- *   22  the letters ك ل م ن هـ, the hamza's seats, و ى يـ ىٰ ا لا ة
- *   31  the alphabet song, sung as letter NAMES      (read before 20)
- *   32  the alphabet song, sung as letter SOUNDS ×3  (read after 22)
+ *   31  the alphabet song, sung as letter NAMES
+ *   20  the letters — ONE lesson, four sections (ب–ز · س–ق · ك–هـ · the
+ *       hamza, the madd letters, لا and ة), 36 cards
+ *   32  the alphabet song, sung as letter SOUNDS ×3
+ *   33  where the letters come from — the five places, as the workbook has them
  *
- * The seventh table is the spoken lines: an English intro and a forms line
- * for every letter row, two rows per letter in the same order. They are
- * matched by position and checked by name.
+ * ONE RECORDING PER CARD (the author, 2026-10-10). The seventh table has one
+ * row per letter: a slot that names the file, the whole line the teacher says
+ * — the letter and its picture, then fat-ha, damma, kasra and the sukoon — and
+ * the Arabic that lights up as it is said. The other tables are display data.
+ * So every take is a single piece, never cut: 36 letters and 2 songs.
  *
  * A lesson's number is its identity, never its position — `order` in
  * lessons.ts decides where each is read. See Design/iqra-kids.md.
- *
- * THE RECORDING UNIT IS A TAKE, NOT A FORM. Every generator matches audio to
- * rows by the words in the filename, de-diacritized — so بَ, بُ and بِ all
- * reduce to "ب" and cannot be three files. They are one take of three pieces,
- * exactly as lesson 3 records a row. Likewise نَوۡ and نُو are one take of two,
- * which is how you would say them anyway: leen, then madd.
- *
- * Letter NAMES are not recorded on their own: the intro says the name, and
- * song 1 sings all of them. The Name column is display only.
  *
  * Run:  node scripts/make-alphabet.mjs
  */
@@ -34,7 +27,7 @@
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
+import { readWav, writeSegment } from './lib/wav.mjs';
 import { readZipEntry } from './lib/zip.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -43,7 +36,6 @@ const DOCX = join(root, 'Word Tables', 'الحروف الهجائية.docx');
 const AUDIO_SRC = join(root, 'Audio', 'Audio - Kids Alphabet');
 const PUBLIC = join(here, '..', 'public');
 
-const TATWEEL = 'ـ';
 /** Diacritics, Quranic annotation marks and tatweel — the same class the app's
  *  audioName.ts uses. The two must agree or a recording never finds its row. */
 const MARKS = /[ً-ٰۖ-ۭـ]/g;
@@ -53,8 +45,6 @@ const problems = [];
 const pad2 = (n) => String(n).padStart(2, '0');
 
 // ── read the seven tables ─────────────────────────────────────────────────
-/** Word writes ' as itself and docx-js writes &apos; — both must read back
- *  as an apostrophe, or the script cells carry entities into words.json. */
 const unescape = (s) =>
   s.replace(/&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
@@ -74,28 +64,34 @@ const allRows = xml
       }),
   );
 
-/** Split at each header row; a block is one table. */
 const blocks = [];
 for (const row of allRows) {
   if (row[0] === 'Letter' || row[0] === '#' || row[0].startsWith('Slot')) blocks.push({ head: row, rows: [] });
   else if (blocks.length) blocks[blocks.length - 1].rows.push(row);
 }
-if (blocks.length !== 7) {
-  problems.push(`expected 7 tables in the sheet, found ${blocks.length}`);
-}
+if (blocks.length !== 7) problems.push(`expected 7 tables in the sheet, found ${blocks.length}`);
 const [ORD1, ORD2, ORD3, SPECIAL, SONG1, SONG2, SCRIPT] = blocks;
 
-// ── a card, and the takes that feed it ────────────────────────────────────
-/**
- * Are the first three forms this letter with fatha, damma and kasra?
- * They are then ONE take, named after the Letter cell — see the header note.
- * Stripping the marks off a bare vowelled letter leaves one or two characters;
- * a word leaves more.
- */
+// ── shape families, from song 1's table — the color every letter wears ────
+/** bare letter → family index (0..16), consecutive shape groups in the usual order */
+const FAMILY = new Map();
+{
+  let fam = -1;
+  let last = null;
+  for (const r of SONG1?.rows ?? []) {
+    if (r[3] !== last) { fam += 1; last = r[3]; }
+    FAMILY.set(key(r[1]), fam);
+  }
+  // letters the song shows under another shape
+  for (const [k, of] of [['ا', 'أ'], ['ء', 'أ'], ['ؤ', 'أ'], ['ئ', 'أ'], ['إ', 'أ'], ['ي', 'ى'], ['ة', 'ه'], ['لا', 'ل']]) {
+    if (!FAMILY.has(k) && FAMILY.has(of)) FAMILY.set(k, FAMILY.get(of));
+  }
+}
+const familyOf = (letter) => FAMILY.get(key(letter)) ?? 0;
+
 const isHarakaTriple = (forms) =>
   forms.length >= 3 && forms.slice(0, 3).every((f) => f && key(f).length <= 2);
 
-/** The picture for a row. أ wears the hamza's wave crest. */
 const IMAGE_FOR = { 'أ': 'ء' };
 const imageOf = (letter, mnemonic) => {
   if (!mnemonic) return undefined;
@@ -103,7 +99,6 @@ const imageOf = (letter, mnemonic) => {
   return `${IMAGE_FOR[k] ?? k}.png`;
 };
 
-/** The five places a child is taught, from the sheet's Makhraj cell. */
 const zoneOf = (makhraj) => {
   const m = (makhraj ?? '').trim();
   if (/^Throat/.test(m)) return 'throat';
@@ -113,158 +108,108 @@ const zoneOf = (makhraj) => {
   return 'tongue';
 };
 
+// ── the letter cards ──────────────────────────────────────────────────────
 let nextId = 0;
-/** Every take we expect to find in the audio folder: key → the clips it cuts. */
+/** Every take the audio folder should hold: one whole recording per clip. */
 const takes = [];
-/** Clips whose timings can only come from tapping along — reported so the
- *  author is told when it is time. */
-const needsCalibration = [];
-
-/** The script rows are consumed two at a time, in the letter rows' order. */
 const scriptRows = SCRIPT?.rows ?? [];
 let scriptAt = 0;
 
-function letterCard(cells, { special }) {
+function letterCard(cells, { special, section }) {
   const letter = cells[0];
   const name = cells[1];
   const forms = special ? cells.slice(2, 7).filter(Boolean) : cells.slice(2, 6).filter(Boolean);
   const makhraj = special ? cells[7] : cells[6];
   const mnemonic = special ? cells[8] : cells[7];
-
   if (!letter) return null;
-  if (!forms.length) {
-    problems.push(`row "${letter}" has no forms`);
-    return null;
-  }
+  if (!forms.length) { problems.push(`row "${letter}" has no forms`); return null; }
 
   const id = (nextId += 1);
   const n = pad2(id);
-  const out = [];
-  const labels = [];
-
-  const triple = isHarakaTriple(forms);
-  if (triple) {
-    const three = forms.slice(0, 3);
-    three.forEach((text, i) => {
-      out.push({ text, audio: `word${n}${'abc'[i]}.wav`, timings: null });
-    });
-    labels.push('a', 'u', 'i');
-    takes.push({
-      key: key(letter),
-      clips: three.map((_, i) => `word${n}${'abc'[i]}.wav`),
-      of: `#${id} ${letter} — the three harakat`,
-    });
-  }
-
-  // Whatever is left: grouped by filename key, so نَوۡ and نُو become one
-  // two-piece take rather than two files that would overwrite each other.
-  const rest = triple ? forms.slice(3) : forms;
-  const groups = new Map();
-  for (const text of rest) {
-    const k = key(text);
-    if (!groups.has(k)) groups.set(k, []);
-    groups.get(k).push(text);
-  }
-  for (const [k, texts] of groups) {
-    const clips = [];
-    for (const text of texts) {
-      const audio = `word${n}${'abcdefgh'[out.length]}.wav`;
-      out.push({ text, audio, timings: null });
-      labels.push(texts.length > 1 && texts.indexOf(text) === 1 ? 'madd' : triple ? 'sukoon' : 'word');
-      clips.push(audio);
-    }
-    takes.push({ key: k, clips, of: `#${id} ${letter} — ${texts.join(' ')}` });
-  }
-
-  // The spoken lines: intro, then the forms line. Position is the match;
-  // the slot's letter is the check.
   const bare = key(letter);
-  let intro;
-  let line;
-  const introRow = scriptRows[scriptAt];
-  const lineRow = scriptRows[scriptAt + 1];
-  if (introRow && lineRow) {
-    const ok =
-      key(introRow[0]).startsWith(bare) && /مقدمة$/.test(introRow[0]) &&
-      key(lineRow[0]).startsWith(bare) && /حركات$/.test(lineRow[0]);
-    if (!ok) {
-      problems.push(`script rows ${scriptAt + 1}–${scriptAt + 2} ("${introRow[0]}", "${lineRow[0]}") do not belong to letter row "${letter}"`);
-    } else {
-      intro = { text: letter, script: introRow[1], audio: `word${n}i.wav`, timings: null };
-      const lineText = lineRow[2] || out.map((f) => f.text).join(' ');
-      line = { text: lineText, script: lineRow[1], audio: `word${n}l.wav`, timings: null };
-      takes.push({ key: key(introRow[0]), clips: [intro.audio], of: `#${id} ${letter} — intro (English)`, whole: true });
-      takes.push({ key: key(lineRow[0]), clips: [line.audio], of: `#${id} ${letter} — forms line`, whole: true });
-      needsCalibration.push(`lesson ${'?'} #${id} line — ${lineText}`);
-    }
-    scriptAt += 2;
-  } else {
-    problems.push(`no script rows left for letter row "${letter}"`);
-  }
+  const triple = isHarakaTriple(forms);
+
+  // The sheet's spoken line for this row — by position, checked by name.
+  const sr = scriptRows[scriptAt];
+  if (!sr) { problems.push(`no spoken line left for letter row "${letter}"`); return null; }
+  if (!key(sr[0]).startsWith(bare)) problems.push(`spoken line ${scriptAt + 1} ("${sr[0]}") does not belong to letter row "${letter}"`);
+  scriptAt += 1;
+  const slot = key(sr[0]);
+  const highlight = sr[2] || forms.join(' ');
+  if (key(highlight) !== key(forms.join(' '))) problems.push(`#${id} ${letter}: the Arabic that lights up (${highlight}) is not the row's forms (${forms.join(' ')})`);
+
+  const labels = triple
+    ? ['Fat-ha', 'Damma', 'Kasra', 'Sukoon', 'Madd'].slice(0, forms.length)
+    : bare === 'ا' ? ['Madd']
+    : bare === 'لا' ? ['Alone', 'In a word']
+    : forms.map(() => 'Word');
+
+  takes.push({ key: slot, clip: `word${n}.wav`, of: `#${id} ${letter}` });
 
   return {
     id,
-    section: special ? 'special' : 'letters',
+    section,
     letter,
     name: name || undefined,
     makhraj: makhraj || undefined,
     mnemonic: mnemonic || undefined,
     image: imageOf(letter, mnemonic),
-    // No makhraj badge on a letter card — the author's call. The field stays
-    // for song 2, which shows the place as a picture.
+    family: familyOf(letter),
+    // no makhraj badge on a letter card; the field stays for the places page
     badges: [],
-    labels,
-    forms: out,
-    intro,
-    line,
+    text: highlight,
+    audio: `word${n}.wav`,
     timings: null,
+    parts: forms,
+    labels,
+    script: sr[1],
   };
 }
 
-const cardsFrom = (block, special = false) =>
-  (block?.rows ?? []).map((cells) => letterCard(cells, { special })).filter(Boolean);
+const cardsFrom = (block, section, special = false) =>
+  (block?.rows ?? []).map((cells) => letterCard(cells, { special, section })).filter(Boolean);
 
-const L20 = cardsFrom(ORD1);
-const L21 = cardsFrom(ORD2);
-const L22 = [...cardsFrom(ORD3), ...cardsFrom(SPECIAL, true)];
-if (scriptAt !== scriptRows.length) {
-  problems.push(`${scriptRows.length - scriptAt} script row(s) belong to no letter row`);
-}
+const HINT = 'Each letter: its name and its picture, then fat-ha, damma and kasra — then a sukoon after نَ.';
+const L20 = {
+  lesson: 20,
+  title: 'The Letters',
+  titleArabic: 'الحروف',
+  kind: 'letters',
+  audioPath: 'audio/lesson20/',
+  imagePath: 'images/kids/',
+  perPage: 1,
+  sections: [
+    { id: 'one', title: 'The Letters — ب to ز', titleArabic: 'الحروف ١', hint: HINT },
+    { id: 'two', title: 'The Letters — س to ق', titleArabic: 'الحروف ٢', hint: HINT },
+    { id: 'three', title: 'The Letters — ك to هـ', titleArabic: 'الحروف ٣', hint: HINT },
+    { id: 'special', title: 'The Hamza, the Madd Letters, لا and ة', titleArabic: 'الهمزة وحروف المد', hint: 'These do not behave like the others. Take them slowly.' },
+  ],
+  words: [
+    ...cardsFrom(ORD1, 'one'),
+    ...cardsFrom(ORD2, 'two'),
+    ...cardsFrom(ORD3, 'three'),
+    ...cardsFrom(SPECIAL, 'special', true),
+  ],
+};
+if (scriptAt !== scriptRows.length) problems.push(`${scriptRows.length - scriptAt} spoken line(s) belong to no letter row`);
 
 // ── the two songs ─────────────────────────────────────────────────────────
 /**
- * A song is ONE recording and is never cut — splitIntoN must not touch it.
- * Its card is a single Playable whose text is the whole alphabet, so the
- * existing highlight walks it letter by letter; `song.steps` says what each
- * step shows and which card it sits on. The boundaries can only come from
- * tapping along in the admin calibration page: a sung rhythm has nothing to
- * do with harakat weights.
- *
- * No seaside pictures in either song. Song 1 groups look-alike letters on one
- * card; song 2 shows one letter's three harakat per card, with the makhraj
- * head beside it.
+ * A song is ONE recording, never cut, and ONE card: a strip of letters that
+ * glides so the sung letter is at the center. `song.steps` says what each step
+ * shows, which group it belongs to (a shape family in song 1, a letter in song
+ * 2) and its family color. Boundaries come from tapping along in the admin
+ * calibration page — a sung rhythm has nothing to do with harakat weights.
  */
 function songLesson(id, block, { title, titleArabic, blurb, sounds, file }) {
   const rows = block?.rows ?? [];
   const steps = [];
-  let group = -1;
-  let lastGroupLabel = null;
   rows.forEach((r, i) => {
-    if (sounds) {
-      const zone = zoneOf(r[5]);
-      for (const text of [r[2], r[3], r[4]]) steps.push({ text, group: i, zone });
-    } else {
-      const label = r[3];
-      if (label !== lastGroupLabel) {
-        group += 1;
-        lastGroupLabel = label;
-      }
-      steps.push({ text: r[1], group });
-    }
+    const family = familyOf(r[1]);
+    if (sounds) for (const text of [r[2], r[3], r[4]]) steps.push({ text, group: i, family, zone: zoneOf(r[5]) });
+    else steps.push({ text: r[1], group: family, family });
   });
-  const text = steps.map((s) => s.text).join(' ');
-  takes.push({ key: file, clips: [`${file}.wav`], of: `lesson ${id} — the whole song, uncut`, whole: true });
-  needsCalibration.push(`lesson ${id} — the song, ${steps.length} taps`);
+  takes.push({ key: file, clip: `${file}.wav`, of: `lesson ${id} — the whole song` });
   return {
     lesson: id,
     title,
@@ -275,77 +220,52 @@ function songLesson(id, block, { title, titleArabic, blurb, sounds, file }) {
     perPage: 1,
     sections: [{ id: 'song', title, titleArabic, hint: blurb }],
     song: { mode: sounds ? 'sounds' : 'names', steps },
-    words: [
-      {
-        id: 1,
-        section: 'song',
-        text,
-        audio: `${file}.wav`,
-        timings: null,
-        badges: [],
-      },
-    ],
+    words: [{ id: 1, section: 'song', text: steps.map((s) => s.text).join(' '), audio: `${file}.wav`, timings: null, badges: [] }],
   };
 }
+const L31 = songLesson(31, SONG1, {
+  file: 'song-names',
+  title: 'The Alphabet Song — the Names',
+  titleArabic: 'أنشودة الحروف — الأسماء',
+  blurb: 'The 28 letters in their usual order. Sing along, and press pause whenever you like.',
+});
+const L32 = songLesson(32, SONG2, {
+  file: 'song-sounds',
+  sounds: true,
+  title: 'The Alphabet Song — the Sounds',
+  titleArabic: 'أنشودة الحروف — الحركات',
+  blurb: 'Every letter sung with fat-ha, damma and kasra.',
+});
 
-const HINT = 'Listen to the intro, then the letter with a, u and i — then with a sukoon after نَ.';
-const LESSONS = [
-  {
-    lesson: 20, title: 'The Letters — ب to ز', titleArabic: 'الحروف ١',
-    words: L20,
-    sections: [{ id: 'letters', title: 'The Letters', titleArabic: 'الحروف', hint: HINT }],
-  },
-  {
-    lesson: 21, title: 'The Letters — س to ق', titleArabic: 'الحروف ٢',
-    words: L21,
-    sections: [{ id: 'letters', title: 'The Letters', titleArabic: 'الحروف', hint: HINT }],
-  },
-  {
-    lesson: 22, title: 'The Letters — ك to ا, and لا ة', titleArabic: 'الحروف ٣',
-    words: L22,
-    sections: [
-      { id: 'letters', title: 'The Letters', titleArabic: 'الحروف', hint: HINT },
-      { id: 'special', title: 'The Hamza, the Madd Letters, لا and ة', titleArabic: 'الهمزة وحروف المد', hint: 'These do not behave like the others. Take them slowly.' },
-    ],
-  },
-].map((l) => ({
-  lesson: l.lesson,
-  title: l.title,
-  titleArabic: l.titleArabic,
+// ── where the letters come from — the workbook's five places ──────────────
+const PLACES = [
+  { zone: 'jawf', title: 'Mouth space', titleArabic: 'الجوف', note: 'The madd letters.', letters: ['ا', 'و', 'ى'] },
+  { zone: 'throat', title: 'Throat', titleArabic: 'الحلق', note: '6 letters.', letters: ['ء', 'ه', 'ع', 'ح', 'غ', 'خ'] },
+  { zone: 'tongue', title: 'Tongue', titleArabic: 'اللسان', note: 'All the other 18 letters.', letters: ['ت', 'ث', 'ج', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ق', 'ك', 'ل', 'ن', 'ي'] },
+  { zone: 'lips', title: 'Lips', titleArabic: 'الشفتان', note: '4 letters.', letters: ['ب', 'م', 'و', 'ف'] },
+  { zone: 'nose', title: 'Nose', titleArabic: 'الخيشوم', note: 'Ghunna — 2 letters.', letters: ['ن', 'م'] },
+];
+const L33 = {
+  lesson: 33,
+  title: 'Where the Letters Come From',
+  titleArabic: 'مخارج الحروف',
   kind: 'letters',
-  audioPath: `audio/lesson${l.lesson}/`,
+  audioPath: 'audio/lesson20/',
   imagePath: 'images/kids/',
   perPage: 1,
-  sections: l.sections,
-  words: l.words,
-}));
+  sections: [{ id: 'places', title: 'Where the Letters Come From', titleArabic: 'مخارج الحروف', hint: 'Five places — mouth space, throat, tongue, lips and nose — as in the workbook.' }],
+  words: PLACES.map((p, i) => ({
+    id: i + 1,
+    section: 'places',
+    image: `makhraj-${p.zone}.png`,
+    badges: [],
+    place: { zone: p.zone, title: p.title, titleArabic: p.titleArabic, note: p.note, letters: p.letters.map((text) => ({ text, family: familyOf(text) })) },
+  })),
+};
 
-// Now that the lessons exist, the calibration notes can name them.
-for (const l of LESSONS) {
-  for (const w of l.words) {
-    const i = needsCalibration.findIndex((s) => s.startsWith(`lesson ? #${w.id} line`));
-    if (i >= 0) needsCalibration[i] = needsCalibration[i].replace('lesson ?', `lesson ${l.lesson}`);
-  }
-}
+const LESSONS = [L31, L20, L32, L33];
 
-LESSONS.push(
-  songLesson(31, SONG1, {
-    file: 'song-names',
-    title: 'The Alphabet Song — the Names',
-    titleArabic: 'أنشودة الحروف — الأسماء',
-    blurb: 'The 28 letters in their usual order. Sing along, and press pause whenever you like.',
-  }),
-  songLesson(32, SONG2, {
-    file: 'song-sounds',
-    sounds: true,
-    title: 'The Alphabet Song — the Sounds',
-    titleArabic: 'أنشودة الحروف — الحركات',
-    blurb: 'Every letter with a, u and i — and where in the mouth each one is made.',
-  }),
-);
-
-// ── audio ─────────────────────────────────────────────────────────────────
-/** A trailing number is a take number: "ب 2.wav" replaces "ب.wav". */
+// ── audio: every take whole, mono ─────────────────────────────────────────
 const byName = new Map();
 if (existsSync(AUDIO_SRC)) {
   for (const f of readdirSync(AUDIO_SRC)) {
@@ -357,71 +277,26 @@ if (existsSync(AUDIO_SRC)) {
     const prev = byName.get(k);
     if (!prev || take > prev.take) byName.set(k, { file: f, take });
   }
-} else {
-  problems.push(`no audio folder yet: ${AUDIO_SRC}`);
-}
+} else problems.push(`no audio folder yet: ${AUDIO_SRC}`);
+
+const clipHome = new Map();
+for (const l of LESSONS) for (const w of l.words) if (w.audio) clipHome.set(w.audio, l.lesson);
 
 const used = new Set();
-let written = 0;
 const missing = [];
+let written = 0;
 for (const t of takes) {
   const match = byName.get(t.key);
-  if (match) used.add(match.file);
-  else missing.push(`${t.key}.wav  (${t.of})`);
-}
-
-/** clip filename → the lesson it belongs in. A take knows its clips; only the
- *  lessons know which folder those clips are written to. */
-const clipHome = new Map();
-for (const l of LESSONS) {
-  for (const w of l.words) {
-    for (const f of [...(w.forms ?? [{ audio: w.audio }]), w.intro, w.line]) {
-      if (f?.audio) clipHome.set(f.audio, l.lesson);
-    }
-  }
-}
-
-for (const t of takes) {
-  const match = byName.get(t.key);
-  if (!match) continue;
+  if (!match) { missing.push(`${t.key}.wav  (${t.of})`); continue; }
+  used.add(match.file);
   const wav = readWav(join(AUDIO_SRC, match.file));
-
-  // A song or a spoken line is one recording and is NEVER cut. It still goes
-  // through writeSegment so it lands mono, like every clip.
-  if (t.whole) {
-    const dir = join(PUBLIC, 'audio', `lesson${clipHome.get(t.clips[0])}`);
-    mkdirSync(dir, { recursive: true });
-    writeSegment(wav, 0, wav.frames, join(dir, t.clips[0]), { mono: true });
-    written += 1;
-    continue;
-  }
-
-  const { segments, durations, suspicious } = splitIntoN(wav, t.clips.length);
-  if (segments.length !== t.clips.length) {
-    problems.push(`${match.file}: split gave ${segments.length} of ${t.clips.length} — ${t.of}`);
-    continue;
-  }
-  if (suspicious && t.clips.length > 1) {
-    problems.push(`${match.file}: uneven pieces — ${durations.map((d) => d.toFixed(2)).join(' / ')} (${t.of})`);
-  }
-  segments.forEach(([a, b], i) => {
-    const lesson = clipHome.get(t.clips[i]);
-    if (lesson === undefined) {
-      problems.push(`clip ${t.clips[i]} belongs to no lesson`);
-      return;
-    }
-    const dir = join(PUBLIC, 'audio', `lesson${lesson}`);
-    mkdirSync(dir, { recursive: true });
-    writeSegment(wav, a, b, join(dir, t.clips[i]), { mono: true });
-    written += 1;
-  });
+  const dir = join(PUBLIC, 'audio', `lesson${clipHome.get(t.clip)}`);
+  mkdirSync(dir, { recursive: true });
+  writeSegment(wav, 0, wav.frames, join(dir, t.clip), { mono: true });
+  written += 1;
 }
-
-// A recording matching no take is a misnamed file — otherwise invisible.
 if (existsSync(AUDIO_SRC)) {
-  const unused = readdirSync(AUDIO_SRC)
-    .filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f))
-    .map((f) => f.replace(/\.wav$/i, ''));
+  const unused = readdirSync(AUDIO_SRC).filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f)).map((f) => f.replace(/\.wav$/i, ''));
   if (unused.length) problems.push(`${unused.length} recording(s) match no row: ${unused.join('، ')}`);
 }
 
@@ -434,62 +309,21 @@ for (const l of LESSONS) {
 
 // ── report ────────────────────────────────────────────────────────────────
 console.log('lessons written');
-for (const l of LESSONS) {
-  const forms = l.words.reduce((n, w) => n + (w.forms?.length ?? 1), 0);
-  const spoken = l.words.filter((w) => w.intro).length * 2;
-  console.log(`  ${l.lesson}  ${String(l.words.length).padStart(2)} cards, ${String(forms).padStart(3)} forms${spoken ? `, ${spoken} spoken` : ''}   ${l.title}`);
-}
-console.log(`\ntakes expected: ${takes.length}`);
+for (const l of LESSONS) console.log(`  ${l.lesson}  ${String(l.words.length).padStart(2)} cards   ${l.title}`);
+console.log(`\ntakes expected: ${takes.length}  (every one a single piece — set the intake tool to 1)`);
 console.log(`recorded      : ${takes.length - missing.length}`);
 console.log(`clips written : ${written}`);
 if (missing.length) {
-  console.log(`\nNOT RECORDED YET — ${missing.length} take(s):`);
-  for (const m of missing) console.log(`  ${m}`);
+  console.log(`\nNOT RECORDED YET — ${missing.length}: record the Slot column of the sheet's last table, then the two songs as song-names.wav and song-sounds.wav`);
+  console.log('  ' + missing.map((m) => m.split('  ')[0]).join('  '));
 }
+const needsTap = takes.filter((t) => byName.has(t.key)).map((t) => t.of);
+console.log(`\nNEEDS TAP CALIBRATION (admin → the lesson → Calibrate timings): ${needsTap.length} of ${takes.length} recorded`);
+console.log(needsTap.length ? '  ' + needsTap.join(' · ') : '  nothing recorded yet. Every letter and both songs will need tapping once they are — a tap per Arabic letter, so بَ بُ بِ نَبۡ is five.');
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');
 
-// ── the recording plan ────────────────────────────────────────────────────
-// The intake system asks how many pieces a slot holds, and getting it wrong is
-// silent: the take is cut in the wrong places and the clips are simply wrong.
-// So the plan is printed on every run, grouped by that number.
-const plan = new Map();
-for (const t of takes) {
-  const n = t.whole ? 'whole — 1 piece, never cut' : `${t.clips.length} piece(s)`;
-  if (!plan.has(n)) plan.set(n, []);
-  plan.get(n).push(`${t.key}.wav`);
-}
-console.log('\nRECORDING PLAN — how many pieces each take is cut into');
-for (const n of [...plan.keys()].sort()) {
-  const files = plan.get(n);
-  console.log(`\n  ${n} — ${files.length} take(s)`);
-  for (let i = 0; i < files.length; i += 6) console.log('    ' + files.slice(i, i + 6).join('  '));
-}
-
-// ── what needs tapping ────────────────────────────────────────────────────
-// The automatic timings come from harakat weights and mean nothing for a song
-// or for a spoken line with English between the Arabic. These get their
-// boundaries from the admin calibration page, and only once they are recorded.
-const recordedNeeding = needsCalibration.filter((s) => {
-  const m = /#(\d+) line/.exec(s);
-  const song = /^lesson (3[12])/.exec(s);
-  if (song) return byName.has(song[1] === '31' ? 'song-names' : 'song-sounds');
-  if (!m) return false;
-  const t = takes.find((x) => /forms line/.test(x.of) && x.of.startsWith(`#${m[1]} `));
-  return t && byName.has(t.key);
-});
-console.log(`\nNEEDS TAP CALIBRATION (admin → the lesson → Calibrate timings): ${recordedNeeding.length} recorded of ${needsCalibration.length}`);
-for (const s of recordedNeeding) console.log(`  ${s}`);
-if (recordedNeeding.length === 0) console.log('  none recorded yet — nothing to tap until the songs and forms lines exist');
-
-// Every picture a card asks for must exist, or the card shows a broken image.
 const wantImages = new Set();
-for (const l of LESSONS) {
-  for (const w of l.words) if (w.image) wantImages.add(w.image);
-  if (l.song?.mode === 'sounds') for (const s of l.song.steps) wantImages.add(`makhraj-${s.zone}.png`);
-}
-const haveImages = new Set(
-  existsSync(join(PUBLIC, 'images', 'kids')) ? readdirSync(join(PUBLIC, 'images', 'kids')) : [],
-);
-const noImage = [...wantImages].filter((f) => !haveImages.has(f));
-console.log(`\npictures: ${wantImages.size} wanted, ${wantImages.size - noImage.length} present`);
-if (noImage.length) console.log(`  missing: ${noImage.join(' ')}`);
+for (const l of LESSONS) for (const w of l.words) if (w.image) wantImages.add(w.image);
+const have = new Set(existsSync(join(PUBLIC, 'images', 'kids')) ? readdirSync(join(PUBLIC, 'images', 'kids')) : []);
+const noImage = [...wantImages].filter((f) => !have.has(f));
+console.log(`\npictures: ${wantImages.size} wanted, ${wantImages.size - noImage.length} present${noImage.length ? `\n  missing: ${noImage.join(' ')}` : ''}`);

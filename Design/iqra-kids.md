@@ -9,12 +9,7 @@ first time.** Challenging enough to learn from, never enough to discourage.
 `CLAUDE.md` is the authority on the app. This file is the authority on the kids
 curriculum: what was decided, what is still open, and why. Read both.
 
-Status (2026-09-06, evening): **lessons 20, 21, 22, 31 and 32 exist as drafts
-in the kids skin** — the door, `#/kids/lesson/N`, `LetterCard`, `SongCards`
-with pause and seek, Manāra pointing. Nothing is recorded: **140 takes**, and
-the generator prints the plan on every run (§9b). Outstanding assets: the
-three makhraj pictures for song 2. Then the author records, and the generator
-says what to tap.
+Status (2026-10-10): **iteration 6 is built and deployed as drafts** — song 31, lesson 20 (one lesson, four sections), song 32, lesson 33 (the five places). One recording per letter: 38 takes, every one a single piece. Outstanding: the five makhraj pictures (§9c) and the author's recordings; then tap calibration, which the generator lists once something is recorded. See §11.
 
 ---
 
@@ -1004,3 +999,88 @@ and discarded by being short (27 px) where the artwork is tall (423–450 px).
 
 She greets on `#/kids` today. The rule she is built to, and which the beam
 state exists to serve, stays: **silent and still while anything is playing.**
+
+---
+
+## 11. Iteration 6 — the author's second review, 2026-10-10
+
+Thirteen points after seeing the first skin on screen, and the workbooks
+beside it. All built; nothing recorded yet.
+
+**Songs flow — a strip, not cards and not a video.** All the letters on one
+long strip, right to left; it glides so the sung letter is at the center
+(`transform` eased 350 ms), neighbors visible either side, the sung letter in
+the green box. The strip moves *when the singer moves* — a song is not
+metronomic. Sisters sit together with a wider gap and a change of color; no
+card edge, no click. Back/Next and ← → glide to the previous or next family
+and seek the song there. A video was refused: a second copy of the content,
+re-rendered on every retake, no pause on a letter, no use of the calibration.
+The centering is measured from rectangles with the strip's *current*
+translation taken back out, so it is right mid-glide and whatever RTL does to
+`offsetLeft` — the first attempt used offsets and sent ب the wrong way.
+
+**Color by shape family, the same everywhere.** Seven kid-friendly colors
+(`--fam-0..6`, light and dark variants) cycled over the seventeen families, so
+neighbors never match; the family index comes from song 1's own grouping in
+the sheet and is written into every card and step by the generator. The big
+letter on a card, the strip, the places page — one color per letter. The green
+box keeps its one meaning. Not random (a child should meet ب in the same color
+every time), not per letter (28 is no palette), not by makhraj (18 letters one
+color).
+
+**One recording per letter card.** The sheet's seventh table is one row per
+letter now — merged in place in `document.xml` with the repo's docx writer,
+every row reported, tag balance checked, the author's two Word edits carried
+(meem's rope, the nabra), "fatha" → "fat-ha" in the scripts. The slot is the
+bare letter (`ب`, `هـ`→`ه`; the dagger-alif row keeps `ى ألف`), so the file is
+`ب.wav` and nothing else is recorded for that letter: **36 letters + 2 songs =
+38 takes, every one a single piece.** The card has ONE Play button. Its
+Arabic (the forms) is the highlight text; while the recording is still about
+the picture — before the first tapped Arabic onset — the picture glows; then
+each sound card lights as it is said. Tapping a sound card starts the
+recording from that sound (`play({ cluster })`). The separate three-piece
+harakat takes and the sukoon takes are gone.
+
+**Manāra is off the letter cards.** The ا card would have shown two
+lighthouses; the author found her confusing beside the mnemonic. She greets on
+`#/kids` and will return for quiz prompts.
+
+**One lesson, four sections.** Lessons 21 and 22 deleted — the same letters
+split in three on the day-one plan; a *section* is the sitting, and
+`SectionedLesson` already pages by section and remembers the place. Nothing
+had been recorded or calibrated against the two numbers, so they went back
+unspent.
+
+**Lesson 33, "Where the Letters Come From".** The workbook's own page
+(Level 3 §5): Mouth space · Throat · Tongue · Lips · Nose, one card each — the
+head with that place lit (pictures still to come, §9c) and the letters of that
+place in their family colors. A diagram, not a drill: no recording. The sounds
+song lost its makhraj picture and its "where in the mouth" line.
+
+**Wording.** "Fat-ha · Damma · Kasra · Sukoon" under the sound cards and in
+every hint and blurb, as the workbooks spell them; never "a, u, i"; no
+"intro". The kids home line is just "The Arabic letters, from the very
+beginning." The notes palette says fat-ha too.
+
+**Pictures re-cut inside the frame.** The first cut kept each ChatGPT panel's
+rounded frame line and white margin. `recrop.mjs` walks in from each edge past
+the white to the first ink — the frame — then a fixed 7 px further (fixed,
+because the crescent panels' night sky is as dark as the frame and a
+"while dark" walk would never stop). Checked on a montage of all 32.
+
+**The workbook ↔ app crosswalk.** See `CLAUDE.md` §5 for the mechanism and the
+gated reminder (QR + "In the app" line in the next workbook edition, when the
+app is complete). The mapping as declared: L1 §1–3 ⇄ 31, 20, 32 · L2 §5 ⇄ 3 ·
+L2 §6 ⇄ 5, 6 · L3 §1 ⇄ 6 · L3 §2 ⇄ 2 · L3 §3–4 ⇄ 4 · L3 §5 ⇄ 33, 3 · L3 §6–7 ⇄ 7.
+The workbook's harakat page already runs Fat-ha · Damma · Kasra · Sukoon in
+the card's order, and its makhraj page is the five places lesson 33 shows —
+the two were designed apart and agree.
+
+**Verified** (dev server on 5174, the pane's transitions frozen as ever, so
+by measurement): the card shows picture · ب in family orange · four labeled
+sound cards · one Play · no mascot · three workbook lines; the strip has 28
+letters, 7 colors, 16 group gaps, and lands each family at center; lesson 33
+shows "Mouth space الجوف · ا و ى"; `#/lesson/2` shows "See workbook Level 3,
+page 5 … Section 2, Lam Shamsiyya" linking to `…level-3.pdf#page=7`; no
+console errors. A React instance reuse between the two songs carried the
+first song's place into the second — fixed by keying on the lesson.

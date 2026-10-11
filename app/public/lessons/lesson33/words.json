@@ -1,0 +1,221 @@
+{
+  "lesson": 33,
+  "title": "Where the Letters Come From",
+  "titleArabic": "مخارج الحروف",
+  "kind": "letters",
+  "audioPath": "audio/lesson20/",
+  "imagePath": "images/kids/",
+  "perPage": 1,
+  "sections": [
+    {
+      "id": "places",
+      "title": "Where the Letters Come From",
+      "titleArabic": "مخارج الحروف",
+      "hint": "Five places — mouth space, throat, tongue, lips and nose — as in the workbook."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "places",
+      "image": "makhraj-jawf.png",
+      "badges": [],
+      "place": {
+        "zone": "jawf",
+        "title": "Mouth space",
+        "titleArabic": "الجوف",
+        "note": "The madd letters.",
+        "letters": [
+          {
+            "text": "ا",
+            "family": 0
+          },
+          {
+            "text": "و",
+            "family": 15
+          },
+          {
+            "text": "ى",
+            "family": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "section": "places",
+      "image": "makhraj-throat.png",
+      "badges": [],
+      "place": {
+        "zone": "throat",
+        "title": "Throat",
+        "titleArabic": "الحلق",
+        "note": "6 letters.",
+        "letters": [
+          {
+            "text": "ء",
+            "family": 0
+          },
+          {
+            "text": "ه",
+            "family": 14
+          },
+          {
+            "text": "ع",
+            "family": 8
+          },
+          {
+            "text": "ح",
+            "family": 2
+          },
+          {
+            "text": "غ",
+            "family": 8
+          },
+          {
+            "text": "خ",
+            "family": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "section": "places",
+      "image": "makhraj-tongue.png",
+      "badges": [],
+      "place": {
+        "zone": "tongue",
+        "title": "Tongue",
+        "titleArabic": "اللسان",
+        "note": "All the other 18 letters.",
+        "letters": [
+          {
+            "text": "ت",
+            "family": 1
+          },
+          {
+            "text": "ث",
+            "family": 1
+          },
+          {
+            "text": "ج",
+            "family": 2
+          },
+          {
+            "text": "د",
+            "family": 3
+          },
+          {
+            "text": "ذ",
+            "family": 3
+          },
+          {
+            "text": "ر",
+            "family": 4
+          },
+          {
+            "text": "ز",
+            "family": 4
+          },
+          {
+            "text": "س",
+            "family": 5
+          },
+          {
+            "text": "ش",
+            "family": 5
+          },
+          {
+            "text": "ص",
+            "family": 6
+          },
+          {
+            "text": "ض",
+            "family": 6
+          },
+          {
+            "text": "ط",
+            "family": 7
+          },
+          {
+            "text": "ظ",
+            "family": 7
+          },
+          {
+            "text": "ق",
+            "family": 9
+          },
+          {
+            "text": "ك",
+            "family": 10
+          },
+          {
+            "text": "ل",
+            "family": 11
+          },
+          {
+            "text": "ن",
+            "family": 13
+          },
+          {
+            "text": "ي",
+            "family": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "section": "places",
+      "image": "makhraj-lips.png",
+      "badges": [],
+      "place": {
+        "zone": "lips",
+        "title": "Lips",
+        "titleArabic": "الشفتان",
+        "note": "4 letters.",
+        "letters": [
+          {
+            "text": "ب",
+            "family": 1
+          },
+          {
+            "text": "م",
+            "family": 12
+          },
+          {
+            "text": "و",
+            "family": 15
+          },
+          {
+            "text": "ف",
+            "family": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "section": "places",
+      "image": "makhraj-nose.png",
+      "badges": [],
+      "place": {
+        "zone": "nose",
+        "title": "Nose",
+        "titleArabic": "الخيشوم",
+        "note": "Ghunna — 2 letters.",
+        "letters": [
+          {
+            "text": "ن",
+            "family": 13
+          },
+          {
+            "text": "م",
+            "family": 12
+          }
+        ]
+      }
+    }
+  ]
+}

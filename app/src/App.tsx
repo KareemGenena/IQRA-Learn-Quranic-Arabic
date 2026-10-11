@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { KidsHomePage } from './pages/KidsHomePage';
 import { KidsLesson } from './pages/KidsLesson';
+import { WorkbookLinks } from './components/WorkbookLinks';
 import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
 import { AdminPage } from './pages/AdminPage';
@@ -343,6 +344,7 @@ export default function App() {
                       ))}
                     </div>
                   </div>
+                  <WorkbookLinks lessonId={route.lessonId} />
                   {showNotes && (
                     <p className="notes-link">
                       <a href={`#/notes/${route.lessonId}`}>📝 Open notes for this lesson</a>

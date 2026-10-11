@@ -19,12 +19,12 @@ const GROUPS: { label: string; marks: { ch: string; name: string }[] }[] = [
   {
     label: 'Harakat',
     marks: [
-      { ch: 'َ', name: 'fatha' },
+      { ch: 'َ', name: 'fat-ha' },
       { ch: 'ُ', name: 'damma' },
       { ch: 'ِ', name: 'kasra' },
       { ch: 'ّ', name: 'shadda' },
       { ch: 'ْ', name: 'sukoon' },
-      { ch: 'ً', name: 'fathatan' },
+      { ch: 'ً', name: 'fat-hatan' },
       { ch: 'ٌ', name: 'dammatan' },
       { ch: 'ٍ', name: 'kasratan' },
     ],

@@ -767,6 +767,12 @@ this time the corrupted records are children's.
 - **Say "ghunna", never "hum"**, in every hint, badge and blurb — the author
   teaches the term itself. And **never give the ghunna a length** ("two
   harakat"): the author does not teach it as a count. (2026-09-26.)
+- **"Fat-ha", hyphenated, everywhere the learner reads** — the practice
+  workbooks spell it so (their Level 1 §3 is "Harakat: Fat-ha, Damma, Kasra,
+  Sukoon") and the app and the paper must say the same thing; the author
+  chose the workbook's spelling for both (2026-10-10). Code comments may say
+  what they like. Likewise never "a, u, i" for the harakat on anything a child
+  sees: fat-ha, damma, kasra.
 - **Never say "vowel" for a madd.** A long vowel is a *madd* — "natural madd"
   where the length matters (ṣilah *grows a natural madd*, badal is *a hamza
   followed by a natural madd*). "Vowel" is reserved for the short one: a
@@ -1114,29 +1120,45 @@ Tanzil text is stored verbatim and its codepoints mapped for the font in
 memory, never written back; and grammar data must be runtime-cached like
 audio, never precached.
 
-**IQRA Kids — lessons 20, 21, 22, 31, 32 exist as drafts (2026-09-06).** A
-second curriculum in the same app: the Baghdadi qaida in 11 lessons plus two
-alphabet songs, for the Masjid's Maktab, taught live by a teacher rather than
-self-paced. Everything about it is in **`Design/iqra-kids.md`** — read it
-before touching any of this. Built so far: the source sheet
-(`Word Tables/الحروف الهجائية.docx`, six tables), `scripts/make-alphabet.mjs`,
-the five `words.json`, 32 letter pictures, and the lessons registered as draft
-with `tracks: ['kids']` so they stay out of the adult menu. **Not yet
-recorded** — 99 takes, in three passes over the sheet with the intake tool.
-Still to build: the `#/kids` menu and the `data-mode="kids"` skin, pause/resume
-on `PlaybackHandle` for the songs, and the makhraj SVG.
+**IQRA Kids — lessons 31, 20, 32, 33 exist as drafts (iteration 6,
+2026-10-10).** A second curriculum in the same app: the Baghdadi qaida for the
+Masjid's Maktab, taught live by a teacher rather than self-paced. Everything
+about it is in **`Design/iqra-kids.md`** — read it before touching any of
+this. As built: song 31 (letter names) → **lesson 20, the letters, ONE lesson
+in four sections** (21 and 22 were the same letters split in three and were
+deleted unspent — nothing was ever recorded or calibrated against them) →
+song 32 (sounds) → **lesson 33, "Where the Letters Come From"**, the
+workbook's five places as five diagram cards. `#/kids/lesson/N` switches
+`data-mode="kids"`. **One recording per letter card** — the teacher's whole
+line, picture then fat-ha, damma, kasra, sukoon — so the sheet's seventh
+table is one row per letter and **every take is a single piece: 36 letters
+and 2 songs, intake tool set to 1, record the Slot column only.** Each song
+is a **strip** of letters that glides to keep the sung one centered
+(`SongCards`), not cards and not a video. Letters wear a **shape-family
+color** everywhere in the skin (`fam-0..6`, seven colors over seventeen
+families); the green box stays the only meaning of "being said now". Manāra
+is off the letter cards (the ا card would have shown two lighthouses) and
+greets on `#/kids` only. **Nothing is recorded**; `make-alphabet.mjs` prints
+what to record and, once recorded, what to tap. Outstanding: the five makhraj
+pictures (prompt in the design doc §9c) and the author's recordings.
 
-**Iteration 5 (2026-09-06, later):** the author reviewed the first drafts on
-screen and the kids skin was built to them — `#/kids/lesson/N` switches
-`data-mode="kids"`; `LetterCard` (picture · Manāra · big bare letter · four
-small sound cards, no badges) replaces `ItemCard` through a `Card` prop on
-`SectionedLesson`; `SongCards` shows a song as a run of cards driven by the
-active step the engine already reports; `PlaybackHandle` gained
-`pause/resume/seek`. The sheet has a seventh table of spoken lines (an
-English intro and a forms line per letter, slots `ب مقدمة` / `ب حركات`), and
-**the sheet-generating script is retired — the docx is the author's now.**
-`make-alphabet.mjs` prints the recording plan (pieces per take) and the tap-
-calibration list on every run; 140 takes, 38 of them whole.
+**The workbook ↔ app crosswalk (2026-10-10).** `Workbooks/crosswalk.map.json`
+declares which app lessons a workbook section matches (ids `L1S3`, as in each
+master's Table of Contents); `node Workbooks/build/make-crosswalk.mjs`
+generates `Workbooks/crosswalk.json` + `app/src/generated/crosswalk.ts` with
+every section's printed and physical page read from the masters' own TOC
+tables (physical = printed + 2). The app shows *"See workbook Level 1, page 6
+for writing practice"* under a lesson (`WorkbookLinks`, linking to the PDF at
+that page on the landing site); the landing page shows *"for listening
+practice, see the app"* under each workbook section (`app-only`, hidden until
+the app is visible). **Run the generator after any workbook edition or
+mapping change, then redeploy both sites** — nothing stores a page number.
+**GATED, do not forget: when the app is complete, add an "In the app" line
+and a QR per section opener to the next workbook edition**, resolving through
+`/go/<section id>` on the landing site fed by the same JSON — the paper
+carries the section id, never a lesson number, so no reprint can go wrong.
+The author asked for this to wait until the app is finished (several lessons
+away); the `/go/` redirect page is not built yet either.
 
 Two conventions this added, both in the same spirit as their audio twins:
 **pictures are runtime-cached, never precached** (32 of them took the shell from

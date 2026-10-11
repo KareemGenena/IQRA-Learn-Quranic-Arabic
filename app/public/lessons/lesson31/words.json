@@ -19,115 +19,143 @@
     "steps": [
       {
         "text": "أ",
-        "group": 0
+        "group": 0,
+        "family": 0
       },
       {
         "text": "ب",
-        "group": 1
+        "group": 1,
+        "family": 1
       },
       {
         "text": "ت",
-        "group": 1
+        "group": 1,
+        "family": 1
       },
       {
         "text": "ث",
-        "group": 1
+        "group": 1,
+        "family": 1
       },
       {
         "text": "ج",
-        "group": 2
+        "group": 2,
+        "family": 2
       },
       {
         "text": "ح",
-        "group": 2
+        "group": 2,
+        "family": 2
       },
       {
         "text": "خ",
-        "group": 2
+        "group": 2,
+        "family": 2
       },
       {
         "text": "د",
-        "group": 3
+        "group": 3,
+        "family": 3
       },
       {
         "text": "ذ",
-        "group": 3
+        "group": 3,
+        "family": 3
       },
       {
         "text": "ر",
-        "group": 4
+        "group": 4,
+        "family": 4
       },
       {
         "text": "ز",
-        "group": 4
+        "group": 4,
+        "family": 4
       },
       {
         "text": "س",
-        "group": 5
+        "group": 5,
+        "family": 5
       },
       {
         "text": "ش",
-        "group": 5
+        "group": 5,
+        "family": 5
       },
       {
         "text": "ص",
-        "group": 6
+        "group": 6,
+        "family": 6
       },
       {
         "text": "ض",
-        "group": 6
+        "group": 6,
+        "family": 6
       },
       {
         "text": "ط",
-        "group": 7
+        "group": 7,
+        "family": 7
       },
       {
         "text": "ظ",
-        "group": 7
+        "group": 7,
+        "family": 7
       },
       {
         "text": "ع",
-        "group": 8
+        "group": 8,
+        "family": 8
       },
       {
         "text": "غ",
-        "group": 8
+        "group": 8,
+        "family": 8
       },
       {
         "text": "ف",
-        "group": 9
+        "group": 9,
+        "family": 9
       },
       {
         "text": "ق",
-        "group": 9
+        "group": 9,
+        "family": 9
       },
       {
         "text": "ك",
-        "group": 10
+        "group": 10,
+        "family": 10
       },
       {
         "text": "ل",
-        "group": 11
+        "group": 11,
+        "family": 11
       },
       {
         "text": "م",
-        "group": 12
+        "group": 12,
+        "family": 12
       },
       {
         "text": "ن",
-        "group": 13
+        "group": 13,
+        "family": 13
       },
       {
         "text": "هـ",
-        "group": 14
+        "group": 14,
+        "family": 14
       },
       {
         "text": "و",
-        "group": 15
+        "group": 15,
+        "family": 15
       },
       {
         "text": "ى",
-        "group": 16
+        "group": 16,
+        "family": 16
       }
     ]
   },

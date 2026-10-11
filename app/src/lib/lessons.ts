@@ -106,40 +106,34 @@ export const LESSONS: LessonMeta[] = [
     blurb: 'All 28 letters in order, sung. Press pause whenever you want to stop and learn.',
   },
   {
+    // One lesson, four sections — a section is a sitting. Lessons 21 and 22
+    // were the same letters split in three; nothing was ever recorded or
+    // calibrated against them, so their numbers went back unspent.
     id: 20,
     order: 2,
     tracks: ['kids'],
     kidsLevel: 1,
-    title: 'The Letters — ب to ز',
-    titleArabic: 'الحروف ١',
-    blurb: 'Ten letters: its name, then a, u and i, then the letter with a sukoon.',
-  },
-  {
-    id: 21,
-    order: 3,
-    tracks: ['kids'],
-    kidsLevel: 1,
-    title: 'The Letters — س to ق',
-    titleArabic: 'الحروف ٢',
-    blurb: 'Ten more, from the sea snake to the deep fishing net.',
-  },
-  {
-    id: 22,
-    order: 4,
-    tracks: ['kids'],
-    kidsLevel: 1,
-    title: 'The Letters — ك to ا, and لا ة',
-    titleArabic: 'الحروف ٣',
-    blurb: 'The last of them, the hamza on each of its seats, and the three madd letters.',
+    title: 'The Letters',
+    titleArabic: 'الحروف',
+    blurb: 'All 29 letters, each with its picture: fat-ha, damma, kasra, and a sukoon after نَ.',
   },
   {
     id: 32,
-    order: 5,
+    order: 3,
     tracks: ['kids'],
     kidsLevel: 1,
     title: 'The Alphabet Song — the Sounds',
     titleArabic: 'أنشودة الحروف — الحركات',
-    blurb: 'Every letter with a, u and i — and where in the mouth each one is made.',
+    blurb: 'Every letter sung with fat-ha, damma and kasra.',
+  },
+  {
+    id: 33,
+    order: 4,
+    tracks: ['kids'],
+    kidsLevel: 1,
+    title: 'Where the Letters Come From',
+    titleArabic: 'مخارج الحروف',
+    blurb: 'Mouth space, throat, tongue, lips and nose — the five places, as in the workbook.',
   },
 ];
 
@@ -267,39 +261,6 @@ function letterPlayables(word: LetterWord): Playable[] {
   ];
 }
 
-/**
- * The spoken lines of a kids letter card, as playables.
- *
- * The intro's "text" is the bare letter: one cluster, so the automatic
- * boundary is simply start-to-end and nothing needs calibrating — the card
- * never highlights it, it only knows the intro is playing. The forms line's
- * text is its Arabic alone, and its boundaries are tapped in the admin page.
- */
-function extraPlayables(word: LetterWord): Playable[] {
-  const out: Playable[] = [];
-  if (word.intro) {
-    out.push({
-      key: `${word.id}i`,
-      text: word.intro.text || word.letter || '',
-      audio: word.intro.audio,
-      timings: word.intro.timings,
-      silentClusters: [],
-      prefixClusters: 0,
-    });
-  }
-  if (word.line) {
-    out.push({
-      key: `${word.id}l`,
-      text: word.line.text,
-      audio: word.line.audio,
-      timings: word.line.timings,
-      silentClusters: derivedSilent(word.line.text),
-      prefixClusters: 0,
-    });
-  }
-  return out;
-}
-
 /** Normalises any paged lesson into the cards the page component renders. */
 export function toItems(lesson: Lesson): LessonItem[] {
   if (lesson.kind === 'letters') {
@@ -314,12 +275,15 @@ export function toItems(lesson: Lesson): LessonItem[] {
       image: w.image
         ? `${import.meta.env.BASE_URL}${lesson.imagePath ?? ''}${w.image}?v=${__IMAGE_VERSION__}`
         : undefined,
-      forms: letterPlayables(w),
+      // A "where the letters come from" card has no recording of its own.
+      forms: w.place ? [] : letterPlayables(w),
       letter: w.letter,
       name: w.name,
       mnemonic: w.mnemonic,
       labels: w.labels,
-      extras: w.intro || w.line ? extraPlayables(w) : undefined,
+      parts: w.parts,
+      family: w.family,
+      place: w.place,
     }));
   }
   return (lesson.words as PairWord[]).map((w) => ({
@@ -343,18 +307,14 @@ export function allPlayables(lesson: Lesson): { label: string; playable: Playabl
     ]);
   }
   if (lesson.kind === 'letters') {
-    return (lesson.words as LetterWord[]).flatMap((w) => [
-      ...letterPlayables(w).map((playable, i) => ({
-        label: w.forms ? `${w.id}${'abcdefgh'[i] ?? i}` : `${w.id}`,
-        playable,
-      })),
-      // The spoken lines are calibrated here too — the forms line is the one
-      // that needs it, since English sits between its Arabic.
-      ...extraPlayables(w).map((playable) => ({
-        label: `${w.id} ${playable.key.endsWith('i') ? 'intro' : 'line'}`,
-        playable,
-      })),
-    ]);
+    return (lesson.words as LetterWord[])
+      .filter((w) => !w.place)
+      .flatMap((w) =>
+        letterPlayables(w).map((playable, i) => ({
+          label: w.forms ? `${w.id}${'abcdefgh'[i] ?? i}` : `${w.id}`,
+          playable,
+        })),
+      );
   }
   return (lesson.words as SimpleWord[]).map((w) => ({
     label: `${w.id}`,

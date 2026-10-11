@@ -164,9 +164,7 @@ export function SectionedLesson({
   const sequence = useMemo(
     () =>
       (page?.items ?? []).flatMap((item, card) =>
-        // A kids card walks its spoken lines first — hear about the letter,
-        // hear it said — and then each sound on its own.
-        [...(item.extras ?? []), ...item.forms].map((form, form_) => ({ key: form.key, card, form: form_ })),
+        item.forms.map((form, form_) => ({ key: form.key, card, form: form_ })),
       ),
     [page],
   );
@@ -225,7 +223,7 @@ export function SectionedLesson({
     cancelAllRef.current = false;
     setPlayingAll(true);
     for (const item of page.items) {
-      for (const key of [...(item.extras ?? []), ...item.forms].map((f) => f.key)) {
+      for (const key of item.forms.map((f) => f.key)) {
         if (cancelAllRef.current) break;
         await playersRef.current.get(key)?.();
         if (cancelAllRef.current) break;

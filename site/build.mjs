@@ -33,3 +33,8 @@ for (const L of [1, 2, 3]) {
   console.log(`Level ${L}: ${dest}  ${pages} pages  ${(statSync(src).size / 1048576).toFixed(1)} MB`);
 }
 writeFileSync(resolve(OUT, 'meta.json'), JSON.stringify(meta, null, 2) + '\n');
+
+// The workbook ↔ app crosswalk (Workbooks/build/make-crosswalk.mjs): the page
+// reads it to say, under each workbook, which app lessons match its sections.
+copyFileSync(resolve(ROOT, 'Workbooks/crosswalk.json'), resolve(OUT, 'crosswalk.json'));
+console.log('crosswalk.json copied');

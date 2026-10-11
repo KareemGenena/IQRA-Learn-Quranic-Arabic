@@ -79,20 +79,34 @@ export interface LetterWord {
   makhraj?: string;
   /** The one line under the picture, e.g. "A boat, with one bubble below it". */
   mnemonic?: string;
-  /** One caption per form: 'a', 'u', 'i', 'sukoon', 'madd', 'word'. */
+  /** One caption per part: 'Fat-ha', 'Damma', 'Kasra', 'Sukoon', 'Madd', 'Word'. */
   labels?: string[];
-  /** The English intro, in the teacher's voice, played whole. */
-  intro?: WordForm & { script?: string };
-  /** The forms line — "With a fatha it's بَ…" — played whole, its Arabic
-   *  lighting as each form is said. `text` is just that Arabic. */
-  line?: WordForm & { script?: string };
+  /** The small sound cards, each a slice of `text` — the one recording's
+   *  Arabic. The card lights each as the recording reaches it. */
+  parts?: string[];
+  /** What the teacher says on that recording, for the admin's reference. */
+  script?: string;
+  /** Shape family (0–16): the color a letter wears everywhere in the kids skin. */
+  family?: number;
+  /** A card of the "where the letters come from" page: no recording. */
+  place?: PlaceInfo;
 }
 
-/** One step of an alphabet song: what to show, which card it sits on, and
- *  for the sounds song which place in the mouth to light. */
+/** One of the five places a letter is made, as the workbook lists them. */
+export interface PlaceInfo {
+  zone: string;
+  title: string;
+  titleArabic: string;
+  note: string;
+  letters: { text: string; family?: number }[];
+}
+
+/** One step of an alphabet song: what to show, which group it belongs to
+ *  (a shape family, or a letter in the sounds song), its family color. */
 export interface SongStep {
   text: string;
   group: number;
+  family?: number;
   zone?: string;
 }
 
@@ -137,9 +151,9 @@ export interface LessonItem {
   name?: string;
   mnemonic?: string;
   labels?: string[];
-  /** The spoken lines — intro then forms line — walked BEFORE the forms, so
-   *  Next means: hear about it, hear it said, then drill each sound. */
-  extras?: Playable[];
+  parts?: string[];
+  family?: number;
+  place?: PlaceInfo;
 }
 
 /**
