@@ -1206,8 +1206,14 @@ is approved.** When it is, record there:
   with its descender outside the mask; (2) the collision and `offInk` tests
   must see the display's letter without the cut stroke (`tailless`), not the
   final form; (3) the page's rasterizer leaves faint edge pixels the canvas
-  has none of, so an un-dilated cut outlined the stroke as a ghost. A stacked
-  kasratān (أَثِيمٍ) leaves the mīm alone. Under a kasra the small mīm now
+  has none of, so an un-dilated cut outlined the stroke as a ghost; (4) **the
+  loop is found by its HEIGHT — the rightmost run of columns with ink well
+  above the baseline — never by walking in from the glyph's right edge**:
+  the joined form begins there with a thin connector from the letter
+  before, and on the author's phone, whose rounding put the box edge on
+  that connector, the walk saw no loop and erased the whole mīm (checked
+  afterwards at device ratios 1, 1.5, 2, 2.625 and 3 and at 30–64 px). A
+  stacked kasratān (أَثِيمٍ) leaves the mīm alone. Under a kasra the small mīm now
   sits a tenth of the kasra to its left, its head below the kasra's middle
   (مِّن مَّسَدِۭ).
 - **A card's forms never grow past the card.** `.pair-forms` is

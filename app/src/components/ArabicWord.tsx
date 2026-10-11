@@ -765,12 +765,23 @@ function tailCut(stage: Stage, a: Uint8ClampedArray, box: Box, fontPx: number): 
   // word's first letter is never touched.
   const band0 = Math.max(0, base - Math.round(fontPx * 0.35 * stage.dpr));
   const band1 = Math.min(ph - 1, base + Math.round(fontPx * 0.1 * stage.dpr));
-  const top = (x: number) => { for (let y = 0; y < ph; y++) if (a[y * pw + x] > INK) return y; return -1; };
+  // The loop is the RIGHTMOST run of columns whose ink stands well above
+  // the baseline — found by that height, never by walking in from the
+  // glyph's right edge: the joined form begins there with a thin connector
+  // from the letter before, and a device whose rounding put the box edge on
+  // that connector saw no loop at all and erased the whole mīm (the
+  // author's phone, مُّسۡتَقِيمࣲ). Marks sit higher than the loop, so only ink
+  // between the loop's height and 0.45 em counts.
+  const high = Math.max(0, base - Math.round(fontPx * 0.45 * stage.dpr));
+  const tall = (x: number) => { for (let y = high; y < base - rise; y++) if (a[y * pw + x] > INK) return true; return false; };
   let x = px1;
-  while (x >= px0 && top(x) < 0) x--; // the glyph's right edge
+  while (x >= px0 && !tall(x)) x--; // the loop's right edge
   if (x < px0) return null;
-  while (x >= px0 && top(x) >= 0 && top(x) < base - rise) x--; // the loop
-  const loopLeft = x;
+  const loopRight = x;
+  while (x >= px0 && tall(x)) x--; // across the loop
+  const loopLeft = x + 1;
+  // No loop that narrow, and nothing worth cutting that close to the box.
+  if (loopRight - loopLeft < fontPx * 0.08 * stage.dpr) return null;
   const cutAt = loopLeft - Math.round(fontPx * MEEM_STUB * stage.dpr);
   if (cutAt <= px0) return null;
   const out = new Uint8ClampedArray(pw * ph);
