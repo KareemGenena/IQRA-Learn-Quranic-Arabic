@@ -788,6 +788,11 @@ this time the corrupted records are children's.
   missing definition reach the dev server on 2026-09-26.
 - Say plainly what was not verified and why.
 - Never silently "fix" Quranic text — report and confirm.
+- **Two chats can share this folder.** If `preview_start` says port 5173 is
+  held by another chat's `iqra-dev`, use **`iqra-dev-b`** in
+  `.claude/launch.json` — the same `npm run dev` on 5174, `--strictPort` —
+  rather than touching the other session's server. Added 2026-10-10 when the
+  author had a second session open.
 
 ---
 
@@ -1138,9 +1143,21 @@ is a **strip** of letters that glides to keep the sung one centered
 color** everywhere in the skin (`fam-0..6`, seven colors over seventeen
 families); the green box stays the only meaning of "being said now". Manāra
 is off the letter cards (the ا card would have shown two lighthouses) and
-greets on `#/kids` only. **Nothing is recorded**; `make-alphabet.mjs` prints
-what to record and, once recorded, what to tap. Outstanding: the five makhraj
-pictures (prompt in the design doc §9c) and the author's recordings.
+greets on `#/kids` only. **The makhraj pictures are the author's own, made in
+Canva (2026-10-11)** — six pencil-soft frames of a boy in profile facing right,
+no features, the cutaway lit one place at a time; the 1264 px originals are
+sources in `Design/kids-art/makhraj-canva/`, the app ships 480 px palette
+copies, and the generator reports 37 pictures wanted, 37 present. (A set I
+drew myself as SVG was withdrawn at the author's request the same day; it is
+in history at `b7942c3`, not in the tree.) **The only thing left before IQRA
+Kids can be used in a class is the recording: 38 takes** — open the sheet in
+the intake tool, record the **Slot column of its last table only**, expect 1,
+one whole line per letter (36), then the two songs as `song-names.wav` and
+`song-sounds.wav` into `Audio/Audio - Kids Alphabet/`; run
+`node scripts/make-alphabet.mjs`, which cuts nothing (every take is whole)
+and then lists what to **tap-calibrate** — all 38, a tap per Arabic letter
+(بَ بُ بِ نَبۡ is five; the first tap also ends the picture's glow), and the
+songs cannot work at all without it. Then Publish from `#/admin`.
 
 **The workbook ↔ app crosswalk (2026-10-10).** `Workbooks/crosswalk.map.json`
 declares which app lessons a workbook section matches (ids `L1S3`, as in each

@@ -9,7 +9,7 @@ first time.** Challenging enough to learn from, never enough to discourage.
 `CLAUDE.md` is the authority on the app. This file is the authority on the kids
 curriculum: what was decided, what is still open, and why. Read both.
 
-Status (2026-10-10): **iteration 6 is built and deployed as drafts** — song 31, lesson 20 (one lesson, four sections), song 32, lesson 33 (the five places). One recording per letter: 38 takes, every one a single piece. Outstanding: the five makhraj pictures (§9c) and the author's recordings; then tap calibration, which the generator lists once something is recorded. See §11.
+Status (2026-10-11): **iteration 6 is built and deployed as drafts, and every picture is in** — song 31, lesson 20 (one lesson, four sections), song 32, lesson 33 (the five places, with the author's own Canva pictures: sources in `Design/kids-art/makhraj-canva/`, 480 px copies shipped, 37 wanted / 37 present). One recording per letter: **38 takes, every one a single piece, is all that remains** — then tap calibration, which the generator lists once something is recorded, then Publish. See §11; the recording and calibration steps are spelled out in `CLAUDE.md` §5.
 
 ---
 
