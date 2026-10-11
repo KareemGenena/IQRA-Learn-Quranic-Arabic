@@ -48,6 +48,10 @@ interface Layer {
   className: string;
   clip?: string;
   mask?: Mask;
+  /** The string this layer draws, when it is not the display string: the
+   *  strokes of a kasra pair under a joined-on final mīm, whose kasra the
+   *  display string does not hold. */
+  text?: string;
   dx?: number;
   /** Lifts the strokes of a pair clear of a ط ظ stem. */
   dy?: number;
@@ -99,12 +103,38 @@ const KASRA_MEEM_RE = /ِۢ/g;
 const STAGGERED_KASRA = 'ࣲ';
 const KASRA = 'ِ';
 const SMALL_HIGH_MEEM = 'ۢ';
-const ZWJ = '‍';
 /** Zero-width space: takes the small mīm's place in the display string so it
  *  keeps the length of the data string — every cluster offset indexes both. */
 const ZWSP = '​';
+const ZWJ = '‍';
+/**
+ * A final mīm that carries a kasra pair or a low iqlāb mīm (لِقَوۡمࣲ,
+ * مُّسۡتَقِيمࣲ, كِرَامِۭ): the Mushaf writes it مـ — the joined-on form with a
+ * flat tail — and sets the marks under its loop. The font's final mīm hangs a
+ * long descender there instead, which pushed the pair out from under the
+ * letter and the small mīm away from its kasra; cutting the descender short
+ * read as an amputated stick and once took a dot of the ي before it. So the
+ * mark's place in the DISPLAY string holds a ZWJ, which joins the mīm on
+ * (the letter before it, ا or ي, decides nothing: a ZWJ after a letter gives
+ * it its joined form), and the kasra pair is drawn from a string that has
+ * the kasra as well (see the staggered block). The length is unchanged.
+ */
+function finalMeemAt(s: string, at: number, end: number): boolean {
+  if (!(end >= s.length || s[end] === ' ')) return false;
+  let i = at - 1;
+  while (i >= 0 && MARKS_RE.test(s[i])) { MARKS_RE.lastIndex = 0; i--; }
+  MARKS_RE.lastIndex = 0;
+  return i >= 0 && s[i] === 'م';
+}
 const toDisplay = (s: string) =>
-  s.replace(STAGGERED_RE, (m) => STAGGERED_TO_VOWEL[m]).replace(KASRA_MEEM_RE, KASRA + ZWSP);
+  s
+    .replace(STAGGERED_RE, (m, at: number) => (m === STAGGERED_KASRA && finalMeemAt(s, at, at + m.length) ? ZWJ : STAGGERED_TO_VOWEL[m]))
+    .replace(KASRA_MEEM_RE, (m, at: number) => KASRA + (finalMeemAt(s, at, at + m.length) ? ZWJ : ZWSP));
+/** The cluster whose mark `toDisplay` replaced with a ZWJ. */
+const isFlatMeem = (display: string, c: LetterCluster) =>
+  (c.end >= display.length || display[c.end] === ' ') &&
+  lettersOf(c.text)[0] === 'م' &&
+  (c.text.includes(STAGGERED_KASRA) || /ِۢ/.test(c.text));
 
 /** Letters that join to the letter after them, and those that never do. */
 const JOINS_FORWARD = /[بت-خس-غف-هيئ]/;
@@ -206,9 +236,8 @@ const MINI_MEEM = 'م';
 const MINI_SIZE = 0.5;
 const MINI_SIZE_DAMMA = 0.45;
 const MINI_KEEP = 0.7;
-/** How far below the baseline a final mīm's descender is kept, in em, where
- *  a kasra pair or a low mīm sits under the letter. */
-const MEEM_TAIL = 0.1;
+/** How much of a joined final mīm's connecting stroke is kept past its loop, in em. */
+const MEEM_STUB = 0.16;
 const FATHA = 'َ';
 const DAMMA = 'ُ';
 
@@ -714,27 +743,51 @@ function bounds(stage: Stage, m: Uint8ClampedArray): Box | null {
   return { left: stage.originX + x0 / stage.dpr, top: y0 / stage.dpr, width: (x1 + 1 - x0) / stage.dpr, height: (y1 + 1 - y0) / stage.dpr };
 }
 
-/** Ink of `a` inside columns [x0, x1] (wrap CSS px) and below row `y` (canvas CSS px). */
-function below(stage: Stage, a: Uint8ClampedArray, x0: number, x1: number, y: number): Uint8ClampedArray | null {
+/**
+ * The connecting stroke of a joined final mīm (مـ) beyond `MEEM_STUB` past its
+ * loop, within the letter's own box. The loop is the run of columns, from the
+ * glyph's right edge, whose ink rises well above the baseline; the stroke is
+ * what follows it leftwards, a thin band at the baseline. Every pixel with any
+ * ink in that band is taken, so no anti-aliased edge stays behind.
+ */
+function tailCut(stage: Stage, a: Uint8ClampedArray, box: Box, fontPx: number): Uint8ClampedArray | null {
   const pw = Math.ceil(stage.w * stage.dpr);
   const ph = Math.ceil(stage.h * stage.dpr);
-  const px0 = Math.max(0, Math.floor((x0 - stage.originX) * stage.dpr));
-  const px1 = Math.min(pw - 1, Math.ceil((x1 - stage.originX) * stage.dpr));
-  const py = Math.max(0, Math.round(y * stage.dpr));
+  // The stroke overhangs the glyph's own advance a little, so the cut
+  // reaches past the box's left edge — not as far as the next word, which
+  // stands a space away.
+  const px0 = Math.max(0, Math.floor((box.left - fontPx * 0.12 - stage.originX) * stage.dpr));
+  const px1 = Math.min(pw - 1, Math.ceil((box.left + box.width - stage.originX) * stage.dpr));
+  const base = Math.round(stage.baseline * stage.dpr);
+  const rise = Math.round(fontPx * 0.15 * stage.dpr);
+  // The stroke ends in a hook that rises above its own line, hence the
+  // tall band upwards; downwards only a little, so a kasra under the next
+  // word's first letter is never touched.
+  const band0 = Math.max(0, base - Math.round(fontPx * 0.35 * stage.dpr));
+  const band1 = Math.min(ph - 1, base + Math.round(fontPx * 0.1 * stage.dpr));
+  const top = (x: number) => { for (let y = 0; y < ph; y++) if (a[y * pw + x] > INK) return y; return -1; };
+  let x = px1;
+  while (x >= px0 && top(x) < 0) x--; // the glyph's right edge
+  if (x < px0) return null;
+  while (x >= px0 && top(x) >= 0 && top(x) < base - rise) x--; // the loop
+  const loopLeft = x;
+  const cutAt = loopLeft - Math.round(fontPx * MEEM_STUB * stage.dpr);
+  if (cutAt <= px0) return null;
   const out = new Uint8ClampedArray(pw * ph);
   let any = false;
-  // Every pixel with any ink at all, grown by one device pixel: the stroke's
-  // anti-aliased edge otherwise stays behind as a faint line.
-  for (let yy = py; yy < ph; yy++) {
-    for (let x = px0; x <= px1; x++) {
-      if (!a[yy * pw + x]) continue;
+  // Grown by a device pixel, as every mask is: the page's rasterizer leaves
+  // faint edge pixels where the canvas's has none, and they outlined the
+  // cut-off stroke as a ghost.
+  for (let y = band0; y <= band1; y++) {
+    for (let xx = px0; xx < cutAt; xx++) {
+      if (!a[y * pw + xx]) continue;
       any = true;
       for (let dy = -1; dy <= 1; dy++) {
-        const y2 = yy + dy;
-        if (y2 < py || y2 >= ph) continue;
+        const y2 = y + dy;
+        if (y2 < 0 || y2 >= ph) continue;
         for (let dx = -1; dx <= 1; dx++) {
-          const x2 = x + dx;
-          if (x2 >= 0 && x2 < pw) out[y2 * pw + x2] = 255;
+          const x2 = xx + dx;
+          if (x2 >= 0 && x2 < cutAt) out[y2 * pw + x2] = 255;
         }
       }
     }
@@ -1012,32 +1065,33 @@ export function ArabicWord({
         clusters.forEach((c, i) => {
           const isFinalNasal = nasal?.index === i;
 
-          // A final مـ carrying a kasra pair or a low iqlāb mīm (لِقَوۡمࣲ,
-          // مُّسۡتَقِيمࣲ, كِرَامِۭ): the font hangs a long straight descender
-          // from its loop, which pushed the pair out from under the letter
-          // and the small mīm far from its kasra. The Mushaf's final mīm ends
-          // in a short tail, with the marks set beneath the loop. So the
-          // descender is cut `MEEM_TAIL` below the baseline — erased, not
-          // grayed — and the collision tests below see the letter without it.
+          // A final mīm under a kasra pair or a low mīm is displayed joined on
+          // (مـ, see toDisplay). The font's joined mīm trails a long flat
+          // connecting stroke, meant to reach the next letter; the Mushaf's
+          // مـ ends in a short one. So the stroke is cut `MEEM_STUB` past the
+          // loop — erased — and the collision tests see the letter so cut.
+          const flat = isFlatMeem(displayText, c);
           let cut: Uint8ClampedArray | null = null;
-          const endsWord = c.end >= displayText.length || displayText[c.end] === ' ';
-          if (endsWord && lettersOf(c.text)[0] === 'م' && (c.text.includes(STAGGERED_KASRA) || KASRA_MEEM_RE.test(c.text))) {
+          if (flat) {
             const b = boxOf(i);
-            const bare = b && drawAlpha(stage, withoutMarks(displayText, c, MARKS_RE));
-            if (b && bare) {
-              cut = below(stage, bare, b.left - fontPx * 0.1, b.left + b.width + fontPx * 0.1, stage.baseline + fontPx * MEEM_TAIL);
-              if (cut) erase.push(cut);
-            }
+            if (b) cut = tailCut(stage, base, b, fontPx);
+            if (cut) erase.push(cut);
           }
-          KASRA_MEEM_RE.lastIndex = 0;
-          /** The drawing `a` with the cut descender taken out. */
-          const sansTail = (a: Uint8ClampedArray) => (cut ? minus(a, cut) : a);
+          const tailless = cut ? minus(base, cut) : base;
 
           // A staggered tanwīn: erase the single vowel, draw it twice.
           const staggered = c.text.match(STAGGERED_RE);
           if (staggered) {
             const vowel = STAGGERED_TO_VOWEL[staggered[0]];
-            const pair = markPair(i, new RegExp(vowel, 'g'));
+            // For a joined-on final mīm the display has no kasra: the pair is
+            // taken from the font's FINAL mīm with the kasra under it (the ZWJ
+            // put back to a kasra) — the same loop, the same anchor — never
+            // from the joined form with a kasra, whose tail the font lengthens
+            // under a mark, so the difference held the tail as well as the
+            // vowel. The strokes draw that string too; its descender and the
+            // words after it are outside the mask.
+            const from = flat && vowel === KASRA ? displayText.slice(0, c.end - 1) + KASRA + displayText.slice(c.end) : displayText;
+            const pair = markPair(i, new RegExp(vowel, 'g'), from);
             let m = pair?.m ?? null;
             // Over a shadda the font composes shadda + vowel into one glyph,
             // whose shadda half differs a little from the plain shadda — and
@@ -1054,7 +1108,7 @@ export function ArabicWord({
             }
             const bb = m && bounds(stage, m);
             if (m && bb && pair) {
-              erase.push(m);
+              if (from === displayText) erase.push(m);
               // Where each stroke goes, from the single mark's place (CSS px).
               // The Mushaf steps the pair DOWN TO THE LEFT: the second stroke
               // about 0.6 of the mark's width left of the first and 0.75 below
@@ -1093,7 +1147,7 @@ export function ArabicWord({
               let slide = 0;
               {
                 const hit = (s: { x: number; y: number }, d: number) =>
-                  collisions(stage, m, sansTail(pair.without), devPx(shift + s.x + d), devPx(lift + s.y));
+                  collisions(stage, m, from === displayText ? pair.without : tailless, devPx(shift + s.x + d), devPx(lift + s.y));
                 const hits = (d: number) => hit(s1, d) + hit(s2, d);
                 let best = hits(0);
                 if (best > 0) {
@@ -1114,8 +1168,8 @@ export function ArabicWord({
                 // would still land on a letter once shifted.
                 const dx = shift + slide + s.x;
                 const dy = lift + s.y;
-                const mask = toMask(stage, offInk(stage, m, sansTail(pair.without), devPx(dx), devPx(dy)), 0, 0);
-                if (mask) next.push({ className: cls, mask, dx, dy: dy || undefined });
+                const mask = toMask(stage, offInk(stage, m, from === displayText ? pair.without : tailless, devPx(dx), devPx(dy)), 0, 0);
+                if (mask) next.push({ className: cls, mask, dx, dy: dy || undefined, text: from === displayText ? undefined : from });
               }
             }
           }
@@ -1123,20 +1177,25 @@ export function ArabicWord({
           // A low iqlāb mīm: the kasra stays (gray if final); the مـ is drawn.
           if (KASRA_MEEM_RE.test(c.text)) {
             KASRA_MEEM_RE.lastIndex = 0;
-            const m = markPixels(i, /ِ/g);
+            // Under a joined-on final mīm (كِرَامِۭ) the kasra's pixels come from
+            // the font's FINAL mīm (the ZWJ put back to the placeholder): the
+            // joined form's tail lengthens under a mark, and the difference
+            // then held the tail, which put the small mīm at the tail's end.
+            const fin = flat ? displayText.slice(0, c.end - 1) + ZWSP + displayText.slice(c.end) : displayText;
+            const m = markPixels(i, /ِ/g, fin);
             const bb = m && bounds(stage, m);
             if (m && bb) {
               if (isFinalNasal) {
                 erase.push(m);
                 gray.push(m);
               }
-              // The Mushaf sets the small م to the LEFT of the kasra, close —
-              // about a third of the kasra's length between them — its head
-              // level with the kasra and its tail reaching about a kasra's
-              // length below it (measured on كِرَامِۭ بَرَرَةٍ).
+              // The Mushaf sets the small م just LEFT of the kasra — a tenth of
+              // the kasra's length between them — its head starting below the
+              // kasra's middle, its tail reaching about a kasra's length lower
+              // (مِّن مَّسَدِۭ, كِرَامِۭ بَرَرَةٍ).
               const size = fontPx * MINI_SIZE;
               const mini = miniMetrics(`${cs.fontStyle} ${cs.fontWeight} ${size}px ${cs.fontFamily}`);
-              if (mini) nextMeems.push(placeMini(mini, bb.left - 0.35 * bb.width, bb.top + fontPx * 0.02, size, isFinalNasal, MINI_KEEP));
+              if (mini) nextMeems.push(placeMini(mini, bb.left - 0.1 * bb.width, bb.top + 0.6 * bb.height, size, isFinalNasal, MINI_KEEP));
             }
           }
           KASRA_MEEM_RE.lastIndex = 0;
@@ -1394,20 +1453,34 @@ export function ArabicWord({
       wrap.style.removeProperty('--fit');
       const cs = getComputedStyle(wrap);
       const pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
-      const available = wrap.clientWidth - pad;
-      const needed = el.scrollWidth;
+      // Fractional widths: clientWidth is rounded to a pixel, and a word that
+      // fit exactly then came out a 199th too wide and was scaled 0.995 — a
+      // shift of a fraction of a pixel on every card, and a second layout.
+      const available = wrap.getBoundingClientRect().width - pad;
+      // The text is an inline span, whose scrollWidth is 0: measure its box.
+      const needed = el.getBoundingClientRect().width;
       if (!available || !needed) return;
       const scale = Math.max(0.55, Math.min(1, available / needed));
-      if (scale >= 1) return; // it already fits; nothing was changed
+      if (scale >= 0.995) return; // it fits, give or take rounding; nothing was changed
       wrap.style.setProperty('--fit', String(scale));
       // Every layer was measured off the old layout, so take them again.
       setRevision((r) => r + 1);
     };
 
     fit();
+    // The wrap is capped at its container's width, so the font arriving does
+    // not resize it — observe the text itself, and fit again once the fonts
+    // are in: measured in the fallback face, the scale was wrong on a phone.
     const ro = new ResizeObserver(fit);
     ro.observe(wrap);
-    return () => ro.disconnect();
+    ro.observe(el);
+    let live = true;
+    void document.fonts.ready.then(() => { if (live) fit(); });
+    // fonts.ready can resolve before the face is even requested; a load that
+    // finishes later announces itself here.
+    const onFonts = () => { if (live) fit(); };
+    document.fonts.addEventListener('loadingdone', onFonts);
+    return () => { live = false; ro.disconnect(); document.fonts.removeEventListener('loadingdone', onFonts); };
   }, [text]);
 
   return (
@@ -1440,7 +1513,7 @@ export function ArabicWord({
           lang="ar"
           aria-hidden="true"
         >
-          {displayText}
+          {layer.text ?? displayText}
         </span>
       ))}
       {meems.map((m, i) => (

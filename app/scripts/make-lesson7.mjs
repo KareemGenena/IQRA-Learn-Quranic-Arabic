@@ -54,7 +54,7 @@ const SECTIONS = [
     id: 'meem-sakinah',
     title: 'Mīm Sākinah',
     titleArabic: 'أحكام الميم الساكنة',
-    hint: 'Before another mīm it merges, with ghunna (idghām shafawī); before ب it is hidden, with ghunna (ikhfāʾ shafawī); before every other letter it is said clearly (iẕhār shafawī). First, because iqlāb below turns a nūn into exactly this mīm.',
+    hint: 'Before another mīm it merges, with ghunna (idghām shafawī); before ب it is hidden, with ghunna (ikhfāʾ shafawī); before every other letter it is said clearly (iẕhār shafawī).',
     ruleFromCell: true,
   },
   {

@@ -1185,15 +1185,45 @@ is approved.** When it is, record there:
   mīm is erased: it is the LEFTMOST mark of the cluster, the topmost being
   the ḍamma — removing the mīm alone moved the ḍamma into its place and
   `dropMoved` dropped it as "moved".
-- **A final mīm's descender is cut** (`MEEM_TAIL`, 0.1 em below the
-  baseline, erased not greyed, grown over its anti-aliased edge) when a
-  kasra pair or a low mīm sits under the letter — لِقَوۡمࣲ, مُّسۡتَقِيمࣲ,
-  كِرَامِۭ. The font's long straight descender pushed the pair out from under
-  the loop and the small mīm away from its kasra; the Mushaf's final mīm
-  ends in a short tail with the marks beneath the loop, and the author asked
-  twice for "the stick" to be cut. The collision and `offInk` tests see the
-  letter without it (`sansTail`). A stacked kasratān (أَثِيمٍ) leaves the
-  descender alone.
+- **A final mīm under a kasra pair or a low mīm is written joined on, مـ**
+  (لِقَوۡمࣲ, مُّسۡتَقِيمࣲ, كِرَامِۭ), as the Mushaf's older style writes it,
+  with the marks under its loop. The font's final mīm hangs a long straight
+  descender there, which pushed the pair out from under the loop and the
+  small mīm away from its kasra; cutting that descender short (the first
+  try, 2026-10-04) read to the author as "a partially amputated stick" and
+  once took a dot of the ي before it. So `toDisplay` puts a ZWJ in the
+  mark's place in the DISPLAY string (`finalMeemAt`: a word-final م before
+  U+08F2 or kasra + U+06E2) — the length is unchanged, and a ZWJ after a
+  letter gives it its joined form whatever precedes it — and `tailCut`
+  erases the joined form's long connecting stroke beyond `MEEM_STUB`
+  (0.16 em) past the loop, grown by a pixel and reaching 0.12 em past the
+  glyph's own box, where the stroke's end overhangs. Three traps, each a
+  round: (1) **the font lengthens the joined mīm's stroke when a mark sits
+  under it**, so a difference between "مِ"+ZWJ and "م"+ZWJ holds the stroke
+  as well as the kasra — the kasra's pixels are taken from the font's FINAL
+  mīm instead (the ZWJ put back to a kasra, `from`/`fin`), whose loop and
+  anchor are the same, and the stroke layers draw that string (`Layer.text`)
+  with its descender outside the mask; (2) the collision and `offInk` tests
+  must see the display's letter without the cut stroke (`tailless`), not the
+  final form; (3) the page's rasterizer leaves faint edge pixels the canvas
+  has none of, so an un-dilated cut outlined the stroke as a ghost. A stacked
+  kasratān (أَثِيمٍ) leaves the mīm alone. Under a kasra the small mīm now
+  sits a tenth of the kasra to its left, its head below the kasra's middle
+  (مِّن مَّسَدِۭ).
+- **A card's forms never grow past the card.** `.pair-forms` is
+  `minmax(0, 1fr)` with `min-width: 0`, `.form-btn` and the word inside it
+  are capped at 100 %, and `.arabic-word` is `white-space: nowrap`; the
+  word's own `--fit` then shrinks the type to the card. Before, a wide
+  phrase (صَٰلِحࣰا فَلِأَنفُسِهِمۡ) widened the grid column and put the play
+  button outside the card — and `--fit` had never fired: it measured
+  `scrollWidth` of an inline span, which is 0, and the wrap, uncapped, was
+  always as wide as its text. It measures the span's rect now, refits on
+  `document.fonts.ready` AND on each `loadingdone` (ready can resolve before
+  the face is requested), and the text must not wrap or the measurement is
+  of a wrapped line. `#/proof/N?from=&to=&card=343` renders the real
+  `ItemCard` at that width — outside the `.proof` class, whose own 64 px
+  text rule overrode the fit and sent one round chasing a bug the app did
+  not have.
 - **Masks are `mask-clip: no-clip`.** A mask clips to the border box by
   default, and the waṣl sign over an initial ٱ overhangs the span's box: it
   was cut flush at that edge on the author's phone (ٱنطَلِقُواْ) and in
@@ -1218,7 +1248,8 @@ is approved.** When it is, record there:
 - Badges (`make-lesson7.mjs`): no Ghunna chip in the idghām-with-ghunna
   section; Heavy / Light Ghunna by the ikhfāʾ letter (ص ض ط ق ظ heavy), and
   the hint says so plainly; no bare Tanwīn beside Tanwīn Mutatābiʿ; "Iqlāb",
-  never "Iqlāb inside".
+  never "Iqlāb inside". The mīm sākinah hint no longer explains why its
+  table comes first (2026-10-10).
 - **US spelling everywhere the learner reads, and in the code too** (color,
   gray, center, neighbor…); the author asked for it systematically.
 - **`version.json`** is written at build, left out of the precache and

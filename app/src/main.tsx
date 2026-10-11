@@ -115,13 +115,13 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
  * It never reaches a build — a draft lesson's text is already public in its
  * words.json, but the page has no place in the app.
  */
-const proof = import.meta.env.DEV ? /^#\/proof\/(\d+)(?:\?from=(\d+)&to=(\d+))?/.exec(window.location.hash) : null;
+const proof = import.meta.env.DEV ? /^#\/proof\/(\d+)(?:\?from=(\d+)&to=(\d+)(?:&px=(\d+))?(?:&card=(\d+))?)?/.exec(window.location.hash) : null;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {proof && ProofPage ? (
       <Suspense fallback={null}>
-        <ProofPage lessonId={Number(proof[1])} from={Number(proof[2] ?? 1)} to={Number(proof[3] ?? 9999)} px={proof[4] ? Number(proof[4]) : undefined} />
+        <ProofPage lessonId={Number(proof[1])} from={Number(proof[2] ?? 1)} to={Number(proof[3] ?? 9999)} px={proof[4] ? Number(proof[4]) : undefined} card={proof[5] ? Number(proof[5]) : undefined} />
       </Suspense>
     ) : (
       <App />

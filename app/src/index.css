@@ -234,6 +234,10 @@ body {
 .arabic-word {
   position: relative;
   display: inline-block;
+  /* A phrase never wraps: every highlight and layer is measured off one
+     line, and --fit shrinks the type to the card instead. Capped at the
+     card, an inline text would wrap and foil that measurement. */
+  white-space: nowrap;
   /* Marks overhang the first and last letters, and a masked layer shows
      nothing outside its own box — so the box is wider than the text. The
      font-size is the text's own, so the em here is the text's em. */
@@ -740,6 +744,11 @@ body {
 
 .pair-forms {
   display: grid;
+  /* minmax(0, …) and min-width: 0, or a wide phrase makes the column — and
+     the play button at its end — wider than the card. Capped, the word's
+     own --fit shrinks the type to the card instead (صَٰلِحࣰا فَلِأَنفُسِهِمۡ). */
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
   gap: 8px;
   /* The words sit at the BOTTOM of the card, so three cards in a row show
      their words on one level however many rows of badges each one wraps to
@@ -753,6 +762,8 @@ body {
   justify-content: center;
   position: relative;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 96px;
   padding: 8px 34px 8px 12px;
   background: transparent;
@@ -760,6 +771,13 @@ body {
   border-radius: 14px;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+/* The word is a flex item: without these it keeps its full width and
+   overflows the button, and --fit never sees a box to fit. */
+.form-btn > .arabic-word {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .form-btn:hover {
