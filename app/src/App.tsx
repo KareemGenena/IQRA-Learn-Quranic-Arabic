@@ -405,7 +405,7 @@ export default function App() {
                         all and N mean on every card, and stays until changed.
                         Shown on every word-card lesson, recorded or not — a
                         card without the take says so under the word. */}
-                    {lesson.kind !== 'words' && !drawsLetterCards(lesson) && (
+                    {!drawsLetterCards(lesson) && (
                       <div className="rate-group reading-group" role="group" aria-label="Reading">
                         {(['continuing', 'stop'] as const).map((r) => (
                           <button
@@ -430,7 +430,7 @@ export default function App() {
                   {drawsLetterCards(lesson) ? (
                     <LettersLesson lesson={lesson} rate={rate} reading={reading} onEnd={next ? moveOn : undefined} />
                   ) : lesson.kind === 'words' ? (
-                    <WordsLesson lesson={lesson} rate={rate} />
+                    <WordsLesson lesson={lesson} rate={rate} reading={reading} />
                   ) : (
                     <SectionedLesson lesson={lesson} rate={rate} reading={reading} onEnd={next ? moveOn : undefined} />
                   )}

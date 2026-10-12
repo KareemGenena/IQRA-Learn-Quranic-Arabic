@@ -1897,13 +1897,7 @@
     {
      "id": "L2S2:صبر",
      "text": "صَبَرَ",
-     "caption": "ص + ب + ر",
-     "audio": {
-      "lesson": 2,
-      "path": "audio/lesson02/",
-      "file": "word43a.wav",
-      "key": "43a"
-     }
+     "caption": "ص + ب + ر"
     },
     {
      "id": "L2S2:كبر",
@@ -2529,10 +2523,10 @@
      "text": "حَقُّ",
      "caption": "ح + قّ",
      "audio": {
-      "lesson": 2,
-      "path": "audio/lesson02/",
-      "file": "word22a.wav",
-      "key": "22a"
+      "lesson": 3,
+      "path": "audio/lesson03/",
+      "file": "word18.wav",
+      "key": "18"
      }
     },
     {
@@ -2593,13 +2587,7 @@
     {
      "id": "L2S2:حق#2",
      "text": "حَقٌّ",
-     "caption": "ح + قّ",
-     "audio": {
-      "lesson": 2,
-      "path": "audio/lesson02/",
-      "file": "word22a.wav",
-      "key": "22a"
-     }
+     "caption": "ح + قّ"
     },
     {
      "id": "L2S2:شر#2",
@@ -2631,13 +2619,7 @@
     {
      "id": "L2S3:صبر",
      "text": "صَبَرَ",
-     "caption": "●  ●  ●",
-     "audio": {
-      "lesson": 2,
-      "path": "audio/lesson02/",
-      "file": "word43a.wav",
-      "key": "43a"
-     }
+     "caption": "●  ●  ●"
     },
     {
      "id": "L2S3:كان",
@@ -2781,13 +2763,7 @@
     {
      "id": "L2S3:حكيم",
      "text": "حَكِيمٌ",
-     "caption": "●  ●●  ●",
-     "audio": {
-      "lesson": 3,
-      "path": "audio/lesson03/",
-      "file": "word19.wav",
-      "key": "19"
-     }
+     "caption": "●  ●●  ●"
     },
     {
      "id": "L2S3:عيسى",
@@ -2824,13 +2800,7 @@
     {
      "id": "L2S3:عليم",
      "text": "عَلِيمٌ",
-     "caption": "●  ●●  ●",
-     "audio": {
-      "lesson": 3,
-      "path": "audio/lesson03/",
-      "file": "word24.wav",
-      "key": "24"
-     }
+     "caption": "●  ●●  ●"
     },
     {
      "id": "L2S3:كبر",
@@ -2875,13 +2845,7 @@
     {
      "id": "L2S3:عباد",
      "text": "عِبَادَ",
-     "caption": "●  ●●  ●",
-     "audio": {
-      "lesson": 3,
-      "path": "audio/lesson03/",
-      "file": "word25.wav",
-      "key": "25"
-     }
+     "caption": "●  ●●  ●"
     },
     {
      "id": "L2S3:نصيب",
@@ -3530,13 +3494,7 @@
     {
      "id": "L2S5:أكثر",
      "text": "أَكۡثَرَ",
-     "caption": "أ + ك + ث + ر",
-     "audio": {
-      "lesson": 3,
-      "path": "audio/lesson03/",
-      "file": "word03.wav",
-      "key": "3"
-     }
+     "caption": "أ + ك + ث + ر"
     },
     {
      "id": "L2S5:أبدا",
@@ -3717,13 +3675,7 @@
     {
      "id": "L2S5:سوء",
      "text": "سَوۡءٍ",
-     "caption": "س + و + ء",
-     "audio": {
-      "lesson": 5,
-      "path": "audio/lesson05/",
-      "file": "word17.wav",
-      "key": "17"
-     }
+     "caption": "س + و + ء"
     },
     {
      "id": "L2S5:أفآء",
@@ -3809,13 +3761,7 @@
     {
      "id": "L2S6:جزآء",
      "text": "جَزَآءُ",
-     "caption": "4●",
-     "audio": {
-      "lesson": 5,
-      "path": "audio/lesson05/",
-      "file": "word07.wav",
-      "key": "7"
-     }
+     "caption": "4●"
     },
     {
      "id": "L2S6:سوآء",
@@ -4239,14 +4185,7 @@
     {
      "id": "L2S6:عليما",
      "text": "عَلِيمًا",
-     "caption": "2●",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word38.wav",
-      "key": "38",
-      "waqf": true
-     }
+     "caption": "2●"
     },
     {
      "id": "L2S6:حكيما",
@@ -4277,13 +4216,7 @@
     {
      "id": "L2S6:بيت",
      "text": "بَيۡتٍ",
-     "caption": "leen",
-     "audio": {
-      "lesson": 2,
-      "path": "audio/lesson02/",
-      "file": "word15a.wav",
-      "key": "15a"
-     }
+     "caption": "leen"
     },
     {
      "id": "L2S6:قريش",
@@ -4309,13 +4242,7 @@
     {
      "id": "L2S6:دآبة#2",
      "text": "دَآبَّةُ",
-     "caption": "6●",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word04.wav",
-      "key": "4"
-     }
+     "caption": "6●"
     },
     {
      "id": "L2S6:عباده",
@@ -4599,13 +4526,7 @@
     {
      "id": "L2S7:حق",
      "text": "حَقّ",
-     "caption": "ح + قّ",
-     "audio": {
-      "lesson": 2,
-      "path": "audio/lesson02/",
-      "file": "word22a.wav",
-      "key": "22a"
-     }
+     "caption": "ح + قّ"
     },
     {
      "id": "L2S7:رب",

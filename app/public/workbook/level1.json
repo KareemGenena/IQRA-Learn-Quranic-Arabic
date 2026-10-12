@@ -126,14 +126,7 @@
     {
      "id": "L1S1:ص",
      "text": "ص",
-     "caption": "Ṣaad",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Ṣaad"
     },
     {
      "id": "L1S1:ض",
@@ -175,14 +168,7 @@
     {
      "id": "L1S1:ق",
      "text": "ق",
-     "caption": "Qaaf",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Qaaf"
     },
     {
      "id": "L1S1:ك",
@@ -306,14 +292,7 @@
     {
      "id": "L1S2:ص",
      "text": "ص",
-     "caption": "Ṣaad",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Ṣaad"
     },
     {
      "id": "L1S2:ض",
@@ -348,14 +327,7 @@
     {
      "id": "L1S2:ق",
      "text": "ق",
-     "caption": "Qaaf",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Qaaf"
     }
    ]
   },
@@ -628,38 +600,17 @@
     {
      "id": "L1S3:ص",
      "text": "صَ",
-     "caption": "Fat-ha",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Fat-ha"
     },
     {
      "id": "L1S3:ص#2",
      "text": "صُ",
-     "caption": "Damma",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Damma"
     },
     {
      "id": "L1S3:ص#3",
      "text": "صِ",
-     "caption": "Kasra",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Kasra"
     },
     {
      "id": "L1S3:نص",
@@ -796,38 +747,17 @@
     {
      "id": "L1S3:ق",
      "text": "قَ",
-     "caption": "Fat-ha",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Fat-ha"
     },
     {
      "id": "L1S3:ق#2",
      "text": "قُ",
-     "caption": "Damma",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Damma"
     },
     {
      "id": "L1S3:ق#3",
      "text": "قِ",
-     "caption": "Kasra",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Kasra"
     },
     {
      "id": "L1S3:نق",
@@ -1399,14 +1329,7 @@
     {
      "id": "L1S4:ص",
      "text": "صَ",
-     "caption": "Fat-ha",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Fat-ha"
     },
     {
      "id": "L1S4:صا",
@@ -1416,50 +1339,22 @@
     {
      "id": "L1S4:ص#2",
      "text": "صُ",
-     "caption": "Damma",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Damma"
     },
     {
      "id": "L1S4:ص#3",
      "text": "صٌ",
-     "caption": "Tanween Damm",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Tanween Damm"
     },
     {
      "id": "L1S4:ص#4",
      "text": "صِ",
-     "caption": "Kasra",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Kasra"
     },
     {
      "id": "L1S4:ص#5",
      "text": "صٍ",
-     "caption": "Tanween Kasr",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word20.wav",
-      "key": "20",
-      "letterNames": true
-     }
+     "caption": "Tanween Kasr"
     },
     {
      "id": "L1S4:ض",
@@ -1651,14 +1546,7 @@
     {
      "id": "L1S4:ق",
      "text": "قَ",
-     "caption": "Fat-ha",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Fat-ha"
     },
     {
      "id": "L1S4:قا",
@@ -1668,50 +1556,22 @@
     {
      "id": "L1S4:ق#2",
      "text": "قُ",
-     "caption": "Damma",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Damma"
     },
     {
      "id": "L1S4:ق#3",
      "text": "قٌ",
-     "caption": "Tanween Damm",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Tanween Damm"
     },
     {
      "id": "L1S4:ق#4",
      "text": "قِ",
-     "caption": "Kasra",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Kasra"
     },
     {
      "id": "L1S4:ق#5",
      "text": "قٍ",
-     "caption": "Tanween Kasr",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word22.wav",
-      "key": "22",
-      "letterNames": true
-     }
+     "caption": "Tanween Kasr"
     }
    ]
   },
@@ -2109,13 +1969,7 @@
     {
      "id": "L1S5:حاد",
      "text": "حَادُ",
-     "caption": "Madd Alif",
-     "audio": {
-      "lesson": 3,
-      "path": "audio/lesson03/",
-      "file": "word54b.wav",
-      "key": "54b"
-     }
+     "caption": "Madd Alif"
     },
     {
      "id": "L1S5:حد#2",

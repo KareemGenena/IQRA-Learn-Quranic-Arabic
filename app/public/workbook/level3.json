@@ -281,13 +281,7 @@
     {
      "id": "L3S2:الرحيم",
      "text": "ٱلرَّحِيمُ",
-     "caption": "[ل silent]   ·   رّ",
-     "audio": {
-      "lesson": 3,
-      "path": "audio/lesson03/",
-      "file": "word21.wav",
-      "key": "21"
-     }
+     "caption": "[ل silent]   ·   رّ"
     },
     {
      "id": "L3S2:التواب",
@@ -592,13 +586,7 @@
     {
      "id": "L3S5:أكثر",
      "text": "أَكۡثَرَ",
-     "caption": "[كۡ middle]   ·   أ + كۡ + ث + ر",
-     "audio": {
-      "lesson": 3,
-      "path": "audio/lesson03/",
-      "file": "word03.wav",
-      "key": "3"
-     }
+     "caption": "[كۡ middle]   ·   أ + كۡ + ث + ر"
     },
     {
      "id": "L3S5:ذكرى",
@@ -685,13 +673,7 @@
     {
      "id": "L3S5:خلق#2",
      "text": "خُلِقَ",
-     "caption": "[خ Heavy]   ·   خُ",
-     "audio": {
-      "lesson": 3,
-      "path": "audio/lesson03/",
-      "file": "word38.wav",
-      "key": "38"
-     }
+     "caption": "[خ Heavy]   ·   خُ"
     },
     {
      "id": "L3S5:خلل",
@@ -899,13 +881,7 @@
     {
      "id": "L3S5:القرءان",
      "text": "ٱلۡقُرۡءَانَ",
-     "caption": "[ر Heavy (5)]   ·   قُرۡ",
-     "audio": {
-      "lesson": 6,
-      "path": "audio/lesson06/",
-      "file": "word37.wav",
-      "key": "37"
-     }
+     "caption": "[ر Heavy (5)]   ·   قُرۡ"
     },
     {
      "id": "L3S5:يرزقون",
@@ -999,13 +975,7 @@
     {
      "id": "L3S5:خير",
      "text": "خَيۡرٌ",
-     "caption": "[ر Light (4)]   ·   خَيۡرۡ",
-     "audio": {
-      "lesson": 2,
-      "path": "audio/lesson02/",
-      "file": "word35a.wav",
-      "key": "35a"
-     }
+     "caption": "[ر Light (4)]   ·   خَيۡرۡ"
     },
     {
      "id": "L3S5:ضير",

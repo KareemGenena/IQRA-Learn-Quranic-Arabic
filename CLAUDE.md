@@ -135,9 +135,12 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   stop switch (`iqra-reading`, default continuing) only where the lesson
   has one; it sets what the big button, Play all and `N` mean, and each form
   with two readings gets a small button under the word that plays the other
-  once. Lesson 1 (`WordCard`, no generator) does not take part yet. The
-  switch shows on every word-card lesson and the chip under a form without
-  a stop take reads "At a stop · not yet recorded" (2026-10-11).
+  once. Every word lesson, 1 included, draws the same `ItemCard` (lesson 1's
+  own `WordCard` went on 2026-10-11 — it was why lesson 1 had no switch and
+  no chip); lesson 1 still has no generator, so a stop take for it has
+  nowhere to be attached yet. The switch shows on every word-card lesson
+  and the chip under a form without a stop take reads "At a stop · not yet
+  recorded".
 - **Workbook companion** (`#/workbook`, `#/workbook/L/<printed page>`,
   `#/workbook/L/section/N`) — the electronic side of the paper: one app page
   per workbook page, every item on it in the book's order with Play where a
@@ -489,17 +492,29 @@ Things that cost real debugging. Do not undo them without reading why.
   never hand-edited and never precached (runtime-cached like the clips). An
   item's id is `L1S4:<filename key>`, its section and its text — stable
   across editions as long as the word stays in the section. Audio, in order:
-  a clip from lessons 1–7 whose text has the same key AND is on disk (a
-  word recorded once serves the lesson it is taught in and the page it is
-  traced on — its own clip, calibration and stop reading; lesson 7 named
-  clips it did not have and the page offered a Play that failed, so the
-  check is for the file, not the entry); else a take in `Audio/Audio -
-  Workbook Level N/` (with `وقف/`), cut into `public/audio/workbook0N/` and
-  calibrated under lesson id 90 + N; else nothing, and the card says "Not
-  yet recorded". Letter lessons (20+) are never reused: their clips are whole
-  teacher lines. **Run it after any workbook edition and after any lesson is
-  recorded** — reuse changes. Record the workbook items with the intake tool
-  from the masters (every drill table's first row), both readings.
+  a continuing clip from lessons 1–7 whose text is EXACTLY the item's,
+  marks and all, AND is on disk (a word recorded once serves the lesson it
+  is taught in and the page it is traced on — its own clip, calibration and
+  stop reading; lesson 7 named clips it did not have and the page offered a
+  Play that failed, so the check is for the file, not the entry); else a
+  take in `Audio/Audio - Workbook Level N/` (with `وقف/`), cut into
+  `public/audio/workbook0N/` and calibrated under lesson id 90 + N; else
+  nothing, and the card says "Not yet recorded". Letter lessons (20+) are
+  never reused: their clips are whole teacher lines. **Never match on the
+  filename key here.** The key strips the marks so a hand-typed filename
+  finds its row, and inside one lesson's folder that is unambiguous; across
+  the corpus it is not — the first version keyed صَبَرَ to lesson 4's صَبۡرِ,
+  and the author heard the wrong word on the first card he tried
+  (2026-10-11). The same holds for workbook takes: بَ بُ بِ all strip to ب,
+  so a workbook take must be named with its marks (`بَ.wav`) and is matched
+  exactly; a take named without them is used only where that key belongs to
+  one item in the level, and is otherwise reported as ambiguous and left
+  alone. The intake page still derives names WITHOUT marks — it must learn
+  to keep them for workbook items before any workbook recording (not
+  built). `node scripts/make-workbook.mjs` prints every reuse count; the
+  mechanical check is to compare each reused item's text with the lesson
+  form's text — zero mismatches over all 48 reuses. **Run it after any
+  workbook edition and after any lesson is recorded** — reuse changes.
 - A sheet correction is applied in the generator and **reported on every
   run**, never written into the docx behind the author's back (`CORRECTIONS`
   in `make-lesson2.mjs`; lesson 6 carried one for a day). Spell the find-string
@@ -1212,10 +1227,13 @@ all five points agreed, in the order they will be built:
 4. **A workbook companion page** — BUILT 2026-10-11 (section 2 "Workbook
    companion", section 3 "The workbook companion is generated"): one page
    per paper page rather than per section, `/go/<id>` on the site, the
-   "Practice workbooks" entry on the home page. Today 87 of the 1,536 items
-   with Arabic play a lesson's clip; the rest wait for `Audio/Audio -
-   Workbook Level N/`. Not built: keyboard walking on the companion (N / P),
-   and the QR itself on the paper, still gated on the app being complete.
+   "Practice workbooks" entry on the home page. Today 48 of the 1,536 items
+   play a lesson's clip (exact text; the first version's 87 included wrong
+   words); the rest wait for `Audio/Audio - Workbook Level N/`. Not built:
+   the intake page keeping the marks in a workbook take's filename (without
+   that, the workbook cannot be recorded — see section 3), keyboard walking
+   on the companion (N / P), and the QR itself on the paper, still gated on
+   the app being complete.
 5. **Level 1 and 2 lessons selected from the workbook** by a map file
    (section, rows), the generator reading the workbook docx directly so a
    correction flows through, in the WORKBOOK'S order — tanween, natural madd,
