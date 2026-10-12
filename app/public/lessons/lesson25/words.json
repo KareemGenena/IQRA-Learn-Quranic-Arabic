@@ -1,0 +1,1340 @@
+{
+  "lesson": 25,
+  "title": "Three-Letter Words",
+  "titleArabic": "كلمات من ثلاثة أحرف",
+  "kind": "letters",
+  "audioPath": "audio/lesson25/",
+  "perPage": 6,
+  "sections": [
+    {
+      "id": "p28",
+      "title": "Page 28",
+      "titleArabic": "صفحة 28",
+      "hint": "Workbook Level 2, page 28 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p29",
+      "title": "Page 29",
+      "titleArabic": "صفحة 29",
+      "hint": "Workbook Level 2, page 29 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p30",
+      "title": "Page 30",
+      "titleArabic": "صفحة 30",
+      "hint": "Workbook Level 2, page 30 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p31",
+      "title": "Page 31",
+      "titleArabic": "صفحة 31",
+      "hint": "Workbook Level 2, page 31 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p32",
+      "title": "Page 32",
+      "titleArabic": "صفحة 32",
+      "hint": "Workbook Level 2, page 32 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p33",
+      "title": "Page 33",
+      "titleArabic": "صفحة 33",
+      "hint": "Workbook Level 2, page 33 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p34",
+      "title": "Page 34",
+      "titleArabic": "صفحة 34",
+      "hint": "Workbook Level 2, page 34 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p35",
+      "title": "Page 35",
+      "titleArabic": "صفحة 35",
+      "hint": "Workbook Level 2, page 35 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "p28",
+      "badges": [
+        "و + ر + د"
+      ],
+      "text": "وَرَدَ",
+      "audio": "word01.wav",
+      "timings": null
+    },
+    {
+      "id": 2,
+      "section": "p28",
+      "badges": [
+        "ن + ز + ل"
+      ],
+      "text": "نَزَلَ",
+      "audio": "word02.wav",
+      "timings": null
+    },
+    {
+      "id": 3,
+      "section": "p28",
+      "badges": [
+        "ك + ذ + ب"
+      ],
+      "text": "كَذَبَ",
+      "audio": "word03.wav",
+      "timings": null
+    },
+    {
+      "id": 4,
+      "section": "p28",
+      "badges": [
+        "ص + د + ق"
+      ],
+      "text": "صَدَقَ",
+      "audio": "word04.wav",
+      "timings": null
+    },
+    {
+      "id": 5,
+      "section": "p28",
+      "badges": [
+        "ص + ب + ر"
+      ],
+      "text": "صَبَرَ",
+      "audio": "word05.wav",
+      "timings": null
+    },
+    {
+      "id": 6,
+      "section": "p28",
+      "badges": [
+        "ك + ب + ر"
+      ],
+      "text": "كَبُرَ",
+      "audio": "word06.wav",
+      "timings": null
+    },
+    {
+      "id": 7,
+      "section": "p28",
+      "badges": [
+        "ع + ب + س"
+      ],
+      "text": "عَبَسَ",
+      "audio": "word07.wav",
+      "timings": null
+    },
+    {
+      "id": 8,
+      "section": "p28",
+      "badges": [
+        "ق + ب + س"
+      ],
+      "text": "قَبَسٍ",
+      "audio": "word08.wav",
+      "timings": null
+    },
+    {
+      "id": 9,
+      "section": "p28",
+      "badges": [
+        "ك + ت + ب"
+      ],
+      "text": "كَتَبَ",
+      "audio": "word09.wav",
+      "timings": null
+    },
+    {
+      "id": 10,
+      "section": "p28",
+      "badges": [
+        "ق + ت + ل"
+      ],
+      "text": "قُتِلَ",
+      "audio": "word10.wav",
+      "timings": null
+    },
+    {
+      "id": 11,
+      "section": "p28",
+      "badges": [
+        "ك + ث + ر"
+      ],
+      "text": "كَثُرَ",
+      "audio": "word11.wav",
+      "timings": null
+    },
+    {
+      "id": 12,
+      "section": "p28",
+      "badges": [
+        "م + ث + ل"
+      ],
+      "text": "مَثَلُ",
+      "audio": "word12.wav",
+      "timings": null
+    },
+    {
+      "id": 13,
+      "section": "p28",
+      "badges": [
+        "م + ن + هـ"
+      ],
+      "text": "مِنۡهُ",
+      "audio": "word13.wav",
+      "timings": null
+    },
+    {
+      "id": 14,
+      "section": "p28",
+      "badges": [
+        "ع + ن + هـ"
+      ],
+      "text": "عَنۡهُ",
+      "audio": "word14.wav",
+      "timings": null
+    },
+    {
+      "id": 15,
+      "section": "p28",
+      "badges": [
+        "ب + ي + ن"
+      ],
+      "text": "بَيۡنَ",
+      "audio": "word15.wav",
+      "timings": null
+    },
+    {
+      "id": 16,
+      "section": "p28",
+      "badges": [
+        "ك + ي + ف"
+      ],
+      "text": "كَيۡفَ",
+      "audio": "word16.wav",
+      "timings": null
+    },
+    {
+      "id": 17,
+      "section": "p29",
+      "badges": [
+        "ر + ج + ع"
+      ],
+      "text": "رَجَعَ",
+      "audio": "word17.wav",
+      "timings": null
+    },
+    {
+      "id": 18,
+      "section": "p29",
+      "badges": [
+        "و + ج + د"
+      ],
+      "text": "وَجَدَ",
+      "audio": "word18.wav",
+      "timings": null
+    },
+    {
+      "id": 19,
+      "section": "p29",
+      "badges": [
+        "و + ج + هـ"
+      ],
+      "text": "وَجۡهُ",
+      "audio": "word19.wav",
+      "timings": null
+    },
+    {
+      "id": 20,
+      "section": "p29",
+      "badges": [
+        "ر + ح + م"
+      ],
+      "text": "رَحِمَ",
+      "audio": "word20.wav",
+      "timings": null
+    },
+    {
+      "id": 21,
+      "section": "p29",
+      "badges": [
+        "ن + ح + ن"
+      ],
+      "text": "نَحۡنُ",
+      "audio": "word21.wav",
+      "timings": null
+    },
+    {
+      "id": 22,
+      "section": "p29",
+      "badges": [
+        "ل + ح + م"
+      ],
+      "text": "لَحۡمَ",
+      "audio": "word22.wav",
+      "timings": null
+    },
+    {
+      "id": 23,
+      "section": "p29",
+      "badges": [
+        "ب + خ + ل"
+      ],
+      "text": "بَخِلَ",
+      "audio": "word23.wav",
+      "timings": null
+    },
+    {
+      "id": 24,
+      "section": "p29",
+      "badges": [
+        "س + خ + ر"
+      ],
+      "text": "سَخِرَ",
+      "audio": "word24.wav",
+      "timings": null
+    },
+    {
+      "id": 25,
+      "section": "p29",
+      "badges": [
+        "ن + خ + ل"
+      ],
+      "text": "نَخۡلٍ",
+      "audio": "word25.wav",
+      "timings": null
+    },
+    {
+      "id": 26,
+      "section": "p29",
+      "badges": [
+        "ب + خ + س"
+      ],
+      "text": "بَخۡسٍ",
+      "audio": "word26.wav",
+      "timings": null
+    },
+    {
+      "id": 27,
+      "section": "p29",
+      "badges": [
+        "ك + س + ب"
+      ],
+      "text": "كَسَبَ",
+      "audio": "word27.wav",
+      "timings": null
+    },
+    {
+      "id": 28,
+      "section": "p29",
+      "badges": [
+        "ب + س + ط"
+      ],
+      "text": "بَسَطَ",
+      "audio": "word28.wav",
+      "timings": null
+    },
+    {
+      "id": 29,
+      "section": "p29",
+      "badges": [
+        "ر + س + ل"
+      ],
+      "text": "رُسُلُ",
+      "audio": "word29.wav",
+      "timings": null
+    },
+    {
+      "id": 30,
+      "section": "p29",
+      "badges": [
+        "ن + س + ى"
+      ],
+      "text": "نَسِىَ",
+      "audio": "word30.wav",
+      "timings": null
+    },
+    {
+      "id": 31,
+      "section": "p29",
+      "badges": [
+        "ب + ش + ر"
+      ],
+      "text": "بَشَرٌ",
+      "audio": "word31.wav",
+      "timings": null
+    },
+    {
+      "id": 32,
+      "section": "p29",
+      "badges": [
+        "ع + ش + ر + ا"
+      ],
+      "text": "عَشۡرًا",
+      "audio": "word32.wav",
+      "timings": null
+    },
+    {
+      "id": 33,
+      "section": "p30",
+      "badges": [
+        "ن + ص + ر"
+      ],
+      "text": "نَصۡرُ",
+      "audio": "word33.wav",
+      "timings": null
+    },
+    {
+      "id": 34,
+      "section": "p30",
+      "badges": [
+        "م + ص + ر"
+      ],
+      "text": "مِصۡرَ",
+      "audio": "word34.wav",
+      "timings": null
+    },
+    {
+      "id": 35,
+      "section": "p30",
+      "badges": [
+        "ن + ص + ف"
+      ],
+      "text": "نِصۡفُ",
+      "audio": "word35.wav",
+      "timings": null
+    },
+    {
+      "id": 36,
+      "section": "p30",
+      "badges": [
+        "ق + ص + د"
+      ],
+      "text": "قَصۡدُ",
+      "audio": "word36.wav",
+      "timings": null
+    },
+    {
+      "id": 37,
+      "section": "p30",
+      "badges": [
+        "ح + ض + ر"
+      ],
+      "text": "حَضَرَ",
+      "audio": "word37.wav",
+      "timings": null
+    },
+    {
+      "id": 38,
+      "section": "p30",
+      "badges": [
+        "غ + ض + ب"
+      ],
+      "text": "غَضِبَ",
+      "audio": "word38.wav",
+      "timings": null
+    },
+    {
+      "id": 39,
+      "section": "p30",
+      "badges": [
+        "ر + ض + ى"
+      ],
+      "text": "رَضِىَ",
+      "audio": "word39.wav",
+      "timings": null
+    },
+    {
+      "id": 40,
+      "section": "p30",
+      "badges": [
+        "خ + ض + ر"
+      ],
+      "text": "خُضۡرٍ",
+      "audio": "word40.wav",
+      "timings": null
+    },
+    {
+      "id": 41,
+      "section": "p30",
+      "badges": [
+        "ش + ط + ر"
+      ],
+      "text": "شَطۡرَ",
+      "audio": "word41.wav",
+      "timings": null
+    },
+    {
+      "id": 42,
+      "section": "p30",
+      "badges": [
+        "م + ط + ر"
+      ],
+      "text": "مَطَرَ",
+      "audio": "word42.wav",
+      "timings": null
+    },
+    {
+      "id": 43,
+      "section": "p30",
+      "badges": [
+        "خ + ط + ف"
+      ],
+      "text": "خَطِفَ",
+      "audio": "word43.wav",
+      "timings": null
+    },
+    {
+      "id": 44,
+      "section": "p30",
+      "badges": [
+        "ن + ظ + ر"
+      ],
+      "text": "نَظَرَ",
+      "audio": "word44.wav",
+      "timings": null
+    },
+    {
+      "id": 45,
+      "section": "p30",
+      "badges": [
+        "[س Light]   ·   ن + س + ر"
+      ],
+      "text": "نَسۡرُ",
+      "audio": "word45.wav",
+      "timings": null
+    },
+    {
+      "id": 46,
+      "section": "p30",
+      "badges": [
+        "ن + ص + ر"
+      ],
+      "text": "نَصۡرُ",
+      "audio": "word46.wav",
+      "timings": null
+    },
+    {
+      "id": 47,
+      "section": "p30",
+      "badges": [
+        "[ت Light]   ·   م + ت + ر"
+      ],
+      "text": "مَتَرَ",
+      "audio": "word47.wav",
+      "timings": null
+    },
+    {
+      "id": 48,
+      "section": "p30",
+      "badges": [
+        "م + ط + ر"
+      ],
+      "text": "مَطَرَ",
+      "audio": "word48.wav",
+      "timings": null
+    },
+    {
+      "id": 49,
+      "section": "p31",
+      "badges": [
+        "ج + ع + ل"
+      ],
+      "text": "جَعَلَ",
+      "audio": "word49.wav",
+      "timings": null
+    },
+    {
+      "id": 50,
+      "section": "p31",
+      "badges": [
+        "ن + ع + م"
+      ],
+      "text": "نِعۡمَ",
+      "audio": "word50.wav",
+      "timings": null
+    },
+    {
+      "id": 51,
+      "section": "p31",
+      "badges": [
+        "م + ع + ك"
+      ],
+      "text": "مَعَكَ",
+      "audio": "word51.wav",
+      "timings": null
+    },
+    {
+      "id": 52,
+      "section": "p31",
+      "badges": [
+        "ن + ع + م"
+      ],
+      "text": "نَعَمۡ",
+      "audio": "word52.wav",
+      "timings": null
+    },
+    {
+      "id": 53,
+      "section": "p31",
+      "badges": [
+        "ض + ع + ف"
+      ],
+      "text": "ضَعُفَ",
+      "audio": "word53.wav",
+      "timings": null
+    },
+    {
+      "id": 54,
+      "section": "p31",
+      "badges": [
+        "ش + ع + ب"
+      ],
+      "text": "شُعَبٍ",
+      "audio": "word54.wav",
+      "timings": null
+    },
+    {
+      "id": 55,
+      "section": "p31",
+      "badges": [
+        "ي + ع + د"
+      ],
+      "text": "يَعِدُ",
+      "audio": "word55.wav",
+      "timings": null
+    },
+    {
+      "id": 56,
+      "section": "p31",
+      "badges": [
+        "ض + ع + ف"
+      ],
+      "text": "ضِعۡفَ",
+      "audio": "word56.wav",
+      "timings": null
+    },
+    {
+      "id": 57,
+      "section": "p31",
+      "badges": [
+        "ش + غ + ل"
+      ],
+      "text": "شُغُلٍ",
+      "audio": "word57.wav",
+      "timings": null
+    },
+    {
+      "id": 58,
+      "section": "p31",
+      "badges": [
+        "ص + غ + ت"
+      ],
+      "text": "صَغَتۡ",
+      "audio": "word58.wav",
+      "timings": null
+    },
+    {
+      "id": 59,
+      "section": "p31",
+      "badges": [
+        "ي + غ + ن"
+      ],
+      "text": "يُغۡنِ",
+      "audio": "word59.wav",
+      "timings": null
+    },
+    {
+      "id": 60,
+      "section": "p31",
+      "badges": [
+        "ت + غ + ن"
+      ],
+      "text": "تَغۡنَ",
+      "audio": "word60.wav",
+      "timings": null
+    },
+    {
+      "id": 61,
+      "section": "p31",
+      "badges": [
+        "م + ع + هـ"
+      ],
+      "text": "مَعَهُ",
+      "audio": "word61.wav",
+      "timings": null
+    },
+    {
+      "id": 62,
+      "section": "p31",
+      "badges": [
+        "ي + ع + ص"
+      ],
+      "text": "يَعۡصِ",
+      "audio": "word62.wav",
+      "timings": null
+    },
+    {
+      "id": 63,
+      "section": "p31",
+      "badges": [
+        "ض + ع + ف"
+      ],
+      "text": "ضَعۡفٍ",
+      "audio": "word63.wav",
+      "timings": null
+    },
+    {
+      "id": 64,
+      "section": "p31",
+      "badges": [
+        "ط + غ + ا"
+      ],
+      "text": "طَغَا",
+      "audio": "word64.wav",
+      "timings": null
+    },
+    {
+      "id": 65,
+      "section": "p32",
+      "badges": [
+        "ر + ف + ع"
+      ],
+      "text": "رَفَعَ",
+      "audio": "word65.wav",
+      "timings": null
+    },
+    {
+      "id": 66,
+      "section": "p32",
+      "badges": [
+        "غ + ف + ر"
+      ],
+      "text": "غَفَرَ",
+      "audio": "word66.wav",
+      "timings": null
+    },
+    {
+      "id": 67,
+      "section": "p32",
+      "badges": [
+        "ن + ف + س"
+      ],
+      "text": "نَفۡسِ",
+      "audio": "word67.wav",
+      "timings": null
+    },
+    {
+      "id": 68,
+      "section": "p32",
+      "badges": [
+        "س + ف + ر"
+      ],
+      "text": "سَفَرٍ",
+      "audio": "word68.wav",
+      "timings": null
+    },
+    {
+      "id": 69,
+      "section": "p32",
+      "badges": [
+        "س + ق + ر"
+      ],
+      "text": "سَقَرَ",
+      "audio": "word69.wav",
+      "timings": null
+    },
+    {
+      "id": 70,
+      "section": "p32",
+      "badges": [
+        "ن + ق + ر"
+      ],
+      "text": "نُقِرَ",
+      "audio": "word70.wav",
+      "timings": null
+    },
+    {
+      "id": 71,
+      "section": "p32",
+      "badges": [
+        "س + ق + ط"
+      ],
+      "text": "سُقِطَ",
+      "audio": "word71.wav",
+      "timings": null
+    },
+    {
+      "id": 72,
+      "section": "p32",
+      "badges": [
+        "ت + ق + ع"
+      ],
+      "text": "تَقَعَ",
+      "audio": "word72.wav",
+      "timings": null
+    },
+    {
+      "id": 73,
+      "section": "p32",
+      "badges": [
+        "ش + ك + ر"
+      ],
+      "text": "شَكَرَ",
+      "audio": "word73.wav",
+      "timings": null
+    },
+    {
+      "id": 74,
+      "section": "p32",
+      "badges": [
+        "م + ك + ر"
+      ],
+      "text": "مَكَرَ",
+      "audio": "word74.wav",
+      "timings": null
+    },
+    {
+      "id": 75,
+      "section": "p32",
+      "badges": [
+        "ذ + ك + ر"
+      ],
+      "text": "ذُكِرَ",
+      "audio": "word75.wav",
+      "timings": null
+    },
+    {
+      "id": 76,
+      "section": "p32",
+      "badges": [
+        "ح + ك + م"
+      ],
+      "text": "حُكۡمُ",
+      "audio": "word76.wav",
+      "timings": null
+    },
+    {
+      "id": 77,
+      "section": "p32",
+      "badges": [
+        "[ك Light]   ·   س + ك + ر"
+      ],
+      "text": "سَكَرَ",
+      "audio": "word77.wav",
+      "timings": null
+    },
+    {
+      "id": 78,
+      "section": "p32",
+      "badges": [
+        "س + ق + ر"
+      ],
+      "text": "سَقَرَ",
+      "audio": "word78.wav",
+      "timings": null
+    },
+    {
+      "id": 79,
+      "section": "p32",
+      "badges": [
+        "م + ك + ر"
+      ],
+      "text": "مَكَرَ",
+      "audio": "word79.wav",
+      "timings": null
+    },
+    {
+      "id": 80,
+      "section": "p32",
+      "badges": [
+        "[ق Heavy]   ·   م + ق + ر"
+      ],
+      "text": "مَقَرَ",
+      "audio": "word80.wav",
+      "timings": null
+    },
+    {
+      "id": 81,
+      "section": "p33",
+      "badges": [
+        "خ + ل + ق"
+      ],
+      "text": "خَلَقَ",
+      "audio": "word81.wav",
+      "timings": null
+    },
+    {
+      "id": 82,
+      "section": "p33",
+      "badges": [
+        "ع + ل + م"
+      ],
+      "text": "عَلِمَ",
+      "audio": "word82.wav",
+      "timings": null
+    },
+    {
+      "id": 83,
+      "section": "p33",
+      "badges": [
+        "ظ + ل + م"
+      ],
+      "text": "ظَلَمَ",
+      "audio": "word83.wav",
+      "timings": null
+    },
+    {
+      "id": 84,
+      "section": "p33",
+      "badges": [
+        "هـ + ل + ك"
+      ],
+      "text": "هَلَكَ",
+      "audio": "word84.wav",
+      "timings": null
+    },
+    {
+      "id": 85,
+      "section": "p33",
+      "badges": [
+        "س + ل + ف"
+      ],
+      "text": "سَلَفَ",
+      "audio": "word85.wav",
+      "timings": null
+    },
+    {
+      "id": 86,
+      "section": "p33",
+      "badges": [
+        "م + ل + ك"
+      ],
+      "text": "مُلۡكُ",
+      "audio": "word86.wav",
+      "timings": null
+    },
+    {
+      "id": 87,
+      "section": "p33",
+      "badges": [
+        "ع + ل + م"
+      ],
+      "text": "عِلۡمٌ",
+      "audio": "word87.wav",
+      "timings": null
+    },
+    {
+      "id": 88,
+      "section": "p33",
+      "badges": [
+        "خ + ل + ت"
+      ],
+      "text": "خَلَتۡ",
+      "audio": "word88.wav",
+      "timings": null
+    },
+    {
+      "id": 89,
+      "section": "p33",
+      "badges": [
+        "ع + م + ل"
+      ],
+      "text": "عَمِلَ",
+      "audio": "word89.wav",
+      "timings": null
+    },
+    {
+      "id": 90,
+      "section": "p33",
+      "badges": [
+        "س + م + ع"
+      ],
+      "text": "سَمِعَ",
+      "audio": "word90.wav",
+      "timings": null
+    },
+    {
+      "id": 91,
+      "section": "p33",
+      "badges": [
+        "ع + م + ل"
+      ],
+      "text": "عَمَلَ",
+      "audio": "word91.wav",
+      "timings": null
+    },
+    {
+      "id": 92,
+      "section": "p33",
+      "badges": [
+        "ح + م + ل"
+      ],
+      "text": "حَمۡلٍ",
+      "audio": "word92.wav",
+      "timings": null
+    },
+    {
+      "id": 93,
+      "section": "p33",
+      "badges": [
+        "ع + م + د"
+      ],
+      "text": "عَمَدٍ",
+      "audio": "word93.wav",
+      "timings": null
+    },
+    {
+      "id": 94,
+      "section": "p33",
+      "badges": [
+        "خ + م + ر"
+      ],
+      "text": "خَمۡرٍ",
+      "audio": "word94.wav",
+      "timings": null
+    },
+    {
+      "id": 95,
+      "section": "p33",
+      "badges": [
+        "ع + م + ى"
+      ],
+      "text": "عَمِىَ",
+      "audio": "word95.wav",
+      "timings": null
+    },
+    {
+      "id": 96,
+      "section": "p33",
+      "badges": [
+        "خ + م + ط"
+      ],
+      "text": "خَمۡطٍ",
+      "audio": "word96.wav",
+      "timings": null
+    },
+    {
+      "id": 97,
+      "section": "p34",
+      "badges": [
+        "ذ + هـ + ب"
+      ],
+      "text": "ذَهَبَ",
+      "audio": "word97.wav",
+      "timings": null
+    },
+    {
+      "id": 98,
+      "section": "p34",
+      "badges": [
+        "ظ + هـ + ر"
+      ],
+      "text": "ظَهَرَ",
+      "audio": "word98.wav",
+      "timings": null
+    },
+    {
+      "id": 99,
+      "section": "p34",
+      "badges": [
+        "ش + هـ + د"
+      ],
+      "text": "شَهِدَ",
+      "audio": "word99.wav",
+      "timings": null
+    },
+    {
+      "id": 100,
+      "section": "p34",
+      "badges": [
+        "ع + هـ + د"
+      ],
+      "text": "عَهِدَ",
+      "audio": "word100.wav",
+      "timings": null
+    },
+    {
+      "id": 101,
+      "section": "p34",
+      "badges": [
+        "ج + هـ + ر"
+      ],
+      "text": "جَهَرَ",
+      "audio": "word101.wav",
+      "timings": null
+    },
+    {
+      "id": 102,
+      "section": "p34",
+      "badges": [
+        "ش + هـ + ر"
+      ],
+      "text": "شَهۡرٌ",
+      "audio": "word102.wav",
+      "timings": null
+    },
+    {
+      "id": 103,
+      "section": "p34",
+      "badges": [
+        "ع + هـ + د"
+      ],
+      "text": "عَهۡدَ",
+      "audio": "word103.wav",
+      "timings": null
+    },
+    {
+      "id": 104,
+      "section": "p34",
+      "badges": [
+        "ر + هـ + ط"
+      ],
+      "text": "رَهۡطٍ",
+      "audio": "word104.wav",
+      "timings": null
+    },
+    {
+      "id": 105,
+      "section": "p34",
+      "badges": [
+        "ك + ت + ب"
+      ],
+      "text": "كَتَبَ",
+      "audio": "word105.wav",
+      "timings": null
+    },
+    {
+      "id": 106,
+      "section": "p34",
+      "badges": [
+        "ن + ص + ر"
+      ],
+      "text": "نَصۡرُ",
+      "audio": "word106.wav",
+      "timings": null
+    },
+    {
+      "id": 107,
+      "section": "p34",
+      "badges": [
+        "ع + م + ل"
+      ],
+      "text": "عَمِلَ",
+      "audio": "word107.wav",
+      "timings": null
+    },
+    {
+      "id": 108,
+      "section": "p34",
+      "badges": [
+        "غ + ف + ر"
+      ],
+      "text": "غَفَرَ",
+      "audio": "word108.wav",
+      "timings": null
+    },
+    {
+      "id": 109,
+      "section": "p34",
+      "badges": [
+        "ج + ع + ل"
+      ],
+      "text": "جَعَلَ",
+      "audio": "word109.wav",
+      "timings": null
+    },
+    {
+      "id": 110,
+      "section": "p34",
+      "badges": [
+        "خ + ل + ق"
+      ],
+      "text": "خَلَقَ",
+      "audio": "word110.wav",
+      "timings": null
+    },
+    {
+      "id": 111,
+      "section": "p34",
+      "badges": [
+        "س + ق + ر"
+      ],
+      "text": "سَقَرَ",
+      "audio": "word111.wav",
+      "timings": null
+    },
+    {
+      "id": 112,
+      "section": "p34",
+      "badges": [
+        "ب + ش + ر"
+      ],
+      "text": "بَشَرٌ",
+      "audio": "word112.wav",
+      "timings": null
+    },
+    {
+      "id": 113,
+      "section": "p35",
+      "badges": [
+        "ر + بّ"
+      ],
+      "text": "رَبُّ",
+      "audio": "word113.wav",
+      "timings": null
+    },
+    {
+      "id": 114,
+      "section": "p35",
+      "badges": [
+        "ح + قّ"
+      ],
+      "text": "حَقُّ",
+      "audio": "word114.wav",
+      "timings": null
+    },
+    {
+      "id": 115,
+      "section": "p35",
+      "badges": [
+        "ث + مّ"
+      ],
+      "text": "ثُمَّ",
+      "audio": "word115.wav",
+      "timings": null
+    },
+    {
+      "id": 116,
+      "section": "p35",
+      "badges": [
+        "م + سّ"
+      ],
+      "text": "مَسَّ",
+      "audio": "word116.wav",
+      "timings": null
+    },
+    {
+      "id": 117,
+      "section": "p35",
+      "badges": [
+        "ش + رّ"
+      ],
+      "text": "شَرُّ",
+      "audio": "word117.wav",
+      "timings": null
+    },
+    {
+      "id": 118,
+      "section": "p35",
+      "badges": [
+        "ظ + نّ"
+      ],
+      "text": "ظَنَّ",
+      "audio": "word118.wav",
+      "timings": null
+    },
+    {
+      "id": 119,
+      "section": "p35",
+      "badges": [
+        "ض + لّ"
+      ],
+      "text": "ضَلَّ",
+      "audio": "word119.wav",
+      "timings": null
+    },
+    {
+      "id": 120,
+      "section": "p35",
+      "badges": [
+        "ك + لّ"
+      ],
+      "text": "كُلُّ",
+      "audio": "word120.wav",
+      "timings": null
+    },
+    {
+      "id": 121,
+      "section": "p35",
+      "badges": [
+        "م + دّ"
+      ],
+      "text": "مَدَّ",
+      "audio": "word121.wav",
+      "timings": null
+    },
+    {
+      "id": 122,
+      "section": "p35",
+      "badges": [
+        "خ + رّ"
+      ],
+      "text": "خَرَّ",
+      "audio": "word122.wav",
+      "timings": null
+    },
+    {
+      "id": 123,
+      "section": "p35",
+      "badges": [
+        "ح + بّ"
+      ],
+      "text": "حُبَّ",
+      "audio": "word123.wav",
+      "timings": null
+    },
+    {
+      "id": 124,
+      "section": "p35",
+      "badges": [
+        "ص + فّ + ا"
+      ],
+      "text": "صَفًّا",
+      "audio": "word124.wav",
+      "timings": null
+    },
+    {
+      "id": 125,
+      "section": "p35",
+      "badges": [
+        "ر + بّ"
+      ],
+      "text": "رَبِّ",
+      "audio": "word125.wav",
+      "timings": null
+    },
+    {
+      "id": 126,
+      "section": "p35",
+      "badges": [
+        "ح + قّ"
+      ],
+      "text": "حَقٌّ",
+      "audio": "word126.wav",
+      "timings": null
+    },
+    {
+      "id": 127,
+      "section": "p35",
+      "badges": [
+        "ش + رّ"
+      ],
+      "text": "شَرٌّ",
+      "audio": "word127.wav",
+      "timings": null
+    },
+    {
+      "id": 128,
+      "section": "p35",
+      "badges": [
+        "ذ + رّ + ة"
+      ],
+      "text": "ذَرَّةٍ",
+      "audio": "word128.wav",
+      "timings": null
+    }
+  ]
+}

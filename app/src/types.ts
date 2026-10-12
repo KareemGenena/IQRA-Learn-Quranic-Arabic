@@ -74,6 +74,9 @@ export interface LetterWord {
    *  `text`/`audio` — a contrast pair, or a word said alone then after وَ
    *  and ثُمَّ. */
   forms?: { text: string; audio: string; timings: Timings; stop?: StopReading }[];
+  /** Captions for this card's forms, where they differ card by card (the
+   *  workbook lessons); a lesson-wide `formLabels` on the Lesson otherwise. */
+  formLabels?: string[];
   /** Which lam rule applies, for the silent-letter coloring. */
   lam?: LamType;
   /** A picture that belongs with this card — a waveform, a diagram. */
@@ -166,6 +169,7 @@ export interface LessonItem {
   /** Full URL of a picture to show beside the card, if it has one. */
   image?: string;
   forms: Playable[];
+  formLabels?: string[];
   // ── Letter cards ──────────────────────────────────────────────────────
   letter?: string;
   name?: string;

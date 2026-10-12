@@ -201,7 +201,7 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges, 
 
       <div className="pair-forms">
         {item.forms.map((form, i) => {
-          const caption = lesson.formLabels?.[i];
+          const caption = item.formLabels?.[i] ?? lesson.formLabels?.[i];
           return (
             <div key={form.key} className="form-slot">
               {caption && <span className="form-caption">{caption}</span>}

@@ -68,62 +68,86 @@
     {
      "id": "L2S1:در",
      "text": "دَرَ",
-     "caption": "د + ر"
+     "caption": "د + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:در#2",
      "text": "دَرُ",
-     "caption": "د + ر"
+     "caption": "د + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:رد",
      "text": "رَدِ",
-     "caption": "ر + د"
+     "caption": "ر + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:رد#2",
      "text": "رَدۡ",
-     "caption": "ر + د"
+     "caption": "ر + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:ذر",
      "text": "ذَرُ",
-     "caption": "ذ + ر"
+     "caption": "ذ + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:ذر#2",
      "text": "ذَرۡ",
-     "caption": "ذ + ر"
+     "caption": "ذ + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:زر",
      "text": "زَرَ",
-     "caption": "ز + ر"
+     "caption": "ز + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:زر#2",
      "text": "زَرِ",
-     "caption": "ز + ر"
+     "caption": "ز + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:ود",
      "text": "وَدَ",
-     "caption": "و + د"
+     "caption": "و + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:ود#2",
      "text": "وَدۡ",
-     "caption": "و + د"
+     "caption": "و + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:رز",
      "text": "رَزُ",
-     "caption": "ر + ز"
+     "caption": "ر + ز",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:رز#2",
      "text": "رَزِ",
-     "caption": "ر + ز"
+     "caption": "ر + ز",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -135,62 +159,86 @@
     {
      "id": "L2S1:بر",
      "text": "بُرَ",
-     "caption": "ب + ر"
+     "caption": "ب + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:بر#2",
      "text": "بُرۡ",
-     "caption": "ب + ر"
+     "caption": "ب + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:بز",
      "text": "بِزُ",
-     "caption": "ب + ز"
+     "caption": "ب + ز",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:بز#2",
      "text": "بِزِ",
-     "caption": "ب + ز"
+     "caption": "ب + ز",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:تد",
      "text": "تَدَ",
-     "caption": "ت + د"
+     "caption": "ت + د",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:تد#2",
      "text": "تَدُ",
-     "caption": "ت + د"
+     "caption": "ت + د",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:تر",
      "text": "تِرِ",
-     "caption": "ت + ر"
+     "caption": "ت + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:تر#2",
      "text": "تِرۡ",
-     "caption": "ت + ر"
+     "caption": "ت + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:ثر",
      "text": "ثَرُ",
-     "caption": "ث + ر"
+     "caption": "ث + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:ثر#2",
      "text": "ثَرۡ",
-     "caption": "ث + ر"
+     "caption": "ث + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:ثذ",
      "text": "ثُذَ",
-     "caption": "ث + ذ"
+     "caption": "ث + ذ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:ثذ#2",
      "text": "ثُذِ",
-     "caption": "ث + ذ"
+     "caption": "ث + ذ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -202,62 +250,86 @@
     {
      "id": "L2S1:نذ",
      "text": "نِذَ",
-     "caption": "ن + ذ"
+     "caption": "ن + ذ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:نذ#2",
      "text": "نِذۡ",
-     "caption": "ن + ذ"
+     "caption": "ن + ذ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:ند",
      "text": "نُدُ",
-     "caption": "ن + د"
+     "caption": "ن + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:ند#2",
      "text": "نُدِ",
-     "caption": "ن + د"
+     "caption": "ن + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:يد",
      "text": "يَدَ",
-     "caption": "ي + د"
+     "caption": "ي + د",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:يد#2",
      "text": "يَدُ",
-     "caption": "ي + د"
+     "caption": "ي + د",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:يز",
      "text": "يُزِ",
-     "caption": "ي + ز"
+     "caption": "ي + ز",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:يز#2",
      "text": "يُزۡ",
-     "caption": "ي + ز"
+     "caption": "ي + ز",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:بر#3",
      "text": "بَرِ",
-     "caption": "ب + ر"
+     "caption": "ب + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:تر#3",
      "text": "تَرِ",
-     "caption": "ت + ر"
+     "caption": "ت + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:ثد",
      "text": "ثُدَ",
-     "caption": "ث + د"
+     "caption": "ث + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:يد#3",
      "text": "يُدَ",
-     "caption": "ي + د"
+     "caption": "ي + د",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -269,62 +341,86 @@
     {
      "id": "L2S1:جر",
      "text": "جَرَ",
-     "caption": "ج + ر"
+     "caption": "ج + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:جر#2",
      "text": "جَرۡ",
-     "caption": "ج + ر"
+     "caption": "ج + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:جد",
      "text": "جُدُ",
-     "caption": "ج + د"
+     "caption": "ج + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:جد#2",
      "text": "جُدِ",
-     "caption": "ج + د"
+     "caption": "ج + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:حز",
      "text": "حَزَ",
-     "caption": "ح + ز"
+     "caption": "ح + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:حز#2",
      "text": "حَزُ",
-     "caption": "ح + ز"
+     "caption": "ح + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:حد",
      "text": "حِدِ",
-     "caption": "ح + د"
+     "caption": "ح + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:حد#2",
      "text": "حِدۡ",
-     "caption": "ح + د"
+     "caption": "ح + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:خد",
      "text": "خَدُ",
-     "caption": "خ + د"
+     "caption": "خ + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:خد#2",
      "text": "خَدۡ",
-     "caption": "خ + د"
+     "caption": "خ + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:خر",
      "text": "خُرَ",
-     "caption": "خ + ر"
+     "caption": "خ + ر",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:خر#2",
      "text": "خُرِ",
-     "caption": "خ + ر"
+     "caption": "خ + ر",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -336,62 +432,86 @@
     {
      "id": "L2S1:سد",
      "text": "سَدَ",
-     "caption": "س + د"
+     "caption": "س + د",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:سد#2",
      "text": "سَدُ",
-     "caption": "س + د"
+     "caption": "س + د",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:سر",
      "text": "سُرِ",
-     "caption": "س + ر"
+     "caption": "س + ر",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:سر#2",
      "text": "سُرۡ",
-     "caption": "س + ر"
+     "caption": "س + ر",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:شر",
      "text": "شَرَ",
-     "caption": "ش + ر"
+     "caption": "ش + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:شر#2",
      "text": "شَرۡ",
-     "caption": "ش + ر"
+     "caption": "ش + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:شد",
      "text": "شُدُ",
-     "caption": "ش + د"
+     "caption": "ش + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:شد#2",
      "text": "شُدِ",
-     "caption": "ش + د"
+     "caption": "ش + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:سز",
      "text": "سِزُ",
-     "caption": "س + ز"
+     "caption": "س + ز",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:سز#2",
      "text": "سِزۡ",
-     "caption": "س + ز"
+     "caption": "س + ز",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:شز",
      "text": "شِزَ",
-     "caption": "ش + ز"
+     "caption": "ش + ز",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:شز#2",
      "text": "شِزِ",
-     "caption": "ش + ز"
+     "caption": "ش + ز",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -403,62 +523,86 @@
     {
      "id": "L2S1:صد",
      "text": "صَدَ",
-     "caption": "ص + د"
+     "caption": "ص + د",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:صد#2",
      "text": "صَدۡ",
-     "caption": "ص + د"
+     "caption": "ص + د",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:صر",
      "text": "صُرُ",
-     "caption": "ص + ر"
+     "caption": "ص + ر",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:صر#2",
      "text": "صُرِ",
-     "caption": "ص + ر"
+     "caption": "ص + ر",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:ضر",
      "text": "ضَرَ",
-     "caption": "ض + ر"
+     "caption": "ض + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:ضر#2",
      "text": "ضَرُ",
-     "caption": "ض + ر"
+     "caption": "ض + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:ضد",
      "text": "ضُدِ",
-     "caption": "ض + د"
+     "caption": "ض + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:ضد#2",
      "text": "ضُدۡ",
-     "caption": "ض + د"
+     "caption": "ض + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:سد#3",
      "text": "سَدَ",
-     "caption": "[س Light]   ·   س + د"
+     "caption": "[س Light]   ·   س + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:صد#3",
      "text": "صَدَ",
-     "caption": "[ص Heavy]   ·   ص + د"
+     "caption": "[ص Heavy]   ·   ص + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:در#3",
      "text": "دَرَ",
-     "caption": "[د Light]   ·   د + ر"
+     "caption": "[د Light]   ·   د + ر",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:ضر#3",
      "text": "ضَرَ",
-     "caption": "[ض Heavy]   ·   ض + ر"
+     "caption": "[ض Heavy]   ·   ض + ر",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -470,62 +614,86 @@
     {
      "id": "L2S1:طر",
      "text": "طَرَ",
-     "caption": "ط + ر"
+     "caption": "ط + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:طر#2",
      "text": "طَرۡ",
-     "caption": "ط + ر"
+     "caption": "ط + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:طد",
      "text": "طُدُ",
-     "caption": "ط + د"
+     "caption": "ط + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:طد#2",
      "text": "طُدِ",
-     "caption": "ط + د"
+     "caption": "ط + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:ظر",
      "text": "ظَرَ",
-     "caption": "ظ + ر"
+     "caption": "ظ + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:ظر#2",
      "text": "ظَرُ",
-     "caption": "ظ + ر"
+     "caption": "ظ + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:ظد",
      "text": "ظُدِ",
-     "caption": "ظ + د"
+     "caption": "ظ + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:ظد#2",
      "text": "ظُدۡ",
-     "caption": "ظ + د"
+     "caption": "ظ + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:تر#4",
      "text": "تَرَ",
-     "caption": "[ت Light]   ·   ت + ر"
+     "caption": "[ت Light]   ·   ت + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:طر#3",
      "text": "طَرَ",
-     "caption": "[ط Heavy]   ·   ط + ر"
+     "caption": "[ط Heavy]   ·   ط + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:ذر#3",
      "text": "ذِرَ",
-     "caption": "[ذ Light]   ·   ذ + ر"
+     "caption": "[ذ Light]   ·   ذ + ر",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:ظر#3",
      "text": "ظِرَ",
-     "caption": "[ظ Heavy]   ·   ظ + ر"
+     "caption": "[ظ Heavy]   ·   ظ + ر",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -537,62 +705,86 @@
     {
      "id": "L2S1:عر",
      "text": "عَرَ",
-     "caption": "ع + ر"
+     "caption": "ع + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:عر#2",
      "text": "عَرۡ",
-     "caption": "ع + ر"
+     "caption": "ع + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:عد",
      "text": "عُدُ",
-     "caption": "ع + د"
+     "caption": "ع + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:عد#2",
      "text": "عُدِ",
-     "caption": "ع + د"
+     "caption": "ع + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:غر",
      "text": "غَرَ",
-     "caption": "غ + ر"
+     "caption": "غ + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:غر#2",
      "text": "غَرُ",
-     "caption": "غ + ر"
+     "caption": "غ + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:غد",
      "text": "غُدِ",
-     "caption": "غ + د"
+     "caption": "غ + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:غد#2",
      "text": "غُدۡ",
-     "caption": "غ + د"
+     "caption": "غ + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:عر#3",
      "text": "عَرَ",
-     "caption": "ع + ر"
+     "caption": "ع + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:غر#3",
      "text": "غَرَ",
-     "caption": "غ + ر"
+     "caption": "غ + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:عز",
      "text": "عِزَ",
-     "caption": "ع + ز"
+     "caption": "ع + ز",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:غز",
      "text": "غِزَ",
-     "caption": "غ + ز"
+     "caption": "غ + ز",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -604,62 +796,86 @@
     {
      "id": "L2S1:فر",
      "text": "فَرَ",
-     "caption": "ف + ر"
+     "caption": "ف + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:فر#2",
      "text": "فَرۡ",
-     "caption": "ف + ر"
+     "caption": "ف + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:فد",
      "text": "فُدُ",
-     "caption": "ف + د"
+     "caption": "ف + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:فد#2",
      "text": "فُدِ",
-     "caption": "ف + د"
+     "caption": "ف + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:قر",
      "text": "قَرَ",
-     "caption": "ق + ر"
+     "caption": "ق + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:قر#2",
      "text": "قَرُ",
-     "caption": "ق + ر"
+     "caption": "ق + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:قد",
      "text": "قُدِ",
-     "caption": "ق + د"
+     "caption": "ق + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:قد#2",
      "text": "قُدۡ",
-     "caption": "ق + د"
+     "caption": "ق + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:فر#3",
      "text": "فَرَ",
-     "caption": "ف + ر"
+     "caption": "ف + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:قر#3",
      "text": "قَرَ",
-     "caption": "ق + ر"
+     "caption": "ق + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:فز",
      "text": "فِزَ",
-     "caption": "ف + ز"
+     "caption": "ف + ز",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:قز",
      "text": "قِزَ",
-     "caption": "ق + ز"
+     "caption": "ق + ز",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -671,62 +887,86 @@
     {
      "id": "L2S1:كر",
      "text": "كَرَ",
-     "caption": "ك + ر"
+     "caption": "ك + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:كر#2",
      "text": "كَرۡ",
-     "caption": "ك + ر"
+     "caption": "ك + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:كد",
      "text": "كُدُ",
-     "caption": "ك + د"
+     "caption": "ك + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:كد#2",
      "text": "كُدِ",
-     "caption": "ك + د"
+     "caption": "ك + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:كز",
      "text": "كِزَ",
-     "caption": "ك + ز"
+     "caption": "ك + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:كز#2",
      "text": "كِزُ",
-     "caption": "ك + ز"
+     "caption": "ك + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:كر#3",
      "text": "كُرِ",
-     "caption": "ك + ر"
+     "caption": "ك + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:كر#4",
      "text": "كُرۡ",
-     "caption": "ك + ر"
+     "caption": "ك + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:كر#5",
      "text": "كَرَ",
-     "caption": "[ك Light]   ·   ك + ر"
+     "caption": "[ك Light]   ·   ك + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:قر#4",
      "text": "قَرَ",
-     "caption": "[ق Heavy]   ·   ق + ر"
+     "caption": "[ق Heavy]   ·   ق + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:كد#3",
      "text": "كُدَ",
-     "caption": "[ك Light]   ·   ك + د"
+     "caption": "[ك Light]   ·   ك + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:قد#3",
      "text": "قُدَ",
-     "caption": "[ق Heavy]   ·   ق + د"
+     "caption": "[ق Heavy]   ·   ق + د",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -738,62 +978,86 @@
     {
      "id": "L2S1:لر",
      "text": "لَرَ",
-     "caption": "ل + ر"
+     "caption": "ل + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:لر#2",
      "text": "لَرۡ",
-     "caption": "ل + ر"
+     "caption": "ل + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:لد",
      "text": "لُدُ",
-     "caption": "ل + د"
+     "caption": "ل + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:لد#2",
      "text": "لُدِ",
-     "caption": "ل + د"
+     "caption": "ل + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:لز",
      "text": "لِزَ",
-     "caption": "ل + ز"
+     "caption": "ل + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:لز#2",
      "text": "لِزُ",
-     "caption": "ل + ز"
+     "caption": "ل + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:لر#3",
      "text": "لُرِ",
-     "caption": "ل + ر"
+     "caption": "ل + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:لر#4",
      "text": "لُرۡ",
-     "caption": "ل + ر"
+     "caption": "ل + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:كر#6",
      "text": "كَرَ",
-     "caption": "ك + ر"
+     "caption": "ك + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:لر#5",
      "text": "لَرَ",
-     "caption": "ل + ر"
+     "caption": "ل + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:كد#4",
      "text": "كُدَ",
-     "caption": "ك + د"
+     "caption": "ك + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:لد#3",
      "text": "لُدَ",
-     "caption": "ل + د"
+     "caption": "ل + د",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -805,62 +1069,86 @@
     {
      "id": "L2S1:مر",
      "text": "مَرَ",
-     "caption": "م + ر"
+     "caption": "م + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:مر#2",
      "text": "مَرۡ",
-     "caption": "م + ر"
+     "caption": "م + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:مد",
      "text": "مُدُ",
-     "caption": "م + د"
+     "caption": "م + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:مد#2",
      "text": "مُدِ",
-     "caption": "م + د"
+     "caption": "م + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:مز",
      "text": "مِزَ",
-     "caption": "م + ز"
+     "caption": "م + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:مز#2",
      "text": "مِزُ",
-     "caption": "م + ز"
+     "caption": "م + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:مر#3",
      "text": "مُرِ",
-     "caption": "م + ر"
+     "caption": "م + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:مر#4",
      "text": "مُرۡ",
-     "caption": "م + ر"
+     "caption": "م + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:مر#5",
      "text": "مَرَ",
-     "caption": "م + ر"
+     "caption": "م + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:فر#4",
      "text": "فَرَ",
-     "caption": "ف + ر"
+     "caption": "ف + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:مد#3",
      "text": "مُدَ",
-     "caption": "م + د"
+     "caption": "م + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:فد#3",
      "text": "فُدَ",
-     "caption": "ف + د"
+     "caption": "ف + د",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -872,62 +1160,86 @@
     {
      "id": "L2S1:هر",
      "text": "هَرَ",
-     "caption": "هـ + ر"
+     "caption": "هـ + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:هر#2",
      "text": "هَرۡ",
-     "caption": "هـ + ر"
+     "caption": "هـ + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:هد",
      "text": "هُدُ",
-     "caption": "هـ + د"
+     "caption": "هـ + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:هد#2",
      "text": "هُدِ",
-     "caption": "هـ + د"
+     "caption": "هـ + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:هز",
      "text": "هِزَ",
-     "caption": "هـ + ز"
+     "caption": "هـ + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:هز#2",
      "text": "هِزُ",
-     "caption": "هـ + ز"
+     "caption": "هـ + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:هر#3",
      "text": "هُرِ",
-     "caption": "هـ + ر"
+     "caption": "هـ + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:هر#4",
      "text": "هُرۡ",
-     "caption": "هـ + ر"
+     "caption": "هـ + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:هر#5",
      "text": "هَرَ",
-     "caption": "هـ + ر"
+     "caption": "هـ + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:حر",
      "text": "حَرَ",
-     "caption": "ح + ر"
+     "caption": "ح + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:هد#3",
      "text": "هُدَ",
-     "caption": "هـ + د"
+     "caption": "هـ + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:حد#3",
      "text": "حُدَ",
-     "caption": "ح + د"
+     "caption": "ح + د",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -939,62 +1251,86 @@
     {
      "id": "L2S1:تز",
      "text": "تُزِ",
-     "caption": "ت + ز"
+     "caption": "ت + ز",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:خر#3",
      "text": "خِرَ",
-     "caption": "خ + ر"
+     "caption": "خ + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:شر#3",
      "text": "شُرَ",
-     "caption": "ش + ر"
+     "caption": "ش + ر",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:صد#4",
      "text": "صِدۡ",
-     "caption": "ص + د"
+     "caption": "ص + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:طز",
      "text": "طِزَ",
-     "caption": "ط + ز"
+     "caption": "ط + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:عز#2",
      "text": "عَزُ",
-     "caption": "ع + ز"
+     "caption": "ع + ز",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:فر#5",
      "text": "فِرۡ",
-     "caption": "ف + ر"
+     "caption": "ف + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:قز#2",
      "text": "قُزَ",
-     "caption": "ق + ز"
+     "caption": "ق + ز",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:كد#5",
      "text": "كَدۡ",
-     "caption": "ك + د"
+     "caption": "ك + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:لز#3",
      "text": "لَزِ",
-     "caption": "ل + ز"
+     "caption": "ل + ز",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:مد#4",
      "text": "مَدُ",
-     "caption": "م + د"
+     "caption": "م + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:هد#4",
      "text": "هَدِ",
-     "caption": "هـ + د"
+     "caption": "هـ + د",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1006,62 +1342,86 @@
     {
      "id": "L2S1:سب",
      "text": "سَبَ",
-     "caption": "س + ب"
+     "caption": "س + ب",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:سب#2",
      "text": "سَبۡ",
-     "caption": "س + ب"
+     "caption": "س + ب",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:كب",
      "text": "كُبُ",
-     "caption": "ك + ب"
+     "caption": "ك + ب",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:كب#2",
      "text": "كُبِ",
-     "caption": "ك + ب"
+     "caption": "ك + ب",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:فت",
      "text": "فَتَ",
-     "caption": "ف + ت"
+     "caption": "ف + ت",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:فت#2",
      "text": "فَتُ",
-     "caption": "ف + ت"
+     "caption": "ف + ت",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:لث",
      "text": "لِثِ",
-     "caption": "ل + ث"
+     "caption": "ل + ث",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:لث#2",
      "text": "لِثۡ",
-     "caption": "ل + ث"
+     "caption": "ل + ث",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:مب",
      "text": "مَبَ",
-     "caption": "م + ب"
+     "caption": "م + ب",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:مت",
      "text": "مَتَ",
-     "caption": "م + ت"
+     "caption": "م + ت",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:مث",
      "text": "مِثَ",
-     "caption": "م + ث"
+     "caption": "م + ث",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:مت#2",
      "text": "مِتَ",
-     "caption": "م + ت"
+     "caption": "م + ت",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1073,62 +1433,86 @@
     {
      "id": "L2S1:عن",
      "text": "عَنَ",
-     "caption": "ع + ن"
+     "caption": "ع + ن",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:عن#2",
      "text": "عَنۡ",
-     "caption": "ع + ن"
+     "caption": "ع + ن",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:من",
      "text": "مُنُ",
-     "caption": "م + ن"
+     "caption": "م + ن",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:من#2",
      "text": "مُنِ",
-     "caption": "م + ن"
+     "caption": "م + ن",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:سى",
      "text": "سَىَ",
-     "caption": "س + ى"
+     "caption": "س + ى",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:سى#2",
      "text": "سَىۡ",
-     "caption": "س + ى"
+     "caption": "س + ى",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:لى",
      "text": "لَىُ",
-     "caption": "ل + ى"
+     "caption": "ل + ى",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:لى#2",
      "text": "لَىِ",
-     "caption": "ل + ى"
+     "caption": "ل + ى",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:عن#3",
      "text": "عَنَ",
-     "caption": "ع + ن"
+     "caption": "ع + ن",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:عى",
      "text": "عَىَ",
-     "caption": "ع + ى"
+     "caption": "ع + ى",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:لن",
      "text": "لَنۡ",
-     "caption": "ل + ن"
+     "caption": "ل + ن",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:لى#3",
      "text": "لَىۡ",
-     "caption": "ل + ى"
+     "caption": "ل + ى",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1140,62 +1524,86 @@
     {
      "id": "L2S1:سج",
      "text": "سَجَ",
-     "caption": "س + ج"
+     "caption": "س + ج",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:سج#2",
      "text": "سَجۡ",
-     "caption": "س + ج"
+     "caption": "س + ج",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:فج",
      "text": "فُجُ",
-     "caption": "ف + ج"
+     "caption": "ف + ج",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:فج#2",
      "text": "فُجِ",
-     "caption": "ف + ج"
+     "caption": "ف + ج",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:لح",
      "text": "لَحَ",
-     "caption": "ل + ح"
+     "caption": "ل + ح",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:لح#2",
      "text": "لَحُ",
-     "caption": "ل + ح"
+     "caption": "ل + ح",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:مح",
      "text": "مِحِ",
-     "caption": "م + ح"
+     "caption": "م + ح",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:مح#2",
      "text": "مِحۡ",
-     "caption": "م + ح"
+     "caption": "م + ح",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:بخ",
      "text": "بَخَ",
-     "caption": "ب + خ"
+     "caption": "ب + خ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:بخ#2",
      "text": "بَخۡ",
-     "caption": "ب + خ"
+     "caption": "ب + خ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:كح",
      "text": "كَحَ",
-     "caption": "ك + ح"
+     "caption": "ك + ح",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:كخ",
      "text": "كَخَ",
-     "caption": "ك + خ"
+     "caption": "ك + خ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1207,62 +1615,86 @@
     {
      "id": "L2S1:بس",
      "text": "بَسَ",
-     "caption": "ب + س"
+     "caption": "ب + س",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:بس#2",
      "text": "بَسۡ",
-     "caption": "ب + س"
+     "caption": "ب + س",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:لس",
      "text": "لُسُ",
-     "caption": "ل + س"
+     "caption": "ل + س",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:لس#2",
      "text": "لُسِ",
-     "caption": "ل + س"
+     "caption": "ل + س",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:عش",
      "text": "عَشَ",
-     "caption": "ع + ش"
+     "caption": "ع + ش",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:عش#2",
      "text": "عَشُ",
-     "caption": "ع + ش"
+     "caption": "ع + ش",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:فش",
      "text": "فِشِ",
-     "caption": "ف + ش"
+     "caption": "ف + ش",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:فش#2",
      "text": "فِشۡ",
-     "caption": "ف + ش"
+     "caption": "ف + ش",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:نس",
      "text": "نَسَ",
-     "caption": "ن + س"
+     "caption": "ن + س",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:نش",
      "text": "نَشَ",
-     "caption": "ن + ش"
+     "caption": "ن + ش",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:تس",
      "text": "تَسۡ",
-     "caption": "ت + س"
+     "caption": "ت + س",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:تش",
      "text": "تَشۡ",
-     "caption": "ت + ش"
+     "caption": "ت + ش",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1274,62 +1706,86 @@
     {
      "id": "L2S1:قص",
      "text": "قَصَ",
-     "caption": "ق + ص"
+     "caption": "ق + ص",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:قص#2",
      "text": "قَصۡ",
-     "caption": "ق + ص"
+     "caption": "ق + ص",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:تص",
      "text": "تُصُ",
-     "caption": "ت + ص"
+     "caption": "ت + ص",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:تص#2",
      "text": "تُصِ",
-     "caption": "ت + ص"
+     "caption": "ت + ص",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:عض",
      "text": "عَضَ",
-     "caption": "ع + ض"
+     "caption": "ع + ض",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:عض#2",
      "text": "عَضُ",
-     "caption": "ع + ض"
+     "caption": "ع + ض",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:نض",
      "text": "نِضِ",
-     "caption": "ن + ض"
+     "caption": "ن + ض",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:نض#2",
      "text": "نِضۡ",
-     "caption": "ن + ض"
+     "caption": "ن + ض",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:بس#3",
      "text": "بَسَ",
-     "caption": "[س Light]   ·   ب + س"
+     "caption": "[س Light]   ·   ب + س",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:بص",
      "text": "بَصَ",
-     "caption": "[ص Heavy]   ·   ب + ص"
+     "caption": "[ص Heavy]   ·   ب + ص",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:عد#3",
      "text": "عَدَ",
-     "caption": "[د Light]   ·   ع + د"
+     "caption": "[د Light]   ·   ع + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:عض#3",
      "text": "عَضَ",
-     "caption": "[ض Heavy]   ·   ع + ض"
+     "caption": "[ض Heavy]   ·   ع + ض",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1341,62 +1797,86 @@
     {
      "id": "L2S1:بط",
      "text": "بَطَ",
-     "caption": "ب + ط"
+     "caption": "ب + ط",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:بط#2",
      "text": "بَطۡ",
-     "caption": "ب + ط"
+     "caption": "ب + ط",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:قط",
      "text": "قُطُ",
-     "caption": "ق + ط"
+     "caption": "ق + ط",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:قط#2",
      "text": "قُطِ",
-     "caption": "ق + ط"
+     "caption": "ق + ط",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:لظ",
      "text": "لَظَ",
-     "caption": "ل + ظ"
+     "caption": "ل + ظ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:لظ#2",
      "text": "لَظُ",
-     "caption": "ل + ظ"
+     "caption": "ل + ظ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:حظ",
      "text": "حِظِ",
-     "caption": "ح + ظ"
+     "caption": "ح + ظ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:حظ#2",
      "text": "حِظۡ",
-     "caption": "ح + ظ"
+     "caption": "ح + ظ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:بت",
      "text": "بَتَ",
-     "caption": "[ت Light]   ·   ب + ت"
+     "caption": "[ت Light]   ·   ب + ت",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:بط#3",
      "text": "بَطَ",
-     "caption": "[ط Heavy]   ·   ب + ط"
+     "caption": "[ط Heavy]   ·   ب + ط",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:لذ",
      "text": "لَذَ",
-     "caption": "[ذ Light]   ·   ل + ذ"
+     "caption": "[ذ Light]   ·   ل + ذ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:لظ#3",
      "text": "لَظَ",
-     "caption": "[ظ Heavy]   ·   ل + ظ"
+     "caption": "[ظ Heavy]   ·   ل + ظ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1408,62 +1888,86 @@
     {
      "id": "L2S1:بع",
      "text": "بَعَ",
-     "caption": "ب + ع"
+     "caption": "ب + ع",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:بع#2",
      "text": "بَعۡ",
-     "caption": "ب + ع"
+     "caption": "ب + ع",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:مع",
      "text": "مُعُ",
-     "caption": "م + ع"
+     "caption": "م + ع",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:مع#2",
      "text": "مُعِ",
-     "caption": "م + ع"
+     "caption": "م + ع",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:فغ",
      "text": "فَغَ",
-     "caption": "ف + غ"
+     "caption": "ف + غ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:فغ#2",
      "text": "فَغُ",
-     "caption": "ف + غ"
+     "caption": "ف + غ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:لغ",
      "text": "لِغِ",
-     "caption": "ل + غ"
+     "caption": "ل + غ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:لغ#2",
      "text": "لِغۡ",
-     "caption": "ل + غ"
+     "caption": "ل + غ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:سع",
      "text": "سَعَ",
-     "caption": "س + ع"
+     "caption": "س + ع",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:سغ",
      "text": "سَغَ",
-     "caption": "س + غ"
+     "caption": "س + غ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:نع",
      "text": "نَعۡ",
-     "caption": "ن + ع"
+     "caption": "ن + ع",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:نغ",
      "text": "نَغۡ",
-     "caption": "ن + غ"
+     "caption": "ن + غ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1475,62 +1979,86 @@
     {
      "id": "L2S1:سف",
      "text": "سَفَ",
-     "caption": "س + ف"
+     "caption": "س + ف",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:سف#2",
      "text": "سَفۡ",
-     "caption": "س + ف"
+     "caption": "س + ف",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:لف",
      "text": "لُفُ",
-     "caption": "ل + ف"
+     "caption": "ل + ف",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:لف#2",
      "text": "لُفِ",
-     "caption": "ل + ف"
+     "caption": "ل + ف",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:بق",
      "text": "بَقَ",
-     "caption": "ب + ق"
+     "caption": "ب + ق",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:بق#2",
      "text": "بَقُ",
-     "caption": "ب + ق"
+     "caption": "ب + ق",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:عق",
      "text": "عِقِ",
-     "caption": "ع + ق"
+     "caption": "ع + ق",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:عق#2",
      "text": "عِقۡ",
-     "caption": "ع + ق"
+     "caption": "ع + ق",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:نف",
      "text": "نَفَ",
-     "caption": "ن + ف"
+     "caption": "ن + ف",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:نق",
      "text": "نَقَ",
-     "caption": "ن + ق"
+     "caption": "ن + ق",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:تف",
      "text": "تَفۡ",
-     "caption": "ت + ف"
+     "caption": "ت + ف",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:تق",
      "text": "تَقۡ",
-     "caption": "ت + ق"
+     "caption": "ت + ق",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1542,62 +2070,86 @@
     {
      "id": "L2S1:سك",
      "text": "سَكَ",
-     "caption": "س + ك"
+     "caption": "س + ك",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:سك#2",
      "text": "سَكۡ",
-     "caption": "س + ك"
+     "caption": "س + ك",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:فك",
      "text": "فُكُ",
-     "caption": "ف + ك"
+     "caption": "ف + ك",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:فك#2",
      "text": "فُكِ",
-     "caption": "ف + ك"
+     "caption": "ف + ك",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:نك",
      "text": "نَكَ",
-     "caption": "ن + ك"
+     "caption": "ن + ك",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:نك#2",
      "text": "نَكُ",
-     "caption": "ن + ك"
+     "caption": "ن + ك",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:مك",
      "text": "مِكِ",
-     "caption": "م + ك"
+     "caption": "م + ك",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:مك#2",
      "text": "مِكۡ",
-     "caption": "م + ك"
+     "caption": "م + ك",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:بك",
      "text": "بَكَ",
-     "caption": "[ك Light]   ·   ب + ك"
+     "caption": "[ك Light]   ·   ب + ك",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:بق#3",
      "text": "بَقَ",
-     "caption": "[ق Heavy]   ·   ب + ق"
+     "caption": "[ق Heavy]   ·   ب + ق",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:عك",
      "text": "عَكَ",
-     "caption": "[ك Light]   ·   ع + ك"
+     "caption": "[ك Light]   ·   ع + ك",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:عق#3",
      "text": "عَقَ",
-     "caption": "[ق Heavy]   ·   ع + ق"
+     "caption": "[ق Heavy]   ·   ع + ق",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1609,62 +2161,86 @@
     {
      "id": "L2S1:بل",
      "text": "بَلَ",
-     "caption": "ب + ل"
+     "caption": "ب + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:بل#2",
      "text": "بَلۡ",
-     "caption": "ب + ل"
+     "caption": "ب + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:سل",
      "text": "سُلُ",
-     "caption": "س + ل"
+     "caption": "س + ل",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:سل#2",
      "text": "سُلِ",
-     "caption": "س + ل"
+     "caption": "س + ل",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:عم",
      "text": "عَمَ",
-     "caption": "ع + م"
+     "caption": "ع + م",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:عم#2",
      "text": "عَمُ",
-     "caption": "ع + م"
+     "caption": "ع + م",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:فم",
      "text": "فِمِ",
-     "caption": "ف + م"
+     "caption": "ف + م",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:فم#2",
      "text": "فِمۡ",
-     "caption": "ف + م"
+     "caption": "ف + م",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:كل",
      "text": "كَلَ",
-     "caption": "ك + ل"
+     "caption": "ك + ل",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:كم",
      "text": "كَمَ",
-     "caption": "ك + م"
+     "caption": "ك + م",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:تل",
      "text": "تَلۡ",
-     "caption": "ت + ل"
+     "caption": "ت + ل",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:تم",
      "text": "تَمۡ",
-     "caption": "ت + م"
+     "caption": "ت + م",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1676,62 +2252,86 @@
     {
      "id": "L2S1:به",
      "text": "بَهَ",
-     "caption": "ب + هـ"
+     "caption": "ب + هـ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:به#2",
      "text": "بَهۡ",
-     "caption": "ب + هـ"
+     "caption": "ب + هـ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:فه",
      "text": "فُهُ",
-     "caption": "ف + هـ"
+     "caption": "ف + هـ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:فه#2",
      "text": "فُهِ",
-     "caption": "ف + هـ"
+     "caption": "ف + هـ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:عه",
      "text": "عَهَ",
-     "caption": "ع + هـ"
+     "caption": "ع + هـ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:عه#2",
      "text": "عَهُ",
-     "caption": "ع + هـ"
+     "caption": "ع + هـ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:مه",
      "text": "مِهِ",
-     "caption": "م + هـ"
+     "caption": "م + هـ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:مه#2",
      "text": "مِهۡ",
-     "caption": "م + هـ"
+     "caption": "م + هـ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:به#3",
      "text": "بَهَ",
-     "caption": "ب + هـ"
+     "caption": "ب + هـ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:بح",
      "text": "بَحَ",
-     "caption": "ب + ح"
+     "caption": "ب + ح",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:سه",
      "text": "سَهۡ",
-     "caption": "س + هـ"
+     "caption": "س + هـ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:سح",
      "text": "سَحۡ",
-     "caption": "س + ح"
+     "caption": "س + ح",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1743,62 +2343,86 @@
     {
      "id": "L2S1:نب",
      "text": "نَبُ",
-     "caption": "ن + ب"
+     "caption": "ن + ب",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:ست",
      "text": "سِتَ",
-     "caption": "س + ت"
+     "caption": "س + ت",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:عث",
      "text": "عَثۡ",
-     "caption": "ع + ث"
+     "caption": "ع + ث",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:من#3",
      "text": "مَنِ",
-     "caption": "م + ن"
+     "caption": "م + ن",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:فى",
      "text": "فَىَ",
-     "caption": "ف + ى"
+     "caption": "ف + ى",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:بج",
      "text": "بُجَ",
-     "caption": "ب + ج"
+     "caption": "ب + ج",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:نح",
      "text": "نَحِ",
-     "caption": "ن + ح"
+     "caption": "ن + ح",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:تخ",
      "text": "تَخُ",
-     "caption": "ت + خ"
+     "caption": "ت + خ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:بس#4",
      "text": "بَسۡ",
-     "caption": "ب + س"
+     "caption": "ب + س",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:لش",
      "text": "لِشَ",
-     "caption": "ل + ش"
+     "caption": "ل + ش",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:عص",
      "text": "عَصُ",
-     "caption": "ع + ص"
+     "caption": "ع + ص",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:قض",
      "text": "قَضِ",
-     "caption": "ق + ض"
+     "caption": "ق + ض",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1810,62 +2434,86 @@
     {
      "id": "L2S1:سط",
      "text": "سَطُ",
-     "caption": "س + ط"
+     "caption": "س + ط",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:مظ",
      "text": "مِظَ",
-     "caption": "م + ظ"
+     "caption": "م + ظ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S1:بع#3",
      "text": "بُعِ",
-     "caption": "ب + ع"
+     "caption": "ب + ع",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:سغ#2",
      "text": "سَغۡ",
-     "caption": "س + غ"
+     "caption": "س + غ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S1:عف",
      "text": "عَفُ",
-     "caption": "ع + ف"
+     "caption": "ع + ف",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:تق#2",
      "text": "تِقَ",
-     "caption": "ت + ق"
+     "caption": "ت + ق",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S1:فك#3",
      "text": "فَكۡ",
-     "caption": "ف + ك"
+     "caption": "ف + ك",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:بل#3",
      "text": "بَلِ",
-     "caption": "ب + ل"
+     "caption": "ب + ل",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S1:سم",
      "text": "سَمَ",
-     "caption": "س + م"
+     "caption": "س + م",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:له",
      "text": "لَهُ",
-     "caption": "ل + هـ"
+     "caption": "ل + هـ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S1:عب",
      "text": "عَبۡ",
-     "caption": "ع + ب"
+     "caption": "ع + ب",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S1:فس",
      "text": "فِسَ",
-     "caption": "ف + س"
+     "caption": "ف + س",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1877,82 +2525,114 @@
     {
      "id": "L2S2:ورد",
      "text": "وَرَدَ",
-     "caption": "و + ر + د"
+     "caption": "و + ر + د",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:نزل",
      "text": "نَزَلَ",
-     "caption": "ن + ز + ل"
+     "caption": "ن + ز + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:كذب",
      "text": "كَذَبَ",
-     "caption": "ك + ذ + ب"
+     "caption": "ك + ذ + ب",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:صدق",
      "text": "صَدَقَ",
-     "caption": "ص + د + ق"
+     "caption": "ص + د + ق",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:صبر",
      "text": "صَبَرَ",
-     "caption": "ص + ب + ر"
+     "caption": "ص + ب + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:كبر",
      "text": "كَبُرَ",
-     "caption": "ك + ب + ر"
+     "caption": "ك + ب + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:عبس",
      "text": "عَبَسَ",
-     "caption": "ع + ب + س"
+     "caption": "ع + ب + س",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:قبس",
      "text": "قَبَسٍ",
-     "caption": "ق + ب + س"
+     "caption": "ق + ب + س",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:كتب",
      "text": "كَتَبَ",
-     "caption": "ك + ت + ب"
+     "caption": "ك + ت + ب",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:قتل",
      "text": "قُتِلَ",
-     "caption": "ق + ت + ل"
+     "caption": "ق + ت + ل",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:كثر",
      "text": "كَثُرَ",
-     "caption": "ك + ث + ر"
+     "caption": "ك + ث + ر",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:مثل",
      "text": "مَثَلُ",
-     "caption": "م + ث + ل"
+     "caption": "م + ث + ل",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:منه",
      "text": "مِنۡهُ",
-     "caption": "م + ن + هـ"
+     "caption": "م + ن + هـ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:عنه",
      "text": "عَنۡهُ",
-     "caption": "ع + ن + هـ"
+     "caption": "ع + ن + هـ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:بين",
      "text": "بَيۡنَ",
-     "caption": "ب + ي + ن"
+     "caption": "ب + ي + ن",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S2:كيف",
      "text": "كَيۡفَ",
-     "caption": "ك + ي + ف"
+     "caption": "ك + ي + ف",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -1964,17 +2644,23 @@
     {
      "id": "L2S2:رجع",
      "text": "رَجَعَ",
-     "caption": "ر + ج + ع"
+     "caption": "ر + ج + ع",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:وجد",
      "text": "وَجَدَ",
-     "caption": "و + ج + د"
+     "caption": "و + ج + د",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:وجه",
      "text": "وَجۡهُ",
      "caption": "و + ج + هـ",
+     "row": 0,
+     "group": 1,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -1985,67 +2671,93 @@
     {
      "id": "L2S2:رحم",
      "text": "رَحِمَ",
-     "caption": "ر + ح + م"
+     "caption": "ر + ح + م",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:نحن",
      "text": "نَحۡنُ",
-     "caption": "ن + ح + ن"
+     "caption": "ن + ح + ن",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:لحم",
      "text": "لَحۡمَ",
-     "caption": "ل + ح + م"
+     "caption": "ل + ح + م",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:بخل",
      "text": "بَخِلَ",
-     "caption": "ب + خ + ل"
+     "caption": "ب + خ + ل",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:سخر",
      "text": "سَخِرَ",
-     "caption": "س + خ + ر"
+     "caption": "س + خ + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:نخل",
      "text": "نَخۡلٍ",
-     "caption": "ن + خ + ل"
+     "caption": "ن + خ + ل",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:بخس",
      "text": "بَخۡسٍ",
-     "caption": "ب + خ + س"
+     "caption": "ب + خ + س",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:كسب",
      "text": "كَسَبَ",
-     "caption": "ك + س + ب"
+     "caption": "ك + س + ب",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:بسط",
      "text": "بَسَطَ",
-     "caption": "ب + س + ط"
+     "caption": "ب + س + ط",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:رسل",
      "text": "رُسُلُ",
-     "caption": "ر + س + ل"
+     "caption": "ر + س + ل",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:نسى",
      "text": "نَسِىَ",
-     "caption": "ن + س + ى"
+     "caption": "ن + س + ى",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:بشر",
      "text": "بَشَرٌ",
-     "caption": "ب + ش + ر"
+     "caption": "ب + ش + ر",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S2:عشرا",
      "text": "عَشۡرًا",
-     "caption": "ع + ش + ر + ا"
+     "caption": "ع + ش + ر + ا",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2057,27 +2769,37 @@
     {
      "id": "L2S2:نصر",
      "text": "نَصۡرُ",
-     "caption": "ن + ص + ر"
+     "caption": "ن + ص + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:مصر",
      "text": "مِصۡرَ",
-     "caption": "م + ص + ر"
+     "caption": "م + ص + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:نصف",
      "text": "نِصۡفُ",
-     "caption": "ن + ص + ف"
+     "caption": "ن + ص + ف",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:قصد",
      "text": "قَصۡدُ",
-     "caption": "ق + ص + د"
+     "caption": "ق + ص + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:حضر",
      "text": "حَضَرَ",
      "caption": "ح + ض + ر",
+     "row": 1,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -2088,57 +2810,79 @@
     {
      "id": "L2S2:غضب",
      "text": "غَضِبَ",
-     "caption": "غ + ض + ب"
+     "caption": "غ + ض + ب",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:رضى",
      "text": "رَضِىَ",
-     "caption": "ر + ض + ى"
+     "caption": "ر + ض + ى",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:خضر",
      "text": "خُضۡرٍ",
-     "caption": "خ + ض + ر"
+     "caption": "خ + ض + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:شطر",
      "text": "شَطۡرَ",
-     "caption": "ش + ط + ر"
+     "caption": "ش + ط + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:مطر",
      "text": "مَطَرَ",
-     "caption": "م + ط + ر"
+     "caption": "م + ط + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:خطف",
      "text": "خَطِفَ",
-     "caption": "خ + ط + ف"
+     "caption": "خ + ط + ف",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:نظر",
      "text": "نَظَرَ",
-     "caption": "ن + ظ + ر"
+     "caption": "ن + ظ + ر",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:نسر",
      "text": "نَسۡرُ",
-     "caption": "[س Light]   ·   ن + س + ر"
+     "caption": "[س Light]   ·   ن + س + ر",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:نصر#2",
      "text": "نَصۡرُ",
-     "caption": "[ص Heavy]   ·   ن + ص + ر"
+     "caption": "[ص Heavy]   ·   ن + ص + ر",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:متر",
      "text": "مَتَرَ",
-     "caption": "[ت Light]   ·   م + ت + ر"
+     "caption": "[ت Light]   ·   م + ت + ر",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S2:مطر#2",
      "text": "مَطَرَ",
-     "caption": "[ط Heavy]   ·   م + ط + ر"
+     "caption": "[ط Heavy]   ·   م + ط + ر",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2150,82 +2894,114 @@
     {
      "id": "L2S2:جعل",
      "text": "جَعَلَ",
-     "caption": "ج + ع + ل"
+     "caption": "ج + ع + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:نعم",
      "text": "نِعۡمَ",
-     "caption": "ن + ع + م"
+     "caption": "ن + ع + م",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:معك",
      "text": "مَعَكَ",
-     "caption": "م + ع + ك"
+     "caption": "م + ع + ك",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:نعم#2",
      "text": "نَعَمۡ",
-     "caption": "ن + ع + م"
+     "caption": "ن + ع + م",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:ضعف",
      "text": "ضَعُفَ",
-     "caption": "ض + ع + ف"
+     "caption": "ض + ع + ف",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:شعب",
      "text": "شُعَبٍ",
-     "caption": "ش + ع + ب"
+     "caption": "ش + ع + ب",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:يعد",
      "text": "يَعِدُ",
-     "caption": "ي + ع + د"
+     "caption": "ي + ع + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:ضعف#2",
      "text": "ضِعۡفَ",
-     "caption": "ض + ع + ف"
+     "caption": "ض + ع + ف",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:شغل",
      "text": "شُغُلٍ",
-     "caption": "ش + غ + ل"
+     "caption": "ش + غ + ل",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:صغت",
      "text": "صَغَتۡ",
-     "caption": "ص + غ + ت"
+     "caption": "ص + غ + ت",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:يغن",
      "text": "يُغۡنِ",
-     "caption": "ي + غ + ن"
+     "caption": "ي + غ + ن",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:تغن",
      "text": "تَغۡنَ",
-     "caption": "ت + غ + ن"
+     "caption": "ت + غ + ن",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:معه",
      "text": "مَعَهُ",
-     "caption": "م + ع + هـ"
+     "caption": "م + ع + هـ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:يعص",
      "text": "يَعۡصِ",
-     "caption": "ي + ع + ص"
+     "caption": "ي + ع + ص",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:ضعف#3",
      "text": "ضَعۡفٍ",
-     "caption": "ض + ع + ف"
+     "caption": "ض + ع + ف",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S2:طغا",
      "text": "طَغَا",
-     "caption": "ط + غ + ا"
+     "caption": "ط + غ + ا",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2237,82 +3013,114 @@
     {
      "id": "L2S2:رفع",
      "text": "رَفَعَ",
-     "caption": "ر + ف + ع"
+     "caption": "ر + ف + ع",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:غفر",
      "text": "غَفَرَ",
-     "caption": "غ + ف + ر"
+     "caption": "غ + ف + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:نفس",
      "text": "نَفۡسِ",
-     "caption": "ن + ف + س"
+     "caption": "ن + ف + س",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:سفر",
      "text": "سَفَرٍ",
-     "caption": "س + ف + ر"
+     "caption": "س + ف + ر",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:سقر",
      "text": "سَقَرَ",
-     "caption": "س + ق + ر"
+     "caption": "س + ق + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:نقر",
      "text": "نُقِرَ",
-     "caption": "ن + ق + ر"
+     "caption": "ن + ق + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:سقط",
      "text": "سُقِطَ",
-     "caption": "س + ق + ط"
+     "caption": "س + ق + ط",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:تقع",
      "text": "تَقَعَ",
-     "caption": "ت + ق + ع"
+     "caption": "ت + ق + ع",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:شكر",
      "text": "شَكَرَ",
-     "caption": "ش + ك + ر"
+     "caption": "ش + ك + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:مكر",
      "text": "مَكَرَ",
-     "caption": "م + ك + ر"
+     "caption": "م + ك + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:ذكر",
      "text": "ذُكِرَ",
-     "caption": "ذ + ك + ر"
+     "caption": "ذ + ك + ر",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:حكم",
      "text": "حُكۡمُ",
-     "caption": "ح + ك + م"
+     "caption": "ح + ك + م",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:سكر",
      "text": "سَكَرَ",
-     "caption": "[ك Light]   ·   س + ك + ر"
+     "caption": "[ك Light]   ·   س + ك + ر",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:سقر#2",
      "text": "سَقَرَ",
-     "caption": "[ق Heavy]   ·   س + ق + ر"
+     "caption": "[ق Heavy]   ·   س + ق + ر",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:مكر#2",
      "text": "مَكَرَ",
-     "caption": "[ك Light]   ·   م + ك + ر"
+     "caption": "[ك Light]   ·   م + ك + ر",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S2:مقر",
      "text": "مَقَرَ",
-     "caption": "[ق Heavy]   ·   م + ق + ر"
+     "caption": "[ق Heavy]   ·   م + ق + ر",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2325,6 +3133,8 @@
      "id": "L2S2:خلق",
      "text": "خَلَقَ",
      "caption": "خ + ل + ق",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -2335,17 +3145,23 @@
     {
      "id": "L2S2:علم",
      "text": "عَلِمَ",
-     "caption": "ع + ل + م"
+     "caption": "ع + ل + م",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:ظلم",
      "text": "ظَلَمَ",
-     "caption": "ظ + ل + م"
+     "caption": "ظ + ل + م",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:هلك",
      "text": "هَلَكَ",
      "caption": "هـ + ل + ك",
+     "row": 0,
+     "group": 1,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -2356,62 +3172,86 @@
     {
      "id": "L2S2:سلف",
      "text": "سَلَفَ",
-     "caption": "س + ل + ف"
+     "caption": "س + ل + ف",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:ملك",
      "text": "مُلۡكُ",
-     "caption": "م + ل + ك"
+     "caption": "م + ل + ك",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:علم#2",
      "text": "عِلۡمٌ",
-     "caption": "ع + ل + م"
+     "caption": "ع + ل + م",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:خلت",
      "text": "خَلَتۡ",
-     "caption": "خ + ل + ت"
+     "caption": "خ + ل + ت",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:عمل",
      "text": "عَمِلَ",
-     "caption": "ع + م + ل"
+     "caption": "ع + م + ل",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:سمع",
      "text": "سَمِعَ",
-     "caption": "س + م + ع"
+     "caption": "س + م + ع",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:عمل#2",
      "text": "عَمَلَ",
-     "caption": "ع + م + ل"
+     "caption": "ع + م + ل",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:حمل",
      "text": "حَمۡلٍ",
-     "caption": "ح + م + ل"
+     "caption": "ح + م + ل",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:عمد",
      "text": "عَمَدٍ",
-     "caption": "ع + م + د"
+     "caption": "ع + م + د",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:خمر",
      "text": "خَمۡرٍ",
-     "caption": "خ + م + ر"
+     "caption": "خ + م + ر",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:عمى",
      "text": "عَمِىَ",
-     "caption": "ع + م + ى"
+     "caption": "ع + م + ى",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S2:خمط",
      "text": "خَمۡطٍ",
-     "caption": "خ + م + ط"
+     "caption": "خ + م + ط",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2423,72 +3263,100 @@
     {
      "id": "L2S2:ذهب",
      "text": "ذَهَبَ",
-     "caption": "ذ + هـ + ب"
+     "caption": "ذ + هـ + ب",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:ظهر",
      "text": "ظَهَرَ",
-     "caption": "ظ + هـ + ر"
+     "caption": "ظ + هـ + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:شهد",
      "text": "شَهِدَ",
-     "caption": "ش + هـ + د"
+     "caption": "ش + هـ + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:عهد",
      "text": "عَهِدَ",
-     "caption": "ع + هـ + د"
+     "caption": "ع + هـ + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:جهر",
      "text": "جَهَرَ",
-     "caption": "ج + هـ + ر"
+     "caption": "ج + هـ + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:شهر",
      "text": "شَهۡرٌ",
-     "caption": "ش + هـ + ر"
+     "caption": "ش + هـ + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:عهد#2",
      "text": "عَهۡدَ",
-     "caption": "ع + هـ + د"
+     "caption": "ع + هـ + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:رهط",
      "text": "رَهۡطٍ",
-     "caption": "ر + هـ + ط"
+     "caption": "ر + هـ + ط",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:كتب#2",
      "text": "كَتَبَ",
-     "caption": "ك + ت + ب"
+     "caption": "ك + ت + ب",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:نصر#3",
      "text": "نَصۡرُ",
-     "caption": "ن + ص + ر"
+     "caption": "ن + ص + ر",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:عمل#3",
      "text": "عَمِلَ",
-     "caption": "ع + م + ل"
+     "caption": "ع + م + ل",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:غفر#2",
      "text": "غَفَرَ",
-     "caption": "غ + ف + ر"
+     "caption": "غ + ف + ر",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:جعل#2",
      "text": "جَعَلَ",
-     "caption": "ج + ع + ل"
+     "caption": "ج + ع + ل",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:خلق#2",
      "text": "خَلَقَ",
      "caption": "خ + ل + ق",
+     "row": 3,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -2499,12 +3367,16 @@
     {
      "id": "L2S2:سقر#3",
      "text": "سَقَرَ",
-     "caption": "س + ق + ر"
+     "caption": "س + ق + ر",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S2:بشر#2",
      "text": "بَشَرٌ",
-     "caption": "ب + ش + ر"
+     "caption": "ب + ش + ر",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2516,12 +3388,16 @@
     {
      "id": "L2S2:رب",
      "text": "رَبُّ",
-     "caption": "ر + بّ"
+     "caption": "ر + بّ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S2:حق",
      "text": "حَقُّ",
      "caption": "ح + قّ",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -2532,72 +3408,100 @@
     {
      "id": "L2S2:ثم",
      "text": "ثُمَّ",
-     "caption": "ث + مّ"
+     "caption": "ث + مّ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:مس",
      "text": "مَسَّ",
-     "caption": "م + سّ"
+     "caption": "م + سّ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S2:شر",
      "text": "شَرُّ",
-     "caption": "ش + رّ"
+     "caption": "ش + رّ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:ظن",
      "text": "ظَنَّ",
-     "caption": "ظ + نّ"
+     "caption": "ظ + نّ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S2:ضل",
      "text": "ضَلَّ",
-     "caption": "ض + لّ"
+     "caption": "ض + لّ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:كل",
      "text": "كُلُّ",
-     "caption": "ك + لّ"
+     "caption": "ك + لّ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S2:مد",
      "text": "مَدَّ",
-     "caption": "م + دّ"
+     "caption": "م + دّ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:خر",
      "text": "خَرَّ",
-     "caption": "خ + رّ"
+     "caption": "خ + رّ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S2:حب",
      "text": "حُبَّ",
-     "caption": "ح + بّ"
+     "caption": "ح + بّ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:صفا",
      "text": "صَفًّا",
-     "caption": "ص + فّ + ا"
+     "caption": "ص + فّ + ا",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S2:رب#2",
      "text": "رَبِّ",
-     "caption": "ر + بّ"
+     "caption": "ر + بّ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:حق#2",
      "text": "حَقٌّ",
-     "caption": "ح + قّ"
+     "caption": "ح + قّ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S2:شر#2",
      "text": "شَرٌّ",
-     "caption": "ش + رّ"
+     "caption": "ش + رّ",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S2:ذرة",
      "text": "ذَرَّةٍ",
-     "caption": "ذ + رّ + ة"
+     "caption": "ذ + رّ + ة",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2609,82 +3513,114 @@
     {
      "id": "L2S3:قتل",
      "text": "قَتَلَ",
-     "caption": "●  ●  ●"
+     "caption": "●  ●  ●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S3:قال",
      "text": "قَالَ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S3:صبر",
      "text": "صَبَرَ",
-     "caption": "●  ●  ●"
+     "caption": "●  ●  ●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S3:كان",
      "text": "كَانَ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S3:قام",
      "text": "قَامَ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S3:مال",
      "text": "مَالٌ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S3:نار",
      "text": "نَارٌ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S3:دار",
      "text": "دَارُ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S3:عذاب",
      "text": "عَذَابٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S3:جناح",
      "text": "جُنَاحَ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S3:حساب",
      "text": "حِسَابٍ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S3:يكاد",
      "text": "يَكَادُ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S3:رجال",
      "text": "رِجَالٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S3:تراب",
      "text": "تُرَابٍ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S3:طعام",
      "text": "طَعَامُ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S3:قرار",
      "text": "قَرَارٍ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2696,22 +3632,30 @@
     {
      "id": "L2S3:نوح",
      "text": "نُوحٌ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S3:نور",
      "text": "نُورٌ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S3:يقول",
      "text": "يَقُولُ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S3:غفور",
      "text": "غَفُورٌ",
      "caption": "●  ●●  ●",
+     "row": 0,
+     "group": 1,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -2722,32 +3666,44 @@
     {
      "id": "L2S3:رسول",
      "text": "رَسُولٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S3:يوسف",
      "text": "يُوسُفَ",
-     "caption": "●●  ●  ●"
+     "caption": "●●  ●  ●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S3:ثمود",
      "text": "ثَمُودُ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S3:قلوب",
      "text": "قُلُوبِ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S3:قيل",
      "text": "قِيلَ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S3:دين",
      "text": "دِينِ",
      "caption": "●●  ●",
+     "row": 2,
+     "group": 0,
      "audio": {
       "lesson": 2,
       "path": "audio/lesson02/",
@@ -2758,32 +3714,44 @@
     {
      "id": "L2S3:سبيل",
      "text": "سَبِيلِ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S3:حكيم",
      "text": "حَكِيمٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S3:عيسى",
      "text": "عِيسَىٰ",
-     "caption": "●●  ●●"
+     "caption": "●●  ●●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S3:موسى",
      "text": "مُوسَىٰ",
-     "caption": "●●  ●●"
+     "caption": "●●  ●●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S3:متى",
      "text": "مَتَىٰ",
-     "caption": "●  ●●"
+     "caption": "●  ●●",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S3:سعى",
      "text": "سَعَىٰ",
-     "caption": "●  ●●"
+     "caption": "●  ●●",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2795,82 +3763,114 @@
     {
      "id": "L2S3:علم",
      "text": "عَلِمَ",
-     "caption": "●  ●  ●"
+     "caption": "●  ●  ●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S3:عليم",
      "text": "عَلِيمٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S3:كبر",
      "text": "كَبُرَ",
-     "caption": "●  ●  ●"
+     "caption": "●  ●  ●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S3:كبير",
      "text": "كَبِيرٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S3:كتب",
      "text": "كَتَبَ",
-     "caption": "●  ●  ●"
+     "caption": "●  ●  ●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S3:عجوز",
      "text": "عَجُوزٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S3:عاد",
      "text": "عَادٍ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S3:شكور",
      "text": "شَكُورٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S3:له",
      "text": "لَهُۥ",
-     "caption": "●  ●●"
+     "caption": "●  ●●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S3:به",
      "text": "بِهِۦ",
-     "caption": "●  ●●"
+     "caption": "●  ●●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S3:عباد",
      "text": "عِبَادَ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S3:نصيب",
      "text": "نَصِيبٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S3:يتوب",
      "text": "يَتُوبُ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S3:طين",
      "text": "طِينٍ",
-     "caption": "●●  ●"
+     "caption": "●●  ●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S3:شراب",
      "text": "شَرَابٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S3:قريب",
      "text": "قَرِيبٌ",
-     "caption": "●  ●●  ●"
+     "caption": "●  ●●  ●",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2883,6 +3883,8 @@
      "id": "L2S4:يعلم",
      "text": "يَعۡلَمُ",
      "caption": "ي + ع + ل + م",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -2893,12 +3895,16 @@
     {
      "id": "L2S4:يخلق",
      "text": "يَخۡلُقُ",
-     "caption": "ي + خ + ل + ق"
+     "caption": "ي + خ + ل + ق",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:يحكم",
      "text": "يَحۡكُمُ",
      "caption": "ي + ح + ك + م",
+     "row": 0,
+     "group": 1,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -2909,67 +3915,93 @@
     {
      "id": "L2S4:يفلح",
      "text": "يُفۡلِحُ",
-     "caption": "ي + ف + ل + ح"
+     "caption": "ي + ف + ل + ح",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:يخرج",
      "text": "يَخۡرُجُ",
-     "caption": "ي + خ + ر + ج"
+     "caption": "ي + خ + ر + ج",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:يبسط",
      "text": "يَبۡسُطُ",
-     "caption": "ي + ب + س + ط"
+     "caption": "ي + ب + س + ط",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:مريم",
      "text": "مَرۡيَمَ",
-     "caption": "م + ر + ي + م"
+     "caption": "م + ر + ي + م",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:مدين",
      "text": "مَدۡيَنَ",
-     "caption": "م + د + ي + ن"
+     "caption": "م + د + ي + ن",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:يملك",
      "text": "يَمۡلِكُ",
-     "caption": "ي + م + ل + ك"
+     "caption": "ي + م + ل + ك",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:يفعل",
      "text": "يَفۡعَلُ",
-     "caption": "ي + ف + ع + ل"
+     "caption": "ي + ف + ع + ل",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:يغفر",
      "text": "يَغۡفِرُ",
-     "caption": "ي + غ + ف + ر"
+     "caption": "ي + غ + ف + ر",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:يعبد",
      "text": "يَعۡبُدُ",
-     "caption": "ي + ع + ب + د"
+     "caption": "ي + ع + ب + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:ملكت",
      "text": "مَلَكَتۡ",
-     "caption": "م + ل + ك + ت"
+     "caption": "م + ل + ك + ت",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:سبقت",
      "text": "سَبَقَتۡ",
-     "caption": "س + ب + ق + ت"
+     "caption": "س + ب + ق + ت",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:حبطت",
      "text": "حَبِطَتۡ",
-     "caption": "ح + ب + ط + ت"
+     "caption": "ح + ب + ط + ت",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S4:ثقلت",
      "text": "ثَقُلَتۡ",
-     "caption": "ث + ق + ل + ت"
+     "caption": "ث + ق + ل + ت",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -2981,82 +4013,114 @@
     {
      "id": "L2S4:تسمع",
      "text": "تُسۡمِعُ",
-     "caption": "ت + س + م + ع"
+     "caption": "ت + س + م + ع",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:ترجع",
      "text": "تُرۡجَعُ",
-     "caption": "ت + ر + ج + ع"
+     "caption": "ت + ر + ج + ع",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:يدخل",
      "text": "يُدۡخِلُ",
-     "caption": "ي + د + خ + ل"
+     "caption": "ي + د + خ + ل",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:يخرج#2",
      "text": "يُخۡرِجُ",
-     "caption": "ي + خ + ر + ج"
+     "caption": "ي + خ + ر + ج",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:يسمع",
      "text": "يَسۡمَعُ",
-     "caption": "ي + س + م + ع"
+     "caption": "ي + س + م + ع",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:نعلم",
      "text": "نَعۡلَمُ",
-     "caption": "ن + ع + ل + م"
+     "caption": "ن + ع + ل + م",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:يشهد",
      "text": "يَشۡهَدُ",
-     "caption": "ي + ش + هـ + د"
+     "caption": "ي + ش + هـ + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:يرزق",
      "text": "يَرۡزُقُ",
-     "caption": "ي + ر + ز + ق"
+     "caption": "ي + ر + ز + ق",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:عليه",
      "text": "عَلَيۡهِ",
-     "caption": "ع + ل + ي + هـ"
+     "caption": "ع + ل + ي + هـ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:عليك",
      "text": "عَلَيۡكَ",
-     "caption": "ع + ل + ي + ك"
+     "caption": "ع + ل + ي + ك",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:يديه",
      "text": "يَدَيۡهِ",
-     "caption": "ي + د + ي + هـ"
+     "caption": "ي + د + ي + هـ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:قبلك",
      "text": "قَبۡلِكَ",
-     "caption": "ق + ب + ل + ك"
+     "caption": "ق + ب + ل + ك",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:يعرج",
      "text": "يَعۡرُجُ",
-     "caption": "ي + ع + ر + ج"
+     "caption": "ي + ع + ر + ج",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:يظلم",
      "text": "يَظۡلِمُ",
-     "caption": "ي + ظ + ل + م"
+     "caption": "ي + ظ + ل + م",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:يطبع",
      "text": "يَطۡبَعُ",
-     "caption": "ي + ط + ب + ع"
+     "caption": "ي + ط + ب + ع",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S4:يضرب",
      "text": "يَضۡرِبُ",
-     "caption": "ي + ض + ر + ب"
+     "caption": "ي + ض + ر + ب",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3068,82 +4132,114 @@
     {
      "id": "L2S4:يسجد",
      "text": "يَسۡجُدُ",
-     "caption": "ي + س + ج + د"
+     "caption": "ي + س + ج + د",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:يرجع",
      "text": "يَرۡجِعُ",
-     "caption": "ي + ر + ج + ع"
+     "caption": "ي + ر + ج + ع",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:يجمع",
      "text": "يَجۡمَعُ",
-     "caption": "ي + ج + م + ع"
+     "caption": "ي + ج + م + ع",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:يجحد",
      "text": "يَجۡحَدُ",
-     "caption": "ي + ج + ح + د"
+     "caption": "ي + ج + ح + د",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:نفسك",
      "text": "نَفۡسِكَ",
-     "caption": "ن + ف + س + ك"
+     "caption": "ن + ف + س + ك",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:قومك",
      "text": "قَوۡمَكَ",
-     "caption": "ق + و + م + ك"
+     "caption": "ق + و + م + ك",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:قلبك",
      "text": "قَلۡبِكَ",
-     "caption": "ق + ل + ب + ك"
+     "caption": "ق + ل + ب + ك",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:منعك",
      "text": "مَنَعَكَ",
-     "caption": "م + ن + ع + ك"
+     "caption": "م + ن + ع + ك",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:علمت",
      "text": "عَلِمۡتَ",
-     "caption": "ع + ل + م + ت"
+     "caption": "ع + ل + م + ت",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:خلقت",
      "text": "خَلَقۡتُ",
-     "caption": "خ + ل + ق + ت"
+     "caption": "خ + ل + ق + ت",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:عصيت",
      "text": "عَصَيۡتُ",
-     "caption": "ع + ص + ي + ت"
+     "caption": "ع + ص + ي + ت",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:تبعك",
      "text": "تَبِعَكَ",
-     "caption": "ت + ب + ع + ك"
+     "caption": "ت + ب + ع + ك",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:تكسب",
      "text": "تَكۡسِبُ",
-     "caption": "ت + ك + س + ب"
+     "caption": "ت + ك + س + ب",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:تحمل",
      "text": "تَحۡمِلُ",
-     "caption": "ت + ح + م + ل"
+     "caption": "ت + ح + م + ل",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:معكم",
      "text": "مَعَكُمۡ",
-     "caption": "م + ع + ك + م"
+     "caption": "م + ع + ك + م",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S4:قلتم",
      "text": "قُلۡتُمۡ",
-     "caption": "ق + ل + ت + م"
+     "caption": "ق + ل + ت + م",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3155,82 +4251,114 @@
     {
      "id": "L2S4:رحمة",
      "text": "رَحۡمَةً",
-     "caption": "ر + ح + م + ة"
+     "caption": "ر + ح + م + ة",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:قرية",
      "text": "قَرۡيَةٍ",
-     "caption": "ق + ر + ي + ة"
+     "caption": "ق + ر + ي + ة",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:حسنة",
      "text": "حَسَنَةٌ",
-     "caption": "ح + س + ن + ة"
+     "caption": "ح + س + ن + ة",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:نعمة",
      "text": "نِعۡمَةَ",
-     "caption": "ن + ع + م + ة"
+     "caption": "ن + ع + م + ة",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:رقبة",
      "text": "رَقَبَةٍ",
-     "caption": "ر + ق + ب + ة"
+     "caption": "ر + ق + ب + ة",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:غفلة",
      "text": "غَفۡلَةٍ",
-     "caption": "غ + ف + ل + ة"
+     "caption": "غ + ف + ل + ة",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:صيحة",
      "text": "صَيۡحَةً",
-     "caption": "ص + ي + ح + ة"
+     "caption": "ص + ي + ح + ة",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:درجة",
      "text": "دَرَجَةً",
-     "caption": "د + ر + ج + ة"
+     "caption": "د + ر + ج + ة",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:شجرة",
      "text": "شَجَرَةٍ",
-     "caption": "ش + ج + ر + ة"
+     "caption": "ش + ج + ر + ة",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:صدقة",
      "text": "صَدَقَةً",
-     "caption": "ص + د + ق + ة"
+     "caption": "ص + د + ق + ة",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:علقة",
      "text": "عَلَقَةٍ",
-     "caption": "ع + ل + ق + ة"
+     "caption": "ع + ل + ق + ة",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:نطفة",
      "text": "نُطۡفَةً",
-     "caption": "ن + ط + ف + ة"
+     "caption": "ن + ط + ف + ة",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:جهرة",
      "text": "جَهۡرَةً",
-     "caption": "ج + هـ + ر + ة"
+     "caption": "ج + هـ + ر + ة",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:عشرة",
      "text": "عَشۡرَةَ",
-     "caption": "ع + ش + ر + ة"
+     "caption": "ع + ش + ر + ة",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:زجرة",
      "text": "زَجۡرَةٌ",
-     "caption": "ز + ج + ر + ة"
+     "caption": "ز + ج + ر + ة",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S4:حسرة",
      "text": "حَسۡرَةً",
-     "caption": "ح + س + ر + ة"
+     "caption": "ح + س + ر + ة",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3242,37 +4370,51 @@
     {
      "id": "L2S4:يخاف",
      "text": "يَخَافُ",
-     "caption": "ي + خ + ا + ف"
+     "caption": "ي + خ + ا + ف",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:قصاص",
      "text": "قِصَاصٌ",
-     "caption": "ق + ص + ا + ص"
+     "caption": "ق + ص + ا + ص",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:غالب",
      "text": "غَالِبَ",
-     "caption": "غ + ا + ل + ب"
+     "caption": "غ + ا + ل + ب",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:قادر",
      "text": "قَادِرٌ",
-     "caption": "ق + ا + د + ر"
+     "caption": "ق + ا + د + ر",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:عقاب",
      "text": "عِقَابِ",
-     "caption": "ع + ق + ا + ب"
+     "caption": "ع + ق + ا + ب",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:يطاف",
      "text": "يُطَافُ",
-     "caption": "ي + ط + ا + ف"
+     "caption": "ي + ط + ا + ف",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:صدور",
      "text": "صُدُورِ",
      "caption": "ص + د + و + ر",
+     "row": 1,
+     "group": 1,
      "audio": {
       "lesson": 2,
       "path": "audio/lesson02/",
@@ -3283,22 +4425,30 @@
     {
      "id": "L2S4:نخوض",
      "text": "نَخُوضُ",
-     "caption": "ن + خ + و + ض"
+     "caption": "ن + خ + و + ض",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:طلوع",
      "text": "طُلُوعِ",
-     "caption": "ط + ل + و + ع"
+     "caption": "ط + ل + و + ع",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:قليل",
      "text": "قَلِيلٌ",
-     "caption": "ق + ل + ي + ل"
+     "caption": "ق + ل + ي + ل",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:خبير",
      "text": "خَبِيرٌ",
      "caption": "خ + ب + ي + ر",
+     "row": 2,
+     "group": 1,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -3309,27 +4459,37 @@
     {
      "id": "L2S4:يضيع",
      "text": "يُضِيعُ",
-     "caption": "ي + ض + ي + ع"
+     "caption": "ي + ض + ي + ع",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:عزيز",
      "text": "عَزِيزٌ",
-     "caption": "[ز Light]   ·   ع + ز + ي + ز"
+     "caption": "[ز Light]   ·   ع + ز + ي + ز",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:عظيم",
      "text": "عَظِيمٌ",
-     "caption": "[ظ Heavy]   ·   ع + ظ + ي + م"
+     "caption": "[ظ Heavy]   ·   ع + ظ + ي + م",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:نذير",
      "text": "نَذِيرٌ",
-     "caption": "[ذ Light]   ·   ن + ذ + ي + ر"
+     "caption": "[ذ Light]   ·   ن + ذ + ي + ر",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S4:نصير",
      "text": "نَصِيرٍ",
-     "caption": "[ص Heavy]   ·   ن + ص + ي + ر"
+     "caption": "[ص Heavy]   ·   ن + ص + ي + ر",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3341,82 +4501,114 @@
     {
      "id": "L2S4:يجعل",
      "text": "يَجۡعَلُ",
-     "caption": "ي + ج + ع + ل"
+     "caption": "ي + ج + ع + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:يرسل",
      "text": "يُرۡسِلُ",
-     "caption": "ي + ر + س + ل"
+     "caption": "ي + ر + س + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S4:يفصل",
      "text": "يَفۡصِلُ",
-     "caption": "ي + ف + ص + ل"
+     "caption": "ي + ف + ص + ل",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:يخسف",
      "text": "يَخۡسِفَ",
-     "caption": "ي + خ + س + ف"
+     "caption": "ي + خ + س + ف",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S4:رحمت",
      "text": "رَحۡمَتَ",
-     "caption": "ر + ح + م + ت"
+     "caption": "ر + ح + م + ت",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:نعمت",
      "text": "نِعۡمَتَ",
-     "caption": "ن + ع + م + ت"
+     "caption": "ن + ع + م + ت",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S4:عملت",
      "text": "عَمِلَتۡ",
-     "caption": "ع + م + ل + ت"
+     "caption": "ع + م + ل + ت",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:خفتم",
      "text": "خِفۡتُمۡ",
-     "caption": "خ + ف + ت + م"
+     "caption": "خ + ف + ت + م",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S4:غمرة",
      "text": "غَمۡرَةٍ",
-     "caption": "غ + م + ر + ة"
+     "caption": "غ + م + ر + ة",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:خشية",
      "text": "خَشۡيَةِ",
-     "caption": "خ + ش + ي + ة"
+     "caption": "خ + ش + ي + ة",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S4:قبلة",
      "text": "قِبۡلَةً",
-     "caption": "ق + ب + ل + ة"
+     "caption": "ق + ب + ل + ة",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:توبة",
      "text": "تَوۡبَةً",
-     "caption": "ت + و + ب + ة"
+     "caption": "ت + و + ب + ة",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S4:شهيد",
      "text": "شَهِيدٌ",
-     "caption": "ش + هـ + ي + د"
+     "caption": "ش + هـ + ي + د",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:حديث",
      "text": "حَدِيثُ",
-     "caption": "ح + د + ي + ث"
+     "caption": "ح + د + ي + ث",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S4:مكان",
      "text": "مَكَانٍ",
-     "caption": "م + ك + ا + ن"
+     "caption": "م + ك + ا + ن",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S4:ثواب",
      "text": "ثَوَابَ",
-     "caption": "ث + و + ا + ب"
+     "caption": "ث + و + ا + ب",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3428,22 +4620,30 @@
     {
      "id": "L2S5:أمر",
      "text": "أَمَرَ",
-     "caption": "أ + م + ر"
+     "caption": "أ + م + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S5:أخذ",
      "text": "أَخَذَ",
-     "caption": "أ + خ + ذ"
+     "caption": "أ + خ + ذ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S5:أكل",
      "text": "أَكَلَ",
-     "caption": "أ + ك + ل"
+     "caption": "أ + ك + ل",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S5:أحد",
      "text": "أَحَدٌ",
      "caption": "أ + ح + د",
+     "row": 0,
+     "group": 1,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -3454,62 +4654,86 @@
     {
      "id": "L2S5:أهل",
      "text": "أَهۡلَ",
-     "caption": "أ + هـ + ل"
+     "caption": "أ + هـ + ل",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S5:أمر#2",
      "text": "أَمۡرُ",
-     "caption": "أ + م + ر"
+     "caption": "أ + م + ر",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S5:أجر",
      "text": "أَجۡرُ",
-     "caption": "أ + ج + ر"
+     "caption": "أ + ج + ر",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S5:أمم",
      "text": "أُمَمٍ",
-     "caption": "أ + م + م"
+     "caption": "أ + م + م",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S5:إذا",
      "text": "إِذَا",
-     "caption": "إ + ذ + ا"
+     "caption": "إ + ذ + ا",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S5:إذ",
      "text": "إِذۡ",
-     "caption": "إ + ذ"
+     "caption": "إ + ذ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S5:إليه",
      "text": "إِلَيۡهِ",
-     "caption": "إ + ل + ي + هـ"
+     "caption": "إ + ل + ي + هـ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S5:أذن",
      "text": "أُذُنٌ",
-     "caption": "أ + ذ + ن"
+     "caption": "أ + ذ + ن",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S5:أكثر",
      "text": "أَكۡثَرَ",
-     "caption": "أ + ك + ث + ر"
+     "caption": "أ + ك + ث + ر",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S5:أبدا",
      "text": "أَبَدًا",
-     "caption": "أ + ب + د + ا"
+     "caption": "أ + ب + د + ا",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S5:إليك",
      "text": "إِلَيۡكَ",
-     "caption": "إ + ل + ي + ك"
+     "caption": "إ + ل + ي + ك",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S5:أخيه",
      "text": "أَخِيهِ",
-     "caption": "أ + خ + ي + هـ"
+     "caption": "أ + خ + ي + هـ",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3521,47 +4745,65 @@
     {
      "id": "L2S5:سأل",
      "text": "سَأَلَ",
-     "caption": "س + أ + ل"
+     "caption": "س + أ + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S5:يأمر",
      "text": "يَأۡمُرُ",
-     "caption": "ي + أ + م + ر"
+     "caption": "ي + أ + م + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S5:يأكل",
      "text": "يَأۡكُلُ",
-     "caption": "ي + أ + ك + ل"
+     "caption": "ي + أ + ك + ل",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S5:يأخذ",
      "text": "يَأۡخُذُ",
-     "caption": "ي + أ + خ + ذ"
+     "caption": "ي + أ + خ + ذ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S5:يؤمن",
      "text": "يُؤۡمِنُ",
-     "caption": "ي + ؤ + م + ن"
+     "caption": "ي + ؤ + م + ن",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S5:مؤمن",
      "text": "مُؤۡمِنٌ",
-     "caption": "م + ؤ + م + ن"
+     "caption": "م + ؤ + م + ن",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S5:فؤاد",
      "text": "فُؤَادُ",
-     "caption": "ف + ؤ + ا + د"
+     "caption": "ف + ؤ + ا + د",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S5:لؤلؤ",
      "text": "لُؤۡلُؤٌ",
-     "caption": "ل + ؤ + ل + ؤ"
+     "caption": "ل + ؤ + ل + ؤ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S5:جئت",
      "text": "جِئۡتَ",
      "caption": "ج + ئ + ت",
+     "row": 2,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -3572,37 +4814,51 @@
     {
      "id": "L2S5:شئت",
      "text": "شِئۡتَ",
-     "caption": "ش + ئ + ت"
+     "caption": "ش + ئ + ت",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S5:يئس",
      "text": "يَئِسَ",
-     "caption": "ي + ئ + س"
+     "caption": "ي + ئ + س",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S5:سئل",
      "text": "سُئِلَ",
-     "caption": "س + ئ + ل"
+     "caption": "س + ئ + ل",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S5:بئس",
      "text": "بِئۡسَ",
-     "caption": "ب + ئ + س"
+     "caption": "ب + ئ + س",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S5:كأس",
      "text": "كَأۡسٍ",
-     "caption": "ك + أ + س"
+     "caption": "ك + أ + س",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S5:يأمن",
      "text": "يَأۡمَنُ",
-     "caption": "ي + أ + م + ن"
+     "caption": "ي + أ + م + ن",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S5:رءوف",
      "text": "رَءُوفٌ",
-     "caption": "ر + ء + و + ف"
+     "caption": "ر + ء + و + ف",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3614,32 +4870,44 @@
     {
      "id": "L2S5:شىء",
      "text": "شَىۡءٍ",
-     "caption": "ش + ى + ء"
+     "caption": "ش + ى + ء",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S5:نبأ",
      "text": "نَبَأَ",
-     "caption": "ن + ب + أ"
+     "caption": "ن + ب + أ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S5:دفء",
      "text": "دِفۡءٌ",
-     "caption": "د + ف + ء"
+     "caption": "د + ف + ء",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S5:جزء",
      "text": "جُزۡءٌ",
-     "caption": "ج + ز + ء"
+     "caption": "ج + ز + ء",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S5:يبدئ",
      "text": "يُبۡدِئُ",
-     "caption": "ي + ب + د + ئ"
+     "caption": "ي + ب + د + ئ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S5:قرئ",
      "text": "قُرِئَ",
      "caption": "ق + ر + ئ",
+     "row": 1,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -3650,52 +4918,72 @@
     {
      "id": "L2S5:ذرأ",
      "text": "ذَرَأَ",
-     "caption": "ذ + ر + أ"
+     "caption": "ذ + ر + أ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S5:ظمأ",
      "text": "ظَمَأٌ",
-     "caption": "ظ + م + أ"
+     "caption": "ظ + م + أ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S5:ملأ",
      "text": "مَلَأٌ",
-     "caption": "م + ل + أ"
+     "caption": "م + ل + أ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S5:أسوأ",
      "text": "أَسۡوَأَ",
-     "caption": "أ + س + و + أ"
+     "caption": "أ + س + و + أ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S5:ملجأ",
      "text": "مَلۡجَأَ",
-     "caption": "م + ل + ج + أ"
+     "caption": "م + ل + ج + أ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S5:سوء",
      "text": "سَوۡءٍ",
-     "caption": "س + و + ء"
+     "caption": "س + و + ء",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S5:أفآء",
      "text": "أَفَآءَ",
-     "caption": "أ + ف + آ + ء"
+     "caption": "أ + ف + آ + ء",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S5:أعدآء",
      "text": "أَعۡدَآءً",
-     "caption": "أ + ع + د + آ + ء"
+     "caption": "أ + ع + د + آ + ء",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S5:أبنآء",
      "text": "أَبۡنَآءِ",
-     "caption": "أ + ب + ن + آ + ء"
+     "caption": "أ + ب + ن + آ + ء",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S5:أهوآء",
      "text": "أَهۡوَآءَ",
-     "caption": "أ + هـ + و + آ + ء"
+     "caption": "أ + هـ + و + آ + ء",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3708,6 +4996,8 @@
      "id": "L2S6:جآء",
      "text": "جَآءَ",
      "caption": "4●",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -3719,6 +5009,8 @@
      "id": "L2S6:شآء",
      "text": "شَآءَ",
      "caption": "4●",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -3729,12 +5021,16 @@
     {
      "id": "L2S6:سآء",
      "text": "سَآءَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:مآء",
      "text": "مَآءً",
      "caption": "4●",
+     "row": 0,
+     "group": 1,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -3746,6 +5042,8 @@
      "id": "L2S6:يشآء",
      "text": "يَشَآءُ",
      "caption": "4●",
+     "row": 1,
+     "group": 0,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -3756,17 +5054,23 @@
     {
      "id": "L2S6:نشآء",
      "text": "نَشَآءُ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S6:جزآء",
      "text": "جَزَآءُ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S6:سوآء",
      "text": "سَوَآءٌ",
      "caption": "4●",
+     "row": 1,
+     "group": 1,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -3777,27 +5081,37 @@
     {
      "id": "L2S6:شهدآء",
      "text": "شُهَدَآءَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S6:شركآء",
      "text": "شُرَكَآءَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S6:أوليآء",
      "text": "أَوۡلِيَآءَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S6:خلفآء",
      "text": "خُلَفَآءَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S6:سوء",
      "text": "سُوٓءُ",
      "caption": "4●",
+     "row": 3,
+     "group": 0,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -3808,17 +5122,23 @@
     {
      "id": "L2S6:قروء",
      "text": "قُرُوٓءٍ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S6:يضىء",
      "text": "يُضِىٓءُ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S6:سىء",
      "text": "سِىٓءَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3830,22 +5150,30 @@
     {
      "id": "L2S6:إنى أخاف",
      "text": "إِنِّىٓ أَخَافُ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S6:فيهآ أبدا",
      "text": "فِيهَآ أَبَدًا",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:مآ أوحى",
      "text": "مَآ أُوحِىَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S6:مآ أغنى",
      "text": "مَآ أَغۡنَىٰ",
      "caption": "4●",
+     "row": 1,
+     "group": 1,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -3856,22 +5184,30 @@
     {
      "id": "L2S6:إنآ أرسلنك",
      "text": "إِنَّآ أَرۡسَلۡنَٰكَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S6:فى ءايتنا",
      "text": "فِىٓ ءَايَٰتِنَا",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S6:يهدى إلى",
      "text": "يَهۡدِىٓ إِلَى",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S6:لآ إله",
      "text": "لَآ إِلَٰهَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3884,6 +5220,8 @@
      "id": "L2S6:دآبة",
      "text": "دَآبَّةٍ",
      "caption": "6●",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -3894,12 +5232,16 @@
     {
      "id": "L2S6:كآفة",
      "text": "كَآفَّةً",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S6:جآن",
      "text": "جَآنٌّ",
      "caption": "6●",
+     "row": 0,
+     "group": 1,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -3910,17 +5252,23 @@
     {
      "id": "L2S6:ضآلين",
      "text": "ضَآلِّينَ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:يضآر",
      "text": "يُضَآرَّ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S6:صوآف",
      "text": "صَوَآفَّ",
      "caption": "6●",
+     "row": 1,
+     "group": 0,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -3931,52 +5279,72 @@
     {
      "id": "L2S6:رآدوه",
      "text": "رَآدُّوهُ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S6:ضآلا",
      "text": "ضَآلًّا",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S6:مضآر",
      "text": "مُضَآرٍّ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S6:تحآجون",
      "text": "تُحَآجُّونَ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S6:يحآدون",
      "text": "يُحَآدُّونَ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S6:لضآلون",
      "text": "لَضَآلُّونَ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S6:يتمآسا",
      "text": "يَتَمَآسَّا",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S6:يوآدون",
      "text": "يُوَآدُّونَ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S6:يشآق",
      "text": "يُشَآقِّ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S6:رآد",
      "text": "رَآدَّ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -3989,6 +5357,8 @@
      "id": "L2S6:ص",
      "text": "صٓ",
      "caption": "ص 6●",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4001,6 +5371,8 @@
      "id": "L2S6:ق",
      "text": "قٓ",
      "caption": "ق 6●",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4012,22 +5384,30 @@
     {
      "id": "L2S6:ن",
      "text": "نٓ",
-     "caption": "ن 6●"
+     "caption": "ن 6●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:طه",
      "text": "طه",
-     "caption": "ط 2●  هـ 2●"
+     "caption": "ط 2●  هـ 2●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:حم",
      "text": "حمٓ",
-     "caption": "ح 2●  م 6●"
+     "caption": "ح 2●  م 6●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S6:يس",
      "text": "يسٓ",
      "caption": "ي 2●  س 6●",
+     "row": 1,
+     "group": 0,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4040,6 +5420,8 @@
      "id": "L2S6:طس",
      "text": "طسٓ",
      "caption": "ط 2●  س 6●",
+     "row": 1,
+     "group": 1,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4052,6 +5434,8 @@
      "id": "L2S6:الم",
      "text": "الٓمٓ",
      "caption": "ل 6●  م 6●",
+     "row": 1,
+     "group": 1,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4064,6 +5448,8 @@
      "id": "L2S6:الر",
      "text": "الٓر",
      "caption": "ل 6●  ر 2●",
+     "row": 2,
+     "group": 0,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4076,6 +5462,8 @@
      "id": "L2S6:طسم",
      "text": "طسٓمٓ",
      "caption": "ط 2●  س 6●  م 6●",
+     "row": 2,
+     "group": 1,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4088,6 +5476,8 @@
      "id": "L2S6:المص",
      "text": "الٓمٓصٓ",
      "caption": "ل 6●  م 6●  ص 6●",
+     "row": 3,
+     "group": 0,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4100,6 +5490,8 @@
      "id": "L2S6:كهيعص",
      "text": "كٓهيعٓصٓ",
      "caption": "ك 6●  هـ 2●  ي 2●  ع 6●  ص 6●",
+     "row": 3,
+     "group": 1,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4118,62 +5510,86 @@
     {
      "id": "L2S6:إنه",
      "text": "إِنَّهُۥ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S6:معه",
      "text": "مَعَهُۥ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S6:ربه",
      "text": "رَبِّهِۦ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:دونه",
      "text": "دُونِهِۦ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:قومه",
      "text": "قَوۡمِهِۦ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S6:أنه",
      "text": "أَنَّهُۥ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S6:ربه#2",
      "text": "رَبَّهُۥ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S6:قبله",
      "text": "قَبۡلِهِۦ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S6:غيره أفلا",
      "text": "غَيۡرُهُۥٓ أَفَلَا",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S6:إنه أواب",
      "text": "إِنَّهُۥٓ أَوَّابٌ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S6:قومه إنا",
      "text": "قَوۡمِهِۦٓ إِنَّا",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S6:يؤده إليك",
      "text": "يُؤَدِّهِۦٓ إِلَيۡكَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -4185,27 +5601,37 @@
     {
      "id": "L2S6:عليما",
      "text": "عَلِيمًا",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S6:حكيما",
      "text": "حَكِيمًا",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S6:غفورا",
      "text": "غَفُورًا",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:بصيرا",
      "text": "بَصِيرًا",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S6:خوف",
      "text": "خَوۡفٍ",
      "caption": "leen",
+     "row": 1,
+     "group": 0,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4216,22 +5642,30 @@
     {
      "id": "L2S6:بيت",
      "text": "بَيۡتٍ",
-     "caption": "leen"
+     "caption": "leen",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S6:قريش",
      "text": "قُرَيۡشٍ",
-     "caption": "leen"
+     "caption": "leen",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S6:سوف",
      "text": "سَوۡفَ",
-     "caption": "leen"
+     "caption": "leen",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S6:جزآء#2",
      "text": "جَزَآءً",
      "caption": "4●",
+     "row": 2,
+     "group": 0,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -4242,27 +5676,37 @@
     {
      "id": "L2S6:دآبة#2",
      "text": "دَآبَّةُ",
-     "caption": "6●"
+     "caption": "6●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S6:عباده",
      "text": "عِبَادِهِۦ",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S6:قديرا",
      "text": "قَدِيرًا",
-     "caption": "2●"
+     "caption": "2●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S6:يبنى ءادم",
      "text": "يَٰبَنِىٓ ءَادَمَ",
-     "caption": "4●"
+     "caption": "4●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S6:ق#2",
      "text": "قٓ",
      "caption": "ق 6●",
+     "row": 3,
+     "group": 1,
      "audio": {
       "lesson": 6,
       "path": "audio/lesson06/",
@@ -4281,82 +5725,114 @@
     {
      "id": "L2S7:يقضى",
      "text": "يَقۡضِى",
-     "caption": "ي + ق + ض + ى"
+     "caption": "ي + ق + ض + ى",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S7:يقبل",
      "text": "يُقۡبَلُ",
-     "caption": "ي + ق + ب + ل"
+     "caption": "ي + ق + ب + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S7:يقدر",
      "text": "يَقۡدِرُ",
-     "caption": "ي + ق + د + ر"
+     "caption": "ي + ق + د + ر",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S7:يقرض",
      "text": "يُقۡرِضُ",
-     "caption": "ي + ق + ر + ض"
+     "caption": "ي + ق + ر + ض",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S7:مقتا",
      "text": "مَقۡتًا",
-     "caption": "م + ق + ت + ا"
+     "caption": "م + ق + ت + ا",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S7:خلقنا",
      "text": "خَلَقۡنَا",
-     "caption": "خ + ل + ق + ن + ا"
+     "caption": "خ + ل + ق + ن + ا",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S7:يقبل#2",
      "text": "يَقۡبَلُ",
-     "caption": "ي + ق + ب + ل"
+     "caption": "ي + ق + ب + ل",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S7:خلقت",
      "text": "خَلَقۡتَ",
-     "caption": "خ + ل + ق + ت"
+     "caption": "خ + ل + ق + ت",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S7:يطعم",
      "text": "يُطۡعِمُ",
-     "caption": "ي + ط + ع + م"
+     "caption": "ي + ط + ع + م",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S7:يطمع",
      "text": "يَطۡمَعُ",
-     "caption": "ي + ط + م + ع"
+     "caption": "ي + ط + م + ع",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S7:نطوى",
      "text": "نَطۡوِى",
-     "caption": "ن + ط + و + ى"
+     "caption": "ن + ط + و + ى",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S7:نطعم",
      "text": "نُطۡعِمُ",
-     "caption": "ن + ط + ع + م"
+     "caption": "ن + ط + ع + م",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S7:خطبكم",
      "text": "خَطۡبُكُمۡ",
-     "caption": "خ + ط + ب + ك + م"
+     "caption": "خ + ط + ب + ك + م",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S7:يطعم#2",
      "text": "يُطۡعَمُ",
-     "caption": "ي + ط + ع + م"
+     "caption": "ي + ط + ع + م",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S7:نطمع",
      "text": "نَطۡمَعُ",
-     "caption": "ن + ط + م + ع"
+     "caption": "ن + ط + م + ع",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S7:نطبع",
      "text": "نَطۡبَعُ",
-     "caption": "ن + ط + ب + ع"
+     "caption": "ن + ط + ب + ع",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -4368,37 +5844,51 @@
     {
      "id": "L2S7:قبل",
      "text": "قَبۡلُ",
-     "caption": "ق + ب + ل"
+     "caption": "ق + ب + ل",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S7:سبع",
      "text": "سَبۡعَ",
-     "caption": "س + ب + ع"
+     "caption": "س + ب + ع",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S7:صبرا",
      "text": "صَبۡرًا",
-     "caption": "ص + ب + ر + ا"
+     "caption": "ص + ب + ر + ا",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S7:عبدا",
      "text": "عَبۡدًا",
-     "caption": "ع + ب + د + ا"
+     "caption": "ع + ب + د + ا",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S7:قبلهم",
      "text": "قَبۡلَهُمۡ",
-     "caption": "ق + ب + ل + هـ + م"
+     "caption": "ق + ب + ل + هـ + م",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S7:يبلغ",
      "text": "يَبۡلُغَ",
-     "caption": "ي + ب + ل + غ"
+     "caption": "ي + ب + ل + غ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S7:قبلكم",
      "text": "قَبۡلِكُمۡ",
      "caption": "ق + ب + ل + ك + م",
+     "row": 1,
+     "group": 1,
      "audio": {
       "lesson": 1,
       "path": "audio/lesson01/",
@@ -4409,47 +5899,65 @@
     {
      "id": "L2S7:قبلهم#2",
      "text": "قَبۡلِهِمۡ",
-     "caption": "ق + ب + ل + هـ + م"
+     "caption": "ق + ب + ل + هـ + م",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S7:تجرى",
      "text": "تَجۡرِى",
-     "caption": "ت + ج + ر + ى"
+     "caption": "ت + ج + ر + ى",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S7:نجزى",
      "text": "نَجۡزِى",
-     "caption": "ن + ج + ز + ى"
+     "caption": "ن + ج + ز + ى",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S7:رجس",
      "text": "رِجۡسٌ",
-     "caption": "ر + ج + س"
+     "caption": "ر + ج + س",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S7:يجزى",
      "text": "يَجۡزِى",
-     "caption": "ي + ج + ز + ى"
+     "caption": "ي + ج + ز + ى",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S7:يجرى",
      "text": "يَجۡرِى",
-     "caption": "ي + ج + ر + ى"
+     "caption": "ي + ج + ر + ى",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S7:نجعل",
      "text": "نَجۡعَلُ",
-     "caption": "ن + ج + ع + ل"
+     "caption": "ن + ج + ع + ل",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S7:تجزون",
      "text": "تُجۡزَوۡنَ",
-     "caption": "ت + ج + ز + و + ن"
+     "caption": "ت + ج + ز + و + ن",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S7:يجزون",
      "text": "يُجۡزَوۡنَ",
-     "caption": "ي + ج + ز + و + ن"
+     "caption": "ي + ج + ز + و + ن",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -4461,82 +5969,114 @@
     {
      "id": "L2S7:عدن",
      "text": "عَدۡنٍ",
-     "caption": "ع + د + ن"
+     "caption": "ع + د + ن",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S7:صدق",
      "text": "صِدۡقٍ",
-     "caption": "ص + د + ق"
+     "caption": "ص + د + ق",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L2S7:عدل",
      "text": "عَدۡلٍ",
-     "caption": "ع + د + ل"
+     "caption": "ع + د + ل",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S7:تدرى",
      "text": "تَدۡرِى",
-     "caption": "ت + د + ر + ى"
+     "caption": "ت + د + ر + ى",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L2S7:تدع",
      "text": "تَدۡعُ",
-     "caption": "ت + د + ع"
+     "caption": "ت + د + ع",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S7:عدنا",
      "text": "عُدۡنَا",
-     "caption": "ع + د + ن + ا"
+     "caption": "ع + د + ن + ا",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L2S7:يدريك",
      "text": "يُدۡرِيكَ",
-     "caption": "ي + د + ر + ي + ك"
+     "caption": "ي + د + ر + ي + ك",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S7:يدعون",
      "text": "يَدۡعُونَ",
-     "caption": "ي + د + ع + و + ن"
+     "caption": "ي + د + ع + و + ن",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L2S7:يلد",
      "text": "يَلِدۡ",
-     "caption": "ي + ل + د"
+     "caption": "ي + ل + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S7:يجد",
      "text": "يَجِدۡ",
-     "caption": "ي + ج + د"
+     "caption": "ي + ج + د",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L2S7:يكسب",
      "text": "يَكۡسِبۡ",
-     "caption": "ي + ك + س + ب"
+     "caption": "ي + ك + س + ب",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S7:تقعد",
      "text": "تَقۡعُدۡ",
-     "caption": "ت + ق + ع + د"
+     "caption": "ت + ق + ع + د",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L2S7:تب",
      "text": "تَبّ",
-     "caption": "ت + بّ"
+     "caption": "ت + بّ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S7:حق",
      "text": "حَقّ",
-     "caption": "ح + قّ"
+     "caption": "ح + قّ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L2S7:رب",
      "text": "رَبّ",
-     "caption": "ر + بّ"
+     "caption": "ر + بّ",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L2S7:مد",
      "text": "مَدّ",
-     "caption": "م + دّ"
+     "caption": "م + دّ",
+     "row": 3,
+     "group": 1
     }
    ]
   },

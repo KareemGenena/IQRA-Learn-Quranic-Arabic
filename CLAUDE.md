@@ -119,6 +119,16 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   `#/lesson/N`. A lesson is drawn as letter cards wherever it is opened
   (`LettersLesson`) when `drawsLetterCards()` says so — a song, a `place`, or
   the bare `letter` on its words; never by `kind`, which lessons 3–7 share.
+- **Lessons 21–29, cut from the workbooks** (draft, unrecorded, 2026-10-11):
+  Tanween 21, Natural Madd 22, Shadda 23 in Level 1 after the letters;
+  Letter Pairs 24, Three-Letter Words 25, Timing 26, Four-Letter Words 27,
+  Hamza 28, Qalqala 29 in Level 2 around lessons 1, 5 and 6 — the WORKBOOK'S
+  order. `Workbooks/lessons.map.json` says which section each is cut from;
+  `node scripts/make-workbook-lessons.mjs` writes each lesson's sheet in
+  `Word Tables/` once and its `words.json` from that sheet every run. A
+  lesson section is one workbook page (a sitting); a card is a letter with
+  its forms (بَ بًا بُ بٌ بِ بٍ, labelled) or a lone word with its caption as
+  a badge. 1,098 forms to record across the nine, both readings.
 - **Continue** — the way through, never a gate. The home page opens with one
   card: the lesson last left unfinished, else the first not done ("Start
   here" / "Next up" / "Continue"), with every lesson listed beneath it, ✓ on
@@ -515,6 +525,29 @@ Things that cost real debugging. Do not undo them without reading why.
   mechanical check is to compare each reused item's text with the lesson
   form's text — zero mismatches over all 48 reuses. **Run it after any
   workbook edition and after any lesson is recorded** — reuse changes.
+- **A workbook lesson's sheet is written once and then belongs to the
+  author.** `make-workbook-lessons.mjs` reads `Workbooks/lessons.map.json`
+  (lesson number → workbook section, title, blurb, sheet name) and, when the
+  sheet does not exist, writes `Word Tables/<sheet>.docx` from the master —
+  one row per item: Page (the workbook's printed page) · Card · Word · Note,
+  the Word column the only Arabic one so the intake tool records it row by
+  row and names the files with their marks kept. From then on the sheet is
+  the source: a deleted row drops a word, a moved row moves it, and the
+  script never overwrites it (delete the sheet to have it written afresh).
+  The lesson's `words.json` is read from the sheet on every run; captions
+  come from the master by exact text. **The card rule**: a column group of
+  the master is one card only when every caption is a form label (Fat-ha,
+  Tanween Damm, Madd Alif, Shadda — a letter and its forms); where captions
+  are decompositions (و + ر + د) or timing dots (●● ●) the group is two words
+  sharing a column, and each is its own card. Form labels are per CARD
+  (`formLabels` on the word; `ItemCard` reads the card's before the
+  lesson's): the "Shadda with Kasra" rows read Kasra · Shadda. Takes go in
+  `Audio/Audio - Lesson NN/` (with `وقف/`), matched by `takes.mjs` (exact
+  text, else an unambiguous key); clips `wordNN{a..f}.wav` or `wordNN.wav`;
+  a card's id is its ordinal in the sheet and is spent whether recorded or
+  not. The shared parser is `scripts/lib/workbook.mjs` (`readWorkbook`,
+  items with `row` and `group`); the companion uses it too. Word opens the
+  generated sheets (checked with `word-pages.ps1`: Lesson 23 is 5 pages).
 - A sheet correction is applied in the generator and **reported on every
   run**, never written into the docx behind the author's back (`CORRECTIONS`
   in `make-lesson2.mjs`; lesson 6 carried one for a day). Spell the find-string
@@ -1234,14 +1267,20 @@ all five points agreed, in the order they will be built:
    that, the workbook cannot be recorded — see section 3), keyboard walking
    on the companion (N / P), and the QR itself on the paper, still gated on
    the app being complete.
-5. **Level 1 and 2 lessons selected from the workbook** by a map file
-   (section, rows), the generator reading the workbook docx directly so a
-   correction flows through, in the WORKBOOK'S order — tanween, natural madd,
-   shadda; then pairs, three-letter words, timing, four-letter words, hamza,
-   madd, qalqala. The qaida's own L4–L11 sequence in `Design/iqra-kids.md`
-   §2 is retired; numbers 21–30 are free. The workbooks hold 568 / 1,317 /
-   399 distinct items (295 / 1,215 / 393 of two or more letters): a section
-   is never a lesson, a lesson is a sitting.
+5. **Level 1 and 2 lessons cut from the workbook** — BUILT 2026-10-11 as
+   lessons 21–29 (section 2, section 3 "A workbook lesson's sheet"): the
+   map, the generated sheets, the lessons as drafts in the registry, the
+   crosswalk mapped (20 sections now point at a lesson). The qaida's own
+   L4–L11 sequence in `Design/iqra-kids.md` §2 is retired; 30 is spare.
+   **To record them** (the author): open `Word Tables/Lesson 21 -
+   Tanween.docx` in the intake tool — it ticks the Word column, names keep
+   their marks — Reading "Continuing", expect 1, 168 takes into
+   `Audio/Audio - Lesson 21/`; then the same sheet with Reading "At a stop"
+   into its `وقف/`; `node scripts/make-workbook-lessons.mjs 21`; then
+   `node scripts/make-workbook.mjs` so the companion pages pick the clips up
+   by exact text. Forms per lesson: 168 · 168 · 70 · 324 · 128 · 48 · 96 ·
+   48 · 48. The author may prune any sheet first — Letter Pairs is 324
+   voweled pairs over 27 pages and is writing drill on paper.
 6. **Assessments** as lessons of kind `assessment` in a reserved block
    (40–49), one per level, their items referencing existing clips by lesson
    and id — hear and point first, then which rule; self-marked read-aloud

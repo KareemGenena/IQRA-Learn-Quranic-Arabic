@@ -82,32 +82,44 @@
     {
      "id": "L3S1:قتل كيف قدر",
      "text": "قُتِلَ كَيۡفَ قَدَّرَ",
-     "caption": "رَ ← رۡ"
+     "caption": "رَ ← رۡ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S1:نشرح لك صدرك",
      "text": "نَشۡرَحۡ لَكَ صَدۡرَكَ",
-     "caption": "كَ ← كۡ"
+     "caption": "كَ ← كۡ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S1:أدرىك ما سقر",
      "text": "أَدۡرَىٰكَ مَا سَقَرُ",
-     "caption": "رُ ← رۡ"
+     "caption": "رُ ← رۡ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S1:عبدون مآ أعبد",
      "text": "عَٰبِدُونَ مَآ أَعۡبُدُ",
-     "caption": "دُ ← دۡ"
+     "caption": "دُ ← دۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S1:كان عذابى ونذر",
      "text": "كَانَ عَذَابِى وَنُذُرِ",
-     "caption": "رِ ← رۡ"
+     "caption": "رِ ← رۡ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S1:فيقول ربى أكرمن",
      "text": "فَيَقُولُ رَبِّىٓ أَكۡرَمَنِ",
-     "caption": "نِ ← نۡ"
+     "caption": "نِ ← نۡ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -119,42 +131,58 @@
     {
      "id": "L3S1:يقدر عليه أحد",
      "text": "يَقۡدِرَ عَلَيۡهِ أَحَدٌ",
-     "caption": "دٌ ← دۡ"
+     "caption": "دٌ ← دۡ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S1:ما فيه مزدجر",
      "text": "مَا فِيهِ مُزۡدَجَرٌ",
-     "caption": "رٌ ← رۡ"
+     "caption": "رٌ ← رۡ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S1:بعضهم على بعض",
      "text": "بَعۡضَهُمۡ عَلَىٰ بَعۡضٍ",
-     "caption": "ضٍ ← ضۡ"
+     "caption": "ضٍ ← ضۡ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S1:عليه من أجر",
      "text": "عَلَيۡهِ مِنۡ أَجۡرٍ",
-     "caption": "رٍ ← رۡ"
+     "caption": "رٍ ← رۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S1:كان بكم رحيما",
      "text": "كَانَ بِكُمۡ رَحِيمًا",
-     "caption": "مًا ← مَا"
+     "caption": "مًا ← مَا",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S1:أو أشد ذكرا",
      "text": "أَوۡ أَشَدَّ ذِكۡرًا",
-     "caption": "رًا ← رَا"
+     "caption": "رًا ← رَا",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L3S1:عذاب ربك لوقع",
      "text": "عَذَابَ رَبِّكَ لَوَٰقِعٌ",
-     "caption": "عٌ ← عۡ"
+     "caption": "عٌ ← عۡ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L3S1:خلدين فيهآ أبدا",
      "text": "خَٰلِدِينَ فِيهَآ أَبَدًا",
-     "caption": "دًا ← دَا"
+     "caption": "دًا ← دَا",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -166,42 +194,58 @@
     {
      "id": "L3S1:قوة إلى قوتكم",
      "text": "قُوَّةً إِلَىٰ قُوَّتِكُمۡ",
-     "caption": "ةً ← تً"
+     "caption": "ةً ← تً",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S1:أشد منهم قوة",
      "text": "أَشَدَّ مِنۡهُمۡ قُوَّةً",
-     "caption": "ةً ← هۡ"
+     "caption": "ةً ← هۡ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S1:ثلثة أيام",
      "text": "ثَلَٰثَةَ أَيَّامٍ",
-     "caption": "ةَ ← تَ"
+     "caption": "ةَ ← تَ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S1:ثالث ثلثة",
      "text": "ثَالِثُ ثَلَٰثَةٍ",
-     "caption": "ةٍ ← هۡ"
+     "caption": "ةٍ ← هۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S1:ءاية أخرى",
      "text": "ءَايَةً أُخۡرَىٰ",
-     "caption": "ةً ← تً"
+     "caption": "ةً ← تً",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S1:لكم ءاية",
      "text": "لَكُمۡ ءَايَةً",
-     "caption": "ةً ← هۡ"
+     "caption": "ةً ← هۡ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L3S1:لهم شهدة أبدا",
      "text": "لَهُمۡ شَهَٰدَةً أَبَدًا",
-     "caption": "ةً ← تً"
+     "caption": "ةً ← تً",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L3S1:أكبر شهدة",
      "text": "أَكۡبَرُ شَهَٰدَةً",
-     "caption": "ةً ← هۡ"
+     "caption": "ةً ← هۡ",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -213,42 +257,58 @@
     {
      "id": "L3S1:وإياك نستعين",
      "text": "وَإِيَّاكَ نَسۡتَعِينُ",
-     "caption": "نُ ← نۡ   2 · 4 · 6●"
+     "caption": "نُ ← نۡ   2 · 4 · 6●",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S1:ولا هم يحزنون",
      "text": "وَلَا هُمۡ يَحۡزَنُونَ",
-     "caption": "نَ ← نۡ   2 · 4 · 6●"
+     "caption": "نَ ← نۡ   2 · 4 · 6●",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S1:لعلكم تتقون",
      "text": "لَعَلَّكُمۡ تَتَّقُونَ",
-     "caption": "نَ ← نۡ   2 · 4 · 6●"
+     "caption": "نَ ← نۡ   2 · 4 · 6●",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S1:فكيف كان عقاب",
      "text": "فَكَيۡفَ كَانَ عِقَابِ",
-     "caption": "بِ ← بۡ   2 · 4 · 6●"
+     "caption": "بِ ← بۡ   2 · 4 · 6●",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S1:يفعل ما يريد",
      "text": "يَفۡعَلُ مَا يُرِيدُ",
-     "caption": "دُ ← دۡ   2 · 4 · 6●"
+     "caption": "دُ ← دۡ   2 · 4 · 6●",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S1:بما تعملون بصير",
      "text": "بِمَا تَعۡمَلُونَ بَصِيرٌ",
-     "caption": "رٌ ← رۡ   2 · 4 · 6●"
+     "caption": "رٌ ← رۡ   2 · 4 · 6●",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L3S1:يشآء بغير حساب",
      "text": "يَشَآءُ بِغَيۡرِ حِسَابٍ",
-     "caption": "بٍ ← بۡ   2 · 4 · 6●"
+     "caption": "بٍ ← بۡ   2 · 4 · 6●",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L3S1:من هاد",
      "text": "مِنۡ هَادٍ",
-     "caption": "دٍ ← دۡ   2 · 4 · 6●"
+     "caption": "دٍ ← دۡ   2 · 4 · 6●",
+     "row": 3,
+     "group": 1
     }
    ]
   },
@@ -260,17 +320,23 @@
     {
      "id": "L3S2:الطور",
      "text": "ٱلطُّورِ",
-     "caption": "[ل silent]   ·   طّ"
+     "caption": "[ل silent]   ·   طّ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S2:الثواب",
      "text": "ٱلثَّوَابِ",
-     "caption": "[ل silent]   ·   ثّ"
+     "caption": "[ل silent]   ·   ثّ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S2:الصدور",
      "text": "ٱلصُّدُورِ",
      "caption": "[ل silent]   ·   صّ",
+     "row": 1,
+     "group": 0,
      "audio": {
       "lesson": 2,
       "path": "audio/lesson02/",
@@ -281,27 +347,37 @@
     {
      "id": "L3S2:الرحيم",
      "text": "ٱلرَّحِيمُ",
-     "caption": "[ل silent]   ·   رّ"
+     "caption": "[ل silent]   ·   رّ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S2:التواب",
      "text": "ٱلتَّوَّابُ",
-     "caption": "[ل silent]   ·   تّ"
+     "caption": "[ل silent]   ·   تّ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S2:الضرر",
      "text": "ٱلضَّرَرِ",
-     "caption": "[ل silent]   ·   ضّ"
+     "caption": "[ل silent]   ·   ضّ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L3S2:الذكر",
      "text": "ٱلذِّكۡرَ",
-     "caption": "[ل silent]   ·   ذّ"
+     "caption": "[ل silent]   ·   ذّ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L3S2:الناس",
      "text": "ٱلنَّاسِ",
      "caption": "[ل silent]   ·   نّ",
+     "row": 3,
+     "group": 1,
      "audio": {
       "lesson": 2,
       "path": "audio/lesson02/",
@@ -320,6 +396,8 @@
      "id": "L3S2:الدين",
      "text": "ٱلدِّينِ",
      "caption": "[ل silent]   ·   دّ",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 2,
       "path": "audio/lesson02/",
@@ -330,27 +408,37 @@
     {
      "id": "L3S2:السبيل",
      "text": "ٱلسَّبِيلِ",
-     "caption": "[ل silent]   ·   سّ"
+     "caption": "[ل silent]   ·   سّ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S2:الظلمت",
      "text": "ٱلظُّلُمَٰتِ",
-     "caption": "[ل silent]   ·   ظّ"
+     "caption": "[ل silent]   ·   ظّ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S2:الزبر",
      "text": "ٱلزُّبُرِ",
-     "caption": "[ل silent]   ·   زّ"
+     "caption": "[ل silent]   ·   زّ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S2:الشمس",
      "text": "ٱلشَّمۡسَ",
-     "caption": "[ل silent]   ·   شّ"
+     "caption": "[ل silent]   ·   شّ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S2:اللطيف",
      "text": "ٱللَّطِيفُ",
-     "caption": "[ل silent]   ·   لّ"
+     "caption": "[ل silent]   ·   لّ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -362,22 +450,30 @@
     {
      "id": "L3S2:الأرض",
      "text": "ٱلۡأَرۡضِ",
-     "caption": "[لۡ say it]   ·   أ"
+     "caption": "[لۡ say it]   ·   أ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S2:البحر",
      "text": "ٱلۡبَحۡرِ",
-     "caption": "[لۡ say it]   ·   ب"
+     "caption": "[لۡ say it]   ·   ب",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S2:الغفور",
      "text": "ٱلۡغَفُورُ",
-     "caption": "[لۡ say it]   ·   غ"
+     "caption": "[لۡ say it]   ·   غ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S2:الحمد",
      "text": "ٱلۡحَمۡدُ",
      "caption": "[لۡ say it]   ·   ح",
+     "row": 1,
+     "group": 1,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -389,6 +485,8 @@
      "id": "L3S2:الجبال",
      "text": "ٱلۡجِبَالُ",
      "caption": "[لۡ say it]   ·   ج",
+     "row": 2,
+     "group": 0,
      "audio": {
       "lesson": 2,
       "path": "audio/lesson02/",
@@ -399,17 +497,23 @@
     {
      "id": "L3S2:الكتب",
      "text": "ٱلۡكِتَٰبِ",
-     "caption": "[لۡ say it]   ·   ك"
+     "caption": "[لۡ say it]   ·   ك",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L3S2:الوعد",
      "text": "ٱلۡوَعۡدُ",
-     "caption": "[لۡ say it]   ·   و"
+     "caption": "[لۡ say it]   ·   و",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L3S2:الخبير",
      "text": "ٱلۡخَبِيرُ",
-     "caption": "[لۡ say it]   ·   خ"
+     "caption": "[لۡ say it]   ·   خ",
+     "row": 3,
+     "group": 1
     }
    ],
    "part": "Lam Qamariyya (moon letters)"
@@ -422,32 +526,44 @@
     {
      "id": "L3S2:الفوز",
      "text": "ٱلۡفَوۡزُ",
-     "caption": "[لۡ say it]   ·   ف"
+     "caption": "[لۡ say it]   ·   ف",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S2:العليم",
      "text": "ٱلۡعَلِيمُ",
-     "caption": "[لۡ say it]   ·   ع"
+     "caption": "[لۡ say it]   ·   ع",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S2:القوم",
      "text": "ٱلۡقَوۡمِ",
-     "caption": "[لۡ say it]   ·   ق"
+     "caption": "[لۡ say it]   ·   ق",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S2:اليوم",
      "text": "ٱلۡيَوۡمَ",
-     "caption": "[لۡ say it]   ·   ي"
+     "caption": "[لۡ say it]   ·   ي",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S2:المصير",
      "text": "ٱلۡمَصِيرُ",
-     "caption": "[لۡ say it]   ·   م"
+     "caption": "[لۡ say it]   ·   م",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S2:الهدى",
      "text": "ٱلۡهُدَىٰ",
-     "caption": "[لۡ say it]   ·   هـ"
+     "caption": "[لۡ say it]   ·   هـ",
+     "row": 2,
+     "group": 1
     }
    ],
    "part": "Lam Qamariyya (moon letters)"
@@ -461,6 +577,8 @@
      "id": "L3S3:أحد",
      "text": "أَحَدٌ",
      "caption": "[أ say it]   ·   أَ",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -471,27 +589,37 @@
     {
      "id": "L3S3:القمر",
      "text": "ٱلۡقَمَرُ",
-     "caption": "[ٱ start]   ·   أَلۡ"
+     "caption": "[ٱ start]   ·   أَلۡ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S3:إليك",
      "text": "إِلَيۡكَ",
-     "caption": "[إ say it]   ·   إِ"
+     "caption": "[إ say it]   ·   إِ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S3:الفجر",
      "text": "ٱلۡفَجۡرِ",
-     "caption": "[ٱ start]   ·   أَلۡ"
+     "caption": "[ٱ start]   ·   أَلۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S3:أخرى",
      "text": "أُخۡرَىٰ",
-     "caption": "[أ say it]   ·   أُ"
+     "caption": "[أ say it]   ·   أُ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S3:البيت",
      "text": "ٱلۡبَيۡتِ",
      "caption": "[ٱ start]   ·   أَلۡ",
+     "row": 2,
+     "group": 1,
      "audio": {
       "lesson": 2,
       "path": "audio/lesson02/",
@@ -509,17 +637,23 @@
     {
      "id": "L3S3:والتين",
      "text": "وَٱلتِّينِ",
-     "caption": "[ٱ silent]   ·   وَتِّ"
+     "caption": "[ٱ silent]   ·   وَتِّ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S3:والضحى",
      "text": "وَٱلضُّحَىٰ",
-     "caption": "[ٱ silent]   ·   وَضُّ"
+     "caption": "[ٱ silent]   ·   وَضُّ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S3:والسمآء",
      "text": "وَٱلسَّمَآءِ",
      "caption": "[ٱ silent]   ·   وَسَّ",
+     "row": 1,
+     "group": 0,
      "audio": {
       "lesson": 5,
       "path": "audio/lesson05/",
@@ -530,17 +664,23 @@
     {
      "id": "L3S3:فاليوم",
      "text": "فَٱلۡيَوۡمَ",
-     "caption": "[ٱ silent]   ·   فَلۡ"
+     "caption": "[ٱ silent]   ·   فَلۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S3:رب العلمين",
      "text": "رَبِّ ٱلۡعَٰلَمِينَ",
-     "caption": "[ٱ silent]   ·   بِّلۡ"
+     "caption": "[ٱ silent]   ·   بِّلۡ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S3:بعد المشرقين",
      "text": "بُعۡدَ ٱلۡمَشۡرِقَيۡنِ",
-     "caption": "[ٱ silent]   ·   دَلۡ"
+     "caption": "[ٱ silent]   ·   دَلۡ",
+     "row": 2,
+     "group": 1
     }
    ],
    "part": "Hamzat Wasl joined"
@@ -553,22 +693,30 @@
     {
      "id": "L3S4:ترك خيرا الوصية",
      "text": "تَرَكَ خَيۡرًا ٱلۡوَصِيَّةُ",
-     "caption": "رَنِ لۡ"
+     "caption": "رَنِ لۡ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S4:ونادى نوح ابنه",
      "text": "وَنَادَىٰ نُوحٌ ٱبۡنَهُۥ",
-     "caption": "حُنِ بۡ"
+     "caption": "حُنِ بۡ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S4:خبيثة اجتثت",
      "text": "خَبِيثَةٍ ٱجۡتُثَّتۡ",
-     "caption": "تِنِ جۡ"
+     "caption": "تِنِ جۡ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S4:عادا الأولى",
      "text": "عَادًا ٱلۡأُولَىٰ",
-     "caption": "دَنِ لۡ"
+     "caption": "دَنِ لۡ",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -586,32 +734,44 @@
     {
      "id": "L3S5:أكثر",
      "text": "أَكۡثَرَ",
-     "caption": "[كۡ middle]   ·   أ + كۡ + ث + ر"
+     "caption": "[كۡ middle]   ·   أ + كۡ + ث + ر",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S5:ذكرى",
      "text": "ذِكۡرَىٰ",
-     "caption": "[كۡ middle]   ·   ذ + كۡ + ر + ى"
+     "caption": "[كۡ middle]   ·   ذ + كۡ + ر + ى",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:حكما",
      "text": "حُكۡمًا",
-     "caption": "[كۡ middle]   ·   ح + كۡ + م + ا"
+     "caption": "[كۡ middle]   ·   ح + كۡ + م + ا",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:يشرك",
      "text": "يُشۡرِكۡ",
-     "caption": "[كۡ end]   ·   ي + ش + ر + كۡ"
+     "caption": "[كۡ end]   ·   ي + ش + ر + كۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S5:أمسك",
      "text": "أَمۡسِكۡ",
-     "caption": "[كۡ end]   ·   أ + م + س + كۡ"
+     "caption": "[كۡ end]   ·   أ + م + س + كۡ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S5:تحرك",
      "text": "تُحَرِّكۡ",
-     "caption": "[كۡ end]   ·   ت + ح + رّ + كۡ"
+     "caption": "[كۡ end]   ·   ت + ح + رّ + كۡ",
+     "row": 2,
+     "group": 1
     }
    ],
    "part": "Hams (whisper)"
@@ -624,32 +784,44 @@
     {
      "id": "L3S5:تتلى",
      "text": "تُتۡلَىٰ",
-     "caption": "[تۡ middle]   ·   ت + تۡ + ل + ى"
+     "caption": "[تۡ middle]   ·   ت + تۡ + ل + ى",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S5:يتلون",
      "text": "يَتۡلُونَ",
-     "caption": "[تۡ middle]   ·   ي + تۡ + ل + و + ن"
+     "caption": "[تۡ middle]   ·   ي + تۡ + ل + و + ن",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:أتبع",
      "text": "أَتۡبَعَ",
-     "caption": "[تۡ middle]   ·   أ + تۡ + ب + ع"
+     "caption": "[تۡ middle]   ·   أ + تۡ + ب + ع",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:قالت",
      "text": "قَالَتۡ",
-     "caption": "[تۡ end]   ·   ق + ا + ل + تۡ"
+     "caption": "[تۡ end]   ·   ق + ا + ل + تۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S5:كسبت",
      "text": "كَسَبَتۡ",
-     "caption": "[تۡ end]   ·   ك + س + ب + تۡ"
+     "caption": "[تۡ end]   ·   ك + س + ب + تۡ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S5:خلت",
      "text": "خَلَتۡ",
-     "caption": "[تۡ end]   ·   خ + ل + تۡ"
+     "caption": "[تۡ end]   ·   خ + ل + تۡ",
+     "row": 2,
+     "group": 1
     }
    ],
    "part": "Hams (whisper)"
@@ -663,6 +835,8 @@
      "id": "L3S5:خلق",
      "text": "خَلَقَ",
      "caption": "[خ Heavy]   ·   خَ",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 3,
       "path": "audio/lesson03/",
@@ -673,57 +847,79 @@
     {
      "id": "L3S5:خلق#2",
      "text": "خُلِقَ",
-     "caption": "[خ Heavy]   ·   خُ"
+     "caption": "[خ Heavy]   ·   خُ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:خلل",
      "text": "خِلَٰلَ",
-     "caption": "[خ Less heavy]   ·   خِ"
+     "caption": "[خ Less heavy]   ·   خِ",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L3S5:غيب",
      "text": "غَيۡبَ",
-     "caption": "[غ Heavy]   ·   غَ"
+     "caption": "[غ Heavy]   ·   غَ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:غلبت",
      "text": "غُلِبَتِ",
-     "caption": "[غ Heavy]   ·   غُ"
+     "caption": "[غ Heavy]   ·   غُ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S5:غشوة",
      "text": "غِشَٰوَةٌ",
-     "caption": "[غ Less heavy]   ·   غِ"
+     "caption": "[غ Less heavy]   ·   غِ",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L3S5:قبل",
      "text": "قَبۡلَ",
-     "caption": "[ق Heavy]   ·   قَ"
+     "caption": "[ق Heavy]   ·   قَ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S5:قلوب",
      "text": "قُلُوبِ",
-     "caption": "[ق Heavy]   ·   قُ"
+     "caption": "[ق Heavy]   ·   قُ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L3S5:قيل",
      "text": "قِيلَ",
-     "caption": "[ق Less heavy]   ·   قِ"
+     "caption": "[ق Less heavy]   ·   قِ",
+     "row": 2,
+     "group": 2
     },
     {
      "id": "L3S5:صدق",
      "text": "صَدَقَ",
-     "caption": "[ص Heavy]   ·   صَ"
+     "caption": "[ص Heavy]   ·   صَ",
+     "row": 3,
+     "group": 0
     },
     {
      "id": "L3S5:صحف",
      "text": "صُحُفِ",
-     "caption": "[ص Heavy]   ·   صُ"
+     "caption": "[ص Heavy]   ·   صُ",
+     "row": 3,
+     "group": 1
     },
     {
      "id": "L3S5:صبغة",
      "text": "صِبۡغَةَ",
-     "caption": "[ص Heavy]   ·   صِ"
+     "caption": "[ص Heavy]   ·   صِ",
+     "row": 3,
+     "group": 2
     }
    ],
    "part": "Tafkheem review"
@@ -736,47 +932,65 @@
     {
      "id": "L3S5:ضرب",
      "text": "ضَرَبَ",
-     "caption": "[ض Heavy]   ·   ضَ"
+     "caption": "[ض Heavy]   ·   ضَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S5:ضرب#2",
      "text": "ضُرِبَ",
-     "caption": "[ض Heavy]   ·   ضُ"
+     "caption": "[ض Heavy]   ·   ضُ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:ضعف",
      "text": "ضِعۡفَ",
-     "caption": "[ض Heavy]   ·   ضِ"
+     "caption": "[ض Heavy]   ·   ضِ",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L3S5:طبع",
      "text": "طَبَعَ",
-     "caption": "[ط Heavy]   ·   طَ"
+     "caption": "[ط Heavy]   ·   طَ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:طوبى",
      "text": "طُوبَىٰ",
-     "caption": "[ط Heavy]   ·   طُ"
+     "caption": "[ط Heavy]   ·   طُ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S5:طين",
      "text": "طِينٍ",
-     "caption": "[ط Heavy]   ·   طِ"
+     "caption": "[ط Heavy]   ·   طِ",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L3S5:ظلم",
      "text": "ظَلَمَ",
-     "caption": "[ظ Heavy]   ·   ظَ"
+     "caption": "[ظ Heavy]   ·   ظَ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S5:ظلم#2",
      "text": "ظُلِمَ",
-     "caption": "[ظ Heavy]   ·   ظُ"
+     "caption": "[ظ Heavy]   ·   ظُ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L3S5:ظلل",
      "text": "ظِلَٰلٍ",
-     "caption": "[ظ Heavy]   ·   ظِ"
+     "caption": "[ظ Heavy]   ·   ظِ",
+     "row": 2,
+     "group": 2
     }
    ],
    "part": "Tafkheem review"
@@ -789,32 +1003,44 @@
     {
      "id": "L3S5:الله أكبر",
      "text": "ٱللَّهُ أَكۡبَرُ",
-     "caption": "[ل Heavy · start]   ·   أَ"
+     "caption": "[ل Heavy · start]   ·   أَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S5:هو الله",
      "text": "هُوَ ٱللَّهُ",
-     "caption": "[ل Heavy · after fatha]   ·   وَ"
+     "caption": "[ل Heavy · after fatha]   ·   وَ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:يبعثهم الله",
      "text": "يَبۡعَثُهُمُ ٱللَّهُ",
-     "caption": "[ل Heavy · after damma]   ·   مُ"
+     "caption": "[ل Heavy · after damma]   ·   مُ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:بالله",
      "text": "بِٱللَّهِ",
-     "caption": "[ل Light · after kasra]   ·   بِ"
+     "caption": "[ل Light · after kasra]   ·   بِ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S5:بسم الله",
      "text": "بِسۡمِ ٱللَّهِ",
-     "caption": "[ل Light · after kasra]   ·   مِ"
+     "caption": "[ل Light · after kasra]   ·   مِ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S5:لله",
      "text": "لِلَّهِ",
-     "caption": "[ل Light · after kasra]   ·   لِ"
+     "caption": "[ل Light · after kasra]   ·   لِ",
+     "row": 2,
+     "group": 1
     }
    ],
    "part": "The Lam in ٱللَّه"
@@ -827,32 +1053,44 @@
     {
      "id": "L3S5:رمضان",
      "text": "رَمَضَانَ",
-     "caption": "[ر Heavy (1)]   ·   رَ"
+     "caption": "[ر Heavy (1)]   ·   رَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S5:ربنا",
      "text": "رَبَّنَا",
-     "caption": "[ر Heavy (1)]   ·   رَ"
+     "caption": "[ر Heavy (1)]   ·   رَ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:مريم",
      "text": "مَرۡيَمَ",
-     "caption": "[ر Heavy (2)]   ·   مَرۡ"
+     "caption": "[ر Heavy (2)]   ·   مَرۡ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:يرجعون",
      "text": "يَرۡجِعُونَ",
-     "caption": "[ر Heavy (2)]   ·   يَرۡ"
+     "caption": "[ر Heavy (2)]   ·   يَرۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S5:والعصر",
      "text": "وَٱلۡعَصۡرِ",
-     "caption": "[ر Heavy (3)]   ·   عَصۡرۡ"
+     "caption": "[ر Heavy (3)]   ·   عَصۡرۡ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S5:النار",
      "text": "ٱلنَّارِ",
-     "caption": "[ر Heavy (3)]   ·   نَارۡ"
+     "caption": "[ر Heavy (3)]   ·   نَارۡ",
+     "row": 2,
+     "group": 1
     }
    ],
    "part": "Raa"
@@ -866,6 +1104,8 @@
      "id": "L3S5:رزقنا",
      "text": "رُزِقۡنَا",
      "caption": "[ر Heavy (4)]   ·   رُ",
+     "row": 0,
+     "group": 0,
      "audio": {
       "lesson": 1,
       "path": "audio/lesson01/",
@@ -876,27 +1116,37 @@
     {
      "id": "L3S5:رسلنا",
      "text": "رُسُلُنَا",
-     "caption": "[ر Heavy (4)]   ·   رُ"
+     "caption": "[ر Heavy (4)]   ·   رُ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:القرءان",
      "text": "ٱلۡقُرۡءَانَ",
-     "caption": "[ر Heavy (5)]   ·   قُرۡ"
+     "caption": "[ر Heavy (5)]   ·   قُرۡ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:يرزقون",
      "text": "يُرۡزَقُونَ",
-     "caption": "[ر Heavy (5)]   ·   يُرۡ"
+     "caption": "[ر Heavy (5)]   ·   يُرۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S5:خسر",
      "text": "خُسۡرٍ",
-     "caption": "[ر Heavy (6)]   ·   خُسۡرۡ"
+     "caption": "[ر Heavy (6)]   ·   خُسۡرۡ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S5:الأمور",
      "text": "ٱلۡأُمُورُ",
-     "caption": "[ر Heavy (6)]   ·   مُورۡ"
+     "caption": "[ر Heavy (6)]   ·   مُورۡ",
+     "row": 2,
+     "group": 1
     }
    ],
    "part": "Raa"
@@ -909,22 +1159,30 @@
     {
      "id": "L3S5:قرطاس",
      "text": "قِرۡطَاسٍ",
-     "caption": "[ر Heavy (7)]   ·   قِرۡطَ"
+     "caption": "[ر Heavy (7)]   ·   قِرۡطَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S5:مرصادا",
      "text": "مِرۡصَادًا",
-     "caption": "[ر Heavy (7)]   ·   مِرۡصَ"
+     "caption": "[ر Heavy (7)]   ·   مِرۡصَ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:ارجع",
      "text": "ٱرۡجِعۡ",
-     "caption": "[ر Heavy (8)]   ·   إِرۡ"
+     "caption": "[ر Heavy (8)]   ·   إِرۡ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:الذى ارتضى",
      "text": "ٱلَّذِى ٱرۡتَضَىٰ",
-     "caption": "[ر Heavy (8)]   ·   ذِرۡ"
+     "caption": "[ر Heavy (8)]   ·   ذِرۡ",
+     "row": 1,
+     "group": 1
     }
    ],
    "part": "Raa"
@@ -937,22 +1195,30 @@
     {
      "id": "L3S5:كريم",
      "text": "كَرِيمٍ",
-     "caption": "[ر Light (1)]   ·   رِ"
+     "caption": "[ر Light (1)]   ·   رِ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S5:رجال",
      "text": "رِجَالٌ",
-     "caption": "[ر Light (1)]   ·   رِ"
+     "caption": "[ر Light (1)]   ·   رِ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:فرعون",
      "text": "فِرۡعَوۡنَ",
-     "caption": "[ر Light (2)]   ·   فِرۡ"
+     "caption": "[ر Light (2)]   ·   فِرۡ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:شرعة",
      "text": "شِرۡعَةً",
-     "caption": "[ر Light (2)]   ·   شِرۡ"
+     "caption": "[ر Light (2)]   ·   شِرۡ",
+     "row": 1,
+     "group": 1
     }
    ],
    "part": "Raa"
@@ -965,37 +1231,51 @@
     {
      "id": "L3S5:حجر",
      "text": "حِجۡرٍ",
-     "caption": "[ر Light (3)]   ·   حِجۡرۡ"
+     "caption": "[ر Light (3)]   ·   حِجۡرۡ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S5:قدير",
      "text": "قَدِيرٌ",
-     "caption": "[ر Light (3)]   ·   دِيرۡ"
+     "caption": "[ر Light (3)]   ·   دِيرۡ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S5:خير",
      "text": "خَيۡرٌ",
-     "caption": "[ر Light (4)]   ·   خَيۡرۡ"
+     "caption": "[ر Light (4)]   ·   خَيۡرۡ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S5:ضير",
      "text": "ضَيۡرَ",
-     "caption": "[ر Light (4)]   ·   ضَيۡرۡ"
+     "caption": "[ر Light (4)]   ·   ضَيۡرۡ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S5:فرق",
      "text": "فِرۡقٍ",
-     "caption": "[ر Either · keep reading]   ·   فِرۡ"
+     "caption": "[ر Either · keep reading]   ·   فِرۡ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S5:مصر",
      "text": "مِصۡرَ",
-     "caption": "[ر Either · stop]   ·   مِصۡرۡ"
+     "caption": "[ر Either · stop]   ·   مِصۡرۡ",
+     "row": 2,
+     "group": 1
     },
     {
      "id": "L3S5:القطر",
      "text": "ٱلۡقِطۡرِ",
-     "caption": "[ر Either · stop]   ·   قِطۡرۡ"
+     "caption": "[ر Either · stop]   ·   قِطۡرۡ",
+     "row": 2,
+     "group": 2
     }
    ],
    "part": "Raa"
@@ -1008,32 +1288,44 @@
     {
      "id": "L3S6:ربهم بهم",
      "text": "رَبَّهُم بِهِمۡ",
-     "caption": "[م Ikhfaa]   ·   هُم بِ"
+     "caption": "[م Ikhfaa]   ·   هُم بِ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S6:ترميهم بحجارة",
      "text": "تَرۡمِيهِم بِحِجَارَةٍ",
-     "caption": "[م Ikhfaa]   ·   هِم بِ"
+     "caption": "[م Ikhfaa]   ·   هِم بِ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S6:لهم مغفرة",
      "text": "لَهُم مَّغۡفِرَةٌ",
-     "caption": "[م Idgham]   ·   هُم مَّ"
+     "caption": "[م Idgham]   ·   هُم مَّ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S6:عليهم مؤصدة",
      "text": "عَلَيۡهِم مُّؤۡصَدَةٌ",
-     "caption": "[م Idgham]   ·   هِم مُّ"
+     "caption": "[م Idgham]   ·   هِم مُّ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S6:عليهم ولا",
      "text": "عَلَيۡهِمۡ وَلَا",
-     "caption": "[مۡ Izhar]   ·   هِمۡ وَ"
+     "caption": "[مۡ Izhar]   ·   هِمۡ وَ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S6:هم فيها",
      "text": "هُمۡ فِيهَا",
-     "caption": "[مۡ Izhar]   ·   هُمۡ فِ"
+     "caption": "[مۡ Izhar]   ·   هُمۡ فِ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1045,32 +1337,44 @@
     {
      "id": "L3S7:من ءامن",
      "text": "مَنۡ ءَامَنَ",
-     "caption": "[ء Izhar]   ·   نۡ ءَ"
+     "caption": "[ء Izhar]   ·   نۡ ءَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S7:ينهون",
      "text": "يَنۡهَوۡنَ",
-     "caption": "[هـ Izhar]   ·   نۡ هَ"
+     "caption": "[هـ Izhar]   ·   نۡ هَ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S7:من علم",
      "text": "مِنۡ عِلۡمٍ",
-     "caption": "[ع Izhar]   ·   نۡ عِ"
+     "caption": "[ع Izhar]   ·   نۡ عِ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S7:عليم حكيم",
      "text": "عَلِيمٌ حَكِيمٌ",
-     "caption": "[ح Izhar]   ·   مٌ حَ"
+     "caption": "[ح Izhar]   ·   مٌ حَ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S7:عفوا غفورا",
      "text": "عَفُوًّا غَفُورًا",
-     "caption": "[غ Izhar]   ·   وًّا غَ"
+     "caption": "[غ Izhar]   ·   وًّا غَ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S7:من خير",
      "text": "مِنۡ خَيۡرٍ",
-     "caption": "[خ Izhar]   ·   نۡ خَ"
+     "caption": "[خ Izhar]   ·   نۡ خَ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1082,32 +1386,44 @@
     {
      "id": "L3S7:من يقول",
      "text": "مَن يَقُولُ",
-     "caption": "[ي Ghunna]   ·   مَن يَ"
+     "caption": "[ي Ghunna]   ·   مَن يَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S7:من وال",
      "text": "مِن وَالٍ",
-     "caption": "[و Ghunna]   ·   مِن وَ"
+     "caption": "[و Ghunna]   ·   مِن وَ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S7:من نذير",
      "text": "مِن نَّذِيرٍ",
-     "caption": "[ن Ghunna]   ·   مِن نَّ"
+     "caption": "[ن Ghunna]   ·   مِن نَّ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S7:مثلا ما",
      "text": "مَثَلًا مَّا",
-     "caption": "[م Ghunna]   ·   لًا مَّ"
+     "caption": "[م Ghunna]   ·   لًا مَّ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S7:من لدنه",
      "text": "مِن لَّدُنۡهُ",
-     "caption": "[ل No ghunna]   ·   مِن لَّ"
+     "caption": "[ل No ghunna]   ·   مِن لَّ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S7:غفور رحيم",
      "text": "غَفُورٌ رَّحِيمٌ",
-     "caption": "[ر No ghunna]   ·   رٌ رَّ"
+     "caption": "[ر No ghunna]   ·   رٌ رَّ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1119,32 +1435,44 @@
     {
      "id": "L3S7:من بعد",
      "text": "مِنۢ بَعۡدِ",
-     "caption": "[ب Iqlab]   ·   نۢ بَ"
+     "caption": "[ب Iqlab]   ·   نۢ بَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S7:صم بكم",
      "text": "صُمُّۢ بُكۡمٌ",
-     "caption": "[ب Iqlab]   ·   مُّۢ بُ"
+     "caption": "[ب Iqlab]   ·   مُّۢ بُ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S7:كنتم",
      "text": "كُنتُمۡ",
-     "caption": "[ت Light ghunna]   ·   نتُ"
+     "caption": "[ت Light ghunna]   ·   نتُ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S7:من ثمرة",
      "text": "مِن ثَمَرَةٍ",
-     "caption": "[ث Light ghunna]   ·   ن ثَ"
+     "caption": "[ث Light ghunna]   ·   ن ثَ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S7:من جوع",
      "text": "مِن جُوعٍ",
-     "caption": "[ج Light ghunna]   ·   ن جُ"
+     "caption": "[ج Light ghunna]   ·   ن جُ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S7:من دون",
      "text": "مِن دُونِ",
-     "caption": "[د Light ghunna]   ·   ن دُ"
+     "caption": "[د Light ghunna]   ·   ن دُ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1156,32 +1484,44 @@
     {
      "id": "L3S7:من ذكر",
      "text": "مِن ذَكَرٍ",
-     "caption": "[ذ Light ghunna]   ·   ن ذَ"
+     "caption": "[ذ Light ghunna]   ·   ن ذَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S7:أنزلنا",
      "text": "أَنزَلۡنَا",
-     "caption": "[ز Light ghunna]   ·   نزَ"
+     "caption": "[ز Light ghunna]   ·   نزَ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S7:من سللة",
      "text": "مِن سُلَٰلَةٍ",
-     "caption": "[س Light ghunna]   ·   ن سُ"
+     "caption": "[س Light ghunna]   ·   ن سُ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S7:من شر",
      "text": "مِن شَرِّ",
-     "caption": "[ش Light ghunna]   ·   ن شَ"
+     "caption": "[ش Light ghunna]   ·   ن شَ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S7:ينفقون",
      "text": "يُنفِقُونَ",
-     "caption": "[ف Light ghunna]   ·   نفِ"
+     "caption": "[ف Light ghunna]   ·   نفِ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S7:من كل",
      "text": "مِن كُلِّ",
-     "caption": "[ك Light ghunna]   ·   ن كُ"
+     "caption": "[ك Light ghunna]   ·   ن كُ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1193,32 +1533,44 @@
     {
      "id": "L3S7:من صلصل",
      "text": "مِن صَلۡصَٰلٍ",
-     "caption": "[ص Heavy ghunna]   ·   ن صَ"
+     "caption": "[ص Heavy ghunna]   ·   ن صَ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S7:من ضر",
      "text": "مِن ضُرٍّ",
-     "caption": "[ض Heavy ghunna]   ·   ن ضُ"
+     "caption": "[ض Heavy ghunna]   ·   ن ضُ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S7:من طين",
      "text": "مِن طِينٍ",
-     "caption": "[ط Heavy ghunna]   ·   ن طِ"
+     "caption": "[ط Heavy ghunna]   ·   ن طِ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S7:من ظهورهم",
      "text": "مِن ظُهُورِهِمۡ",
-     "caption": "[ظ Heavy ghunna]   ·   ن ظُ"
+     "caption": "[ظ Heavy ghunna]   ·   ن ظُ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S7:من قبل",
      "text": "مِن قَبۡلُ",
-     "caption": "[ق Heavy ghunna]   ·   ن قَ"
+     "caption": "[ق Heavy ghunna]   ·   ن قَ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S7:ريحا صرصرا",
      "text": "رِيحًا صَرۡصَرًا",
-     "caption": "[ص Heavy ghunna]   ·   حًا صَ"
+     "caption": "[ص Heavy ghunna]   ·   حًا صَ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1230,32 +1582,44 @@
     {
      "id": "L3S8:أم من",
      "text": "أَم مَّنۡ",
-     "caption": "[م Mithlain]   ·   م مَّ"
+     "caption": "[م Mithlain]   ·   م مَّ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S8:إن نحن",
      "text": "إِن نَّحۡنُ",
-     "caption": "[ن Mithlain]   ·   ن نَّ"
+     "caption": "[ن Mithlain]   ·   ن نَّ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S8:وقد دخلوا",
      "text": "وَقَد دَّخَلُواْ",
-     "caption": "[د Mithlain]   ·   د دَّ"
+     "caption": "[د Mithlain]   ·   د دَّ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S8:بل لا",
      "text": "بَل لَّا",
-     "caption": "[ل Mithlain]   ·   ل لَّ"
+     "caption": "[ل Mithlain]   ·   ل لَّ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S8:يدرككم",
      "text": "يُدۡرِككُّمُ",
-     "caption": "[ك Mithlain]   ·   ككُّ"
+     "caption": "[ك Mithlain]   ·   ككُّ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S8:اضرب بعصاك",
      "text": "ٱضۡرِب بِّعَصَاكَ",
-     "caption": "[ب Mithlain]   ·   ب بِّ"
+     "caption": "[ب Mithlain]   ·   ب بِّ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1267,32 +1631,44 @@
     {
      "id": "L3S8:إذ ظلموا",
      "text": "إِذ ظَّلَمُوٓاْ",
-     "caption": "[ظ Mutajanisain]   ·   ذ ظَّ"
+     "caption": "[ظ Mutajanisain]   ·   ذ ظَّ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S8:قد تبين",
      "text": "قَد تَّبَيَّنَ",
-     "caption": "[ت Mutajanisain]   ·   د تَّ"
+     "caption": "[ت Mutajanisain]   ·   د تَّ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S8:أثقلت دعوا",
      "text": "أَثۡقَلَت دَّعَوَا",
-     "caption": "[د Mutajanisain]   ·   ت دَّ"
+     "caption": "[د Mutajanisain]   ·   ت دَّ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S8:قالت طآئفة",
      "text": "قَالَت طَّآئِفَةٌ",
-     "caption": "[ط Mutajanisain]   ·   ت طَّ"
+     "caption": "[ط Mutajanisain]   ·   ت طَّ",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S8:يلهث ذلك",
      "text": "يَلۡهَث ذَّٰلِكَ",
-     "caption": "[ذ Mutajanisain]   ·   ث ذَّ"
+     "caption": "[ذ Mutajanisain]   ·   ث ذَّ",
+     "row": 2,
+     "group": 0
     },
     {
      "id": "L3S8:اركب معنا",
      "text": "ٱرۡكَب مَّعَنَا",
-     "caption": "[م Mutajanisain]   ·   ب مَّ"
+     "caption": "[م Mutajanisain]   ·   ب مَّ",
+     "row": 2,
+     "group": 1
     }
    ]
   },
@@ -1304,22 +1680,30 @@
     {
      "id": "L3S8:أحطت",
      "text": "أَحَطتُ",
-     "caption": "[ت Incomplete]   ·   طتُ"
+     "caption": "[ت Incomplete]   ·   طتُ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S8:بسطت",
      "text": "بَسَطتَ",
-     "caption": "[ت Incomplete]   ·   طتَ"
+     "caption": "[ت Incomplete]   ·   طتَ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S8:قل رب",
      "text": "قُل رَّبِّ",
-     "caption": "[ر Mutaqaribain]   ·   ل رَّ"
+     "caption": "[ر Mutaqaribain]   ·   ل رَّ",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S8:ألم نخلقكم",
      "text": "أَلَمۡ نَخۡلُقكُّم",
-     "caption": "[ك Mutaqaribain]   ·   قكُّ"
+     "caption": "[ك Mutaqaribain]   ·   قكُّ",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1331,32 +1715,44 @@
     {
      "id": "L3S9:قالوا",
      "text": "قَالُواْ",
-     "caption": "[ا Silent]   ·   لُواْ"
+     "caption": "[ا Silent]   ·   لُواْ",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L3S9:ءامنوا",
      "text": "ءَامَنُواْ",
-     "caption": "[ا Silent]   ·   نُواْ"
+     "caption": "[ا Silent]   ·   نُواْ",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L3S9:كفروا",
      "text": "كَفَرُواْ",
-     "caption": "[ا Silent]   ·   رُواْ"
+     "caption": "[ا Silent]   ·   رُواْ",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L3S9:أنا",
      "text": "أَنَا۠",
-     "caption": "[ا Say at stop]   ·   نَا۠"
+     "caption": "[ا Say at stop]   ·   نَا۠",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L3S9:لكنا",
      "text": "لَّٰكِنَّا۠",
-     "caption": "[ا Say at stop]   ·   نَّا۠"
+     "caption": "[ا Say at stop]   ·   نَّا۠",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L3S9:قواريرا",
      "text": "قَوَارِيرَا۠",
-     "caption": "[ا Say at stop]   ·   رَا۠"
+     "caption": "[ا Say at stop]   ·   رَا۠",
+     "row": 1,
+     "group": 2
     }
    ]
   },

@@ -64,6 +64,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 1,
     level: 2,
+    order: 5,
     title: 'Five-Letter Words',
     titleArabic: 'كلمات من خمسة أحرف',
     blurb: '33 words from Al-Fatiha and Al-Baqarah, heard letter by letter.',
@@ -92,6 +93,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 5,
     level: 2,
+    order: 7,
     title: 'Madd before a Hamza',
     titleArabic: 'المد المتصل والمنفصل قبل همزة',
     blurb: 'Muttasil and munfasil — both held for four harakat, whether the hamza is in the same word or the next.',
@@ -99,6 +101,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 6,
     level: 2,
+    order: 8,
     title: 'Madd Lāzim, Ṣilah and More',
     titleArabic: 'المد اللازم ومد الصلة وغيرهما',
     blurb: 'The longest madd, the pronoun that grows a natural madd, and what happens to a madd when you stop.',
@@ -151,6 +154,84 @@ export const LESSONS: LessonMeta[] = [
     title: 'Where the Letters Come From',
     titleArabic: 'مخارج الحروف',
     blurb: 'Mouth space, throat, tongue, lips and nose — the five places, as in the workbook.',
+  },
+
+  // ── Lessons cut from the practice workbooks (Workbooks/lessons.map.json,
+  // scripts/make-workbook-lessons.mjs), in the WORKBOOK'S order — Level 1
+  // after the letters, Level 2 around the lessons that already existed.
+  // Titles and blurbs here must match the map; the map is what the
+  // generator reads.
+  {
+    id: 21,
+    level: 1,
+    order: 5,
+    title: 'Tanween',
+    titleArabic: 'التنوين',
+    blurb: 'Every letter with its three harakat and its three tanween, as the workbook writes them, page by page.',
+  },
+  {
+    id: 22,
+    level: 1,
+    order: 6,
+    title: 'Natural Madd',
+    titleArabic: 'المد الطبيعي',
+    blurb: 'Each letter held on alif, waw and yaa, beside its fat-ha, damma and kasra.',
+  },
+  {
+    id: 23,
+    level: 1,
+    order: 7,
+    title: 'Shadda',
+    titleArabic: 'الشدة',
+    blurb: 'Two letters, then the second one doubled — hear the shadda land.',
+  },
+  {
+    id: 24,
+    level: 2,
+    order: 1,
+    title: 'Letter Pairs',
+    titleArabic: 'حرفان متصلان',
+    blurb: 'Two letters joined, with their harakat and a sukoon.',
+  },
+  {
+    id: 25,
+    level: 2,
+    order: 2,
+    title: 'Three-Letter Words',
+    titleArabic: 'كلمات من ثلاثة أحرف',
+    blurb: 'Real words of three letters, one at a time.',
+  },
+  {
+    id: 26,
+    level: 2,
+    order: 3,
+    title: 'Timing',
+    titleArabic: 'عد الحركات',
+    blurb: 'One count or two: a haraka beside the same word with a natural madd.',
+  },
+  {
+    id: 27,
+    level: 2,
+    order: 4,
+    title: 'Four-Letter Words',
+    titleArabic: 'كلمات من أربعة أحرف',
+    blurb: 'Real words of four letters, a sukoon in the middle of each.',
+  },
+  {
+    id: 28,
+    level: 2,
+    order: 6,
+    title: 'Hamza',
+    titleArabic: 'الهمزة',
+    blurb: 'The hamza at the start, in the middle and at the end of a word.',
+  },
+  {
+    id: 29,
+    level: 2,
+    order: 9,
+    title: 'Qalqala',
+    titleArabic: 'القلقلة',
+    blurb: 'ق ط ب ج د with a sukoon — hear the bounce.',
   },
 ];
 
@@ -345,6 +426,7 @@ export function toItems(lesson: Lesson): LessonItem[] {
         : undefined,
       // A "where the letters come from" card has no recording of its own.
       forms: w.place ? [] : letterPlayables(w),
+      formLabels: w.formLabels,
       letter: w.letter,
       name: w.name,
       mnemonic: w.mnemonic,

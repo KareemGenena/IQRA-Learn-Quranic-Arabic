@@ -1,0 +1,1314 @@
+{
+  "lesson": 21,
+  "title": "Tanween",
+  "titleArabic": "التنوين",
+  "kind": "letters",
+  "audioPath": "audio/lesson21/",
+  "perPage": 3,
+  "sections": [
+    {
+      "id": "p13",
+      "title": "Page 13",
+      "titleArabic": "صفحة 13",
+      "hint": "Workbook Level 1, page 13 — Tanween. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p14",
+      "title": "Page 14",
+      "titleArabic": "صفحة 14",
+      "hint": "Workbook Level 1, page 14 — Tanween. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p15",
+      "title": "Page 15",
+      "titleArabic": "صفحة 15",
+      "hint": "Workbook Level 1, page 15 — Tanween. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p16",
+      "title": "Page 16",
+      "titleArabic": "صفحة 16",
+      "hint": "Workbook Level 1, page 16 — Tanween. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p17",
+      "title": "Page 17",
+      "titleArabic": "صفحة 17",
+      "hint": "Workbook Level 1, page 17 — Tanween. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p18",
+      "title": "Page 18",
+      "titleArabic": "صفحة 18",
+      "hint": "Workbook Level 1, page 18 — Tanween. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p19",
+      "title": "Page 19",
+      "titleArabic": "صفحة 19",
+      "hint": "Workbook Level 1, page 19 — Tanween. Tap a form to hear it, then trace it on the page."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "p13",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَ",
+          "audio": "word01a.wav",
+          "timings": null
+        },
+        {
+          "text": "بًا",
+          "audio": "word01b.wav",
+          "timings": null
+        },
+        {
+          "text": "بُ",
+          "audio": "word01c.wav",
+          "timings": null
+        },
+        {
+          "text": "بٌ",
+          "audio": "word01d.wav",
+          "timings": null
+        },
+        {
+          "text": "بِ",
+          "audio": "word01e.wav",
+          "timings": null
+        },
+        {
+          "text": "بٍ",
+          "audio": "word01f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 2,
+      "section": "p13",
+      "badges": [],
+      "forms": [
+        {
+          "text": "تَ",
+          "audio": "word02a.wav",
+          "timings": null
+        },
+        {
+          "text": "تًا",
+          "audio": "word02b.wav",
+          "timings": null
+        },
+        {
+          "text": "تُ",
+          "audio": "word02c.wav",
+          "timings": null
+        },
+        {
+          "text": "تٌ",
+          "audio": "word02d.wav",
+          "timings": null
+        },
+        {
+          "text": "تِ",
+          "audio": "word02e.wav",
+          "timings": null
+        },
+        {
+          "text": "تٍ",
+          "audio": "word02f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 3,
+      "section": "p13",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ثَ",
+          "audio": "word03a.wav",
+          "timings": null
+        },
+        {
+          "text": "ثًا",
+          "audio": "word03b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُ",
+          "audio": "word03c.wav",
+          "timings": null
+        },
+        {
+          "text": "ثٌ",
+          "audio": "word03d.wav",
+          "timings": null
+        },
+        {
+          "text": "ثِ",
+          "audio": "word03e.wav",
+          "timings": null
+        },
+        {
+          "text": "ثٍ",
+          "audio": "word03f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 4,
+      "section": "p13",
+      "badges": [],
+      "forms": [
+        {
+          "text": "جَ",
+          "audio": "word04a.wav",
+          "timings": null
+        },
+        {
+          "text": "جًا",
+          "audio": "word04b.wav",
+          "timings": null
+        },
+        {
+          "text": "جُ",
+          "audio": "word04c.wav",
+          "timings": null
+        },
+        {
+          "text": "جٌ",
+          "audio": "word04d.wav",
+          "timings": null
+        },
+        {
+          "text": "جِ",
+          "audio": "word04e.wav",
+          "timings": null
+        },
+        {
+          "text": "جٍ",
+          "audio": "word04f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 5,
+      "section": "p14",
+      "badges": [],
+      "forms": [
+        {
+          "text": "حَ",
+          "audio": "word05a.wav",
+          "timings": null
+        },
+        {
+          "text": "حًا",
+          "audio": "word05b.wav",
+          "timings": null
+        },
+        {
+          "text": "حُ",
+          "audio": "word05c.wav",
+          "timings": null
+        },
+        {
+          "text": "حٌ",
+          "audio": "word05d.wav",
+          "timings": null
+        },
+        {
+          "text": "حِ",
+          "audio": "word05e.wav",
+          "timings": null
+        },
+        {
+          "text": "حٍ",
+          "audio": "word05f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 6,
+      "section": "p14",
+      "badges": [],
+      "forms": [
+        {
+          "text": "خَ",
+          "audio": "word06a.wav",
+          "timings": null
+        },
+        {
+          "text": "خًا",
+          "audio": "word06b.wav",
+          "timings": null
+        },
+        {
+          "text": "خُ",
+          "audio": "word06c.wav",
+          "timings": null
+        },
+        {
+          "text": "خٌ",
+          "audio": "word06d.wav",
+          "timings": null
+        },
+        {
+          "text": "خِ",
+          "audio": "word06e.wav",
+          "timings": null
+        },
+        {
+          "text": "خٍ",
+          "audio": "word06f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 7,
+      "section": "p14",
+      "badges": [],
+      "forms": [
+        {
+          "text": "دَ",
+          "audio": "word07a.wav",
+          "timings": null
+        },
+        {
+          "text": "دًا",
+          "audio": "word07b.wav",
+          "timings": null
+        },
+        {
+          "text": "دُ",
+          "audio": "word07c.wav",
+          "timings": null
+        },
+        {
+          "text": "دٌ",
+          "audio": "word07d.wav",
+          "timings": null
+        },
+        {
+          "text": "دِ",
+          "audio": "word07e.wav",
+          "timings": null
+        },
+        {
+          "text": "دٍ",
+          "audio": "word07f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 8,
+      "section": "p14",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ذَ",
+          "audio": "word08a.wav",
+          "timings": null
+        },
+        {
+          "text": "ذًا",
+          "audio": "word08b.wav",
+          "timings": null
+        },
+        {
+          "text": "ذُ",
+          "audio": "word08c.wav",
+          "timings": null
+        },
+        {
+          "text": "ذٌ",
+          "audio": "word08d.wav",
+          "timings": null
+        },
+        {
+          "text": "ذِ",
+          "audio": "word08e.wav",
+          "timings": null
+        },
+        {
+          "text": "ذٍ",
+          "audio": "word08f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 9,
+      "section": "p15",
+      "badges": [],
+      "forms": [
+        {
+          "text": "رَ",
+          "audio": "word09a.wav",
+          "timings": null
+        },
+        {
+          "text": "رًا",
+          "audio": "word09b.wav",
+          "timings": null
+        },
+        {
+          "text": "رُ",
+          "audio": "word09c.wav",
+          "timings": null
+        },
+        {
+          "text": "رٌ",
+          "audio": "word09d.wav",
+          "timings": null
+        },
+        {
+          "text": "رِ",
+          "audio": "word09e.wav",
+          "timings": null
+        },
+        {
+          "text": "رٍ",
+          "audio": "word09f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 10,
+      "section": "p15",
+      "badges": [],
+      "forms": [
+        {
+          "text": "زَ",
+          "audio": "word10a.wav",
+          "timings": null
+        },
+        {
+          "text": "زًا",
+          "audio": "word10b.wav",
+          "timings": null
+        },
+        {
+          "text": "زُ",
+          "audio": "word10c.wav",
+          "timings": null
+        },
+        {
+          "text": "زٌ",
+          "audio": "word10d.wav",
+          "timings": null
+        },
+        {
+          "text": "زِ",
+          "audio": "word10e.wav",
+          "timings": null
+        },
+        {
+          "text": "زٍ",
+          "audio": "word10f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 11,
+      "section": "p15",
+      "badges": [],
+      "forms": [
+        {
+          "text": "سَ",
+          "audio": "word11a.wav",
+          "timings": null
+        },
+        {
+          "text": "سًا",
+          "audio": "word11b.wav",
+          "timings": null
+        },
+        {
+          "text": "سُ",
+          "audio": "word11c.wav",
+          "timings": null
+        },
+        {
+          "text": "سٌ",
+          "audio": "word11d.wav",
+          "timings": null
+        },
+        {
+          "text": "سِ",
+          "audio": "word11e.wav",
+          "timings": null
+        },
+        {
+          "text": "سٍ",
+          "audio": "word11f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 12,
+      "section": "p15",
+      "badges": [],
+      "forms": [
+        {
+          "text": "شَ",
+          "audio": "word12a.wav",
+          "timings": null
+        },
+        {
+          "text": "شًا",
+          "audio": "word12b.wav",
+          "timings": null
+        },
+        {
+          "text": "شُ",
+          "audio": "word12c.wav",
+          "timings": null
+        },
+        {
+          "text": "شٌ",
+          "audio": "word12d.wav",
+          "timings": null
+        },
+        {
+          "text": "شِ",
+          "audio": "word12e.wav",
+          "timings": null
+        },
+        {
+          "text": "شٍ",
+          "audio": "word12f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 13,
+      "section": "p16",
+      "badges": [],
+      "forms": [
+        {
+          "text": "صَ",
+          "audio": "word13a.wav",
+          "timings": null
+        },
+        {
+          "text": "صًا",
+          "audio": "word13b.wav",
+          "timings": null
+        },
+        {
+          "text": "صُ",
+          "audio": "word13c.wav",
+          "timings": null
+        },
+        {
+          "text": "صٌ",
+          "audio": "word13d.wav",
+          "timings": null
+        },
+        {
+          "text": "صِ",
+          "audio": "word13e.wav",
+          "timings": null
+        },
+        {
+          "text": "صٍ",
+          "audio": "word13f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 14,
+      "section": "p16",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ضَ",
+          "audio": "word14a.wav",
+          "timings": null
+        },
+        {
+          "text": "ضًا",
+          "audio": "word14b.wav",
+          "timings": null
+        },
+        {
+          "text": "ضُ",
+          "audio": "word14c.wav",
+          "timings": null
+        },
+        {
+          "text": "ضٌ",
+          "audio": "word14d.wav",
+          "timings": null
+        },
+        {
+          "text": "ضِ",
+          "audio": "word14e.wav",
+          "timings": null
+        },
+        {
+          "text": "ضٍ",
+          "audio": "word14f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 15,
+      "section": "p16",
+      "badges": [],
+      "forms": [
+        {
+          "text": "طَ",
+          "audio": "word15a.wav",
+          "timings": null
+        },
+        {
+          "text": "طًا",
+          "audio": "word15b.wav",
+          "timings": null
+        },
+        {
+          "text": "طُ",
+          "audio": "word15c.wav",
+          "timings": null
+        },
+        {
+          "text": "طٌ",
+          "audio": "word15d.wav",
+          "timings": null
+        },
+        {
+          "text": "طِ",
+          "audio": "word15e.wav",
+          "timings": null
+        },
+        {
+          "text": "طٍ",
+          "audio": "word15f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 16,
+      "section": "p16",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ظَ",
+          "audio": "word16a.wav",
+          "timings": null
+        },
+        {
+          "text": "ظًا",
+          "audio": "word16b.wav",
+          "timings": null
+        },
+        {
+          "text": "ظُ",
+          "audio": "word16c.wav",
+          "timings": null
+        },
+        {
+          "text": "ظٌ",
+          "audio": "word16d.wav",
+          "timings": null
+        },
+        {
+          "text": "ظِ",
+          "audio": "word16e.wav",
+          "timings": null
+        },
+        {
+          "text": "ظٍ",
+          "audio": "word16f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 17,
+      "section": "p17",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَ",
+          "audio": "word17a.wav",
+          "timings": null
+        },
+        {
+          "text": "عًا",
+          "audio": "word17b.wav",
+          "timings": null
+        },
+        {
+          "text": "عُ",
+          "audio": "word17c.wav",
+          "timings": null
+        },
+        {
+          "text": "عٌ",
+          "audio": "word17d.wav",
+          "timings": null
+        },
+        {
+          "text": "عِ",
+          "audio": "word17e.wav",
+          "timings": null
+        },
+        {
+          "text": "عٍ",
+          "audio": "word17f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 18,
+      "section": "p17",
+      "badges": [],
+      "forms": [
+        {
+          "text": "غَ",
+          "audio": "word18a.wav",
+          "timings": null
+        },
+        {
+          "text": "غًا",
+          "audio": "word18b.wav",
+          "timings": null
+        },
+        {
+          "text": "غُ",
+          "audio": "word18c.wav",
+          "timings": null
+        },
+        {
+          "text": "غٌ",
+          "audio": "word18d.wav",
+          "timings": null
+        },
+        {
+          "text": "غِ",
+          "audio": "word18e.wav",
+          "timings": null
+        },
+        {
+          "text": "غٍ",
+          "audio": "word18f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 19,
+      "section": "p17",
+      "badges": [],
+      "forms": [
+        {
+          "text": "فَ",
+          "audio": "word19a.wav",
+          "timings": null
+        },
+        {
+          "text": "فًا",
+          "audio": "word19b.wav",
+          "timings": null
+        },
+        {
+          "text": "فُ",
+          "audio": "word19c.wav",
+          "timings": null
+        },
+        {
+          "text": "فٌ",
+          "audio": "word19d.wav",
+          "timings": null
+        },
+        {
+          "text": "فِ",
+          "audio": "word19e.wav",
+          "timings": null
+        },
+        {
+          "text": "فٍ",
+          "audio": "word19f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 20,
+      "section": "p17",
+      "badges": [],
+      "forms": [
+        {
+          "text": "قَ",
+          "audio": "word20a.wav",
+          "timings": null
+        },
+        {
+          "text": "قًا",
+          "audio": "word20b.wav",
+          "timings": null
+        },
+        {
+          "text": "قُ",
+          "audio": "word20c.wav",
+          "timings": null
+        },
+        {
+          "text": "قٌ",
+          "audio": "word20d.wav",
+          "timings": null
+        },
+        {
+          "text": "قِ",
+          "audio": "word20e.wav",
+          "timings": null
+        },
+        {
+          "text": "قٍ",
+          "audio": "word20f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 21,
+      "section": "p18",
+      "badges": [],
+      "forms": [
+        {
+          "text": "كَ",
+          "audio": "word21a.wav",
+          "timings": null
+        },
+        {
+          "text": "كًا",
+          "audio": "word21b.wav",
+          "timings": null
+        },
+        {
+          "text": "كُ",
+          "audio": "word21c.wav",
+          "timings": null
+        },
+        {
+          "text": "كٌ",
+          "audio": "word21d.wav",
+          "timings": null
+        },
+        {
+          "text": "كِ",
+          "audio": "word21e.wav",
+          "timings": null
+        },
+        {
+          "text": "كٍ",
+          "audio": "word21f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 22,
+      "section": "p18",
+      "badges": [],
+      "forms": [
+        {
+          "text": "لَ",
+          "audio": "word22a.wav",
+          "timings": null
+        },
+        {
+          "text": "لًا",
+          "audio": "word22b.wav",
+          "timings": null
+        },
+        {
+          "text": "لُ",
+          "audio": "word22c.wav",
+          "timings": null
+        },
+        {
+          "text": "لٌ",
+          "audio": "word22d.wav",
+          "timings": null
+        },
+        {
+          "text": "لِ",
+          "audio": "word22e.wav",
+          "timings": null
+        },
+        {
+          "text": "لٍ",
+          "audio": "word22f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 23,
+      "section": "p18",
+      "badges": [],
+      "forms": [
+        {
+          "text": "مَ",
+          "audio": "word23a.wav",
+          "timings": null
+        },
+        {
+          "text": "مًا",
+          "audio": "word23b.wav",
+          "timings": null
+        },
+        {
+          "text": "مُ",
+          "audio": "word23c.wav",
+          "timings": null
+        },
+        {
+          "text": "مٌ",
+          "audio": "word23d.wav",
+          "timings": null
+        },
+        {
+          "text": "مِ",
+          "audio": "word23e.wav",
+          "timings": null
+        },
+        {
+          "text": "مٍ",
+          "audio": "word23f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 24,
+      "section": "p18",
+      "badges": [],
+      "forms": [
+        {
+          "text": "نَ",
+          "audio": "word24a.wav",
+          "timings": null
+        },
+        {
+          "text": "نًا",
+          "audio": "word24b.wav",
+          "timings": null
+        },
+        {
+          "text": "نُ",
+          "audio": "word24c.wav",
+          "timings": null
+        },
+        {
+          "text": "نٌ",
+          "audio": "word24d.wav",
+          "timings": null
+        },
+        {
+          "text": "نِ",
+          "audio": "word24e.wav",
+          "timings": null
+        },
+        {
+          "text": "نٍ",
+          "audio": "word24f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 25,
+      "section": "p19",
+      "badges": [],
+      "forms": [
+        {
+          "text": "هَـ",
+          "audio": "word25a.wav",
+          "timings": null
+        },
+        {
+          "text": "هًا",
+          "audio": "word25b.wav",
+          "timings": null
+        },
+        {
+          "text": "هُـ",
+          "audio": "word25c.wav",
+          "timings": null
+        },
+        {
+          "text": "هٌـ",
+          "audio": "word25d.wav",
+          "timings": null
+        },
+        {
+          "text": "هِـ",
+          "audio": "word25e.wav",
+          "timings": null
+        },
+        {
+          "text": "هٍـ",
+          "audio": "word25f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 26,
+      "section": "p19",
+      "badges": [],
+      "forms": [
+        {
+          "text": "وَ",
+          "audio": "word26a.wav",
+          "timings": null
+        },
+        {
+          "text": "وًا",
+          "audio": "word26b.wav",
+          "timings": null
+        },
+        {
+          "text": "وُ",
+          "audio": "word26c.wav",
+          "timings": null
+        },
+        {
+          "text": "وٌ",
+          "audio": "word26d.wav",
+          "timings": null
+        },
+        {
+          "text": "وِ",
+          "audio": "word26e.wav",
+          "timings": null
+        },
+        {
+          "text": "وٍ",
+          "audio": "word26f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 27,
+      "section": "p19",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ءَ",
+          "audio": "word27a.wav",
+          "timings": null
+        },
+        {
+          "text": "ءًا",
+          "audio": "word27b.wav",
+          "timings": null
+        },
+        {
+          "text": "ءُ",
+          "audio": "word27c.wav",
+          "timings": null
+        },
+        {
+          "text": "ءٌ",
+          "audio": "word27d.wav",
+          "timings": null
+        },
+        {
+          "text": "ءِ",
+          "audio": "word27e.wav",
+          "timings": null
+        },
+        {
+          "text": "ءٍ",
+          "audio": "word27f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    },
+    {
+      "id": 28,
+      "section": "p19",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ىَ",
+          "audio": "word28a.wav",
+          "timings": null
+        },
+        {
+          "text": "يًا",
+          "audio": "word28b.wav",
+          "timings": null
+        },
+        {
+          "text": "ىُ",
+          "audio": "word28c.wav",
+          "timings": null
+        },
+        {
+          "text": "ىٌ",
+          "audio": "word28d.wav",
+          "timings": null
+        },
+        {
+          "text": "ىِ",
+          "audio": "word28e.wav",
+          "timings": null
+        },
+        {
+          "text": "ىٍ",
+          "audio": "word28f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Tanween Fath",
+        "Damma",
+        "Tanween Damm",
+        "Kasra",
+        "Tanween Kasr"
+      ]
+    }
+  ]
+}

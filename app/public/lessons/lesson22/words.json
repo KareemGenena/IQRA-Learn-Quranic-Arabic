@@ -1,0 +1,1314 @@
+{
+  "lesson": 22,
+  "title": "Natural Madd",
+  "titleArabic": "المد الطبيعي",
+  "kind": "letters",
+  "audioPath": "audio/lesson22/",
+  "perPage": 3,
+  "sections": [
+    {
+      "id": "p20",
+      "title": "Page 20",
+      "titleArabic": "صفحة 20",
+      "hint": "Workbook Level 1, page 20 — Madd Ṭabīʿī (Natural Madd). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p21",
+      "title": "Page 21",
+      "titleArabic": "صفحة 21",
+      "hint": "Workbook Level 1, page 21 — Madd Ṭabīʿī (Natural Madd). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p22",
+      "title": "Page 22",
+      "titleArabic": "صفحة 22",
+      "hint": "Workbook Level 1, page 22 — Madd Ṭabīʿī (Natural Madd). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p23",
+      "title": "Page 23",
+      "titleArabic": "صفحة 23",
+      "hint": "Workbook Level 1, page 23 — Madd Ṭabīʿī (Natural Madd). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p24",
+      "title": "Page 24",
+      "titleArabic": "صفحة 24",
+      "hint": "Workbook Level 1, page 24 — Madd Ṭabīʿī (Natural Madd). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p25",
+      "title": "Page 25",
+      "titleArabic": "صفحة 25",
+      "hint": "Workbook Level 1, page 25 — Madd Ṭabīʿī (Natural Madd). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p26",
+      "title": "Page 26",
+      "titleArabic": "صفحة 26",
+      "hint": "Workbook Level 1, page 26 — Madd Ṭabīʿī (Natural Madd). Tap a form to hear it, then trace it on the page."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "p20",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَدَ",
+          "audio": "word01a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَادَ",
+          "audio": "word01b.wav",
+          "timings": null
+        },
+        {
+          "text": "بُدَ",
+          "audio": "word01c.wav",
+          "timings": null
+        },
+        {
+          "text": "بُودَ",
+          "audio": "word01d.wav",
+          "timings": null
+        },
+        {
+          "text": "بِدَ",
+          "audio": "word01e.wav",
+          "timings": null
+        },
+        {
+          "text": "بِيدَ",
+          "audio": "word01f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 2,
+      "section": "p20",
+      "badges": [],
+      "forms": [
+        {
+          "text": "تَدَ",
+          "audio": "word02a.wav",
+          "timings": null
+        },
+        {
+          "text": "تَادَ",
+          "audio": "word02b.wav",
+          "timings": null
+        },
+        {
+          "text": "تُدَ",
+          "audio": "word02c.wav",
+          "timings": null
+        },
+        {
+          "text": "تُودَ",
+          "audio": "word02d.wav",
+          "timings": null
+        },
+        {
+          "text": "تِدَ",
+          "audio": "word02e.wav",
+          "timings": null
+        },
+        {
+          "text": "تِيدَ",
+          "audio": "word02f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 3,
+      "section": "p20",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ثَدَ",
+          "audio": "word03a.wav",
+          "timings": null
+        },
+        {
+          "text": "ثَادَ",
+          "audio": "word03b.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُدَ",
+          "audio": "word03c.wav",
+          "timings": null
+        },
+        {
+          "text": "ثُودَ",
+          "audio": "word03d.wav",
+          "timings": null
+        },
+        {
+          "text": "ثِدَ",
+          "audio": "word03e.wav",
+          "timings": null
+        },
+        {
+          "text": "ثِيدَ",
+          "audio": "word03f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 4,
+      "section": "p20",
+      "badges": [],
+      "forms": [
+        {
+          "text": "جَدَ",
+          "audio": "word04a.wav",
+          "timings": null
+        },
+        {
+          "text": "جَادَ",
+          "audio": "word04b.wav",
+          "timings": null
+        },
+        {
+          "text": "جُدَ",
+          "audio": "word04c.wav",
+          "timings": null
+        },
+        {
+          "text": "جُودَ",
+          "audio": "word04d.wav",
+          "timings": null
+        },
+        {
+          "text": "جِدَ",
+          "audio": "word04e.wav",
+          "timings": null
+        },
+        {
+          "text": "جِيدَ",
+          "audio": "word04f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 5,
+      "section": "p21",
+      "badges": [],
+      "forms": [
+        {
+          "text": "حَدُ",
+          "audio": "word05a.wav",
+          "timings": null
+        },
+        {
+          "text": "حَادُ",
+          "audio": "word05b.wav",
+          "timings": null
+        },
+        {
+          "text": "حُدُ",
+          "audio": "word05c.wav",
+          "timings": null
+        },
+        {
+          "text": "حُودُ",
+          "audio": "word05d.wav",
+          "timings": null
+        },
+        {
+          "text": "حِدُ",
+          "audio": "word05e.wav",
+          "timings": null
+        },
+        {
+          "text": "حِيدُ",
+          "audio": "word05f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 6,
+      "section": "p21",
+      "badges": [],
+      "forms": [
+        {
+          "text": "خَدُ",
+          "audio": "word06a.wav",
+          "timings": null
+        },
+        {
+          "text": "خَادُ",
+          "audio": "word06b.wav",
+          "timings": null
+        },
+        {
+          "text": "خُدُ",
+          "audio": "word06c.wav",
+          "timings": null
+        },
+        {
+          "text": "خُودُ",
+          "audio": "word06d.wav",
+          "timings": null
+        },
+        {
+          "text": "خِدُ",
+          "audio": "word06e.wav",
+          "timings": null
+        },
+        {
+          "text": "خِيدُ",
+          "audio": "word06f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 7,
+      "section": "p21",
+      "badges": [],
+      "forms": [
+        {
+          "text": "دَدُ",
+          "audio": "word07a.wav",
+          "timings": null
+        },
+        {
+          "text": "دَادُ",
+          "audio": "word07b.wav",
+          "timings": null
+        },
+        {
+          "text": "دُدُ",
+          "audio": "word07c.wav",
+          "timings": null
+        },
+        {
+          "text": "دُودُ",
+          "audio": "word07d.wav",
+          "timings": null
+        },
+        {
+          "text": "دِدُ",
+          "audio": "word07e.wav",
+          "timings": null
+        },
+        {
+          "text": "دِيدُ",
+          "audio": "word07f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 8,
+      "section": "p21",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ذَدُ",
+          "audio": "word08a.wav",
+          "timings": null
+        },
+        {
+          "text": "ذَادُ",
+          "audio": "word08b.wav",
+          "timings": null
+        },
+        {
+          "text": "ذُدُ",
+          "audio": "word08c.wav",
+          "timings": null
+        },
+        {
+          "text": "ذُودُ",
+          "audio": "word08d.wav",
+          "timings": null
+        },
+        {
+          "text": "ذِدُ",
+          "audio": "word08e.wav",
+          "timings": null
+        },
+        {
+          "text": "ذِيدُ",
+          "audio": "word08f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 9,
+      "section": "p22",
+      "badges": [],
+      "forms": [
+        {
+          "text": "رَدِ",
+          "audio": "word09a.wav",
+          "timings": null
+        },
+        {
+          "text": "رَادِ",
+          "audio": "word09b.wav",
+          "timings": null
+        },
+        {
+          "text": "رُدِ",
+          "audio": "word09c.wav",
+          "timings": null
+        },
+        {
+          "text": "رُودِ",
+          "audio": "word09d.wav",
+          "timings": null
+        },
+        {
+          "text": "رِدِ",
+          "audio": "word09e.wav",
+          "timings": null
+        },
+        {
+          "text": "رِيدِ",
+          "audio": "word09f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 10,
+      "section": "p22",
+      "badges": [],
+      "forms": [
+        {
+          "text": "زَدِ",
+          "audio": "word10a.wav",
+          "timings": null
+        },
+        {
+          "text": "زَادِ",
+          "audio": "word10b.wav",
+          "timings": null
+        },
+        {
+          "text": "زُدِ",
+          "audio": "word10c.wav",
+          "timings": null
+        },
+        {
+          "text": "زُودِ",
+          "audio": "word10d.wav",
+          "timings": null
+        },
+        {
+          "text": "زِدِ",
+          "audio": "word10e.wav",
+          "timings": null
+        },
+        {
+          "text": "زِيدِ",
+          "audio": "word10f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 11,
+      "section": "p22",
+      "badges": [],
+      "forms": [
+        {
+          "text": "سَدِ",
+          "audio": "word11a.wav",
+          "timings": null
+        },
+        {
+          "text": "سَادِ",
+          "audio": "word11b.wav",
+          "timings": null
+        },
+        {
+          "text": "سُدِ",
+          "audio": "word11c.wav",
+          "timings": null
+        },
+        {
+          "text": "سُودِ",
+          "audio": "word11d.wav",
+          "timings": null
+        },
+        {
+          "text": "سِدِ",
+          "audio": "word11e.wav",
+          "timings": null
+        },
+        {
+          "text": "سِيدِ",
+          "audio": "word11f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 12,
+      "section": "p22",
+      "badges": [],
+      "forms": [
+        {
+          "text": "شَدِ",
+          "audio": "word12a.wav",
+          "timings": null
+        },
+        {
+          "text": "شَادِ",
+          "audio": "word12b.wav",
+          "timings": null
+        },
+        {
+          "text": "شُدِ",
+          "audio": "word12c.wav",
+          "timings": null
+        },
+        {
+          "text": "شُودِ",
+          "audio": "word12d.wav",
+          "timings": null
+        },
+        {
+          "text": "شِدِ",
+          "audio": "word12e.wav",
+          "timings": null
+        },
+        {
+          "text": "شِيدِ",
+          "audio": "word12f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 13,
+      "section": "p23",
+      "badges": [],
+      "forms": [
+        {
+          "text": "صَنَ",
+          "audio": "word13a.wav",
+          "timings": null
+        },
+        {
+          "text": "صَانَ",
+          "audio": "word13b.wav",
+          "timings": null
+        },
+        {
+          "text": "صُنَ",
+          "audio": "word13c.wav",
+          "timings": null
+        },
+        {
+          "text": "صُونَ",
+          "audio": "word13d.wav",
+          "timings": null
+        },
+        {
+          "text": "صِنَ",
+          "audio": "word13e.wav",
+          "timings": null
+        },
+        {
+          "text": "صِينَ",
+          "audio": "word13f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 14,
+      "section": "p23",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ضَنَ",
+          "audio": "word14a.wav",
+          "timings": null
+        },
+        {
+          "text": "ضَانَ",
+          "audio": "word14b.wav",
+          "timings": null
+        },
+        {
+          "text": "ضُنَ",
+          "audio": "word14c.wav",
+          "timings": null
+        },
+        {
+          "text": "ضُونَ",
+          "audio": "word14d.wav",
+          "timings": null
+        },
+        {
+          "text": "ضِنَ",
+          "audio": "word14e.wav",
+          "timings": null
+        },
+        {
+          "text": "ضِينَ",
+          "audio": "word14f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 15,
+      "section": "p23",
+      "badges": [],
+      "forms": [
+        {
+          "text": "طَنَ",
+          "audio": "word15a.wav",
+          "timings": null
+        },
+        {
+          "text": "طَانَ",
+          "audio": "word15b.wav",
+          "timings": null
+        },
+        {
+          "text": "طُنَ",
+          "audio": "word15c.wav",
+          "timings": null
+        },
+        {
+          "text": "طُونَ",
+          "audio": "word15d.wav",
+          "timings": null
+        },
+        {
+          "text": "طِنَ",
+          "audio": "word15e.wav",
+          "timings": null
+        },
+        {
+          "text": "طِينَ",
+          "audio": "word15f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 16,
+      "section": "p23",
+      "badges": [],
+      "forms": [
+        {
+          "text": "ظَنَ",
+          "audio": "word16a.wav",
+          "timings": null
+        },
+        {
+          "text": "ظَانَ",
+          "audio": "word16b.wav",
+          "timings": null
+        },
+        {
+          "text": "ظُنَ",
+          "audio": "word16c.wav",
+          "timings": null
+        },
+        {
+          "text": "ظُونَ",
+          "audio": "word16d.wav",
+          "timings": null
+        },
+        {
+          "text": "ظِنَ",
+          "audio": "word16e.wav",
+          "timings": null
+        },
+        {
+          "text": "ظِينَ",
+          "audio": "word16f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 17,
+      "section": "p24",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَنُ",
+          "audio": "word17a.wav",
+          "timings": null
+        },
+        {
+          "text": "عَانُ",
+          "audio": "word17b.wav",
+          "timings": null
+        },
+        {
+          "text": "عُنُ",
+          "audio": "word17c.wav",
+          "timings": null
+        },
+        {
+          "text": "عُونُ",
+          "audio": "word17d.wav",
+          "timings": null
+        },
+        {
+          "text": "عِنُ",
+          "audio": "word17e.wav",
+          "timings": null
+        },
+        {
+          "text": "عِينُ",
+          "audio": "word17f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 18,
+      "section": "p24",
+      "badges": [],
+      "forms": [
+        {
+          "text": "غَنُ",
+          "audio": "word18a.wav",
+          "timings": null
+        },
+        {
+          "text": "غَانُ",
+          "audio": "word18b.wav",
+          "timings": null
+        },
+        {
+          "text": "غُنُ",
+          "audio": "word18c.wav",
+          "timings": null
+        },
+        {
+          "text": "غُونُ",
+          "audio": "word18d.wav",
+          "timings": null
+        },
+        {
+          "text": "غِنُ",
+          "audio": "word18e.wav",
+          "timings": null
+        },
+        {
+          "text": "غِينُ",
+          "audio": "word18f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 19,
+      "section": "p24",
+      "badges": [],
+      "forms": [
+        {
+          "text": "فَنُ",
+          "audio": "word19a.wav",
+          "timings": null
+        },
+        {
+          "text": "فَانُ",
+          "audio": "word19b.wav",
+          "timings": null
+        },
+        {
+          "text": "فُنُ",
+          "audio": "word19c.wav",
+          "timings": null
+        },
+        {
+          "text": "فُونُ",
+          "audio": "word19d.wav",
+          "timings": null
+        },
+        {
+          "text": "فِنُ",
+          "audio": "word19e.wav",
+          "timings": null
+        },
+        {
+          "text": "فِينُ",
+          "audio": "word19f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 20,
+      "section": "p24",
+      "badges": [],
+      "forms": [
+        {
+          "text": "قَنُ",
+          "audio": "word20a.wav",
+          "timings": null
+        },
+        {
+          "text": "قَانُ",
+          "audio": "word20b.wav",
+          "timings": null
+        },
+        {
+          "text": "قُنُ",
+          "audio": "word20c.wav",
+          "timings": null
+        },
+        {
+          "text": "قُونُ",
+          "audio": "word20d.wav",
+          "timings": null
+        },
+        {
+          "text": "قِنُ",
+          "audio": "word20e.wav",
+          "timings": null
+        },
+        {
+          "text": "قِينُ",
+          "audio": "word20f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 21,
+      "section": "p25",
+      "badges": [],
+      "forms": [
+        {
+          "text": "كَنِ",
+          "audio": "word21a.wav",
+          "timings": null
+        },
+        {
+          "text": "كَانِ",
+          "audio": "word21b.wav",
+          "timings": null
+        },
+        {
+          "text": "كُنِ",
+          "audio": "word21c.wav",
+          "timings": null
+        },
+        {
+          "text": "كُونِ",
+          "audio": "word21d.wav",
+          "timings": null
+        },
+        {
+          "text": "كِنِ",
+          "audio": "word21e.wav",
+          "timings": null
+        },
+        {
+          "text": "كِينِ",
+          "audio": "word21f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 22,
+      "section": "p25",
+      "badges": [],
+      "forms": [
+        {
+          "text": "لَنِ",
+          "audio": "word22a.wav",
+          "timings": null
+        },
+        {
+          "text": "لَانِ",
+          "audio": "word22b.wav",
+          "timings": null
+        },
+        {
+          "text": "لُنِ",
+          "audio": "word22c.wav",
+          "timings": null
+        },
+        {
+          "text": "لُونِ",
+          "audio": "word22d.wav",
+          "timings": null
+        },
+        {
+          "text": "لِنِ",
+          "audio": "word22e.wav",
+          "timings": null
+        },
+        {
+          "text": "لِينِ",
+          "audio": "word22f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 23,
+      "section": "p25",
+      "badges": [],
+      "forms": [
+        {
+          "text": "مَنِ",
+          "audio": "word23a.wav",
+          "timings": null
+        },
+        {
+          "text": "مَانِ",
+          "audio": "word23b.wav",
+          "timings": null
+        },
+        {
+          "text": "مُنِ",
+          "audio": "word23c.wav",
+          "timings": null
+        },
+        {
+          "text": "مُونِ",
+          "audio": "word23d.wav",
+          "timings": null
+        },
+        {
+          "text": "مِنِ",
+          "audio": "word23e.wav",
+          "timings": null
+        },
+        {
+          "text": "مِينِ",
+          "audio": "word23f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 24,
+      "section": "p25",
+      "badges": [],
+      "forms": [
+        {
+          "text": "نَنِ",
+          "audio": "word24a.wav",
+          "timings": null
+        },
+        {
+          "text": "نَانِ",
+          "audio": "word24b.wav",
+          "timings": null
+        },
+        {
+          "text": "نُنِ",
+          "audio": "word24c.wav",
+          "timings": null
+        },
+        {
+          "text": "نُونِ",
+          "audio": "word24d.wav",
+          "timings": null
+        },
+        {
+          "text": "نِنِ",
+          "audio": "word24e.wav",
+          "timings": null
+        },
+        {
+          "text": "نِينِ",
+          "audio": "word24f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 25,
+      "section": "p26",
+      "badges": [],
+      "forms": [
+        {
+          "text": "هَرَ",
+          "audio": "word25a.wav",
+          "timings": null
+        },
+        {
+          "text": "هَارَ",
+          "audio": "word25b.wav",
+          "timings": null
+        },
+        {
+          "text": "هُرَ",
+          "audio": "word25c.wav",
+          "timings": null
+        },
+        {
+          "text": "هُورَ",
+          "audio": "word25d.wav",
+          "timings": null
+        },
+        {
+          "text": "هِرَ",
+          "audio": "word25e.wav",
+          "timings": null
+        },
+        {
+          "text": "هِيرَ",
+          "audio": "word25f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 26,
+      "section": "p26",
+      "badges": [],
+      "forms": [
+        {
+          "text": "وَرَ",
+          "audio": "word26a.wav",
+          "timings": null
+        },
+        {
+          "text": "وَارَ",
+          "audio": "word26b.wav",
+          "timings": null
+        },
+        {
+          "text": "وُرَ",
+          "audio": "word26c.wav",
+          "timings": null
+        },
+        {
+          "text": "وُورَ",
+          "audio": "word26d.wav",
+          "timings": null
+        },
+        {
+          "text": "وِرَ",
+          "audio": "word26e.wav",
+          "timings": null
+        },
+        {
+          "text": "وِيرَ",
+          "audio": "word26f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 27,
+      "section": "p26",
+      "badges": [],
+      "forms": [
+        {
+          "text": "أَرَ",
+          "audio": "word27a.wav",
+          "timings": null
+        },
+        {
+          "text": "ءَارَ",
+          "audio": "word27b.wav",
+          "timings": null
+        },
+        {
+          "text": "أُرَ",
+          "audio": "word27c.wav",
+          "timings": null
+        },
+        {
+          "text": "أُورَ",
+          "audio": "word27d.wav",
+          "timings": null
+        },
+        {
+          "text": "إِرَ",
+          "audio": "word27e.wav",
+          "timings": null
+        },
+        {
+          "text": "إِيرَ",
+          "audio": "word27f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    },
+    {
+      "id": 28,
+      "section": "p26",
+      "badges": [],
+      "forms": [
+        {
+          "text": "يَرَ",
+          "audio": "word28a.wav",
+          "timings": null
+        },
+        {
+          "text": "يَارَ",
+          "audio": "word28b.wav",
+          "timings": null
+        },
+        {
+          "text": "يُرَ",
+          "audio": "word28c.wav",
+          "timings": null
+        },
+        {
+          "text": "يُورَ",
+          "audio": "word28d.wav",
+          "timings": null
+        },
+        {
+          "text": "يِرَ",
+          "audio": "word28e.wav",
+          "timings": null
+        },
+        {
+          "text": "يِيرَ",
+          "audio": "word28f.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Madd Alif",
+        "Damma",
+        "Madd Waaw",
+        "Kasra",
+        "Madd Yaa"
+      ]
+    }
+  ]
+}

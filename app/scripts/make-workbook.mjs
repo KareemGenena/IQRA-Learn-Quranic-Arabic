@@ -31,9 +31,9 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { readZipEntry } from './lib/zip.mjs';
 import { STOP_DIR } from './lib/stop.mjs';
-import { exact, findTake, key, keyCounts, takesOf } from './lib/takes.mjs';
+import { exact, findTake, keyCounts, takesOf } from './lib/takes.mjs';
+import { PDF_PAGES, readWorkbook } from './lib/workbook.mjs';
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -43,13 +43,8 @@ const PUB = join(here, '..', 'public');
 
 const hasArabic = (s) => /[؀-ۿ]/.test(s);
 
-const decode = (s) =>
-  s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'");
-const textOf = (xml) => decode([...xml.matchAll(/<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1]).join('')).trim();
-
 const levels = process.argv.slice(2).map(Number).filter(Boolean);
 const LEVELS = levels.length ? levels : [1, 2, 3];
-const PDF_PAGES = { 1: 35, 2: 61, 3: 36 }; // site/public/workbooks/meta.json
 
 // ── 1. The lessons' clips, by key ──────────────────────────────────────────
 const lessonClips = new Map();
@@ -90,64 +85,7 @@ console.log(`${lessonClips.size} lesson clips indexed by exact text (lessons 1�
 
 // ── 2. Each level ──────────────────────────────────────────────────────────
 for (const L of LEVELS) {
-  const xml = readZipEntry(join(WB, `Practice Workbook Level ${L}.docx`), 'word/document.xml').toString('utf8');
-  const body = xml.slice(xml.indexOf('<w:body>'));
-  const re = /<w:p\b[\s\S]*?<\/w:p>|<w:tbl>[\s\S]*?<\/w:tbl>/g;
-
-  const pages = [];
-  const sections = [];
-  let section = null;
-  let page = null;
-  const ids = new Map();
-  let m;
-  while ((m = re.exec(body))) {
-    const s = m[0];
-    if (s.startsWith('<w:tbl>')) {
-      if (!page) continue;
-      const rows = [...s.matchAll(/<w:tr\b[\s\S]*?<\/w:tr>/g)].map((r) =>
-        [...r[0].matchAll(/<w:tc>[\s\S]*?<\/w:tc>/g)].map((c) => textOf(c[0])),
-      );
-      if (!rows.length) continue;
-      const [first, captions = []] = rows;
-      if (!first.some(hasArabic)) continue; // a header row, not items
-      first.forEach((cell, i) => {
-        if (!cell || !hasArabic(cell)) return;
-        const base = `${section.id}:${key(cell)}`;
-        const seen = ids.get(base) ?? 0;
-        ids.set(base, seen + 1);
-        const id = seen ? `${base}#${seen + 1}` : base;
-        const caption = captions[i] && captions[i] !== cell ? captions[i] : '';
-        page.items.push({ id, text: cell, caption });
-      });
-      continue;
-    }
-    const t = textOf(s);
-    if (!t) continue;
-    const h = /^Section (\d+) · (.+?)(?: — (.*))?$/.exec(t);
-    if (h) {
-      const n = Number(h[1]);
-      const title = h[2].trim();
-      let sec = sections.find((x) => x.n === n);
-      if (!sec) {
-        sec = { id: `L${L}S${n}`, n, title, instruction: (h[3] ?? '').trim(), firstPage: page?.physical ?? null };
-        sections.push(sec);
-      }
-      section = sec;
-      if (page) {
-        page.section = sec.id;
-        if (title !== sec.title) page.part = title; // "Lam Qamariyya (moon letters)"
-        if (!sec.firstPage) sec.firstPage = page.physical;
-      }
-      continue;
-    }
-    if (/IQRA 1447.*Practice Workbook/.test(t)) {
-      page = { physical: pages.length + 3, printed: pages.length + 1, section: section?.id ?? null, items: [] };
-      pages.push(page);
-    }
-  }
-
-  const expected = PDF_PAGES[L] - 2;
-  if (pages.length !== expected) console.log(`  !! Level ${L}: ${pages.length} pages read, the PDF has ${expected} content pages`);
+  const { pages, sections } = readWorkbook(L);
 
   // ── 3. Audio ─────────────────────────────────────────────────────────────
   const src = join(root, 'Audio', `Audio - Workbook Level ${L}`);

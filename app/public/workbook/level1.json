@@ -54,52 +54,72 @@
     {
      "id": "L1S1:ا",
      "text": "ا",
-     "caption": "Alif"
+     "caption": "Alif",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ب",
      "text": "ب",
-     "caption": "Baa"
+     "caption": "Baa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ت",
      "text": "ت",
-     "caption": "Taa"
+     "caption": "Taa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ث",
      "text": "ث",
-     "caption": "Thaa"
+     "caption": "Thaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ج",
      "text": "ج",
-     "caption": "Jeem"
+     "caption": "Jeem",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ح",
      "text": "ح",
-     "caption": "Ḥaa"
+     "caption": "Ḥaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:خ",
      "text": "خ",
-     "caption": "Khaa"
+     "caption": "Khaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:د",
      "text": "د",
-     "caption": "Daal"
+     "caption": "Daal",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:ذ",
      "text": "ذ",
-     "caption": "Dhaal"
+     "caption": "Dhaal",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:ر",
      "text": "ر",
-     "caption": "Raa"
+     "caption": "Raa",
+     "row": 1,
+     "group": 0
     }
    ]
   },
@@ -111,52 +131,72 @@
     {
      "id": "L1S1:ز",
      "text": "ز",
-     "caption": "Zaay"
+     "caption": "Zaay",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:س",
      "text": "س",
-     "caption": "Seen"
+     "caption": "Seen",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ش",
      "text": "ش",
-     "caption": "Sheen"
+     "caption": "Sheen",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ص",
      "text": "ص",
-     "caption": "Ṣaad"
+     "caption": "Ṣaad",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ض",
      "text": "ض",
-     "caption": "Ḍaad"
+     "caption": "Ḍaad",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ط",
      "text": "ط",
-     "caption": "Ṭaa"
+     "caption": "Ṭaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:ظ",
      "text": "ظ",
-     "caption": "Ẓaa"
+     "caption": "Ẓaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:ع",
      "text": "ع",
-     "caption": "ʿAyn"
+     "caption": "ʿAyn",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:غ",
      "text": "غ",
-     "caption": "Ghayn"
+     "caption": "Ghayn",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:ف",
      "text": "ف",
-     "caption": "Faa"
+     "caption": "Faa",
+     "row": 1,
+     "group": 0
     }
    ]
   },
@@ -168,52 +208,72 @@
     {
      "id": "L1S1:ق",
      "text": "ق",
-     "caption": "Qaaf"
+     "caption": "Qaaf",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ك",
      "text": "ك",
-     "caption": "Kaaf"
+     "caption": "Kaaf",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ل",
      "text": "ل",
-     "caption": "Laam"
+     "caption": "Laam",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:م",
      "text": "م",
-     "caption": "Meem"
+     "caption": "Meem",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ن",
      "text": "ن",
-     "caption": "Noon"
+     "caption": "Noon",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S1:ه",
      "text": "هـ",
-     "caption": "Haa"
+     "caption": "Haa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:و",
      "text": "و",
-     "caption": "Waaw"
+     "caption": "Waaw",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:لا",
      "text": "لا",
-     "caption": "Laam-Alif"
+     "caption": "Laam-Alif",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:ء",
      "text": "ء",
-     "caption": "Hamza"
+     "caption": "Hamza",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S1:ي",
      "text": "ي",
-     "caption": "Yaa"
+     "caption": "Yaa",
+     "row": 1,
+     "group": 0
     }
    ]
   },
@@ -225,52 +285,72 @@
     {
      "id": "L1S2:ب",
      "text": "ب",
-     "caption": "Baa"
+     "caption": "Baa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S2:ت",
      "text": "ت",
-     "caption": "Taa"
+     "caption": "Taa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S2:ث",
      "text": "ث",
-     "caption": "Thaa"
+     "caption": "Thaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S2:ج",
      "text": "ج",
-     "caption": "Jeem"
+     "caption": "Jeem",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S2:ح",
      "text": "ح",
-     "caption": "Ḥaa"
+     "caption": "Ḥaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S2:خ",
      "text": "خ",
-     "caption": "Khaa"
+     "caption": "Khaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S2:د",
      "text": "د",
-     "caption": "Daal"
+     "caption": "Daal",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S2:ذ",
      "text": "ذ",
-     "caption": "Dhaal"
+     "caption": "Dhaal",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S2:ر",
      "text": "ر",
-     "caption": "Raa"
+     "caption": "Raa",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S2:ز",
      "text": "ز",
-     "caption": "Zaay"
+     "caption": "Zaay",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -282,52 +362,72 @@
     {
      "id": "L1S2:س",
      "text": "س",
-     "caption": "Seen"
+     "caption": "Seen",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S2:ش",
      "text": "ش",
-     "caption": "Sheen"
+     "caption": "Sheen",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S2:ص",
      "text": "ص",
-     "caption": "Ṣaad"
+     "caption": "Ṣaad",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S2:ض",
      "text": "ض",
-     "caption": "Ḍaad"
+     "caption": "Ḍaad",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S2:ط",
      "text": "ط",
-     "caption": "Ṭaa"
+     "caption": "Ṭaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S2:ظ",
      "text": "ظ",
-     "caption": "Ẓaa"
+     "caption": "Ẓaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S2:ع",
      "text": "ع",
-     "caption": "ʿAyn"
+     "caption": "ʿAyn",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S2:غ",
      "text": "غ",
-     "caption": "Ghayn"
+     "caption": "Ghayn",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S2:ف",
      "text": "ف",
-     "caption": "Faa"
+     "caption": "Faa",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L1S2:ق",
      "text": "ق",
-     "caption": "Qaaf"
+     "caption": "Qaaf",
+     "row": 1,
+     "group": 2
     }
    ]
   },
@@ -339,82 +439,114 @@
     {
      "id": "L1S3:ب",
      "text": "بَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ب#2",
      "text": "بُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ب#3",
      "text": "بِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:نب",
      "text": "نَبۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ت",
      "text": "تَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ت#2",
      "text": "تُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ت#3",
      "text": "تِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:نت",
      "text": "نَتۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ث",
      "text": "ثَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ث#2",
      "text": "ثُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ث#3",
      "text": "ثِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:نث",
      "text": "نَثۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ج",
      "text": "جَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ج#2",
      "text": "جُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ج#3",
      "text": "جِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:نج",
      "text": "نَجۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -426,82 +558,114 @@
     {
      "id": "L1S3:ح",
      "text": "حَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ح#2",
      "text": "حُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ح#3",
      "text": "حِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:نح",
      "text": "نَحۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:خ",
      "text": "خَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:خ#2",
      "text": "خُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:خ#3",
      "text": "خِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:نخ",
      "text": "نَخۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:د",
      "text": "دَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:د#2",
      "text": "دُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:د#3",
      "text": "دِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ند",
      "text": "نَدۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ذ",
      "text": "ذَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ذ#2",
      "text": "ذُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ذ#3",
      "text": "ذِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:نذ",
      "text": "نَذۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -513,82 +677,114 @@
     {
      "id": "L1S3:ر",
      "text": "رَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ر#2",
      "text": "رُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ر#3",
      "text": "رِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:نر",
      "text": "نَرۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ز",
      "text": "زَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ز#2",
      "text": "زُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ز#3",
      "text": "زِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:نز",
      "text": "نَزۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:س",
      "text": "سَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:س#2",
      "text": "سُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:س#3",
      "text": "سِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:نس",
      "text": "نَسۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ش",
      "text": "شَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ش#2",
      "text": "شُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ش#3",
      "text": "شِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:نش",
      "text": "نَشۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -600,82 +796,114 @@
     {
      "id": "L1S3:ص",
      "text": "صَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ص#2",
      "text": "صُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ص#3",
      "text": "صِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:نص",
      "text": "نَصۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ض",
      "text": "ضَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ض#2",
      "text": "ضُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ض#3",
      "text": "ضِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:نض",
      "text": "نَضۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ط",
      "text": "طَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ط#2",
      "text": "طُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ط#3",
      "text": "طِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:نط",
      "text": "نَطۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ظ",
      "text": "ظَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ظ#2",
      "text": "ظُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ظ#3",
      "text": "ظِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:نظ",
      "text": "نَظۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -687,82 +915,114 @@
     {
      "id": "L1S3:ع",
      "text": "عَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ع#2",
      "text": "عُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ع#3",
      "text": "عِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:نع",
      "text": "نَعۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:غ",
      "text": "غَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:غ#2",
      "text": "غُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:غ#3",
      "text": "غِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:نغ",
      "text": "نَغۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ف",
      "text": "فَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ف#2",
      "text": "فُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ف#3",
      "text": "فِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:نف",
      "text": "نَفۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ق",
      "text": "قَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ق#2",
      "text": "قُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ق#3",
      "text": "قِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:نق",
      "text": "نَقۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -774,82 +1034,114 @@
     {
      "id": "L1S3:ك",
      "text": "كَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ك#2",
      "text": "كُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ك#3",
      "text": "كِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:نك",
      "text": "نَكۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ل",
      "text": "لَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ل#2",
      "text": "لُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ل#3",
      "text": "لِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:نل",
      "text": "نَلۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:م",
      "text": "مَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:م#2",
      "text": "مُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:م#3",
      "text": "مِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:نم",
      "text": "نَمۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ن",
      "text": "نَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ن#2",
      "text": "نُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ن#3",
      "text": "نِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:نن",
      "text": "نَنۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -861,82 +1153,114 @@
     {
      "id": "L1S3:ه",
      "text": "هَـ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ه#2",
      "text": "هُـ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:ه#3",
      "text": "هِـ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:نه",
      "text": "نَهۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S3:و",
      "text": "وَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:و#2",
      "text": "وُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:و#3",
      "text": "وِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:نو",
      "text": "نَوۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S3:ء",
      "text": "ءَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ء#2",
      "text": "ءُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ء#3",
      "text": "ءِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:نأ",
      "text": "نَأۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S3:ى",
      "text": "ىَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ى#2",
      "text": "ىُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:ى#3",
      "text": "ىِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S3:نى",
      "text": "نَىۡ",
-     "caption": "Sukoon"
+     "caption": "Sukoon",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -948,122 +1272,170 @@
     {
      "id": "L1S4:ب",
      "text": "بَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:با",
      "text": "بًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ب#2",
      "text": "بُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ب#3",
      "text": "بٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ب#4",
      "text": "بِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ب#5",
      "text": "بٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ت",
      "text": "تَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:تا",
      "text": "تًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ت#2",
      "text": "تُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ت#3",
      "text": "تٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ت#4",
      "text": "تِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ت#5",
      "text": "تٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ث",
      "text": "ثَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ثا",
      "text": "ثًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ث#2",
      "text": "ثُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ث#3",
      "text": "ثٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ث#4",
      "text": "ثِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ث#5",
      "text": "ثٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ج",
      "text": "جَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:جا",
      "text": "جًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ج#2",
      "text": "جُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ج#3",
      "text": "جٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ج#4",
      "text": "جِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ج#5",
      "text": "جٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1075,122 +1447,170 @@
     {
      "id": "L1S4:ح",
      "text": "حَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:حا",
      "text": "حًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ح#2",
      "text": "حُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ح#3",
      "text": "حٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ح#4",
      "text": "حِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ح#5",
      "text": "حٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:خ",
      "text": "خَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:خا",
      "text": "خًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:خ#2",
      "text": "خُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:خ#3",
      "text": "خٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:خ#4",
      "text": "خِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:خ#5",
      "text": "خٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:د",
      "text": "دَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:دا",
      "text": "دًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:د#2",
      "text": "دُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:د#3",
      "text": "دٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:د#4",
      "text": "دِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:د#5",
      "text": "دٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ذ",
      "text": "ذَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ذا",
      "text": "ذًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ذ#2",
      "text": "ذُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ذ#3",
      "text": "ذٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ذ#4",
      "text": "ذِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ذ#5",
      "text": "ذٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1202,122 +1622,170 @@
     {
      "id": "L1S4:ر",
      "text": "رَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:را",
      "text": "رًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ر#2",
      "text": "رُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ر#3",
      "text": "رٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ر#4",
      "text": "رِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ر#5",
      "text": "رٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ز",
      "text": "زَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:زا",
      "text": "زًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ز#2",
      "text": "زُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ز#3",
      "text": "زٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ز#4",
      "text": "زِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ز#5",
      "text": "زٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:س",
      "text": "سَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:سا",
      "text": "سًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:س#2",
      "text": "سُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:س#3",
      "text": "سٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:س#4",
      "text": "سِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:س#5",
      "text": "سٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ش",
      "text": "شَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:شا",
      "text": "شًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ش#2",
      "text": "شُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ش#3",
      "text": "شٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ش#4",
      "text": "شِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ش#5",
      "text": "شٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1329,122 +1797,170 @@
     {
      "id": "L1S4:ص",
      "text": "صَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:صا",
      "text": "صًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ص#2",
      "text": "صُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ص#3",
      "text": "صٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ص#4",
      "text": "صِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ص#5",
      "text": "صٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ض",
      "text": "ضَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ضا",
      "text": "ضًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ض#2",
      "text": "ضُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ض#3",
      "text": "ضٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ض#4",
      "text": "ضِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ض#5",
      "text": "ضٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ط",
      "text": "طَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:طا",
      "text": "طًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ط#2",
      "text": "طُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ط#3",
      "text": "طٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ط#4",
      "text": "طِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ط#5",
      "text": "طٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ظ",
      "text": "ظَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ظا",
      "text": "ظًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ظ#2",
      "text": "ظُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ظ#3",
      "text": "ظٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ظ#4",
      "text": "ظِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ظ#5",
      "text": "ظٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1456,122 +1972,170 @@
     {
      "id": "L1S4:ع",
      "text": "عَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:عا",
      "text": "عًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ع#2",
      "text": "عُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ع#3",
      "text": "عٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ع#4",
      "text": "عِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ع#5",
      "text": "عٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:غ",
      "text": "غَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:غا",
      "text": "غًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:غ#2",
      "text": "غُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:غ#3",
      "text": "غٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:غ#4",
      "text": "غِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:غ#5",
      "text": "غٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ف",
      "text": "فَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:فا",
      "text": "فًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ف#2",
      "text": "فُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ف#3",
      "text": "فٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ف#4",
      "text": "فِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ف#5",
      "text": "فٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ق",
      "text": "قَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:قا",
      "text": "قًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ق#2",
      "text": "قُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ق#3",
      "text": "قٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ق#4",
      "text": "قِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ق#5",
      "text": "قٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1583,122 +2147,170 @@
     {
      "id": "L1S4:ك",
      "text": "كَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:كا",
      "text": "كًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ك#2",
      "text": "كُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ك#3",
      "text": "كٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ك#4",
      "text": "كِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ك#5",
      "text": "كٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ل",
      "text": "لَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:لا",
      "text": "لًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ل#2",
      "text": "لُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ل#3",
      "text": "لٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ل#4",
      "text": "لِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ل#5",
      "text": "لٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:م",
      "text": "مَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ما",
      "text": "مًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:م#2",
      "text": "مُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:م#3",
      "text": "مٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:م#4",
      "text": "مِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:م#5",
      "text": "مٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ن",
      "text": "نَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:نا",
      "text": "نًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ن#2",
      "text": "نُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ن#3",
      "text": "نٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ن#4",
      "text": "نِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ن#5",
      "text": "نٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1710,122 +2322,170 @@
     {
      "id": "L1S4:ه",
      "text": "هَـ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ها",
      "text": "هًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ه#2",
      "text": "هُـ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ه#3",
      "text": "هٌـ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ه#4",
      "text": "هِـ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:ه#5",
      "text": "هٍـ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S4:و",
      "text": "وَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:وا",
      "text": "وًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:و#2",
      "text": "وُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:و#3",
      "text": "وٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:و#4",
      "text": "وِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:و#5",
      "text": "وٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S4:ء",
      "text": "ءَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ءا",
      "text": "ءًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ء#2",
      "text": "ءُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ء#3",
      "text": "ءٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ء#4",
      "text": "ءِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ء#5",
      "text": "ءٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S4:ى",
      "text": "ىَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:يا",
      "text": "يًا",
-     "caption": "Tanween Fath"
+     "caption": "Tanween Fath",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ى#2",
      "text": "ىُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ى#3",
      "text": "ىٌ",
-     "caption": "Tanween Damm"
+     "caption": "Tanween Damm",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ى#4",
      "text": "ىِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S4:ى#5",
      "text": "ىٍ",
-     "caption": "Tanween Kasr"
+     "caption": "Tanween Kasr",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1837,122 +2497,170 @@
     {
      "id": "L1S5:بد",
      "text": "بَدَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:باد",
      "text": "بَادَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:بد#2",
      "text": "بُدَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:بود",
      "text": "بُودَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:بد#3",
      "text": "بِدَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:بيد",
      "text": "بِيدَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:تد",
      "text": "تَدَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:تاد",
      "text": "تَادَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:تد#2",
      "text": "تُدَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:تود",
      "text": "تُودَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:تد#3",
      "text": "تِدَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:تيد",
      "text": "تِيدَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:ثد",
      "text": "ثَدَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ثاد",
      "text": "ثَادَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ثد#2",
      "text": "ثُدَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ثود",
      "text": "ثُودَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ثد#3",
      "text": "ثِدَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ثيد",
      "text": "ثِيدَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:جد",
      "text": "جَدَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:جاد",
      "text": "جَادَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:جد#2",
      "text": "جُدَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:جود",
      "text": "جُودَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:جد#3",
      "text": "جِدَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:جيد",
      "text": "جِيدَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -1964,122 +2672,170 @@
     {
      "id": "L1S5:حد",
      "text": "حَدُ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:حاد",
      "text": "حَادُ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:حد#2",
      "text": "حُدُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:حود",
      "text": "حُودُ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:حد#3",
      "text": "حِدُ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:حيد",
      "text": "حِيدُ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:خد",
      "text": "خَدُ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:خاد",
      "text": "خَادُ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:خد#2",
      "text": "خُدُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:خود",
      "text": "خُودُ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:خد#3",
      "text": "خِدُ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:خيد",
      "text": "خِيدُ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:دد",
      "text": "دَدُ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:داد",
      "text": "دَادُ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:دد#2",
      "text": "دُدُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:دود",
      "text": "دُودُ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:دد#3",
      "text": "دِدُ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ديد",
      "text": "دِيدُ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ذد",
      "text": "ذَدُ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ذاد",
      "text": "ذَادُ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ذد#2",
      "text": "ذُدُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ذود",
      "text": "ذُودُ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ذد#3",
      "text": "ذِدُ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ذيد",
      "text": "ذِيدُ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -2091,122 +2847,170 @@
     {
      "id": "L1S5:رد",
      "text": "رَدِ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:راد",
      "text": "رَادِ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:رد#2",
      "text": "رُدِ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:رود",
      "text": "رُودِ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:رد#3",
      "text": "رِدِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:ريد",
      "text": "رِيدِ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:زد",
      "text": "زَدِ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:زاد",
      "text": "زَادِ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:زد#2",
      "text": "زُدِ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:زود",
      "text": "زُودِ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:زد#3",
      "text": "زِدِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:زيد",
      "text": "زِيدِ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:سد",
      "text": "سَدِ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ساد",
      "text": "سَادِ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:سد#2",
      "text": "سُدِ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:سود",
      "text": "سُودِ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:سد#3",
      "text": "سِدِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:سيد",
      "text": "سِيدِ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:شد",
      "text": "شَدِ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:شاد",
      "text": "شَادِ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:شد#2",
      "text": "شُدِ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:شود",
      "text": "شُودِ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:شد#3",
      "text": "شِدِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:شيد",
      "text": "شِيدِ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -2218,122 +3022,170 @@
     {
      "id": "L1S5:صن",
      "text": "صَنَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:صان",
      "text": "صَانَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:صن#2",
      "text": "صُنَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:صون",
      "text": "صُونَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:صن#3",
      "text": "صِنَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:صين",
      "text": "صِينَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:ضن",
      "text": "ضَنَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:ضان",
      "text": "ضَانَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:ضن#2",
      "text": "ضُنَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:ضون",
      "text": "ضُونَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:ضن#3",
      "text": "ضِنَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:ضين",
      "text": "ضِينَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:طن",
      "text": "طَنَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:طان",
      "text": "طَانَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:طن#2",
      "text": "طُنَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:طون",
      "text": "طُونَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:طن#3",
      "text": "طِنَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:طين",
      "text": "طِينَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ظن",
      "text": "ظَنَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ظان",
      "text": "ظَانَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ظن#2",
      "text": "ظُنَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ظون",
      "text": "ظُونَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ظن#3",
      "text": "ظِنَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ظين",
      "text": "ظِينَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -2345,122 +3197,170 @@
     {
      "id": "L1S5:عن",
      "text": "عَنُ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:عان",
      "text": "عَانُ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:عن#2",
      "text": "عُنُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:عون",
      "text": "عُونُ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:عن#3",
      "text": "عِنُ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:عين",
      "text": "عِينُ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:غن",
      "text": "غَنُ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:غان",
      "text": "غَانُ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:غن#2",
      "text": "غُنُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:غون",
      "text": "غُونُ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:غن#3",
      "text": "غِنُ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:غين",
      "text": "غِينُ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:فن",
      "text": "فَنُ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:فان",
      "text": "فَانُ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:فن#2",
      "text": "فُنُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:فون",
      "text": "فُونُ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:فن#3",
      "text": "فِنُ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:فين",
      "text": "فِينُ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:قن",
      "text": "قَنُ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:قان",
      "text": "قَانُ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:قن#2",
      "text": "قُنُ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:قون",
      "text": "قُونُ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:قن#3",
      "text": "قِنُ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:قين",
      "text": "قِينُ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -2472,122 +3372,170 @@
     {
      "id": "L1S5:كن",
      "text": "كَنِ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:كان",
      "text": "كَانِ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:كن#2",
      "text": "كُنِ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:كون",
      "text": "كُونِ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:كن#3",
      "text": "كِنِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:كين",
      "text": "كِينِ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:لن",
      "text": "لَنِ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:لان",
      "text": "لَانِ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:لن#2",
      "text": "لُنِ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:لون",
      "text": "لُونِ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:لن#3",
      "text": "لِنِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:لين",
      "text": "لِينِ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:من",
      "text": "مَنِ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:مان",
      "text": "مَانِ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:من#2",
      "text": "مُنِ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:مون",
      "text": "مُونِ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:من#3",
      "text": "مِنِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:مين",
      "text": "مِينِ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:نن",
      "text": "نَنِ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:نان",
      "text": "نَانِ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:نن#2",
      "text": "نُنِ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:نون",
      "text": "نُونِ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:نن#3",
      "text": "نِنِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:نين",
      "text": "نِينِ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -2599,122 +3547,170 @@
     {
      "id": "L1S5:هر",
      "text": "هَرَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:هار",
      "text": "هَارَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:هر#2",
      "text": "هُرَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:هور",
      "text": "هُورَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:هر#3",
      "text": "هِرَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:هير",
      "text": "هِيرَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S5:ور",
      "text": "وَرَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:وار",
      "text": "وَارَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:ور#2",
      "text": "وُرَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:وور",
      "text": "وُورَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:ور#3",
      "text": "وِرَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:وير",
      "text": "وِيرَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S5:أر",
      "text": "أَرَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ءار",
      "text": "ءَارَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:أر#2",
      "text": "أُرَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:أور",
      "text": "أُورَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:إر",
      "text": "إِرَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:إير",
      "text": "إِيرَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S5:ير",
      "text": "يَرَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:يار",
      "text": "يَارَ",
-     "caption": "Madd Alif"
+     "caption": "Madd Alif",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ير#2",
      "text": "يُرَ",
-     "caption": "Damma"
+     "caption": "Damma",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:يور",
      "text": "يُورَ",
-     "caption": "Madd Waaw"
+     "caption": "Madd Waaw",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:ير#3",
      "text": "يِرَ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S5:يير",
      "text": "يِيرَ",
-     "caption": "Madd Yaa"
+     "caption": "Madd Yaa",
+     "row": 1,
+     "group": 1
     }
    ]
   },
@@ -2726,82 +3722,114 @@
     {
      "id": "L1S6:بأ",
      "text": "بَأَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:بأ#2",
      "text": "بَأَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:بب",
      "text": "بَبَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:بب#2",
      "text": "بَبَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:بت",
      "text": "بَتَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:بت#2",
      "text": "بَتَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:بث",
      "text": "بَثَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 3
     },
     {
      "id": "L1S6:بث#2",
      "text": "بَثَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 3
     },
     {
      "id": "L1S6:بج",
      "text": "بَجَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S6:بج#2",
      "text": "بَجَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S6:بح",
      "text": "بَحَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S6:بح#2",
      "text": "بَحَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S6:بخ",
      "text": "بَخَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L1S6:بخ#2",
      "text": "بَخَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L1S6:بد",
      "text": "بَدَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 3
     },
     {
      "id": "L1S6:بد#2",
      "text": "بَدَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 3
     }
    ]
   },
@@ -2813,82 +3841,114 @@
     {
      "id": "L1S6:بذ",
      "text": "بَذَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:بذ#2",
      "text": "بَذَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:بر",
      "text": "بَرَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:بر#2",
      "text": "بَرَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:بز",
      "text": "بَزَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:بز#2",
      "text": "بَزَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:بس",
      "text": "بَسَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 3
     },
     {
      "id": "L1S6:بس#2",
      "text": "بَسَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 3
     },
     {
      "id": "L1S6:بش",
      "text": "بَشَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S6:بش#2",
      "text": "بَشَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S6:بص",
      "text": "بَصَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S6:بص#2",
      "text": "بَصَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S6:بض",
      "text": "بَضَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L1S6:بض#2",
      "text": "بَضَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L1S6:بط",
      "text": "بَطَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 3
     },
     {
      "id": "L1S6:بط#2",
      "text": "بَطَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 3
     }
    ]
   },
@@ -2900,82 +3960,114 @@
     {
      "id": "L1S6:بظ",
      "text": "بَظَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:بظ#2",
      "text": "بَظَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:بع",
      "text": "بَعَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:بع#2",
      "text": "بَعَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:بغ",
      "text": "بَغَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:بغ#2",
      "text": "بَغَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:بف",
      "text": "بَفَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 3
     },
     {
      "id": "L1S6:بف#2",
      "text": "بَفَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 3
     },
     {
      "id": "L1S6:بق",
      "text": "بَقَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S6:بق#2",
      "text": "بَقَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 0
     },
     {
      "id": "L1S6:بك",
      "text": "بَكَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S6:بك#2",
      "text": "بَكَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 1
     },
     {
      "id": "L1S6:بل",
      "text": "بَلَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L1S6:بل#2",
      "text": "بَلَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 2
     },
     {
      "id": "L1S6:بم",
      "text": "بَمَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 1,
+     "group": 3
     },
     {
      "id": "L1S6:بم#2",
      "text": "بَمَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 1,
+     "group": 3
     }
    ]
   },
@@ -2987,42 +4079,58 @@
     {
      "id": "L1S6:بن",
      "text": "بَنَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:بن#2",
      "text": "بَنَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:به",
      "text": "بَهَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:به#2",
      "text": "بَهَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:بو",
      "text": "بَوَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:بو#2",
      "text": "بَوَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:بى",
      "text": "بَىَ",
-     "caption": "Fat-ha"
+     "caption": "Fat-ha",
+     "row": 0,
+     "group": 3
     },
     {
      "id": "L1S6:بى#2",
      "text": "بَىَّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 3
     }
    ]
   },
@@ -3034,32 +4142,44 @@
     {
      "id": "L1S6:عل",
      "text": "عَلِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:عل#2",
      "text": "عَلِّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:عف",
      "text": "عَفِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:عف#2",
      "text": "عَفِّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:عق",
      "text": "عَقِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:عق#2",
      "text": "عَقِّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 2
     }
    ]
   },
@@ -3071,42 +4191,58 @@
     {
      "id": "L1S6:عس",
      "text": "عَسِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:عس#2",
      "text": "عَسِّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 0
     },
     {
      "id": "L1S6:عش",
      "text": "عَشِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:عش#2",
      "text": "عَشِّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 1
     },
     {
      "id": "L1S6:عص",
      "text": "عَصِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:عص#2",
      "text": "عَصِّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 2
     },
     {
      "id": "L1S6:عض",
      "text": "عَضِ",
-     "caption": "Kasra"
+     "caption": "Kasra",
+     "row": 0,
+     "group": 3
     },
     {
      "id": "L1S6:عض#2",
      "text": "عَضِّ",
-     "caption": "Shadda"
+     "caption": "Shadda",
+     "row": 0,
+     "group": 3
     }
    ]
   },

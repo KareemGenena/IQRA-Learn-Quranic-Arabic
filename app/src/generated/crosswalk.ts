@@ -84,7 +84,14 @@ export const CROSSWALK = {
           "parts": [],
           "physical": 15,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/4",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 21,
+              "title": "Tanween",
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/21"
+            }
+          ]
         },
         {
           "id": "L1S5",
@@ -94,7 +101,14 @@ export const CROSSWALK = {
           "parts": [],
           "physical": 22,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/5",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 22,
+              "title": "Natural Madd",
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/22"
+            }
+          ]
         },
         {
           "id": "L1S6",
@@ -123,7 +137,14 @@ export const CROSSWALK = {
           ],
           "physical": 29,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/6",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 23,
+              "title": "Shadda",
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/23"
+            }
+          ]
         }
       ]
     },
@@ -163,7 +184,14 @@ export const CROSSWALK = {
           ],
           "physical": 3,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/1",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 24,
+              "title": "Letter Pairs",
+              "level": 2,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/24"
+            }
+          ]
         },
         {
           "id": "L2S2",
@@ -180,7 +208,14 @@ export const CROSSWALK = {
           ],
           "physical": 30,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/2",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 25,
+              "title": "Three-Letter Words",
+              "level": 2,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/25"
+            }
+          ]
         },
         {
           "id": "L2S3",
@@ -190,7 +225,14 @@ export const CROSSWALK = {
           "parts": [],
           "physical": 38,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/3",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 26,
+              "title": "Timing",
+              "level": 2,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/26"
+            }
+          ]
         },
         {
           "id": "L2S4",
@@ -207,7 +249,14 @@ export const CROSSWALK = {
           ],
           "physical": 41,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/4",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 27,
+              "title": "Four-Letter Words",
+              "level": 2,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/27"
+            }
+          ]
         },
         {
           "id": "L2S5",
@@ -237,6 +286,12 @@ export const CROSSWALK = {
           "physical": 47,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/5",
           "lessons": [
+            {
+              "id": 28,
+              "title": "Hamza",
+              "level": 2,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/28"
+            },
             {
               "id": 3,
               "title": "Throat Letters",
@@ -313,7 +368,14 @@ export const CROSSWALK = {
           "parts": [],
           "physical": 56,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/7",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 29,
+              "title": "Qalqala",
+              "level": 2,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/29"
+            }
+          ]
         },
         {
           "id": "L2S8",

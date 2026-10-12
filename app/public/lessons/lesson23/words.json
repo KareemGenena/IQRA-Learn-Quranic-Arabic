@@ -1,0 +1,783 @@
+{
+  "lesson": 23,
+  "title": "Shadda",
+  "titleArabic": "الشدة",
+  "kind": "letters",
+  "audioPath": "audio/lesson23/",
+  "perPage": 3,
+  "sections": [
+    {
+      "id": "p27",
+      "title": "Page 27",
+      "titleArabic": "صفحة 27",
+      "hint": "Workbook Level 1, page 27 — Shadda. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p28",
+      "title": "Page 28",
+      "titleArabic": "صفحة 28",
+      "hint": "Workbook Level 1, page 28 — Shadda. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p29",
+      "title": "Page 29",
+      "titleArabic": "صفحة 29",
+      "hint": "Workbook Level 1, page 29 — Shadda. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p30",
+      "title": "Page 30",
+      "titleArabic": "صفحة 30",
+      "hint": "Workbook Level 1, page 30 — Shadda. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p31",
+      "title": "Page 31",
+      "titleArabic": "صفحة 31",
+      "hint": "Workbook Level 1, page 31 — Shadda. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p32",
+      "title": "Page 32",
+      "titleArabic": "صفحة 32",
+      "hint": "Workbook Level 1, page 32 — Shadda. Tap a form to hear it, then trace it on the page."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "p27",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَأَ",
+          "audio": "word01a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَأَّ",
+          "audio": "word01b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 2,
+      "section": "p27",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَبَ",
+          "audio": "word02a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَبَّ",
+          "audio": "word02b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 3,
+      "section": "p27",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَتَ",
+          "audio": "word03a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَتَّ",
+          "audio": "word03b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 4,
+      "section": "p27",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَثَ",
+          "audio": "word04a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَثَّ",
+          "audio": "word04b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 5,
+      "section": "p27",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَجَ",
+          "audio": "word05a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَجَّ",
+          "audio": "word05b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 6,
+      "section": "p27",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَحَ",
+          "audio": "word06a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَحَّ",
+          "audio": "word06b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 7,
+      "section": "p27",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَخَ",
+          "audio": "word07a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَخَّ",
+          "audio": "word07b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 8,
+      "section": "p27",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَدَ",
+          "audio": "word08a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَدَّ",
+          "audio": "word08b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 9,
+      "section": "p28",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَذَ",
+          "audio": "word09a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَذَّ",
+          "audio": "word09b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 10,
+      "section": "p28",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَرَ",
+          "audio": "word10a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَرَّ",
+          "audio": "word10b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 11,
+      "section": "p28",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَزَ",
+          "audio": "word11a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَزَّ",
+          "audio": "word11b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 12,
+      "section": "p28",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَسَ",
+          "audio": "word12a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَسَّ",
+          "audio": "word12b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 13,
+      "section": "p28",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَشَ",
+          "audio": "word13a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَشَّ",
+          "audio": "word13b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 14,
+      "section": "p28",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَصَ",
+          "audio": "word14a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَصَّ",
+          "audio": "word14b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 15,
+      "section": "p28",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَضَ",
+          "audio": "word15a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَضَّ",
+          "audio": "word15b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 16,
+      "section": "p28",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَطَ",
+          "audio": "word16a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَطَّ",
+          "audio": "word16b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 17,
+      "section": "p29",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَظَ",
+          "audio": "word17a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَظَّ",
+          "audio": "word17b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 18,
+      "section": "p29",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَعَ",
+          "audio": "word18a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَعَّ",
+          "audio": "word18b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 19,
+      "section": "p29",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَغَ",
+          "audio": "word19a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَغَّ",
+          "audio": "word19b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 20,
+      "section": "p29",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَفَ",
+          "audio": "word20a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَفَّ",
+          "audio": "word20b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 21,
+      "section": "p29",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَقَ",
+          "audio": "word21a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَقَّ",
+          "audio": "word21b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 22,
+      "section": "p29",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَكَ",
+          "audio": "word22a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَكَّ",
+          "audio": "word22b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 23,
+      "section": "p29",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَلَ",
+          "audio": "word23a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَلَّ",
+          "audio": "word23b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 24,
+      "section": "p29",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَمَ",
+          "audio": "word24a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَمَّ",
+          "audio": "word24b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 25,
+      "section": "p30",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَنَ",
+          "audio": "word25a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَنَّ",
+          "audio": "word25b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 26,
+      "section": "p30",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَهَ",
+          "audio": "word26a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَهَّ",
+          "audio": "word26b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 27,
+      "section": "p30",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَوَ",
+          "audio": "word27a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَوَّ",
+          "audio": "word27b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 28,
+      "section": "p30",
+      "badges": [],
+      "forms": [
+        {
+          "text": "بَىَ",
+          "audio": "word28a.wav",
+          "timings": null
+        },
+        {
+          "text": "بَىَّ",
+          "audio": "word28b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Fat-ha",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 29,
+      "section": "p31",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَلِ",
+          "audio": "word29a.wav",
+          "timings": null
+        },
+        {
+          "text": "عَلِّ",
+          "audio": "word29b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Kasra",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 30,
+      "section": "p31",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَفِ",
+          "audio": "word30a.wav",
+          "timings": null
+        },
+        {
+          "text": "عَفِّ",
+          "audio": "word30b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Kasra",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 31,
+      "section": "p31",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَقِ",
+          "audio": "word31a.wav",
+          "timings": null
+        },
+        {
+          "text": "عَقِّ",
+          "audio": "word31b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Kasra",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 32,
+      "section": "p32",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَسِ",
+          "audio": "word32a.wav",
+          "timings": null
+        },
+        {
+          "text": "عَسِّ",
+          "audio": "word32b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Kasra",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 33,
+      "section": "p32",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَشِ",
+          "audio": "word33a.wav",
+          "timings": null
+        },
+        {
+          "text": "عَشِّ",
+          "audio": "word33b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Kasra",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 34,
+      "section": "p32",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَصِ",
+          "audio": "word34a.wav",
+          "timings": null
+        },
+        {
+          "text": "عَصِّ",
+          "audio": "word34b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Kasra",
+        "Shadda"
+      ]
+    },
+    {
+      "id": 35,
+      "section": "p32",
+      "badges": [],
+      "forms": [
+        {
+          "text": "عَضِ",
+          "audio": "word35a.wav",
+          "timings": null
+        },
+        {
+          "text": "عَضِّ",
+          "audio": "word35b.wav",
+          "timings": null
+        }
+      ],
+      "formLabels": [
+        "Kasra",
+        "Shadda"
+      ]
+    }
+  ]
+}
