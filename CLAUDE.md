@@ -1212,7 +1212,7 @@ all five points agreed, in the order they will be built:
 4. **A workbook companion page** — BUILT 2026-10-11 (section 2 "Workbook
    companion", section 3 "The workbook companion is generated"): one page
    per paper page rather than per section, `/go/<id>` on the site, the
-   "Practice workbooks" entry on the home page. Today 81 of the 1,452 items
+   "Practice workbooks" entry on the home page. Today 87 of the 1,536 items
    with Arabic play a lesson's clip; the rest wait for `Audio/Audio -
    Workbook Level N/`. Not built: keyboard walking on the companion (N / P),
    and the QR itself on the paper, still gated on the app being complete.
