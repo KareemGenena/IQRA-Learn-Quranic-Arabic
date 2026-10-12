@@ -33,6 +33,7 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { readZipEntry } from './lib/zip.mjs';
 import { STOP_DIR } from './lib/stop.mjs';
+import { exact, findTake, key, keyCounts, takesOf } from './lib/takes.mjs';
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -40,38 +41,7 @@ const root = join(here, '..', '..');
 const WB = join(root, 'Workbooks');
 const PUB = join(here, '..', 'public');
 
-/** Same as `audioKey` in src/lib/audioName.ts — the one filename rule. */
-const MARKS = /[ً-ٰۖ-ۭـࣰ-ࣲ]/g;
-const key = (s) => s.replace(MARKS, '').replace(/ٱ/g, 'ا').replace(/\s+/g, ' ').trim();
-/** The text itself, marks and all — what a reuse or a take must equal. */
-const exact = (s) => s.normalize('NFC').replace(/\s+/g, ' ').trim();
 const hasArabic = (s) => /[؀-ۿ]/.test(s);
-
-/**
- * The takes in a folder, two ways: by their exact name (marks kept — the
- * name a workbook item's take must carry, since بَ بُ بِ all strip to ب) and
- * by the filename key (marks stripped, as the author types a lesson's
- * takes). A trailing number is a take number and the highest wins. A keyed
- * lookup is only trusted where the key belongs to one item in the level.
- */
-function takesOf(dir) {
-  const exactMap = new Map();
-  const stripped = new Map();
-  if (existsSync(dir)) {
-    for (const f of readdirSync(dir)) {
-      if (!f.toLowerCase().endsWith('.wav')) continue;
-      const m = /^(.*?)(?:\s+(\d+))?$/.exec(f.replace(/\.wav$/i, ''));
-      const take = m[2] ? Number(m[2]) : 0;
-      const put = (map, k) => {
-        const cur = map.get(k);
-        if (!cur || take > cur.take) map.set(k, { file: f, take });
-      };
-      put(exactMap, exact(m[1]));
-      put(stripped, key(m[1]));
-    }
-  }
-  return { exact: exactMap, stripped };
-}
 
 const decode = (s) =>
   s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'");
@@ -183,20 +153,9 @@ for (const L of LEVELS) {
   const src = join(root, 'Audio', `Audio - Workbook Level ${L}`);
   const takes = takesOf(src);
   const stops = takesOf(join(src, STOP_DIR));
-  // How many items share each filename key: a take named without its marks
-  // can only belong to an item whose key nobody else in the level has.
-  const keyCount = new Map();
-  for (const p of pages) for (const it of p.items) keyCount.set(key(it.text), (keyCount.get(key(it.text)) ?? 0) + 1);
+  const counts = keyCounts(pages.flatMap((p) => p.items.map((it) => it.text)));
   const ambiguous = new Set();
-  const find = (set, it) => {
-    const hit = set.exact.get(exact(it.text));
-    if (hit) return hit;
-    const loose = set.stripped.get(key(it.text));
-    if (!loose) return undefined;
-    if (keyCount.get(key(it.text)) === 1) return loose;
-    ambiguous.add(`${loose.file} could be any of ${keyCount.get(key(it.text))} items keyed ${key(it.text)}`);
-    return undefined;
-  };
+  const find = (set, it) => findTake(set, it.text, counts, { ambiguous });
   const outDir = join(PUB, 'audio', `workbook0${L}`);
   const usedTakes = new Set();
   const usedStops = new Set();
@@ -252,8 +211,8 @@ for (const L of LEVELS) {
       `  ${sec.id.padEnd(5)} p.${String(sec.firstPage).padStart(2)}  ${sec.title.padEnd(40)} ${String(t.items).padStart(4)} items · ${t.lesson} from lessons · ${t.workbook} recorded here`,
     );
   }
-  const unusedTakes = [...takes.exact.values()].map((v) => v.file).filter((f) => !usedTakes.has(f));
-  const unusedStops = [...stops.exact.values()].map((v) => v.file).filter((f) => !usedStops.has(f));
+  const unusedTakes = [...takes.byExact.values()].map((v) => v.file).filter((f) => !usedTakes.has(f));
+  const unusedStops = [...stops.byExact.values()].map((v) => v.file).filter((f) => !usedStops.has(f));
   if (unusedTakes.length) console.log(`  takes matching no item: ${unusedTakes.join(', ')}`);
   if (unusedStops.length) console.log(`  ${STOP_DIR}/ takes matching no item: ${unusedStops.join(', ')}`);
   if (ambiguous.size) console.log(`  AMBIGUOUS, not used — name these with their marks: ${[...ambiguous].join('; ')}`);

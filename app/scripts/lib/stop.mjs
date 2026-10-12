@@ -11,32 +11,14 @@
  * before words.json is written: each form whose text matches a stop take
  * gains `stop: { audio, timings }`, the clip cut beside the continuing one as
  * `<clip>-waqf.wav`. The app times it with `waqf: true` and calibrates it
- * under the form's key + "-waqf".
+ * under the form's key + "-waqf". Matching is `takes.mjs`'s rule: the exact
+ * text first, the stripped key only where it is one row's.
  */
-import { existsSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { readWav, splitIntoN, writeSegment } from './wav.mjs';
+import { findTake, keyCounts, takesOf } from './takes.mjs';
 
 export const STOP_DIR = 'وقف';
-
-/**
- * The latest take per key in a folder. A trailing number is a take number,
- * never part of the word — `جئت 2.wav` replaces `جئت.wav` — and the highest
- * wins, the same rule the generators apply to the main folder.
- */
-export function latestTakes(dir, key) {
-  const best = new Map();
-  if (!existsSync(dir)) return best;
-  for (const f of readdirSync(dir)) {
-    if (!f.toLowerCase().endsWith('.wav')) continue;
-    const m = /^(.*?)(?:\s+(\d+))?$/.exec(f.replace(/\.wav$/i, ''));
-    const k = key(m[1]);
-    const take = m[2] ? Number(m[2]) : 0;
-    const cur = best.get(k);
-    if (!cur || take > cur.take) best.set(k, { file: f, take });
-  }
-  return best;
-}
 
 /** Every recorded form in a lesson, whatever its shape — the same walk the
  *  app's `lessons.ts` makes into Playables. */
@@ -61,17 +43,20 @@ function* formsOf(lesson) {
  */
 export function attachStops(lesson, audioSrc, audioOut, key) {
   const dir = join(audioSrc, STOP_DIR);
-  const takes = latestTakes(dir, key);
-  if (takes.size === 0) {
+  const takes = takesOf(dir, key);
+  if (takes.byExact.size === 0) {
     console.log(`STOP READINGS: none — no ${STOP_DIR}/ takes beside the recordings`);
     return;
   }
+  const texts = [...formsOf(lesson)].map((f) => f.arabic ?? f.text).filter(Boolean);
+  const counts = keyCounts(texts, key);
+  const ambiguous = new Set();
   const used = new Set();
   let n = 0;
   for (const form of formsOf(lesson)) {
     const text = form.arabic ?? form.text;
     if (!text || !form.audio) continue;
-    const hit = takes.get(key(text));
+    const hit = findTake(takes, text, counts, { keyFn: key, ambiguous });
     if (!hit) continue;
     const wav = readWav(join(dir, hit.file));
     const { segments } = splitIntoN(wav, 1);
@@ -82,7 +67,8 @@ export function attachStops(lesson, audioSrc, audioOut, key) {
     used.add(hit.file);
     n += 1;
   }
-  const unused = [...takes.values()].map((v) => v.file).filter((f) => !used.has(f));
+  const unused = [...takes.byExact.values()].map((v) => v.file).filter((f) => !used.has(f));
   console.log(`STOP READINGS: ${n} attached from ${STOP_DIR}/`);
   if (unused.length) console.log(`  ${STOP_DIR}/ takes matching no row: ${unused.join(', ')}`);
+  if (ambiguous.size) console.log(`  ${STOP_DIR}/ AMBIGUOUS, not used: ${[...ambiguous].join('; ')}`);
 }

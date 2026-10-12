@@ -34,6 +34,28 @@ export function audioFileName(text: string): string {
   return `${audioKey(text).replace(ILLEGAL, '')}.wav`;
 }
 
+/** The filename with the marks kept — `بَ.wav`, `بُ.wav` — for a sheet whose
+ *  rows differ only by their marks. Windows and the generators both accept
+ *  combining marks in a name; the generators match such a name exactly
+ *  (scripts/lib/takes.mjs). */
+export function audioFileNameExact(text: string): string {
+  return `${text.normalize('NFC').replace(/\s+/g, ' ').trim().replace(ILLEGAL, '')}.wav`;
+}
+
+/**
+ * Names for a whole sheet at once. Stripped of their marks, as the author
+ * types them — unless two rows would then write the same file, which is
+ * every harakat, tanween or madd drill (بَ بُ بِ, بَدَ بَادَ) and the whole
+ * workbook: then every name on the sheet keeps its marks. One rule for the
+ * sheet, never per row, so a folder is all one kind. Rows whose text is
+ * identical stay duplicates either way, and the page says so.
+ */
+export function sheetFileNames(texts: string[]): { names: string[]; keepMarks: boolean } {
+  const stripped = texts.map(audioFileName);
+  const keepMarks = new Set(stripped).size !== stripped.length;
+  return { names: keepMarks ? texts.map(audioFileNameExact) : stripped, keepMarks };
+}
+
 /**
  * True when a piece of text loses something on the way to a filename — an
  * illegal character, or nothing left at all once the marks come off. Worth

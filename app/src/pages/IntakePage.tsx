@@ -22,7 +22,7 @@
 
 import type { Reading } from '../types';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { audioFileName, nameProblem } from '../lib/audioName';
+import { nameProblem, sheetFileNames } from '../lib/audioName';
 import { readDocx, guessWordColumns } from '../lib/docxTable';
 import {
   canWriteToFolder,
@@ -199,7 +199,7 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
     .map((text) => ({ text, why: nameProblem(text) }))
     .filter((p) => p.why);
 
-  const names = list.map(audioFileName);
+  const { names, keepMarks } = sheetFileNames(list);
   const duplicates = names.filter((n, i) => names.indexOf(n) !== i);
 
   const start = () => {
@@ -216,7 +216,7 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
           id: `w${i}`,
           kind: 'word' as const,
           text,
-          fileName: audioFileName(text),
+          fileName: names[i],
           expect,
           row: i,
         })),
@@ -294,6 +294,12 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
             “{p.text}” cannot be a filename: {p.why}
           </p>
         ))}
+        {keepMarks && (
+          <p className="account-hint">
+            Filenames keep their marks on this sheet — some rows differ only by their marks (بَ · بُ ·
+            بِ), and stripped they would be one file. The generators match such names exactly.
+          </p>
+        )}
         {duplicates.length > 0 && (
           <p className="gate-error">
             Two rows would write the same file: {[...new Set(duplicates)].join(', ')}. Recording
