@@ -168,6 +168,21 @@ export function orderedLessons(lessons: LessonMeta[] = LESSONS): LessonMeta[] {
   );
 }
 
+/**
+ * The lesson read after this one — the next in the same sequence the home
+ * page shows that passes `visible` (a learner never sees a draft; the admin
+ * does). Undefined after the last.
+ */
+export function lessonAfter(
+  id: number,
+  visible: (l: LessonMeta) => boolean = () => true,
+  lessons: LessonMeta[] = LESSONS,
+): LessonMeta | undefined {
+  const ordered = orderedLessons(lessons);
+  const i = ordered.findIndex((l) => l.id === id);
+  return i < 0 ? undefined : ordered.slice(i + 1).find(visible);
+}
+
 /** The same sequence cut into its Levels, for the headings on the home page. */
 export function lessonsByLevel(lessons: LessonMeta[] = LESSONS) {
   const ordered = orderedLessons(lessons);

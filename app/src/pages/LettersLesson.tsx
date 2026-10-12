@@ -29,10 +29,26 @@ export function drawsLetterCards(lesson: Lesson): boolean {
  * lesson with the letter card swapped in, so paging, the remembered place and
  * the single-key walk are not written twice.
  */
-export function LettersLesson({ lesson, rate }: { lesson: Lesson; rate: number }) {
+export function LettersLesson({
+  lesson,
+  rate,
+  onEnd,
+}: {
+  lesson: Lesson;
+  rate: number;
+  onEnd?: () => void;
+}) {
   // Keyed by lesson: going from one song straight to the other must not carry
   // the first song's place along — React would otherwise keep the instance.
   if (lesson.song) return <SongCards key={lesson.lesson} lesson={lesson} rate={rate} />;
   const places = (lesson.words as LetterWord[]).some((w) => w.place);
-  return <SectionedLesson key={lesson.lesson} lesson={lesson} rate={rate} Card={places ? PlaceCard : LetterCard} />;
+  return (
+    <SectionedLesson
+      key={lesson.lesson}
+      lesson={lesson}
+      rate={rate}
+      Card={places ? PlaceCard : LetterCard}
+      onEnd={onEnd}
+    />
+  );
 }

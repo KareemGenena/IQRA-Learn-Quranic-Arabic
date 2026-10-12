@@ -116,8 +116,17 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   lesson; `lessonsByLevel()` in `lessons.ts` groups them. The letter lessons
   (20, 31–33) are Level 1 and were the separate "IQRA Kids" door until
   2026-10-11; `#/kids` and `#/kids/lesson/N` redirect to `#/` and
-  `#/lesson/N`. A `letters` lesson is drawn as letter cards wherever it is
-  opened (`LettersLesson`) — chosen by the lesson's kind, no longer by a route.
+  `#/lesson/N`. A lesson is drawn as letter cards wherever it is opened
+  (`LettersLesson`) when `drawsLetterCards()` says so — a song, a `place`, or
+  the bare `letter` on its words; never by `kind`, which lessons 3–7 share.
+- **Continue** — the way through, never a gate. The home page opens with one
+  card: the lesson last left unfinished, else the first not done ("Start
+  here" / "Next up" / "Continue"), with every lesson listed beneath it, ✓ on
+  the done ones. Under every lesson a "Next lesson: …" link; reaching a
+  lesson's last page, or moving on from it, marks it done; `N` walks off the
+  last page into the next lesson. Progress lives in `localStorage`
+  (`src/lib/progress.ts`, key `iqra-progress`) — on the device only so far;
+  an account will sync it additively.
 
 ---
 
@@ -1120,12 +1129,13 @@ all five points agreed, in the order they will be built:
    Level 1 heading, the old addresses redirect, and the playback-speed
    buttons now show on letter lessons too (the one thing the old skin hid).
    Nothing recorded, calibrated or numbered moved.
-2. **A "Continue" card** at the top of the home page: the next lesson in
-   reading order not yet done, the full list beneath it. Done = the learner
-   reached the last page (the per-lesson place `SectionedLesson` already
-   keeps) or passed the level's assessment; `N` should run off the end of a
-   lesson into the next. Progress on the device first, synced to the account
-   additively, like notes. No locks, ever.
+2. **A "Continue" card** — DONE on the device (2026-10-11): the card, the
+   ✓ marks, "Next lesson" under every lesson, done on reaching the last page
+   or moving on, `N` running off the end into the next lesson
+   (`src/lib/progress.ts`). Not yet: sync to the account (additively, like
+   notes — `users/{uid}/progress` and a rule), the assessment's own mark, and
+   the song strip marking itself done at its last group (its "Next lesson"
+   link does it). No locks, ever.
 3. **Two readings per word — continuing and at a stop.** A two-state switch
    in the lesson header, remembered on the device, default continuing; it
    decides what Play, `N` and the card's greying mean. A smaller second

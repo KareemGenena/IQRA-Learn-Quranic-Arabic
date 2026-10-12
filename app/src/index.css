@@ -524,6 +524,82 @@ body {
   color: var(--text-soft);
 }
 
+/* ── Continue ──────────────────────────────────────────────────────────────
+   The way through, never a gate: the lesson to pick up — the one last left
+   unfinished, else the first not done — at the top of the home page, a mark
+   on each lesson card, and "Next lesson" under every lesson. Progress lives
+   on the device (src/lib/progress.ts). */
+.continue-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 0 4px;
+  padding: 16px 20px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 18px;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.continue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.continue-card .lesson-go {
+  color: #fff;
+}
+
+.continue-label {
+  flex: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.continue-title {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.continue-level {
+  display: block;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.continue-done {
+  margin: 18px 0 4px;
+  text-align: center;
+  color: var(--text-soft);
+}
+
+.lesson-card.is-done .lesson-no {
+  background: #14513a;
+}
+
+.lesson-mark {
+  margin-left: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-soft);
+}
+
+.next-lesson {
+  margin: 26px 0 8px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.next-lesson a {
+  font-weight: 600;
+}
+
 /* Quiet enough to ignore, present enough to read out over the phone. */
 .build-stamp {
   margin: 28px 0 4px;

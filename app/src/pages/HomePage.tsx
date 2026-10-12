@@ -1,7 +1,9 @@
-import { LESSONS, lessonsByLevel } from '../lib/lessons';
+import { LESSONS, lessonsByLevel, orderedLessons } from '../lib/lessons';
 import { canSeeLesson, lessonStatus } from '../lib/appConfig';
+import { continueWith, readProgress, stateOf } from '../lib/progress';
 import type { AppConfig } from '../lib/appConfig';
 import type { LessonMeta } from '../lib/lessons';
+import type { ProgressMap } from '../lib/progress';
 
 /**
  * The home page: one curriculum under three Level headings — the same Levels
@@ -15,20 +17,30 @@ import type { LessonMeta } from '../lib/lessons';
  * level heading is only shown when something is published under it, so a
  * learner is never sent to an empty room.
  */
-function LessonList({ lessons, config }: { lessons: LessonMeta[]; config: AppConfig }) {
+function LessonList({
+  lessons,
+  config,
+  progress,
+}: {
+  lessons: LessonMeta[];
+  config: AppConfig;
+  progress: ProgressMap;
+}) {
   return (
     <ul className="lesson-list">
       {lessons.map((l, i) => {
         const status = lessonStatus(config, l.id);
+        const state = stateOf(progress, l.id);
         return (
           <li key={l.id}>
-            <a className="lesson-card" href={`#/lesson/${l.id}`}>
-              <span className="lesson-no">{i + 1}</span>
+            <a className={`lesson-card is-${state}`} href={`#/lesson/${l.id}`}>
+              <span className="lesson-no">{state === 'done' ? '✓' : i + 1}</span>
               <span className="lesson-body">
                 <span className="lesson-title">
                   {l.title}
                   {/* Only the admin ever sees an unpublished lesson here. */}
                   {status !== 'published' && <span className={`status-pill ${status}`}>{status}</span>}
+                  {state === 'started' && <span className="lesson-mark">in progress</span>}
                 </span>
                 <span className="lesson-ar" dir="rtl" lang="ar">
                   {l.titleArabic}
@@ -47,9 +59,18 @@ function LessonList({ lessons, config }: { lessons: LessonMeta[]; config: AppCon
 }
 
 export function HomePage({ config, admin }: { config: AppConfig; admin: boolean }) {
+  const visible = (l: LessonMeta) => canSeeLesson(config, l.id, admin);
   const levels = lessonsByLevel(LESSONS)
-    .map((lv) => ({ ...lv, lessons: lv.lessons.filter((l) => canSeeLesson(config, l.id, admin)) }))
+    .map((lv) => ({ ...lv, lessons: lv.lessons.filter(visible) }))
     .filter((lv) => lv.lessons.length > 0);
+
+  // The way through: one card at the top saying where to pick up, and the
+  // whole curriculum beneath it. A default, never a gate.
+  const progress = readProgress();
+  const ordered = orderedLessons(LESSONS).filter(visible);
+  const next = continueWith(ordered, progress);
+  const anyDone = ordered.some((l) => stateOf(progress, l.id) === 'done');
+  const label = !next ? '' : stateOf(progress, next.id) === 'started' ? 'Continue' : anyDone ? 'Next up' : 'Start here';
 
   return (
     <main className="home">
@@ -57,6 +78,22 @@ export function HomePage({ config, admin }: { config: AppConfig; admin: boolean 
         Choose a lesson. Tap any word to hear it — each letter lights up exactly as it is
         pronounced.
       </p>
+
+      {next && (
+        <a className="continue-card" href={`#/lesson/${next.id}`}>
+          <span className="continue-label">{label}</span>
+          <span className="lesson-body">
+            <span className="continue-title">{next.title}</span>
+            <span className="continue-level">Level {next.level}</span>
+          </span>
+          <span className="lesson-go" aria-hidden="true">
+            ›
+          </span>
+        </a>
+      )}
+      {!next && ordered.length > 0 && (
+        <p className="continue-done">You have been through every lesson. Pick any one to review.</p>
+      )}
 
       {levels.map((lv) => (
         <section key={lv.level} className="level-section">
@@ -77,7 +114,7 @@ export function HomePage({ config, admin }: { config: AppConfig; admin: boolean 
               <p className="lesson-blurb">{lv.blurb}</p>
             </div>
           </div>
-          <LessonList lessons={lv.lessons} config={config} />
+          <LessonList lessons={lv.lessons} config={config} progress={progress} />
         </section>
       ))}
 

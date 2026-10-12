@@ -3,6 +3,7 @@ import type { ComponentType } from 'react';
 import { ItemCard } from '../components/ItemCard';
 import { stopActivePlayback } from '../lib/playback';
 import { sectionKey, toItems } from '../lib/lessons';
+import { markDone } from '../lib/progress';
 import type { Lesson, LessonItem, LessonSection } from '../types';
 
 interface Page {
@@ -97,10 +98,15 @@ export function SectionedLesson({
    *  bit of the navigation — paging, the remembered place, the single-key
    *  walk — which is the point of not writing a second lesson page. */
   Card = ItemCard,
+  /** Called when Next walks off the last page: the lesson is done, and the
+   *  caller decides where to go — the next lesson, for a learner driving
+   *  the whole sequence by voice. */
+  onEnd,
 }: {
   lesson: Lesson;
   rate: number;
   Card?: ComponentType<CardProps>;
+  onEnd?: () => void;
 }) {
   const pages = useMemo(() => buildPages(lesson), [lesson]);
   // A remembered place can outlive the lesson it was taken in — a rebuild can
@@ -206,12 +212,22 @@ export function SectionedLesson({
         return;
       }
       const nextPage = pageNo + (delta > 0 ? 1 : -1);
-      if (nextPage < 0 || nextPage >= pages.length) return;
+      if (nextPage >= pages.length) {
+        onEnd?.();
+        return;
+      }
+      if (nextPage < 0) return;
       landOn.current = delta > 0 ? 'first' : 'last';
       goto(nextPage);
     },
-    [step, sequence.length, playStep, pageNo, pages.length, goto],
+    [step, sequence.length, playStep, pageNo, pages.length, goto, onEnd],
   );
+
+  // Reaching the last page is what "done" means for the Continue card on the
+  // home page — generous on purpose; see src/lib/progress.ts.
+  useEffect(() => {
+    if (pageNo === pages.length - 1) markDone(lesson.lesson);
+  }, [pageNo, pages.length, lesson.lesson]);
 
   const playAll = useCallback(async () => {
     if (playingAll) {

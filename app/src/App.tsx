@@ -15,7 +15,8 @@ import { LessonManager } from './components/LessonManager';
 import { useAccount } from './lib/useAccount';
 import { storeCloudSnapshot } from './lib/calibration';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
-import { LESSONS, loadLesson } from './lib/lessons';
+import { LESSONS, lessonAfter, loadLesson } from './lib/lessons';
+import { markDone, markOpened } from './lib/progress';
 import { cachedConfig, canSeeLesson, canUseFeature, fetchConfig, lessonStatus } from './lib/appConfig';
 import type { AppConfig } from './lib/appConfig';
 import type { Account } from './lib/useAccount';
@@ -168,13 +169,26 @@ export default function App() {
   }, [lesson]);
 
   const meta = LESSONS.find((l) => l.id === route.lessonId);
+  const lessonAllowed = route.lessonId === 0 || canSeeLesson(config, route.lessonId, admin);
+
+  // Opening a lesson is the first mark of progress (src/lib/progress.ts).
+  useEffect(() => {
+    if (route.page === 'lesson' && route.lessonId > 0 && lessonAllowed) markOpened(route.lessonId);
+  }, [route.page, route.lessonId, lessonAllowed]);
+
+  // The way on from this lesson: the next the learner may see. Moving on
+  // marks this one done — a learner who skips ahead is where they are.
+  const next = route.lessonId > 0 ? lessonAfter(route.lessonId, (l) => canSeeLesson(config, l.id, admin)) : undefined;
+  const moveOn = () => {
+    markDone(route.lessonId);
+    if (next) window.location.hash = `#/lesson/${next.id}`;
+  };
   /** The bare sign-in screen: no page title, no second sign-in button. */
   const signingIn =
     (route.page === 'account' || route.page === 'classes' || route.page === 'recordings') &&
     !account.signedIn;
   const showLaser = canUseFeature(config, 'laser', admin);
   const showNotes = canUseFeature(config, 'notes', admin);
-  const lessonAllowed = route.lessonId === 0 || canSeeLesson(config, route.lessonId, admin);
 
   return (
     <div className={`app ${laser ? 'laser-on' : ''}`}>
@@ -350,12 +364,29 @@ export default function App() {
                     </p>
                   )}
                   {drawsLetterCards(lesson) ? (
-                    <LettersLesson lesson={lesson} rate={rate} />
+                    <LettersLesson lesson={lesson} rate={rate} onEnd={next ? moveOn : undefined} />
                   ) : lesson.kind === 'words' ? (
                     <WordsLesson lesson={lesson} rate={rate} />
                   ) : (
-                    <SectionedLesson lesson={lesson} rate={rate} />
+                    <SectionedLesson lesson={lesson} rate={rate} onEnd={next ? moveOn : undefined} />
                   )}
+                  {/* The way on. Always shown, never required: the home page
+                      lists every lesson, and this is only the default path. */}
+                  <p className="next-lesson">
+                    {next ? (
+                      <a
+                        href={`#/lesson/${next.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          moveOn();
+                        }}
+                      >
+                        Next lesson: {next.title} ›
+                      </a>
+                    ) : (
+                      <span>This is the last lesson for now.</span>
+                    )}
+                  </p>
                 </>
               )}
             </>
