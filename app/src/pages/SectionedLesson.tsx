@@ -71,6 +71,10 @@ const placeKey = (lessonId: number) => `iqra-place-lesson${lessonId}`;
 /** -1 means "not started here yet", so the first Next plays the first word. */
 const NOT_STARTED = -1;
 
+/** How long the "pick up where you left off" bubble stays, unless a tap or a
+ *  key elsewhere takes it away first. */
+const RESUME_MS = 6000;
+
 function readPlace(lessonId: number): { page: number; step: number } {
   try {
     const raw = localStorage.getItem(placeKey(lessonId));
@@ -109,18 +113,29 @@ export function SectionedLesson({
   onEnd?: () => void;
 }) {
   const pages = useMemo(() => buildPages(lesson), [lesson]);
+  // A lesson always opens on its first page (the author's call, 2026-10-11:
+  // landing part-way through read as a fault). The remembered place is
+  // offered instead, once, in a bubble that goes away by itself.
+  const [pageNo, setPageNo] = useState(0);
   // A remembered place can outlive the lesson it was taken in — a rebuild can
   // leave fewer pages than there were — so it is clamped, never trusted.
-  const [pageNo, setPageNo] = useState(() =>
-    Math.min(readPlace(lesson.lesson).page, Math.max(0, pages.length - 1)),
-  );
+  const [resume, setResume] = useState<{ page: number; step: number } | null>(() => {
+    const p = readPlace(lesson.lesson);
+    const page = Math.min(p.page, Math.max(0, pages.length - 1));
+    return page > 0 ? { page, step: p.step } : null;
+  });
+  /** The step to land on after a resume turns the page. */
+  const resumeStep = useRef<number | null>(null);
+  /** While the learner has not moved, the remembered place is left alone, so
+   *  an ignored bubble does not cost the bookmark. */
+  const keepPlace = useRef(resume !== null);
   const [playingAll, setPlayingAll] = useState(false);
   const [showContents, setShowContents] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const playersRef = useRef(new Map<string, () => Promise<void>>());
   const cancelAllRef = useRef(false);
   /** How far along this page's walk the learner is, and where to resume. */
-  const [step, setStep] = useState(() => readPlace(lesson.lesson).step);
+  const [step, setStep] = useState(NOT_STARTED);
   /** After a page turn, whether to land on its first word or its last. */
   const landOn = useRef<'first' | 'last' | null>(null);
 
@@ -297,8 +312,39 @@ export function SectionedLesson({
   useEffect(() => {
     if (lastPage.current === pageNo) return;
     lastPage.current = pageNo;
+    if (resumeStep.current !== null) {
+      // Picking up where they left off: the same page AND the same word, so
+      // the next N carries on from there rather than from the page's top.
+      setStep(resumeStep.current);
+      resumeStep.current = null;
+      return;
+    }
     if (!landOn.current) setStep(NOT_STARTED);
   }, [pageNo]);
+
+  // The bubble goes away on its own, or on any tap or key outside it.
+  useEffect(() => {
+    if (!resume) return;
+    const timer = window.setTimeout(() => setResume(null), RESUME_MS);
+    const away = (e: Event) => {
+      if ((e.target as Element | null)?.closest?.('.resume-toast')) return;
+      setResume(null);
+    };
+    window.addEventListener('pointerdown', away, true);
+    window.addEventListener('keydown', away, true);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('pointerdown', away, true);
+      window.removeEventListener('keydown', away, true);
+    };
+  }, [resume]);
+
+  const pickUp = useCallback(() => {
+    if (!resume) return;
+    setResume(null);
+    resumeStep.current = resume.step;
+    goto(resume.page);
+  }, [resume, goto]);
 
   // After a page turn started by Next or Previous, carry on from the right
   // end of the new page rather than making the learner find their place.
@@ -309,8 +355,12 @@ export function SectionedLesson({
     playStep(at);
   }, [sequence, playStep]);
 
-  // Remember the place, so returning to a lesson resumes it.
+  // Remember the place, so returning to a lesson can offer to resume it.
   useEffect(() => {
+    // Opening on page one is not a move: the old bookmark stays until the
+    // learner turns a page or plays a word.
+    if (keepPlace.current && pageNo === 0 && step === NOT_STARTED) return;
+    keepPlace.current = false;
     try {
       localStorage.setItem(placeKey(lesson.lesson), JSON.stringify({ page: pageNo, step }));
     } catch {
@@ -335,6 +385,13 @@ export function SectionedLesson({
 
   return (
     <main className="pairs-lesson">
+      {resume && (
+        <div className="resume-toast" role="status">
+          <button type="button" className="btn" onClick={pickUp}>
+            Pick up where you left off? Screen {resume.page + 1} of {pages.length}
+          </button>
+        </div>
+      )}
       <section className={`section-head ${page.quiz ? 'quiz' : sectionKey(page.section ?? {})}`}>
         <h3 ref={headingRef} tabIndex={-1}>
           {heading}

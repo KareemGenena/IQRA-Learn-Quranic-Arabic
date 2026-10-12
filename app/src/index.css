@@ -911,6 +911,31 @@ body {
   cursor: default;
 }
 
+/* ── "Pick up where you left off?" ─────────────────────────────────────────
+   A lesson always opens on its first page. The remembered place is offered
+   for a few seconds in a bubble that goes away on its own, or on any tap or
+   key elsewhere — never imposed. */
+.resume-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 20;
+  max-width: calc(100vw - 32px);
+}
+
+.resume-toast .btn {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  box-shadow: var(--shadow-lift);
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 /* ---------- admin: what the public sees ---------- */
 
 .manager {
