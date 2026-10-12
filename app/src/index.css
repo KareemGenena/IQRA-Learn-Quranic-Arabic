@@ -1615,6 +1615,39 @@ body {
   cursor: default;
 }
 
+/* ── Two readings ──────────────────────────────────────────────────────────
+   Continuing (the word with its final vowel) or at a stop (as read when you
+   stop on it). The switch in the lesson header sets what the big button on
+   every card plays; the small button under a word plays the other reading
+   once, so both are one tap away. See StopReading in types.ts. */
+.reading-group {
+  margin-inline-start: 10px;
+}
+
+.alt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 10px 8px;
+  padding: 4px 10px 4px 6px;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--text-soft);
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.alt-btn.playing {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.alt-btn .play-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
 /* ---------- admin gate ---------- */
 
 .admin-gate {

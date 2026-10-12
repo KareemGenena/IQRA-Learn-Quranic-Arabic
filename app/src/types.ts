@@ -3,12 +3,30 @@
  *  entry is when speech ends. null = not calibrated; timings are computed. */
 export type Timings = number[] | null;
 
+/**
+ * The same word read at a stop — the final vowel dropped, ة heard as ه, a
+ * madd before the last letter held — recorded as its own take in a وقف/
+ * subfolder of the lesson's audio folder and cut by the generator beside the
+ * continuing clip (`<clip>-waqf.wav`; scripts/lib/stop.mjs). Timed as the
+ * continuing text with `waqf: true`; calibrated under the form's key +
+ * "-waqf". Every clip recorded before 2026-10-11 is the continuing reading.
+ */
+export interface StopReading {
+  audio: string;
+  timings: Timings;
+}
+
+/** Which reading a card plays and draws: the word as it is read on, with its
+ *  final vowel, or as it is read when you stop on it. */
+export type Reading = 'continuing' | 'stop';
+
 /** Lesson 1 shape: one word, one recording. */
 export interface SimpleWord {
   id: number;
   arabic: string;
   audio: string;
   timings: Timings;
+  stop?: StopReading;
 }
 
 /** Lesson 2 shape: a word shown bare and again with ال. */
@@ -16,6 +34,7 @@ export interface WordForm {
   text: string;
   audio: string;
   timings: Timings;
+  stop?: StopReading;
 }
 
 export type LamType = 'qamariyya' | 'shamsiyya';
@@ -46,6 +65,7 @@ export interface LetterWord {
   text: string;
   audio: string;
   timings: Timings;
+  stop?: StopReading;
   meaning?: string;
   badges?: string[];
   /** Which letter to light up, and which occurrence of it. */
@@ -53,7 +73,7 @@ export interface LetterWord {
   /** Some rows carry several forms of the same word rather than one
    *  `text`/`audio` — a contrast pair, or a word said alone then after وَ
    *  and ثُمَّ. */
-  forms?: { text: string; audio: string; timings: Timings }[];
+  forms?: { text: string; audio: string; timings: Timings; stop?: StopReading }[];
   /** Which lam rule applies, for the silent-letter coloring. */
   lam?: LamType;
   /** A picture that belongs with this card — a waveform, a diagram. */
@@ -167,6 +187,8 @@ export interface Playable {
   text: string;
   audio: string;
   timings: Timings;
+  /** The same form read at a stop, when it was recorded. */
+  stop?: StopReading;
   /** Cluster indices that are written but NOT pronounced (the silent
    *  shamsiyya lam). They are never highlighted and get no time. */
   silentClusters: number[];

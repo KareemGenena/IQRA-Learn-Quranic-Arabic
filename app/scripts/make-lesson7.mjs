@@ -32,6 +32,7 @@ import { mkdirSync, readdirSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
+import { attachStops } from './lib/stop.mjs';
 import { readZipEntry } from './lib/zip.mjs';
 import { addMaddSigns, normaliseZeros } from './lib/arabic.mjs';
 import { letterAfter } from './lib/mushaf.mjs';
@@ -435,6 +436,7 @@ const lesson = {
   words,
 };
 mkdirSync(dirname(LESSON_OUT), { recursive: true });
+attachStops(lesson, AUDIO_SRC, AUDIO_OUT, key);
 writeFileSync(LESSON_OUT, JSON.stringify(lesson, null, 2), 'utf8');
 
 console.log(`${words.length} cards across ${sections.length} sections (ids 1–${id})`);

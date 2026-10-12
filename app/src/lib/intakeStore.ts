@@ -58,6 +58,12 @@ export interface IntakeSession {
   speaker: string;
   /** Whether the speaker has agreed their recording may be used and kept. */
   consent: boolean;
+  /**
+   * Which reading this session records — one per session, never mixed.
+   * "stop" writes into a وقف/ subfolder under the same filenames (Reading in
+   * types.ts). Absent on sessions saved before 2026-10-11: continuing.
+   */
+  reading?: 'continuing' | 'stop';
   slots: Slot[];
   /** slot id → the take number that was kept. */
   chosen: Record<string, number>;

@@ -2,7 +2,7 @@ import { SectionedLesson } from './SectionedLesson';
 import { LetterCard } from '../components/LetterCard';
 import { PlaceCard } from '../components/PlaceCard';
 import { SongCards } from '../components/SongCards';
-import type { Lesson, LetterWord } from '../types';
+import type { Lesson, LetterWord, Reading } from '../types';
 
 /**
  * True for a lesson drawn as letter cards, a song strip or the places
@@ -33,10 +33,12 @@ export function LettersLesson({
   lesson,
   rate,
   onEnd,
+  reading,
 }: {
   lesson: Lesson;
   rate: number;
   onEnd?: () => void;
+  reading?: Reading;
 }) {
   // Keyed by lesson: going from one song straight to the other must not carry
   // the first song's place along — React would otherwise keep the instance.
@@ -49,6 +51,7 @@ export function LettersLesson({
       rate={rate}
       Card={places ? PlaceCard : LetterCard}
       onEnd={onEnd}
+      reading={reading}
     />
   );
 }

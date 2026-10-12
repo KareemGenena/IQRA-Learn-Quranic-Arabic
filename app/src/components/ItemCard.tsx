@@ -2,42 +2,74 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { ArabicWord } from './ArabicWord';
 import { PlayIcon } from './PlayIcon';
 import { usePlayable } from '../lib/usePlayable';
-import type { Lesson, LessonItem, Playable } from '../types';
+import { stopPlayable } from '../lib/lessons';
+import type { Lesson, LessonItem, Playable, Reading } from '../types';
 
 interface FormProps {
   lesson: Lesson;
   playable: Playable;
   rate: number;
   label: string;
+  reading: Reading;
   register?: (key: string, play: () => Promise<void>) => void;
 }
 
-function Form({ lesson, playable, rate, label, register }: FormProps) {
-  const { clusters, activeIndex, activePhase, playing, play, toggle } = usePlayable(lesson, playable, rate);
+/**
+ * One form of the word, with both of its readings when two were recorded.
+ * The reading the lesson is set to is the big button — what Play, Play all
+ * and the N key mean — and the other is a small button beneath, so either is
+ * one tap away without touching the switch. The word is drawn for whichever
+ * is sounding, and at rest for the reading the lesson is set to: at a stop,
+ * with its final vowel greyed.
+ */
+function Form({ lesson, playable, rate, label, reading, register }: FormProps) {
+  const stop = stopPlayable(playable);
+  const primary = reading === 'stop' && stop ? stop : playable;
+  const other = reading === 'stop' && stop ? playable : stop;
+  const main = usePlayable(lesson, primary, rate);
+  // Hooks are unconditional: a form with one reading gets a second player of
+  // that same reading, never shown and never used.
+  const alt = usePlayable(lesson, other ?? primary, rate);
+  const sounding = other && alt.playing ? { playable: other, player: alt } : { playable: primary, player: main };
 
   useEffect(() => {
-    register?.(playable.key, play);
-  }, [register, playable.key, play]);
+    // Under the form's own key whichever reading is primary, so the page's
+    // walk finds it.
+    register?.(playable.key, main.play);
+  }, [register, playable.key, main.play]);
 
   return (
-    <button
-      type="button"
-      className={`form-btn ${playing ? 'playing' : ''}`}
-      onClick={() => void toggle()}
-      aria-label={label}
-    >
-      <ArabicWord
-        text={playable.text}
-        clusters={clusters}
-        activeIndex={activeIndex}
-        activePhase={activePhase}
-        prefixClusters={playable.prefixClusters}
-        silentClusters={playable.silentClusters}
-        markCluster={playable.highlightCluster}
-        dimFinalMark={playable.dimFinalMark}
-      />
-      <PlayIcon playing={playing} />
-    </button>
+    <>
+      <button
+        type="button"
+        className={`form-btn ${main.playing ? 'playing' : ''}`}
+        onClick={() => void main.toggle()}
+        aria-label={label}
+      >
+        <ArabicWord
+          text={playable.text}
+          clusters={main.clusters}
+          activeIndex={sounding.player.activeIndex}
+          activePhase={sounding.player.activePhase}
+          prefixClusters={playable.prefixClusters}
+          silentClusters={playable.silentClusters}
+          markCluster={playable.highlightCluster}
+          dimFinalMark={sounding.playable.dimFinalMark}
+        />
+        <PlayIcon playing={main.playing} />
+      </button>
+      {other && (
+        <button
+          type="button"
+          className={`alt-btn ${alt.playing ? 'playing' : ''}`}
+          onClick={() => void alt.toggle()}
+          aria-label={`${label}, ${other.waqf ? 'at a stop' : 'continuing'}`}
+        >
+          <PlayIcon playing={alt.playing} />
+          {other.waqf ? 'At a stop' : 'Continuing'}
+        </button>
+      )}
+    </>
   );
 }
 
@@ -50,12 +82,14 @@ interface Props {
   register?: (key: string, play: () => Promise<void>) => void;
   /** Hide the badges (used in the quiz, where the learner must decide). */
   hideBadges?: boolean;
+  /** Which reading the big button plays, where a form has two. */
+  reading?: Reading;
 }
 
 /** Broadcast so at most one meaning is open at a time. */
 const TIP_EVENT = 'iqra-meaning-open';
 
-export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }: Props) {
+export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges, reading = 'continuing' }: Props) {
   const [showMeaning, setShowMeaning] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const tipId = useId();
@@ -170,6 +204,7 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges }
                 playable={form}
                 rate={rate}
                 label={caption ? `Play ${displayNo} ${caption}` : i === 0 ? `Play ${displayNo}` : `Play ${displayNo} with al`}
+                reading={reading}
                 register={register}
               />
             </div>

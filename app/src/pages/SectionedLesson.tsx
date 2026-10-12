@@ -4,7 +4,7 @@ import { ItemCard } from '../components/ItemCard';
 import { stopActivePlayback } from '../lib/playback';
 import { sectionKey, toItems } from '../lib/lessons';
 import { markDone } from '../lib/progress';
-import type { Lesson, LessonItem, LessonSection } from '../types';
+import type { Lesson, LessonItem, LessonSection, Reading } from '../types';
 
 interface Page {
   items: LessonItem[];
@@ -93,6 +93,7 @@ export interface CardProps {
   displayNo: number;
   register?: (key: string, play: () => Promise<void>) => void;
   hideBadges?: boolean;
+  reading?: Reading;
 }
 
 export function SectionedLesson({
@@ -106,11 +107,13 @@ export function SectionedLesson({
    *  caller decides where to go — the next lesson, for a learner driving
    *  the whole sequence by voice. */
   onEnd,
+  reading,
 }: {
   lesson: Lesson;
   rate: number;
   Card?: ComponentType<CardProps>;
   onEnd?: () => void;
+  reading?: Reading;
 }) {
   const pages = useMemo(() => buildPages(lesson), [lesson]);
   // A lesson always opens on its first page (the author's call, 2026-10-11:
@@ -412,6 +415,7 @@ export function SectionedLesson({
             displayNo={i + 1}
             register={register}
             hideBadges={page.quiz}
+            reading={reading}
           />
         ))}
       </div>

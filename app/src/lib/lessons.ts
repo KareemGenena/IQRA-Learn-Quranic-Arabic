@@ -211,6 +211,7 @@ export function barePlayable(word: PairWord): Playable {
     text: word.bare.text,
     audio: word.bare.audio,
     timings: word.bare.timings,
+    stop: word.bare.stop,
     silentClusters: derivedSilent(word.bare.text),
     prefixClusters: 0,
   };
@@ -222,6 +223,7 @@ export function withAlPlayable(word: PairWord): Playable {
     text: word.withAl.text,
     audio: word.withAl.audio,
     timings: word.withAl.timings,
+    stop: word.withAl.stop,
     // In a shamsiyya word the lam is written but not pronounced — it
     // assimilates into the doubled letter that follows.
     silentClusters: derivedSilent(word.withAl.text),
@@ -235,9 +237,38 @@ export function simplePlayable(word: SimpleWord): Playable {
     text: word.arabic,
     audio: word.audio,
     timings: word.timings,
+    stop: word.stop,
     silentClusters: derivedSilent(word.arabic),
     prefixClusters: 0,
   };
+}
+
+/**
+ * The stop reading of a playable, when one was recorded: the same text, its
+ * own clip, timed as a reading at a stop (the last vowel dropped, a madd
+ * before it held) and calibrated under its own key.
+ */
+export function stopPlayable(p: Playable): Playable | undefined {
+  if (!p.stop) return undefined;
+  return {
+    ...p,
+    key: `${p.key}-waqf`,
+    audio: p.stop.audio,
+    timings: p.stop.timings,
+    waqf: true,
+    dimFinalMark: true,
+    stop: undefined,
+  };
+}
+
+type AnyWord = Partial<SimpleWord & PairWord & LetterWord>;
+
+/** Whether any form in the lesson has a stop reading — the switch in the
+ *  lesson header is only shown when there is something for it to switch. */
+export function lessonHasStop(lesson: Lesson): boolean {
+  return (lesson.words as AnyWord[]).some(
+    (w) => !!(w.stop || w.bare?.stop || w.withAl?.stop || w.forms?.some((f) => f.stop)),
+  );
 }
 
 /**
@@ -268,6 +299,7 @@ function letterPlayables(word: LetterWord): Playable[] {
       text: f.text,
       audio: f.audio,
       timings: f.timings,
+      stop: f.stop,
       silentClusters: derivedSilent(f.text),
       letterNames: word.letterNames,
       waqf: word.waqf,
@@ -283,6 +315,7 @@ function letterPlayables(word: LetterWord): Playable[] {
       text: word.text,
       audio: word.audio,
       timings: word.timings,
+      stop: word.stop,
       silentClusters: derivedSilent(word.text),
       letterNames: word.letterNames,
       waqf: word.waqf,
@@ -333,8 +366,16 @@ export function toItems(lesson: Lesson): LessonItem[] {
 /** A section's stable key, whichever lesson shape it came from. */
 export const sectionKey = (s: { id?: string; type?: string }) => s.id ?? s.type ?? '';
 
-/** Every playable in a lesson, in teaching order — used by the admin page. */
+/** Every playable in a lesson, in teaching order, each followed by its stop
+ *  reading where one exists — the admin page calibrates both. */
 export function allPlayables(lesson: Lesson): { label: string; playable: Playable }[] {
+  return continuingPlayables(lesson).flatMap((u) => {
+    const stop = stopPlayable(u.playable);
+    return stop ? [u, { label: `${u.label} at a stop`, playable: stop }] : [u];
+  });
+}
+
+function continuingPlayables(lesson: Lesson): { label: string; playable: Playable }[] {
   if (lesson.kind === 'pairs') {
     return (lesson.words as PairWord[]).flatMap((w) => [
       { label: `${w.id}`, playable: barePlayable(w) },

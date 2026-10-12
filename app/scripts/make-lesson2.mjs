@@ -19,6 +19,7 @@ import { mkdirSync, readdirSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readWav, findSegments, writeSegment } from './lib/wav.mjs';
+import { attachStops } from './lib/stop.mjs';
 import { readZipEntry } from './lib/zip.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -233,6 +234,7 @@ const lesson = {
   words: words.map(({ audioKey, ...w }) => w),
 };
 mkdirSync(dirname(LESSON_OUT), { recursive: true });
+attachStops(lesson, AUDIO_SRC, AUDIO_OUT, bare);
 writeFileSync(LESSON_OUT, JSON.stringify(lesson, null, 2), 'utf8');
 
 // ── report ────────────────────────────────────────────────────────────────

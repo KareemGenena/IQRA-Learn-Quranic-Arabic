@@ -20,6 +20,7 @@
  *   the fact — see `speakerProfile.ts`.
  */
 
+import type { Reading } from '../types';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { audioFileName, nameProblem } from '../lib/audioName';
 import { readDocx, guessWordColumns } from '../lib/docxTable';
@@ -50,6 +51,10 @@ import { LEVEL_BAND, checkTake, dbfs, levelAdvice, verdict } from '../lib/takeCh
 import { encodeWav } from '../lib/wavFile';
 
 type TakeMap = Record<string, Take[]>;
+
+/** The subfolder a stop session writes into — the same string as STOP_DIR in
+ *  scripts/lib/stop.mjs, which is what reads it. */
+const STOP_DIR = 'وقف';
 
 export function IntakePage() {
   const [session, setSession] = useState<IntakeSession | null>(null);
@@ -138,6 +143,7 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
   const [speaker, setSpeaker] = useState('');
   const [consent, setConsent] = useState(false);
   const [expect, setExpect] = useState(1);
+  const [reading, setReading] = useState<Reading>('continuing');
   const [error, setError] = useState('');
 
   /**
@@ -203,6 +209,7 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
       batch: batch.trim(),
       speaker: speaker.trim(),
       consent,
+      reading,
       slots: [
         ...profileSlots(),
         ...list.map((text, i) => ({
@@ -305,6 +312,18 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
         <p className="account-hint">
           This is what the splitter will expect to find. Any slot can be changed on its own once the
           list is made.
+        </p>
+        <label className="intake-field">
+          <span>Reading</span>
+          <select value={reading} onChange={(e) => setReading(e.target.value as Reading)}>
+            <option value="continuing">Continuing — each word with its final vowel</option>
+            <option value="stop">At a stop — each word as read when you stop on it</option>
+          </select>
+        </label>
+        <p className="account-hint">
+          One reading per session, never mixed. Stop takes are written into a <b>وقف</b> folder inside
+          the folder you choose, under the same filenames; the generator attaches each beside its
+          continuing clip.
         </p>
       </section>
 
@@ -866,6 +885,7 @@ function manifest(session: IntakeSession, takes: TakeMap) {
     source: session.source,
     speaker: session.speaker,
     consent: session.consent,
+    reading: session.reading ?? 'continuing',
     createdAt: new Date(session.createdAt).toISOString(),
     writtenAt: new Date().toISOString(),
     userAgent: navigator.userAgent,
@@ -932,19 +952,23 @@ function SavePanel({
         setStatus('That folder is no longer writable — choose it again.');
         return;
       }
-      const before = new Set(await listFolder(dir));
+      // A stop session writes into a وقف/ folder inside the chosen one, under
+      // the same filenames — where the generator's attachStops() looks.
+      const stop = (session.reading ?? 'continuing') === 'stop';
+      const target = stop ? await dir.getDirectoryHandle(STOP_DIR, { create: true }) : dir;
+      const before = new Set(await listFolder(target));
       let replaced = 0;
       for (const { slot, take } of keepers) {
         if (before.has(slot.fileName)) replaced += 1;
-        await writeFile(dir, slot.fileName, take.blob);
+        await writeFile(target, slot.fileName, take.blob);
       }
       await writeFile(
-        dir,
+        target,
         'intake.json',
         new Blob([JSON.stringify(manifest(session, takes), null, 2)], { type: 'application/json' }),
       );
       setStatus(
-        `Wrote ${keepers.length} file${keepers.length === 1 ? '' : 's'} into ${dir.name}` +
+        `Wrote ${keepers.length} file${keepers.length === 1 ? '' : 's'} into ${dir.name}${stop ? `/${STOP_DIR}` : ''}` +
           (replaced ? `, ${replaced} of them over a file that was already there.` : '.'),
       );
     } catch (err) {
@@ -957,10 +981,11 @@ function SavePanel({
   const toZip = async () => {
     setBusy(true);
     try {
+      const prefix = (session.reading ?? 'continuing') === 'stop' ? `${STOP_DIR}/` : '';
       const zip = await makeZip([
-        ...keepers.map(({ slot, take }) => ({ name: slot.fileName, data: take.blob })),
+        ...keepers.map(({ slot, take }) => ({ name: `${prefix}${slot.fileName}`, data: take.blob })),
         {
-          name: 'intake.json',
+          name: `${prefix}intake.json`,
           data: new Blob([JSON.stringify(manifest(session, takes), null, 2)]),
         },
       ]);

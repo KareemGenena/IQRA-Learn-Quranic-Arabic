@@ -127,6 +127,15 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   last page into the next lesson. Progress lives in `localStorage`
   (`src/lib/progress.ts`, key `iqra-progress`) — on the device only so far;
   an account will sync it additively.
+- **Two readings per word** — continuing (the word with its final vowel, how
+  every clip before 2026-10-11 reads) and at a stop. A form with a stop take
+  carries `stop: { audio, timings }` in `words.json`; `stopPlayable()` in
+  `lessons.ts` turns it into a Playable keyed `<key>-waqf`, timed `waqf:
+  true`, final vowel greyed. The lesson header shows a Continuing / At a
+  stop switch (`iqra-reading`, default continuing) only where the lesson
+  has one; it sets what the big button, Play all and `N` mean, and each form
+  with two readings gets a small button under the word that plays the other
+  once. Lesson 1 (`WordCard`, no generator) does not take part yet.
 
 ---
 
@@ -443,6 +452,20 @@ Things that cost real debugging. Do not undo them without reading why.
   tool's slot for that row already reads `<word> وقف` — set expect 3 and
   record; the filename is derived from the cell as always, nothing is typed.
   The generator takes the tag off before the word reaches a card.
+- **A stop reading is the same filename in a `وقف/` subfolder** of the
+  lesson's audio folder (`scripts/lib/stop.mjs`, `STOP_DIR`). The mode is
+  the folder, never the name: the filename stays derived from the cell, and
+  lesson 6's `<word> وقف` tag in the main folder (one take said three ways)
+  keeps its own meaning. Every generator 2–7 calls `attachStops(lesson,
+  AUDIO_SRC, AUDIO_OUT, key)` once, after its cards are assembled and before
+  `words.json` is written: each form whose text matches a stop take gains
+  `stop`, the clip cut as `<clip>-waqf.wav`, and the run reports what was
+  attached and what matched no row. The intake page records one reading per
+  session (a Reading selector beside the utterance count, kept in the
+  session and in `intake.json`) and writes a stop session into `وقف/`
+  itself. A stop reading cannot be cut from a continuing clip: the stop
+  changes the length and quality of the ending. Proven end to end with one
+  planted take on lesson 4 and removed again (2026-10-11).
 - A sheet correction is applied in the generator and **reported on every
   run**, never written into the docx behind the author's back (`CORRECTIONS`
   in `make-lesson2.mjs`; lesson 6 carried one for a day). Spell the find-string
@@ -626,10 +649,15 @@ Things that cost real debugging. Do not undo them without reading why.
   Next walks a flat sequence of *every form of every card* in reading order, so
   it means the same thing whether a card holds one form or three, and it runs
   off the end of a page into the next rather than stopping dead.
-- The place (page + step) is remembered per lesson in `localStorage`, so
-  returning to a lesson resumes it. A page reached any other way restarts the
-  walk at the top. `-1` means "not started", so the first Next plays the first
-  word rather than the second.
+- The place (page + step) is remembered per lesson in `localStorage`. **A
+  lesson always opens on its first page** (2026-10-11: landing part-way
+  through read as a fault); the remembered place is offered in a "Pick up
+  where you left off? Screen N of M" bubble for six seconds (`RESUME_MS`),
+  gone on any tap or key elsewhere, and tapping it turns to that screen and
+  restores the step. An ignored bubble does not cost the bookmark — the place
+  is rewritten only once the learner moves. A page reached any other way
+  restarts the walk at the top. `-1` means "not started", so the first Next
+  plays the first word rather than the second.
 - Always read `e.code`, never `e.key`: Shift turns `1` into `!`, and on a
   numeric keypad it turns `4` into `ArrowLeft` — which used to turn the page.
   Digits are matched before arrows for exactly that reason.
@@ -1136,19 +1164,17 @@ all five points agreed, in the order they will be built:
    notes — `users/{uid}/progress` and a rule), the assessment's own mark, and
    the song strip marking itself done at its last group (its "Next lesson"
    link does it). No locks, ever.
-3. **Two readings per word — continuing and at a stop.** A two-state switch
-   in the lesson header, remembered on the device, default continuing; it
-   decides what Play, `N` and the card's greying mean. A smaller second
-   button on each card plays the other reading once. No stop button on a
-   letter, a pair or a mock syllable (the generator decides from the text).
-   Stop takes go in a **`وقف/` subfolder** of the lesson's audio folder with
-   the SAME derived filename — the intake page gets a session-wide "Reading"
-   selector, and lesson 6's `<word> وقف` tag keeps its own meaning. The
-   generator adds each as a second form with a `-waqf` suffix on the clip
-   and the calibration key, timed with `waqf: true`. The existing clips are
-   the continuing reading; a stop reading cannot be cut from one. Record new
-   material in both modes from day one; retrofit lessons 1–7 (about 530
-   takes) after. **Build this before any new recording.**
+3. **Two readings per word — continuing and at a stop.** BUILT 2026-10-11
+   (section 2 "Two readings", section 3 "Audio"): the switch, the small
+   second button, `stopPlayable`, the `وقف/` folder, `attachStops` in
+   generators 2–7, the intake Reading selector, the admin page calibrating
+   both. The stop button appears wherever a stop take exists — a letter or
+   a mock syllable simply never gets one recorded. Not built: lesson 1 (no
+   generator; `WordCard` ignores the switch), the derived one-line hint ("ة
+   is read as ه here"), and the recordings themselves — the existing clips
+   are the continuing reading, and a stop reading cannot be cut from one.
+   Record new material in both modes from day one (two intake sessions per
+   sheet, one per reading); retrofit lessons 2–7 after, about 500 takes.
 4. **A workbook companion page** per section: every item of the section in
    the page's order, with Play, through the same cards — the QR's landing
    (`/go/<section id>` on the landing site, not built) and a "Workbooks"

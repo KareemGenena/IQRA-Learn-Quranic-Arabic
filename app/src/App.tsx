@@ -15,12 +15,12 @@ import { LessonManager } from './components/LessonManager';
 import { useAccount } from './lib/useAccount';
 import { storeCloudSnapshot } from './lib/calibration';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
-import { LESSONS, lessonAfter, loadLesson } from './lib/lessons';
+import { LESSONS, lessonAfter, lessonHasStop, loadLesson } from './lib/lessons';
 import { markDone, markOpened } from './lib/progress';
 import { cachedConfig, canSeeLesson, canUseFeature, fetchConfig, lessonStatus } from './lib/appConfig';
 import type { AppConfig } from './lib/appConfig';
 import type { Account } from './lib/useAccount';
-import type { Lesson } from './types';
+import type { Lesson, Reading } from './types';
 
 /**
  * The intake system is the lesson owner's recording tool, and no learner will
@@ -46,6 +46,12 @@ function initialTheme(): Theme {
 function initialRate(): number {
   const saved = Number(localStorage.getItem('iqra-rate'));
   return RATES.includes(saved) ? saved : 1;
+}
+
+/** Continuing unless the learner switched: that is how every clip recorded
+ *  before 2026-10-11 reads, and how a word is met in its āyah. */
+function initialReading(): Reading {
+  return localStorage.getItem('iqra-reading') === 'stop' ? 'stop' : 'continuing';
 }
 
 interface Route {
@@ -104,6 +110,7 @@ export default function App() {
   const [error, setError] = useState(false);
   const [theme, setTheme] = useState<Theme>(initialTheme);
   const [rate, setRate] = useState<number>(initialRate);
+  const [reading, setReading] = useState<Reading>(initialReading);
   const [laser, setLaser] = useState(false);
   const [config, setConfig] = useState<AppConfig>(cachedConfig);
 
@@ -135,6 +142,10 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('iqra-rate', String(rate));
   }, [rate]);
+
+  useEffect(() => {
+    localStorage.setItem('iqra-reading', reading);
+  }, [reading]);
 
   // What's published. Soft-fail: the cached copy (or the built-in defaults)
   // keeps a learner with no network seeing the right lessons.
@@ -356,6 +367,24 @@ export default function App() {
                         </button>
                       ))}
                     </div>
+                    {/* Two readings, one switch: it decides what Play, Play
+                        all and N mean on every card, and stays until changed.
+                        Only shown where a lesson has stop readings recorded. */}
+                    {lessonHasStop(lesson) && (
+                      <div className="rate-group reading-group" role="group" aria-label="Reading">
+                        {(['continuing', 'stop'] as const).map((r) => (
+                          <button
+                            key={r}
+                            type="button"
+                            className={`rate-btn ${r === reading ? 'active' : ''}`}
+                            aria-pressed={r === reading}
+                            onClick={() => setReading(r)}
+                          >
+                            {r === 'stop' ? 'At a stop' : 'Continuing'}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <WorkbookLinks lessonId={route.lessonId} />
                   {showNotes && (
@@ -364,11 +393,11 @@ export default function App() {
                     </p>
                   )}
                   {drawsLetterCards(lesson) ? (
-                    <LettersLesson lesson={lesson} rate={rate} onEnd={next ? moveOn : undefined} />
+                    <LettersLesson lesson={lesson} rate={rate} reading={reading} onEnd={next ? moveOn : undefined} />
                   ) : lesson.kind === 'words' ? (
                     <WordsLesson lesson={lesson} rate={rate} />
                   ) : (
-                    <SectionedLesson lesson={lesson} rate={rate} onEnd={next ? moveOn : undefined} />
+                    <SectionedLesson lesson={lesson} rate={rate} reading={reading} onEnd={next ? moveOn : undefined} />
                   )}
                   {/* The way on. Always shown, never required: the home page
                       lists every lesson, and this is only the default path. */}
