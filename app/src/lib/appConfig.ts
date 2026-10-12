@@ -37,6 +37,7 @@ export const DEFAULT_CONFIG: AppConfig = {
     20: 'draft', 31: 'draft', 32: 'draft', 33: 'draft',
     // Cut from the workbooks (lessons.map.json). Draft until recorded.
     21: 'draft', 22: 'draft', 23: 'draft', 24: 'draft', 25: 'draft', 26: 'draft', 27: 'draft', 28: 'draft', 29: 'draft',
+    34: 'draft', 35: 'draft', 36: 'draft', 37: 'draft',
   },
   features: { laser: 'admin', notes: 'admin' },
 };

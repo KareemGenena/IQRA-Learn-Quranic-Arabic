@@ -142,7 +142,13 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges, 
           item.badges.map((b) => (
             // A ghunna badge wears the ghunna highlight's color, so the chip
             // and the moment in the word read as the same thing.
-            <span key={b} className={`type-badge${/ghunna|ikhfa/i.test(b) ? ' badge-ghunna' : ''}`}>
+            // Timing dots read right to left under the word they describe
+            // (two under the madd of قَالَ, on the right), so the chip does too.
+            <span
+              key={b}
+              className={`type-badge${/ghunna|ikhfa/i.test(b) ? ' badge-ghunna' : ''}${/●/.test(b) ? ' badge-dots' : ''}`}
+              dir={/●/.test(b) ? 'rtl' : undefined}
+            >
               {b}
             </span>
           ))}

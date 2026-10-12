@@ -1,0 +1,78 @@
+{
+  "lesson": 37,
+  "title": "Silent Alif",
+  "titleArabic": "الألف التي لا تُقرأ",
+  "kind": "letters",
+  "audioPath": "audio/lesson37/",
+  "perPage": 6,
+  "sections": [
+    {
+      "id": "p32",
+      "title": "Page 32",
+      "titleArabic": "صفحة 32",
+      "hint": "Workbook Level 3, page 32 — Silent Alif. Tap a form to hear it, then trace it on the page."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "p32",
+      "badges": [
+        "[ا Silent]   ·   لُواْ"
+      ],
+      "text": "قَالُواْ",
+      "audio": "word01.wav",
+      "timings": null
+    },
+    {
+      "id": 2,
+      "section": "p32",
+      "badges": [
+        "[ا Silent]   ·   نُواْ"
+      ],
+      "text": "ءَامَنُواْ",
+      "audio": "word02.wav",
+      "timings": null
+    },
+    {
+      "id": 3,
+      "section": "p32",
+      "badges": [
+        "[ا Silent]   ·   رُواْ"
+      ],
+      "text": "كَفَرُواْ",
+      "audio": "word03.wav",
+      "timings": null
+    },
+    {
+      "id": 4,
+      "section": "p32",
+      "badges": [
+        "[ا Say at stop]   ·   نَا۠"
+      ],
+      "text": "أَنَا۠",
+      "audio": "word04.wav",
+      "timings": null
+    },
+    {
+      "id": 5,
+      "section": "p32",
+      "badges": [
+        "[ا Say at stop]   ·   نَّا۠"
+      ],
+      "text": "لَّٰكِنَّا۠",
+      "audio": "word05.wav",
+      "timings": null
+    },
+    {
+      "id": 6,
+      "section": "p32",
+      "badges": [
+        "[ا Say at stop]   ·   رَا۠"
+      ],
+      "text": "قَوَارِيرَا۠",
+      "audio": "word06.wav",
+      "timings": null
+    }
+  ]
+}

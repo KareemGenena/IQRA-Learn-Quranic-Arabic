@@ -1,0 +1,336 @@
+{
+  "lesson": 34,
+  "title": "Stopping",
+  "titleArabic": "الوقف",
+  "kind": "letters",
+  "audioPath": "audio/lesson34/",
+  "perPage": 6,
+  "sections": [
+    {
+      "id": "p1",
+      "title": "Page 1",
+      "titleArabic": "صفحة 1",
+      "hint": "Workbook Level 3, page 1 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p2",
+      "title": "Page 2",
+      "titleArabic": "صفحة 2",
+      "hint": "Workbook Level 3, page 2 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p3",
+      "title": "Page 3",
+      "titleArabic": "صفحة 3",
+      "hint": "Workbook Level 3, page 3 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p4",
+      "title": "Page 4",
+      "titleArabic": "صفحة 4",
+      "hint": "Workbook Level 3, page 4 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "p1",
+      "badges": [
+        "رَ ← رۡ"
+      ],
+      "text": "قُتِلَ كَيۡفَ قَدَّرَ",
+      "audio": "word01.wav",
+      "timings": null
+    },
+    {
+      "id": 2,
+      "section": "p1",
+      "badges": [
+        "كَ ← كۡ"
+      ],
+      "text": "نَشۡرَحۡ لَكَ صَدۡرَكَ",
+      "audio": "word02.wav",
+      "timings": null
+    },
+    {
+      "id": 3,
+      "section": "p1",
+      "badges": [
+        "رُ ← رۡ"
+      ],
+      "text": "أَدۡرَىٰكَ مَا سَقَرُ",
+      "audio": "word03.wav",
+      "timings": null
+    },
+    {
+      "id": 4,
+      "section": "p1",
+      "badges": [
+        "دُ ← دۡ"
+      ],
+      "text": "عَٰبِدُونَ مَآ أَعۡبُدُ",
+      "audio": "word04.wav",
+      "timings": null
+    },
+    {
+      "id": 5,
+      "section": "p1",
+      "badges": [
+        "رِ ← رۡ"
+      ],
+      "text": "كَانَ عَذَابِى وَنُذُرِ",
+      "audio": "word05.wav",
+      "timings": null
+    },
+    {
+      "id": 6,
+      "section": "p1",
+      "badges": [
+        "نِ ← نۡ"
+      ],
+      "text": "فَيَقُولُ رَبِّىٓ أَكۡرَمَنِ",
+      "audio": "word06.wav",
+      "timings": null
+    },
+    {
+      "id": 7,
+      "section": "p2",
+      "badges": [
+        "دٌ ← دۡ"
+      ],
+      "text": "يَقۡدِرَ عَلَيۡهِ أَحَدٌ",
+      "audio": "word07.wav",
+      "timings": null
+    },
+    {
+      "id": 8,
+      "section": "p2",
+      "badges": [
+        "رٌ ← رۡ"
+      ],
+      "text": "مَا فِيهِ مُزۡدَجَرٌ",
+      "audio": "word08.wav",
+      "timings": null
+    },
+    {
+      "id": 9,
+      "section": "p2",
+      "badges": [
+        "ضٍ ← ضۡ"
+      ],
+      "text": "بَعۡضَهُمۡ عَلَىٰ بَعۡضٍ",
+      "audio": "word09.wav",
+      "timings": null
+    },
+    {
+      "id": 10,
+      "section": "p2",
+      "badges": [
+        "رٍ ← رۡ"
+      ],
+      "text": "عَلَيۡهِ مِنۡ أَجۡرٍ",
+      "audio": "word10.wav",
+      "timings": null
+    },
+    {
+      "id": 11,
+      "section": "p2",
+      "badges": [
+        "مًا ← مَا"
+      ],
+      "text": "كَانَ بِكُمۡ رَحِيمًا",
+      "audio": "word11.wav",
+      "timings": null
+    },
+    {
+      "id": 12,
+      "section": "p2",
+      "badges": [
+        "رًا ← رَا"
+      ],
+      "text": "أَوۡ أَشَدَّ ذِكۡرًا",
+      "audio": "word12.wav",
+      "timings": null
+    },
+    {
+      "id": 13,
+      "section": "p2",
+      "badges": [
+        "عٌ ← عۡ"
+      ],
+      "text": "عَذَابَ رَبِّكَ لَوَٰقِعٌ",
+      "audio": "word13.wav",
+      "timings": null
+    },
+    {
+      "id": 14,
+      "section": "p2",
+      "badges": [
+        "دًا ← دَا"
+      ],
+      "text": "خَٰلِدِينَ فِيهَآ أَبَدًا",
+      "audio": "word14.wav",
+      "timings": null
+    },
+    {
+      "id": 15,
+      "section": "p3",
+      "badges": [
+        "ةً ← تً"
+      ],
+      "text": "قُوَّةً إِلَىٰ قُوَّتِكُمۡ",
+      "audio": "word15.wav",
+      "timings": null
+    },
+    {
+      "id": 16,
+      "section": "p3",
+      "badges": [
+        "ةً ← هۡ"
+      ],
+      "text": "أَشَدَّ مِنۡهُمۡ قُوَّةً",
+      "audio": "word16.wav",
+      "timings": null
+    },
+    {
+      "id": 17,
+      "section": "p3",
+      "badges": [
+        "ةَ ← تَ"
+      ],
+      "text": "ثَلَٰثَةَ أَيَّامٍ",
+      "audio": "word17.wav",
+      "timings": null
+    },
+    {
+      "id": 18,
+      "section": "p3",
+      "badges": [
+        "ةٍ ← هۡ"
+      ],
+      "text": "ثَالِثُ ثَلَٰثَةٍ",
+      "audio": "word18.wav",
+      "timings": null
+    },
+    {
+      "id": 19,
+      "section": "p3",
+      "badges": [
+        "ةً ← تً"
+      ],
+      "text": "ءَايَةً أُخۡرَىٰ",
+      "audio": "word19.wav",
+      "timings": null
+    },
+    {
+      "id": 20,
+      "section": "p3",
+      "badges": [
+        "ةً ← هۡ"
+      ],
+      "text": "لَكُمۡ ءَايَةً",
+      "audio": "word20.wav",
+      "timings": null
+    },
+    {
+      "id": 21,
+      "section": "p3",
+      "badges": [
+        "ةً ← تً"
+      ],
+      "text": "لَهُمۡ شَهَٰدَةً أَبَدًا",
+      "audio": "word21.wav",
+      "timings": null
+    },
+    {
+      "id": 22,
+      "section": "p3",
+      "badges": [
+        "ةً ← هۡ"
+      ],
+      "text": "أَكۡبَرُ شَهَٰدَةً",
+      "audio": "word22.wav",
+      "timings": null
+    },
+    {
+      "id": 23,
+      "section": "p4",
+      "badges": [
+        "نُ ← نۡ   2 · 4 · 6●"
+      ],
+      "text": "وَإِيَّاكَ نَسۡتَعِينُ",
+      "audio": "word23.wav",
+      "timings": null
+    },
+    {
+      "id": 24,
+      "section": "p4",
+      "badges": [
+        "نَ ← نۡ   2 · 4 · 6●"
+      ],
+      "text": "وَلَا هُمۡ يَحۡزَنُونَ",
+      "audio": "word24.wav",
+      "timings": null
+    },
+    {
+      "id": 25,
+      "section": "p4",
+      "badges": [
+        "نَ ← نۡ   2 · 4 · 6●"
+      ],
+      "text": "لَعَلَّكُمۡ تَتَّقُونَ",
+      "audio": "word25.wav",
+      "timings": null
+    },
+    {
+      "id": 26,
+      "section": "p4",
+      "badges": [
+        "بِ ← بۡ   2 · 4 · 6●"
+      ],
+      "text": "فَكَيۡفَ كَانَ عِقَابِ",
+      "audio": "word26.wav",
+      "timings": null
+    },
+    {
+      "id": 27,
+      "section": "p4",
+      "badges": [
+        "دُ ← دۡ   2 · 4 · 6●"
+      ],
+      "text": "يَفۡعَلُ مَا يُرِيدُ",
+      "audio": "word27.wav",
+      "timings": null
+    },
+    {
+      "id": 28,
+      "section": "p4",
+      "badges": [
+        "رٌ ← رۡ   2 · 4 · 6●"
+      ],
+      "text": "بِمَا تَعۡمَلُونَ بَصِيرٌ",
+      "audio": "word28.wav",
+      "timings": null
+    },
+    {
+      "id": 29,
+      "section": "p4",
+      "badges": [
+        "بٍ ← بۡ   2 · 4 · 6●"
+      ],
+      "text": "يَشَآءُ بِغَيۡرِ حِسَابٍ",
+      "audio": "word29.wav",
+      "timings": null
+    },
+    {
+      "id": 30,
+      "section": "p4",
+      "badges": [
+        "دٍ ← دۡ   2 · 4 · 6●"
+      ],
+      "text": "مِنۡ هَادٍ",
+      "audio": "word30.wav",
+      "timings": null
+    }
+  ]
+}

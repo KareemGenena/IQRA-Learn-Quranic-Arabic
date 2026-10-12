@@ -111,7 +111,14 @@ function SilentCard({ item, no }: { item: WorkbookItem; no: number }) {
     <div className="pair-card workbook silent">
       <div className="pair-head">
         <span className="word-num">{no}</span>
-        {item.caption && <span className="type-badge">{item.caption}</span>}
+        {item.caption && (
+          <span
+            className={`type-badge${/●/.test(item.caption) ? ' badge-dots' : ''}`}
+            dir={/●/.test(item.caption) ? 'rtl' : undefined}
+          >
+            {item.caption}
+          </span>
+        )}
       </div>
       <div className="pair-forms">
         <div className="form-slot">
@@ -217,7 +224,9 @@ export function WorkbookPage({
           {sec?.title ?? 'Workbook'}
           {page.part ? ` — ${page.part}` : ''}
         </h3>
-        {sec?.instruction && <p className="section-hint">{sec.instruction}</p>}
+        {/* The workbook's own line here is a tracing instruction; the app's
+            page is for listening. */}
+        <p className="section-hint">Tap any word to hear it. The tracing is on the page.</p>
       </section>
 
       <div className="workbook-links">

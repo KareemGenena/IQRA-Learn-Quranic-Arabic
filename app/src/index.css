@@ -1681,6 +1681,12 @@ body {
   color: var(--accent);
 }
 
+/* Timing dots (●  ●  ● / ●●  ●): one per count, read right to left. */
+.type-badge.badge-dots {
+  letter-spacing: 0.12em;
+  font-size: 12px;
+}
+
 .alt-btn.missing {
   cursor: default;
   opacity: 0.6;

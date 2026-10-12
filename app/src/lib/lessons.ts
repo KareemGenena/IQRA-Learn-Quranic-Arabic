@@ -50,7 +50,7 @@ export const LEVELS: { level: Level; title: string; blurb: string }[] = [
   {
     level: 3,
     title: 'Level 3',
-    blurb: 'Stopping, sun and moon lam, hamzat wasl, where the letters are made, and the rules of nūn and mīm sākinah.',
+    blurb: 'Stopping, sun and moon lam, hamzat wasl, where the letters are made, the rules of nūn and mīm sākinah, idghām of two letters, and the silent alif.',
   },
 ];
 
@@ -72,6 +72,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 2,
     level: 3,
+    order: 2,
     title: 'Sun & Moon Lam',
     titleArabic: 'اللام الشمسية والقمرية',
     blurb: '46 words from the last surahs — hear when the ل is spoken and when it is silent.',
@@ -79,6 +80,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 3,
     level: 3,
+    order: 5,
     title: 'Throat Letters',
     titleArabic: 'حروف الحلق',
     blurb: 'ء ه ح ع غ خ — the six letters of the throat, at the start, middle and end of a word.',
@@ -86,6 +88,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 4,
     level: 3,
+    order: 3,
     title: 'Hamzat Wasl after وَ and ثُمَّ',
     titleArabic: 'همزة الوصل بعد الواو وثم',
     blurb: 'Each word alone, then after وَ and ثُمَّ — hear the ٱ of ٱل drop away.',
@@ -109,6 +112,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 7,
     level: 3,
+    order: 6,
     title: 'Nūn Sākinah, Tanwīn and Mīm Sākinah',
     titleArabic: 'أحكام النون الساكنة والتنوين والميم الساكنة',
     blurb: 'Iẕhār, ikhfāʾ, iqlāb and idghām.',
@@ -232,6 +236,40 @@ export const LESSONS: LessonMeta[] = [
     title: 'Qalqala',
     titleArabic: 'القلقلة',
     blurb: 'ق ط ب ج د with a sukoon — hear the bounce.',
+  },
+  // Level 3, the workbook sections no lesson covered (34–37), in the
+  // workbook's order among lessons 2, 4, 3 and 7.
+  {
+    id: 34,
+    level: 3,
+    order: 1,
+    title: 'Stopping',
+    titleArabic: 'الوقف',
+    blurb: 'What happens to the last letter when you stop on a word — the vowel drops, a madd grows.',
+  },
+  {
+    id: 35,
+    level: 3,
+    order: 4,
+    title: 'Makharij & Sifat',
+    titleArabic: 'المخارج والصفات',
+    blurb: 'Hams, tafkheem, the lam of ٱللَّه, and the heavy and light raa.',
+  },
+  {
+    id: 36,
+    level: 3,
+    order: 7,
+    title: 'Idghām of Two Letters',
+    titleArabic: 'إدغام الحرفين',
+    blurb: 'Mithlain, mutajanisain and mutaqaribain — two letters that merge into one.',
+  },
+  {
+    id: 37,
+    level: 3,
+    order: 8,
+    title: 'Silent Alif',
+    titleArabic: 'الألف التي لا تُقرأ',
+    blurb: 'The alif that is written and not read.',
   },
 ];
 

@@ -402,6 +402,12 @@ export const CROSSWALK = {
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/1",
           "lessons": [
             {
+              "id": 34,
+              "title": "Stopping",
+              "level": 3,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/34"
+            },
+            {
               "id": 6,
               "title": "Madd Lāzim, Ṣilah and More",
               "level": 2,
@@ -515,6 +521,12 @@ export const CROSSWALK = {
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/5",
           "lessons": [
             {
+              "id": 35,
+              "title": "Makharij & Sifat",
+              "level": 3,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/35"
+            },
+            {
               "id": 33,
               "title": "Where the Letters Come From",
               "level": 1,
@@ -596,7 +608,14 @@ export const CROSSWALK = {
           ],
           "physical": 31,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/8",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 36,
+              "title": "Idghām of Two Letters",
+              "level": 3,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/36"
+            }
+          ]
         },
         {
           "id": "L3S9",
@@ -606,7 +625,14 @@ export const CROSSWALK = {
           "parts": [],
           "physical": 34,
           "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/9",
-          "lessons": []
+          "lessons": [
+            {
+              "id": 37,
+              "title": "Silent Alif",
+              "level": 3,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/37"
+            }
+          ]
         },
         {
           "id": "L3S10",

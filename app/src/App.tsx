@@ -15,6 +15,7 @@ import { LaserPointer } from './components/LaserPointer';
 import { LessonManager } from './components/LessonManager';
 import { useAccount } from './lib/useAccount';
 import { storeCloudSnapshot } from './lib/calibration';
+import { installAudioWarmup } from './lib/playback';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
 import { LESSONS, lessonAfter, loadLesson } from './lib/lessons';
 import { markDone, markOpened } from './lib/progress';
@@ -154,6 +155,10 @@ export default function App() {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('iqra-theme', theme);
   }, [theme]);
+
+  // Open the audio output on the first tap or key, before any Play — the
+  // first clip of a session used to come out late and short (playback.ts).
+  useEffect(() => installAudioWarmup(), []);
 
   useEffect(() => {
     localStorage.setItem('iqra-rate', String(rate));

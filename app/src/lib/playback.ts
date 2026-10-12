@@ -12,6 +12,97 @@ import type { Lesson, Playable } from '../types';
 
 let activeStop: (() => void) | null = null;
 
+/**
+ * ONE audio element for every clip, kept warm.
+ *
+ * The first clip of a session used to come out late and short, and the
+ * second click put it right. A fresh element has to open the device's
+ * output, and until it is open the element's clock runs ahead of the sound
+ * actually leaving the speaker: the highlight led the voice, and the tick —
+ * which ends a clip a quarter second after its last boundary BY THAT CLOCK —
+ * cut the tail off, or for a short clip nearly all of it. So (1) the element
+ * is reused, which keeps the output open from one clip to the next; (2) it is
+ * opened on the page's first tap or key with a sliver of silence, before any
+ * Play; and (3) the clock is read back by the output latency the device
+ * reports, for the highlight and the cut-off alike. The player must never go
+ * back to `new Audio()` per clip (2026-10-12).
+ */
+let element: HTMLAudioElement | null = null;
+
+function player(): HTMLAudioElement {
+  if (!element) {
+    element = new Audio();
+    element.preload = 'auto';
+  }
+  return element;
+}
+
+/** A WAV of silence as a data: URL — the sliver that opens the output. */
+function silentWav(seconds: number): string {
+  const rate = 8000;
+  const n = Math.round(rate * seconds);
+  const buf = new ArrayBuffer(44 + n * 2);
+  const v = new DataView(buf);
+  const str = (o: number, s: string) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  str(0, 'RIFF');
+  v.setUint32(4, 36 + n * 2, true);
+  str(8, 'WAVE');
+  str(12, 'fmt ');
+  v.setUint32(16, 16, true);
+  v.setUint16(20, 1, true);
+  v.setUint16(22, 1, true);
+  v.setUint32(24, rate, true);
+  v.setUint32(28, rate * 2, true);
+  v.setUint16(32, 2, true);
+  v.setUint16(34, 16, true);
+  str(36, 'data');
+  v.setUint32(40, n * 2, true);
+  let bin = '';
+  for (const b of new Uint8Array(buf)) bin += String.fromCharCode(b);
+  return `data:audio/wav;base64,${btoa(bin)}`;
+}
+
+const SILENCE = silentWav(0.05);
+let warmed = false;
+
+/** Open the output. Needs a user gesture (autoplay policy), so it is called
+ *  from the page's first pointerdown or keydown. */
+export function warmAudio(): void {
+  if (warmed) return;
+  warmed = true;
+  const a = player();
+  a.playbackRate = 1;
+  a.src = SILENCE;
+  void a.play().catch(() => {
+    warmed = false; // not a gesture after all — the next one will do it
+  });
+}
+
+/** Warm the output on the first gesture anywhere on the page. */
+export function installAudioWarmup(): () => void {
+  const on = () => warmAudio();
+  window.addEventListener('pointerdown', on, { once: true, capture: true });
+  window.addEventListener('keydown', on, { once: true, capture: true });
+  return () => {
+    window.removeEventListener('pointerdown', on, true);
+    window.removeEventListener('keydown', on, true);
+  };
+}
+
+let latencyCtx: AudioContext | null = null;
+
+/** How far the element's clock leads the speaker, as the device reports it
+ *  (Chrome's `outputLatency`; `baseLatency` elsewhere; 0 when unknown). */
+export function outputLatency(): number {
+  try {
+    latencyCtx ??= new AudioContext();
+    const l = latencyCtx.outputLatency ?? latencyCtx.baseLatency ?? 0;
+    return Number.isFinite(l) && l > 0 && l < 1 ? l : 0;
+  } catch {
+    return 0;
+  }
+}
+
 export function stopActivePlayback(): void {
   activeStop?.();
   activeStop = null;
@@ -93,7 +184,9 @@ export function playWithHighlights(
 
   // src should be a blob: URL from getAudioSrc — never the raw file URL,
   // which would stream through the service worker (see audioSource.ts).
-  const audio = new Audio(src);
+  const audio = player();
+  audio.src = src;
+  const latency = outputLatency();
   // Boundaries are in media time and audio.currentTime advances in media
   // time whatever the rate, so highlights stay in sync at any speed.
   audio.playbackRate = rate;
@@ -108,6 +201,11 @@ export function playWithHighlights(
     finished = true;
     cancelAnimationFrame(rafId);
     audio.pause();
+    // The element is shared: this clip's listeners must not outlive it.
+    audio.removeEventListener('ended', onEnded);
+    audio.removeEventListener('error', onError);
+    audio.removeEventListener('playing', onPlaying);
+    audio.removeEventListener('loadedmetadata', onMeta);
     onActiveLetter(null, null);
     if (activeStop === stop) activeStop = null;
     onDone();
@@ -132,7 +230,8 @@ export function playWithHighlights(
   };
 
   const tick = () => {
-    const t = audio.currentTime;
+    // What the ear hears now, not what the element has already sent.
+    const t = audio.currentTime - latency;
     // Recordings can have a long silent tail; stop soon after speech ends.
     if (t >= lastBoundary + 0.25) {
       finish();
@@ -152,12 +251,8 @@ export function playWithHighlights(
   const resume = () => {
     if (finished || !paused) return;
     paused = false;
-    void audio
-      .play()
-      .then(() => {
-        rafId = requestAnimationFrame(tick);
-      })
-      .catch(finish);
+    // `playing` restarts the loop once sound is moving again.
+    void audio.play().catch(finish);
   };
 
   // While paused the frame loop is not running, so the highlight is brought
@@ -168,18 +263,26 @@ export function playWithHighlights(
     if (paused) report(audio.currentTime);
   };
 
-  audio.addEventListener('ended', finish);
-  audio.addEventListener('error', () => {
+  const onEnded = () => finish();
+  const onError = () => {
     console.error('audio playback error:', audio.error?.code, audio.error?.message);
     finish();
-  });
-  if (startAt > 0) audio.currentTime = startAt;
-  void audio
-    .play()
-    .then(() => {
-      rafId = requestAnimationFrame(tick);
-    })
-    .catch(finish);
+  };
+  // The loop starts when sound actually starts — the `playing` event, not
+  // the play() promise, which resolves as soon as playback is permitted.
+  const onPlaying = () => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(tick);
+  };
+  // A new src is loaded afresh; the start offset waits for its metadata.
+  const onMeta = () => {
+    if (startAt > 0) audio.currentTime = startAt;
+  };
+  audio.addEventListener('ended', onEnded);
+  audio.addEventListener('error', onError);
+  audio.addEventListener('playing', onPlaying);
+  audio.addEventListener('loadedmetadata', onMeta);
+  void audio.play().catch(finish);
 
   activeStop = stop;
   return { stop, pause, resume, seek };

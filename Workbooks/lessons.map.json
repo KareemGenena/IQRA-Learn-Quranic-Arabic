@@ -8,5 +8,9 @@
   "26": { "level": 2, "order": 3, "source": "L2S3", "sheet": "Lesson 26 - Timing.docx", "title": "Timing", "titleArabic": "عد الحركات", "blurb": "One count or two: a haraka beside the same word with a natural madd." },
   "27": { "level": 2, "order": 4, "source": "L2S4", "sheet": "Lesson 27 - Four-Letter Words.docx", "title": "Four-Letter Words", "titleArabic": "كلمات من أربعة أحرف", "blurb": "Real words of four letters, a sukoon in the middle of each." },
   "28": { "level": 2, "order": 6, "source": "L2S5", "sheet": "Lesson 28 - Hamza.docx", "title": "Hamza", "titleArabic": "الهمزة", "blurb": "The hamza at the start, in the middle and at the end of a word." },
-  "29": { "level": 2, "order": 9, "source": "L2S7", "sheet": "Lesson 29 - Qalqala.docx", "title": "Qalqala", "titleArabic": "القلقلة", "blurb": "ق ط ب ج د with a sukoon — hear the bounce." }
+  "29": { "level": 2, "order": 9, "source": "L2S7", "sheet": "Lesson 29 - Qalqala.docx", "title": "Qalqala", "titleArabic": "القلقلة", "blurb": "ق ط ب ج د with a sukoon — hear the bounce." },
+  "34": { "level": 3, "order": 1, "source": "L3S1", "sheet": "Lesson 34 - Stopping.docx", "title": "Stopping", "titleArabic": "الوقف", "blurb": "What happens to the last letter when you stop on a word — the vowel drops, a madd grows." },
+  "35": { "level": 3, "order": 4, "source": "L3S5", "sheet": "Lesson 35 - Makharij and Sifat.docx", "title": "Makharij & Sifat", "titleArabic": "المخارج والصفات", "blurb": "Hams, tafkheem, the lam of ٱللَّه, and the heavy and light raa." },
+  "36": { "level": 3, "order": 7, "source": "L3S8", "sheet": "Lesson 36 - Idgham of Two Letters.docx", "title": "Idghām of Two Letters", "titleArabic": "إدغام الحرفين", "blurb": "Mithlain, mutajanisain and mutaqaribain — two letters that merge into one." },
+  "37": { "level": 3, "order": 8, "source": "L3S9", "sheet": "Lesson 37 - Silent Alif.docx", "title": "Silent Alif", "titleArabic": "الألف التي لا تُقرأ", "blurb": "The alif that is written and not read." }
 }

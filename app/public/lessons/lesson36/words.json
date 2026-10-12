@@ -1,0 +1,190 @@
+{
+  "lesson": 36,
+  "title": "Idghām of Two Letters",
+  "titleArabic": "إدغام الحرفين",
+  "kind": "letters",
+  "audioPath": "audio/lesson36/",
+  "perPage": 6,
+  "sections": [
+    {
+      "id": "p29",
+      "title": "Page 29",
+      "titleArabic": "صفحة 29",
+      "hint": "Workbook Level 3, page 29 — Idgham of Two Letters. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p30",
+      "title": "Page 30",
+      "titleArabic": "صفحة 30",
+      "hint": "Workbook Level 3, page 30 — Idgham of Two Letters. Tap a form to hear it, then trace it on the page."
+    },
+    {
+      "id": "p31",
+      "title": "Page 31",
+      "titleArabic": "صفحة 31",
+      "hint": "Workbook Level 3, page 31 — Idgham of Two Letters. Tap a form to hear it, then trace it on the page."
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "section": "p29",
+      "badges": [
+        "[م Mithlain]   ·   م مَّ"
+      ],
+      "text": "أَم مَّنۡ",
+      "audio": "word01.wav",
+      "timings": null
+    },
+    {
+      "id": 2,
+      "section": "p29",
+      "badges": [
+        "[ن Mithlain]   ·   ن نَّ"
+      ],
+      "text": "إِن نَّحۡنُ",
+      "audio": "word02.wav",
+      "timings": null
+    },
+    {
+      "id": 3,
+      "section": "p29",
+      "badges": [
+        "[د Mithlain]   ·   د دَّ"
+      ],
+      "text": "وَقَد دَّخَلُواْ",
+      "audio": "word03.wav",
+      "timings": null
+    },
+    {
+      "id": 4,
+      "section": "p29",
+      "badges": [
+        "[ل Mithlain]   ·   ل لَّ"
+      ],
+      "text": "بَل لَّا",
+      "audio": "word04.wav",
+      "timings": null
+    },
+    {
+      "id": 5,
+      "section": "p29",
+      "badges": [
+        "[ك Mithlain]   ·   ككُّ"
+      ],
+      "text": "يُدۡرِككُّمُ",
+      "audio": "word05.wav",
+      "timings": null
+    },
+    {
+      "id": 6,
+      "section": "p29",
+      "badges": [
+        "[ب Mithlain]   ·   ب بِّ"
+      ],
+      "text": "ٱضۡرِب بِّعَصَاكَ",
+      "audio": "word06.wav",
+      "timings": null
+    },
+    {
+      "id": 7,
+      "section": "p30",
+      "badges": [
+        "[ظ Mutajanisain]   ·   ذ ظَّ"
+      ],
+      "text": "إِذ ظَّلَمُوٓاْ",
+      "audio": "word07.wav",
+      "timings": null
+    },
+    {
+      "id": 8,
+      "section": "p30",
+      "badges": [
+        "[ت Mutajanisain]   ·   د تَّ"
+      ],
+      "text": "قَد تَّبَيَّنَ",
+      "audio": "word08.wav",
+      "timings": null
+    },
+    {
+      "id": 9,
+      "section": "p30",
+      "badges": [
+        "[د Mutajanisain]   ·   ت دَّ"
+      ],
+      "text": "أَثۡقَلَت دَّعَوَا",
+      "audio": "word09.wav",
+      "timings": null
+    },
+    {
+      "id": 10,
+      "section": "p30",
+      "badges": [
+        "[ط Mutajanisain]   ·   ت طَّ"
+      ],
+      "text": "قَالَت طَّآئِفَةٌ",
+      "audio": "word10.wav",
+      "timings": null
+    },
+    {
+      "id": 11,
+      "section": "p30",
+      "badges": [
+        "[ذ Mutajanisain]   ·   ث ذَّ"
+      ],
+      "text": "يَلۡهَث ذَّٰلِكَ",
+      "audio": "word11.wav",
+      "timings": null
+    },
+    {
+      "id": 12,
+      "section": "p30",
+      "badges": [
+        "[م Mutajanisain]   ·   ب مَّ"
+      ],
+      "text": "ٱرۡكَب مَّعَنَا",
+      "audio": "word12.wav",
+      "timings": null
+    },
+    {
+      "id": 13,
+      "section": "p31",
+      "badges": [
+        "[ت Incomplete]   ·   طتُ"
+      ],
+      "text": "أَحَطتُ",
+      "audio": "word13.wav",
+      "timings": null
+    },
+    {
+      "id": 14,
+      "section": "p31",
+      "badges": [
+        "[ت Incomplete]   ·   طتَ"
+      ],
+      "text": "بَسَطتَ",
+      "audio": "word14.wav",
+      "timings": null
+    },
+    {
+      "id": 15,
+      "section": "p31",
+      "badges": [
+        "[ر Mutaqaribain]   ·   ل رَّ"
+      ],
+      "text": "قُل رَّبِّ",
+      "audio": "word15.wav",
+      "timings": null
+    },
+    {
+      "id": 16,
+      "section": "p31",
+      "badges": [
+        "[ك Mutaqaribain]   ·   قكُّ"
+      ],
+      "text": "أَلَمۡ نَخۡلُقكُّم",
+      "audio": "word16.wav",
+      "timings": null
+    }
+  ]
+}
