@@ -15,7 +15,7 @@ import { LessonManager } from './components/LessonManager';
 import { useAccount } from './lib/useAccount';
 import { storeCloudSnapshot } from './lib/calibration';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
-import { LESSONS, lessonAfter, lessonHasStop, loadLesson } from './lib/lessons';
+import { LESSONS, lessonAfter, loadLesson } from './lib/lessons';
 import { markDone, markOpened } from './lib/progress';
 import { cachedConfig, canSeeLesson, canUseFeature, fetchConfig, lessonStatus } from './lib/appConfig';
 import type { AppConfig } from './lib/appConfig';
@@ -369,8 +369,9 @@ export default function App() {
                     </div>
                     {/* Two readings, one switch: it decides what Play, Play
                         all and N mean on every card, and stays until changed.
-                        Only shown where a lesson has stop readings recorded. */}
-                    {lessonHasStop(lesson) && (
+                        Shown on every word-card lesson, recorded or not — a
+                        card without the take says so under the word. */}
+                    {lesson.kind !== 'words' && !drawsLetterCards(lesson) && (
                       <div className="rate-group reading-group" role="group" aria-label="Reading">
                         {(['continuing', 'stop'] as const).map((r) => (
                           <button
@@ -401,21 +402,26 @@ export default function App() {
                   )}
                   {/* The way on. Always shown, never required: the home page
                       lists every lesson, and this is only the default path. */}
-                  <p className="next-lesson">
+                  <div className="next-lesson">
                     {next ? (
                       <a
+                        className="next-btn"
                         href={`#/lesson/${next.id}`}
                         onClick={(e) => {
                           e.preventDefault();
                           moveOn();
                         }}
                       >
-                        Next lesson: {next.title} ›
+                        <span className="next-label">Next lesson</span>
+                        <span className="next-title">{next.title}</span>
+                        <span className="lesson-go" aria-hidden="true">
+                          ›
+                        </span>
                       </a>
                     ) : (
-                      <span>This is the last lesson for now.</span>
+                      <span className="next-end">This is the last lesson for now.</span>
                     )}
-                  </p>
+                  </div>
                 </>
               )}
             </>

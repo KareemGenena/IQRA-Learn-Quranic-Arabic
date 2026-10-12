@@ -58,7 +58,7 @@ function Form({ lesson, playable, rate, label, reading, register }: FormProps) {
         />
         <PlayIcon playing={main.playing} />
       </button>
-      {other && (
+      {other ? (
         <button
           type="button"
           className={`alt-btn ${alt.playing ? 'playing' : ''}`}
@@ -68,6 +68,12 @@ function Form({ lesson, playable, rate, label, reading, register }: FormProps) {
           <PlayIcon playing={alt.playing} />
           {other.waqf ? 'At a stop' : 'Continuing'}
         </button>
+      ) : (
+        // Shown before the take exists too, so the second reading is a visible
+        // part of every card and the author can see what is still to record.
+        <span className="alt-btn missing" title="This reading has not been recorded yet">
+          At a stop · not yet recorded
+        </span>
       )}
     </>
   );
