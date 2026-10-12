@@ -897,6 +897,24 @@ this time the corrupted records are children's.
   existed does not retroactively obey it.
 
 **App**
+- **The Firebase web API key is public by design and RESTRICTED (2026-10-12).**
+  It sits in `app/src/lib/firebaseConfig.ts` and `site/public/admin.js`, ships
+  in every page load, and is what every Firebase web app uses from the
+  browser; the data is guarded by Auth and the Firestore rules, never by the
+  key. GitGuardian flagged it on a push, and the console then showed usage of
+  the Geocoding API — which nothing here calls — so the key had been scraped
+  and used on a billable API. It is now restricted in the Google Cloud
+  console (APIs & Services → Credentials → "Browser key (auto created by
+  Firebase)") to **websites**: the app at `iqra---learn-quranic-arabic.web.app`
+  and `.firebaseapp.com`, the landing page at `iqra1447.web.app`,
+  `iqra1447.firebaseapp.com` and `iqra.muslimbynature.org`, and localhost on
+  5173, 5174 and 4173; and to **three APIs**: Identity Toolkit, Token Service,
+  Cloud Firestore — the only Google endpoints the code calls (`auth.ts`,
+  `appConfig.ts`, `classes.ts`, `admin.js`). **A new host must be added to
+  that list in the console** (five minutes to apply, nothing to redeploy); a
+  blocked request is a 403 naming the key. Never rotate the key to "hide" it:
+  the new one would ship in the bundle just the same. Never rewrite history
+  to remove it: same reason.
 - Accounts are **additive, never a mode**: no account = the full app. Signing in
   only adds sync and, for the admin, tools. There is no "choose your mode" screen.
 - Publishing is runtime state in Firestore `config/app` — no redeploy needed.
