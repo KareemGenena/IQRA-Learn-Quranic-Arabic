@@ -92,6 +92,9 @@ const out = { edition: EDITION, base: BASE, app: APP, levels: {} };
 for (const L of [1, 2, 3]) {
   const sections = sectionsOf(L).map((s) => ({
     ...s,
+    // The companion page for this section in the app — what /go/<id> on the
+    // landing site sends a QR reader to while the app is switched on.
+    companion: `${APP}#/workbook/${L}/section/${s.section}`,
     lessons: (map[s.id] ?? []).map((id) => {
       const l = lessons.get(id);
       if (!l) throw new Error(`${s.id} maps to lesson ${id}, which is not in lessons.ts`);

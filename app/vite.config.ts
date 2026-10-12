@@ -113,7 +113,7 @@ export default defineConfig({
         // Pictures are left out for the same reason clips are: the precache
         // install is all-or-nothing, and IQRA Kids adds one picture per letter
         // — a library that grows with the curriculum. The shell must not.
-        globIgnores: ['**/audio/**', '**/images/**', '**/version.json'],
+        globIgnores: ['**/audio/**', '**/images/**', '**/workbook/**', '**/version.json'],
         cleanupOutdatedCaches: true,
         // `cleanupOutdatedCaches` covers the precache only; the audio caches of
         // earlier AUDIO_VERSIONs are removed by this script.
@@ -142,6 +142,15 @@ export default defineConfig({
                */
               cacheableResponse: { statuses: [200], headers: { 'Content-Type': 'audio/wav' } },
             },
+          },
+          {
+            // The workbook companion's page data: fetched when a level is
+            // opened, kept for next time, refreshed in the background. Out of
+            // the precache for the same reason as the clips — it grows with
+            // the workbooks, and the shell must not.
+            urlPattern: ({ url }) => url.pathname.includes('/workbook/') && url.pathname.endsWith('.json'),
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'iqra-workbook-v1', cacheableResponse: { statuses: [200] } },
           },
           // Letter pictures, waveforms, diagrams — seen once, kept for next
           // time. Split by type because the clips' lesson applies here too:

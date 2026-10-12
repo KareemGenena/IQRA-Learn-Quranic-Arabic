@@ -118,6 +118,29 @@ export function HomePage({ config, admin }: { config: AppConfig; admin: boolean 
         </section>
       ))}
 
+      {/* The electronic side of the paper: the workbooks page by page, each
+          word said aloud. A section opener's QR lands there too. */}
+      <section className="level-section">
+        <h3>Practice workbooks</h3>
+        <p className="lesson-blurb">The three workbooks, page by page, with each word said aloud.</p>
+        <ul className="lesson-list">
+          <li>
+            <a className="lesson-card" href="#/workbook">
+              <span className="lesson-no" aria-hidden="true">
+                📖
+              </span>
+              <span className="lesson-body">
+                <span className="lesson-title">Listen to a workbook page</span>
+                <span className="lesson-blurb">Open the page you are tracing and tap any word to hear it.</span>
+              </span>
+              <span className="lesson-go" aria-hidden="true">
+                ›
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
       {levels.length === 0 && <p className="loading">No lessons are published yet.</p>}
       {/* Which build this device is actually running. An installed app has no
           address bar and no way to tell a stale copy from a current one — the

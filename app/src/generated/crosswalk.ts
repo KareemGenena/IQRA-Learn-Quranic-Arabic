@@ -14,6 +14,7 @@ export const CROSSWALK = {
           "printed": 1,
           "parts": [],
           "physical": 3,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/1",
           "lessons": [
             {
               "id": 31,
@@ -36,6 +37,7 @@ export const CROSSWALK = {
           "printed": 4,
           "parts": [],
           "physical": 6,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/2",
           "lessons": [
             {
               "id": 31,
@@ -58,6 +60,7 @@ export const CROSSWALK = {
           "printed": 6,
           "parts": [],
           "physical": 8,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/3",
           "lessons": [
             {
               "id": 20,
@@ -80,6 +83,7 @@ export const CROSSWALK = {
           "printed": 13,
           "parts": [],
           "physical": 15,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/4",
           "lessons": []
         },
         {
@@ -89,6 +93,7 @@ export const CROSSWALK = {
           "printed": 20,
           "parts": [],
           "physical": 22,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/5",
           "lessons": []
         },
         {
@@ -117,6 +122,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 29,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/6",
           "lessons": []
         }
       ]
@@ -156,6 +162,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 3,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/1",
           "lessons": []
         },
         {
@@ -172,6 +179,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 30,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/2",
           "lessons": []
         },
         {
@@ -181,6 +189,7 @@ export const CROSSWALK = {
           "printed": 36,
           "parts": [],
           "physical": 38,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/3",
           "lessons": []
         },
         {
@@ -197,6 +206,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 41,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/4",
           "lessons": []
         },
         {
@@ -225,6 +235,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 47,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/5",
           "lessons": [
             {
               "id": 3,
@@ -278,6 +289,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 50,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/6",
           "lessons": [
             {
               "id": 5,
@@ -300,6 +312,7 @@ export const CROSSWALK = {
           "printed": 54,
           "parts": [],
           "physical": 56,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/7",
           "lessons": []
         },
         {
@@ -309,6 +322,7 @@ export const CROSSWALK = {
           "printed": 57,
           "parts": [],
           "physical": 59,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/8",
           "lessons": []
         }
       ]
@@ -323,6 +337,7 @@ export const CROSSWALK = {
           "printed": 1,
           "parts": [],
           "physical": 3,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/1",
           "lessons": [
             {
               "id": 6,
@@ -346,6 +361,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 7,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/2",
           "lessons": [
             {
               "id": 2,
@@ -369,6 +385,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 11,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/3",
           "lessons": [
             {
               "id": 4,
@@ -385,6 +402,7 @@ export const CROSSWALK = {
           "printed": 11,
           "parts": [],
           "physical": 13,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/4",
           "lessons": [
             {
               "id": 4,
@@ -432,6 +450,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 14,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/5",
           "lessons": [
             {
               "id": 33,
@@ -454,6 +473,7 @@ export const CROSSWALK = {
           "printed": 23,
           "parts": [],
           "physical": 25,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/6",
           "lessons": [
             {
               "id": 7,
@@ -483,6 +503,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 26,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/7",
           "lessons": [
             {
               "id": 7,
@@ -512,6 +533,7 @@ export const CROSSWALK = {
             }
           ],
           "physical": 31,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/8",
           "lessons": []
         },
         {
@@ -521,6 +543,7 @@ export const CROSSWALK = {
           "printed": 32,
           "parts": [],
           "physical": 34,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/9",
           "lessons": []
         },
         {
@@ -530,6 +553,7 @@ export const CROSSWALK = {
           "printed": 33,
           "parts": [],
           "physical": 35,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/10",
           "lessons": []
         }
       ]

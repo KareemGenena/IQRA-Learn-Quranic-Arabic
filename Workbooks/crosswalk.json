@@ -13,6 +13,7 @@
           "printed": 1,
           "parts": [],
           "physical": 3,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/1",
           "lessons": [
             {
               "id": 31,
@@ -35,6 +36,7 @@
           "printed": 4,
           "parts": [],
           "physical": 6,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/2",
           "lessons": [
             {
               "id": 31,
@@ -57,6 +59,7 @@
           "printed": 6,
           "parts": [],
           "physical": 8,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/3",
           "lessons": [
             {
               "id": 20,
@@ -79,6 +82,7 @@
           "printed": 13,
           "parts": [],
           "physical": 15,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/4",
           "lessons": []
         },
         {
@@ -88,6 +92,7 @@
           "printed": 20,
           "parts": [],
           "physical": 22,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/5",
           "lessons": []
         },
         {
@@ -116,6 +121,7 @@
             }
           ],
           "physical": 29,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/6",
           "lessons": []
         }
       ]
@@ -155,6 +161,7 @@
             }
           ],
           "physical": 3,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/1",
           "lessons": []
         },
         {
@@ -171,6 +178,7 @@
             }
           ],
           "physical": 30,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/2",
           "lessons": []
         },
         {
@@ -180,6 +188,7 @@
           "printed": 36,
           "parts": [],
           "physical": 38,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/3",
           "lessons": []
         },
         {
@@ -196,6 +205,7 @@
             }
           ],
           "physical": 41,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/4",
           "lessons": []
         },
         {
@@ -224,6 +234,7 @@
             }
           ],
           "physical": 47,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/5",
           "lessons": [
             {
               "id": 3,
@@ -277,6 +288,7 @@
             }
           ],
           "physical": 50,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/6",
           "lessons": [
             {
               "id": 5,
@@ -299,6 +311,7 @@
           "printed": 54,
           "parts": [],
           "physical": 56,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/7",
           "lessons": []
         },
         {
@@ -308,6 +321,7 @@
           "printed": 57,
           "parts": [],
           "physical": 59,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/8",
           "lessons": []
         }
       ]
@@ -322,6 +336,7 @@
           "printed": 1,
           "parts": [],
           "physical": 3,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/1",
           "lessons": [
             {
               "id": 6,
@@ -345,6 +360,7 @@
             }
           ],
           "physical": 7,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/2",
           "lessons": [
             {
               "id": 2,
@@ -368,6 +384,7 @@
             }
           ],
           "physical": 11,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/3",
           "lessons": [
             {
               "id": 4,
@@ -384,6 +401,7 @@
           "printed": 11,
           "parts": [],
           "physical": 13,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/4",
           "lessons": [
             {
               "id": 4,
@@ -431,6 +449,7 @@
             }
           ],
           "physical": 14,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/5",
           "lessons": [
             {
               "id": 33,
@@ -453,6 +472,7 @@
           "printed": 23,
           "parts": [],
           "physical": 25,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/6",
           "lessons": [
             {
               "id": 7,
@@ -482,6 +502,7 @@
             }
           ],
           "physical": 26,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/7",
           "lessons": [
             {
               "id": 7,
@@ -511,6 +532,7 @@
             }
           ],
           "physical": 31,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/8",
           "lessons": []
         },
         {
@@ -520,6 +542,7 @@
           "printed": 32,
           "parts": [],
           "physical": 34,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/9",
           "lessons": []
         },
         {
@@ -529,6 +552,7 @@
           "printed": 33,
           "parts": [],
           "physical": 35,
+          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/10",
           "lessons": []
         }
       ]

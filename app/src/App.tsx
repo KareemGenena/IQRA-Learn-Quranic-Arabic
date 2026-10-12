@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
+import { WorkbookIndex, WorkbookPage } from './pages/WorkbookPage';
 import { LettersLesson, drawsLetterCards } from './pages/LettersLesson';
 import { WorkbookLinks } from './components/WorkbookLinks';
 import { WordsLesson } from './pages/WordsLesson';
@@ -55,8 +56,13 @@ function initialReading(): Reading {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'recordings' | 'intake';
+  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'recordings' | 'intake' | 'workbook';
   lessonId: number;
+  /** The workbook companion: #/workbook, #/workbook/L/<printed page>, or
+   *  #/workbook/L/section/N (the QR's landing — resolves to a page). */
+  level?: number;
+  wbPage?: number;
+  wbSection?: number;
 }
 
 /**
@@ -73,6 +79,16 @@ function legacyHash(hash: string): string | null {
 }
 
 function parseRoute(hash: string): Route {
+  const w = /^#\/workbook(?:\/([1-3])(?:\/(section\/)?(\d+))?)?/.exec(hash);
+  if (w) {
+    return {
+      page: 'workbook',
+      lessonId: 0,
+      level: w[1] ? Number(w[1]) : undefined,
+      wbPage: w[3] && !w[2] ? Number(w[3]) : undefined,
+      wbSection: w[2] ? Number(w[3]) : undefined,
+    };
+  }
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
   const m = /^#\/(lesson|admin|calibrate|notes|account|classes|recordings|intake)(?:\/(\d+))?/.exec(hash);
@@ -264,7 +280,11 @@ export default function App() {
             <a href="#/">← All lessons</a>
             {!signingIn && (
               <h2>
-                {route.page === 'account'
+                {route.page === 'workbook'
+                  ? route.level
+                    ? `Workbook Level ${route.level}`
+                    : 'Practice workbooks'
+                  : route.page === 'account'
                   ? 'Your account'
                   : route.page === 'classes'
                     ? 'Classes'
@@ -284,6 +304,20 @@ export default function App() {
           {route.page === 'classes' && <ClassesPage account={account} />}
 
           {route.page === 'recordings' && <RecordingsPage account={account} />}
+
+          {route.page === 'workbook' &&
+            (route.level ? (
+              <WorkbookPage
+                level={route.level}
+                printed={route.wbPage ?? 1}
+                section={route.wbSection}
+                rate={rate}
+                reading={reading}
+                setReading={setReading}
+              />
+            ) : (
+              <WorkbookIndex />
+            ))}
 
           {/* The intake system records the lessons themselves, so it belongs
               to whoever owns them. It will open up when volunteers start

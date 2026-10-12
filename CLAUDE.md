@@ -135,7 +135,20 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   stop switch (`iqra-reading`, default continuing) only where the lesson
   has one; it sets what the big button, Play all and `N` mean, and each form
   with two readings gets a small button under the word that plays the other
-  once. Lesson 1 (`WordCard`, no generator) does not take part yet.
+  once. Lesson 1 (`WordCard`, no generator) does not take part yet. The
+  switch shows on every word-card lesson and the chip under a form without
+  a stop take reads "At a stop · not yet recorded" (2026-10-11).
+- **Workbook companion** (`#/workbook`, `#/workbook/L/<printed page>`,
+  `#/workbook/L/section/N`) — the electronic side of the paper: one app page
+  per workbook page, every item on it in the book's order with Play where a
+  clip exists, a Back / page-picker / Next pager, the PDF opened at that
+  page, and the two-readings switch. Addresses carry the PRINTED page number
+  (the footer a learner sees); the PDF link uses the physical page. A section
+  address resolves to the section's first page — that is where `/go/<section
+  id>` on the landing site sends a QR reader (`site/public/go.html`, rewrite
+  `/go/**`; `companion` in `crosswalk.json`) while the app is switched on,
+  and to the PDF page while it is off. Listed under "Practice workbooks" on
+  the home page.
 
 ---
 
@@ -466,6 +479,27 @@ Things that cost real debugging. Do not undo them without reading why.
   itself. A stop reading cannot be cut from a continuing clip: the stop
   changes the length and quality of the ending. Proven end to end with one
   planted take on lesson 4 and removed again (2026-10-11).
+- **The workbook companion is generated from the masters themselves** —
+  `node scripts/make-workbook.mjs [levels]` reads `Workbooks/Practice
+  Workbook Level N.docx` page by page (a running-head paragraph opens a
+  physical page, physical = index + 3, checked against the PDFs' 33 / 59 /
+  34 content pages; "Section N · Title — instruction" names the section;
+  a drill table's FIRST row is the items and its second their captions, the
+  grey tracing rows are never read) and writes `public/workbook/levelN.json`,
+  never hand-edited and never precached (runtime-cached like the clips). An
+  item's id is `L1S4:<filename key>`, its section and its text — stable
+  across editions as long as the word stays in the section. Audio, in order:
+  a clip from lessons 1–7 whose text has the same key AND is on disk (a
+  word recorded once serves the lesson it is taught in and the page it is
+  traced on — its own clip, calibration and stop reading; lesson 7 named
+  clips it did not have and the page offered a Play that failed, so the
+  check is for the file, not the entry); else a take in `Audio/Audio -
+  Workbook Level N/` (with `وقف/`), cut into `public/audio/workbook0N/` and
+  calibrated under lesson id 90 + N; else nothing, and the card says "Not
+  yet recorded". Letter lessons (20+) are never reused: their clips are whole
+  teacher lines. **Run it after any workbook edition and after any lesson is
+  recorded** — reuse changes. Record the workbook items with the intake tool
+  from the masters (every drill table's first row), both readings.
 - A sheet correction is applied in the generator and **reported on every
   run**, never written into the docx behind the author's back (`CORRECTIONS`
   in `make-lesson2.mjs`; lesson 6 carried one for a day). Spell the find-string
@@ -1175,10 +1209,13 @@ all five points agreed, in the order they will be built:
    are the continuing reading, and a stop reading cannot be cut from one.
    Record new material in both modes from day one (two intake sessions per
    sheet, one per reading); retrofit lessons 2–7 after, about 500 takes.
-4. **A workbook companion page** per section: every item of the section in
-   the page's order, with Play, through the same cards — the QR's landing
-   (`/go/<section id>` on the landing site, not built) and a "Workbooks"
-   entry on the home page. Not a lesson, not paged into sittings.
+4. **A workbook companion page** — BUILT 2026-10-11 (section 2 "Workbook
+   companion", section 3 "The workbook companion is generated"): one page
+   per paper page rather than per section, `/go/<id>` on the site, the
+   "Practice workbooks" entry on the home page. Today 81 of the 1,452 items
+   with Arabic play a lesson's clip; the rest wait for `Audio/Audio -
+   Workbook Level N/`. Not built: keyboard walking on the companion (N / P),
+   and the QR itself on the paper, still gated on the app being complete.
 5. **Level 1 and 2 lessons selected from the workbook** by a map file
    (section, rows), the generator reading the workbook docx directly so a
    correction flows through, in the WORKBOOK'S order — tanween, natural madd,
@@ -1269,7 +1306,9 @@ and a QR per section opener to the next workbook edition**, resolving through
 `/go/<section id>` on the landing site fed by the same JSON — the paper
 carries the section id, never a lesson number, so no reprint can go wrong.
 The author asked for this to wait until the app is finished (several lessons
-away); the `/go/` redirect page is not built yet either.
+away). The `/go/` page is built (2026-10-11, `site/public/go.html`): it
+sends the reader to the section's companion page while the app is switched
+on, else to the PDF at the section's page; deploy with `--only hosting:home`.
 
 Two conventions this added, both in the same spirit as their audio twins:
 **pictures are runtime-cached, never precached** (32 of them took the shell from

@@ -1,0 +1,3266 @@
+{
+ "level": 1,
+ "pdf": "iqra-1447-workbook-level-1.pdf",
+ "sections": [
+  {
+   "id": "L1S1",
+   "n": 1,
+   "title": "The Letters",
+   "instruction": "Trace the grey letter 3 times, then write it 2 times on your own.",
+   "firstPage": 3
+  },
+  {
+   "id": "L1S2",
+   "n": 2,
+   "title": "Letters That Look Alike",
+   "instruction": "Trace 3 times, then write 2 times. Watch the dots!",
+   "firstPage": 6
+  },
+  {
+   "id": "L1S3",
+   "n": 3,
+   "title": "Harakat: Fat-ha, Damma, Kasra, Sukoon",
+   "instruction": "Trace 3 times, then write 2 times on your own.",
+   "firstPage": 8
+  },
+  {
+   "id": "L1S4",
+   "n": 4,
+   "title": "Tanween",
+   "instruction": "Trace 3 times, then write 2 times on your own.",
+   "firstPage": 15
+  },
+  {
+   "id": "L1S5",
+   "n": 5,
+   "title": "Madd Ṭabīʿī (Natural Madd)",
+   "instruction": "Trace 3 times, then write 2 times on your own.",
+   "firstPage": 22
+  },
+  {
+   "id": "L1S6",
+   "n": 6,
+   "title": "Shadda",
+   "instruction": "Trace 3 times, then write 2 times on your own.",
+   "firstPage": 29
+  }
+ ],
+ "pages": [
+  {
+   "physical": 3,
+   "printed": 1,
+   "section": "L1S1",
+   "items": [
+    {
+     "id": "L1S1:ا",
+     "text": "ا",
+     "caption": "Alif"
+    },
+    {
+     "id": "L1S1:ب",
+     "text": "ب",
+     "caption": "Baa"
+    },
+    {
+     "id": "L1S1:ت",
+     "text": "ت",
+     "caption": "Taa"
+    },
+    {
+     "id": "L1S1:ث",
+     "text": "ث",
+     "caption": "Thaa"
+    },
+    {
+     "id": "L1S1:ج",
+     "text": "ج",
+     "caption": "Jeem"
+    },
+    {
+     "id": "L1S1:ح",
+     "text": "ح",
+     "caption": "Ḥaa"
+    },
+    {
+     "id": "L1S1:خ",
+     "text": "خ",
+     "caption": "Khaa"
+    },
+    {
+     "id": "L1S1:د",
+     "text": "د",
+     "caption": "Daal"
+    },
+    {
+     "id": "L1S1:ذ",
+     "text": "ذ",
+     "caption": "Dhaal"
+    },
+    {
+     "id": "L1S1:ر",
+     "text": "ر",
+     "caption": "Raa"
+    }
+   ]
+  },
+  {
+   "physical": 4,
+   "printed": 2,
+   "section": "L1S1",
+   "items": [
+    {
+     "id": "L1S1:ز",
+     "text": "ز",
+     "caption": "Zaay"
+    },
+    {
+     "id": "L1S1:س",
+     "text": "س",
+     "caption": "Seen"
+    },
+    {
+     "id": "L1S1:ش",
+     "text": "ش",
+     "caption": "Sheen"
+    },
+    {
+     "id": "L1S1:ص",
+     "text": "ص",
+     "caption": "Ṣaad",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S1:ض",
+     "text": "ض",
+     "caption": "Ḍaad"
+    },
+    {
+     "id": "L1S1:ط",
+     "text": "ط",
+     "caption": "Ṭaa"
+    },
+    {
+     "id": "L1S1:ظ",
+     "text": "ظ",
+     "caption": "Ẓaa"
+    },
+    {
+     "id": "L1S1:ع",
+     "text": "ع",
+     "caption": "ʿAyn"
+    },
+    {
+     "id": "L1S1:غ",
+     "text": "غ",
+     "caption": "Ghayn"
+    },
+    {
+     "id": "L1S1:ف",
+     "text": "ف",
+     "caption": "Faa"
+    }
+   ]
+  },
+  {
+   "physical": 5,
+   "printed": 3,
+   "section": "L1S1",
+   "items": [
+    {
+     "id": "L1S1:ق",
+     "text": "ق",
+     "caption": "Qaaf",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S1:ك",
+     "text": "ك",
+     "caption": "Kaaf"
+    },
+    {
+     "id": "L1S1:ل",
+     "text": "ل",
+     "caption": "Laam"
+    },
+    {
+     "id": "L1S1:م",
+     "text": "م",
+     "caption": "Meem"
+    },
+    {
+     "id": "L1S1:ن",
+     "text": "ن",
+     "caption": "Noon"
+    },
+    {
+     "id": "L1S1:ه",
+     "text": "هـ",
+     "caption": "Haa"
+    },
+    {
+     "id": "L1S1:و",
+     "text": "و",
+     "caption": "Waaw"
+    },
+    {
+     "id": "L1S1:لا",
+     "text": "لا",
+     "caption": "Laam-Alif"
+    },
+    {
+     "id": "L1S1:ء",
+     "text": "ء",
+     "caption": "Hamza"
+    },
+    {
+     "id": "L1S1:ي",
+     "text": "ي",
+     "caption": "Yaa"
+    }
+   ]
+  },
+  {
+   "physical": 6,
+   "printed": 4,
+   "section": "L1S2",
+   "items": [
+    {
+     "id": "L1S2:ب",
+     "text": "ب",
+     "caption": "Baa"
+    },
+    {
+     "id": "L1S2:ت",
+     "text": "ت",
+     "caption": "Taa"
+    },
+    {
+     "id": "L1S2:ث",
+     "text": "ث",
+     "caption": "Thaa"
+    },
+    {
+     "id": "L1S2:ج",
+     "text": "ج",
+     "caption": "Jeem"
+    },
+    {
+     "id": "L1S2:ح",
+     "text": "ح",
+     "caption": "Ḥaa"
+    },
+    {
+     "id": "L1S2:خ",
+     "text": "خ",
+     "caption": "Khaa"
+    },
+    {
+     "id": "L1S2:د",
+     "text": "د",
+     "caption": "Daal"
+    },
+    {
+     "id": "L1S2:ذ",
+     "text": "ذ",
+     "caption": "Dhaal"
+    },
+    {
+     "id": "L1S2:ر",
+     "text": "ر",
+     "caption": "Raa"
+    },
+    {
+     "id": "L1S2:ز",
+     "text": "ز",
+     "caption": "Zaay"
+    }
+   ]
+  },
+  {
+   "physical": 7,
+   "printed": 5,
+   "section": "L1S2",
+   "items": [
+    {
+     "id": "L1S2:س",
+     "text": "س",
+     "caption": "Seen"
+    },
+    {
+     "id": "L1S2:ش",
+     "text": "ش",
+     "caption": "Sheen"
+    },
+    {
+     "id": "L1S2:ص",
+     "text": "ص",
+     "caption": "Ṣaad",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S2:ض",
+     "text": "ض",
+     "caption": "Ḍaad"
+    },
+    {
+     "id": "L1S2:ط",
+     "text": "ط",
+     "caption": "Ṭaa"
+    },
+    {
+     "id": "L1S2:ظ",
+     "text": "ظ",
+     "caption": "Ẓaa"
+    },
+    {
+     "id": "L1S2:ع",
+     "text": "ع",
+     "caption": "ʿAyn"
+    },
+    {
+     "id": "L1S2:غ",
+     "text": "غ",
+     "caption": "Ghayn"
+    },
+    {
+     "id": "L1S2:ف",
+     "text": "ف",
+     "caption": "Faa"
+    },
+    {
+     "id": "L1S2:ق",
+     "text": "ق",
+     "caption": "Qaaf",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    }
+   ]
+  },
+  {
+   "physical": 8,
+   "printed": 6,
+   "section": "L1S3",
+   "items": [
+    {
+     "id": "L1S3:ب",
+     "text": "بَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ب#2",
+     "text": "بُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ب#3",
+     "text": "بِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نب",
+     "text": "نَبۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ت",
+     "text": "تَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ت#2",
+     "text": "تُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ت#3",
+     "text": "تِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نت",
+     "text": "نَتۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ث",
+     "text": "ثَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ث#2",
+     "text": "ثُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ث#3",
+     "text": "ثِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نث",
+     "text": "نَثۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ج",
+     "text": "جَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ج#2",
+     "text": "جُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ج#3",
+     "text": "جِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نج",
+     "text": "نَجۡ",
+     "caption": "Sukoon"
+    }
+   ]
+  },
+  {
+   "physical": 9,
+   "printed": 7,
+   "section": "L1S3",
+   "items": [
+    {
+     "id": "L1S3:ح",
+     "text": "حَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ح#2",
+     "text": "حُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ح#3",
+     "text": "حِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نح",
+     "text": "نَحۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:خ",
+     "text": "خَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:خ#2",
+     "text": "خُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:خ#3",
+     "text": "خِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نخ",
+     "text": "نَخۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:د",
+     "text": "دَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:د#2",
+     "text": "دُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:د#3",
+     "text": "دِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:ند",
+     "text": "نَدۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ذ",
+     "text": "ذَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ذ#2",
+     "text": "ذُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ذ#3",
+     "text": "ذِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نذ",
+     "text": "نَذۡ",
+     "caption": "Sukoon"
+    }
+   ]
+  },
+  {
+   "physical": 10,
+   "printed": 8,
+   "section": "L1S3",
+   "items": [
+    {
+     "id": "L1S3:ر",
+     "text": "رَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ر#2",
+     "text": "رُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ر#3",
+     "text": "رِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نر",
+     "text": "نَرۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ز",
+     "text": "زَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ز#2",
+     "text": "زُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ز#3",
+     "text": "زِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نز",
+     "text": "نَزۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:س",
+     "text": "سَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:س#2",
+     "text": "سُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:س#3",
+     "text": "سِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نس",
+     "text": "نَسۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ش",
+     "text": "شَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ش#2",
+     "text": "شُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ش#3",
+     "text": "شِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نش",
+     "text": "نَشۡ",
+     "caption": "Sukoon"
+    }
+   ]
+  },
+  {
+   "physical": 11,
+   "printed": 9,
+   "section": "L1S3",
+   "items": [
+    {
+     "id": "L1S3:ص",
+     "text": "صَ",
+     "caption": "Fat-ha",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S3:ص#2",
+     "text": "صُ",
+     "caption": "Damma",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S3:ص#3",
+     "text": "صِ",
+     "caption": "Kasra",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S3:نص",
+     "text": "نَصۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ض",
+     "text": "ضَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ض#2",
+     "text": "ضُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ض#3",
+     "text": "ضِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نض",
+     "text": "نَضۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ط",
+     "text": "طَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ط#2",
+     "text": "طُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ط#3",
+     "text": "طِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نط",
+     "text": "نَطۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ظ",
+     "text": "ظَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ظ#2",
+     "text": "ظُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ظ#3",
+     "text": "ظِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نظ",
+     "text": "نَظۡ",
+     "caption": "Sukoon"
+    }
+   ]
+  },
+  {
+   "physical": 12,
+   "printed": 10,
+   "section": "L1S3",
+   "items": [
+    {
+     "id": "L1S3:ع",
+     "text": "عَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ع#2",
+     "text": "عُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ع#3",
+     "text": "عِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نع",
+     "text": "نَعۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:غ",
+     "text": "غَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:غ#2",
+     "text": "غُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:غ#3",
+     "text": "غِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نغ",
+     "text": "نَغۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ف",
+     "text": "فَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ف#2",
+     "text": "فُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ف#3",
+     "text": "فِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نف",
+     "text": "نَفۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ق",
+     "text": "قَ",
+     "caption": "Fat-ha",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S3:ق#2",
+     "text": "قُ",
+     "caption": "Damma",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S3:ق#3",
+     "text": "قِ",
+     "caption": "Kasra",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S3:نق",
+     "text": "نَقۡ",
+     "caption": "Sukoon"
+    }
+   ]
+  },
+  {
+   "physical": 13,
+   "printed": 11,
+   "section": "L1S3",
+   "items": [
+    {
+     "id": "L1S3:ك",
+     "text": "كَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ك#2",
+     "text": "كُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ك#3",
+     "text": "كِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نك",
+     "text": "نَكۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ل",
+     "text": "لَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ل#2",
+     "text": "لُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ل#3",
+     "text": "لِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نل",
+     "text": "نَلۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:م",
+     "text": "مَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:م#2",
+     "text": "مُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:م#3",
+     "text": "مِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نم",
+     "text": "نَمۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ن",
+     "text": "نَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ن#2",
+     "text": "نُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ن#3",
+     "text": "نِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نن",
+     "text": "نَنۡ",
+     "caption": "Sukoon"
+    }
+   ]
+  },
+  {
+   "physical": 14,
+   "printed": 12,
+   "section": "L1S3",
+   "items": [
+    {
+     "id": "L1S3:ه",
+     "text": "هَـ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ه#2",
+     "text": "هُـ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ه#3",
+     "text": "هِـ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نه",
+     "text": "نَهۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:و",
+     "text": "وَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:و#2",
+     "text": "وُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:و#3",
+     "text": "وِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نو",
+     "text": "نَوۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ء",
+     "text": "ءَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ء#2",
+     "text": "ءُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ء#3",
+     "text": "ءِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نأ",
+     "text": "نَأۡ",
+     "caption": "Sukoon"
+    },
+    {
+     "id": "L1S3:ى",
+     "text": "ىَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S3:ى#2",
+     "text": "ىُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S3:ى#3",
+     "text": "ىِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S3:نى",
+     "text": "نَىۡ",
+     "caption": "Sukoon"
+    }
+   ]
+  },
+  {
+   "physical": 15,
+   "printed": 13,
+   "section": "L1S4",
+   "items": [
+    {
+     "id": "L1S4:ب",
+     "text": "بَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:با",
+     "text": "بًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ب#2",
+     "text": "بُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ب#3",
+     "text": "بٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ب#4",
+     "text": "بِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ب#5",
+     "text": "بٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ت",
+     "text": "تَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:تا",
+     "text": "تًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ت#2",
+     "text": "تُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ت#3",
+     "text": "تٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ت#4",
+     "text": "تِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ت#5",
+     "text": "تٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ث",
+     "text": "ثَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:ثا",
+     "text": "ثًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ث#2",
+     "text": "ثُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ث#3",
+     "text": "ثٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ث#4",
+     "text": "ثِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ث#5",
+     "text": "ثٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ج",
+     "text": "جَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:جا",
+     "text": "جًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ج#2",
+     "text": "جُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ج#3",
+     "text": "جٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ج#4",
+     "text": "جِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ج#5",
+     "text": "جٍ",
+     "caption": "Tanween Kasr"
+    }
+   ]
+  },
+  {
+   "physical": 16,
+   "printed": 14,
+   "section": "L1S4",
+   "items": [
+    {
+     "id": "L1S4:ح",
+     "text": "حَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:حا",
+     "text": "حًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ح#2",
+     "text": "حُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ح#3",
+     "text": "حٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ح#4",
+     "text": "حِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ح#5",
+     "text": "حٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:خ",
+     "text": "خَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:خا",
+     "text": "خًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:خ#2",
+     "text": "خُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:خ#3",
+     "text": "خٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:خ#4",
+     "text": "خِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:خ#5",
+     "text": "خٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:د",
+     "text": "دَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:دا",
+     "text": "دًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:د#2",
+     "text": "دُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:د#3",
+     "text": "دٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:د#4",
+     "text": "دِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:د#5",
+     "text": "دٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ذ",
+     "text": "ذَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:ذا",
+     "text": "ذًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ذ#2",
+     "text": "ذُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ذ#3",
+     "text": "ذٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ذ#4",
+     "text": "ذِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ذ#5",
+     "text": "ذٍ",
+     "caption": "Tanween Kasr"
+    }
+   ]
+  },
+  {
+   "physical": 17,
+   "printed": 15,
+   "section": "L1S4",
+   "items": [
+    {
+     "id": "L1S4:ر",
+     "text": "رَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:را",
+     "text": "رًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ر#2",
+     "text": "رُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ر#3",
+     "text": "رٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ر#4",
+     "text": "رِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ر#5",
+     "text": "رٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ز",
+     "text": "زَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:زا",
+     "text": "زًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ز#2",
+     "text": "زُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ز#3",
+     "text": "زٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ز#4",
+     "text": "زِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ز#5",
+     "text": "زٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:س",
+     "text": "سَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:سا",
+     "text": "سًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:س#2",
+     "text": "سُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:س#3",
+     "text": "سٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:س#4",
+     "text": "سِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:س#5",
+     "text": "سٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ش",
+     "text": "شَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:شا",
+     "text": "شًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ش#2",
+     "text": "شُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ش#3",
+     "text": "شٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ش#4",
+     "text": "شِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ش#5",
+     "text": "شٍ",
+     "caption": "Tanween Kasr"
+    }
+   ]
+  },
+  {
+   "physical": 18,
+   "printed": 16,
+   "section": "L1S4",
+   "items": [
+    {
+     "id": "L1S4:ص",
+     "text": "صَ",
+     "caption": "Fat-ha",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:صا",
+     "text": "صًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ص#2",
+     "text": "صُ",
+     "caption": "Damma",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:ص#3",
+     "text": "صٌ",
+     "caption": "Tanween Damm",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:ص#4",
+     "text": "صِ",
+     "caption": "Kasra",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:ص#5",
+     "text": "صٍ",
+     "caption": "Tanween Kasr",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word20.wav",
+      "key": "20",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:ض",
+     "text": "ضَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:ضا",
+     "text": "ضًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ض#2",
+     "text": "ضُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ض#3",
+     "text": "ضٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ض#4",
+     "text": "ضِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ض#5",
+     "text": "ضٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ط",
+     "text": "طَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:طا",
+     "text": "طًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ط#2",
+     "text": "طُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ط#3",
+     "text": "طٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ط#4",
+     "text": "طِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ط#5",
+     "text": "طٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ظ",
+     "text": "ظَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:ظا",
+     "text": "ظًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ظ#2",
+     "text": "ظُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ظ#3",
+     "text": "ظٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ظ#4",
+     "text": "ظِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ظ#5",
+     "text": "ظٍ",
+     "caption": "Tanween Kasr"
+    }
+   ]
+  },
+  {
+   "physical": 19,
+   "printed": 17,
+   "section": "L1S4",
+   "items": [
+    {
+     "id": "L1S4:ع",
+     "text": "عَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:عا",
+     "text": "عًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ع#2",
+     "text": "عُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ع#3",
+     "text": "عٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ع#4",
+     "text": "عِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ع#5",
+     "text": "عٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:غ",
+     "text": "غَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:غا",
+     "text": "غًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:غ#2",
+     "text": "غُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:غ#3",
+     "text": "غٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:غ#4",
+     "text": "غِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:غ#5",
+     "text": "غٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ف",
+     "text": "فَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:فا",
+     "text": "فًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ف#2",
+     "text": "فُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ف#3",
+     "text": "فٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ف#4",
+     "text": "فِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ف#5",
+     "text": "فٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ق",
+     "text": "قَ",
+     "caption": "Fat-ha",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:قا",
+     "text": "قًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ق#2",
+     "text": "قُ",
+     "caption": "Damma",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:ق#3",
+     "text": "قٌ",
+     "caption": "Tanween Damm",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:ق#4",
+     "text": "قِ",
+     "caption": "Kasra",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    },
+    {
+     "id": "L1S4:ق#5",
+     "text": "قٍ",
+     "caption": "Tanween Kasr",
+     "audio": {
+      "lesson": 6,
+      "path": "audio/lesson06/",
+      "file": "word22.wav",
+      "key": "22",
+      "letterNames": true
+     }
+    }
+   ]
+  },
+  {
+   "physical": 20,
+   "printed": 18,
+   "section": "L1S4",
+   "items": [
+    {
+     "id": "L1S4:ك",
+     "text": "كَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:كا",
+     "text": "كًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ك#2",
+     "text": "كُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ك#3",
+     "text": "كٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ك#4",
+     "text": "كِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ك#5",
+     "text": "كٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ل",
+     "text": "لَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:لا",
+     "text": "لًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ل#2",
+     "text": "لُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ل#3",
+     "text": "لٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ل#4",
+     "text": "لِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ل#5",
+     "text": "لٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:م",
+     "text": "مَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:ما",
+     "text": "مًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:م#2",
+     "text": "مُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:م#3",
+     "text": "مٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:م#4",
+     "text": "مِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:م#5",
+     "text": "مٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ن",
+     "text": "نَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:نا",
+     "text": "نًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ن#2",
+     "text": "نُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ن#3",
+     "text": "نٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ن#4",
+     "text": "نِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ن#5",
+     "text": "نٍ",
+     "caption": "Tanween Kasr"
+    }
+   ]
+  },
+  {
+   "physical": 21,
+   "printed": 19,
+   "section": "L1S4",
+   "items": [
+    {
+     "id": "L1S4:ه",
+     "text": "هَـ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:ها",
+     "text": "هًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ه#2",
+     "text": "هُـ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ه#3",
+     "text": "هٌـ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ه#4",
+     "text": "هِـ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ه#5",
+     "text": "هٍـ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:و",
+     "text": "وَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:وا",
+     "text": "وًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:و#2",
+     "text": "وُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:و#3",
+     "text": "وٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:و#4",
+     "text": "وِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:و#5",
+     "text": "وٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ء",
+     "text": "ءَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:ءا",
+     "text": "ءًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ء#2",
+     "text": "ءُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ء#3",
+     "text": "ءٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ء#4",
+     "text": "ءِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ء#5",
+     "text": "ءٍ",
+     "caption": "Tanween Kasr"
+    },
+    {
+     "id": "L1S4:ى",
+     "text": "ىَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S4:يا",
+     "text": "يًا",
+     "caption": "Tanween Fath"
+    },
+    {
+     "id": "L1S4:ى#2",
+     "text": "ىُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S4:ى#3",
+     "text": "ىٌ",
+     "caption": "Tanween Damm"
+    },
+    {
+     "id": "L1S4:ى#4",
+     "text": "ىِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S4:ى#5",
+     "text": "ىٍ",
+     "caption": "Tanween Kasr"
+    }
+   ]
+  },
+  {
+   "physical": 22,
+   "printed": 20,
+   "section": "L1S5",
+   "items": [
+    {
+     "id": "L1S5:بد",
+     "text": "بَدَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:باد",
+     "text": "بَادَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:بد#2",
+     "text": "بُدَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:بود",
+     "text": "بُودَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:بد#3",
+     "text": "بِدَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:بيد",
+     "text": "بِيدَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:تد",
+     "text": "تَدَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:تاد",
+     "text": "تَادَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:تد#2",
+     "text": "تُدَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:تود",
+     "text": "تُودَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:تد#3",
+     "text": "تِدَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:تيد",
+     "text": "تِيدَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:ثد",
+     "text": "ثَدَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:ثاد",
+     "text": "ثَادَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:ثد#2",
+     "text": "ثُدَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:ثود",
+     "text": "ثُودَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:ثد#3",
+     "text": "ثِدَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:ثيد",
+     "text": "ثِيدَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:جد",
+     "text": "جَدَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:جاد",
+     "text": "جَادَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:جد#2",
+     "text": "جُدَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:جود",
+     "text": "جُودَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:جد#3",
+     "text": "جِدَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:جيد",
+     "text": "جِيدَ",
+     "caption": "Madd Yaa"
+    }
+   ]
+  },
+  {
+   "physical": 23,
+   "printed": 21,
+   "section": "L1S5",
+   "items": [
+    {
+     "id": "L1S5:حد",
+     "text": "حَدُ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:حاد",
+     "text": "حَادُ",
+     "caption": "Madd Alif",
+     "audio": {
+      "lesson": 3,
+      "path": "audio/lesson03/",
+      "file": "word54b.wav",
+      "key": "54b"
+     }
+    },
+    {
+     "id": "L1S5:حد#2",
+     "text": "حُدُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:حود",
+     "text": "حُودُ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:حد#3",
+     "text": "حِدُ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:حيد",
+     "text": "حِيدُ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:خد",
+     "text": "خَدُ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:خاد",
+     "text": "خَادُ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:خد#2",
+     "text": "خُدُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:خود",
+     "text": "خُودُ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:خد#3",
+     "text": "خِدُ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:خيد",
+     "text": "خِيدُ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:دد",
+     "text": "دَدُ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:داد",
+     "text": "دَادُ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:دد#2",
+     "text": "دُدُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:دود",
+     "text": "دُودُ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:دد#3",
+     "text": "دِدُ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:ديد",
+     "text": "دِيدُ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:ذد",
+     "text": "ذَدُ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:ذاد",
+     "text": "ذَادُ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:ذد#2",
+     "text": "ذُدُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:ذود",
+     "text": "ذُودُ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:ذد#3",
+     "text": "ذِدُ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:ذيد",
+     "text": "ذِيدُ",
+     "caption": "Madd Yaa"
+    }
+   ]
+  },
+  {
+   "physical": 24,
+   "printed": 22,
+   "section": "L1S5",
+   "items": [
+    {
+     "id": "L1S5:رد",
+     "text": "رَدِ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:راد",
+     "text": "رَادِ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:رد#2",
+     "text": "رُدِ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:رود",
+     "text": "رُودِ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:رد#3",
+     "text": "رِدِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:ريد",
+     "text": "رِيدِ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:زد",
+     "text": "زَدِ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:زاد",
+     "text": "زَادِ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:زد#2",
+     "text": "زُدِ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:زود",
+     "text": "زُودِ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:زد#3",
+     "text": "زِدِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:زيد",
+     "text": "زِيدِ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:سد",
+     "text": "سَدِ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:ساد",
+     "text": "سَادِ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:سد#2",
+     "text": "سُدِ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:سود",
+     "text": "سُودِ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:سد#3",
+     "text": "سِدِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:سيد",
+     "text": "سِيدِ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:شد",
+     "text": "شَدِ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:شاد",
+     "text": "شَادِ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:شد#2",
+     "text": "شُدِ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:شود",
+     "text": "شُودِ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:شد#3",
+     "text": "شِدِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:شيد",
+     "text": "شِيدِ",
+     "caption": "Madd Yaa"
+    }
+   ]
+  },
+  {
+   "physical": 25,
+   "printed": 23,
+   "section": "L1S5",
+   "items": [
+    {
+     "id": "L1S5:صن",
+     "text": "صَنَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:صان",
+     "text": "صَانَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:صن#2",
+     "text": "صُنَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:صون",
+     "text": "صُونَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:صن#3",
+     "text": "صِنَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:صين",
+     "text": "صِينَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:ضن",
+     "text": "ضَنَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:ضان",
+     "text": "ضَانَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:ضن#2",
+     "text": "ضُنَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:ضون",
+     "text": "ضُونَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:ضن#3",
+     "text": "ضِنَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:ضين",
+     "text": "ضِينَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:طن",
+     "text": "طَنَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:طان",
+     "text": "طَانَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:طن#2",
+     "text": "طُنَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:طون",
+     "text": "طُونَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:طن#3",
+     "text": "طِنَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:طين",
+     "text": "طِينَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:ظن",
+     "text": "ظَنَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:ظان",
+     "text": "ظَانَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:ظن#2",
+     "text": "ظُنَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:ظون",
+     "text": "ظُونَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:ظن#3",
+     "text": "ظِنَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:ظين",
+     "text": "ظِينَ",
+     "caption": "Madd Yaa"
+    }
+   ]
+  },
+  {
+   "physical": 26,
+   "printed": 24,
+   "section": "L1S5",
+   "items": [
+    {
+     "id": "L1S5:عن",
+     "text": "عَنُ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:عان",
+     "text": "عَانُ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:عن#2",
+     "text": "عُنُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:عون",
+     "text": "عُونُ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:عن#3",
+     "text": "عِنُ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:عين",
+     "text": "عِينُ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:غن",
+     "text": "غَنُ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:غان",
+     "text": "غَانُ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:غن#2",
+     "text": "غُنُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:غون",
+     "text": "غُونُ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:غن#3",
+     "text": "غِنُ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:غين",
+     "text": "غِينُ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:فن",
+     "text": "فَنُ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:فان",
+     "text": "فَانُ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:فن#2",
+     "text": "فُنُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:فون",
+     "text": "فُونُ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:فن#3",
+     "text": "فِنُ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:فين",
+     "text": "فِينُ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:قن",
+     "text": "قَنُ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:قان",
+     "text": "قَانُ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:قن#2",
+     "text": "قُنُ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:قون",
+     "text": "قُونُ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:قن#3",
+     "text": "قِنُ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:قين",
+     "text": "قِينُ",
+     "caption": "Madd Yaa"
+    }
+   ]
+  },
+  {
+   "physical": 27,
+   "printed": 25,
+   "section": "L1S5",
+   "items": [
+    {
+     "id": "L1S5:كن",
+     "text": "كَنِ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:كان",
+     "text": "كَانِ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:كن#2",
+     "text": "كُنِ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:كون",
+     "text": "كُونِ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:كن#3",
+     "text": "كِنِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:كين",
+     "text": "كِينِ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:لن",
+     "text": "لَنِ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:لان",
+     "text": "لَانِ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:لن#2",
+     "text": "لُنِ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:لون",
+     "text": "لُونِ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:لن#3",
+     "text": "لِنِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:لين",
+     "text": "لِينِ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:من",
+     "text": "مَنِ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:مان",
+     "text": "مَانِ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:من#2",
+     "text": "مُنِ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:مون",
+     "text": "مُونِ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:من#3",
+     "text": "مِنِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:مين",
+     "text": "مِينِ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:نن",
+     "text": "نَنِ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:نان",
+     "text": "نَانِ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:نن#2",
+     "text": "نُنِ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:نون",
+     "text": "نُونِ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:نن#3",
+     "text": "نِنِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:نين",
+     "text": "نِينِ",
+     "caption": "Madd Yaa"
+    }
+   ]
+  },
+  {
+   "physical": 28,
+   "printed": 26,
+   "section": "L1S5",
+   "items": [
+    {
+     "id": "L1S5:هر",
+     "text": "هَرَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:هار",
+     "text": "هَارَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:هر#2",
+     "text": "هُرَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:هور",
+     "text": "هُورَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:هر#3",
+     "text": "هِرَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:هير",
+     "text": "هِيرَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:ور",
+     "text": "وَرَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:وار",
+     "text": "وَارَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:ور#2",
+     "text": "وُرَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:وور",
+     "text": "وُورَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:ور#3",
+     "text": "وِرَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:وير",
+     "text": "وِيرَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:أر",
+     "text": "أَرَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:ءار",
+     "text": "ءَارَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:أر#2",
+     "text": "أُرَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:أور",
+     "text": "أُورَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:إر",
+     "text": "إِرَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:إير",
+     "text": "إِيرَ",
+     "caption": "Madd Yaa"
+    },
+    {
+     "id": "L1S5:ير",
+     "text": "يَرَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S5:يار",
+     "text": "يَارَ",
+     "caption": "Madd Alif"
+    },
+    {
+     "id": "L1S5:ير#2",
+     "text": "يُرَ",
+     "caption": "Damma"
+    },
+    {
+     "id": "L1S5:يور",
+     "text": "يُورَ",
+     "caption": "Madd Waaw"
+    },
+    {
+     "id": "L1S5:ير#3",
+     "text": "يِرَ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S5:يير",
+     "text": "يِيرَ",
+     "caption": "Madd Yaa"
+    }
+   ]
+  },
+  {
+   "physical": 29,
+   "printed": 27,
+   "section": "L1S6",
+   "items": [
+    {
+     "id": "L1S6:بأ",
+     "text": "بَأَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بأ#2",
+     "text": "بَأَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بب",
+     "text": "بَبَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بب#2",
+     "text": "بَبَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بت",
+     "text": "بَتَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بت#2",
+     "text": "بَتَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بث",
+     "text": "بَثَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بث#2",
+     "text": "بَثَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بج",
+     "text": "بَجَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بج#2",
+     "text": "بَجَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بح",
+     "text": "بَحَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بح#2",
+     "text": "بَحَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بخ",
+     "text": "بَخَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بخ#2",
+     "text": "بَخَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بد",
+     "text": "بَدَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بد#2",
+     "text": "بَدَّ",
+     "caption": "Shadda"
+    }
+   ]
+  },
+  {
+   "physical": 30,
+   "printed": 28,
+   "section": "L1S6",
+   "items": [
+    {
+     "id": "L1S6:بذ",
+     "text": "بَذَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بذ#2",
+     "text": "بَذَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بر",
+     "text": "بَرَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بر#2",
+     "text": "بَرَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بز",
+     "text": "بَزَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بز#2",
+     "text": "بَزَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بس",
+     "text": "بَسَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بس#2",
+     "text": "بَسَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بش",
+     "text": "بَشَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بش#2",
+     "text": "بَشَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بص",
+     "text": "بَصَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بص#2",
+     "text": "بَصَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بض",
+     "text": "بَضَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بض#2",
+     "text": "بَضَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بط",
+     "text": "بَطَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بط#2",
+     "text": "بَطَّ",
+     "caption": "Shadda"
+    }
+   ]
+  },
+  {
+   "physical": 31,
+   "printed": 29,
+   "section": "L1S6",
+   "items": [
+    {
+     "id": "L1S6:بظ",
+     "text": "بَظَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بظ#2",
+     "text": "بَظَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بع",
+     "text": "بَعَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بع#2",
+     "text": "بَعَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بغ",
+     "text": "بَغَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بغ#2",
+     "text": "بَغَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بف",
+     "text": "بَفَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بف#2",
+     "text": "بَفَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بق",
+     "text": "بَقَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بق#2",
+     "text": "بَقَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بك",
+     "text": "بَكَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بك#2",
+     "text": "بَكَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بل",
+     "text": "بَلَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بل#2",
+     "text": "بَلَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بم",
+     "text": "بَمَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بم#2",
+     "text": "بَمَّ",
+     "caption": "Shadda"
+    }
+   ]
+  },
+  {
+   "physical": 32,
+   "printed": 30,
+   "section": "L1S6",
+   "items": [
+    {
+     "id": "L1S6:بن",
+     "text": "بَنَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بن#2",
+     "text": "بَنَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:به",
+     "text": "بَهَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:به#2",
+     "text": "بَهَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بو",
+     "text": "بَوَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بو#2",
+     "text": "بَوَّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:بى",
+     "text": "بَىَ",
+     "caption": "Fat-ha"
+    },
+    {
+     "id": "L1S6:بى#2",
+     "text": "بَىَّ",
+     "caption": "Shadda"
+    }
+   ]
+  },
+  {
+   "physical": 33,
+   "printed": 31,
+   "section": "L1S6",
+   "items": [
+    {
+     "id": "L1S6:عل",
+     "text": "عَلِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S6:عل#2",
+     "text": "عَلِّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:عف",
+     "text": "عَفِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S6:عف#2",
+     "text": "عَفِّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:عق",
+     "text": "عَقِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S6:عق#2",
+     "text": "عَقِّ",
+     "caption": "Shadda"
+    }
+   ]
+  },
+  {
+   "physical": 34,
+   "printed": 32,
+   "section": "L1S6",
+   "items": [
+    {
+     "id": "L1S6:عس",
+     "text": "عَسِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S6:عس#2",
+     "text": "عَسِّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:عش",
+     "text": "عَشِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S6:عش#2",
+     "text": "عَشِّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:عص",
+     "text": "عَصِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S6:عص#2",
+     "text": "عَصِّ",
+     "caption": "Shadda"
+    },
+    {
+     "id": "L1S6:عض",
+     "text": "عَضِ",
+     "caption": "Kasra"
+    },
+    {
+     "id": "L1S6:عض#2",
+     "text": "عَضِّ",
+     "caption": "Shadda"
+    }
+   ]
+  },
+  {
+   "physical": 35,
+   "printed": 33,
+   "section": "L1S6",
+   "items": []
+  }
+ ]
+}

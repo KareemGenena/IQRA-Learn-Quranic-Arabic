@@ -3175,3 +3175,24 @@ kbd {
   font-size: 12px;
   color: var(--text-soft);
 }
+
+/* The companion page itself (pages/WorkbookPage.tsx): a lesson's clothes,
+   the book's order. */
+.workbook-where {
+  margin: 0;
+  font-weight: 600;
+}
+
+.page-select {
+  min-height: 52px;
+  max-width: 50vw;
+  font-size: 15px;
+}
+
+.form-btn.static {
+  cursor: default;
+}
+
+.pair-card.silent {
+  opacity: 0.9;
+}
