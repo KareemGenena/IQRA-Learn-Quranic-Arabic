@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
-import { LettersLesson } from './pages/LettersLesson';
+import { LettersLesson, drawsLetterCards } from './pages/LettersLesson';
 import { WorkbookLinks } from './components/WorkbookLinks';
 import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
@@ -349,7 +349,7 @@ export default function App() {
                       <a href={`#/notes/${route.lessonId}`}>📝 Open notes for this lesson</a>
                     </p>
                   )}
-                  {lesson.kind === 'letters' ? (
+                  {drawsLetterCards(lesson) ? (
                     <LettersLesson lesson={lesson} rate={rate} />
                   ) : lesson.kind === 'words' ? (
                     <WordsLesson lesson={lesson} rate={rate} />
