@@ -29,17 +29,30 @@ export interface LessonMeta {
    */
   order?: number;
   /**
-   * Which menu(s) this lesson appears in. A lesson may be in both: the kids
-   * curriculum and the adult one are the same content wearing two skins, and
-   * `mode` never touches an id, a folder, a clip name or a calibration key.
-   * Defaults to the adult track, which is every lesson written before this.
+   * The Level this lesson sits under — the same Levels as the practice
+   * workbooks, so the app and the paper name the same place with the same
+   * word. One curriculum for everyone: the Level 1 letter lessons were a
+   * separate "IQRA Kids" menu until 2026-10-11, and are the start of the
+   * sequence now. A level is a heading, never an identity — a lesson moving
+   * between levels keeps its number. Within a level the order is `order`
+   * where set, else the id.
    */
-  tracks?: Track[];
-  /** Which Level heading it sits under in the kids menu. */
-  kidsLevel?: 1 | 2 | 3;
+  level: Level;
 }
 
-export type Track = 'adults' | 'kids';
+export type Level = 1 | 2 | 3;
+
+/** The Level headings on the home page, worded from the workbooks' own
+ *  tables of contents. */
+export const LEVELS: { level: Level; title: string; blurb: string }[] = [
+  { level: 1, title: 'Level 1', blurb: 'The letters, the harakat, tanween, natural madd and shadda.' },
+  { level: 2, title: 'Level 2', blurb: 'Letters joined into words, hamza, the madd rules and qalqala.' },
+  {
+    level: 3,
+    title: 'Level 3',
+    blurb: 'Stopping, sun and moon lam, hamzat wasl, where the letters are made, and the rules of nūn and mīm sākinah.',
+  },
+];
 
 /**
  * The lesson menu on the home page. Add a line here for each new lesson.
@@ -50,57 +63,64 @@ export type Track = 'adults' | 'kids';
 export const LESSONS: LessonMeta[] = [
   {
     id: 1,
+    level: 2,
     title: 'Five-Letter Words',
     titleArabic: 'كلمات من خمسة أحرف',
     blurb: '33 words from Al-Fatiha and Al-Baqarah, heard letter by letter.',
   },
   {
     id: 2,
+    level: 3,
     title: 'Sun & Moon Lam',
     titleArabic: 'اللام الشمسية والقمرية',
     blurb: '46 words from the last surahs — hear when the ل is spoken and when it is silent.',
   },
   {
     id: 3,
+    level: 3,
     title: 'Throat Letters',
     titleArabic: 'حروف الحلق',
     blurb: 'ء ه ح ع غ خ — the six letters of the throat, at the start, middle and end of a word.',
   },
   {
     id: 4,
+    level: 3,
     title: 'Hamzat Wasl after وَ and ثُمَّ',
     titleArabic: 'همزة الوصل بعد الواو وثم',
     blurb: 'Each word alone, then after وَ and ثُمَّ — hear the ٱ of ٱل drop away.',
   },
   {
     id: 5,
+    level: 2,
     title: 'Madd before a Hamza',
     titleArabic: 'المد المتصل والمنفصل قبل همزة',
     blurb: 'Muttasil and munfasil — both held for four harakat, whether the hamza is in the same word or the next.',
   },
   {
     id: 6,
+    level: 2,
     title: 'Madd Lāzim, Ṣilah and More',
     titleArabic: 'المد اللازم ومد الصلة وغيرهما',
     blurb: 'The longest madd, the pronoun that grows a natural madd, and what happens to a madd when you stop.',
   },
   {
     id: 7,
+    level: 3,
     title: 'Nūn Sākinah, Tanwīn and Mīm Sākinah',
     titleArabic: 'أحكام النون الساكنة والتنوين والميم الساكنة',
     blurb: 'Iẕhār, ikhfāʾ, iqlāb and idghām.',
   },
 
-  // ── IQRA Kids — the Baghdadi qaida. See Design/iqra-kids.md. ────────────
-  // Numbers 20–30 are reserved for the eleven qaida lessons and 31–32 for the
-  // two songs; `order` is what decides where each is read, so a lesson can be
-  // moved without its number — and therefore its clips and calibrations —
-  // moving with it.
+  // ── Level 1 — the letters: the Baghdadi qaida, built for the Maktab's
+  // youngest class and read by everyone (once "IQRA Kids"; Design/iqra-kids.md).
+  // Numbers 20–30 are reserved for the qaida lessons and 31–33 hold the two
+  // songs and the places page; `order` is what decides where each is read, so
+  // a lesson can be moved without its number — and therefore its clips and
+  // calibrations — moving with it.
   {
     id: 31,
     order: 1,
-    tracks: ['kids'],
-    kidsLevel: 1,
+    level: 1,
     title: 'The Alphabet Song — the Names',
     titleArabic: 'أنشودة الحروف — الأسماء',
     blurb: 'All 28 letters in order, sung. Press pause whenever you want to stop and learn.',
@@ -111,8 +131,7 @@ export const LESSONS: LessonMeta[] = [
     // calibrated against them, so their numbers went back unspent.
     id: 20,
     order: 2,
-    tracks: ['kids'],
-    kidsLevel: 1,
+    level: 1,
     title: 'The Letters',
     titleArabic: 'الحروف',
     blurb: 'All 29 letters, each with its picture: fat-ha, damma, kasra, and a sukoon after نَ.',
@@ -120,8 +139,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 32,
     order: 3,
-    tracks: ['kids'],
-    kidsLevel: 1,
+    level: 1,
     title: 'The Alphabet Song — the Sounds',
     titleArabic: 'أنشودة الحروف — الحركات',
     blurb: 'Every letter sung with fat-ha, damma and kasra.',
@@ -129,8 +147,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 33,
     order: 4,
-    tracks: ['kids'],
-    kidsLevel: 1,
+    level: 1,
     title: 'Where the Letters Come From',
     titleArabic: 'مخارج الحروف',
     blurb: 'Mouth space, throat, tongue, lips and nose — the five places, as in the workbook.',
@@ -138,20 +155,23 @@ export const LESSONS: LessonMeta[] = [
 ];
 
 /**
- * The lessons in the order a learner meets them.
+ * The lessons in the order a learner meets them: by Level, then by `order`
+ * (or id) within it.
  *
- * The one place that decides reading order, so that when lessons are grouped
- * into chapters and shuffled between them, this is what changes — not the
- * lesson numbers, and not each page that happens to list lessons.
+ * The one place that decides reading order, so that when a lesson moves
+ * within or between Levels, this is what changes — not the lesson numbers,
+ * and not each page that happens to list lessons.
  */
-export function orderedLessons(
-  lessons: LessonMeta[] = LESSONS,
-  /** Which menu is asking. A lesson with no `tracks` belongs to the adults. */
-  track: Track = 'adults',
-): LessonMeta[] {
-  return lessons
-    .filter((l) => (l.tracks ?? ['adults']).includes(track))
-    .sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id));
+export function orderedLessons(lessons: LessonMeta[] = LESSONS): LessonMeta[] {
+  return [...lessons].sort(
+    (a, b) => a.level - b.level || (a.order ?? a.id) - (b.order ?? b.id),
+  );
+}
+
+/** The same sequence cut into its Levels, for the headings on the home page. */
+export function lessonsByLevel(lessons: LessonMeta[] = LESSONS) {
+  const ordered = orderedLessons(lessons);
+  return LEVELS.map((lv) => ({ ...lv, lessons: ordered.filter((l) => l.level === lv.level) }));
 }
 
 const pad = (n: number) => String(n).padStart(2, '0');

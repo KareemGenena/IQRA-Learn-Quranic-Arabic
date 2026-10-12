@@ -1084,3 +1084,43 @@ shows "Mouth space الجوف · ا و ى"; `#/lesson/2` shows "See workbook Lev
 page 5 … Section 2, Lam Shamsiyya" linking to `…level-3.pdf#page=7`; no
 console errors. A React instance reuse between the two songs carried the
 first song's place into the second — fixed by keying on the lesson.
+
+---
+
+## 12. One curriculum — the door comes down, 2026-10-11
+
+The author's decision, after the workbooks and the app were set side by
+side: **IQRA Kids is not a separate door. It is Level 1 of the one
+curriculum, for everyone.** The lighthouse and the two songs stay; adults
+learn alphabets by song too, and what an adult would not forgive — a mascot
+on a lesson card — was already off the cards.
+
+What changed in the app, the same day:
+
+- `LessonMeta.level` (1–3, the practice workbooks' own Levels) replaces
+  `tracks` and `kidsLevel`. The home page is one list under three Level
+  headings; Manāra greets from the Level 1 heading, where the door stood.
+  Lessons 1, 5, 6 sit in Level 2 and 2, 3, 4, 7 in Level 3, placed by the
+  workbook sections the crosswalk maps them to.
+- A `letters` lesson is drawn as letter cards, a song as its strip and the
+  places page as its diagrams **by the lesson's kind** (`LettersLesson`),
+  wherever it is opened. `#/kids` and `#/kids/lesson/N` redirect to `#/` and
+  `#/lesson/N`; `data-mode="kids"` is gone, and with it the one thing it did
+  — hide the playback-speed buttons.
+- The name "IQRA Kids" survives only in this file's title, in history, and
+  in the `images/kids/` folder, which is an asset path and not a word a
+  learner reads.
+
+What this record loses: **§2's own order (L4–L11) is retired.** The Level 1
+and Level 2 lessons will follow the workbook's order — tanween, natural madd,
+shadda; then pairs, three-letter words, timing, four-letter words, hamza,
+madd, qalqala — selected from the workbook's own tables, so that a child
+hears in the app the word they traced on paper. The sitting rule stands: a
+lesson is 8–15 cards, and a workbook section (up to 475 items) is never a
+lesson. Numbers 21–30 are still the block for them. Everything else here —
+the mnemonics, the shape families, one recording per letter, the strip, the
+38 takes still to record — is unchanged and still the authority.
+
+§1's law gains its fourth hat: a lesson's **level** is a heading, never an
+identity. Moving a lesson between levels changes one number in `lessons.ts`
+and nothing else.

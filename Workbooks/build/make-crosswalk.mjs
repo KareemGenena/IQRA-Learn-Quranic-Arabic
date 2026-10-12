@@ -69,7 +69,7 @@ function sectionsOf(level) {
   return sections;
 }
 
-/** The app's lessons — id, title, track — read from its registry. */
+/** The app's lessons — id, title, level — read from its registry. */
 function lessonsOfApp() {
   const src = readFileSync(resolve(ROOT, 'app/src/lib/lessons.ts'), 'utf8');
   const body = src.slice(src.indexOf('export const LESSONS'), src.indexOf('export function orderedLessons'));
@@ -78,9 +78,10 @@ function lessonsOfApp() {
   for (const m of body.matchAll(/\{(?:\s*\/\/[^\n]*)*\s*id:\s*(\d+)[\s\S]*?\}/g)) {
     const b = m[0];
     const title = (b.match(/title:\s*'([^']*)'/) ?? [])[1] ?? `Lesson ${m[1]}`;
-    const kids = /tracks:\s*\[\s*'kids'/.test(b);
+    const level = Number((b.match(/level:\s*(\d)/) ?? [])[1] ?? 0);
     const id = Number(m[1]);
-    out.set(id, { id, title, track: kids ? 'kids' : 'adults', url: `${APP}#/${kids ? 'kids/lesson' : 'lesson'}/${id}` });
+    if (!level) throw new Error(`lesson ${id} has no level in lessons.ts`);
+    out.set(id, { id, title, level, url: `${APP}#/lesson/${id}` });
   }
   return out;
 }

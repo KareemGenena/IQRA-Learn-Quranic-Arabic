@@ -32,8 +32,8 @@ export interface AppConfig {
 export const DEFAULT_CONFIG: AppConfig = {
   lessons: {
     1: 'published', 2: 'published', 3: 'draft', 4: 'draft', 5: 'published', 6: 'draft', 7: 'draft',
-    // IQRA Kids — the qaida. Draft until they have been recorded and used in
-    // a real class. See Design/iqra-kids.md.
+    // Level 1 — the letters (the qaida, once "IQRA Kids"). Draft until they
+    // have been recorded and used in a real class. See Design/iqra-kids.md.
     20: 'draft', 31: 'draft', 32: 'draft', 33: 'draft',
   },
   features: { laser: 'admin', notes: 'admin' },

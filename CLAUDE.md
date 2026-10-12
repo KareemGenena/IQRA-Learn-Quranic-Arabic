@@ -7,13 +7,13 @@ pronounced. Live at **https://iqra---learn-quranic-arabic.web.app**
 This file is loaded automatically at the start of every session. Keep it
 current — the "Where we are" section at the bottom is the handover note.
 
-> **If the session touches IQRA Kids — the Baghdadi-qaida curriculum for
-> children, lessons 20–30 — read `Design/iqra-kids.md` before doing anything.**
-> It is the design record for that work the way this file is for the app: the
-> 11-lesson plan, what was decided, what is still open, and why. Only that file
-> is loaded on its own; this one is. So: qaida, alphabet, kids, Maktab lessons,
-> letter mnemonics, the kids skin → open it first. This file stays the
-> authority on everything the two share.
+> **If the session touches the Level 1 letter lessons — the Baghdadi qaida,
+> lessons 20–33, once "IQRA Kids" — read `Design/iqra-kids.md` before doing
+> anything.** It is the design record for that work the way this file is for
+> the app: the lesson plan, what was decided, what is still open, and why.
+> Only that file is loaded on its own; this one is. So: qaida, alphabet,
+> Level 1, Maktab lessons, letter mnemonics, letter cards, the songs → open
+> it first. This file stays the authority on everything the two share.
 >
 > **If the session touches the Grammar track — nahw and sarf for adults who
 > already read the mushaf — read `Grammar/IQRA_GRAMMAR_TRACK_SPEC.md` first,
@@ -111,6 +111,13 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
 - **Audio intake** (`#/intake`, admin, reached from the admin bar) — open a
   Word sheet, get a recording slot per row, record in the browser, and write
   correctly named 16-bit WAVs straight into the folder a generator reads.
+- **Levels** — one curriculum under three Level headings on the home page,
+  the same Levels as the practice workbooks. `LessonMeta.level` places a
+  lesson; `lessonsByLevel()` in `lessons.ts` groups them. The letter lessons
+  (20, 31–33) are Level 1 and were the separate "IQRA Kids" door until
+  2026-10-11; `#/kids` and `#/kids/lesson/N` redirect to `#/` and
+  `#/lesson/N`. A `letters` lesson is drawn as letter cards wherever it is
+  opened (`LettersLesson`) — chosen by the lesson's kind, no longer by a route.
 
 ---
 
@@ -688,11 +695,16 @@ When an update does not arrive, work down the list rather than guessing.
   cost this project once, one level up.
 - Reading order is therefore a separate thing: `LessonMeta.order`, read through
   `orderedLessons()` in `lessons.ts`, which is the one place order is decided.
-  Nothing sets `order` yet — the lessons were written in the order they are
-  read. It exists so the day one moves, the move is a number rather than a
-  renaming of folders, clips and calibration documents.
-- Chapters will be a `chapter` field beside it and a grouping in the same
-  function. Same rule: a lesson changing chapter must not change its number.
+  Only the Level 1 lessons set `order` (31, 20, 32, 33); the rest sort by id
+  within their level. It exists so the day one moves, the move is a number
+  rather than a renaming of folders, clips and calibration documents.
+- The grouping is `LessonMeta.level` (1–3, the workbook Levels), read through
+  `lessonsByLevel()` in the same file: `orderedLessons()` sorts by level, then
+  by `order` where set, else by id. Same rule: a lesson changing level must
+  not change its number. Lessons 1, 5, 6 sit in Level 2 and 2, 3, 4, 7 in
+  Level 3, placed by the workbook sections the crosswalk maps them to (lesson
+  1 by hand — five-letter words follow Level 2's four-letter words); each is
+  one number to change.
 
 **A roster seat is not an account** *(designed, not built)*
 
@@ -1100,6 +1112,51 @@ session's directory, and it costs about 1.5 M subagent tokens a run.
 
 ## 5. Next task
 
+**The continuum — decided 2026-10-11; levels and the door built the same
+day.** The author set the workbooks and the app side by side and decided,
+all five points agreed, in the order they will be built:
+1. **One curriculum under the workbook's Levels** — DONE. The IQRA Kids door
+   is gone, `level` replaces `tracks`/`kidsLevel`, Manāra greets from the
+   Level 1 heading, the old addresses redirect, and the playback-speed
+   buttons now show on letter lessons too (the one thing the old skin hid).
+   Nothing recorded, calibrated or numbered moved.
+2. **A "Continue" card** at the top of the home page: the next lesson in
+   reading order not yet done, the full list beneath it. Done = the learner
+   reached the last page (the per-lesson place `SectionedLesson` already
+   keeps) or passed the level's assessment; `N` should run off the end of a
+   lesson into the next. Progress on the device first, synced to the account
+   additively, like notes. No locks, ever.
+3. **Two readings per word — continuing and at a stop.** A two-state switch
+   in the lesson header, remembered on the device, default continuing; it
+   decides what Play, `N` and the card's greying mean. A smaller second
+   button on each card plays the other reading once. No stop button on a
+   letter, a pair or a mock syllable (the generator decides from the text).
+   Stop takes go in a **`وقف/` subfolder** of the lesson's audio folder with
+   the SAME derived filename — the intake page gets a session-wide "Reading"
+   selector, and lesson 6's `<word> وقف` tag keeps its own meaning. The
+   generator adds each as a second form with a `-waqf` suffix on the clip
+   and the calibration key, timed with `waqf: true`. The existing clips are
+   the continuing reading; a stop reading cannot be cut from one. Record new
+   material in both modes from day one; retrofit lessons 1–7 (about 530
+   takes) after. **Build this before any new recording.**
+4. **A workbook companion page** per section: every item of the section in
+   the page's order, with Play, through the same cards — the QR's landing
+   (`/go/<section id>` on the landing site, not built) and a "Workbooks"
+   entry on the home page. Not a lesson, not paged into sittings.
+5. **Level 1 and 2 lessons selected from the workbook** by a map file
+   (section, rows), the generator reading the workbook docx directly so a
+   correction flows through, in the WORKBOOK'S order — tanween, natural madd,
+   shadda; then pairs, three-letter words, timing, four-letter words, hamza,
+   madd, qalqala. The qaida's own L4–L11 sequence in `Design/iqra-kids.md`
+   §2 is retired; numbers 21–30 are free. The workbooks hold 568 / 1,317 /
+   399 distinct items (295 / 1,215 / 393 of two or more letters): a section
+   is never a lesson, a lesson is a sitting.
+6. **Assessments** as lessons of kind `assessment` in a reserved block
+   (40–49), one per level, their items referencing existing clips by lesson
+   and id — hear and point first, then which rule; self-marked read-aloud
+   later. The result is advice ("ready for Level 2", "revisit lesson 5"),
+   never a gate; the paper Maktab instrument stays separate.
+
 **Grammar track — M0 recon done and its decisions answered; nothing built
 (2026-09-19).** A third track: Arabic grammar for adults who already read the
 Quran, taught through a growing verbal sentence (سَجَدَ → سَجَدَ مُسْلِمٌ → …).
@@ -1125,16 +1182,17 @@ Tanzil text is stored verbatim and its codepoints mapped for the font in
 memory, never written back; and grammar data must be runtime-cached like
 audio, never precached.
 
-**IQRA Kids — lessons 31, 20, 32, 33 exist as drafts (iteration 6,
-2026-10-10).** A second curriculum in the same app: the Baghdadi qaida for the
-Masjid's Maktab, taught live by a teacher rather than self-paced. Everything
+**Level 1, the letters — lessons 31, 20, 32, 33 exist as drafts (iteration
+6, 2026-10-10; once "IQRA Kids", folded into the one curriculum on
+2026-10-11).** The Baghdadi qaida for the Masjid's Maktab, taught live by a
+teacher, and now the start of the sequence for everyone. Everything
 about it is in **`Design/iqra-kids.md`** — read it before touching any of
 this. As built: song 31 (letter names) → **lesson 20, the letters, ONE lesson
 in four sections** (21 and 22 were the same letters split in three and were
 deleted unspent — nothing was ever recorded or calibrated against them) →
 song 32 (sounds) → **lesson 33, "Where the Letters Come From"**, the
-workbook's five places as five diagram cards. `#/kids/lesson/N` switches
-`data-mode="kids"`. **One recording per letter card** — the teacher's whole
+workbook's five places as five diagram cards. A `letters` lesson is drawn as
+letter cards at `#/lesson/N` (`LettersLesson`). **One recording per letter card** — the teacher's whole
 line, picture then fat-ha, damma, kasra, sukoon — so the sheet's seventh
 table is one row per letter and **every take is a single piece: 36 letters
 and 2 songs, intake tool set to 1, record the Slot column only.** Each song
@@ -1143,14 +1201,14 @@ is a **strip** of letters that glides to keep the sung one centered
 color** everywhere in the skin (`fam-0..6`, seven colors over seventeen
 families); the green box stays the only meaning of "being said now". Manāra
 is off the letter cards (the ا card would have shown two lighthouses) and
-greets on `#/kids` only. **The makhraj pictures are the author's own, made in
+greets from the Level 1 heading on the home page only. **The makhraj pictures are the author's own, made in
 Canva (2026-10-11)** — six pencil-soft frames of a boy in profile facing right,
 no features, the cutaway lit one place at a time; the 1264 px originals are
 sources in `Design/kids-art/makhraj-canva/`, the app ships 480 px palette
 copies, and the generator reports 37 pictures wanted, 37 present. (A set I
 drew myself as SVG was withdrawn at the author's request the same day; it is
-in history at `b7942c3`, not in the tree.) **The only thing left before IQRA
-Kids can be used in a class is the recording: 38 takes** — open the sheet in
+in history at `b7942c3`, not in the tree.) **The only thing left before
+Level 1 can be used in a class is the recording: 38 takes** — open the sheet in
 the intake tool, record the **Slot column of its last table only**, expect 1,
 one whole line per letter (36), then the two songs as `song-names.wav` and
 `song-sounds.wav` into `Audio/Audio - Kids Alphabet/`; run
@@ -1371,13 +1429,12 @@ already on disk). The risk the charter puts first: **a firmware port would
 consume the content work**, and there is one author of every lesson, sheet and
 recording.
 
-**Chapters.** Agreed but not built, and the groundwork is in (see "Lesson
-identity and order" above). What is left is the visible part: a `chapter` field
-on `LessonMeta`, grouping in `orderedLessons()`, headings on the home page, and
-— because the author wants to move lessons about — an admin control that writes
-`order`/`chapter` rather than requiring a redeploy. Runtime state belongs in
-`config/app` beside `lessons` and `features`, the same way publishing does.
-The one rule that must survive it: **moving a lesson never changes its number.**
+**Chapters.** Built as Levels on 2026-10-11 (see "Lesson identity and order"
+above). What is left of the design is the admin control that writes
+`order`/`level` at runtime rather than requiring a redeploy — runtime state
+belongs in `config/app` beside `lessons` and `features`, the same way
+publishing does. The one rule that must survive it: **moving a lesson never
+changes its number.**
 
 **Audio intake, next steps.** The tool works locally: sheet → slots → record →
 named WAVs in the folder. What it does not yet do, in the order it will be

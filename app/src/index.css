@@ -2613,66 +2613,34 @@ kbd {
   }
 }
 
-/* ── IQRA Kids ─────────────────────────────────────────────────────────────
-   The door on the home page, and the Level headings behind it. Levels are the
-   Maktab's cohorts, so they are headings over one list rather than separate
-   places — a lesson can sit in more than one, and moving a child up a level
-   must never change what a lesson is. */
-.kids-door {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 28px;
-  padding: 18px 20px;
-  background: var(--card);
-  border: 1px solid var(--accent);
-  border-radius: 14px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-.kids-door:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lift);
-}
-
-.kids-door-body {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-}
-
-.kids-door-title {
-  font-weight: 700;
-  font-size: 17px;
-}
-
-.kids-level {
+/* ── The Level headings ────────────────────────────────────────────────────
+   The same Levels as the practice workbooks, over one list of lessons. A
+   level is a heading, never a place of its own: a lesson moving between
+   levels keeps its number, its folder, its clips and its calibrations. */
+.level-section {
   margin-top: 26px;
 }
 
-.kids-level h3 {
+.level-section h3 {
   margin: 0 0 2px;
   font-size: 15px;
   letter-spacing: 0.02em;
 }
 
-.kids-level .lesson-blurb {
+.level-section .lesson-blurb {
   display: block;
   margin-bottom: 10px;
 }
 
+/* Manāra, the lighthouse, greets from the Level 1 heading — where the IQRA
+   Kids door stood until 2026-10-11. */
 .manara-greeting {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.manara-greeting .home-intro {
-  margin: 0;
-  text-align: left;
+.manara-greeting > div {
   flex: 1;
 }
 
@@ -2688,61 +2656,10 @@ kbd {
   }
 }
 
-/* ── IQRA Kids — the skin ────────────────────────────────────────────────
-   Switched on by the route (#/kids/lesson/N sets data-mode="kids" on <html>),
-   the same way the theme rides on data-theme. The lesson underneath is the
-   same one the adult route opens; only the clothes change. */
-
-/* The door: a large button at the top of the home page, Manāra on the left,
-   nothing about it shaped like a lesson card. */
-.kids-door {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin: 0 0 26px;
-  padding: 16px 22px;
-  background: linear-gradient(135deg, #fbf7ee, #f2ebd9);
-  border: 2px solid #c1a054;
-  border-radius: 18px;
-  text-decoration: none;
-  color: #14513a;
-  box-shadow: var(--shadow);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-:root[data-theme='dark'] .kids-door {
-  background: linear-gradient(135deg, #1f3a2f, #16283a);
-  color: #e8f0f6;
-}
-
-.kids-door:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lift);
-}
-
-.kids-door-manara {
-  width: 64px;
-  height: auto;
-  flex: none;
-}
-
-.kids-door-body {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  flex: 1;
-}
-
-.kids-door-title {
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: 0.02em;
-}
-
-.kids-door-sub {
-  font-size: 14px;
-  opacity: 0.85;
-}
+/* ── The letter lessons (Level 1; Design/iqra-kids.md) ─────────────────────
+   Drawn for every `letters` lesson, whoever opens it. Until 2026-10-11 this
+   was a "kids skin" switched on by the route; the lesson underneath is the
+   same one it always was, and these are simply its clothes. */
 
 /* ── the letter card ── */
 .letter-card {
@@ -2983,11 +2900,6 @@ kbd {
 @media (max-width: 640px) {
   .song-card { flex-direction: column; gap: 16px; min-height: 0; }
   .makhraj-pic { width: 150px; max-width: 60%; }
-}
-
-/* Under the skin, the ordinary chrome steps back a little. */
-:root[data-mode='kids'] .rate-group {
-  display: none;
 }
 
 /* ── IQRA Kids, iteration 6 (2026-10-10) ──────────────────────────────────

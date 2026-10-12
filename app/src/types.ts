@@ -70,7 +70,7 @@ export interface LetterWord {
   /** Gray the final letter's vowel: written, and at the stop not said. */
   dimFinalMark?: boolean;
 
-  // ── IQRA Kids letter cards (Design/iqra-kids.md) ──────────────────────
+  // ── Letter cards — the Level 1 lessons (Design/iqra-kids.md) ──────────
   /** The bare letter as taught — هـ and يـ already in their joined form. */
   letter?: string;
   /** Its name, displayed only: the intro says it, song 1 sings it. */
@@ -86,7 +86,7 @@ export interface LetterWord {
   parts?: string[];
   /** What the teacher says on that recording, for the admin's reference. */
   script?: string;
-  /** Shape family (0–16): the color a letter wears everywhere in the kids skin. */
+  /** Shape family (0–16): the color a letter wears everywhere in the letter lessons. */
   family?: number;
   /** A card of the "where the letters come from" page: no recording. */
   place?: PlaceInfo;
@@ -146,7 +146,7 @@ export interface LessonItem {
   /** Full URL of a picture to show beside the card, if it has one. */
   image?: string;
   forms: Playable[];
-  // ── IQRA Kids letter cards ────────────────────────────────────────────
+  // ── Letter cards ──────────────────────────────────────────────────────
   letter?: string;
   name?: string;
   mnemonic?: string;

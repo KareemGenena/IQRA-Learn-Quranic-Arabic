@@ -18,14 +18,14 @@ export const CROSSWALK = {
             {
               "id": 31,
               "title": "The Alphabet Song — the Names",
-              "track": "kids",
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/kids/lesson/31"
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/31"
             },
             {
               "id": 20,
               "title": "The Letters",
-              "track": "kids",
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/kids/lesson/20"
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/20"
             }
           ]
         },
@@ -40,14 +40,14 @@ export const CROSSWALK = {
             {
               "id": 31,
               "title": "The Alphabet Song — the Names",
-              "track": "kids",
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/kids/lesson/31"
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/31"
             },
             {
               "id": 20,
               "title": "The Letters",
-              "track": "kids",
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/kids/lesson/20"
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/20"
             }
           ]
         },
@@ -62,14 +62,14 @@ export const CROSSWALK = {
             {
               "id": 20,
               "title": "The Letters",
-              "track": "kids",
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/kids/lesson/20"
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/20"
             },
             {
               "id": 32,
               "title": "The Alphabet Song — the Sounds",
-              "track": "kids",
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/kids/lesson/32"
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/32"
             }
           ]
         },
@@ -229,7 +229,7 @@ export const CROSSWALK = {
             {
               "id": 3,
               "title": "Throat Letters",
-              "track": "adults",
+              "level": 3,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/3"
             }
           ]
@@ -282,13 +282,13 @@ export const CROSSWALK = {
             {
               "id": 5,
               "title": "Madd before a Hamza",
-              "track": "adults",
+              "level": 2,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/5"
             },
             {
               "id": 6,
               "title": "Madd Lāzim, Ṣilah and More",
-              "track": "adults",
+              "level": 2,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/6"
             }
           ]
@@ -327,7 +327,7 @@ export const CROSSWALK = {
             {
               "id": 6,
               "title": "Madd Lāzim, Ṣilah and More",
-              "track": "adults",
+              "level": 2,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/6"
             }
           ]
@@ -350,7 +350,7 @@ export const CROSSWALK = {
             {
               "id": 2,
               "title": "Sun & Moon Lam",
-              "track": "adults",
+              "level": 3,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/2"
             }
           ]
@@ -373,7 +373,7 @@ export const CROSSWALK = {
             {
               "id": 4,
               "title": "Hamzat Wasl after وَ and ثُمَّ",
-              "track": "adults",
+              "level": 3,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/4"
             }
           ]
@@ -389,7 +389,7 @@ export const CROSSWALK = {
             {
               "id": 4,
               "title": "Hamzat Wasl after وَ and ثُمَّ",
-              "track": "adults",
+              "level": 3,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/4"
             }
           ]
@@ -436,13 +436,13 @@ export const CROSSWALK = {
             {
               "id": 33,
               "title": "Where the Letters Come From",
-              "track": "kids",
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/kids/lesson/33"
+              "level": 1,
+              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/33"
             },
             {
               "id": 3,
               "title": "Throat Letters",
-              "track": "adults",
+              "level": 3,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/3"
             }
           ]
@@ -458,7 +458,7 @@ export const CROSSWALK = {
             {
               "id": 7,
               "title": "Nūn Sākinah, Tanwīn and Mīm Sākinah",
-              "track": "adults",
+              "level": 3,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/7"
             }
           ]
@@ -487,7 +487,7 @@ export const CROSSWALK = {
             {
               "id": 7,
               "title": "Nūn Sākinah, Tanwīn and Mīm Sākinah",
-              "track": "adults",
+              "level": 3,
               "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/7"
             }
           ]

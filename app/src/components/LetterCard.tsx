@@ -15,8 +15,8 @@ import type { CardProps } from '../pages/SectionedLesson';
  * picture glows; once the Arabic begins, each sound card lights as it is said.
  * Tapping a sound card starts the recording from that sound.
  *
- * The adult ItemCard is left alone — this is the kids skin's card, chosen by
- * the route (#/kids/lesson/N); the lesson data underneath is the same.
+ * ItemCard is left alone — this is the card a `letters` lesson draws, chosen
+ * by the lesson's kind; the data underneath has the same shape.
  */
 export function LetterCard({ lesson, item, rate, displayNo, register }: CardProps) {
   const playable = item.forms[0];

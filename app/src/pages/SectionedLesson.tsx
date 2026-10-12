@@ -80,7 +80,7 @@ function readPlace(lessonId: number): { page: number; step: number } {
   }
 }
 
-/** What a card component receives — ItemCard's props, and the kids LetterCard's. */
+/** What a card component receives — ItemCard's props, and LetterCard's. */
 export interface CardProps {
   lesson: Lesson;
   item: LessonItem;
@@ -93,7 +93,7 @@ export interface CardProps {
 export function SectionedLesson({
   lesson,
   rate,
-  /** The card to render. The kids skin swaps in LetterCard and keeps every
+  /** The card to render. A letters lesson swaps in LetterCard and keeps every
    *  bit of the navigation — paging, the remembered place, the single-key
    *  walk — which is the point of not writing a second lesson page. */
   Card = ItemCard,

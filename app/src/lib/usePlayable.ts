@@ -32,7 +32,7 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
 
   /** Resolves when playback has finished, so callers can chain words.
    *  `start` begins part-way through: media seconds, or `{ cluster }` to
-   *  begin where that letter is said — a kids card tapped on بُ. */
+   *  begin where that letter is said — a letter card tapped on بُ. */
   const play = useCallback(
     async (start: number | { cluster: number } = 0): Promise<void> => {
       stopActivePlayback();
