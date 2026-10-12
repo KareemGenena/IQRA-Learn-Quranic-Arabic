@@ -583,6 +583,150 @@ body {
   background: #14513a;
 }
 
+/* A Level check: gold, last in its Level, "?" for a number. */
+.lesson-card.is-check .lesson-no {
+  background: #c1a054;
+}
+
+/* ── The Level check (pages/AssessmentPage.tsx) ───────────────────────── */
+.check {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.check-stage,
+.check-result {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.check-progress {
+  margin: 0 0 14px;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.check-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.check-word {
+  font-size: 44px;
+  line-height: 2;
+}
+
+.check-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  font-size: 16px;
+}
+
+.check-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.check-option {
+  position: relative;
+  min-height: 92px;
+  padding: 18px 14px 14px;
+  border: 2px solid var(--card-border);
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 34px;
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+.check-options.rule .check-option {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 64px;
+}
+
+.check-option:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.check-option.right {
+  border-color: #14513a;
+  background: #14513a14;
+}
+
+.check-option.wrong {
+  border-color: #c0392b;
+  background: #c0392b14;
+}
+
+.check-option.dim {
+  opacity: 0.5;
+}
+
+.check-key {
+  position: absolute;
+  top: 6px;
+  inset-inline-start: 10px;
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.check-feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 0;
+  font-size: 16px;
+}
+
+.check-feedback.right {
+  color: #14513a;
+}
+
+.check-feedback.wrong {
+  color: #c0392b;
+}
+
+.check-score {
+  margin: 0;
+  text-align: center;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.check-verdict {
+  margin: 4px 0 18px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.check-revisit {
+  margin: 0 0 6px;
+  color: var(--text-soft);
+}
+
+.check-actions {
+  margin: 18px 0 8px;
+  text-align: center;
+}
+
+@media (max-width: 420px) {
+  .check-option {
+    font-size: 28px;
+  }
+}
+
 .lesson-mark {
   margin-left: 8px;
   font-size: 13px;

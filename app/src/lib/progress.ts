@@ -22,6 +22,8 @@ export interface LessonProgress {
   lastAt?: number;
   /** When the last page was reached, or the learner moved on from it. */
   doneAt?: number;
+  /** A Level check's latest result. */
+  score?: { right: number; total: number; at: number };
 }
 
 /** Keyed by lesson id (a string, as JSON keys are). */
@@ -59,6 +61,15 @@ export function markDone(lessonId: number) {
   if (cur.doneAt) return;
   const now = Date.now();
   map[lessonId] = { ...cur, openedAt: cur.openedAt ?? now, lastAt: cur.lastAt ?? now, doneAt: now };
+  write(map);
+}
+
+/** A Level check's result — the latest attempt, whatever came before. */
+export function recordScore(lessonId: number, right: number, total: number) {
+  const map = readProgress();
+  const cur = map[lessonId] ?? {};
+  const now = Date.now();
+  map[lessonId] = { ...cur, openedAt: cur.openedAt ?? now, lastAt: now, score: { right, total, at: now } };
   write(map);
 }
 

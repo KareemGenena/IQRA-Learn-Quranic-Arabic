@@ -1,0 +1,439 @@
+{
+  "lesson": 43,
+  "title": "Level 3 Check",
+  "titleArabic": "اختبار المستوى 3",
+  "kind": "assessment",
+  "audioPath": "",
+  "level": 3,
+  "items": [
+    {
+      "id": 1,
+      "type": "hear",
+      "text": "ٱلصَّمَدُ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word38b.wav",
+        "key": "38b"
+      },
+      "options": [
+        "ٱلصَّمَدُ",
+        "نَعِيمِ",
+        "شِتَآءِ",
+        "ٱلدِّينِ"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 38
+      }
+    },
+    {
+      "id": 2,
+      "type": "hear",
+      "text": "حَكِيمٍ",
+      "audio": {
+        "lesson": 3,
+        "path": "audio/lesson03/",
+        "file": "word19.wav",
+        "key": "19"
+      },
+      "options": [
+        "ٱلۡحَمۡدُ",
+        "حَكِيمٍ",
+        "يُصۡلِحُ",
+        "صَالِحُ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 3,
+        "id": 19
+      }
+    },
+    {
+      "id": 3,
+      "type": "hear",
+      "text": "وَٱلنَّاسِ",
+      "audio": {
+        "lesson": 4,
+        "path": "audio/lesson04/",
+        "file": "word01b.wav",
+        "key": "1b"
+      },
+      "options": [
+        "وَٱلصَّبۡرِ",
+        "ثُمَّ ٱلصَّبۡرِ",
+        "ثُمَّ ٱلصَّيۡفِ",
+        "وَٱلنَّاسِ"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 4,
+        "id": 1
+      }
+    },
+    {
+      "id": 4,
+      "type": "hear",
+      "text": "ٱلۡمَنفُوشِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word31b.wav",
+        "key": "31b"
+      },
+      "options": [
+        "ٱلۡمَنفُوشِ",
+        "ٱلۡبَيۡتِ",
+        "ٱلۡفَتۡحُ",
+        "عَصۡرِ"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 31
+      }
+    },
+    {
+      "id": 5,
+      "type": "hear",
+      "text": "بَلَغَ",
+      "audio": {
+        "lesson": 3,
+        "path": "audio/lesson03/",
+        "file": "word36.wav",
+        "key": "36"
+      },
+      "options": [
+        "غَيۡرُ",
+        "بَلَغَ",
+        "بَلَاغٌ",
+        "غَنِيٌّ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 3,
+        "id": 36
+      }
+    },
+    {
+      "id": 6,
+      "type": "hear",
+      "text": "قَالَتِ ٱلۡأَعۡرَابُ",
+      "audio": {
+        "lesson": 4,
+        "path": "audio/lesson04/",
+        "file": "word47a.wav",
+        "key": "47a"
+      },
+      "options": [
+        "ثُمَّ ٱلصَّمَدُ",
+        "قُمِ ٱللَّيۡلَ إِلَّا قَلِيلًا",
+        "قُلِ ٱلۡحَمۡدُ لِلَّهِ",
+        "قَالَتِ ٱلۡأَعۡرَابُ"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 4,
+        "id": 47
+      }
+    },
+    {
+      "id": 7,
+      "type": "hear",
+      "text": "شِتَآءِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word40a.wav",
+        "key": "40a"
+      },
+      "options": [
+        "نَاسِ",
+        "تَكَاثُرُ",
+        "شِتَآءِ",
+        "ٱلنَّاسِ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 2,
+        "id": 40
+      }
+    },
+    {
+      "id": 8,
+      "type": "hear",
+      "text": "عِبَادُ",
+      "audio": {
+        "lesson": 3,
+        "path": "audio/lesson03/",
+        "file": "word25.wav",
+        "key": "25"
+      },
+      "options": [
+        "وَاسِعُ",
+        "عَلِيمٍ",
+        "نَعۡبُدُ",
+        "عِبَادُ"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 3,
+        "id": 25
+      }
+    },
+    {
+      "id": 9,
+      "type": "hear",
+      "text": "ثُمَّ ٱلۡفَتۡحُ",
+      "audio": {
+        "lesson": 4,
+        "path": "audio/lesson04/",
+        "file": "word17c.wav",
+        "key": "17c"
+      },
+      "options": [
+        "ثُمَّ ٱلۡفَتۡحُ",
+        "ثُمَّ ٱلۡخَنَّاسِ",
+        "فَلَقِ",
+        "وَٱلۡوَسۡوَاسِ"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 4,
+        "id": 17
+      }
+    },
+    {
+      "id": 10,
+      "type": "hear",
+      "text": "عُقَدِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word05a.wav",
+        "key": "5a"
+      },
+      "options": [
+        "مُصَلِّينَ",
+        "عُقَدِ",
+        "خَنَّاسِ",
+        "مَنفُوشِ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 2,
+        "id": 5
+      }
+    },
+    {
+      "id": 11,
+      "type": "hear",
+      "text": "مُخۡلِصِينَ",
+      "audio": {
+        "lesson": 3,
+        "path": "audio/lesson03/",
+        "file": "word43.wav",
+        "key": "43"
+      },
+      "options": [
+        "يَخۡشَىٰ",
+        "نَفَخَ",
+        "مُخۡلِصِينَ",
+        "أَخۡرَجَ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 3,
+        "id": 43
+      }
+    },
+    {
+      "id": 12,
+      "type": "hear",
+      "text": "نَاسِ",
+      "audio": {
+        "lesson": 4,
+        "path": "audio/lesson04/",
+        "file": "word01a.wav",
+        "key": "1a"
+      },
+      "options": [
+        "شِتَآءِ",
+        "صَالِحَاتِ",
+        "نَاسِ",
+        "وَٱلصُّدُورِ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 4,
+        "id": 1
+      }
+    },
+    {
+      "id": 13,
+      "type": "hear",
+      "text": "ٱلۡفَرَاشِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word27b.wav",
+        "key": "27b"
+      },
+      "options": [
+        "ٱلۡفَرَاشِ",
+        "جِبَالُ",
+        "جِنَّةِ",
+        "مَقَابِرَ"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 27
+      }
+    },
+    {
+      "id": 14,
+      "type": "hear",
+      "text": "عَلِيمٍ",
+      "audio": {
+        "lesson": 3,
+        "path": "audio/lesson03/",
+        "file": "word24.wav",
+        "key": "24"
+      },
+      "options": [
+        "عَبَدَ",
+        "نَعۡبُدُ",
+        "عَلِيمٍ",
+        "سَمِيعُ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 3,
+        "id": 24
+      }
+    },
+    {
+      "id": 15,
+      "type": "rule",
+      "text": "عَصۡرِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word20a.wav",
+        "key": "20a"
+      },
+      "options": [
+        "Moon lam — the ل is said",
+        "Sun lam — the ل is silent"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 20
+      }
+    },
+    {
+      "id": 16,
+      "type": "rule",
+      "text": "ٱلۡقَارِعَةُ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word26b.wav",
+        "key": "26b"
+      },
+      "options": [
+        "Moon lam — the ل is said",
+        "Sun lam — the ل is silent"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 26
+      }
+    },
+    {
+      "id": 17,
+      "type": "rule",
+      "text": "بَيۡتِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word15a.wav",
+        "key": "15a"
+      },
+      "options": [
+        "Moon lam — the ل is said",
+        "Sun lam — the ل is silent"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 15
+      }
+    },
+    {
+      "id": 18,
+      "type": "rule",
+      "text": "ٱلۡفَلَقِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word02b.wav",
+        "key": "2b"
+      },
+      "options": [
+        "Moon lam — the ل is said",
+        "Sun lam — the ل is silent"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 2
+      }
+    },
+    {
+      "id": 19,
+      "type": "rule",
+      "text": "يَقِينِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word24a.wav",
+        "key": "24a"
+      },
+      "options": [
+        "Moon lam — the ل is said",
+        "Sun lam — the ل is silent"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 24
+      }
+    },
+    {
+      "id": 20,
+      "type": "rule",
+      "text": "ٱلۡعِهۡنِ",
+      "audio": {
+        "lesson": 2,
+        "path": "audio/lesson02/",
+        "file": "word30b.wav",
+        "key": "30b"
+      },
+      "options": [
+        "Moon lam — the ل is said",
+        "Sun lam — the ل is silent"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 2,
+        "id": 30
+      }
+    }
+  ],
+  "words": []
+}

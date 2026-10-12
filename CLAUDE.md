@@ -128,7 +128,22 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   `Word Tables/` once and its `words.json` from that sheet every run. A
   lesson section is one workbook page (a sitting); a card is a letter with
   its forms (بَ بًا بُ بٌ بِ بٍ, labelled) or a lone word with its caption as
-  a badge. 1,098 forms to record across the nine, both readings.
+  a badge. 1,098 forms to record across the nine, both readings. **Lessons
+  34–37** do the same for Workbook Level 3's uncovered sections — Stopping
+  34, Makharij & Sifat 35, Idghām of Two Letters 36, Silent Alif 37 — placed
+  in the workbook's order among lessons 2, 4, 3 and 7 (118 forms).
+- **The Level checks** (lessons 41, 42, 43; draft) — one at the end of each
+  Level, built by `node scripts/make-assessments.mjs` from the Level's own
+  clips, never recorded or authored: 14 hear-and-point items (a clip plays,
+  four words from the same lesson, point to the one heard) and, from lessons
+  whose cards each carry one rule (`RULE_OF`: 2 sun/moon, 7), 6 which-rule
+  items. Seeded by Level, so a re-run is the same check until the recordings
+  change — **re-run it after any lesson is recorded**. `AssessmentPage`: P
+  plays, 1–4 choose, N goes on; the result is advice ("Ready for Level 2" at
+  70 %, else the lessons with the most slips), saved as `score` in
+  `iqra-progress`, and never a gate. Level 1's check is empty until its
+  lessons are recorded, and the page says so. The paper Maktab instrument
+  (§4) stays separate; this does not pretend to be it.
 - **Continue** — the way through, never a gate. The home page opens with one
   card: the lesson last left unfinished, else the first not done ("Start
   here" / "Next up" / "Continue"), with every lesson listed beneath it, ✓ on
@@ -450,6 +465,19 @@ Things that cost real debugging. Do not undo them without reading why.
 **Audio**
 - Play via **blob: URLs** (`audioSource.ts`), never raw file URLs — media range
   requests through the service-worker cache truncate first playback.
+- **ONE audio element, kept warm** (`playback.ts`, 2026-10-12). The first
+  clip of a session came out late and short and the second click put it
+  right: a fresh `Audio` element opens the device's output, and until it is
+  open the element's clock runs ahead of the sound leaving the speaker — the
+  highlight led the voice, and the tick, which ends a clip a quarter second
+  after its last boundary BY THAT CLOCK, cut the tail off. So the element is
+  reused across clips (the output stays open), opened with a sliver of
+  silence on the page's first pointerdown or keydown (`installAudioWarmup`,
+  from `App`), the highlight loop starts on the `playing` event rather than
+  the play() promise, and the clock is read back by the device's reported
+  `outputLatency`. Never go back to `new Audio()` per clip. Verified in the
+  pane by timing only (first play reached `playing` in 26 ms); the ear is
+  the author's.
 - Clips are stored **mono** (halves the offline payload).
 - Recording levels vary hugely between sessions, so silence detection derives its
   threshold from each take's own noise floor — never a fixed value.
@@ -895,6 +923,16 @@ this time the corrupted records are children's.
   `left` may not move.
 
 **Wording the learner reads**
+- **A section hint is the app's, never the workbook's tracing line.** The
+  masters' section lines ("Trace the grey pair 2 times, then write it 1
+  time on your own") describe the paper; on screen there is no tracing. The
+  companion page says "Tap any word to hear it. The tracing is on the page."
+  and a workbook lesson's page hint reads "Workbook Level 1, page 13 —
+  Tanween. Tap a form to hear it, then trace it on the page." (2026-10-12).
+- **Timing dots read right to left.** A caption of counts (●  ●  ● / ●●  ●)
+  sits under the word on the page, two dots under the madd; the chip is
+  `dir="rtl"` (`badge-dots`) so the two dots are on the right for قَالَ. The
+  dots are not aligned letter by letter under the word in the app.
 - **Say "ghunna", never "hum"**, in every hint, badge and blurb — the author
   teaches the term itself. And **never give the ghunna a length** ("two
   harakat"): the author does not teach it as a count. (2026-09-26.)
@@ -1281,11 +1319,27 @@ all five points agreed, in the order they will be built:
    by exact text. Forms per lesson: 168 · 168 · 70 · 324 · 128 · 48 · 96 ·
    48 · 48. The author may prune any sheet first — Letter Pairs is 324
    voweled pairs over 27 pages and is writing drill on paper.
-6. **Assessments** as lessons of kind `assessment` in a reserved block
-   (40–49), one per level, their items referencing existing clips by lesson
-   and id — hear and point first, then which rule; self-marked read-aloud
-   later. The result is advice ("ready for Level 2", "revisit lesson 5"),
-   never a gate; the paper Maktab instrument stays separate.
+6. **Assessments** — BUILT 2026-10-12 as the Level checks, lessons 41–43
+   (section 2 "The Level checks"). Not built: self-marked read-aloud, the
+   teacher marking a roster, account sync of the score.
+
+**Waiting on the author (2026-10-12):**
+- **PRUNE Lesson 24 — Letter Pairs** (`Word Tables/Lesson 24 - Letter
+  Pairs.docx`, 324 rows over 27 pages) before recording it: it is tracing
+  drill on paper. The author asked to be reminded. Delete rows in the sheet;
+  the generator reads what is left.
+- **The section headings**, proposal awaiting approval: keep every
+  workbook section TITLE as the heading (Letter Pairs, Tanween…) and drop
+  the workbook's instruction line everywhere in the app, replaced by the
+  app's own line (built as proposed; adjust the two sentences in
+  `WorkbookPage.tsx` and `make-workbook-lessons.mjs` if wanted).
+- **Hear the first clip of a cold session** (the playback fix) and say
+  whether it is whole now.
+- **Try the Level 3 check** (`#/lesson/43`, draft) and the two readings'
+  switch; then Publish from `#/admin` whatever is approved.
+- The generated sheets: written once from the master, then yours. The
+  generator reads the sheet on every run and never writes it again; delete
+  a sheet to have it written afresh.
 
 **Grammar track — M0 recon done and its decisions answered; nothing built
 (2026-09-19).** A third track: Arabic grammar for adults who already read the

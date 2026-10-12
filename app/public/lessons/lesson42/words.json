@@ -1,0 +1,319 @@
+{
+  "lesson": 42,
+  "title": "Level 2 Check",
+  "titleArabic": "اختبار المستوى 2",
+  "kind": "assessment",
+  "audioPath": "",
+  "level": 2,
+  "items": [
+    {
+      "id": 1,
+      "type": "hear",
+      "text": "فَوۡقَهَا",
+      "audio": {
+        "lesson": 1,
+        "path": "audio/lesson01/",
+        "file": "word17.wav",
+        "key": "17"
+      },
+      "options": [
+        "أَصۡحَابُ",
+        "كَلِمَاتٍ",
+        "عَلَيۡكُمۡ",
+        "فَوۡقَهَا"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 1,
+        "id": 17
+      }
+    },
+    {
+      "id": 2,
+      "type": "hear",
+      "text": "فِىٓ أَحۡسَنِ",
+      "audio": {
+        "lesson": 5,
+        "path": "audio/lesson05/",
+        "file": "word36.wav",
+        "key": "36"
+      },
+      "options": [
+        "إِذَآ أَرَادَ",
+        "إِذَآ أَلۡقَوۡاْ",
+        "فِىٓ أَحۡسَنِ",
+        "مَآ أَنَا۠ بِبَاسِطٍ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 5,
+        "id": 36
+      }
+    },
+    {
+      "id": 3,
+      "type": "hear",
+      "text": "الٓر",
+      "audio": {
+        "lesson": 6,
+        "path": "audio/lesson06/",
+        "file": "word14.wav",
+        "key": "14"
+      },
+      "options": [
+        "الٓمٓر",
+        "يسٓ",
+        "الٓر",
+        "صٓ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 6,
+        "id": 14
+      }
+    },
+    {
+      "id": 4,
+      "type": "hear",
+      "text": "تُبۡدُونَ",
+      "audio": {
+        "lesson": 1,
+        "path": "audio/lesson01/",
+        "file": "word22.wav",
+        "key": "22"
+      },
+      "options": [
+        "وَقُلۡنَا",
+        "أَنۡعَمۡتَ",
+        "أَصۡحَابُ",
+        "تُبۡدُونَ"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 1,
+        "id": 22
+      }
+    },
+    {
+      "id": 5,
+      "type": "hear",
+      "text": "ٱلشِّتَآءِ",
+      "audio": {
+        "lesson": 5,
+        "path": "audio/lesson05/",
+        "file": "word24a.wav",
+        "key": "24a"
+      },
+      "options": [
+        "ٱلشِّتَآءِ",
+        "مَآءً",
+        "مِنَ ٱلشُّهَدَآءِ",
+        "ٱلۡمَلَٰٓئِكَةُ"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 5,
+        "id": 24
+      }
+    },
+    {
+      "id": 6,
+      "type": "hear",
+      "text": "فَضۡلِهِۦٓ إِنَّ",
+      "audio": {
+        "lesson": 6,
+        "path": "audio/lesson06/",
+        "file": "word36.wav",
+        "key": "36"
+      },
+      "options": [
+        "عِلۡمِهِۦٓ إِلَّا بِمَا شَآءَ",
+        "دُونِهِۦٓ أَوۡلِيَآءَ",
+        "فَضۡلِهِۦٓ إِنَّ",
+        "حَسۡبُهُۥٓ إِنَّ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 6,
+        "id": 36
+      }
+    },
+    {
+      "id": 7,
+      "type": "hear",
+      "text": "عَلَيۡكُمۡ",
+      "audio": {
+        "lesson": 1,
+        "path": "audio/lesson01/",
+        "file": "word31.wav",
+        "key": "31"
+      },
+      "options": [
+        "وَزَوۡجُكَ",
+        "تَرَكَهُمۡ",
+        "بِعَهۡدِي",
+        "عَلَيۡكُمۡ"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 1,
+        "id": 31
+      }
+    },
+    {
+      "id": 8,
+      "type": "hear",
+      "text": "جَزَآءً",
+      "audio": {
+        "lesson": 5,
+        "path": "audio/lesson05/",
+        "file": "word07.wav",
+        "key": "7"
+      },
+      "options": [
+        "مِنَ ٱلۡمَآءِ",
+        "جَزَآءً",
+        "مِنَ ٱلنِّسَآءِ",
+        "سُوٓءُ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 5,
+        "id": 7
+      }
+    },
+    {
+      "id": 9,
+      "type": "hear",
+      "text": "حمٓ عٓسٓقٓ",
+      "audio": {
+        "lesson": 6,
+        "path": "audio/lesson06/",
+        "file": "word21.wav",
+        "key": "21"
+      },
+      "options": [
+        "حمٓ عٓسٓقٓ",
+        "الٓمٓر",
+        "كٓهيعٓصٓ",
+        "الٓر"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 6,
+        "id": 21
+      }
+    },
+    {
+      "id": 10,
+      "type": "hear",
+      "text": "عَرَضَهُمۡ",
+      "audio": {
+        "lesson": 1,
+        "path": "audio/lesson01/",
+        "file": "word20.wav",
+        "key": "20"
+      },
+      "options": [
+        "بِحَمۡدِكَ",
+        "رُزِقۡنَا",
+        "عَرَضَهُمۡ",
+        "فَأَخۡرَجَ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 1,
+        "id": 20
+      }
+    },
+    {
+      "id": 11,
+      "type": "hear",
+      "text": "وَفِىٓ ءَاذَانِهِمۡ",
+      "audio": {
+        "lesson": 5,
+        "path": "audio/lesson05/",
+        "file": "word50.wav",
+        "key": "50"
+      },
+      "options": [
+        "وَفِىٓ ءَاذَانِهِمۡ",
+        "رَبَّنَآ ءَاتِنَا",
+        "إِلَىٰٓ إِبۡرَٰهِيمَ",
+        "إِذَآ أَلۡقَوۡاْ"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 5,
+        "id": 50
+      }
+    },
+    {
+      "id": 12,
+      "type": "hear",
+      "text": "أَتُحَـٰٓجُّوٓنِّى",
+      "audio": {
+        "lesson": 6,
+        "path": "audio/lesson06/",
+        "file": "word06.wav",
+        "key": "6"
+      },
+      "options": [
+        "ءَآلۡـٔـٰنَ",
+        "خَآصَّةً",
+        "تَأۡمُرُوٓنِّىٓ",
+        "أَتُحَـٰٓجُّوٓنِّى"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 6,
+        "id": 6
+      }
+    },
+    {
+      "id": 13,
+      "type": "hear",
+      "text": "فَأَخۡرَجَ",
+      "audio": {
+        "lesson": 1,
+        "path": "audio/lesson01/",
+        "file": "word08.wav",
+        "key": "8"
+      },
+      "options": [
+        "قَبۡلِكُمۡ",
+        "بِعَهۡدِي",
+        "رُزِقۡنَا",
+        "فَأَخۡرَجَ"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 1,
+        "id": 8
+      }
+    },
+    {
+      "id": 14,
+      "type": "hear",
+      "text": "شَآءَ",
+      "audio": {
+        "lesson": 5,
+        "path": "audio/lesson05/",
+        "file": "word02.wav",
+        "key": "2"
+      },
+      "options": [
+        "غُثَآءً",
+        "ٱلۡأَوۡلِيَآءِ",
+        "شَآءَ",
+        "مَآءً"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 5,
+        "id": 2
+      }
+    }
+  ],
+  "words": []
+}

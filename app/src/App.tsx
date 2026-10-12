@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { WorkbookIndex, WorkbookPage } from './pages/WorkbookPage';
+import { AssessmentPage } from './pages/AssessmentPage';
 import { LettersLesson, drawsLetterCards } from './pages/LettersLesson';
 import { WorkbookLinks } from './components/WorkbookLinks';
 import { WordsLesson } from './pages/WordsLesson';
@@ -410,7 +411,7 @@ export default function App() {
                         all and N mean on every card, and stays until changed.
                         Shown on every word-card lesson, recorded or not — a
                         card without the take says so under the word. */}
-                    {!drawsLetterCards(lesson) && (
+                    {!drawsLetterCards(lesson) && lesson.kind !== 'assessment' && (
                       <div className="rate-group reading-group" role="group" aria-label="Reading">
                         {(['continuing', 'stop'] as const).map((r) => (
                           <button
@@ -432,7 +433,9 @@ export default function App() {
                       <a href={`#/notes/${route.lessonId}`}>📝 Open notes for this lesson</a>
                     </p>
                   )}
-                  {drawsLetterCards(lesson) ? (
+                  {lesson.kind === 'assessment' ? (
+                    <AssessmentPage lesson={lesson} rate={rate} />
+                  ) : drawsLetterCards(lesson) ? (
                     <LettersLesson lesson={lesson} rate={rate} reading={reading} onEnd={next ? moveOn : undefined} />
                   ) : lesson.kind === 'words' ? (
                     <WordsLesson lesson={lesson} rate={rate} reading={reading} />

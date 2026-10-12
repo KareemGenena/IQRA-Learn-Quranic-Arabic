@@ -33,8 +33,8 @@ function LessonList({
         const state = stateOf(progress, l.id);
         return (
           <li key={l.id}>
-            <a className={`lesson-card is-${state}`} href={`#/lesson/${l.id}`}>
-              <span className="lesson-no">{state === 'done' ? '✓' : i + 1}</span>
+            <a className={`lesson-card is-${state}${l.check ? ' is-check' : ''}`} href={`#/lesson/${l.id}`}>
+              <span className="lesson-no">{state === 'done' ? '✓' : l.check ? '?' : i + 1}</span>
               <span className="lesson-body">
                 <span className="lesson-title">
                   {l.title}

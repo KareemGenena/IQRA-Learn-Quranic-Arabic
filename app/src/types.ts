@@ -144,7 +144,7 @@ export interface Lesson {
    * 'pairs'   — a word shown bare and again with ال
    * 'letters' — sections of single words with the taught letter highlighted
    */
-  kind: 'words' | 'pairs' | 'letters';
+  kind: 'words' | 'pairs' | 'letters' | 'assessment';
   /** paged kinds only */
   perPage?: number;
   sections?: LessonSection[];
@@ -158,6 +158,26 @@ export interface Lesson {
   /** Set on the two alphabet songs: one recording, shown as a run of cards. */
   song?: { mode: 'names' | 'sounds'; steps: SongStep[] };
   words: SimpleWord[] | PairWord[] | LetterWord[];
+  // ── A Level check (kind 'assessment'; scripts/make-assessments.mjs) ────
+  level?: number;
+  items?: AssessmentItem[];
+}
+
+/**
+ * One question of a Level check. The clip is a lesson's own, by its folder,
+ * file and calibration key — a check never records anything. `hear`: the clip
+ * plays, the options are words, point to the one heard. `rule`: the word
+ * shows and plays, the options are rule names.
+ */
+export interface AssessmentItem {
+  id: number;
+  type: 'hear' | 'rule';
+  text: string;
+  audio: { lesson: number; path: string; file: string; key: string };
+  options: string[];
+  answer: number;
+  /** Where the word was taught — the lesson to revisit on a slip. */
+  source: { lesson: number; id: number };
 }
 
 /** One card on a paged lesson: a heading badge set and one or two forms. */

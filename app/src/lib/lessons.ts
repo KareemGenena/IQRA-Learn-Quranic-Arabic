@@ -38,6 +38,9 @@ export interface LessonMeta {
    * where set, else the id.
    */
   level: Level;
+  /** A Level check (lessons 41–43): drawn as a card with "?" for its number,
+   *  last in its Level. Advice, never a gate. */
+  check?: boolean;
 }
 
 export type Level = 1 | 2 | 3;
@@ -270,6 +273,35 @@ export const LESSONS: LessonMeta[] = [
     title: 'Silent Alif',
     titleArabic: 'الألف التي لا تُقرأ',
     blurb: 'The alif that is written and not read.',
+  },
+  // ── The Level checks — one at the end of each Level, built from the
+  // Level's own clips by scripts/make-assessments.mjs. ───────────────────
+  {
+    id: 41,
+    level: 1,
+    order: 99,
+    check: true,
+    title: 'Level 1 Check',
+    titleArabic: 'اختبار المستوى ١',
+    blurb: 'Hear a word and point to it. Advice on whether you are ready for Level 2 — never a gate.',
+  },
+  {
+    id: 42,
+    level: 2,
+    order: 99,
+    check: true,
+    title: 'Level 2 Check',
+    titleArabic: 'اختبار المستوى ٢',
+    blurb: 'Hear a word and point to it. Advice on whether you are ready for Level 3 — never a gate.',
+  },
+  {
+    id: 43,
+    level: 3,
+    order: 99,
+    check: true,
+    title: 'Level 3 Check',
+    titleArabic: 'اختبار المستوى ٣',
+    blurb: 'Hear a word and point to it; name the rule. Advice, never a gate.',
   },
 ];
 
