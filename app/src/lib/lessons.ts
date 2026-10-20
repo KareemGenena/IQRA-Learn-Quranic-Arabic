@@ -406,8 +406,10 @@ export function stopPlayable(p: Playable): Playable | undefined {
     key: `${p.key}-waqf`,
     audio: p.stop.audio,
     timings: p.stop.timings,
+    // Drawn exactly as the continuing reading — no greying of the final
+    // vowel at a stop (the author's call, 2026-10-20: the layers it added
+    // read as extra marks on the card).
     waqf: true,
-    dimFinalMark: true,
     stop: undefined,
   };
 }

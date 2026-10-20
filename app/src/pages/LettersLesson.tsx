@@ -34,11 +34,13 @@ export function LettersLesson({
   rate,
   onEnd,
   reading,
+  onReadingToggle,
 }: {
   lesson: Lesson;
   rate: number;
   onEnd?: () => void;
   reading?: Reading;
+  onReadingToggle?: () => void;
 }) {
   // Keyed by lesson: going from one song straight to the other must not carry
   // the first song's place along — React would otherwise keep the instance.
@@ -52,6 +54,7 @@ export function LettersLesson({
       Card={places ? PlaceCard : LetterCard}
       onEnd={onEnd}
       reading={reading}
+      onReadingToggle={onReadingToggle}
     />
   );
 }

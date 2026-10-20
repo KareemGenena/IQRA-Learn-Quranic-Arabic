@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { isTanwinLigature, splitClusters, unreadFinalMaddah, unreadFinalNasal } from '../lib/graphemes';
+import { isTanwinLigature, splitClusters, unreadFinalMaddah } from '../lib/graphemes';
 import type { LetterCluster } from '../lib/graphemes';
 import type { HighlightPhase } from '../lib/timing';
 
@@ -1052,7 +1052,13 @@ export function ArabicWord({
       };
       const base = drawAlpha(stage, displayText);
       if (base) {
-        const nasal = unreadFinalNasal(text);
+        // The nasal mark the Mushaf wrote for the NEXT word (a staggered
+        // tanwīn, a vowel with a small mīm) used to be greyed when the card
+        // stopped before it — `unreadFinalNasal()`. Retracted at the author's
+        // request on 2026-10-20: it is black, as in the Mushaf, and the
+        // teacher explains why it looks as it does. The staggered pair and
+        // the small mīm are still drawn; they are simply never dimmed.
+        const nasal = null as { index: number } | null;
         const erase: Uint8ClampedArray[] = [];
         const gray: Uint8ClampedArray[] = [];
         const boxOf = (i: number) => measure(i, i + 1);

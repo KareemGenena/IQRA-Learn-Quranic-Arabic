@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { WorkbookIndex, WorkbookPage } from './pages/WorkbookPage';
 import { AssessmentPage } from './pages/AssessmentPage';
+import { ReadingSwitch } from './components/ReadingSwitch';
 import { LettersLesson, drawsLetterCards } from './pages/LettersLesson';
 import { WorkbookLinks } from './components/WorkbookLinks';
 import { WordsLesson } from './pages/WordsLesson';
@@ -412,19 +413,7 @@ export default function App() {
                         Shown on every word-card lesson, recorded or not — a
                         card without the take says so under the word. */}
                     {!drawsLetterCards(lesson) && lesson.kind !== 'assessment' && (
-                      <div className="rate-group reading-group" role="group" aria-label="Reading">
-                        {(['continuing', 'stop'] as const).map((r) => (
-                          <button
-                            key={r}
-                            type="button"
-                            className={`rate-btn ${r === reading ? 'active' : ''}`}
-                            aria-pressed={r === reading}
-                            onClick={() => setReading(r)}
-                          >
-                            {r === 'stop' ? 'At a stop' : 'Continuing'}
-                          </button>
-                        ))}
-                      </div>
+                      <ReadingSwitch reading={reading} setReading={setReading} />
                     )}
                   </div>
                   <WorkbookLinks lessonId={route.lessonId} />
@@ -436,11 +425,23 @@ export default function App() {
                   {lesson.kind === 'assessment' ? (
                     <AssessmentPage lesson={lesson} rate={rate} />
                   ) : drawsLetterCards(lesson) ? (
-                    <LettersLesson lesson={lesson} rate={rate} reading={reading} onEnd={next ? moveOn : undefined} />
+                    <LettersLesson
+                      lesson={lesson}
+                      rate={rate}
+                      reading={reading}
+                      onReadingToggle={() => setReading(reading === 'stop' ? 'continuing' : 'stop')}
+                      onEnd={next ? moveOn : undefined}
+                    />
                   ) : lesson.kind === 'words' ? (
                     <WordsLesson lesson={lesson} rate={rate} reading={reading} />
                   ) : (
-                    <SectionedLesson lesson={lesson} rate={rate} reading={reading} onEnd={next ? moveOn : undefined} />
+                    <SectionedLesson
+                      lesson={lesson}
+                      rate={rate}
+                      reading={reading}
+                      onReadingToggle={() => setReading(reading === 'stop' ? 'continuing' : 'stop')}
+                      onEnd={next ? moveOn : undefined}
+                    />
                   )}
                   {/* The way on. Always shown, never required: the home page
                       lists every lesson, and this is only the default path. */}

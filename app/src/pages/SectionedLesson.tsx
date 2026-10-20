@@ -91,7 +91,7 @@ export interface CardProps {
   item: LessonItem;
   rate: number;
   displayNo: number;
-  register?: (key: string, play: () => Promise<void>) => void;
+  register?: (key: string, play: () => Promise<void>, playOther?: () => Promise<void>) => void;
   hideBadges?: boolean;
   reading?: Reading;
 }
@@ -108,12 +108,15 @@ export function SectionedLesson({
    *  the whole sequence by voice. */
   onEnd,
   reading,
+  /** The S key: flip the page between the two readings. */
+  onReadingToggle,
 }: {
   lesson: Lesson;
   rate: number;
   Card?: ComponentType<CardProps>;
   onEnd?: () => void;
   reading?: Reading;
+  onReadingToggle?: () => void;
 }) {
   const pages = useMemo(() => buildPages(lesson), [lesson]);
   // A lesson always opens on its first page (the author's call, 2026-10-11:
@@ -136,6 +139,8 @@ export function SectionedLesson({
   const [showContents, setShowContents] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const playersRef = useRef(new Map<string, () => Promise<void>>());
+  /** Each word's OTHER reading, for the W key. */
+  const othersRef = useRef(new Map<string, () => Promise<void>>());
   const cancelAllRef = useRef(false);
   /** How far along this page's walk the learner is, and where to resume. */
   const [step, setStep] = useState(NOT_STARTED);
@@ -156,8 +161,10 @@ export function SectionedLesson({
     return out;
   }, [pages]);
 
-  const register = useCallback((key: string, play: () => Promise<void>) => {
+  const register = useCallback((key: string, play: () => Promise<void>, playOther?: () => Promise<void>) => {
     playersRef.current.set(key, play);
+    if (playOther) othersRef.current.set(key, playOther);
+    else othersRef.current.delete(key);
   }, []);
 
   const goto = useCallback(
@@ -166,6 +173,7 @@ export function SectionedLesson({
       stopActivePlayback();
       setPlayingAll(false);
       playersRef.current.clear();
+      othersRef.current.clear();
       setPageNo(Math.min(Math.max(n, 0), pages.length - 1));
     },
     [pages.length],
@@ -297,12 +305,25 @@ export function SectionedLesson({
       } else if (is('KeyP', 'ArrowUp', 'p')) {
         e.preventDefault();
         walk(-1);
+      } else if (is('KeyS', 's')) {
+        // The whole page: read on ⇄ at a stop. One key, one utterance.
+        e.preventDefault();
+        onReadingToggle?.();
+      } else if (is('KeyW', 'w')) {
+        // This word the other way (the card's tab moves with it).
+        e.preventDefault();
+        const at = step < 0 ? 0 : Math.min(step, sequence.length - 1);
+        const key = sequence[at]?.key;
+        if (key) {
+          setStep(at);
+          void othersRef.current.get(key)?.();
+        }
       } else if (is('ArrowRight')) goto(pageNo + 1);
       else if (is('ArrowLeft')) goto(pageNo - 1);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [goto, pageNo, jumpToCard, walk]);
+  }, [goto, pageNo, jumpToCard, walk, onReadingToggle, step, sequence]);
 
   // A page reached any other way — an arrow, a Back/Next button, the contents
   // list — starts from the top, so Next means the first word on it.
@@ -491,7 +512,8 @@ export function SectionedLesson({
       <p className="kbd-hint">
         Keyboard: <kbd>N</kbd> next word, <kbd>P</kbd> previous,{' '}
         {cardCount === 1 ? <kbd>1</kbd> : <><kbd>1</kbd>–<kbd>{cardCount}</kbd></>} start at that
-        word, <kbd>←</kbd> <kbd>→</kbd> change page.
+        word, <kbd>←</kbd> <kbd>→</kbd> change page, <kbd>S</kbd> switch the page between read on and at
+        a stop, <kbd>W</kbd> hear this word the other way.
         {maxForms > 1 && ' Next walks through every way each word is said.'}
       </p>
     </main>

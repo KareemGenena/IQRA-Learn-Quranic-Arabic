@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArabicWord } from '../components/ArabicWord';
 import { ItemCard } from '../components/ItemCard';
+import { ReadingSwitch } from '../components/ReadingSwitch';
 import { derivedSilent, splitClusters } from '../lib/graphemes';
 import { loadWorkbook, pdfUrl } from '../lib/workbookData';
 import type { WorkbookItem, WorkbookLevel } from '../lib/workbookData';
@@ -125,7 +126,7 @@ function SilentCard({ item, no }: { item: WorkbookItem; no: number }) {
           <div className="form-btn static">
             <ArabicWord text={item.text} clusters={clusters} activeIndex={null} silentClusters={silent} prefixClusters={0} />
           </div>
-          <span className="alt-btn missing">Not yet recorded</span>
+          <span className="not-recorded">Not yet recorded</span>
         </div>
       </div>
     </div>
@@ -204,19 +205,7 @@ export function WorkbookPage({
           Workbook Level {level} · page {printed}
           {sec ? ` · Section ${sec.n}` : ''}
         </p>
-        <div className="rate-group reading-group" role="group" aria-label="Reading">
-          {(['continuing', 'stop'] as const).map((r) => (
-            <button
-              key={r}
-              type="button"
-              className={`rate-btn ${r === reading ? 'active' : ''}`}
-              aria-pressed={r === reading}
-              onClick={() => setReading(r)}
-            >
-              {r === 'stop' ? 'At a stop' : 'Continuing'}
-            </button>
-          ))}
-        </div>
+        <ReadingSwitch reading={reading} setReading={setReading} />
       </div>
 
       <section className="section-head workbook">

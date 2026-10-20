@@ -7,7 +7,9 @@ import { speechBounds } from './audioAnalysis';
 import { audibleIndices, autoBoundaries } from './timing';
 import type { HighlightPhase } from './timing';
 import { loadCalibration, loadCloudSnapshot } from './calibration';
+import { splitClusters } from './graphemes';
 import type { LetterCluster } from './graphemes';
+import { getAudioSrc } from './audioSource';
 import type { Lesson, Playable } from '../types';
 
 let activeStop: (() => void) | null = null;
@@ -145,6 +147,19 @@ export async function resolveBoundaries(
     waqf: playable.waqf,
     waqfMadd: playable.waqfMadd,
   });
+}
+
+/**
+ * Fetch a playable's clip and settle its timing ahead of the tap, so the
+ * first play of a card is immediate. Both are cached by their own modules;
+ * a failure here is silent — the tap will try again and report.
+ */
+export function warmPlayable(lesson: Lesson, playable: Playable): Promise<void> {
+  const clusters = splitClusters(playable.text);
+  return Promise.all([resolveBoundaries(lesson, playable, clusters), getAudioSrc(audioUrl(lesson, playable))]).then(
+    () => undefined,
+    () => undefined,
+  );
 }
 
 export interface PlaybackHandle {

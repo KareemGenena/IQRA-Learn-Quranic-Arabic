@@ -19,6 +19,9 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
   const [active, setActive] = useState<Active>(IDLE);
   const [playing, setPlaying] = useState(false);
   const [paused, setPaused] = useState(false);
+  /** True from the tap until the clip and its timing are in hand — the
+   *  download on a first play. A card shows it, and ignores a second tap. */
+  const [loading, setLoading] = useState(false);
   /** The boundaries the current playback resolved to — a song card needs
    *  them to jump to a letter. Empty until something has played. */
   const [boundaries, setBoundaries] = useState<number[]>([]);
@@ -38,12 +41,14 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
       stopActivePlayback();
       setPlaying(true);
       setPaused(false);
+      setLoading(true);
       try {
         const url = audioUrl(lesson, playable);
         const [bounds, src] = await Promise.all([
           resolveBoundaries(lesson, playable, clusters),
           getAudioSrc(url),
         ]);
+        setLoading(false);
         setBoundaries(bounds);
         const indexMap = audibleIndices(clusters, playable.silentClusters);
         const startAt =
@@ -73,6 +78,7 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
         });
       } catch (err) {
         console.error(`playback failed for ${playable.key}:`, err);
+        setLoading(false);
         setPlaying(false);
         setPaused(false);
       }
@@ -97,18 +103,22 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
   }, []);
 
   const toggle = useCallback(() => {
+    // A tap while the first tap's clip is still downloading used to cancel
+    // it — and the clip then arrived to a card that said it was not playing.
+    if (loading) return Promise.resolve();
     if (playing) {
       stop();
       return Promise.resolve();
     }
     return play();
-  }, [playing, play, stop]);
+  }, [loading, playing, play, stop]);
 
   return {
     clusters,
     activeIndex: active.index,
     activePhase: active.phase,
     playing,
+    loading,
     paused,
     boundaries,
     play,
