@@ -273,7 +273,14 @@
      "text": "لَعَلَّكُمۡ تَتَّقُونَ",
      "caption": "نَ ← نۡ   2 · 4 · 6●",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word007.wav",
+      "key": "7",
+      "stopFile": "word007-waqf.wav"
+     }
     },
     {
      "id": "L3S1:فكيف كان عقاب",
@@ -1318,14 +1325,28 @@
      "text": "عَلَيۡهِمۡ وَلَا",
      "caption": "[مۡ Izhar]   ·   هِمۡ وَ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word009.wav",
+      "key": "9",
+      "stopFile": "word009-waqf.wav"
+     }
     },
     {
      "id": "L3S6:هم فيها",
      "text": "هُمۡ فِيهَا",
      "caption": "[مۡ Izhar]   ·   هُمۡ فِ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word008.wav",
+      "key": "8",
+      "stopFile": "word008-waqf.wav"
+     }
     }
    ]
   },
@@ -1339,21 +1360,42 @@
      "text": "مَنۡ ءَامَنَ",
      "caption": "[ء Izhar]   ·   نۡ ءَ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word010.wav",
+      "key": "10",
+      "stopFile": "word010-waqf.wav"
+     }
     },
     {
      "id": "L3S7:ينهون",
      "text": "يَنۡهَوۡنَ",
      "caption": "[هـ Izhar]   ·   نۡ هَ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word020.wav",
+      "key": "20",
+      "stopFile": "word020-waqf.wav"
+     }
     },
     {
      "id": "L3S7:من علم",
      "text": "مِنۡ عِلۡمٍ",
      "caption": "[ع Izhar]   ·   نۡ عِ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word024.wav",
+      "key": "24",
+      "stopFile": "word024-waqf.wav"
+     }
     },
     {
      "id": "L3S7:عليم حكيم",
@@ -1367,7 +1409,14 @@
      "text": "عَفُوًّا غَفُورًا",
      "caption": "[غ Izhar]   ·   وًّا غَ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word037.wav",
+      "key": "37",
+      "stopFile": "word037-waqf.wav"
+     }
     },
     {
      "id": "L3S7:من خير",
@@ -1388,14 +1437,28 @@
      "text": "مَن يَقُولُ",
      "caption": "[ي Ghunna]   ·   مَن يَ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word046.wav",
+      "key": "46",
+      "stopFile": "word046-waqf.wav"
+     }
     },
     {
      "id": "L3S7:من وال",
      "text": "مِن وَالٍ",
      "caption": "[و Ghunna]   ·   مِن وَ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word064.wav",
+      "key": "64",
+      "stopFile": "word064-waqf.wav"
+     }
     },
     {
      "id": "L3S7:من نذير",
@@ -1416,7 +1479,14 @@
      "text": "مِن لَّدُنۡهُ",
      "caption": "[ل No ghunna]   ·   مِن لَّ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word070.wav",
+      "key": "70",
+      "stopFile": "word070-waqf.wav"
+     }
     },
     {
      "id": "L3S7:غفور رحيم",
@@ -1437,21 +1507,42 @@
      "text": "مِنۢ بَعۡدِ",
      "caption": "[ب Iqlab]   ·   نۢ بَ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word172.wav",
+      "key": "172",
+      "stopFile": "word172-waqf.wav"
+     }
     },
     {
      "id": "L3S7:صم بكم",
      "text": "صُمُّۢ بُكۡمٌ",
      "caption": "[ب Iqlab]   ·   مُّۢ بُ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word175.wav",
+      "key": "175",
+      "stopFile": "word175-waqf.wav"
+     }
     },
     {
      "id": "L3S7:كنتم",
      "text": "كُنتُمۡ",
      "caption": "[ت Light ghunna]   ·   نتُ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word154.wav",
+      "key": "154",
+      "stopFile": "word154-waqf.wav"
+     }
     },
     {
      "id": "L3S7:من ثمرة",
@@ -1472,7 +1563,14 @@
      "text": "مِن دُونِ",
      "caption": "[د Light ghunna]   ·   ن دُ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word134.wav",
+      "key": "134",
+      "stopFile": "word134-waqf.wav"
+     }
     }
    ]
   },
@@ -1507,7 +1605,14 @@
      "text": "مِن شَرِّ",
      "caption": "[ش Light ghunna]   ·   ن شَ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word114.wav",
+      "key": "114",
+      "stopFile": "word114-waqf.wav"
+     }
     },
     {
      "id": "L3S7:ينفقون",
@@ -1521,7 +1626,14 @@
      "text": "مِن كُلِّ",
      "caption": "[ك Light ghunna]   ·   ن كُ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word102.wav",
+      "key": "102",
+      "stopFile": "word102-waqf.wav"
+     }
     }
    ]
   },
@@ -1563,7 +1675,14 @@
      "text": "مِن قَبۡلُ",
      "caption": "[ق Heavy ghunna]   ·   ن قَ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "audio": {
+      "lesson": 7,
+      "path": "audio/lesson07/",
+      "file": "word120.wav",
+      "key": "120",
+      "stopFile": "word120-waqf.wav"
+     }
     },
     {
      "id": "L3S7:ريحا صرصرا",

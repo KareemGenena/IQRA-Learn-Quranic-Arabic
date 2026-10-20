@@ -1446,8 +1446,25 @@ appended to every image URL** because a redrawn picture keeps its filename.
 The rule the whole design rests on: one set of content, two skins — **mode
 never touches an id, a folder, a clip filename or a calibration key.**
 
-**Lesson 7 — record it (2026-09-27; rendering reviewed four times over,
-live as draft at 27f6192).** Built as text, draft, 176 cards; the generator is
+**Lesson 7 is RECORDED in both readings (2026-10-20).** Two intake sessions
+from the sheet into `Audio/Audio - Meem Noon Sakinah Tanween` — 176
+continuing takes in the folder, 176 stop takes in its `وقف/` — and
+`make-lesson7.mjs` cut 176 + 176 clips, every card with a stop reading;
+the companion and the Level 3 check were regenerated (65 companion items
+with audio; the check draws on lesson 7). The first continuing session was
+written into the madd lāzim folder by mistake: its 176 takes were deleted
+from there after a byte-for-byte match with the right folder's copies, and
+the six files it had overwritten (the speaker profile and `intake.json`)
+restored from git; the 44 lesson 6 takes were never touched. To finish:
+listen through, calibrate any card whose automatic timing is off (both
+readings are on the calibration page), `npm run build`, deploy the app,
+then Publish from `#/admin`. A retake later is `<name> 2.wav` in the same
+folder, a re-run of the generator, **a bump of `AUDIO_VERSION`** (the clip
+keeps its filename) and a fresh calibration for that card only.
+
+The build record, kept: **Lesson 7 — record it (2026-09-27; rendering
+reviewed four times over, live as draft at 27f6192).** Built as text, draft,
+176 cards; the generator is
 `make-lesson7.mjs` and reads `Word Tables/ميم نون ساكنة وتنوين.docx` — the
 sheet Claude-for-Word rebuilt for the author, whose locations all check out
 against the corpus (the five wrong ones are gone; مِن مَّنَاصٍ became مِن

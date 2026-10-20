@@ -56,7 +56,11 @@
         "م",
         "Ghunna"
       ],
-      "meaning": "“How many” — al-Baqarah 2:249"
+      "meaning": "“How many” — al-Baqarah 2:249",
+      "stop": {
+        "audio": "word001-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 2,
@@ -69,7 +73,11 @@
         "م",
         "Ghunna"
       ],
-      "meaning": "“for them is forgiveness” — al-Māʾidah 5:9"
+      "meaning": "“for them is forgiveness” — al-Māʾidah 5:9",
+      "stop": {
+        "audio": "word002-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 3,
@@ -82,7 +90,11 @@
         "م",
         "Ghunna"
       ],
-      "meaning": "“closed down upon them” — al-Humazah 104:8"
+      "meaning": "“closed down upon them” — al-Humazah 104:8",
+      "stop": {
+        "audio": "word003-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 4,
@@ -95,7 +107,11 @@
         "ب",
         "Ghunna"
       ],
-      "meaning": "“striking them with stones” — al-Fīl 105:4"
+      "meaning": "“striking them with stones” — al-Fīl 105:4",
+      "stop": {
+        "audio": "word004-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 5,
@@ -109,7 +125,11 @@
         "Ghunna",
         "Iqlāb"
       ],
-      "meaning": "“their Lord for their sin” — ash-Shams 91:14  (+ iqlāb)"
+      "meaning": "“their Lord for their sin” — ash-Shams 91:14  (+ iqlāb)",
+      "stop": {
+        "audio": "word005-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 6,
@@ -123,7 +143,11 @@
         "Ghunna",
         "Sun ل"
       ],
-      "meaning": "“holds firmly to Allah” — Āl ʿImrān 3:101"
+      "meaning": "“holds firmly to Allah” — Āl ʿImrān 3:101",
+      "stop": {
+        "audio": "word006-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 7,
@@ -135,7 +159,11 @@
         "Iẕhār Shafawī",
         "ت"
       ],
-      "meaning": "“that you may become righteous” — al-Baqarah 2:21"
+      "meaning": "“that you may become righteous” — al-Baqarah 2:21",
+      "stop": {
+        "audio": "word007-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 8,
@@ -147,7 +175,11 @@
         "Iẕhār Shafawī",
         "ف"
       ],
-      "meaning": "“they will abide therein” — al-Baqarah 2:39  (ف — guard against ikhfāʾ)"
+      "meaning": "“they will abide therein” — al-Baqarah 2:39  (ف — guard against ikhfāʾ)",
+      "stop": {
+        "audio": "word008-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 9,
@@ -159,7 +191,11 @@
         "Iẕhār Shafawī",
         "و"
       ],
-      "meaning": "“upon them, nor” — al-Fātiḥah 1:7  (و — guard against ikhfāʾ)"
+      "meaning": "“upon them, nor” — al-Fātiḥah 1:7  (و — guard against ikhfāʾ)",
+      "stop": {
+        "audio": "word009-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 10,
@@ -172,7 +208,11 @@
         "ء",
         "Nūn Sākinah"
       ],
-      "meaning": "“whoever believes” — al-Baqarah 2:62"
+      "meaning": "“whoever believes” — al-Baqarah 2:62",
+      "stop": {
+        "audio": "word010-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 11,
@@ -185,7 +225,11 @@
         "ء",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“sinning disbeliever” — al-Baqarah 2:276"
+      "meaning": "“sinning disbeliever” — al-Baqarah 2:276",
+      "stop": {
+        "audio": "word011-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 12,
@@ -198,7 +242,11 @@
         "ء",
         "Nūn Sākinah"
       ],
-      "meaning": "“[some] of Our signs” — Ṭā Hā 20:23"
+      "meaning": "“[some] of Our signs” — Ṭā Hā 20:23",
+      "stop": {
+        "audio": "word012-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 13,
@@ -211,7 +259,11 @@
         "ء",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“a painful punishment” — al-Baqarah 2:10"
+      "meaning": "“a painful punishment” — al-Baqarah 2:10",
+      "stop": {
+        "audio": "word013-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 14,
@@ -224,7 +276,11 @@
         "ء",
         "Nūn Sākinah"
       ],
-      "meaning": "“And who is more unjust” — al-Baqarah 2:140"
+      "meaning": "“And who is more unjust” — al-Baqarah 2:140",
+      "stop": {
+        "audio": "word014-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 15,
@@ -237,7 +293,11 @@
         "ء",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“a trustworthy messenger” — ash-Shuʿarāʾ 26:107"
+      "meaning": "“a trustworthy messenger” — ash-Shuʿarāʾ 26:107",
+      "stop": {
+        "audio": "word015-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 16,
@@ -250,7 +310,11 @@
         "هـ",
         "Nūn Sākinah"
       ],
-      "meaning": "“among them” — al-Baqarah 2:75"
+      "meaning": "“among them” — al-Baqarah 2:75",
+      "stop": {
+        "audio": "word016-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 17,
@@ -263,7 +327,11 @@
         "هـ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“the edge of a bank about to collapse” — at-Tawbah 9:109"
+      "meaning": "“the edge of a bank about to collapse” — at-Tawbah 9:109",
+      "stop": {
+        "audio": "word017-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 18,
@@ -276,7 +344,11 @@
         "هـ",
         "Nūn Sākinah"
       ],
-      "meaning": "“It is not but [a revelation]” — an-Najm 53:4"
+      "meaning": "“It is not but [a revelation]” — an-Najm 53:4",
+      "stop": {
+        "audio": "word018-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 19,
@@ -289,7 +361,11 @@
         "هـ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Peace it is” — al-Qadr 97:5"
+      "meaning": "“Peace it is” — al-Qadr 97:5",
+      "stop": {
+        "audio": "word019-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 20,
@@ -302,7 +378,11 @@
         "هـ",
         "Nūn Sākinah"
       ],
-      "meaning": "“they prevent [others]” — al-Anʿām 6:26"
+      "meaning": "“they prevent [others]” — al-Anʿām 6:26",
+      "stop": {
+        "audio": "word020-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 21,
@@ -315,7 +395,11 @@
         "هـ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“…every people is a guide” — ar-Raʿd 13:7"
+      "meaning": "“…every people is a guide” — ar-Raʿd 13:7",
+      "stop": {
+        "audio": "word021-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 22,
@@ -328,7 +412,11 @@
         "ع",
         "Nūn Sākinah"
       ],
-      "meaning": "“You have bestowed favor” — al-Fātiḥah 1:7"
+      "meaning": "“You have bestowed favor” — al-Fātiḥah 1:7",
+      "stop": {
+        "audio": "word022-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 23,
@@ -341,7 +429,11 @@
         "ع",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Hearing and Knowing” — al-Baqarah 2:181"
+      "meaning": "“Hearing and Knowing” — al-Baqarah 2:181",
+      "stop": {
+        "audio": "word023-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 24,
@@ -354,7 +446,11 @@
         "ع",
         "Nūn Sākinah"
       ],
-      "meaning": "“[no] knowledge” — an-Nisāʾ 4:157"
+      "meaning": "“[no] knowledge” — an-Nisāʾ 4:157",
+      "stop": {
+        "audio": "word024-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 25,
@@ -367,7 +463,11 @@
         "ع",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“all-Encompassing and Knowing” — al-Baqarah 2:115"
+      "meaning": "“all-Encompassing and Knowing” — al-Baqarah 2:115",
+      "stop": {
+        "audio": "word025-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 26,
@@ -380,7 +480,11 @@
         "ع",
         "Nūn Sākinah"
       ],
-      "meaning": "“shouts / calls out” — al-Baqarah 2:171"
+      "meaning": "“shouts / calls out” — al-Baqarah 2:171",
+      "stop": {
+        "audio": "word026-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 27,
@@ -393,7 +497,11 @@
         "ع",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“a great reward” — Āl ʿImrān 3:172"
+      "meaning": "“a great reward” — Āl ʿImrān 3:172",
+      "stop": {
+        "audio": "word027-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 28,
@@ -406,7 +514,11 @@
         "ح",
         "Nūn Sākinah"
       ],
-      "meaning": "“and sacrifice” — al-Kawthar 108:2"
+      "meaning": "“and sacrifice” — al-Kawthar 108:2",
+      "stop": {
+        "audio": "word028-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 29,
@@ -419,7 +531,11 @@
         "ح",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Knowing and Wise” — an-Nisāʾ 4:26"
+      "meaning": "“Knowing and Wise” — an-Nisāʾ 4:26",
+      "stop": {
+        "audio": "word029-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 30,
@@ -432,7 +548,11 @@
         "ح",
         "Nūn Sākinah"
       ],
-      "meaning": "“you carve” — aṣ-Ṣāffāt 37:95"
+      "meaning": "“you carve” — aṣ-Ṣāffāt 37:95",
+      "stop": {
+        "audio": "word030-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 31,
@@ -445,7 +565,11 @@
         "ح",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Forgiving and Forbearing” — al-Baqarah 2:225"
+      "meaning": "“Forgiving and Forbearing” — al-Baqarah 2:225",
+      "stop": {
+        "audio": "word031-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 32,
@@ -458,7 +582,11 @@
         "ح",
         "Nūn Sākinah"
       ],
-      "meaning": "“from where” — al-Baqarah 2:222"
+      "meaning": "“from where” — al-Baqarah 2:222",
+      "stop": {
+        "audio": "word032-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 33,
@@ -471,7 +599,11 @@
         "ح",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“an intensely hot Fire” — al-Ghāshiyah 88:4"
+      "meaning": "“an intensely hot Fire” — al-Ghāshiyah 88:4",
+      "stop": {
+        "audio": "word033-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 34,
@@ -484,7 +616,11 @@
         "غ",
         "Nūn Sākinah"
       ],
-      "meaning": "“they will nod [their heads]” — al-Isrāʾ 17:51"
+      "meaning": "“they will nod [their heads]” — al-Isrāʾ 17:51",
+      "stop": {
+        "audio": "word034-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 35,
@@ -497,7 +633,11 @@
         "غ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Exalted in Might and Forgiving” — Fāṭir 35:28"
+      "meaning": "“Exalted in Might and Forgiving” — Fāṭir 35:28",
+      "stop": {
+        "audio": "word035-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 36,
@@ -510,7 +650,11 @@
         "غ",
         "Nūn Sākinah"
       ],
-      "meaning": "“of resentment” — al-Aʿrāf 7:43"
+      "meaning": "“of resentment” — al-Aʿrāf 7:43",
+      "stop": {
+        "audio": "word036-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 37,
@@ -523,7 +667,11 @@
         "غ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Pardoning and Forgiving” — an-Nisāʾ 4:43"
+      "meaning": "“Pardoning and Forgiving” — an-Nisāʾ 4:43",
+      "stop": {
+        "audio": "word037-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 38,
@@ -536,7 +684,11 @@
         "غ",
         "Nūn Sākinah"
       ],
-      "meaning": "“without [disease]” — Ṭā Hā 20:22"
+      "meaning": "“without [disease]” — Ṭā Hā 20:22",
+      "stop": {
+        "audio": "word038-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 39,
@@ -549,7 +701,11 @@
         "غ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“a harsh punishment” — Ibrāhīm 14:17"
+      "meaning": "“a harsh punishment” — Ibrāhīm 14:17",
+      "stop": {
+        "audio": "word039-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 40,
@@ -563,7 +719,11 @@
         "Nūn Sākinah",
         "Moon ل"
       ],
-      "meaning": "“and [those animals] killed by strangling” — al-Māʾidah 5:3"
+      "meaning": "“and [those animals] killed by strangling” — al-Māʾidah 5:3",
+      "stop": {
+        "audio": "word040-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 41,
@@ -576,7 +736,11 @@
         "خ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Knowing and Acquainted” — al-Ḥujurāt 49:13"
+      "meaning": "“Knowing and Acquainted” — al-Ḥujurāt 49:13",
+      "stop": {
+        "audio": "word041-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 42,
@@ -589,7 +753,11 @@
         "خ",
         "Nūn Sākinah"
       ],
-      "meaning": "“of good” — al-Baqarah 2:197"
+      "meaning": "“of good” — al-Baqarah 2:197",
+      "stop": {
+        "audio": "word042-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 43,
@@ -602,7 +770,11 @@
         "خ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“Subtle and Acquainted” — al-Ḥajj 22:63"
+      "meaning": "“Subtle and Acquainted” — al-Ḥajj 22:63",
+      "stop": {
+        "audio": "word043-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 44,
@@ -615,7 +787,11 @@
         "خ",
         "Nūn Sākinah"
       ],
-      "meaning": "“and if you fear” — an-Nisāʾ 4:3"
+      "meaning": "“and if you fear” — an-Nisāʾ 4:3",
+      "stop": {
+        "audio": "word044-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 45,
@@ -628,7 +804,11 @@
         "خ",
         "Tanwīn Mutarākib"
       ],
-      "meaning": "“…that Day, will be humbled” — al-Ghāshiyah 88:2"
+      "meaning": "“…that Day, will be humbled” — al-Ghāshiyah 88:2",
+      "stop": {
+        "audio": "word045-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 46,
@@ -641,7 +821,11 @@
         "ي",
         "Nūn Sākinah"
       ],
-      "meaning": "“who says” — al-Baqarah 2:8"
+      "meaning": "“who says” — al-Baqarah 2:8",
+      "stop": {
+        "audio": "word046-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 47,
@@ -654,7 +838,11 @@
         "ي",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“and lightning. They put…” — al-Baqarah 2:19"
+      "meaning": "“and lightning. They put…” — al-Baqarah 2:19",
+      "stop": {
+        "audio": "word047-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 48,
@@ -668,7 +856,11 @@
         "Nūn Sākinah",
         "Madd Muttasil"
       ],
-      "meaning": "“whom He wills” — al-Baqarah 2:105  (+ madd muttaṣil)"
+      "meaning": "“whom He wills” — al-Baqarah 2:105  (+ madd muttaṣil)",
+      "stop": {
+        "audio": "word048-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 49,
@@ -681,7 +873,11 @@
         "ي",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“for a people who believe” — al-Anʿām 6:99"
+      "meaning": "“for a people who believe” — al-Anʿām 6:99",
+      "stop": {
+        "audio": "word049-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 50,
@@ -694,7 +890,11 @@
         "ي",
         "Nūn Sākinah"
       ],
-      "meaning": "“So whoever does” — az-Zalzalah 99:7"
+      "meaning": "“So whoever does” — az-Zalzalah 99:7",
+      "stop": {
+        "audio": "word050-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 51,
@@ -707,7 +907,11 @@
         "ي",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“That Day, the people will depart” — az-Zalzalah 99:6"
+      "meaning": "“That Day, the people will depart” — az-Zalzalah 99:6",
+      "stop": {
+        "audio": "word051-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 52,
@@ -720,7 +924,11 @@
         "ن",
         "Nūn Sākinah"
       ],
-      "meaning": "“If We willed” — ash-Shuʿarāʾ 26:4"
+      "meaning": "“If We willed” — ash-Shuʿarāʾ 26:4",
+      "stop": {
+        "audio": "word052-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 53,
@@ -733,7 +941,11 @@
         "ن",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“that Day, will show pleasure” — al-Ghāshiyah 88:8"
+      "meaning": "“that Day, will show pleasure” — al-Ghāshiyah 88:8",
+      "stop": {
+        "audio": "word053-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 54,
@@ -746,7 +958,11 @@
         "ن",
         "Nūn Sākinah"
       ],
-      "meaning": "“we can never endure” — al-Baqarah 2:61"
+      "meaning": "“we can never endure” — al-Baqarah 2:61",
+      "stop": {
+        "audio": "word054-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 55,
@@ -759,7 +975,11 @@
         "ن",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“‘Relieve us’ — We will forgive” — al-Baqarah 2:58"
+      "meaning": "“‘Relieve us’ — We will forgive” — al-Baqarah 2:58",
+      "stop": {
+        "audio": "word055-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 56,
@@ -772,7 +992,11 @@
         "ن",
         "Nūn Sākinah"
       ],
-      "meaning": "“any warner” — Sabaʾ 34:44"
+      "meaning": "“any warner” — Sabaʾ 34:44",
+      "stop": {
+        "audio": "word056-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 57,
@@ -785,7 +1009,11 @@
         "ن",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“a king, and we will fight” — al-Baqarah 2:246"
+      "meaning": "“a king, and we will fight” — al-Baqarah 2:246",
+      "stop": {
+        "audio": "word057-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 58,
@@ -798,7 +1026,11 @@
         "م",
         "Nūn Sākinah"
       ],
-      "meaning": "“of [twisted] fiber” — al-Masad 111:5"
+      "meaning": "“of [twisted] fiber” — al-Masad 111:5",
+      "stop": {
+        "audio": "word058-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 59,
@@ -811,7 +1043,11 @@
         "م",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“a straight path” — al-Baqarah 2:142"
+      "meaning": "“a straight path” — al-Baqarah 2:142",
+      "stop": {
+        "audio": "word059-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 60,
@@ -824,7 +1060,11 @@
         "م",
         "Nūn Sākinah"
       ],
-      "meaning": "“from our sleeping place” — Yā Sīn 36:52"
+      "meaning": "“from our sleeping place” — Yā Sīn 36:52",
+      "stop": {
+        "audio": "word060-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 61,
@@ -837,7 +1077,11 @@
         "م",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“a humiliating punishment” — an-Nisāʾ 4:102"
+      "meaning": "“a humiliating punishment” — an-Nisāʾ 4:102",
+      "stop": {
+        "audio": "word061-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 62,
@@ -850,7 +1094,11 @@
         "م",
         "Nūn Sākinah"
       ],
-      "meaning": "“any place of escape” — Qāf 50:36"
+      "meaning": "“any place of escape” — Qāf 50:36",
+      "stop": {
+        "audio": "word062-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 63,
@@ -863,7 +1111,11 @@
         "م",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“an appropriate word” — al-Baqarah 2:235"
+      "meaning": "“an appropriate word” — al-Baqarah 2:235",
+      "stop": {
+        "audio": "word063-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 64,
@@ -876,7 +1128,11 @@
         "و",
         "Nūn Sākinah"
       ],
-      "meaning": "“any protector” — ar-Raʿd 13:11"
+      "meaning": "“any protector” — ar-Raʿd 13:11",
+      "stop": {
+        "audio": "word064-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 65,
@@ -889,7 +1145,11 @@
         "و",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“for a punishment bound to happen” — al-Maʿārij 70:1"
+      "meaning": "“for a punishment bound to happen” — al-Maʿārij 70:1",
+      "stop": {
+        "audio": "word065-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 66,
@@ -902,7 +1162,11 @@
         "و",
         "Nūn Sākinah"
       ],
-      "meaning": "“any protector” — al-Baqarah 2:107"
+      "meaning": "“any protector” — al-Baqarah 2:107",
+      "stop": {
+        "audio": "word066-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 67,
@@ -915,7 +1179,11 @@
         "و",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“gardens and springs” — ad-Dukhān 44:52"
+      "meaning": "“gardens and springs” — ad-Dukhān 44:52",
+      "stop": {
+        "audio": "word067-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 68,
@@ -928,7 +1196,11 @@
         "و",
         "Nūn Sākinah"
       ],
-      "meaning": "“no protector” — ar-Raʿd 13:34"
+      "meaning": "“no protector” — ar-Raʿd 13:34",
+      "stop": {
+        "audio": "word068-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 69,
@@ -941,7 +1213,11 @@
         "و",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“a veil. And for them…” — al-Baqarah 2:7"
+      "meaning": "“a veil. And for them…” — al-Baqarah 2:7",
+      "stop": {
+        "audio": "word069-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 70,
@@ -954,7 +1230,11 @@
         "ل",
         "Nūn Sākinah"
       ],
-      "meaning": "“from Him” — al-Kahf 18:2"
+      "meaning": "“from Him” — al-Kahf 18:2",
+      "stop": {
+        "audio": "word070-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 71,
@@ -968,7 +1248,11 @@
         "Tanwīn Mutatābiʿ",
         "Moon ل"
       ],
-      "meaning": "“a guidance for those conscious of Allah” — al-Baqarah 2:2  (+ lām qamariyyah)"
+      "meaning": "“a guidance for those conscious of Allah” — al-Baqarah 2:2  (+ lām qamariyyah)",
+      "stop": {
+        "audio": "word071-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 72,
@@ -981,7 +1265,11 @@
         "ل",
         "Nūn Sākinah"
       ],
-      "meaning": "“but they perceive [it] not” — al-Baqarah 2:12"
+      "meaning": "“but they perceive [it] not” — al-Baqarah 2:12",
+      "stop": {
+        "audio": "word072-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 73,
@@ -994,7 +1282,11 @@
         "ل",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“Woe to every…” — al-Humazah 104:1"
+      "meaning": "“Woe to every…” — al-Humazah 104:1",
+      "stop": {
+        "audio": "word073-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 74,
@@ -1007,7 +1299,11 @@
         "ل",
         "Nūn Sākinah"
       ],
-      "meaning": "“from Us” — al-Kahf 18:65"
+      "meaning": "“from Us” — al-Kahf 18:65",
+      "stop": {
+        "audio": "word074-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 75,
@@ -1021,7 +1317,11 @@
         "Tanwīn Mutatābiʿ",
         "Sun ل"
       ],
-      "meaning": "“a guidance for the people” — al-Baqarah 2:185  (+ lām shamsiyyah)"
+      "meaning": "“a guidance for the people” — al-Baqarah 2:185  (+ lām shamsiyyah)",
+      "stop": {
+        "audio": "word075-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 76,
@@ -1034,7 +1334,11 @@
         "ر",
         "Nūn Sākinah"
       ],
-      "meaning": "“from their Lord” — al-Baqarah 2:5"
+      "meaning": "“from their Lord” — al-Baqarah 2:5",
+      "stop": {
+        "audio": "word076-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 77,
@@ -1047,7 +1351,11 @@
         "ر",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“Forgiving and Merciful” — al-Baqarah 2:173"
+      "meaning": "“Forgiving and Merciful” — al-Baqarah 2:173",
+      "stop": {
+        "audio": "word077-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 78,
@@ -1060,7 +1368,11 @@
         "ر",
         "Nūn Sākinah"
       ],
-      "meaning": "“any messenger” — al-Ḥajj 22:52"
+      "meaning": "“any messenger” — al-Ḥajj 22:52",
+      "stop": {
+        "audio": "word078-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 79,
@@ -1073,7 +1385,11 @@
         "ر",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“Kind and Merciful” — at-Tawbah 9:117"
+      "meaning": "“Kind and Merciful” — at-Tawbah 9:117",
+      "stop": {
+        "audio": "word079-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 80,
@@ -1086,7 +1402,11 @@
         "ر",
         "Nūn Sākinah"
       ],
-      "meaning": "“of your men” — al-Aḥzāb 33:40"
+      "meaning": "“of your men” — al-Aḥzāb 33:40",
+      "stop": {
+        "audio": "word080-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 81,
@@ -1099,7 +1419,11 @@
         "ر",
         "Tanwīn Mutatābiʿ"
       ],
-      "meaning": "“Forgiving and Merciful” — al-Furqān 25:70"
+      "meaning": "“Forgiving and Merciful” — al-Furqān 25:70",
+      "stop": {
+        "audio": "word081-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 82,
@@ -1113,7 +1437,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“they will be aided” — al-Baqarah 2:48"
+      "meaning": "“they will be aided” — al-Baqarah 2:48",
+      "stop": {
+        "audio": "word082-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 83,
@@ -1127,7 +1455,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“righteous work” — al-Kahf 18:110"
+      "meaning": "“righteous work” — al-Kahf 18:110",
+      "stop": {
+        "audio": "word083-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 84,
@@ -1141,7 +1473,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“from clay” — al-Ḥijr 15:26"
+      "meaning": "“from clay” — al-Ḥijr 15:26",
+      "stop": {
+        "audio": "word084-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 85,
@@ -1155,7 +1491,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“a screaming wind” — Fuṣṣilat 41:16"
+      "meaning": "“a screaming wind” — Fuṣṣilat 41:16",
+      "stop": {
+        "audio": "word085-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 86,
@@ -1169,7 +1509,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“[for] having obstructed you” — al-Māʾidah 5:2"
+      "meaning": "“[for] having obstructed you” — al-Māʾidah 5:2",
+      "stop": {
+        "audio": "word086-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 87,
@@ -1183,7 +1527,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“a righteous people” — Yūsuf 12:9"
+      "meaning": "“a righteous people” — Yūsuf 12:9",
+      "stop": {
+        "audio": "word087-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 88,
@@ -1197,7 +1545,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“a warner” — ar-Raʿd 13:7"
+      "meaning": "“a warner” — ar-Raʿd 13:7",
+      "stop": {
+        "audio": "word088-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 89,
@@ -1211,7 +1563,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a shadow [of smoke] having…” — al-Mursalāt 77:30"
+      "meaning": "“a shadow [of smoke] having…” — al-Mursalāt 77:30",
+      "stop": {
+        "audio": "word089-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 90,
@@ -1225,7 +1581,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“of gold” — az-Zukhruf 43:53"
+      "meaning": "“of gold” — az-Zukhruf 43:53",
+      "stop": {
+        "audio": "word090-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 91,
@@ -1239,7 +1599,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“Exalted in Might, Owner of Retribution” — Āl ʿImrān 3:4"
+      "meaning": "“Exalted in Might, Owner of Retribution” — Āl ʿImrān 3:4",
+      "stop": {
+        "audio": "word091-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 92,
@@ -1253,7 +1617,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“from male” — al-Ḥujurāt 49:13"
+      "meaning": "“from male” — al-Ḥujurāt 49:13",
+      "stop": {
+        "audio": "word092-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 93,
@@ -1267,7 +1635,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“rapidly; that is a gathering…” — Qāf 50:44"
+      "meaning": "“rapidly; that is a gathering…” — Qāf 50:44",
+      "stop": {
+        "audio": "word093-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 94,
@@ -1281,7 +1653,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“dispersed” — al-Furqān 25:23"
+      "meaning": "“dispersed” — al-Furqān 25:23",
+      "stop": {
+        "audio": "word094-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 95,
@@ -1296,7 +1672,11 @@
         "Light Ghunna",
         "Madd Muttasil"
       ],
-      "meaning": "“pouring water” — an-Nabaʾ 78:14"
+      "meaning": "“pouring water” — an-Nabaʾ 78:14",
+      "stop": {
+        "audio": "word095-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 96,
@@ -1310,7 +1690,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“of fruit” — al-Baqarah 2:25"
+      "meaning": "“of fruit” — al-Baqarah 2:25",
+      "stop": {
+        "audio": "word096-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 97,
@@ -1324,7 +1708,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a piercing flame” — aṣ-Ṣāffāt 37:10"
+      "meaning": "“a piercing flame” — aṣ-Ṣāffāt 37:10",
+      "stop": {
+        "audio": "word097-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 98,
@@ -1338,7 +1726,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“that We strengthened you” — al-Isrāʾ 17:74"
+      "meaning": "“that We strengthened you” — al-Isrāʾ 17:74",
+      "stop": {
+        "audio": "word098-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 99,
@@ -1352,7 +1744,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“better in reward” — al-Kahf 18:44"
+      "meaning": "“better in reward” — al-Kahf 18:44",
+      "stop": {
+        "audio": "word099-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 100,
@@ -1366,7 +1762,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“they broke their word” — al-Aʿrāf 7:135"
+      "meaning": "“they broke their word” — al-Aʿrāf 7:135",
+      "stop": {
+        "audio": "word100-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 101,
@@ -1380,7 +1780,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a noble letter” — an-Naml 27:29"
+      "meaning": "“a noble letter” — an-Naml 27:29",
+      "stop": {
+        "audio": "word101-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 102,
@@ -1394,7 +1798,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“from every” — al-Baqarah 2:266"
+      "meaning": "“from every” — al-Baqarah 2:266",
+      "stop": {
+        "audio": "word102-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 103,
@@ -1408,7 +1816,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a noble word” — al-Isrāʾ 17:23"
+      "meaning": "“a noble word” — al-Isrāʾ 17:23",
+      "stop": {
+        "audio": "word103-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 104,
@@ -1422,7 +1834,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“because he is” — al-Qalam 68:14"
+      "meaning": "“because he is” — al-Qalam 68:14",
+      "stop": {
+        "audio": "word104-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 105,
@@ -1436,7 +1852,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“and noble provision” — al-Anfāl 8:74"
+      "meaning": "“and noble provision” — al-Anfāl 8:74",
+      "stop": {
+        "audio": "word105-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 106,
@@ -1450,7 +1870,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“and saved you” — al-Baqarah 2:50"
+      "meaning": "“and saved you” — al-Baqarah 2:50",
+      "stop": {
+        "audio": "word106-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 107,
@@ -1464,7 +1888,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a new creation” — ar-Raʿd 13:5"
+      "meaning": "“a new creation” — ar-Raʿd 13:5",
+      "stop": {
+        "audio": "word107-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 108,
@@ -1478,7 +1906,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“from hunger” — Quraysh 106:4"
+      "meaning": "“from hunger” — Quraysh 106:4",
+      "stop": {
+        "audio": "word108-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 109,
@@ -1492,7 +1924,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“so patience is most fitting” — Yūsuf 12:18"
+      "meaning": "“so patience is most fitting” — Yūsuf 12:18",
+      "stop": {
+        "audio": "word109-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 110,
@@ -1507,7 +1943,11 @@
         "Light Ghunna",
         "Madd Muttasil"
       ],
-      "meaning": "“if there comes to you” — al-Ḥujurāt 49:6  (+ madd muttaṣil)"
+      "meaning": "“if there comes to you” — al-Ḥujurāt 49:6  (+ madd muttaṣil)",
+      "stop": {
+        "audio": "word110-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 111,
@@ -1521,7 +1961,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a people of tyrannical strength” — al-Māʾidah 5:22"
+      "meaning": "“a people of tyrannical strength” — al-Māʾidah 5:22",
+      "stop": {
+        "audio": "word111-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 112,
@@ -1535,7 +1979,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“spread open” — al-Isrāʾ 17:13"
+      "meaning": "“spread open” — al-Isrāʾ 17:13",
+      "stop": {
+        "audio": "word112-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 113,
@@ -1549,7 +1997,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“Forgiving and Appreciative” — Fāṭir 35:30"
+      "meaning": "“Forgiving and Appreciative” — Fāṭir 35:30",
+      "stop": {
+        "audio": "word113-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 114,
@@ -1563,7 +2015,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“from the evil of” — al-Falaq 113:2"
+      "meaning": "“from the evil of” — al-Falaq 113:2",
+      "stop": {
+        "audio": "word114-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 115,
@@ -1577,7 +2033,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a severe punishment” — Ibrāhīm 14:2"
+      "meaning": "“a severe punishment” — Ibrāhīm 14:2",
+      "stop": {
+        "audio": "word115-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 116,
@@ -1592,7 +2052,11 @@
         "Light Ghunna",
         "Madd Muttasil"
       ],
-      "meaning": "“if He wills” — al-Baqarah 2:70  (+ madd muttaṣil)"
+      "meaning": "“if He wills” — al-Baqarah 2:70  (+ madd muttaṣil)",
+      "stop": {
+        "audio": "word116-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 117,
@@ -1606,7 +2070,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“over all things, is Witness” — al-Burūj 85:9"
+      "meaning": "“over all things, is Witness” — al-Burūj 85:9",
+      "stop": {
+        "audio": "word117-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 118,
@@ -1620,7 +2088,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“they save me” — Yā Sīn 36:23"
+      "meaning": "“they save me” — Yā Sīn 36:23",
+      "stop": {
+        "audio": "word118-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 119,
@@ -1634,7 +2106,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“Hearing and near” — Sabaʾ 34:50"
+      "meaning": "“Hearing and near” — Sabaʾ 34:50",
+      "stop": {
+        "audio": "word119-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 120,
@@ -1648,7 +2124,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“before” — al-Baqarah 2:25"
+      "meaning": "“before” — al-Baqarah 2:25",
+      "stop": {
+        "audio": "word120-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 121,
@@ -1662,7 +2142,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“over all things competent” — al-Baqarah 2:20"
+      "meaning": "“over all things competent” — al-Baqarah 2:20",
+      "stop": {
+        "audio": "word121-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 122,
@@ -1676,7 +2160,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“so they returned” — Āl ʿImrān 3:174"
+      "meaning": "“so they returned” — Āl ʿImrān 3:174",
+      "stop": {
+        "audio": "word122-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 123,
@@ -1690,7 +2178,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“provision, they will say” — al-Baqarah 2:25"
+      "meaning": "“provision, they will say” — al-Baqarah 2:25",
+      "stop": {
+        "audio": "word123-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 124,
@@ -1705,7 +2197,11 @@
         "Light Ghunna",
         "Moon ل"
       ],
-      "meaning": "“man” — al-Qiyāmah 75:3"
+      "meaning": "“man” — al-Qiyāmah 75:3",
+      "stop": {
+        "audio": "word124-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 125,
@@ -1719,7 +2215,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“appropriate words” — an-Nisāʾ 4:9"
+      "meaning": "“appropriate words” — an-Nisāʾ 4:9",
+      "stop": {
+        "audio": "word125-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 126,
@@ -1733,7 +2233,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“from an extract” — as-Sajdah 32:8"
+      "meaning": "“from an extract” — as-Sajdah 32:8",
+      "stop": {
+        "audio": "word126-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 127,
@@ -1747,7 +2251,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a well-proportioned man” — Maryam 19:17"
+      "meaning": "“a well-proportioned man” — Maryam 19:17",
+      "stop": {
+        "audio": "word127-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 128,
@@ -1761,7 +2269,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“that there will be” — al-Muzzammil 73:20"
+      "meaning": "“that there will be” — al-Muzzammil 73:20",
+      "stop": {
+        "audio": "word128-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 129,
@@ -1775,7 +2287,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“and another belonging exclusively” — az-Zumar 39:29"
+      "meaning": "“and another belonging exclusively” — az-Zumar 39:29",
+      "stop": {
+        "audio": "word129-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 130,
@@ -1789,7 +2305,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“equals / rivals” — al-Baqarah 2:22"
+      "meaning": "“equals / rivals” — al-Baqarah 2:22",
+      "stop": {
+        "audio": "word130-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 131,
@@ -1803,7 +2323,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“clusters hanging low” — al-Anʿām 6:99"
+      "meaning": "“clusters hanging low” — al-Anʿām 6:99",
+      "stop": {
+        "audio": "word131-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 132,
@@ -1817,7 +2341,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“with their Lord” — al-Baqarah 2:62"
+      "meaning": "“with their Lord” — al-Baqarah 2:62",
+      "stop": {
+        "audio": "word132-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 133,
@@ -1831,7 +2359,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“And a full cup” — an-Nabaʾ 78:34"
+      "meaning": "“And a full cup” — an-Nabaʾ 78:34",
+      "stop": {
+        "audio": "word133-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 134,
@@ -1845,7 +2377,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“other than” — al-Baqarah 2:23"
+      "meaning": "“other than” — al-Baqarah 2:23",
+      "stop": {
+        "audio": "word134-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 135,
@@ -1860,7 +2396,11 @@
         "Light Ghunna",
         "Madd Muttasil"
       ],
-      "meaning": "“a fluid, ejected” — aṭ-Ṭāriq 86:6"
+      "meaning": "“a fluid, ejected” — aṭ-Ṭāriq 86:6",
+      "stop": {
+        "audio": "word135-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 136,
@@ -1874,7 +2414,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“they speak” — al-Anbiyāʾ 21:63"
+      "meaning": "“they speak” — al-Anbiyāʾ 21:63",
+      "stop": {
+        "audio": "word136-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 137,
@@ -1888,7 +2432,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“clean earth” — an-Nisāʾ 4:43"
+      "meaning": "“clean earth” — an-Nisāʾ 4:43",
+      "stop": {
+        "audio": "word137-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 138,
@@ -1902,7 +2450,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“proceed” — al-Mursalāt 77:29"
+      "meaning": "“proceed” — al-Mursalāt 77:29",
+      "stop": {
+        "audio": "word138-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 139,
@@ -1916,7 +2468,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“a good land” — Sabaʾ 34:15"
+      "meaning": "“a good land” — Sabaʾ 34:15",
+      "stop": {
+        "audio": "word139-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 140,
@@ -1930,7 +2486,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“from the good things” — al-Baqarah 2:172"
+      "meaning": "“from the good things” — al-Baqarah 2:172",
+      "stop": {
+        "audio": "word140-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 141,
@@ -1944,7 +2504,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“a purifying drink” — al-Insān 76:21"
+      "meaning": "“a purifying drink” — al-Insān 76:21",
+      "stop": {
+        "audio": "word141-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 142,
@@ -1958,7 +2522,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“and sent down” — al-Baqarah 2:22"
+      "meaning": "“and sent down” — al-Baqarah 2:22",
+      "stop": {
+        "audio": "word142-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 143,
@@ -1972,7 +2540,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a smooth, dusty ground” — al-Kahf 18:40"
+      "meaning": "“a smooth, dusty ground” — al-Kahf 18:40",
+      "stop": {
+        "audio": "word143-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 144,
@@ -1986,7 +2558,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“sent down (angels)” — Āl ʿImrān 3:124"
+      "meaning": "“sent down (angels)” — Āl ʿImrān 3:124",
+      "stop": {
+        "audio": "word144-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 145,
@@ -2000,7 +2576,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“blue-eyed that Day” — Ṭā Hā 20:102"
+      "meaning": "“blue-eyed that Day” — Ṭā Hā 20:102",
+      "stop": {
+        "audio": "word145-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 146,
@@ -2014,7 +2594,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“no decline” — Ibrāhīm 14:44"
+      "meaning": "“no decline” — Ibrāhīm 14:44",
+      "stop": {
+        "audio": "word146-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 147,
@@ -2028,7 +2612,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a pure soul” — al-Kahf 18:74  (+ iqlāb)"
+      "meaning": "“a pure soul” — al-Kahf 18:74  (+ iqlāb)",
+      "stop": {
+        "audio": "word147-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 148,
@@ -2042,7 +2630,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“yourselves” — al-Baqarah 2:54"
+      "meaning": "“yourselves” — al-Baqarah 2:54",
+      "stop": {
+        "audio": "word148-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 149,
@@ -2056,7 +2648,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“abiding eternally therein” — an-Nisāʾ 4:93"
+      "meaning": "“abiding eternally therein” — an-Nisāʾ 4:93",
+      "stop": {
+        "audio": "word149-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 150,
@@ -2070,7 +2666,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“from the bounty of” — al-Jumuʿah 62:10"
+      "meaning": "“from the bounty of” — al-Jumuʿah 62:10",
+      "stop": {
+        "audio": "word150-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 151,
@@ -2084,7 +2684,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“all of you. And when…” — al-Baqarah 2:38"
+      "meaning": "“all of you. And when…” — al-Baqarah 2:38",
+      "stop": {
+        "audio": "word151-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 152,
@@ -2098,7 +2702,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“And if you have lost” — al-Mumtaḥanah 60:11"
+      "meaning": "“And if you have lost” — al-Mumtaḥanah 60:11",
+      "stop": {
+        "audio": "word152-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 153,
@@ -2112,7 +2720,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“righteousness — for themselves” — ar-Rūm 30:44"
+      "meaning": "“righteousness — for themselves” — ar-Rūm 30:44",
+      "stop": {
+        "audio": "word153-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 154,
@@ -2126,7 +2738,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“you are / were” — al-Baqarah 2:23"
+      "meaning": "“you are / were” — al-Baqarah 2:23",
+      "stop": {
+        "audio": "word154-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 155,
@@ -2140,7 +2756,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“gardens beneath which rivers flow” — al-Baqarah 2:25"
+      "meaning": "“gardens beneath which rivers flow” — al-Baqarah 2:25",
+      "stop": {
+        "audio": "word155-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 156,
@@ -2154,7 +2774,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“from beneath it” — al-Baqarah 2:25"
+      "meaning": "“from beneath it” — al-Baqarah 2:25",
+      "stop": {
+        "audio": "word156-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 157,
@@ -2168,7 +2792,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“a soul that pleads” — an-Naḥl 16:111"
+      "meaning": "“a soul that pleads” — an-Naḥl 16:111",
+      "stop": {
+        "audio": "word157-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 158,
@@ -2182,7 +2810,11 @@
         "Nūn Sākinah",
         "Light Ghunna"
       ],
-      "meaning": "“you (pl.)” — al-Baqarah 2:85"
+      "meaning": "“you (pl.)” — al-Baqarah 2:85",
+      "stop": {
+        "audio": "word158-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 159,
@@ -2196,7 +2828,11 @@
         "Tanwīn Mutatābiʿ",
         "Light Ghunna"
       ],
-      "meaning": "“of good — you will find it” — al-Muzzammil 73:20"
+      "meaning": "“of good — you will find it” — al-Muzzammil 73:20",
+      "stop": {
+        "audio": "word159-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 160,
@@ -2210,7 +2846,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“layered [with fruit]” — al-Wāqiʿah 56:29"
+      "meaning": "“layered [with fruit]” — al-Wāqiʿah 56:29",
+      "stop": {
+        "audio": "word160-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 161,
@@ -2224,7 +2864,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“a double punishment” — al-Aʿrāf 7:38"
+      "meaning": "“a double punishment” — al-Aʿrāf 7:38",
+      "stop": {
+        "audio": "word161-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 162,
@@ -2238,7 +2882,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“from a poisonous, thorny plant” — al-Ghāshiyah 88:6"
+      "meaning": "“from a poisonous, thorny plant” — al-Ghāshiyah 88:6",
+      "stop": {
+        "audio": "word162-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 163,
@@ -2252,7 +2900,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“a mosque for causing harm” — at-Tawbah 9:107"
+      "meaning": "“a mosque for causing harm” — at-Tawbah 9:107",
+      "stop": {
+        "audio": "word163-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 164,
@@ -2266,7 +2918,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“those who have gone astray” — al-Māʾidah 5:105"
+      "meaning": "“those who have gone astray” — al-Māʾidah 5:105",
+      "stop": {
+        "audio": "word164-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 165,
@@ -2280,7 +2936,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“after strength, weakness” — ar-Rūm 30:54"
+      "meaning": "“after strength, weakness” — ar-Rūm 30:54",
+      "stop": {
+        "audio": "word165-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 166,
@@ -2294,7 +2954,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“they look / wait” — al-Baqarah 2:210"
+      "meaning": "“they look / wait” — al-Baqarah 2:210",
+      "stop": {
+        "audio": "word166-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 167,
@@ -2308,7 +2972,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“abundant shade” — an-Nisāʾ 4:57"
+      "meaning": "“abundant shade” — an-Nisāʾ 4:57",
+      "stop": {
+        "audio": "word167-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 168,
@@ -2322,7 +2990,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“any assistant” — Sabaʾ 34:22"
+      "meaning": "“any assistant” — Sabaʾ 34:22",
+      "stop": {
+        "audio": "word168-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 169,
@@ -2336,7 +3008,11 @@
         "Tanwīn Mutatābiʿ",
         "Heavy Ghunna"
       ],
-      "meaning": "“visible cities” — Sabaʾ 34:18"
+      "meaning": "“visible cities” — Sabaʾ 34:18",
+      "stop": {
+        "audio": "word169-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 170,
@@ -2350,7 +3026,11 @@
         "Nūn Sākinah",
         "Heavy Ghunna"
       ],
-      "meaning": "“wait for us” — al-Baqarah 2:104"
+      "meaning": "“wait for us” — al-Baqarah 2:104",
+      "stop": {
+        "audio": "word170-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 172,
@@ -2364,7 +3044,11 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“after” — al-Baqarah 2:27"
+      "meaning": "“after” — al-Baqarah 2:27",
+      "stop": {
+        "audio": "word172-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 173,
@@ -2378,7 +3062,11 @@
         "Tanwīn",
         "Ghunna"
       ],
-      "meaning": "“Hearing and Seeing” — an-Nisāʾ 4:58"
+      "meaning": "“Hearing and Seeing” — an-Nisāʾ 4:58",
+      "stop": {
+        "audio": "word173-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 174,
@@ -2392,7 +3080,11 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“Inform them” — al-Baqarah 2:33"
+      "meaning": "“Inform them” — al-Baqarah 2:33",
+      "stop": {
+        "audio": "word174-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 175,
@@ -2406,7 +3098,11 @@
         "Tanwīn",
         "Ghunna"
       ],
-      "meaning": "“Deaf, dumb” — al-Baqarah 2:18"
+      "meaning": "“Deaf, dumb” — al-Baqarah 2:18",
+      "stop": {
+        "audio": "word175-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 176,
@@ -2420,7 +3116,11 @@
         "Nūn Sākinah",
         "Ghunna"
       ],
-      "meaning": "“he will surely be thrown” — al-Humazah 104:4"
+      "meaning": "“he will surely be thrown” — al-Humazah 104:4",
+      "stop": {
+        "audio": "word176-waqf.wav",
+        "timings": null
+      }
     },
     {
       "id": 177,
@@ -2434,7 +3134,11 @@
         "Tanwīn",
         "Ghunna"
       ],
-      "meaning": "“noble and dutiful” — ʿAbasa 80:16"
+      "meaning": "“noble and dutiful” — ʿAbasa 80:16",
+      "stop": {
+        "audio": "word177-waqf.wav",
+        "timings": null
+      }
     }
   ]
 }
