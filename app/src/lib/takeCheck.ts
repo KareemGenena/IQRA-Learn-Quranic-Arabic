@@ -131,8 +131,35 @@ export function checkTake(samples: Float32Array, sampleRate: number, count = 1):
   //    Measuring "short" against the other pieces once threw away the
   //    quarter-second وَ of وَٱلتَّكَاثُرُ and beheaded the word.
   const tickW = Math.round(0.08 / WINDOW_S);
+  // The runs before the tick filter: a final stop consonant's release is
+  // shorter than a tick, and (C) below puts it back. Same as wav.mjs.
+  const raw = runs;
   const kept = runs.filter(([a, b]) => b - a >= tickW);
   if (kept.length >= 1) runs = kept;
+
+  const partedW = Math.round(0.25 / WINDOW_S);
+  const maxRms = ([a, b]: [number, number]) => {
+    let m = 0;
+    for (let w = a; w < b; w++) if (rms[w] > m) m = rms[w];
+    return m;
+  };
+
+  //    (A) The record click: a thump inside the first 0.30 s, at most 0.50 s
+  //    long (pieces chained when parted by ≤ 0.25 s), parted from the voice
+  //    by more than a quarter second, dropped whatever its level — as long
+  //    as `count` runs remain. Mirrors splitIntoN; see wav.mjs for why.
+  if (runs.length > count && runs[0][0] < Math.round(0.3 / WINDOW_S)) {
+    let g = 0;
+    while (g + 1 < runs.length && runs[g + 1][0] - runs[g][1] <= partedW) g++;
+    if (
+      g + 1 < runs.length &&
+      runs.length - (g + 1) >= count &&
+      runs[g][1] - runs[0][0] <= Math.round(0.5 / WINDOW_S) &&
+      runs[g + 1][0] - runs[g][1] > partedW
+    ) {
+      runs = runs.slice(g + 1);
+    }
+  }
 
   //    A breath or a chair creak at the very top or tail is longer than a
   //    click but still not a word. Trimmed from the EDGES only, and only when
@@ -141,7 +168,6 @@ export function checkTake(samples: Float32Array, sampleRate: number, count = 1):
     const lens = runs.map(([a, b]) => b - a).sort((x, y) => x - y);
     const median = lens[Math.floor(lens.length / 2)];
     const strayW = median * 0.4;
-    const partedW = Math.round(0.25 / WINDOW_S);
     while (
       runs.length > count &&
       runs[0][1] - runs[0][0] < strayW &&
@@ -149,10 +175,12 @@ export function checkTake(samples: Float32Array, sampleRate: number, count = 1):
     ) {
       runs.shift();
     }
+    //    (B) A tail is a stray only when it is quiet (under half the peak).
     while (
       runs.length > count &&
       runs[runs.length - 1][1] - runs[runs.length - 1][0] < strayW &&
-      runs[runs.length - 1][0] - runs[runs.length - 2][1] > partedW
+      runs[runs.length - 1][0] - runs[runs.length - 2][1] > partedW &&
+      maxRms(runs[runs.length - 1]) < 0.5 * peakRms
     ) {
       runs.pop();
     }
@@ -206,6 +234,36 @@ export function checkTake(samples: Float32Array, sampleRate: number, count = 1):
     runs.splice(longest, 1, [a, quietest], [quietest + 1, b]);
     forced = true;
   }
+
+  //    (C) The release of a final stop consonant: a sub-tick burst within a
+  //    quarter second after a piece, at ≥ 0.15 of peak, noisy (≥ 0.4 zero
+  //    crossings per ms), not touching the take's last 0.10 s, is put back.
+  const zcrPerMs = ([a, b]: [number, number]) => {
+    let crossings = 0;
+    let prev = 0;
+    for (let f = a * win; f < b * win; f++) {
+      const v = samples[f];
+      if (v !== 0) {
+        if (prev !== 0 && v > 0 !== prev > 0) crossings++;
+        prev = v;
+      }
+    }
+    return crossings / (((b - a) * win) / (sampleRate / 1000));
+  };
+  const endGuard = n - Math.round(0.1 / WINDOW_S);
+  runs = runs.map(([a, b], i): [number, number] => {
+    const limit = i + 1 < runs.length ? runs[i + 1][0] : n;
+    let end = b;
+    for (const r of raw) {
+      if (r[0] < end) continue;
+      if (r[0] - end > partedW) break;
+      if (r[1] > limit || r[1] > endGuard || r[1] - r[0] >= tickW) continue;
+      if (maxRms(r) < 0.15 * peakRms) continue;
+      if (zcrPerMs(r) < 0.4) continue;
+      end = r[1];
+    }
+    return [a, end];
+  });
 
   const padW = Math.round(0.12 / WINDOW_S);
   const durations = runs.map(([a, b]) => {

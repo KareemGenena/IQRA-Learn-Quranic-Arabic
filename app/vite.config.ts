@@ -27,7 +27,7 @@ import { VitePWA } from 'vite-plugin-pwa';
  *
  * v3: lesson 6 كهيعص retake, 2026-09-05.
  */
-const AUDIO_VERSION = 'v3';
+const AUDIO_VERSION = 'v4';
 const AUDIO_CACHE = `iqra-audio-${AUDIO_VERSION}`;
 
 /**

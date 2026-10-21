@@ -1,6 +1,7 @@
 /** Minimal 16-bit PCM WAV reading, speech-segment detection, and writing. */
 
 import { readFileSync, writeFileSync } from 'fs';
+import { basename } from 'path';
 
 export function readWav(path) {
   const buf = readFileSync(path);
@@ -34,6 +35,8 @@ export function readWav(path) {
     bytesPerFrame,
     dataStart,
     frames: Math.floor(dataLen / bytesPerFrame),
+    /** Named, so an edge decision in `splitIntoN` can say which take. */
+    path,
   };
 }
 
@@ -127,7 +130,7 @@ function profile(wav, floor = 0.06) {
  * the take should contain turns an unreliable guess into a ranking problem.
  */
 export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15 } = {}) {
-  const { rms, win, threshold } = profile(wav, floor);
+  const { rms, win, threshold, peak } = profile(wav, floor);
   const n = rms.length;
 
   // 1. Runs of sound, discarding brief clicks and breaths. A stray 0.3s blip
@@ -149,8 +152,52 @@ export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15
   //    a fifth. Measuring "short" against the other pieces, as this once did,
   //    threw those away and beheaded the word.
   const tickW = Math.round(0.08 / 0.01);
+  //    The runs before the tick filter are kept: the release of a final stop
+  //    consonant is shorter than a tick, and (C) below puts it back.
+  const raw = runs;
   const kept = runs.filter(([a, b]) => b - a >= tickW);
   if (kept.length >= 1) runs = kept;
+
+  const partedW = Math.round(0.25 / 0.01);
+  const maxRms = ([a, b]) => {
+    let m = 0;
+    for (let w = a; w < b; w++) if (rms[w] > m) m = rms[w];
+    return m;
+  };
+  const t = (w) => ((w * win) / wav.sampleRate).toFixed(2);
+  const name = wav.path ? basename(wav.path) : 'take';
+  // Every edge decision is reported, the way a sheet correction is, so the
+  // author can listen to exactly the takes that moved.
+  const say = (what) => console.log(`    edge · ${name}: ${what}`);
+
+  //    (A) The record click. Pressing record leaves a thump in the first
+  //    tenths of nearly every take (341 of lesson 7's 352), up to as loud as
+  //    the voice itself. The stray rule below judges an edge run against the
+  //    median kept run — and a stop reading's closures break the word into
+  //    short runs, so the median collapses and the thump passes as a word,
+  //    kept together with a second of silence: the clip's sound started a
+  //    second after its highlight (22 stop clips, 5 published lesson-3
+  //    clips; 2026-10-20). A thump is known by WHERE it is, not how loud it
+  //    is: it starts inside the first 0.30 s, spans at most 0.50 s (its
+  //    pieces chained when parted by ≤ 0.25 s), and is parted from the voice
+  //    by more than a quarter second — and dropping it must still leave
+  //    `count` runs. No take in the corpus has a real word there; the intake
+  //    page tells the speaker to wait a beat after the click.
+  if (runs.length > count && runs[0][0] < Math.round(0.3 / 0.01)) {
+    let g = 0;
+    while (g + 1 < runs.length && runs[g + 1][0] - runs[g][1] <= partedW) g++;
+    if (
+      g + 1 < runs.length &&
+      runs.length - (g + 1) >= count &&
+      runs[g][1] - runs[0][0] <= Math.round(0.5 / 0.01) &&
+      runs[g + 1][0] - runs[g][1] > partedW
+    ) {
+      say(
+        `record click ${t(runs[0][0])}–${t(runs[g][1])} s dropped (${(maxRms([runs[0][0], runs[g][1]]) / peak).toFixed(2)} of peak); the voice begins at ${t(runs[g + 1][0])} s`,
+      );
+      runs = runs.slice(g + 1);
+    }
+  }
 
   //    A breath or a chair creak at the very top or tail of a take is longer
   //    than a click but still not a word. Trim those from the EDGES only,
@@ -161,19 +208,29 @@ export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15
     const lens = runs.map(([a, b]) => b - a).sort((x, y) => x - y);
     const median = lens[Math.floor(lens.length / 2)];
     const strayW = median * 0.4;
-    const partedW = Math.round(0.25 / 0.01);
     while (
       runs.length > count &&
       runs[0][1] - runs[0][0] < strayW &&
       runs[1][0] - runs[0][1] > partedW
     ) {
+      say(`stray head ${t(runs[0][0])}–${t(runs[0][1])} s dropped (${(maxRms(runs[0]) / peak).toFixed(2)} of peak)`);
       runs.shift();
     }
+    //    (B) A tail is a stray only when it is QUIET. A loud final syllable
+    //    parted by a stop's closure — the نَٰكَ of ثَبَّتۡنَٰكَ, 0.72 of peak,
+    //    0.33 s after the ثَبَّتۡ — was popped as a stray because it was
+    //    shorter than 0.4 of the one other run, and a third of the word went
+    //    (2026-10-20). The loudest noise this rule ever trimmed at a tail was
+    //    0.38 of peak, a breath; the gate sits at 0.5. The head is not gated:
+    //    the record thump reaches the full peak, and (A) owns it.
     while (
       runs.length > count &&
       runs[runs.length - 1][1] - runs[runs.length - 1][0] < strayW &&
-      runs[runs.length - 1][0] - runs[runs.length - 2][1] > partedW
+      runs[runs.length - 1][0] - runs[runs.length - 2][1] > partedW &&
+      maxRms(runs[runs.length - 1]) < 0.5 * peak
     ) {
+      const last = runs[runs.length - 1];
+      say(`stray tail ${t(last[0])}–${t(last[1])} s dropped (${(maxRms(last) / peak).toFixed(2)} of peak)`);
       runs.pop();
     }
   }
@@ -226,6 +283,47 @@ export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15
     if (quietest < 0) break; // nothing splittable — report what we have
     runs.splice(longest, 1, [a, quietest], [quietest + 1, b]);
   }
+
+  //    (C) The release of a final stop consonant. A stop reading ends in a
+  //    sākin ك ت ق ط ب: a closure of 0.15–0.21 s, then a burst of 50–70 ms —
+  //    shorter than a tick, and further past the last run than the pad
+  //    reaches — so the ك of سِرَاعࣰا ذَٰلِكَ and the ت of طَيِّبَٰتِ were cut
+  //    off (2026-10-20), as lesson 5's سِيٓءَتۡ had been. A sub-tick burst
+  //    within a quarter second after a piece is put back when it is loud
+  //    enough (0.15 of peak) and NOISY — a release crosses zero many times
+  //    a millisecond, a thump or a lip noise hardly at all — and does not
+  //    touch the take's last tenth of a second, where the stop-recording
+  //    click lives and no pad could follow it.
+  const zcrPerMs = ([a, b]) => {
+    const { buf, dataStart, bytesPerFrame, sampleRate } = wav;
+    let crossings = 0;
+    let prev = 0;
+    for (let f = a * win; f < b * win; f++) {
+      const v = buf.readInt16LE(dataStart + f * bytesPerFrame);
+      if (v !== 0) {
+        if (prev !== 0 && (v > 0) !== (prev > 0)) crossings++;
+        prev = v;
+      }
+    }
+    return crossings / (((b - a) * win) / (sampleRate / 1000));
+  };
+  const endGuard = n - Math.round(0.1 / 0.01);
+  runs = runs.map(([a, b], i) => {
+    const limit = i + 1 < runs.length ? runs[i + 1][0] : n;
+    let end = b;
+    for (const r of raw) {
+      if (r[0] < end) continue;
+      if (r[0] - end > partedW) break;
+      if (r[1] > limit || r[1] > endGuard || r[1] - r[0] >= tickW) continue;
+      const level = maxRms(r) / peak;
+      if (level < 0.15) continue;
+      const zcr = zcrPerMs(r);
+      if (zcr < 0.4) continue;
+      say(`release ${t(r[0])}–${t(r[1])} s kept after the piece ending ${t(end)} s (${level.toFixed(2)} of peak, ${zcr.toFixed(1)} crossings/ms)`);
+      end = r[1];
+    }
+    return [a, end];
+  });
 
   const padW = Math.round(pad / 0.01);
   const segments = runs.map(([a, b]) => [

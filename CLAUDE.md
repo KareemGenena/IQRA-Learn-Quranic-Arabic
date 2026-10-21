@@ -163,9 +163,22 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   once. Every word lesson, 1 included, draws the same `ItemCard` (lesson 1's
   own `WordCard` went on 2026-10-11 — it was why lesson 1 had no switch and
   no chip); lesson 1 still has no generator, so a stop take for it has
-  nowhere to be attached yet. The switch shows on every word-card lesson
-  and the chip under a form without a stop take reads "At a stop · not yet
-  recorded".
+  nowhere to be attached yet. **Since 2026-10-20: ONE play button per word**
+  (the word itself) **and a pair of tabs under it**, "read on" and "at a
+  stop", that says which reading it plays — the page's switch sets every
+  card, a tab sets that card alone until the page is switched, and tapping
+  the other tab plays it at once (the second play button read as a
+  duplication). A reading with no take is a disabled tab, "not yet
+  recorded". The page switch (`ReadingSwitch`) is labelled "Hear each word"
+  with a one-line tip of what each reading is. Keys: **S** flips the page,
+  **W** plays the current word the other way (`register(key, play,
+  playOther)`). Both readings of every card on a page are fetched as the
+  page opens (`warmPlayable`), so the first tap plays at once; a tap that
+  still waits on a download shows a dotted ring and a second tap is ignored
+  rather than cancelling the first (`loading` in `usePlayable`) — the
+  "first click plays nothing, the second plays" of 2026-10-20, which was
+  the download plus the cancel. The word is drawn the same in both
+  readings.
 - **Workbook companion** (`#/workbook`, `#/workbook/L/<printed page>`,
   `#/workbook/L/section/N`) — the electronic side of the paper: one app page
   per workbook page, every item on it in the book's order with Play where a
@@ -419,13 +432,16 @@ Things that cost real debugging. Do not undo them without reading why.
 - **Words sit at the bottom of their cards** (`.pair-card` is a flex column,
   `.pair-forms { margin-top: auto }`): with badges wrapping to one, two or
   three rows, three cards in a row still show their words on one level.
-- **The nasal mark the Mushaf wrote for the NEXT word is greyed when the card
-  stops before it** — `unreadFinalNasal()` in `graphemes.ts`: a staggered
-  tanwīn, or a vowel + small mīm, on the last word (or on the letter before
-  the tanwīn alif). Derived from the text, so no card carries a flag; 70 of
-  lesson 7's 176 cards have one. A stacked final tanwīn is left black, as the
-  author asked. Timing is unchanged — those cards are recorded at a stop like
-  every single-word clip before them.
+- **RETRACTED 2026-10-20: the nasal mark the Mushaf wrote for the NEXT word
+  is no longer greyed.** `unreadFinalNasal()` in `graphemes.ts` still names
+  it (a staggered tanwīn, or a vowel + small mīm, on the last word), and
+  `ArabicWord` still draws the staggered pair and the small mīm — but never
+  dimmed: the author found the grey "too complicated"; the mark is black as
+  in the Mushaf and the teacher explains why it looks as it does. The grey
+  final vowel of a stop reading went the same day (`stopPlayable` no longer
+  sets `dimFinalMark`; the layers it added read as a third ḍamma on
+  مُّؤۡصَدَةࣱ). `unreadFinalMaddah` (one card, lesson 6 #7) is untouched —
+  the author has not ruled on it.
 - Both tanwīn shapes are in `MARK_RE`, `TANWEEN`, `audioName.MARKS` and every
   generator's `MARKS`, so a filename derives the same from either.
 - **The tanwīn alif is silent when the reading carries on** — rule 5 of
@@ -487,6 +503,49 @@ Things that cost real debugging. Do not undo them without reading why.
   وَٱلتَّكَاثُرُ; breaths are trimmed at the **edges only**, which is what stops that
   rule eating a word's opening; word boundaries are then the `count-1` longest
   silences.
+- **Three edge rules, in absolute terms (2026-10-20).** Lesson 7's stop
+  session showed the stray-edge rule's flaw: it judges an edge run against
+  the MEDIAN kept run, and a stop reading's closures break a word into short
+  runs, so the median collapses and (A) the **record click** — a thump in
+  the first tenths of nearly every take, up to as loud as the voice — passed
+  as a word and was kept with a second of silence (22 stop clips; the sound
+  began a second after its highlight), (B) a loud final syllable parted by a
+  closure (نَٰكَ, 0.72 of peak) was popped as a stray tail and a third of
+  ثَبَّتۡنَٰكَ went, and (C) the 50–70 ms **release** of a final sākin ك or ت
+  was a sub-tick, past the pad's reach, and cut off (سِرَاعࣰا ذَٰلِكَ, طَيِّبَٰتِ;
+  lesson 5's سِيٓءَتۡ had the same). So: (A) a group of runs starting inside
+  the first 0.30 s, spanning ≤ 0.50 s (pieces chained when parted ≤ 0.25 s)
+  and parted from the voice by > 0.25 s is dropped whatever its level, as
+  long as `count` runs remain — a thump is known by where it is, not how
+  loud; (B) a tail is a stray only when under 0.5 of peak (the loudest noise
+  the old rule ever trimmed there was 0.38, a breath; the head is not gated,
+  (A) owns it); (C) a sub-tick burst within 0.25 s after a piece is put back
+  when ≥ 0.15 of peak, NOISY (≥ 0.4 zero crossings per ms — a release
+  crosses 10+, a thump or lip noise under 0.4) and not touching the take's
+  last 0.10 s, where the stop-recording click lives. `takeCheck.ts` carries
+  the identical three parts and `check-take-parity.mjs` proves it (702
+  recordings). Every edge decision is printed with the take's name, the way
+  a sheet correction is. Replayed over lessons 3–7 before the re-cut:
+  lessons 4 and 6 byte-identical (the three lesson-4 calibrations stand),
+  lesson 3 moved its five shipped head clicks (إله, الحمد, بلغ, مغفرة,
+  نهار), lesson 5 two (سيت's تۡ back, a 10 ms blip on أمرى إلى), lesson 7
+  35 — and after it the voice begins 0.12 s into every clip of both sets
+  except two stop takes whose click is below the app's own floor (مِن
+  وَاقٍ #68 0.43 s, وَكَأۡسٗا دِهَاقٗا #133 0.33 s: a `<name> 2.wav` retake
+  in `وقف/` is the only cure). The app's `speechBounds` was right all along:
+  it reported the silence that was in the file. **The speaker should wait a
+  beat after pressing record**: (A) needs a quarter second of silence
+  between the click and the voice, and no take in the corpus has a real
+  word inside the first 0.3 s. Investigated by a six-agent workflow
+  (`wf_240cf5b1-d8d`, 1.4 M tokens), two skeptics' amendments folded in.
+- **The highlight engine's remaining error is not the edges.** With clean
+  edges the per-letter boundary error against closure landmarks is a
+  dispersion of ±0.45 s at the 10th/90th percentile in BOTH readings with
+  no offset: the proportional weight model against the reciter's tempo.
+  That is calibration or weight work. By the landmarks the STOP reading of
+  خَلۡقࣲ جَدِيدٍ is the better-timed of its pair, the reverse of what the
+  author heard (2026-10-20) — most likely the first-play delay of the day,
+  now gone; not verified by listening.
 - Audio files are matched to table rows **by the words in the filename**
   (de-diacritized), not by ordinal position. The author need not number them.
 - A **trailing number is a take number**, not part of the word: `جئت 2.wav`
@@ -1340,6 +1399,24 @@ all five points agreed, in the order they will be built:
 6. **Assessments** — BUILT 2026-10-12 as the Level checks, lessons 41–43
    (section 2 "The Level checks"). Not built: self-marked read-aloud, the
    teacher marking a roster, account sync of the score.
+
+**The author's fourteen points of 2026-10-20, all built the same day
+(commits 6843908 and after):** 1 and 2 no greying at a stop and no greyed
+nasal mark (section 3); 3 عَلَيۡهِم مُّؤۡصَدَةࣱ's continuing clip is 3.57 s of
+ordinary speech in the file — three agents checked — so "audio only for the
+stop" was the first-play path, try it again; 4 the first tap (section 2,
+"Two readings"); 5 the switch labelled and explained; 6 one play button and
+the tabs; 7, 10, 11, 12 the edge rules (section 3, "Three edge rules");
+8 and 13 the highlight engine (section 3, "The highlight engine's remaining
+error"); 9 the S and W keys; 14 the Next-lesson pill at the right, the
+laser above it. `AUDIO_VERSION` is v4. **To listen to**, in this order:
+lesson 7 at a stop #26 يَنۡعِقُ, #93 سِرَاعࣰا ذَٰلِكَ, #98 أَن ثَبَّتۡنَٰكَ, #140
+مِن طَيِّبَٰتِ, #22, #88 (the click gone); #68 and #133 (retake at a stop);
+#142 وَأَنزَلَ at a stop (an 80 ms voiced piece 0.26 s before the word was
+dropped as a stray head — the وَ or a mouth noise?); lesson 3's إله, الحمد,
+بلغ, مغفرة, نهار (start clean now); lesson 5's سِيٓءَتۡ (its تۡ audible).
+Then deploy — the re-cut clips carry a new audio version — and re-run
+nothing: the companion and the Level 3 check were regenerated.
 
 **Waiting on the author (2026-10-12):**
 - **PRUNE Lesson 24 — Letter Pairs** (`Word Tables/Lesson 24 - Letter

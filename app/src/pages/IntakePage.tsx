@@ -329,7 +329,8 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
         <p className="account-hint">
           One reading per session, never mixed. Stop takes are written into a <b>وقف</b> folder inside
           the folder you choose, under the same filenames; the generator attaches each beside its
-          continuing clip.
+          continuing clip. Wait a beat after pressing record before you speak: the click of the key
+          is cut away only when a quarter second of silence parts it from your voice.
         </p>
       </section>
 
