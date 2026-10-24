@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArabicWord } from '../components/ArabicWord';
 import { ItemCard } from '../components/ItemCard';
+import { Mixed } from '../components/Mixed';
 import { ReadingSwitch } from '../components/ReadingSwitch';
 import { derivedSilent, splitClusters } from '../lib/graphemes';
 import { loadWorkbook, pdfUrl } from '../lib/workbookData';
@@ -21,6 +22,10 @@ import type { Lesson, LessonItem, Playable, Reading } from '../types';
  * is looking at; the PDF link uses the physical page (cover = 1).
  */
 const LEVELS = [1, 2, 3];
+
+/** "[ر Heavy (1)] · رَ" → "[ر Heavy] · رَ": the number is the paper's
+ *  cross-reference to its rule table; on screen the rule itself is shown. */
+const deNumber = (c: string) => c.replace(/ \(\d+\)\]/, ']');
 
 export function WorkbookIndex() {
   const [levels, setLevels] = useState<(WorkbookLevel | null)[]>([null, null, null]);
@@ -104,9 +109,7 @@ function toItem(item: WorkbookItem, no: number): LessonItem {
   return {
     id: no,
     section: 'workbook',
-    badges: item.caption ? [item.caption] : [],
-    // The rule above the item's table, as the (i) on the card.
-    meaning: item.rule,
+    badges: item.caption ? [deNumber(item.caption)] : [],
     forms: [playable],
   };
 }
@@ -124,7 +127,7 @@ function SilentCard({ item, no }: { item: WorkbookItem; no: number }) {
             className={`type-badge${/●/.test(item.caption) ? ' badge-dots' : ''}`}
             dir={/●/.test(item.caption) ? 'rtl' : undefined}
           >
-            {item.caption}
+            <Mixed text={deNumber(item.caption)} />
           </span>
         )}
       </div>
@@ -199,6 +202,8 @@ export function WorkbookPage({
   }
   const page = data.pages[idx];
   const sec = data.sections.find((s) => s.id === page.section);
+  // The teaching on this page: its tips, then the rule above each table.
+  const teaching = [...(page.tips ?? []), ...new Set(page.items.map((it) => it.rule).filter((r): r is string => !!r))];
   const lastPrinted = data.pages[data.pages.length - 1].printed;
   const go = (i: number) => {
     const target = data.pages[Math.min(Math.max(i, 0), data.pages.length - 1)];
@@ -224,9 +229,9 @@ export function WorkbookPage({
         {/* The page's own tips — the rule being practised, in the author's
             words — then the app's line. The workbook's instruction line is a
             tracing instruction and stays on the paper. */}
-        {page.tips?.map((t) => (
+        {teaching.map((t) => (
           <p key={t} className="section-hint">
-            {t}
+            <Mixed text={t} />
           </p>
         ))}
         <p className="section-hint">Tap any word to hear it. The tracing is on the page.</p>

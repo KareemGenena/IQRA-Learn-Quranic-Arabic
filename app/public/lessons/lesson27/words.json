@@ -8,39 +8,39 @@
   "sections": [
     {
       "id": "p39",
-      "title": "Page 39",
-      "titleArabic": "صفحة 39",
-      "hint": "Four letters! Join them all and keep your pencil moving. Workbook Level 2, page 39 — Four-Letter Words. Tap a form to hear it, then trace it on the page."
+      "title": "Four-Letter Words",
+      "titleArabic": "",
+      "hint": "Four letters! Join them all and keep your pencil moving."
     },
     {
       "id": "p40",
-      "title": "Page 40",
-      "titleArabic": "صفحة 40",
-      "hint": "Workbook Level 2, page 40 — Four-Letter Words. Tap a form to hear it, then trace it on the page."
+      "title": "Four-Letter Words",
+      "titleArabic": "",
+      "hint": "Tap a form to hear it."
     },
     {
       "id": "p41",
-      "title": "Page 41",
-      "titleArabic": "صفحة 41",
-      "hint": "Workbook Level 2, page 41 — Four-Letter Words. Tap a form to hear it, then trace it on the page."
+      "title": "Four-Letter Words",
+      "titleArabic": "",
+      "hint": "Tap a form to hear it."
     },
     {
       "id": "p42",
-      "title": "Page 42",
-      "titleArabic": "صفحة 42",
-      "hint": "ة at the end sounds like ت. After a joining letter it is written ـة. Workbook Level 2, page 42 — Four-Letter Words. Tap a form to hear it, then trace it on the page."
+      "title": "Four-Letter Words",
+      "titleArabic": "",
+      "hint": "ة at the end sounds like ت. After a joining letter it is written ـة."
     },
     {
       "id": "p43",
-      "title": "Page 43",
-      "titleArabic": "صفحة 43",
-      "hint": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound. Workbook Level 2, page 43 — Four-Letter Words. Tap a form to hear it, then trace it on the page."
+      "title": "Four-Letter Words",
+      "titleArabic": "",
+      "hint": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": "p44",
-      "title": "Page 44",
-      "titleArabic": "صفحة 44",
-      "hint": "Review! Read each word out loud before you write it. Workbook Level 2, page 44 — Four-Letter Words. Tap a form to hear it, then trace it on the page."
+      "title": "Four-Letter Words",
+      "titleArabic": "",
+      "hint": "Review! Read each word out loud before you write it."
     }
   ],
   "words": [
@@ -52,8 +52,7 @@
       ],
       "text": "يَعۡلَمُ",
       "audio": "word01.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 2,
@@ -63,8 +62,7 @@
       ],
       "text": "يَخۡلُقُ",
       "audio": "word02.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 3,
@@ -74,8 +72,7 @@
       ],
       "text": "يَحۡكُمُ",
       "audio": "word03.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 4,
@@ -85,8 +82,7 @@
       ],
       "text": "يُفۡلِحُ",
       "audio": "word04.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 5,
@@ -96,8 +92,7 @@
       ],
       "text": "يَخۡرُجُ",
       "audio": "word05.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 6,
@@ -107,8 +102,7 @@
       ],
       "text": "يَبۡسُطُ",
       "audio": "word06.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 7,
@@ -118,8 +112,7 @@
       ],
       "text": "مَرۡيَمَ",
       "audio": "word07.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 8,
@@ -129,8 +122,7 @@
       ],
       "text": "مَدۡيَنَ",
       "audio": "word08.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 9,
@@ -140,8 +132,7 @@
       ],
       "text": "يَمۡلِكُ",
       "audio": "word09.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 10,
@@ -151,8 +142,7 @@
       ],
       "text": "يَفۡعَلُ",
       "audio": "word10.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 11,
@@ -162,8 +152,7 @@
       ],
       "text": "يَغۡفِرُ",
       "audio": "word11.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 12,
@@ -173,8 +162,7 @@
       ],
       "text": "يَعۡبُدُ",
       "audio": "word12.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 13,
@@ -184,8 +172,7 @@
       ],
       "text": "مَلَكَتۡ",
       "audio": "word13.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 14,
@@ -195,8 +182,7 @@
       ],
       "text": "سَبَقَتۡ",
       "audio": "word14.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 15,
@@ -206,8 +192,7 @@
       ],
       "text": "حَبِطَتۡ",
       "audio": "word15.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 16,
@@ -217,8 +202,7 @@
       ],
       "text": "ثَقُلَتۡ",
       "audio": "word16.wav",
-      "timings": null,
-      "meaning": "Four letters! Join them all and keep your pencil moving."
+      "timings": null
     },
     {
       "id": 17,
@@ -548,8 +532,7 @@
       ],
       "text": "رَحۡمَةً",
       "audio": "word49.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 50,
@@ -559,8 +542,7 @@
       ],
       "text": "قَرۡيَةٍ",
       "audio": "word50.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 51,
@@ -570,8 +552,7 @@
       ],
       "text": "حَسَنَةٌ",
       "audio": "word51.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 52,
@@ -581,8 +562,7 @@
       ],
       "text": "نِعۡمَةَ",
       "audio": "word52.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 53,
@@ -592,8 +572,7 @@
       ],
       "text": "رَقَبَةٍ",
       "audio": "word53.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 54,
@@ -603,8 +582,7 @@
       ],
       "text": "غَفۡلَةٍ",
       "audio": "word54.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 55,
@@ -614,8 +592,7 @@
       ],
       "text": "صَيۡحَةً",
       "audio": "word55.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 56,
@@ -625,8 +602,7 @@
       ],
       "text": "دَرَجَةً",
       "audio": "word56.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 57,
@@ -636,8 +612,7 @@
       ],
       "text": "شَجَرَةٍ",
       "audio": "word57.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 58,
@@ -647,8 +622,7 @@
       ],
       "text": "صَدَقَةً",
       "audio": "word58.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 59,
@@ -658,8 +632,7 @@
       ],
       "text": "عَلَقَةٍ",
       "audio": "word59.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 60,
@@ -669,8 +642,7 @@
       ],
       "text": "نُطۡفَةً",
       "audio": "word60.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 61,
@@ -680,8 +652,7 @@
       ],
       "text": "جَهۡرَةً",
       "audio": "word61.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 62,
@@ -691,8 +662,7 @@
       ],
       "text": "عَشۡرَةَ",
       "audio": "word62.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 63,
@@ -702,8 +672,7 @@
       ],
       "text": "زَجۡرَةٌ",
       "audio": "word63.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 64,
@@ -713,8 +682,7 @@
       ],
       "text": "حَسۡرَةً",
       "audio": "word64.wav",
-      "timings": null,
-      "meaning": "ة at the end sounds like ت. After a joining letter it is written ـة."
+      "timings": null
     },
     {
       "id": 65,
@@ -724,8 +692,7 @@
       ],
       "text": "يَخَافُ",
       "audio": "word65.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 66,
@@ -735,8 +702,7 @@
       ],
       "text": "قِصَاصٌ",
       "audio": "word66.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 67,
@@ -746,8 +712,7 @@
       ],
       "text": "غَالِبَ",
       "audio": "word67.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 68,
@@ -757,8 +722,7 @@
       ],
       "text": "قَادِرٌ",
       "audio": "word68.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 69,
@@ -768,8 +732,7 @@
       ],
       "text": "عِقَابِ",
       "audio": "word69.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 70,
@@ -779,8 +742,7 @@
       ],
       "text": "يُطَافُ",
       "audio": "word70.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 71,
@@ -790,8 +752,7 @@
       ],
       "text": "صُدُورِ",
       "audio": "word71.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 72,
@@ -801,8 +762,7 @@
       ],
       "text": "نَخُوضُ",
       "audio": "word72.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 73,
@@ -812,8 +772,7 @@
       ],
       "text": "طُلُوعِ",
       "audio": "word73.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 74,
@@ -823,8 +782,7 @@
       ],
       "text": "قَلِيلٌ",
       "audio": "word74.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 75,
@@ -834,8 +792,7 @@
       ],
       "text": "خَبِيرٌ",
       "audio": "word75.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 76,
@@ -845,8 +802,7 @@
       ],
       "text": "يُضِيعُ",
       "audio": "word76.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 77,
@@ -856,8 +812,7 @@
       ],
       "text": "عَزِيزٌ",
       "audio": "word77.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 78,
@@ -867,8 +822,7 @@
       ],
       "text": "عَظِيمٌ",
       "audio": "word78.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 79,
@@ -878,8 +832,7 @@
       ],
       "text": "نَذِيرٌ",
       "audio": "word79.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 80,
@@ -889,8 +842,7 @@
       ],
       "text": "نَصِيرٍ",
       "audio": "word80.wav",
-      "timings": null,
-      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
+      "timings": null
     },
     {
       "id": 81,
@@ -900,8 +852,7 @@
       ],
       "text": "يَجۡعَلُ",
       "audio": "word81.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 82,
@@ -911,8 +862,7 @@
       ],
       "text": "يُرۡسِلُ",
       "audio": "word82.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 83,
@@ -922,8 +872,7 @@
       ],
       "text": "يَفۡصِلُ",
       "audio": "word83.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 84,
@@ -933,8 +882,7 @@
       ],
       "text": "يَخۡسِفَ",
       "audio": "word84.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 85,
@@ -944,8 +892,7 @@
       ],
       "text": "رَحۡمَتَ",
       "audio": "word85.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 86,
@@ -955,8 +902,7 @@
       ],
       "text": "نِعۡمَتَ",
       "audio": "word86.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 87,
@@ -966,8 +912,7 @@
       ],
       "text": "عَمِلَتۡ",
       "audio": "word87.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 88,
@@ -977,8 +922,7 @@
       ],
       "text": "خِفۡتُمۡ",
       "audio": "word88.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 89,
@@ -988,8 +932,7 @@
       ],
       "text": "غَمۡرَةٍ",
       "audio": "word89.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 90,
@@ -999,8 +942,7 @@
       ],
       "text": "خَشۡيَةِ",
       "audio": "word90.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 91,
@@ -1010,8 +952,7 @@
       ],
       "text": "قِبۡلَةً",
       "audio": "word91.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 92,
@@ -1021,8 +962,7 @@
       ],
       "text": "تَوۡبَةً",
       "audio": "word92.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 93,
@@ -1032,8 +972,7 @@
       ],
       "text": "شَهِيدٌ",
       "audio": "word93.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 94,
@@ -1043,8 +982,7 @@
       ],
       "text": "حَدِيثُ",
       "audio": "word94.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 95,
@@ -1054,8 +992,7 @@
       ],
       "text": "مَكَانٍ",
       "audio": "word95.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     },
     {
       "id": 96,
@@ -1065,8 +1002,7 @@
       ],
       "text": "ثَوَابَ",
       "audio": "word96.wav",
-      "timings": null,
-      "meaning": "Review! Read each word out loud before you write it."
+      "timings": null
     }
   ]
 }

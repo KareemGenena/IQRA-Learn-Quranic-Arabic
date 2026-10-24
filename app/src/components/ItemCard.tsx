@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { ArabicWord } from './ArabicWord';
+import { Mixed } from './Mixed';
 import { PlayIcon } from './PlayIcon';
 import { usePlayable } from '../lib/usePlayable';
 import { stopPlayable } from '../lib/lessons';
@@ -205,7 +206,7 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges, 
               className={`type-badge${/ghunna|ikhfa/i.test(b) ? ' badge-ghunna' : ''}${/●/.test(b) ? ' badge-dots' : ''}`}
               dir={/●/.test(b) ? 'rtl' : undefined}
             >
-              {b}
+              <Mixed text={b} />
             </span>
           ))}
         {item.image && (

@@ -152,16 +152,30 @@ for (const n of NUMBERS) {
   const rows = readSheet(sheetPath);
   const captionOf = new Map();
   for (const p of pages) for (const it of p.items) if (!captionOf.has(exact(it.text))) captionOf.set(exact(it.text), it.caption);
-  // What a card studies, for its (i): the rule the master prints above the
-  // item's table ("Heavy (1): ر has a fatha: رَ"), else the page's own tips.
-  // Both in the author's words, from the master; nothing is authored here.
-  const ruleOf = new Map();
+  // The teaching lines of the master — the page's "★ Tip" lines, then the
+  // rule printed above each of its tables ("Heavy (1): ر has a fatha: رَ") —
+  // are the page's hint, one line each. The author may replace a page's
+  // tips in lessons.map.json (`tips`, by printed page) and give a word its
+  // own rule chip (`notes`, by exact text). The (i) is for meanings only
+  // (2026-10-24), never for a rule, and never the same text on every card.
   const tipsOf = new Map();
+  const rulesOf = new Map();
+  const ruleOf = new Map();
   for (const p of pages) {
-    tipsOf.set(p.printed, (p.tips ?? []).join(' '));
+    tipsOf.set(p.printed, meta.tips?.[String(p.printed)] ?? p.tips ?? []);
+    rulesOf.set(p.printed, [...new Set(p.items.map((it) => it.rule).filter(Boolean))]);
     for (const it of p.items) if (it.rule && !ruleOf.has(exact(it.text))) ruleOf.set(exact(it.text), it.rule);
   }
-  const studied = (text, pg) => ruleOf.get(exact(text)) || tipsOf.get(pg) || undefined;
+  // "[ر Heavy (1)] · رَ" → "[ر Heavy] · رَ": the number is the paper's
+  // cross-reference to its rule table; on a card the rule is its own chip,
+  // the reason and nothing else ("Raa with damma", not "Heavy (4)").
+  const deNumber = (c) => (c ?? '').replace(/ \(\d+\)\]/, ']');
+  const reasonOf = (text) => {
+    const note = meta.notes?.[text];
+    if (note) return note;
+    const m = /^(?:Heavy|Light) \(\d+\):\s*(.+)$/.exec(ruleOf.get(exact(text)) ?? '');
+    return m ? m[1].replace(/\s+/g, ' ').trim() : undefined;
+  };
 
   const cards = [];
   for (const r of rows) {
@@ -174,17 +188,26 @@ for (const n of NUMBERS) {
   }
   const multi = cards.some((c) => c.texts.length > 1);
 
-  const sections = [...new Set(cards.map((c) => c.page))].map((pg) => ({
-    id: `p${pg}`,
-    title: `Page ${pg}`,
-    titleArabic: `صفحة ${pg}`,
-    // The page's tips lead — the rule being practised, as the workbook
-    // teaches it — then the app's own line.
-    hint: [
-      ...(pages.find((p) => p.printed === pg)?.tips ?? []),
-      `Workbook Level ${meta.level}, page ${pg} — ${sec.title}. Tap a form to hear it, then trace it on the page.`,
-    ].join(' '),
-  }));
+  // A page is headed by its part of the workbook section ("Raa", "Hams
+  // (whisper)"), carried over the pages a part spans, else by the lesson's
+  // title — never "Page 54": the number is the paper's, and the workbook
+  // button above the lesson already says where that is (the author,
+  // 2026-10-24). The hint is the teaching alone.
+  let part = '';
+  const partOf = new Map();
+  for (const p of pages) {
+    if (p.part) part = p.part;
+    partOf.set(p.printed, part);
+  }
+  const sections = [...new Set(cards.map((c) => c.page))].map((pg) => {
+    const lines = [...(tipsOf.get(pg) ?? []), ...(rulesOf.get(pg) ?? [])];
+    return {
+      id: `p${pg}`,
+      title: partOf.get(pg) || meta.title,
+      titleArabic: '',
+      hint: lines.length ? lines.join('\n') : 'Tap a form to hear it.',
+    };
+  });
 
   const src = join(ROOT, 'Audio', `Audio - Lesson ${nn}`);
   const outDir = join(PUB, 'audio', `lesson${nn}`);
@@ -223,13 +246,14 @@ for (const n of NUMBERS) {
       // Per card, not per lesson: "Shadda with Kasra" rows read Kasra · Shadda
       // where the rest read Fat-ha · Shadda.
       const formLabels = c.texts.map((t) => captionOf.get(exact(t)) ?? '');
-      return { ...base, forms, formLabels, meaning: studied(c.texts[0], c.page) };
+      return { ...base, forms, formLabels };
     }
     const text = c.texts[0];
     const audio = `word${wn}.wav`;
     cut(text, audio);
     const caption = captionOf.get(exact(text));
-    return { ...base, text, audio, timings: null, badges: caption ? [caption] : [], meaning: studied(text, c.page) };
+    const badges = [deNumber(caption), reasonOf(text)].filter(Boolean);
+    return { ...base, text, audio, timings: null, badges };
   });
 
   const lesson = {

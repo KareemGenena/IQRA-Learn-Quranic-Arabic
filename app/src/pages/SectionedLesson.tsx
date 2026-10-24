@@ -3,6 +3,7 @@ import type { ComponentType } from 'react';
 import { ItemCard } from '../components/ItemCard';
 import { stopActivePlayback } from '../lib/playback';
 import { sectionKey, toItems } from '../lib/lessons';
+import { Mixed } from '../components/Mixed';
 import { markDone } from '../lib/progress';
 import type { Lesson, LessonItem, LessonSection, Reading } from '../types';
 
@@ -423,7 +424,9 @@ export function SectionedLesson({
             {headingArabic}
           </span>
         </h3>
-        <p className="section-hint">{hint}</p>
+        <p className="section-hint">
+          <Mixed text={hint} />
+        </p>
       </section>
 
       <div className="pair-grid">
@@ -436,7 +439,7 @@ export function SectionedLesson({
             displayNo={i + 1}
             register={register}
             hideBadges={page.quiz}
-            reading={reading}
+            reading={page.section?.readings === false ? undefined : reading}
           />
         ))}
       </div>

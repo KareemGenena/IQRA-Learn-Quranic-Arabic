@@ -56,6 +56,10 @@ export interface LessonSection {
   title: string;
   titleArabic: string;
   hint: string;
+  /** False on a section whose cards have one reading only — lesson 3's
+   *  drills, two words said together, where "at a stop" means nothing — so
+   *  the cards show no reading tabs even on a Level 3 lesson. */
+  readings?: boolean;
 }
 
 /** Lesson 3 shape: one word per recording, with the taught letter marked. */

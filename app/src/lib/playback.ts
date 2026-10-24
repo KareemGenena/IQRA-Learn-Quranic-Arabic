@@ -279,6 +279,43 @@ async function stretchData(x: Float32Array, sr: number, rate: number): Promise<F
   return wsola(x, sr, rate);
 }
 
+/**
+ * Every clip sounds at the same level. Recording levels vary by 30 dB
+ * across the corpus (peaks −32.7 … −0.3 dBFS), and the author found one
+ * lesson barely audible (lesson 4, 2026-10-24). The files stay as recorded;
+ * the player lifts each clip so that its 99.9th-percentile sample sits at
+ * 0.9 of full scale — the percentile so that a lone click cannot hold a
+ * whole clip down — within +24 dB. Computed once per decoded buffer.
+ */
+const gains = new WeakMap<AudioBuffer, number>();
+
+function gainFor(buffer: AudioBuffer): number {
+  const hit = gains.get(buffer);
+  if (hit !== undefined) return hit;
+  const x = buffer.getChannelData(0);
+  let peak = 0;
+  for (let i = 0; i < x.length; i++) {
+    const a = Math.abs(x[i]);
+    if (a > peak) peak = a;
+  }
+  let g = 1;
+  if (peak > 0) {
+    const bins = new Uint32Array(1024);
+    for (let i = 0; i < x.length; i++) bins[Math.min(1023, Math.floor((Math.abs(x[i]) / peak) * 1023))]++;
+    const allow = Math.max(1, Math.floor(x.length * 0.001));
+    let above = 0;
+    let b = 1023;
+    for (; b > 0; b--) {
+      above += bins[b];
+      if (above >= allow) break;
+    }
+    const level = (b / 1023) * peak;
+    g = Math.min(32, Math.max(0.5, 0.9 / Math.max(level, 1e-4)));
+  }
+  gains.set(buffer, g);
+  return g;
+}
+
 const stretchedCache = new Map<string, Promise<AudioBuffer>>();
 const STRETCHED_MAX = 24;
 
@@ -437,6 +474,7 @@ function bufferEngine(
   finish: () => void,
 ): Engine {
   let source: AudioBufferSourceNode | null = null;
+  let gainNode: GainNode | null = null;
   let startedAt = 0; // context time the current source began
   let offset = 0; // media time it began from
   let pausedAt = 0;
@@ -493,12 +531,18 @@ function bufferEngine(
       /* already stopped */
     }
     s.disconnect();
+    gainNode?.disconnect();
+    gainNode = null;
   };
 
   const start = (from: number) => {
     const s = c.createBufferSource();
     s.buffer = buffer;
-    s.connect(c.destination);
+    const g = c.createGain();
+    g.gain.value = gainFor(buffer);
+    s.connect(g);
+    g.connect(c.destination);
+    gainNode = g;
     source = s;
     ended = false;
     offset = Math.max(0, from);

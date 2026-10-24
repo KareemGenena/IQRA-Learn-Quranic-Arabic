@@ -19,7 +19,7 @@ import { useAccount } from './lib/useAccount';
 import { storeCloudSnapshot } from './lib/calibration';
 import { installAudioWarmup } from './lib/playback';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
-import { LESSONS, lessonAfter, lessonLabel, loadLesson } from './lib/lessons';
+import { LESSONS, lessonAfter, lessonBefore, lessonLabel, loadLesson } from './lib/lessons';
 import { markDone, markOpened } from './lib/progress';
 import { cachedConfig, canSeeLesson, canUseFeature, fetchConfig, lessonStatus } from './lib/appConfig';
 import type { AppConfig } from './lib/appConfig';
@@ -219,6 +219,7 @@ export default function App() {
   // The way on from this lesson: the next the learner may see. Moving on
   // marks this one done — a learner who skips ahead is where they are.
   const next = route.lessonId > 0 ? lessonAfter(route.lessonId, (l) => canSeeLesson(config, l.id, admin)) : undefined;
+  const prev = route.lessonId > 0 ? lessonBefore(route.lessonId, (l) => canSeeLesson(config, l.id, admin)) : undefined;
   const moveOn = () => {
     markDone(route.lessonId);
     if (next) window.location.hash = `#/lesson/${next.id}`;
@@ -448,25 +449,38 @@ export default function App() {
                   )}
                   {/* The way on. Always shown, never required: the home page
                       lists every lesson, and this is only the default path. */}
+                  {/* One pill, two halves: back and on. Going back marks
+                      nothing; going on marks this lesson done. */}
                   <div className="next-lesson">
-                    {next ? (
-                      <a
-                        className="next-btn"
-                        href={`#/lesson/${next.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          moveOn();
-                        }}
-                      >
-                        <span className="next-label">Next lesson</span>
-                        <span className="next-title">{next.title}</span>
-                        <span className="lesson-go" aria-hidden="true">
-                          ›
-                        </span>
-                      </a>
-                    ) : (
-                      <span className="next-end">This is the last lesson for now.</span>
-                    )}
+                    <nav className="lesson-pill" aria-label="Previous and next lesson">
+                      {prev && (
+                        <a className="pill-half pill-prev" href={`#/lesson/${prev.id}`}>
+                          <span className="lesson-go" aria-hidden="true">
+                            ‹
+                          </span>
+                          <span className="next-label">Previous</span>
+                          <span className="next-title">{prev.title}</span>
+                        </a>
+                      )}
+                      {next ? (
+                        <a
+                          className="pill-half pill-next"
+                          href={`#/lesson/${next.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            moveOn();
+                          }}
+                        >
+                          <span className="next-label">Next lesson</span>
+                          <span className="next-title">{next.title}</span>
+                          <span className="lesson-go" aria-hidden="true">
+                            ›
+                          </span>
+                        </a>
+                      ) : (
+                        <span className="pill-half pill-end">This is the last lesson for now.</span>
+                      )}
+                    </nav>
                   </div>
                 </>
               )}

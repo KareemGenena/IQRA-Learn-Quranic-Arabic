@@ -8,21 +8,21 @@
   "sections": [
     {
       "id": "p29",
-      "title": "Page 29",
-      "titleArabic": "صفحة 29",
-      "hint": "Two same letters: the first is sakin and merges into the second. Say it once with a shadda. Workbook Level 3, page 29 — Idgham of Two Letters. Tap a form to hear it, then trace it on the page."
+      "title": "Idghām of Two Letters",
+      "titleArabic": "",
+      "hint": "Two same letters: the first is sakin and merges into the second. Say it once with a shadda.\nMithlain (م ن): the first letter merges into the same letter, with ghunna, 2 counts\nMithlain (د ل): say it once with a shadda; no qalqala on دۡ\nMithlain (ك ب): say it once with a shadda; no qalqala on بۡ"
     },
     {
       "id": "p30",
-      "title": "Page 30",
-      "titleArabic": "صفحة 30",
-      "hint": "Mutajanisain: two different letters from the same makhraj. Workbook Level 3, page 30 — Idgham of Two Letters. Tap a form to hear it, then trace it on the page."
+      "title": "Idghām of Two Letters",
+      "titleArabic": "",
+      "hint": "Mutajanisain: two different letters from the same makhraj.\nMutajanisain (ذ←ظ, د←ت): same makhraj: the first letter merges fully into the second\nMutajanisain (ت←د, ت←ط): same makhraj: the first letter merges fully into the second\nMutajanisain (ث←ذ, ب←م): same makhraj: the first letter merges fully into the second"
     },
     {
       "id": "p31",
-      "title": "Page 31",
-      "titleArabic": "صفحة 31",
-      "hint": "In نَخۡلُقكُّم the ق disappears fully: say كّ. Workbook Level 3, page 31 — Idgham of Two Letters. Tap a form to hear it, then trace it on the page."
+      "title": "Idghām of Two Letters",
+      "titleArabic": "",
+      "hint": "In نَخۡلُقكُّم the ق disappears fully: say كّ.\nMutajanisain, incomplete (ط←ت): the heavy sound of طۡ stays, and there's no qalqala\nMutaqaribain (ل←ر, ق←ك): letters with close makharij: the first merges fully into the second"
     }
   ],
   "words": [
@@ -34,8 +34,7 @@
       ],
       "text": "أَم مَّنۡ",
       "audio": "word01.wav",
-      "timings": null,
-      "meaning": "Mithlain (م ن): the first letter merges into the same letter, with ghunna, 2 counts"
+      "timings": null
     },
     {
       "id": 2,
@@ -45,8 +44,7 @@
       ],
       "text": "إِن نَّحۡنُ",
       "audio": "word02.wav",
-      "timings": null,
-      "meaning": "Mithlain (م ن): the first letter merges into the same letter, with ghunna, 2 counts"
+      "timings": null
     },
     {
       "id": 3,
@@ -56,8 +54,7 @@
       ],
       "text": "وَقَد دَّخَلُواْ",
       "audio": "word03.wav",
-      "timings": null,
-      "meaning": "Mithlain (د ل): say it once with a shadda; no qalqala on دۡ"
+      "timings": null
     },
     {
       "id": 4,
@@ -67,8 +64,7 @@
       ],
       "text": "بَل لَّا",
       "audio": "word04.wav",
-      "timings": null,
-      "meaning": "Mithlain (د ل): say it once with a shadda; no qalqala on دۡ"
+      "timings": null
     },
     {
       "id": 5,
@@ -78,8 +74,7 @@
       ],
       "text": "يُدۡرِككُّمُ",
       "audio": "word05.wav",
-      "timings": null,
-      "meaning": "Mithlain (ك ب): say it once with a shadda; no qalqala on بۡ"
+      "timings": null
     },
     {
       "id": 6,
@@ -89,8 +84,7 @@
       ],
       "text": "ٱضۡرِب بِّعَصَاكَ",
       "audio": "word06.wav",
-      "timings": null,
-      "meaning": "Mithlain (ك ب): say it once with a shadda; no qalqala on بۡ"
+      "timings": null
     },
     {
       "id": 7,
@@ -100,8 +94,7 @@
       ],
       "text": "إِذ ظَّلَمُوٓاْ",
       "audio": "word07.wav",
-      "timings": null,
-      "meaning": "Mutajanisain (ذ←ظ, د←ت): same makhraj: the first letter merges fully into the second"
+      "timings": null
     },
     {
       "id": 8,
@@ -111,8 +104,7 @@
       ],
       "text": "قَد تَّبَيَّنَ",
       "audio": "word08.wav",
-      "timings": null,
-      "meaning": "Mutajanisain (ذ←ظ, د←ت): same makhraj: the first letter merges fully into the second"
+      "timings": null
     },
     {
       "id": 9,
@@ -122,8 +114,7 @@
       ],
       "text": "أَثۡقَلَت دَّعَوَا",
       "audio": "word09.wav",
-      "timings": null,
-      "meaning": "Mutajanisain (ت←د, ت←ط): same makhraj: the first letter merges fully into the second"
+      "timings": null
     },
     {
       "id": 10,
@@ -133,8 +124,7 @@
       ],
       "text": "قَالَت طَّآئِفَةٌ",
       "audio": "word10.wav",
-      "timings": null,
-      "meaning": "Mutajanisain (ت←د, ت←ط): same makhraj: the first letter merges fully into the second"
+      "timings": null
     },
     {
       "id": 11,
@@ -144,8 +134,7 @@
       ],
       "text": "يَلۡهَث ذَّٰلِكَ",
       "audio": "word11.wav",
-      "timings": null,
-      "meaning": "Mutajanisain (ث←ذ, ب←م): same makhraj: the first letter merges fully into the second"
+      "timings": null
     },
     {
       "id": 12,
@@ -155,8 +144,7 @@
       ],
       "text": "ٱرۡكَب مَّعَنَا",
       "audio": "word12.wav",
-      "timings": null,
-      "meaning": "Mutajanisain (ث←ذ, ب←م): same makhraj: the first letter merges fully into the second"
+      "timings": null
     },
     {
       "id": 13,
@@ -166,8 +154,7 @@
       ],
       "text": "أَحَطتُ",
       "audio": "word13.wav",
-      "timings": null,
-      "meaning": "Mutajanisain, incomplete (ط←ت): the heavy sound of طۡ stays, and there's no qalqala"
+      "timings": null
     },
     {
       "id": 14,
@@ -177,8 +164,7 @@
       ],
       "text": "بَسَطتَ",
       "audio": "word14.wav",
-      "timings": null,
-      "meaning": "Mutajanisain, incomplete (ط←ت): the heavy sound of طۡ stays, and there's no qalqala"
+      "timings": null
     },
     {
       "id": 15,
@@ -188,8 +174,7 @@
       ],
       "text": "قُل رَّبِّ",
       "audio": "word15.wav",
-      "timings": null,
-      "meaning": "Mutaqaribain (ل←ر, ق←ك): letters with close makharij: the first merges fully into the second"
+      "timings": null
     },
     {
       "id": 16,
@@ -199,8 +184,7 @@
       ],
       "text": "أَلَمۡ نَخۡلُقكُّم",
       "audio": "word16.wav",
-      "timings": null,
-      "meaning": "Mutaqaribain (ل←ر, ق←ك): letters with close makharij: the first merges fully into the second"
+      "timings": null
     }
   ]
 }

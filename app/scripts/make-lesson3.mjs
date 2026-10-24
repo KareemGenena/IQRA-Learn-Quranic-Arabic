@@ -107,7 +107,7 @@ for (const s of SECTIONS) {
 }
 
 // Pair drills: one recording each, no meaning and nothing to highlight.
-sections.push({ id: DRILL_PAIRS.id, title: DRILL_PAIRS.title, titleArabic: DRILL_PAIRS.titleArabic, hint: DRILL_PAIRS.hint });
+sections.push({ id: DRILL_PAIRS.id, title: DRILL_PAIRS.title, titleArabic: DRILL_PAIRS.titleArabic, hint: DRILL_PAIRS.hint, readings: false });
 const drillRows = rows.slice(DRILL_PAIRS.rows[0], DRILL_PAIRS.rows[1] + 1);
 for (const cells of drillRows) {
   id += 1;
@@ -125,7 +125,7 @@ for (const cells of drillRows) {
 }
 
 // Contrast drills: one card per row holding both words, split "A – B".
-sections.push({ id: DRILL_CONTRAST.id, title: DRILL_CONTRAST.title, titleArabic: DRILL_CONTRAST.titleArabic, hint: DRILL_CONTRAST.hint });
+sections.push({ id: DRILL_CONTRAST.id, title: DRILL_CONTRAST.title, titleArabic: DRILL_CONTRAST.titleArabic, hint: DRILL_CONTRAST.hint, readings: false });
 const contrastRows = rows.slice(DRILL_CONTRAST.rows[0], DRILL_CONTRAST.rows[1] + 1);
 const contrastClips = [];
 for (const cells of contrastRows) {

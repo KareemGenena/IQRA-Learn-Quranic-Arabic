@@ -8,9 +8,9 @@
   "sections": [
     {
       "id": "p32",
-      "title": "Page 32",
-      "titleArabic": "صفحة 32",
-      "hint": "Small zero on an alif: round = never said. Rectangle = said only when you stop. Workbook Level 3, page 32 — Silent Alif. Tap a form to hear it, then trace it on the page."
+      "title": "Silent Alif",
+      "titleArabic": "",
+      "hint": "Small zero on an alif: round = never said. Rectangle = said only when you stop.\nRound zero: قَالُواْ: the alif with a round zero is never said\nRectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
     }
   ],
   "words": [
@@ -22,8 +22,7 @@
       ],
       "text": "قَالُواْ",
       "audio": "word01.wav",
-      "timings": null,
-      "meaning": "Round zero: قَالُواْ: the alif with a round zero is never said"
+      "timings": null
     },
     {
       "id": 2,
@@ -33,8 +32,7 @@
       ],
       "text": "ءَامَنُواْ",
       "audio": "word02.wav",
-      "timings": null,
-      "meaning": "Round zero: قَالُواْ: the alif with a round zero is never said"
+      "timings": null
     },
     {
       "id": 3,
@@ -44,8 +42,7 @@
       ],
       "text": "كَفَرُواْ",
       "audio": "word03.wav",
-      "timings": null,
-      "meaning": "Round zero: قَالُواْ: the alif with a round zero is never said"
+      "timings": null
     },
     {
       "id": 4,
@@ -55,8 +52,7 @@
       ],
       "text": "أَنَا۠",
       "audio": "word04.wav",
-      "timings": null,
-      "meaning": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
+      "timings": null
     },
     {
       "id": 5,
@@ -66,8 +62,7 @@
       ],
       "text": "لَّٰكِنَّا۠",
       "audio": "word05.wav",
-      "timings": null,
-      "meaning": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
+      "timings": null
     },
     {
       "id": 6,
@@ -77,8 +72,7 @@
       ],
       "text": "قَوَارِيرَا۠",
       "audio": "word06.wav",
-      "timings": null,
-      "meaning": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
+      "timings": null
     }
   ]
 }

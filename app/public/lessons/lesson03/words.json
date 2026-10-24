@@ -47,13 +47,15 @@
       "id": "pairs",
       "title": "Pair drills",
       "titleArabic": "تمارين",
-      "hint": "Alternate the two letters until the difference is automatic."
+      "hint": "Alternate the two letters until the difference is automatic.",
+      "readings": false
     },
     {
       "id": "contrast",
       "title": "Contrast drills",
       "titleArabic": "تمارين التمييز",
-      "hint": "Two words, one letter apart. Play them back to back and listen for the switch."
+      "hint": "Two words, one letter apart. Play them back to back and listen for the switch.",
+      "readings": false
     }
   ],
   "words": [

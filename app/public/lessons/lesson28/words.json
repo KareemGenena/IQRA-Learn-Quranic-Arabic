@@ -8,21 +8,21 @@
   "sections": [
     {
       "id": "p45",
-      "title": "Page 45",
-      "titleArabic": "صفحة 45",
-      "hint": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra. Workbook Level 2, page 45 — Hamza. Tap a form to hear it, then trace it on the page."
+      "title": "Hamza",
+      "titleArabic": "",
+      "hint": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
     },
     {
       "id": "p46",
-      "title": "Page 46",
-      "titleArabic": "صفحة 46",
-      "hint": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ. Workbook Level 2, page 46 — Hamza. Tap a form to hear it, then trace it on the page."
+      "title": "Hamza",
+      "titleArabic": "",
+      "hint": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
     },
     {
       "id": "p47",
-      "title": "Page 47",
-      "titleArabic": "صفحة 47",
-      "hint": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section! Workbook Level 2, page 47 — Hamza. Tap a form to hear it, then trace it on the page."
+      "title": "Hamza",
+      "titleArabic": "",
+      "hint": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء.\nLook! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
     }
   ],
   "words": [
@@ -34,8 +34,7 @@
       ],
       "text": "أَمَرَ",
       "audio": "word01.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 2,
@@ -45,8 +44,7 @@
       ],
       "text": "أَخَذَ",
       "audio": "word02.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 3,
@@ -56,8 +54,7 @@
       ],
       "text": "أَكَلَ",
       "audio": "word03.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 4,
@@ -67,8 +64,7 @@
       ],
       "text": "أَحَدٌ",
       "audio": "word04.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 5,
@@ -78,8 +74,7 @@
       ],
       "text": "أَهۡلَ",
       "audio": "word05.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 6,
@@ -89,8 +84,7 @@
       ],
       "text": "أَمۡرُ",
       "audio": "word06.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 7,
@@ -100,8 +94,7 @@
       ],
       "text": "أَجۡرُ",
       "audio": "word07.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 8,
@@ -111,8 +104,7 @@
       ],
       "text": "أُمَمٍ",
       "audio": "word08.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 9,
@@ -122,8 +114,7 @@
       ],
       "text": "إِذَا",
       "audio": "word09.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 10,
@@ -133,8 +124,7 @@
       ],
       "text": "إِذۡ",
       "audio": "word10.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 11,
@@ -144,8 +134,7 @@
       ],
       "text": "إِلَيۡهِ",
       "audio": "word11.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 12,
@@ -155,8 +144,7 @@
       ],
       "text": "أُذُنٌ",
       "audio": "word12.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 13,
@@ -166,8 +154,7 @@
       ],
       "text": "أَكۡثَرَ",
       "audio": "word13.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 14,
@@ -177,8 +164,7 @@
       ],
       "text": "أَبَدًا",
       "audio": "word14.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 15,
@@ -188,8 +174,7 @@
       ],
       "text": "إِلَيۡكَ",
       "audio": "word15.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 16,
@@ -199,8 +184,7 @@
       ],
       "text": "أَخِيهِ",
       "audio": "word16.wav",
-      "timings": null,
-      "meaning": "Hamza at the start sits on an alif: أ above for fat-ha and damma, إ below for kasra."
+      "timings": null
     },
     {
       "id": 17,
@@ -210,8 +194,7 @@
       ],
       "text": "سَأَلَ",
       "audio": "word17.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 18,
@@ -221,8 +204,7 @@
       ],
       "text": "يَأۡمُرُ",
       "audio": "word18.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 19,
@@ -232,8 +214,7 @@
       ],
       "text": "يَأۡكُلُ",
       "audio": "word19.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 20,
@@ -243,8 +224,7 @@
       ],
       "text": "يَأۡخُذُ",
       "audio": "word20.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 21,
@@ -254,8 +234,7 @@
       ],
       "text": "يُؤۡمِنُ",
       "audio": "word21.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 22,
@@ -265,8 +244,7 @@
       ],
       "text": "مُؤۡمِنٌ",
       "audio": "word22.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 23,
@@ -276,8 +254,7 @@
       ],
       "text": "فُؤَادُ",
       "audio": "word23.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 24,
@@ -287,8 +264,7 @@
       ],
       "text": "لُؤۡلُؤٌ",
       "audio": "word24.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 25,
@@ -298,8 +274,7 @@
       ],
       "text": "جِئۡتَ",
       "audio": "word25.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 26,
@@ -309,8 +284,7 @@
       ],
       "text": "شِئۡتَ",
       "audio": "word26.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 27,
@@ -320,8 +294,7 @@
       ],
       "text": "يَئِسَ",
       "audio": "word27.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 28,
@@ -331,8 +304,7 @@
       ],
       "text": "سُئِلَ",
       "audio": "word28.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 29,
@@ -342,8 +314,7 @@
       ],
       "text": "بِئۡسَ",
       "audio": "word29.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 30,
@@ -353,8 +324,7 @@
       ],
       "text": "كَأۡسٍ",
       "audio": "word30.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 31,
@@ -364,8 +334,7 @@
       ],
       "text": "يَأۡمَنُ",
       "audio": "word31.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 32,
@@ -375,8 +344,7 @@
       ],
       "text": "رَءُوفٌ",
       "audio": "word32.wav",
-      "timings": null,
-      "meaning": "In the middle, hamza sits on an alif ـأـ, a waw ؤ, or a nabra ـئـ."
+      "timings": null
     },
     {
       "id": 33,
@@ -386,8 +354,7 @@
       ],
       "text": "شَىۡءٍ",
       "audio": "word33.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 34,
@@ -397,8 +364,7 @@
       ],
       "text": "نَبَأَ",
       "audio": "word34.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 35,
@@ -408,8 +374,7 @@
       ],
       "text": "دِفۡءٌ",
       "audio": "word35.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 36,
@@ -419,8 +384,7 @@
       ],
       "text": "جُزۡءٌ",
       "audio": "word36.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 37,
@@ -430,8 +394,7 @@
       ],
       "text": "يُبۡدِئُ",
       "audio": "word37.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 38,
@@ -441,8 +404,7 @@
       ],
       "text": "قُرِئَ",
       "audio": "word38.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 39,
@@ -452,8 +414,7 @@
       ],
       "text": "ذَرَأَ",
       "audio": "word39.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 40,
@@ -463,8 +424,7 @@
       ],
       "text": "ظَمَأٌ",
       "audio": "word40.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 41,
@@ -474,8 +434,7 @@
       ],
       "text": "مَلَأٌ",
       "audio": "word41.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 42,
@@ -485,8 +444,7 @@
       ],
       "text": "أَسۡوَأَ",
       "audio": "word42.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 43,
@@ -496,8 +454,7 @@
       ],
       "text": "مَلۡجَأَ",
       "audio": "word43.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 44,
@@ -507,8 +464,7 @@
       ],
       "text": "سَوۡءٍ",
       "audio": "word44.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 45,
@@ -518,8 +474,7 @@
       ],
       "text": "أَفَآءَ",
       "audio": "word45.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 46,
@@ -529,8 +484,7 @@
       ],
       "text": "أَعۡدَآءً",
       "audio": "word46.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 47,
@@ -540,8 +494,7 @@
       ],
       "text": "أَبۡنَآءِ",
       "audio": "word47.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     },
     {
       "id": 48,
@@ -551,8 +504,7 @@
       ],
       "text": "أَهۡوَآءَ",
       "audio": "word48.wav",
-      "timings": null,
-      "meaning": "At the end, hamza sits on an alif ـأ, a nabra ـئ, or on the line ء. Look! The wavy sign ٓ over a letter of madd means a longer madd. That is the next section!"
+      "timings": null
     }
   ]
 }

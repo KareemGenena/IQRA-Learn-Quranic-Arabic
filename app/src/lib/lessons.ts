@@ -334,6 +334,17 @@ export function lessonAfter(
   return i < 0 ? undefined : ordered.slice(i + 1).find(visible);
 }
 
+/** The lesson read before this one — the same sequence, walked back. */
+export function lessonBefore(
+  id: number,
+  visible: (l: LessonMeta) => boolean = () => true,
+  lessons: LessonMeta[] = LESSONS,
+): LessonMeta | undefined {
+  const ordered = orderedLessons(lessons);
+  const i = ordered.findIndex((l) => l.id === id);
+  return i < 0 ? undefined : ordered.slice(0, i).reverse().find(visible);
+}
+
 /** The same sequence cut into its Levels, for the headings on the home page. */
 export function lessonsByLevel(lessons: LessonMeta[] = LESSONS) {
   const ordered = orderedLessons(lessons);

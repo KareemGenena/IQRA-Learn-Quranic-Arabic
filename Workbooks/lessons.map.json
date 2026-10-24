@@ -1,5 +1,5 @@
 {
-  "_": "Lessons cut from the practice workbooks (Levels 1 and 2 of the app). Each entry: the app's lesson number (its identity, never its position), the workbook section it is cut from (a section id as printed in the master's Table of Contents), the sheet the author records and edits, and the words the home page shows. A section = the pages it spans; a lesson section = one workbook page = one sitting. Run: node scripts/make-workbook-lessons.mjs [numbers]",
+  "_": "Lessons cut from the practice workbooks (Levels 1 and 2 of the app). Each entry: the app's lesson number (its identity, never its position), the workbook section it is cut from (a section id as printed in the master's Table of Contents), the sheet the author records and edits, and the words the home page shows. Optional: `tips` — the lines shown over a page, by the workbook's printed page number, replacing the master's ★ Tip lines for that page; `notes` — a word's own rule chip, by its exact text, replacing the rule the master prints above its table. Run: node scripts/make-workbook-lessons.mjs [numbers]",
   "21": { "level": 1, "order": 5, "source": "L1S4", "sheet": "Lesson 21 - Tanween.docx", "title": "Tanween", "titleArabic": "التنوين", "blurb": "Every letter with its three harakat and its three tanween, as the workbook writes them, page by page." },
   "22": { "level": 1, "order": 6, "source": "L1S5", "sheet": "Lesson 22 - Natural Madd.docx", "title": "Natural Madd", "titleArabic": "المد الطبيعي", "blurb": "Each letter held on alif, waw and yaa, beside its fat-ha, damma and kasra." },
   "23": { "level": 1, "order": 7, "source": "L1S6", "sheet": "Lesson 23 - Shadda.docx", "title": "Shadda", "titleArabic": "الشدة", "blurb": "Two letters, then the second one doubled — hear the shadda land." },
@@ -8,9 +8,27 @@
   "26": { "level": 2, "order": 3, "source": "L2S3", "sheet": "Lesson 26 - Timing.docx", "title": "Timing", "titleArabic": "عد الحركات", "blurb": "One count or two: a haraka beside the same word with a natural madd." },
   "27": { "level": 2, "order": 4, "source": "L2S4", "sheet": "Lesson 27 - Four-Letter Words.docx", "title": "Four-Letter Words", "titleArabic": "كلمات من أربعة أحرف", "blurb": "Real words of four letters, a sukoon in the middle of each." },
   "28": { "level": 2, "order": 6, "source": "L2S5", "sheet": "Lesson 28 - Hamza.docx", "title": "Hamza", "titleArabic": "الهمزة", "blurb": "The hamza at the start, in the middle and at the end of a word." },
-  "29": { "level": 2, "order": 9, "source": "L2S7", "sheet": "Lesson 29 - Qalqala.docx", "title": "Qalqala", "titleArabic": "القلقلة", "blurb": "ق ط ب ج د with a sukoon — hear the bounce." },
-  "34": { "level": 3, "order": 1, "source": "L3S1", "sheet": "Lesson 34 - Stopping.docx", "title": "Stopping", "titleArabic": "الوقف", "blurb": "What happens to the last letter when you stop on a word — the vowel drops, a madd grows." },
-  "35": { "level": 3, "order": 4, "source": "L3S5", "sheet": "Lesson 35 - Makharij and Sifat.docx", "title": "Makharij & Sifat", "titleArabic": "المخارج والصفات", "blurb": "Hams, tafkheem, the lam of ٱللَّه, and the heavy and light raa." },
+  "29": {
+    "level": 2, "order": 9, "source": "L2S7", "sheet": "Lesson 29 - Qalqala.docx", "title": "Qalqala", "titleArabic": "القلقلة", "blurb": "ق ط ب ج د with a sukoon — hear the bounce.",
+    "tips": {
+      "54": ["Qalqala: the letters قطب جد bounce when they have a sukoon."],
+      "55": ["Qalqala: the letters قطب جد bounce when they have a sukoon."],
+      "56": [
+        "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter, it bounces!",
+        "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
+      ]
+    }
+  },
+  "34": { "level": 3, "order": 1, "source": "L3S1", "sheet": "Lesson 34 - Stopping.docx", "title": "Stopping", "titleArabic": "الوقف", "blurb": "What happens to the last letter when you stop on a word — the last haraka drops, a madd grows." },
+  "35": {
+    "level": 3, "order": 4, "source": "L3S5", "sheet": "Lesson 35 - Makharij and Sifat.docx", "title": "Makharij & Sifat", "titleArabic": "المخارج والصفات", "blurb": "Hams, tafkheem, the lam of ٱللَّه, and the heavy and light raa.",
+    "tips": {
+      "13": ["Hams = whisper. With كۡ let a little air flow out, like a soft whisper."]
+    },
+    "notes": {
+      "خُسۡرٍ": "Heavy at a stop only — read on, this ر has a kasra and is light"
+    }
+  },
   "36": { "level": 3, "order": 7, "source": "L3S8", "sheet": "Lesson 36 - Idgham of Two Letters.docx", "title": "Idghām of Two Letters", "titleArabic": "إدغام الحرفين", "blurb": "Mithlain, mutajanisain and mutaqaribain — two letters that merge into one." },
   "37": { "level": 3, "order": 8, "source": "L3S9", "sheet": "Lesson 37 - Silent Alif.docx", "title": "Silent Alif", "titleArabic": "الألف التي لا تُقرأ", "blurb": "The alif that is written and not read." }
 }

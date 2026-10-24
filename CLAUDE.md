@@ -201,15 +201,32 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   in `lessons.ts`: "Level 3 · Lesson 4", the Level and the position the
   home page counts in it. Shown in the lesson header and the recordings
   page; the id stays what it always was, a key.
-- **The workbook's "★ Tip" lines are the app's hints** (2026-10-24). The
-  parser (`scripts/lib/workbook.mjs`) gives each page its `tips` and each
-  item the `rule` line printed above its table ("Heavy (1): ر has a fatha:
-  رَ", "Round zero: قَالُواْ: …"). A workbook lesson's page hint opens with
-  the page's tips and ends with the app's line; every card's (i) is its
-  table's rule, else the page's tips — the author's own words from the
-  master, nothing authored in code. The companion shows the same tips over
-  the page and the rule as the (i). Where the master has no tip (Level 1's
-  pages) nothing is added. Lessons 35–37 were the ask; it holds for all.
+- **One pill, two halves** under every lesson (2026-10-24): "‹ Previous"
+  and "Next lesson ›" in the space the Next pill took (`lessonBefore` in
+  `lessons.ts`, `.lesson-pill` in the CSS). Going back marks nothing; going
+  on marks the lesson done.
+- **A section can switch the reading tabs off**: `readings: false` on a
+  `LessonSection` (lesson 3's pair and contrast drills — two words said
+  together, where "at a stop" means nothing) gives its cards one reading
+  and no tabs, on a Level 3 lesson too.
+- **The workbook's teaching lines are the app's hints** (2026-10-24,
+  revised twice the same day). The parser (`scripts/lib/workbook.mjs`)
+  gives each page its "★ Tip" lines (`tips`) and each item the `rule` line
+  printed above its table ("Heavy (1): ر has a fatha: رَ", "Round zero:
+  قَالُواْ: …"). A workbook lesson's page is HEADED by its part of the
+  section ("Raa", "Hams (whisper)", carried over the pages a part spans)
+  or by the lesson's title — never "Page 54": the author struck the page
+  numbers — and its hint is the teaching alone, one line per tip and per
+  rule; the "Workbook Level 2, page 54 …" line is gone, the workbook button
+  above the lesson says where the paper is. **The (i) is for meanings
+  only** — a rule is never a tooltip, and never the same text on every
+  card. Where a table's rule is numbered ("Heavy (4)") the card's chips are
+  the caption without the number and the rule's reason as its own chip
+  ("ر has a damma"); `Workbooks/lessons.map.json` may give a page its own
+  `tips` (lesson 29's three qalqala lines, lesson 35's hams page) and a
+  word its own chip (`notes`: خُسۡرٍ is heavy at a stop only). The
+  companion shows the same tips and rules over its page. Where the master
+  has no tip (Level 1's pages) the hint is "Tap a form to hear it."
 
 ---
 
@@ -570,6 +587,16 @@ Things that cost real debugging. Do not undo them without reading why.
   estimates** (±0.45 s, see "The highlight engine's remaining error") —
   this fixes the clip starting late or the highlight leading the voice,
   not where each letter's boundary falls; only calibration does that.
+- **Every clip is played at the same level** (`gainFor` in `playback.ts`,
+  2026-10-24). Recording levels vary by 30 dB across the corpus; lesson 4
+  peaks at −29.6 dBFS and the author found it barely audible. The files
+  stay as recorded; the player lifts each decoded clip so its 99.9th-
+  percentile sample sits at 0.9 of full scale (the percentile so that a
+  lone click cannot hold a clip down), within +30 dB, through a GainNode.
+  Lesson 4 gets about +28 dB, lesson 7 about +15 dB. The media-element
+  fallback cannot boost (volume caps at 1). Peak-equal, not loudness-equal:
+  enough that no lesson is quiet; a LUFS pass is the next step if two
+  lessons still sit apart.
 - Play via **blob: URLs** (`audioSource.ts`), never raw file URLs — media range
   requests through the service-worker cache truncate first playback.
 - **Superseded 2026-10-24 by the Web Audio engine above; kept as history.**
@@ -1091,6 +1118,15 @@ this time the corrupted records are children's.
   `setState` updater; StrictMode invokes them twice. Keep a ref.
 - A fresh `[]` as a default prop re-triggers layout effects forever — use a
   module-level constant.
+- **A tooltip opens on the button, never near it.** `.meaning-tip` and
+  `.image-pop` show on `.info-btn:hover + …`, on `:focus-visible` or on
+  the tap's `.open` — the old `.pair-head:hover` rule popped the meaning
+  up with the pointer anywhere on the card's head (2026-10-24).
+- **Arabic inside English is wrapped** (`Mixed.tsx`, `.ar-run`): every
+  Arabic run in a hint or a chip gets the Mushaf face at 1.4× (1.6× in a
+  chip), isolated for bidi. At 11–14 px in the Latin face the author could
+  not read a tanwīn sign or a caption's مَرۡ. Use it for any English string
+  shown to a learner that carries Arabic.
 - **Badges wrap, never squeeze.** `.pair-head` is `flex-wrap: wrap` and a
   `.type-badge` is `white-space: nowrap; flex: none`. Before that, six chips
   on a phone broke inside their own text and the last one was pushed out of
@@ -1512,6 +1548,22 @@ all five points agreed, in the order they will be built:
 6. **Assessments** — BUILT 2026-10-12 as the Level checks, lessons 41–43
    (section 2 "The Level checks"). Not built: self-marked read-aloud, the
    teacher marking a roster, account sync of the score.
+
+**The author's nine points of 2026-10-24, the evening round, built,
+deployed and pushed.** Level 3 reads, by `lessonLabel`, 34 · 2 · 4 · 35 ·
+3 · 7 · 36 · 37, so "Level 3 lesson 3" is lesson 4 (hamzat waṣl), lesson
+4 is 35 and lesson 5 is 3. 1 pushed and deployed; 2 the previous/next
+pill (section 2); 3 lesson 29: no "Page 54" headings, no (i) rule, the
+three qalqala tips by page (54 and 55 the sukoon line, 56 the two stop
+lines), tooltips only on the button (section 3, App); 4 lesson 34: the
+same, plus Arabic legible in hints and chips (`Mixed`); 5 lesson 4's
+volume — the player's gain normalisation (section 3, Audio), no
+re-recording; 6 lesson 35's hams page keeps only its first tip; 7 the Raa
+pages: rules in the title box, the reason as a chip without the number,
+خُسۡرٍ told it is heavy at a stop only; 8 lesson 3's drills without tabs.
+**To listen to**: lesson 4 at its new level, and any lesson beside it for
+balance (every clip now peaks the same; if two lessons still sit apart in
+loudness, say which).
 
 **The author's eleven points of 2026-10-24, built the same day.** First,
 what he was hearing: the re-cut clips of 2026-10-20 (commit ee211b8) were

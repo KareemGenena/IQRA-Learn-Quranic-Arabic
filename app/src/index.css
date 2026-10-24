@@ -740,24 +740,41 @@ body {
   margin: 24px 0 8px;
 }
 
-.next-btn {
+/* One pill, two halves — back on the left, on to the right — in the space
+   the single Next pill took (the author, 2026-10-24). */
+.lesson-pill {
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  width: auto;
+  align-items: stretch;
   max-width: 100%;
-  padding: 9px 14px 9px 16px;
   border-radius: 999px;
   background: var(--accent);
   color: #fff;
-  text-decoration: none;
   box-shadow: var(--shadow);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
 }
 
-.next-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lift);
+.pill-half {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 9px 14px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+a.pill-half:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.pill-prev {
+  border-inline-end: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.pill-end {
+  opacity: 0.85;
+  font-size: 14px;
 }
 
 .next-label {
@@ -771,11 +788,16 @@ body {
 
 .next-title {
   flex: 1;
+  min-width: 0;
+  max-width: 26ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 15px;
   font-weight: 600;
 }
 
-.next-btn .lesson-go {
+.lesson-pill .lesson-go {
   color: #fff;
 }
 
@@ -843,6 +865,23 @@ body {
   margin: 4px 0 0;
   font-size: 14px;
   color: var(--text-soft);
+  /* A workbook lesson's hint is one line per tip and per rule. */
+  white-space: pre-line;
+}
+
+/* Arabic inside English (Mixed.tsx): the Mushaf face, larger, so a tanwīn
+   sign or a caption's مَرۡ can be read at hint and chip sizes. */
+.ar-run {
+  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-size: 1.4em;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  unicode-bidi: isolate;
+}
+
+.type-badge .ar-run {
+  font-size: 1.6em;
 }
 
 .pair-grid {
@@ -959,8 +998,11 @@ body {
   transition: opacity 0.12s ease;
 }
 
+/* Shown by a tap, or by the pointer ON the button — never by hovering
+   somewhere near it (the author, 2026-10-24). */
 .meaning-tip.open,
-.pair-head:hover .meaning-tip {
+.info-btn:hover + .meaning-tip,
+.info-btn:focus-visible + .meaning-tip {
   opacity: 1;
   visibility: visible;
 }
@@ -982,7 +1024,8 @@ body {
 }
 
 .image-pop.open,
-.pair-head:hover .image-pop {
+.info-btn:hover + .image-pop,
+.info-btn:focus-visible + .image-pop {
   opacity: 1;
   visibility: visible;
 }
