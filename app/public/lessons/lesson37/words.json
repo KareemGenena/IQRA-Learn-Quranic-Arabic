@@ -18,7 +18,7 @@
       "id": 1,
       "section": "p32",
       "badges": [
-        "[ا Silent]   ·   لُواْ"
+        "[ا Silent]"
       ],
       "text": "قَالُواْ",
       "audio": "word01.wav",
@@ -28,7 +28,7 @@
       "id": 2,
       "section": "p32",
       "badges": [
-        "[ا Silent]   ·   نُواْ"
+        "[ا Silent]"
       ],
       "text": "ءَامَنُواْ",
       "audio": "word02.wav",
@@ -38,7 +38,7 @@
       "id": 3,
       "section": "p32",
       "badges": [
-        "[ا Silent]   ·   رُواْ"
+        "[ا Silent]"
       ],
       "text": "كَفَرُواْ",
       "audio": "word03.wav",
@@ -48,7 +48,7 @@
       "id": 4,
       "section": "p32",
       "badges": [
-        "[ا Say at stop]   ·   نَا۠"
+        "[ا Say at stop]"
       ],
       "text": "أَنَا۠",
       "audio": "word04.wav",
@@ -58,7 +58,7 @@
       "id": 5,
       "section": "p32",
       "badges": [
-        "[ا Say at stop]   ·   نَّا۠"
+        "[ا Say at stop]"
       ],
       "text": "لَّٰكِنَّا۠",
       "audio": "word05.wav",
@@ -68,7 +68,7 @@
       "id": 6,
       "section": "p32",
       "badges": [
-        "[ا Say at stop]   ·   رَا۠"
+        "[ا Say at stop]"
       ],
       "text": "قَوَارِيرَا۠",
       "audio": "word06.wav",

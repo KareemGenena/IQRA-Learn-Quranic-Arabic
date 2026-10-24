@@ -30,7 +30,7 @@
       "id": 1,
       "section": "p29",
       "badges": [
-        "[م Mithlain]   ·   م مَّ"
+        "[م Mithlain]"
       ],
       "text": "أَم مَّنۡ",
       "audio": "word01.wav",
@@ -40,7 +40,7 @@
       "id": 2,
       "section": "p29",
       "badges": [
-        "[ن Mithlain]   ·   ن نَّ"
+        "[ن Mithlain]"
       ],
       "text": "إِن نَّحۡنُ",
       "audio": "word02.wav",
@@ -50,7 +50,7 @@
       "id": 3,
       "section": "p29",
       "badges": [
-        "[د Mithlain]   ·   د دَّ"
+        "[د Mithlain]"
       ],
       "text": "وَقَد دَّخَلُواْ",
       "audio": "word03.wav",
@@ -60,7 +60,7 @@
       "id": 4,
       "section": "p29",
       "badges": [
-        "[ل Mithlain]   ·   ل لَّ"
+        "[ل Mithlain]"
       ],
       "text": "بَل لَّا",
       "audio": "word04.wav",
@@ -70,7 +70,7 @@
       "id": 5,
       "section": "p29",
       "badges": [
-        "[ك Mithlain]   ·   ككُّ"
+        "[ك Mithlain]"
       ],
       "text": "يُدۡرِككُّمُ",
       "audio": "word05.wav",
@@ -80,7 +80,7 @@
       "id": 6,
       "section": "p29",
       "badges": [
-        "[ب Mithlain]   ·   ب بِّ"
+        "[ب Mithlain]"
       ],
       "text": "ٱضۡرِب بِّعَصَاكَ",
       "audio": "word06.wav",
@@ -90,7 +90,7 @@
       "id": 7,
       "section": "p30",
       "badges": [
-        "[ظ Mutajanisain]   ·   ذ ظَّ"
+        "[ظ Mutajanisain]"
       ],
       "text": "إِذ ظَّلَمُوٓاْ",
       "audio": "word07.wav",
@@ -100,7 +100,7 @@
       "id": 8,
       "section": "p30",
       "badges": [
-        "[ت Mutajanisain]   ·   د تَّ"
+        "[ت Mutajanisain]"
       ],
       "text": "قَد تَّبَيَّنَ",
       "audio": "word08.wav",
@@ -110,7 +110,7 @@
       "id": 9,
       "section": "p30",
       "badges": [
-        "[د Mutajanisain]   ·   ت دَّ"
+        "[د Mutajanisain]"
       ],
       "text": "أَثۡقَلَت دَّعَوَا",
       "audio": "word09.wav",
@@ -120,7 +120,7 @@
       "id": 10,
       "section": "p30",
       "badges": [
-        "[ط Mutajanisain]   ·   ت طَّ"
+        "[ط Mutajanisain]"
       ],
       "text": "قَالَت طَّآئِفَةٌ",
       "audio": "word10.wav",
@@ -130,7 +130,7 @@
       "id": 11,
       "section": "p30",
       "badges": [
-        "[ذ Mutajanisain]   ·   ث ذَّ"
+        "[ذ Mutajanisain]"
       ],
       "text": "يَلۡهَث ذَّٰلِكَ",
       "audio": "word11.wav",
@@ -140,7 +140,7 @@
       "id": 12,
       "section": "p30",
       "badges": [
-        "[م Mutajanisain]   ·   ب مَّ"
+        "[م Mutajanisain]"
       ],
       "text": "ٱرۡكَب مَّعَنَا",
       "audio": "word12.wav",
@@ -150,7 +150,7 @@
       "id": 13,
       "section": "p31",
       "badges": [
-        "[ت Incomplete]   ·   طتُ"
+        "[ت Incomplete]"
       ],
       "text": "أَحَطتُ",
       "audio": "word13.wav",
@@ -160,7 +160,7 @@
       "id": 14,
       "section": "p31",
       "badges": [
-        "[ت Incomplete]   ·   طتَ"
+        "[ت Incomplete]"
       ],
       "text": "بَسَطتَ",
       "audio": "word14.wav",
@@ -170,7 +170,7 @@
       "id": 15,
       "section": "p31",
       "badges": [
-        "[ر Mutaqaribain]   ·   ل رَّ"
+        "[ر Mutaqaribain]"
       ],
       "text": "قُل رَّبِّ",
       "audio": "word15.wav",
@@ -180,7 +180,7 @@
       "id": 16,
       "section": "p31",
       "badges": [
-        "[ك Mutaqaribain]   ·   قكُّ"
+        "[ك Mutaqaribain]"
       ],
       "text": "أَلَمۡ نَخۡلُقكُّم",
       "audio": "word16.wav",

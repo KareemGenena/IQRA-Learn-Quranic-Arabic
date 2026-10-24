@@ -203,7 +203,13 @@ export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges, 
             // madd of قَالَ, on the right), so the chip does too.
             <span
               key={b}
-              className={`type-badge${/ghunna|ikhfa/i.test(b) ? ' badge-ghunna' : ''}${/●/.test(b) ? ' badge-dots' : ''}`}
+              // A chip of Arabic alone is set in the Mushaf face at a
+              // reading size; a chip that is a sentence (a rule) takes a
+              // whole row and wraps, in sentence case, instead of running
+              // out of the card (the author, 2026-10-24).
+              className={`type-badge${/ghunna|ikhfa/i.test(b) ? ' badge-ghunna' : ''}${/●/.test(b) ? ' badge-dots' : ''}${
+                !/[A-Za-z]/.test(b) ? ' badge-ar' : b.length > 28 ? ' badge-rule' : ''
+              }`}
               dir={/●/.test(b) ? 'rtl' : undefined}
             >
               <Mixed text={b} />

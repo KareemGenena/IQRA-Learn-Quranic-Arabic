@@ -1,5 +1,5 @@
 {
-  "_": "Lessons cut from the practice workbooks (Levels 1 and 2 of the app). Each entry: the app's lesson number (its identity, never its position), the workbook section it is cut from (a section id as printed in the master's Table of Contents), the sheet the author records and edits, and the words the home page shows. Optional: `tips` — the lines shown over a page, by the workbook's printed page number, replacing the master's ★ Tip lines for that page; `notes` — a word's own rule chip, by its exact text, replacing the rule the master prints above its table. Run: node scripts/make-workbook-lessons.mjs [numbers]",
+  "_": "Lessons cut from the practice workbooks (Levels 1 and 2 of the app). Each entry: the app's lesson number (its identity, never its position), the workbook section it is cut from (a section id as printed in the master's Table of Contents), the sheet the author records and edits, and the words the home page shows. Optional: `tips` — the lines shown over a page, keyed by the workbook's printed page number ('56') or by a run of the sheet's card numbers on that page ('56:39-44', its own screen), replacing the master's ★ Tip lines; `notes` — a word's own rule chip, by its exact text, replacing the rule the master prints above its table. Run: node scripts/make-workbook-lessons.mjs [numbers]",
   "21": { "level": 1, "order": 5, "source": "L1S4", "sheet": "Lesson 21 - Tanween.docx", "title": "Tanween", "titleArabic": "التنوين", "blurb": "Every letter with its three harakat and its three tanween, as the workbook writes them, page by page." },
   "22": { "level": 1, "order": 6, "source": "L1S5", "sheet": "Lesson 22 - Natural Madd.docx", "title": "Natural Madd", "titleArabic": "المد الطبيعي", "blurb": "Each letter held on alif, waw and yaa, beside its fat-ha, damma and kasra." },
   "23": { "level": 1, "order": 7, "source": "L1S6", "sheet": "Lesson 23 - Shadda.docx", "title": "Shadda", "titleArabic": "الشدة", "blurb": "Two letters, then the second one doubled — hear the shadda land." },
@@ -13,10 +13,9 @@
     "tips": {
       "54": ["Qalqala: the letters قطب جد bounce when they have a sukoon."],
       "55": ["Qalqala: the letters قطب جد bounce when they have a sukoon."],
-      "56": [
-        "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter, it bounces!",
-        "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
-      ]
+      "56:33-38": ["Qalqala: the letters قطب جد bounce when they have a sukoon."],
+      "56:39-44": ["When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter, it bounces!"],
+      "56:45-48": ["When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"]
     }
   },
   "34": { "level": 3, "order": 1, "source": "L3S1", "sheet": "Lesson 34 - Stopping.docx", "title": "Stopping", "titleArabic": "الوقف", "blurb": "What happens to the last letter when you stop on a word — the last haraka drops, a madd grows." },

@@ -500,7 +500,7 @@
       "id": 45,
       "section": "p30",
       "badges": [
-        "[س Light]   ·   ن + س + ر"
+        "[س Light] · ن + س + ر"
       ],
       "text": "نَسۡرُ",
       "audio": "word45.wav",
@@ -520,7 +520,7 @@
       "id": 47,
       "section": "p30",
       "badges": [
-        "[ت Light]   ·   م + ت + ر"
+        "[ت Light] · م + ت + ر"
       ],
       "text": "مَتَرَ",
       "audio": "word47.wav",
@@ -820,7 +820,7 @@
       "id": 77,
       "section": "p32",
       "badges": [
-        "[ك Light]   ·   س + ك + ر"
+        "[ك Light] · س + ك + ر"
       ],
       "text": "سَكَرَ",
       "audio": "word77.wav",
@@ -850,7 +850,7 @@
       "id": 80,
       "section": "p32",
       "badges": [
-        "[ق Heavy]   ·   م + ق + ر"
+        "[ق Heavy] · م + ق + ر"
       ],
       "text": "مَقَرَ",
       "audio": "word80.wav",

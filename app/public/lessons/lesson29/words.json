@@ -19,10 +19,22 @@
       "hint": "Qalqala: the letters قطب جد bounce when they have a sukoon."
     },
     {
-      "id": "p56",
+      "id": "p56-33",
       "title": "Qalqala",
       "titleArabic": "",
-      "hint": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter, it bounces!\nWhen you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
+      "hint": "Qalqala: the letters قطب جد bounce when they have a sukoon."
+    },
+    {
+      "id": "p56-39",
+      "title": "Qalqala",
+      "titleArabic": "",
+      "hint": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter, it bounces!"
+    },
+    {
+      "id": "p56-45",
+      "title": "Qalqala",
+      "titleArabic": "",
+      "hint": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     }
   ],
   "words": [
@@ -348,7 +360,7 @@
     },
     {
       "id": 33,
-      "section": "p56",
+      "section": "p56-33",
       "badges": [
         "ع + د + ن"
       ],
@@ -358,7 +370,7 @@
     },
     {
       "id": 34,
-      "section": "p56",
+      "section": "p56-33",
       "badges": [
         "ص + د + ق"
       ],
@@ -368,7 +380,7 @@
     },
     {
       "id": 35,
-      "section": "p56",
+      "section": "p56-33",
       "badges": [
         "ع + د + ل"
       ],
@@ -378,7 +390,7 @@
     },
     {
       "id": 36,
-      "section": "p56",
+      "section": "p56-33",
       "badges": [
         "ت + د + ر + ى"
       ],
@@ -388,7 +400,7 @@
     },
     {
       "id": 37,
-      "section": "p56",
+      "section": "p56-33",
       "badges": [
         "ت + د + ع"
       ],
@@ -398,7 +410,7 @@
     },
     {
       "id": 38,
-      "section": "p56",
+      "section": "p56-33",
       "badges": [
         "ع + د + ن + ا"
       ],
@@ -408,7 +420,7 @@
     },
     {
       "id": 39,
-      "section": "p56",
+      "section": "p56-39",
       "badges": [
         "ي + د + ر + ي + ك"
       ],
@@ -418,7 +430,7 @@
     },
     {
       "id": 40,
-      "section": "p56",
+      "section": "p56-39",
       "badges": [
         "ي + د + ع + و + ن"
       ],
@@ -428,7 +440,7 @@
     },
     {
       "id": 41,
-      "section": "p56",
+      "section": "p56-39",
       "badges": [
         "ي + ل + د"
       ],
@@ -438,7 +450,7 @@
     },
     {
       "id": 42,
-      "section": "p56",
+      "section": "p56-39",
       "badges": [
         "ي + ج + د"
       ],
@@ -448,7 +460,7 @@
     },
     {
       "id": 43,
-      "section": "p56",
+      "section": "p56-39",
       "badges": [
         "ي + ك + س + ب"
       ],
@@ -458,7 +470,7 @@
     },
     {
       "id": 44,
-      "section": "p56",
+      "section": "p56-39",
       "badges": [
         "ت + ق + ع + د"
       ],
@@ -468,7 +480,7 @@
     },
     {
       "id": 45,
-      "section": "p56",
+      "section": "p56-45",
       "badges": [
         "ت + بّ"
       ],
@@ -478,7 +490,7 @@
     },
     {
       "id": 46,
-      "section": "p56",
+      "section": "p56-45",
       "badges": [
         "ح + قّ"
       ],
@@ -488,7 +500,7 @@
     },
     {
       "id": 47,
-      "section": "p56",
+      "section": "p56-45",
       "badges": [
         "ر + بّ"
       ],
@@ -498,7 +510,7 @@
     },
     {
       "id": 48,
-      "section": "p56",
+      "section": "p56-45",
       "badges": [
         "م + دّ"
       ],

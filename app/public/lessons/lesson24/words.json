@@ -974,7 +974,7 @@
       "id": 81,
       "section": "p7",
       "badges": [
-        "[ت Light]   ·   ت + ر"
+        "[ت Light] · ت + ر"
       ],
       "text": "تَرَ",
       "audio": "word81.wav",
@@ -994,7 +994,7 @@
       "id": 83,
       "section": "p7",
       "badges": [
-        "[ذ Light]   ·   ذ + ر"
+        "[ذ Light] · ذ + ر"
       ],
       "text": "ذِرَ",
       "audio": "word83.wav",
@@ -1004,7 +1004,7 @@
       "id": 84,
       "section": "p7",
       "badges": [
-        "[ظ Heavy]   ·   ظ + ر"
+        "[ظ Heavy] · ظ + ر"
       ],
       "text": "ظِرَ",
       "audio": "word84.wav",
@@ -1354,7 +1354,7 @@
       "id": 119,
       "section": "p10",
       "badges": [
-        "[ك Light]   ·   ك + د"
+        "[ك Light] · ك + د"
       ],
       "text": "كُدَ",
       "audio": "word119.wav",
@@ -1364,7 +1364,7 @@
       "id": 120,
       "section": "p10",
       "badges": [
-        "[ق Heavy]   ·   ق + د"
+        "[ق Heavy] · ق + د"
       ],
       "text": "قُدَ",
       "audio": "word120.wav",
@@ -1474,7 +1474,7 @@
       "id": 131,
       "section": "p11",
       "badges": [
-        "[ك Light]   ·   ك + د"
+        "[ك Light] · ك + د"
       ],
       "text": "كُدَ",
       "audio": "word131.wav",
@@ -2424,7 +2424,7 @@
       "id": 226,
       "section": "p19",
       "badges": [
-        "[ص Heavy]   ·   ب + ص"
+        "[ص Heavy] · ب + ص"
       ],
       "text": "بَصَ",
       "audio": "word226.wav",
@@ -2434,7 +2434,7 @@
       "id": 227,
       "section": "p19",
       "badges": [
-        "[د Light]   ·   ع + د"
+        "[د Light] · ع + د"
       ],
       "text": "عَدَ",
       "audio": "word227.wav",
@@ -2534,7 +2534,7 @@
       "id": 237,
       "section": "p20",
       "badges": [
-        "[ت Light]   ·   ب + ت"
+        "[ت Light] · ب + ت"
       ],
       "text": "بَتَ",
       "audio": "word237.wav",
@@ -2554,7 +2554,7 @@
       "id": 239,
       "section": "p20",
       "badges": [
-        "[ذ Light]   ·   ل + ذ"
+        "[ذ Light] · ل + ذ"
       ],
       "text": "لَذَ",
       "audio": "word239.wav",
@@ -2894,7 +2894,7 @@
       "id": 273,
       "section": "p23",
       "badges": [
-        "[ك Light]   ·   ب + ك"
+        "[ك Light] · ب + ك"
       ],
       "text": "بَكَ",
       "audio": "word273.wav",
@@ -2914,7 +2914,7 @@
       "id": 275,
       "section": "p23",
       "badges": [
-        "[ك Light]   ·   ع + ك"
+        "[ك Light] · ع + ك"
       ],
       "text": "عَكَ",
       "audio": "word275.wav",
@@ -2924,7 +2924,7 @@
       "id": 276,
       "section": "p23",
       "badges": [
-        "[ق Heavy]   ·   ع + ق"
+        "[ق Heavy] · ع + ق"
       ],
       "text": "عَقَ",
       "audio": "word276.wav",

@@ -222,11 +222,23 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   only** — a rule is never a tooltip, and never the same text on every
   card. Where a table's rule is numbered ("Heavy (4)") the card's chips are
   the caption without the number and the rule's reason as its own chip
-  ("ر has a damma"); `Workbooks/lessons.map.json` may give a page its own
-  `tips` (lesson 29's three qalqala lines, lesson 35's hams page) and a
-  word its own chip (`notes`: خُسۡرٍ is heavy at a stop only). The
-  companion shows the same tips and rules over its page. Where the master
-  has no tip (Level 1's pages) the hint is "Tap a form to hear it."
+  ("Heavy · ر has a damma" — ONE chip, the rule, never the caption's
+  excerpt of the word beside it, and the rule's own example "رَ" stripped:
+  the learner can see the ر in the word). A caption part that only repeats
+  a piece of the word ("· مَرۡ", "· لُواْ", "· م مَّ") is dropped from every
+  workbook lesson by the same rule (`chipOf`); a decomposition (أ + كۡ + ث
+  + ر) or a change (دٌ ← دۡ) stays. A chip of Arabic alone is set in the
+  Mushaf face at 20 px (`badge-ar`); a chip that is a sentence takes a row
+  of its own and wraps (`badge-rule`) instead of running out of the card.
+  `Workbooks/lessons.map.json` may give a page its own `tips` — keyed by
+  the printed page ("54") or by a RUN of the sheet's card numbers on it
+  ("56:39-44"), which becomes its own section and so its own screen:
+  lesson 29's page 56 is three screens, the sukoon line, the stop line and
+  the shadda line, because a tip must fit the words in front of the
+  learner (the author, 2026-10-24) — and a word its own chip (`notes`:
+  خُسۡرٍ is heavy at a stop only). The companion shows the same tips and
+  rules over its page. Where the master has no tip (Level 1's pages) the
+  hint is "Tap a form to hear it."
 
 ---
 
@@ -1123,10 +1135,15 @@ this time the corrupted records are children's.
   the tap's `.open` — the old `.pair-head:hover` rule popped the meaning
   up with the pointer anywhere on the card's head (2026-10-24).
 - **Arabic inside English is wrapped** (`Mixed.tsx`, `.ar-run`): every
-  Arabic run in a hint or a chip gets the Mushaf face at 1.4× (1.6× in a
-  chip), isolated for bidi. At 11–14 px in the Latin face the author could
-  not read a tanwīn sign or a caption's مَرۡ. Use it for any English string
-  shown to a learner that carries Arabic.
+  Arabic run in a hint or a chip gets the Mushaf face at 2× the text
+  around it, isolated for bidi — 1.4× was still unreadable to the author;
+  the Mushaf face is small on the body for its point size, so 2× reads as
+  one size with the Latin, not as a mismatch. **An arrow between two
+  Arabic pieces stays inside the run**: دٌ ← دۡ and ذ←ظ are written for
+  right-to-left reading, and split into two isolated runs with the arrow
+  between them they came out in left-to-right order with the arrow
+  pointing the wrong way (lessons 34 and 36, 2026-10-24). Use `Mixed` for
+  any English string shown to a learner that carries Arabic.
 - **Badges wrap, never squeeze.** `.pair-head` is `flex-wrap: wrap` and a
   `.type-badge` is `white-space: nowrap; flex: none`. Before that, six chips
   on a phone broke inside their own text and the last one was pushed out of

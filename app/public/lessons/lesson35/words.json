@@ -72,7 +72,7 @@
       "id": 1,
       "section": "p13",
       "badges": [
-        "[كۡ middle]   ·   أ + كۡ + ث + ر"
+        "[كۡ middle] · أ + كۡ + ث + ر"
       ],
       "text": "أَكۡثَرَ",
       "audio": "word01.wav",
@@ -82,7 +82,7 @@
       "id": 2,
       "section": "p13",
       "badges": [
-        "[كۡ middle]   ·   ذ + كۡ + ر + ى"
+        "[كۡ middle] · ذ + كۡ + ر + ى"
       ],
       "text": "ذِكۡرَىٰ",
       "audio": "word02.wav",
@@ -92,7 +92,7 @@
       "id": 3,
       "section": "p13",
       "badges": [
-        "[كۡ middle]   ·   ح + كۡ + م + ا"
+        "[كۡ middle] · ح + كۡ + م + ا"
       ],
       "text": "حُكۡمًا",
       "audio": "word03.wav",
@@ -102,7 +102,7 @@
       "id": 4,
       "section": "p13",
       "badges": [
-        "[كۡ end]   ·   ي + ش + ر + كۡ"
+        "[كۡ end] · ي + ش + ر + كۡ"
       ],
       "text": "يُشۡرِكۡ",
       "audio": "word04.wav",
@@ -112,7 +112,7 @@
       "id": 5,
       "section": "p13",
       "badges": [
-        "[كۡ end]   ·   أ + م + س + كۡ"
+        "[كۡ end] · أ + م + س + كۡ"
       ],
       "text": "أَمۡسِكۡ",
       "audio": "word05.wav",
@@ -122,7 +122,7 @@
       "id": 6,
       "section": "p13",
       "badges": [
-        "[كۡ end]   ·   ت + ح + رّ + كۡ"
+        "[كۡ end] · ت + ح + رّ + كۡ"
       ],
       "text": "تُحَرِّكۡ",
       "audio": "word06.wav",
@@ -132,7 +132,7 @@
       "id": 7,
       "section": "p14",
       "badges": [
-        "[تۡ middle]   ·   ت + تۡ + ل + ى"
+        "[تۡ middle] · ت + تۡ + ل + ى"
       ],
       "text": "تُتۡلَىٰ",
       "audio": "word07.wav",
@@ -142,7 +142,7 @@
       "id": 8,
       "section": "p14",
       "badges": [
-        "[تۡ middle]   ·   ي + تۡ + ل + و + ن"
+        "[تۡ middle] · ي + تۡ + ل + و + ن"
       ],
       "text": "يَتۡلُونَ",
       "audio": "word08.wav",
@@ -152,7 +152,7 @@
       "id": 9,
       "section": "p14",
       "badges": [
-        "[تۡ middle]   ·   أ + تۡ + ب + ع"
+        "[تۡ middle] · أ + تۡ + ب + ع"
       ],
       "text": "أَتۡبَعَ",
       "audio": "word09.wav",
@@ -162,7 +162,7 @@
       "id": 10,
       "section": "p14",
       "badges": [
-        "[تۡ end]   ·   ق + ا + ل + تۡ"
+        "[تۡ end] · ق + ا + ل + تۡ"
       ],
       "text": "قَالَتۡ",
       "audio": "word10.wav",
@@ -172,7 +172,7 @@
       "id": 11,
       "section": "p14",
       "badges": [
-        "[تۡ end]   ·   ك + س + ب + تۡ"
+        "[تۡ end] · ك + س + ب + تۡ"
       ],
       "text": "كَسَبَتۡ",
       "audio": "word11.wav",
@@ -182,7 +182,7 @@
       "id": 12,
       "section": "p14",
       "badges": [
-        "[تۡ end]   ·   خ + ل + تۡ"
+        "[تۡ end] · خ + ل + تۡ"
       ],
       "text": "خَلَتۡ",
       "audio": "word12.wav",
@@ -192,7 +192,7 @@
       "id": 13,
       "section": "p15",
       "badges": [
-        "[خ Heavy]   ·   خَ"
+        "[خ Heavy]"
       ],
       "text": "خَلَقَ",
       "audio": "word13.wav",
@@ -202,7 +202,7 @@
       "id": 14,
       "section": "p15",
       "badges": [
-        "[خ Heavy]   ·   خُ"
+        "[خ Heavy]"
       ],
       "text": "خُلِقَ",
       "audio": "word14.wav",
@@ -212,7 +212,7 @@
       "id": 15,
       "section": "p15",
       "badges": [
-        "[خ Less heavy]   ·   خِ"
+        "[خ Less heavy]"
       ],
       "text": "خِلَٰلَ",
       "audio": "word15.wav",
@@ -222,7 +222,7 @@
       "id": 16,
       "section": "p15",
       "badges": [
-        "[غ Heavy]   ·   غَ"
+        "[غ Heavy]"
       ],
       "text": "غَيۡبَ",
       "audio": "word16.wav",
@@ -232,7 +232,7 @@
       "id": 17,
       "section": "p15",
       "badges": [
-        "[غ Heavy]   ·   غُ"
+        "[غ Heavy]"
       ],
       "text": "غُلِبَتِ",
       "audio": "word17.wav",
@@ -242,7 +242,7 @@
       "id": 18,
       "section": "p15",
       "badges": [
-        "[غ Less heavy]   ·   غِ"
+        "[غ Less heavy]"
       ],
       "text": "غِشَٰوَةٌ",
       "audio": "word18.wav",
@@ -252,7 +252,7 @@
       "id": 19,
       "section": "p15",
       "badges": [
-        "[ق Heavy]   ·   قَ"
+        "[ق Heavy]"
       ],
       "text": "قَبۡلَ",
       "audio": "word19.wav",
@@ -262,7 +262,7 @@
       "id": 20,
       "section": "p15",
       "badges": [
-        "[ق Heavy]   ·   قُ"
+        "[ق Heavy]"
       ],
       "text": "قُلُوبِ",
       "audio": "word20.wav",
@@ -272,7 +272,7 @@
       "id": 21,
       "section": "p15",
       "badges": [
-        "[ق Less heavy]   ·   قِ"
+        "[ق Less heavy]"
       ],
       "text": "قِيلَ",
       "audio": "word21.wav",
@@ -282,7 +282,7 @@
       "id": 22,
       "section": "p15",
       "badges": [
-        "[ص Heavy]   ·   صَ"
+        "[ص Heavy]"
       ],
       "text": "صَدَقَ",
       "audio": "word22.wav",
@@ -292,7 +292,7 @@
       "id": 23,
       "section": "p15",
       "badges": [
-        "[ص Heavy]   ·   صُ"
+        "[ص Heavy]"
       ],
       "text": "صُحُفِ",
       "audio": "word23.wav",
@@ -302,7 +302,7 @@
       "id": 24,
       "section": "p15",
       "badges": [
-        "[ص Heavy]   ·   صِ"
+        "[ص Heavy]"
       ],
       "text": "صِبۡغَةَ",
       "audio": "word24.wav",
@@ -312,7 +312,7 @@
       "id": 25,
       "section": "p16",
       "badges": [
-        "[ض Heavy]   ·   ضَ"
+        "[ض Heavy]"
       ],
       "text": "ضَرَبَ",
       "audio": "word25.wav",
@@ -322,7 +322,7 @@
       "id": 26,
       "section": "p16",
       "badges": [
-        "[ض Heavy]   ·   ضُ"
+        "[ض Heavy]"
       ],
       "text": "ضُرِبَ",
       "audio": "word26.wav",
@@ -332,7 +332,7 @@
       "id": 27,
       "section": "p16",
       "badges": [
-        "[ض Heavy]   ·   ضِ"
+        "[ض Heavy]"
       ],
       "text": "ضِعۡفَ",
       "audio": "word27.wav",
@@ -342,7 +342,7 @@
       "id": 28,
       "section": "p16",
       "badges": [
-        "[ط Heavy]   ·   طَ"
+        "[ط Heavy]"
       ],
       "text": "طَبَعَ",
       "audio": "word28.wav",
@@ -352,7 +352,7 @@
       "id": 29,
       "section": "p16",
       "badges": [
-        "[ط Heavy]   ·   طُ"
+        "[ط Heavy]"
       ],
       "text": "طُوبَىٰ",
       "audio": "word29.wav",
@@ -362,7 +362,7 @@
       "id": 30,
       "section": "p16",
       "badges": [
-        "[ط Heavy]   ·   طِ"
+        "[ط Heavy]"
       ],
       "text": "طِينٍ",
       "audio": "word30.wav",
@@ -372,7 +372,7 @@
       "id": 31,
       "section": "p16",
       "badges": [
-        "[ظ Heavy]   ·   ظَ"
+        "[ظ Heavy]"
       ],
       "text": "ظَلَمَ",
       "audio": "word31.wav",
@@ -382,7 +382,7 @@
       "id": 32,
       "section": "p16",
       "badges": [
-        "[ظ Heavy]   ·   ظُ"
+        "[ظ Heavy]"
       ],
       "text": "ظُلِمَ",
       "audio": "word32.wav",
@@ -392,7 +392,7 @@
       "id": 33,
       "section": "p16",
       "badges": [
-        "[ظ Heavy]   ·   ظِ"
+        "[ظ Heavy]"
       ],
       "text": "ظِلَٰلٍ",
       "audio": "word33.wav",
@@ -402,7 +402,7 @@
       "id": 34,
       "section": "p17",
       "badges": [
-        "[ل Heavy · start]   ·   أَ"
+        "[ل Heavy · start]"
       ],
       "text": "ٱللَّهُ أَكۡبَرُ",
       "audio": "word34.wav",
@@ -412,7 +412,7 @@
       "id": 35,
       "section": "p17",
       "badges": [
-        "[ل Heavy · after fatha]   ·   وَ"
+        "[ل Heavy · after fatha]"
       ],
       "text": "هُوَ ٱللَّهُ",
       "audio": "word35.wav",
@@ -422,7 +422,7 @@
       "id": 36,
       "section": "p17",
       "badges": [
-        "[ل Heavy · after damma]   ·   مُ"
+        "[ل Heavy · after damma]"
       ],
       "text": "يَبۡعَثُهُمُ ٱللَّهُ",
       "audio": "word36.wav",
@@ -432,7 +432,7 @@
       "id": 37,
       "section": "p17",
       "badges": [
-        "[ل Light · after kasra]   ·   بِ"
+        "[ل Light · after kasra]"
       ],
       "text": "بِٱللَّهِ",
       "audio": "word37.wav",
@@ -442,7 +442,7 @@
       "id": 38,
       "section": "p17",
       "badges": [
-        "[ل Light · after kasra]   ·   مِ"
+        "[ل Light · after kasra]"
       ],
       "text": "بِسۡمِ ٱللَّهِ",
       "audio": "word38.wav",
@@ -452,7 +452,7 @@
       "id": 39,
       "section": "p17",
       "badges": [
-        "[ل Light · after kasra]   ·   لِ"
+        "[ل Light · after kasra]"
       ],
       "text": "لِلَّهِ",
       "audio": "word39.wav",
@@ -462,8 +462,7 @@
       "id": 40,
       "section": "p18",
       "badges": [
-        "[ر Heavy]   ·   رَ",
-        "ر has a fatha: رَ"
+        "Heavy · ر has a fatha"
       ],
       "text": "رَمَضَانَ",
       "audio": "word40.wav",
@@ -473,8 +472,7 @@
       "id": 41,
       "section": "p18",
       "badges": [
-        "[ر Heavy]   ·   رَ",
-        "ر has a fatha: رَ"
+        "Heavy · ر has a fatha"
       ],
       "text": "رَبَّنَا",
       "audio": "word41.wav",
@@ -484,8 +482,7 @@
       "id": 42,
       "section": "p18",
       "badges": [
-        "[ر Heavy]   ·   مَرۡ",
-        "رۡ comes right after a fatha"
+        "Heavy · رۡ comes right after a fatha"
       ],
       "text": "مَرۡيَمَ",
       "audio": "word42.wav",
@@ -495,8 +492,7 @@
       "id": 43,
       "section": "p18",
       "badges": [
-        "[ر Heavy]   ·   يَرۡ",
-        "رۡ comes right after a fatha"
+        "Heavy · رۡ comes right after a fatha"
       ],
       "text": "يَرۡجِعُونَ",
       "audio": "word43.wav",
@@ -506,8 +502,7 @@
       "id": 44,
       "section": "p18",
       "badges": [
-        "[ر Heavy]   ·   عَصۡرۡ",
-        "Stopping: رۡ comes after a sakin letter (not ي), and before that a fatha"
+        "Heavy · Stopping: رۡ comes after a sakin letter (not ي), and before that a fatha"
       ],
       "text": "وَٱلۡعَصۡرِ",
       "audio": "word44.wav",
@@ -517,8 +512,7 @@
       "id": 45,
       "section": "p18",
       "badges": [
-        "[ر Heavy]   ·   نَارۡ",
-        "Stopping: رۡ comes after a sakin letter (not ي), and before that a fatha"
+        "Heavy · Stopping: رۡ comes after a sakin letter (not ي), and before that a fatha"
       ],
       "text": "ٱلنَّارِ",
       "audio": "word45.wav",
@@ -528,8 +522,7 @@
       "id": 46,
       "section": "p19",
       "badges": [
-        "[ر Heavy]   ·   رُ",
-        "ر has a damma: رُ"
+        "Heavy · ر has a damma"
       ],
       "text": "رُزِقۡنَا",
       "audio": "word46.wav",
@@ -539,8 +532,7 @@
       "id": 47,
       "section": "p19",
       "badges": [
-        "[ر Heavy]   ·   رُ",
-        "ر has a damma: رُ"
+        "Heavy · ر has a damma"
       ],
       "text": "رُسُلُنَا",
       "audio": "word47.wav",
@@ -550,8 +542,7 @@
       "id": 48,
       "section": "p19",
       "badges": [
-        "[ر Heavy]   ·   قُرۡ",
-        "رۡ comes right after a damma"
+        "Heavy · رۡ comes right after a damma"
       ],
       "text": "ٱلۡقُرۡءَانَ",
       "audio": "word48.wav",
@@ -561,8 +552,7 @@
       "id": 49,
       "section": "p19",
       "badges": [
-        "[ر Heavy]   ·   يُرۡ",
-        "رۡ comes right after a damma"
+        "Heavy · رۡ comes right after a damma"
       ],
       "text": "يُرۡزَقُونَ",
       "audio": "word49.wav",
@@ -572,7 +562,6 @@
       "id": 50,
       "section": "p19",
       "badges": [
-        "[ر Heavy]   ·   خُسۡرۡ",
         "Heavy at a stop only — read on, this ر has a kasra and is light"
       ],
       "text": "خُسۡرٍ",
@@ -583,8 +572,7 @@
       "id": 51,
       "section": "p19",
       "badges": [
-        "[ر Heavy]   ·   مُورۡ",
-        "Stopping: رۡ comes after a sakin letter, and before that a damma"
+        "Heavy · Stopping: رۡ comes after a sakin letter, and before that a damma"
       ],
       "text": "ٱلۡأُمُورُ",
       "audio": "word51.wav",
@@ -594,8 +582,7 @@
       "id": 52,
       "section": "p20",
       "badges": [
-        "[ر Heavy]   ·   قِرۡطَ",
-        "رۡ after a kasra, then a heavy letter (without kasra) in the same word"
+        "Heavy · رۡ after a kasra, then a heavy letter (without kasra) in the same word"
       ],
       "text": "قِرۡطَاسٍ",
       "audio": "word52.wav",
@@ -605,8 +592,7 @@
       "id": 53,
       "section": "p20",
       "badges": [
-        "[ر Heavy]   ·   مِرۡصَ",
-        "رۡ after a kasra, then a heavy letter (without kasra) in the same word"
+        "Heavy · رۡ after a kasra, then a heavy letter (without kasra) in the same word"
       ],
       "text": "مِرۡصَادًا",
       "audio": "word53.wav",
@@ -616,8 +602,7 @@
       "id": 54,
       "section": "p20",
       "badges": [
-        "[ر Heavy]   ·   إِرۡ",
-        "رۡ after a kasra that is not original (borrowed)"
+        "Heavy · رۡ after a kasra that is not original (borrowed)"
       ],
       "text": "ٱرۡجِعۡ",
       "audio": "word54.wav",
@@ -627,8 +612,7 @@
       "id": 55,
       "section": "p20",
       "badges": [
-        "[ر Heavy]   ·   ذِرۡ",
-        "رۡ after a kasra that is not original (borrowed)"
+        "Heavy · رۡ after a kasra that is not original (borrowed)"
       ],
       "text": "ٱلَّذِى ٱرۡتَضَىٰ",
       "audio": "word55.wav",
@@ -638,8 +622,7 @@
       "id": 56,
       "section": "p21",
       "badges": [
-        "[ر Light]   ·   رِ",
-        "ر has a kasra: رِ"
+        "Light · ر has a kasra"
       ],
       "text": "كَرِيمٍ",
       "audio": "word56.wav",
@@ -649,8 +632,7 @@
       "id": 57,
       "section": "p21",
       "badges": [
-        "[ر Light]   ·   رِ",
-        "ر has a kasra: رِ"
+        "Light · ر has a kasra"
       ],
       "text": "رِجَالٌ",
       "audio": "word57.wav",
@@ -660,8 +642,7 @@
       "id": 58,
       "section": "p21",
       "badges": [
-        "[ر Light]   ·   فِرۡ",
-        "رۡ after an original kasra, with no heavy letter after it"
+        "Light · رۡ after an original kasra, with no heavy letter after it"
       ],
       "text": "فِرۡعَوۡنَ",
       "audio": "word58.wav",
@@ -671,8 +652,7 @@
       "id": 59,
       "section": "p21",
       "badges": [
-        "[ر Light]   ·   شِرۡ",
-        "رۡ after an original kasra, with no heavy letter after it"
+        "Light · رۡ after an original kasra, with no heavy letter after it"
       ],
       "text": "شِرۡعَةً",
       "audio": "word59.wav",
@@ -682,8 +662,7 @@
       "id": 60,
       "section": "p22",
       "badges": [
-        "[ر Light]   ·   حِجۡرۡ",
-        "Stopping: رۡ comes after a sakin letter that is not heavy, and before that a kasra"
+        "Light · Stopping: رۡ comes after a sakin letter that is not heavy, and before that a kasra"
       ],
       "text": "حِجۡرٍ",
       "audio": "word60.wav",
@@ -693,8 +672,7 @@
       "id": 61,
       "section": "p22",
       "badges": [
-        "[ر Light]   ·   دِيرۡ",
-        "Stopping: رۡ comes after a sakin letter that is not heavy, and before that a kasra"
+        "Light · Stopping: رۡ comes after a sakin letter that is not heavy, and before that a kasra"
       ],
       "text": "قَدِيرٌ",
       "audio": "word61.wav",
@@ -704,8 +682,7 @@
       "id": 62,
       "section": "p22",
       "badges": [
-        "[ر Light]   ·   خَيۡرۡ",
-        "Stopping: رۡ comes after a yaa leen ـَيۡ"
+        "Light · Stopping: رۡ comes after a yaa leen ـَيۡ"
       ],
       "text": "خَيۡرٌ",
       "audio": "word62.wav",
@@ -715,8 +692,7 @@
       "id": 63,
       "section": "p22",
       "badges": [
-        "[ر Light]   ·   ضَيۡرۡ",
-        "Stopping: رۡ comes after a yaa leen ـَيۡ"
+        "Light · Stopping: رۡ comes after a yaa leen ـَيۡ"
       ],
       "text": "ضَيۡرَ",
       "audio": "word63.wav",
@@ -726,7 +702,7 @@
       "id": 64,
       "section": "p22",
       "badges": [
-        "[ر Either · keep reading]   ·   فِرۡ"
+        "[ر Either · keep reading]"
       ],
       "text": "فِرۡقٍ",
       "audio": "word64.wav",
@@ -736,7 +712,7 @@
       "id": 65,
       "section": "p22",
       "badges": [
-        "[ر Either · stop]   ·   مِصۡرۡ"
+        "[ر Either · stop]"
       ],
       "text": "مِصۡرَ",
       "audio": "word65.wav",
@@ -746,7 +722,7 @@
       "id": 66,
       "section": "p22",
       "badges": [
-        "[ر Either · stop]   ·   قِطۡرۡ"
+        "[ر Either · stop]"
       ],
       "text": "ٱلۡقِطۡرِ",
       "audio": "word66.wav",

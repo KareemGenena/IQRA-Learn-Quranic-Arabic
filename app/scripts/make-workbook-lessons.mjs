@@ -173,9 +173,22 @@ for (const n of NUMBERS) {
   const reasonOf = (text) => {
     const note = meta.notes?.[text];
     if (note) return note;
-    const m = /^(?:Heavy|Light) \(\d+\):\s*(.+)$/.exec(ruleOf.get(exact(text)) ?? '');
-    return m ? m[1].replace(/\s+/g, ' ').trim() : undefined;
+    const m = /^(Heavy|Light) \(\d+\):\s*(.+)$/.exec(ruleOf.get(exact(text)) ?? '');
+    if (!m) return undefined;
+    // "ر has a fatha:  رَ" → "ر has a fatha": the example is the word itself.
+    const reason = m[2].replace(/\s+/g, ' ').replace(/:\s*[؀-ۿ\s]+$/, '').trim();
+    return `${m[1]} · ${reason}`;
   };
+  // A caption part that only repeats a piece of the word ("· رَ", "· مَرۡ",
+  // "· لُواْ") is dropped — the learner can see the ر in the word (the
+  // author, 2026-10-24). A decomposition (أ + كۡ + ث + ر) or a change
+  // (دٌ ← دۡ) is not a piece of the word and stays.
+  const bare = (s) => s.replace(/[ً-ٰٟۖ-ࣰۭ-ࣲـ​-‍]/g, '').replace(/\s+/g, '');
+  const chipOf = (caption, text) =>
+    deNumber(caption)
+      .split(/\s+·\s+/)
+      .filter((part) => !(/^[؀-ۿ\s]+$/.test(part) && bare(text).includes(bare(part))))
+      .join(' · ');
 
   const cards = [];
   for (const r of rows) {
@@ -199,15 +212,32 @@ for (const n of NUMBERS) {
     if (p.part) part = p.part;
     partOf.set(p.printed, part);
   }
-  const sections = [...new Set(cards.map((c) => c.page))].map((pg) => {
-    const lines = [...(tipsOf.get(pg) ?? []), ...(rulesOf.get(pg) ?? [])];
-    return {
-      id: `p${pg}`,
-      title: partOf.get(pg) || meta.title,
+  // Tips may be given for a RUN of cards rather than a whole page —
+  // "56:39-44", the sheet's card numbers — so that the screen whose words
+  // all end in a sukoon gets the stop line and the screen before it does
+  // not (the author, 2026-10-24). Each run is its own section, hence its
+  // own screen(s); a page's other cards keep the page's tips.
+  const ranges = Object.keys(meta.tips ?? {})
+    .map((k) => /^(\d+):(\d+)-(\d+)$/.exec(k))
+    .filter(Boolean)
+    .map((m) => ({ page: Number(m[1]), from: Number(m[2]), to: Number(m[3]), lines: meta.tips[m[0]] }));
+  const sectionOf = (c) => {
+    const r = ranges.find((x) => x.page === c.page && c.card >= x.from && c.card <= x.to);
+    return r ? `p${c.page}-${r.from}` : `p${c.page}`;
+  };
+  const sections = [];
+  for (const c of cards) {
+    const id = sectionOf(c);
+    if (sections.some((s) => s.id === id)) continue;
+    const r = ranges.find((x) => `p${x.page}-${x.from}` === id);
+    const lines = [...(r ? r.lines : (tipsOf.get(c.page) ?? [])), ...(rulesOf.get(c.page) ?? [])];
+    sections.push({
+      id,
+      title: partOf.get(c.page) || meta.title,
       titleArabic: '',
       hint: lines.length ? lines.join('\n') : 'Tap a form to hear it.',
-    };
-  });
+    });
+  }
 
   const src = join(ROOT, 'Audio', `Audio - Lesson ${nn}`);
   const outDir = join(PUB, 'audio', `lesson${nn}`);
@@ -236,7 +266,7 @@ for (const n of NUMBERS) {
   const words = cards.map((c, i) => {
     const id = i + 1;
     const wn = String(id).padStart(2, '0');
-    const base = { id, section: `p${c.page}`, badges: [] };
+    const base = { id, section: sectionOf(c), badges: [] };
     if (c.texts.length > 1) {
       const forms = c.texts.map((text, j) => {
         const audio = `word${wn}${'abcdefgh'[j] ?? j}.wav`;
@@ -252,7 +282,10 @@ for (const n of NUMBERS) {
     const audio = `word${wn}.wav`;
     cut(text, audio);
     const caption = captionOf.get(exact(text));
-    const badges = [deNumber(caption), reasonOf(text)].filter(Boolean);
+    // One chip: the rule where the table has one, else the caption without
+    // any piece of the word.
+    const reason = reasonOf(text);
+    const badges = [reason ?? chipOf(caption ?? '', text)].filter(Boolean);
     return { ...base, text, audio, timings: null, badges };
   });
 

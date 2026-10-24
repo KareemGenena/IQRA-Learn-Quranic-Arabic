@@ -124,7 +124,7 @@ function SilentCard({ item, no }: { item: WorkbookItem; no: number }) {
         <span className="word-num">{no}</span>
         {item.caption && (
           <span
-            className={`type-badge${/●/.test(item.caption) ? ' badge-dots' : ''}`}
+            className={`type-badge${/●/.test(item.caption) ? ' badge-dots' : ''}${!/[A-Za-z]/.test(item.caption) ? ' badge-ar' : ''}`}
             dir={/●/.test(item.caption) ? 'rtl' : undefined}
           >
             <Mixed text={deNumber(item.caption)} />
