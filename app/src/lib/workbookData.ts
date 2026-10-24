@@ -49,6 +49,9 @@ export interface WorkbookPageData {
   /** The page's "★ Tip" lines — the rule being practised, in the author's
    *  words. */
   tips?: string[];
+  /** 2 where the lesson cut from this page lays it out as the paper's
+   *  right and left boxes (`columns` in Workbooks/lessons.map.json). */
+  columns?: number;
   items: WorkbookItem[];
 }
 

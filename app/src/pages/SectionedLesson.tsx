@@ -23,9 +23,36 @@ function spread<T>(items: T[], count: number): T[] {
   return Array.from({ length: count }, (_, i) => items[Math.floor(i * step)]);
 }
 
-function chunk<T>(items: T[], size: number): T[][] {
-  const out: T[][] = [];
-  for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
+/**
+ * Screens of up to `size` cards that never split a pair. A card may name
+ * its `pair` — the two boxes of one row of the paper, or the two words of
+ * one column group — and consecutive cards sharing one are a run that goes
+ * whole onto the next screen when it does not fit: a screen of five rather
+ * than a pair broken across two screens, where on a phone the second half
+ * would sit alone at the top of the next (the author, 2026-10-24). A run
+ * longer than a screen is split as before.
+ */
+function chunk(items: LessonItem[], size: number): LessonItem[][] {
+  const runs: LessonItem[][] = [];
+  for (const it of items) {
+    const last = runs[runs.length - 1];
+    if (it.pair && last && last[0].pair === it.pair) last.push(it);
+    else runs.push([it]);
+  }
+  const out: LessonItem[][] = [];
+  let cur: LessonItem[] = [];
+  for (const run of runs) {
+    if (cur.length && cur.length + run.length > size) {
+      out.push(cur);
+      cur = [];
+    }
+    if (run.length > size) {
+      for (let i = 0; i < run.length; i += size) out.push(run.slice(i, i + size));
+      continue;
+    }
+    cur.push(...run);
+  }
+  if (cur.length) out.push(cur);
   return out;
 }
 
@@ -429,7 +456,7 @@ export function SectionedLesson({
         </p>
       </section>
 
-      <div className="pair-grid">
+      <div className={`pair-grid${page.section?.columns === 2 ? ' cols-2' : ''}`}>
         {page.items.map((item, i) => (
           <Card
             key={item.id}

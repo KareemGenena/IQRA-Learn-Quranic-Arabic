@@ -943,13 +943,32 @@ a.pill-half:hover {
   font-size: 1.8em;
 }
 
+/* Cards flow from the RIGHT — card 1 at the top right, the next to its
+   left — as Arabic is read and as the paper's boxes sit (the author,
+   2026-10-24). Only the placement is right-to-left: each card's own
+   layout stays as it was. */
 .pair-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 14px;
+  direction: rtl;
+}
+
+/* The paper's right and left boxes (lesson 34's ة page): two columns so
+   each pair sits on one row — right box keep going, left box stop — and
+   one column on a phone, in that order, top to bottom. */
+.pair-grid.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 520px) {
+  .pair-grid.cols-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .pair-card {
+  direction: ltr;
   display: flex;
   flex-direction: column;
   background: var(--card);

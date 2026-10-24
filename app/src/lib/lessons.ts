@@ -519,6 +519,7 @@ export function toItems(lesson: Lesson): LessonItem[] {
       section: w.section,
       badges: w.badges ?? [],
       meaning: w.meaning,
+      pair: w.pair,
       // Versioned for the same reason a clip URL is: a redrawn picture keeps
       // its filename, so without `?v=` the browser's own HTTP cache would go on
       // serving the old one. See IMAGE_VERSION in vite.config.ts.

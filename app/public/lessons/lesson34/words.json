@@ -22,7 +22,8 @@
       "id": "p3",
       "title": "Stopping",
       "titleArabic": "",
-      "hint": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ\nEven with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
+      "hint": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ\nEven with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop.",
+      "columns": 2
     },
     {
       "id": "p4",
@@ -178,6 +179,7 @@
       "badges": [
         "ةً ← تً"
       ],
+      "pair": "p3r0",
       "text": "قُوَّةً إِلَىٰ قُوَّتِكُمۡ",
       "audio": "word15.wav",
       "timings": null
@@ -188,6 +190,7 @@
       "badges": [
         "ةً ← هۡ"
       ],
+      "pair": "p3r0",
       "text": "أَشَدَّ مِنۡهُمۡ قُوَّةً",
       "audio": "word16.wav",
       "timings": null
@@ -198,6 +201,7 @@
       "badges": [
         "ةَ ← تَ"
       ],
+      "pair": "p3r1",
       "text": "ثَلَٰثَةَ أَيَّامٍ",
       "audio": "word17.wav",
       "timings": null
@@ -208,6 +212,7 @@
       "badges": [
         "ةٍ ← هۡ"
       ],
+      "pair": "p3r1",
       "text": "ثَالِثُ ثَلَٰثَةٍ",
       "audio": "word18.wav",
       "timings": null
@@ -218,6 +223,7 @@
       "badges": [
         "ةً ← تً"
       ],
+      "pair": "p3r2",
       "text": "ءَايَةً أُخۡرَىٰ",
       "audio": "word19.wav",
       "timings": null
@@ -228,6 +234,7 @@
       "badges": [
         "ةً ← هۡ"
       ],
+      "pair": "p3r2",
       "text": "لَكُمۡ ءَايَةً",
       "audio": "word20.wav",
       "timings": null
@@ -238,6 +245,7 @@
       "badges": [
         "ةً ← تً"
       ],
+      "pair": "p3r3",
       "text": "لَهُمۡ شَهَٰدَةً أَبَدًا",
       "audio": "word21.wav",
       "timings": null
@@ -248,6 +256,7 @@
       "badges": [
         "ةً ← هۡ"
       ],
+      "pair": "p3r3",
       "text": "أَكۡبَرُ شَهَٰدَةً",
       "audio": "word22.wav",
       "timings": null

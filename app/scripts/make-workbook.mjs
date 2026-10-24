@@ -34,6 +34,11 @@ import { fileURLToPath } from 'url';
 import { STOP_DIR } from './lib/stop.mjs';
 import { exact, findTake, keyCounts, takesOf } from './lib/takes.mjs';
 import { PDF_PAGES, readWorkbook } from './lib/workbook.mjs';
+
+/** The lessons cut from the workbooks: a page laid out as the paper's right
+ *  and left boxes says so there (`columns`), and the companion lays the
+ *  same page out the same way. */
+const LESSON_MAP = JSON.parse(readFileSync(new URL('../../Workbooks/lessons.map.json', import.meta.url), 'utf8'));
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -86,6 +91,11 @@ console.log(`${lessonClips.size} lesson clips indexed by exact text (lessons 1�
 // ── 2. Each level ──────────────────────────────────────────────────────────
 for (const L of LEVELS) {
   const { pages, sections } = readWorkbook(L);
+  for (const p of pages) {
+    const lesson = Object.values(LESSON_MAP).find((m) => m.level === L && m.source === p.section);
+    const cols = lesson?.columns?.[String(p.printed)];
+    if (cols) p.columns = cols;
+  }
 
   // ── 3. Audio ─────────────────────────────────────────────────────────────
   const src = join(root, 'Audio', `Audio - Workbook Level ${L}`);

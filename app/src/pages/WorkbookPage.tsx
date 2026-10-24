@@ -247,7 +247,7 @@ export function WorkbookPage({
       </div>
 
       {page.items.length === 0 && <p className="loading">Nothing to say aloud on this page.</p>}
-      <div className="pair-grid">
+      <div className={`pair-grid${page.columns === 2 ? ' cols-2' : ''}`}>
         {page.items.map((it, i) =>
           it.audio ? (
             <ItemCard

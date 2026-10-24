@@ -225,6 +225,30 @@ for (const n of NUMBERS) {
     const r = ranges.find((x) => x.page === c.page && c.card >= x.from && c.card <= x.to);
     return r ? `p${c.page}-${r.from}` : `p${c.page}`;
   };
+  // Cards that belong together share a `pair`, and a screen never splits
+  // them: on a page laid out as right and left boxes (`columns` 2 in the
+  // map — lesson 34's ة page) the two boxes of a row; elsewhere the two
+  // words of one column group of the master (lesson 24's صَدَ / صَدۡ).
+  // Each card is matched to the master's items in order, so a word that
+  // appears twice on a page keeps its own place.
+  const columnsOf = (pg) => meta.columns?.[String(pg)];
+  const pairOf = new Map(); // card ordinal → pair key
+  {
+    const counts = new Map();
+    for (const p of pages) {
+      let at = 0;
+      for (const c of cards.filter((x) => x.page === p.printed)) {
+        const i = p.items.findIndex((it, k) => k >= at && exact(it.text) === exact(c.texts[0]));
+        if (i < 0) continue;
+        at = i + 1;
+        const it = p.items[i];
+        const key = columnsOf(p.printed) === 2 ? `p${p.printed}r${it.row}` : `p${p.printed}r${it.row}g${it.group}`;
+        pairOf.set(c.card, key);
+        counts.set(key, (counts.get(key) ?? 0) + 1);
+      }
+    }
+    for (const [card, key] of pairOf) if ((counts.get(key) ?? 0) < 2) pairOf.delete(card);
+  }
   const sections = [];
   for (const c of cards) {
     const id = sectionOf(c);
@@ -236,6 +260,7 @@ for (const n of NUMBERS) {
       title: partOf.get(c.page) || meta.title,
       titleArabic: '',
       hint: lines.length ? lines.join('\n') : 'Tap a form to hear it.',
+      ...(columnsOf(c.page) ? { columns: columnsOf(c.page) } : {}),
     });
   }
 
@@ -266,7 +291,7 @@ for (const n of NUMBERS) {
   const words = cards.map((c, i) => {
     const id = i + 1;
     const wn = String(id).padStart(2, '0');
-    const base = { id, section: sectionOf(c), badges: [] };
+    const base = { id, section: sectionOf(c), badges: [], ...(pairOf.has(c.card) ? { pair: pairOf.get(c.card) } : {}) };
     if (c.texts.length > 1) {
       const forms = c.texts.map((text, j) => {
         const audio = `word${wn}${'abcdefgh'[j] ?? j}.wav`;

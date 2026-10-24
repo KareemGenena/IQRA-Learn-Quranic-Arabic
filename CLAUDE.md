@@ -1570,20 +1570,26 @@ all five points agreed, in the order they will be built:
 stays on the home page and a done lesson wears a small gold tick on the
 circle's corner (`.lesson-tick`); a plus or a dash between Arabic pieces
 stays inside one right-to-left run, so a decomposition chip reads ع + د
-+ ن from the right (`Mixed.tsx`). **Asked, not built: cards flowing right
-to left.** The author wants card 1 at the right and the ة page of lesson
-34 laid out as the paper is — right box keep going, left box stop — and
-said to stop and ask whether it breaks anything. The assessment: CSS
-`direction: rtl` on `.pair-grid` (cards flow from the right, internals
-kept LTR) breaks nothing mechanical — keys, numbering, calibration,
-clips are untouched — but changes the order on screen in every lesson
-and the companion; the ة page additionally needs its section held to two
-columns (a per-section `columns` on `LessonSection`, the grid class
-`cols-2`) so each pair stays on one row, which on a phone narrower than
-~480 px must fall back to one column with the chip saying which box is
-which; forms inside a card stay stacked top to bottom (`.pair-forms` is
-one column), so lesson 4's alone / وَ / ثُمَّ is unchanged. Waiting on
-the author's yes.
++ ن from the right (`Mixed.tsx`). **Cards flow from the right** (the
+author's yes, 2026-10-24): `.pair-grid` is `direction: rtl` and
+`.pair-card` is `direction: ltr`, so card 1 sits at the top right and
+the next to its left in every lesson and on the companion, while each
+card's own layout is unchanged; forms inside a card are stacked top to
+bottom as before (`.pair-forms` is one column), so lesson 4's alone / وَ
+/ ثُمَّ did not move. **The paper's right and left boxes**: a section may
+carry `columns: 2` (`LessonSection`, from `columns` in
+`Workbooks/lessons.map.json` keyed by printed page — lesson 34's ة page,
+right box keep going, left box stop) and is then drawn in two columns
+(`.pair-grid.cols-2`) at any width over 520 px and in one column on a
+phone, in that order; the companion page gets the same `columns`. **A
+screen never splits a pair**: a card may carry `pair` (the generator
+sets it on the two boxes of one row of a two-column page, else on the
+two words of one column group of the master, matched to the master's
+items in order), and `chunk()` in `SectionedLesson` packs runs of
+paired cards whole — a screen of five rather than half a pair alone at
+the top of the next screen on a phone. Checked by a mirror of the
+chunker over every workbook lesson: 0 pairs split; lesson 24's 324 cards
+are all paired and every screen is six.
 
 **The author's nine points of 2026-10-24, the evening round, built,
 deployed and pushed.** Level 3 reads, by `lessonLabel`, 34 · 2 · 4 · 35 ·

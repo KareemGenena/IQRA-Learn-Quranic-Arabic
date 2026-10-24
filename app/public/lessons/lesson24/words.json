@@ -176,6 +176,7 @@
       "badges": [
         "د + ر"
       ],
+      "pair": "p1r0g0",
       "text": "دَرَ",
       "audio": "word01.wav",
       "timings": null
@@ -186,6 +187,7 @@
       "badges": [
         "د + ر"
       ],
+      "pair": "p1r0g0",
       "text": "دَرُ",
       "audio": "word02.wav",
       "timings": null
@@ -196,6 +198,7 @@
       "badges": [
         "ر + د"
       ],
+      "pair": "p1r0g1",
       "text": "رَدِ",
       "audio": "word03.wav",
       "timings": null
@@ -206,6 +209,7 @@
       "badges": [
         "ر + د"
       ],
+      "pair": "p1r0g1",
       "text": "رَدۡ",
       "audio": "word04.wav",
       "timings": null
@@ -216,6 +220,7 @@
       "badges": [
         "ذ + ر"
       ],
+      "pair": "p1r1g0",
       "text": "ذَرُ",
       "audio": "word05.wav",
       "timings": null
@@ -226,6 +231,7 @@
       "badges": [
         "ذ + ر"
       ],
+      "pair": "p1r1g0",
       "text": "ذَرۡ",
       "audio": "word06.wav",
       "timings": null
@@ -236,6 +242,7 @@
       "badges": [
         "ز + ر"
       ],
+      "pair": "p1r1g1",
       "text": "زَرَ",
       "audio": "word07.wav",
       "timings": null
@@ -246,6 +253,7 @@
       "badges": [
         "ز + ر"
       ],
+      "pair": "p1r1g1",
       "text": "زَرِ",
       "audio": "word08.wav",
       "timings": null
@@ -256,6 +264,7 @@
       "badges": [
         "و + د"
       ],
+      "pair": "p1r2g0",
       "text": "وَدَ",
       "audio": "word09.wav",
       "timings": null
@@ -266,6 +275,7 @@
       "badges": [
         "و + د"
       ],
+      "pair": "p1r2g0",
       "text": "وَدۡ",
       "audio": "word10.wav",
       "timings": null
@@ -276,6 +286,7 @@
       "badges": [
         "ر + ز"
       ],
+      "pair": "p1r2g1",
       "text": "رَزُ",
       "audio": "word11.wav",
       "timings": null
@@ -286,6 +297,7 @@
       "badges": [
         "ر + ز"
       ],
+      "pair": "p1r2g1",
       "text": "رَزِ",
       "audio": "word12.wav",
       "timings": null
@@ -296,6 +308,7 @@
       "badges": [
         "ب + ر"
       ],
+      "pair": "p2r0g0",
       "text": "بُرَ",
       "audio": "word13.wav",
       "timings": null
@@ -306,6 +319,7 @@
       "badges": [
         "ب + ر"
       ],
+      "pair": "p2r0g0",
       "text": "بُرۡ",
       "audio": "word14.wav",
       "timings": null
@@ -316,6 +330,7 @@
       "badges": [
         "ب + ز"
       ],
+      "pair": "p2r0g1",
       "text": "بِزُ",
       "audio": "word15.wav",
       "timings": null
@@ -326,6 +341,7 @@
       "badges": [
         "ب + ز"
       ],
+      "pair": "p2r0g1",
       "text": "بِزِ",
       "audio": "word16.wav",
       "timings": null
@@ -336,6 +352,7 @@
       "badges": [
         "ت + د"
       ],
+      "pair": "p2r1g0",
       "text": "تَدَ",
       "audio": "word17.wav",
       "timings": null
@@ -346,6 +363,7 @@
       "badges": [
         "ت + د"
       ],
+      "pair": "p2r1g0",
       "text": "تَدُ",
       "audio": "word18.wav",
       "timings": null
@@ -356,6 +374,7 @@
       "badges": [
         "ت + ر"
       ],
+      "pair": "p2r1g1",
       "text": "تِرِ",
       "audio": "word19.wav",
       "timings": null
@@ -366,6 +385,7 @@
       "badges": [
         "ت + ر"
       ],
+      "pair": "p2r1g1",
       "text": "تِرۡ",
       "audio": "word20.wav",
       "timings": null
@@ -376,6 +396,7 @@
       "badges": [
         "ث + ر"
       ],
+      "pair": "p2r2g0",
       "text": "ثَرُ",
       "audio": "word21.wav",
       "timings": null
@@ -386,6 +407,7 @@
       "badges": [
         "ث + ر"
       ],
+      "pair": "p2r2g0",
       "text": "ثَرۡ",
       "audio": "word22.wav",
       "timings": null
@@ -396,6 +418,7 @@
       "badges": [
         "ث + ذ"
       ],
+      "pair": "p2r2g1",
       "text": "ثُذَ",
       "audio": "word23.wav",
       "timings": null
@@ -406,6 +429,7 @@
       "badges": [
         "ث + ذ"
       ],
+      "pair": "p2r2g1",
       "text": "ثُذِ",
       "audio": "word24.wav",
       "timings": null
@@ -416,6 +440,7 @@
       "badges": [
         "ن + ذ"
       ],
+      "pair": "p3r0g0",
       "text": "نِذَ",
       "audio": "word25.wav",
       "timings": null
@@ -426,6 +451,7 @@
       "badges": [
         "ن + ذ"
       ],
+      "pair": "p3r0g0",
       "text": "نِذۡ",
       "audio": "word26.wav",
       "timings": null
@@ -436,6 +462,7 @@
       "badges": [
         "ن + د"
       ],
+      "pair": "p3r0g1",
       "text": "نُدُ",
       "audio": "word27.wav",
       "timings": null
@@ -446,6 +473,7 @@
       "badges": [
         "ن + د"
       ],
+      "pair": "p3r0g1",
       "text": "نُدِ",
       "audio": "word28.wav",
       "timings": null
@@ -456,6 +484,7 @@
       "badges": [
         "ي + د"
       ],
+      "pair": "p3r1g0",
       "text": "يَدَ",
       "audio": "word29.wav",
       "timings": null
@@ -466,6 +495,7 @@
       "badges": [
         "ي + د"
       ],
+      "pair": "p3r1g0",
       "text": "يَدُ",
       "audio": "word30.wav",
       "timings": null
@@ -476,6 +506,7 @@
       "badges": [
         "ي + ز"
       ],
+      "pair": "p3r1g1",
       "text": "يُزِ",
       "audio": "word31.wav",
       "timings": null
@@ -486,6 +517,7 @@
       "badges": [
         "ي + ز"
       ],
+      "pair": "p3r1g1",
       "text": "يُزۡ",
       "audio": "word32.wav",
       "timings": null
@@ -496,6 +528,7 @@
       "badges": [
         "ب + ر"
       ],
+      "pair": "p3r2g0",
       "text": "بَرِ",
       "audio": "word33.wav",
       "timings": null
@@ -506,6 +539,7 @@
       "badges": [
         "ت + ر"
       ],
+      "pair": "p3r2g0",
       "text": "تَرِ",
       "audio": "word34.wav",
       "timings": null
@@ -516,6 +550,7 @@
       "badges": [
         "ث + د"
       ],
+      "pair": "p3r2g1",
       "text": "ثُدَ",
       "audio": "word35.wav",
       "timings": null
@@ -526,6 +561,7 @@
       "badges": [
         "ي + د"
       ],
+      "pair": "p3r2g1",
       "text": "يُدَ",
       "audio": "word36.wav",
       "timings": null
@@ -536,6 +572,7 @@
       "badges": [
         "ج + ر"
       ],
+      "pair": "p4r0g0",
       "text": "جَرَ",
       "audio": "word37.wav",
       "timings": null
@@ -546,6 +583,7 @@
       "badges": [
         "ج + ر"
       ],
+      "pair": "p4r0g0",
       "text": "جَرۡ",
       "audio": "word38.wav",
       "timings": null
@@ -556,6 +594,7 @@
       "badges": [
         "ج + د"
       ],
+      "pair": "p4r0g1",
       "text": "جُدُ",
       "audio": "word39.wav",
       "timings": null
@@ -566,6 +605,7 @@
       "badges": [
         "ج + د"
       ],
+      "pair": "p4r0g1",
       "text": "جُدِ",
       "audio": "word40.wav",
       "timings": null
@@ -576,6 +616,7 @@
       "badges": [
         "ح + ز"
       ],
+      "pair": "p4r1g0",
       "text": "حَزَ",
       "audio": "word41.wav",
       "timings": null
@@ -586,6 +627,7 @@
       "badges": [
         "ح + ز"
       ],
+      "pair": "p4r1g0",
       "text": "حَزُ",
       "audio": "word42.wav",
       "timings": null
@@ -596,6 +638,7 @@
       "badges": [
         "ح + د"
       ],
+      "pair": "p4r1g1",
       "text": "حِدِ",
       "audio": "word43.wav",
       "timings": null
@@ -606,6 +649,7 @@
       "badges": [
         "ح + د"
       ],
+      "pair": "p4r1g1",
       "text": "حِدۡ",
       "audio": "word44.wav",
       "timings": null
@@ -616,6 +660,7 @@
       "badges": [
         "خ + د"
       ],
+      "pair": "p4r2g0",
       "text": "خَدُ",
       "audio": "word45.wav",
       "timings": null
@@ -626,6 +671,7 @@
       "badges": [
         "خ + د"
       ],
+      "pair": "p4r2g0",
       "text": "خَدۡ",
       "audio": "word46.wav",
       "timings": null
@@ -636,6 +682,7 @@
       "badges": [
         "خ + ر"
       ],
+      "pair": "p4r2g1",
       "text": "خُرَ",
       "audio": "word47.wav",
       "timings": null
@@ -646,6 +693,7 @@
       "badges": [
         "خ + ر"
       ],
+      "pair": "p4r2g1",
       "text": "خُرِ",
       "audio": "word48.wav",
       "timings": null
@@ -656,6 +704,7 @@
       "badges": [
         "س + د"
       ],
+      "pair": "p5r0g0",
       "text": "سَدَ",
       "audio": "word49.wav",
       "timings": null
@@ -666,6 +715,7 @@
       "badges": [
         "س + د"
       ],
+      "pair": "p5r0g0",
       "text": "سَدُ",
       "audio": "word50.wav",
       "timings": null
@@ -676,6 +726,7 @@
       "badges": [
         "س + ر"
       ],
+      "pair": "p5r0g1",
       "text": "سُرِ",
       "audio": "word51.wav",
       "timings": null
@@ -686,6 +737,7 @@
       "badges": [
         "س + ر"
       ],
+      "pair": "p5r0g1",
       "text": "سُرۡ",
       "audio": "word52.wav",
       "timings": null
@@ -696,6 +748,7 @@
       "badges": [
         "ش + ر"
       ],
+      "pair": "p5r1g0",
       "text": "شَرَ",
       "audio": "word53.wav",
       "timings": null
@@ -706,6 +759,7 @@
       "badges": [
         "ش + ر"
       ],
+      "pair": "p5r1g0",
       "text": "شَرۡ",
       "audio": "word54.wav",
       "timings": null
@@ -716,6 +770,7 @@
       "badges": [
         "ش + د"
       ],
+      "pair": "p5r1g1",
       "text": "شُدُ",
       "audio": "word55.wav",
       "timings": null
@@ -726,6 +781,7 @@
       "badges": [
         "ش + د"
       ],
+      "pair": "p5r1g1",
       "text": "شُدِ",
       "audio": "word56.wav",
       "timings": null
@@ -736,6 +792,7 @@
       "badges": [
         "س + ز"
       ],
+      "pair": "p5r2g0",
       "text": "سِزُ",
       "audio": "word57.wav",
       "timings": null
@@ -746,6 +803,7 @@
       "badges": [
         "س + ز"
       ],
+      "pair": "p5r2g0",
       "text": "سِزۡ",
       "audio": "word58.wav",
       "timings": null
@@ -756,6 +814,7 @@
       "badges": [
         "ش + ز"
       ],
+      "pair": "p5r2g1",
       "text": "شِزَ",
       "audio": "word59.wav",
       "timings": null
@@ -766,6 +825,7 @@
       "badges": [
         "ش + ز"
       ],
+      "pair": "p5r2g1",
       "text": "شِزِ",
       "audio": "word60.wav",
       "timings": null
@@ -776,6 +836,7 @@
       "badges": [
         "ص + د"
       ],
+      "pair": "p6r0g0",
       "text": "صَدَ",
       "audio": "word61.wav",
       "timings": null
@@ -786,6 +847,7 @@
       "badges": [
         "ص + د"
       ],
+      "pair": "p6r0g0",
       "text": "صَدۡ",
       "audio": "word62.wav",
       "timings": null
@@ -796,6 +858,7 @@
       "badges": [
         "ص + ر"
       ],
+      "pair": "p6r0g1",
       "text": "صُرُ",
       "audio": "word63.wav",
       "timings": null
@@ -806,6 +869,7 @@
       "badges": [
         "ص + ر"
       ],
+      "pair": "p6r0g1",
       "text": "صُرِ",
       "audio": "word64.wav",
       "timings": null
@@ -816,6 +880,7 @@
       "badges": [
         "ض + ر"
       ],
+      "pair": "p6r1g0",
       "text": "ضَرَ",
       "audio": "word65.wav",
       "timings": null
@@ -826,6 +891,7 @@
       "badges": [
         "ض + ر"
       ],
+      "pair": "p6r1g0",
       "text": "ضَرُ",
       "audio": "word66.wav",
       "timings": null
@@ -836,6 +902,7 @@
       "badges": [
         "ض + د"
       ],
+      "pair": "p6r1g1",
       "text": "ضُدِ",
       "audio": "word67.wav",
       "timings": null
@@ -846,6 +913,7 @@
       "badges": [
         "ض + د"
       ],
+      "pair": "p6r1g1",
       "text": "ضُدۡ",
       "audio": "word68.wav",
       "timings": null
@@ -856,6 +924,7 @@
       "badges": [
         "س + د"
       ],
+      "pair": "p6r2g0",
       "text": "سَدَ",
       "audio": "word69.wav",
       "timings": null
@@ -866,6 +935,7 @@
       "badges": [
         "ص + د"
       ],
+      "pair": "p6r2g0",
       "text": "صَدَ",
       "audio": "word70.wav",
       "timings": null
@@ -876,6 +946,7 @@
       "badges": [
         "د + ر"
       ],
+      "pair": "p6r2g1",
       "text": "دَرَ",
       "audio": "word71.wav",
       "timings": null
@@ -886,6 +957,7 @@
       "badges": [
         "ض + ر"
       ],
+      "pair": "p6r2g1",
       "text": "ضَرَ",
       "audio": "word72.wav",
       "timings": null
@@ -896,6 +968,7 @@
       "badges": [
         "ط + ر"
       ],
+      "pair": "p7r0g0",
       "text": "طَرَ",
       "audio": "word73.wav",
       "timings": null
@@ -906,6 +979,7 @@
       "badges": [
         "ط + ر"
       ],
+      "pair": "p7r0g0",
       "text": "طَرۡ",
       "audio": "word74.wav",
       "timings": null
@@ -916,6 +990,7 @@
       "badges": [
         "ط + د"
       ],
+      "pair": "p7r0g1",
       "text": "طُدُ",
       "audio": "word75.wav",
       "timings": null
@@ -926,6 +1001,7 @@
       "badges": [
         "ط + د"
       ],
+      "pair": "p7r0g1",
       "text": "طُدِ",
       "audio": "word76.wav",
       "timings": null
@@ -936,6 +1012,7 @@
       "badges": [
         "ظ + ر"
       ],
+      "pair": "p7r1g0",
       "text": "ظَرَ",
       "audio": "word77.wav",
       "timings": null
@@ -946,6 +1023,7 @@
       "badges": [
         "ظ + ر"
       ],
+      "pair": "p7r1g0",
       "text": "ظَرُ",
       "audio": "word78.wav",
       "timings": null
@@ -956,6 +1034,7 @@
       "badges": [
         "ظ + د"
       ],
+      "pair": "p7r1g1",
       "text": "ظُدِ",
       "audio": "word79.wav",
       "timings": null
@@ -966,6 +1045,7 @@
       "badges": [
         "ظ + د"
       ],
+      "pair": "p7r1g1",
       "text": "ظُدۡ",
       "audio": "word80.wav",
       "timings": null
@@ -976,6 +1056,7 @@
       "badges": [
         "[ت Light] · ت + ر"
       ],
+      "pair": "p7r2g0",
       "text": "تَرَ",
       "audio": "word81.wav",
       "timings": null
@@ -986,6 +1067,7 @@
       "badges": [
         "ط + ر"
       ],
+      "pair": "p7r2g0",
       "text": "طَرَ",
       "audio": "word82.wav",
       "timings": null
@@ -996,6 +1078,7 @@
       "badges": [
         "[ذ Light] · ذ + ر"
       ],
+      "pair": "p7r2g1",
       "text": "ذِرَ",
       "audio": "word83.wav",
       "timings": null
@@ -1006,6 +1089,7 @@
       "badges": [
         "[ظ Heavy] · ظ + ر"
       ],
+      "pair": "p7r2g1",
       "text": "ظِرَ",
       "audio": "word84.wav",
       "timings": null
@@ -1016,6 +1100,7 @@
       "badges": [
         "ع + ر"
       ],
+      "pair": "p8r0g0",
       "text": "عَرَ",
       "audio": "word85.wav",
       "timings": null
@@ -1026,6 +1111,7 @@
       "badges": [
         "ع + ر"
       ],
+      "pair": "p8r0g0",
       "text": "عَرۡ",
       "audio": "word86.wav",
       "timings": null
@@ -1036,6 +1122,7 @@
       "badges": [
         "ع + د"
       ],
+      "pair": "p8r0g1",
       "text": "عُدُ",
       "audio": "word87.wav",
       "timings": null
@@ -1046,6 +1133,7 @@
       "badges": [
         "ع + د"
       ],
+      "pair": "p8r0g1",
       "text": "عُدِ",
       "audio": "word88.wav",
       "timings": null
@@ -1056,6 +1144,7 @@
       "badges": [
         "غ + ر"
       ],
+      "pair": "p8r1g0",
       "text": "غَرَ",
       "audio": "word89.wav",
       "timings": null
@@ -1066,6 +1155,7 @@
       "badges": [
         "غ + ر"
       ],
+      "pair": "p8r1g0",
       "text": "غَرُ",
       "audio": "word90.wav",
       "timings": null
@@ -1076,6 +1166,7 @@
       "badges": [
         "غ + د"
       ],
+      "pair": "p8r1g1",
       "text": "غُدِ",
       "audio": "word91.wav",
       "timings": null
@@ -1086,6 +1177,7 @@
       "badges": [
         "غ + د"
       ],
+      "pair": "p8r1g1",
       "text": "غُدۡ",
       "audio": "word92.wav",
       "timings": null
@@ -1096,6 +1188,7 @@
       "badges": [
         "ع + ر"
       ],
+      "pair": "p8r2g0",
       "text": "عَرَ",
       "audio": "word93.wav",
       "timings": null
@@ -1106,6 +1199,7 @@
       "badges": [
         "غ + ر"
       ],
+      "pair": "p8r2g0",
       "text": "غَرَ",
       "audio": "word94.wav",
       "timings": null
@@ -1116,6 +1210,7 @@
       "badges": [
         "ع + ز"
       ],
+      "pair": "p8r2g1",
       "text": "عِزَ",
       "audio": "word95.wav",
       "timings": null
@@ -1126,6 +1221,7 @@
       "badges": [
         "غ + ز"
       ],
+      "pair": "p8r2g1",
       "text": "غِزَ",
       "audio": "word96.wav",
       "timings": null
@@ -1136,6 +1232,7 @@
       "badges": [
         "ف + ر"
       ],
+      "pair": "p9r0g0",
       "text": "فَرَ",
       "audio": "word97.wav",
       "timings": null
@@ -1146,6 +1243,7 @@
       "badges": [
         "ف + ر"
       ],
+      "pair": "p9r0g0",
       "text": "فَرۡ",
       "audio": "word98.wav",
       "timings": null
@@ -1156,6 +1254,7 @@
       "badges": [
         "ف + د"
       ],
+      "pair": "p9r0g1",
       "text": "فُدُ",
       "audio": "word99.wav",
       "timings": null
@@ -1166,6 +1265,7 @@
       "badges": [
         "ف + د"
       ],
+      "pair": "p9r0g1",
       "text": "فُدِ",
       "audio": "word100.wav",
       "timings": null
@@ -1176,6 +1276,7 @@
       "badges": [
         "ق + ر"
       ],
+      "pair": "p9r1g0",
       "text": "قَرَ",
       "audio": "word101.wav",
       "timings": null
@@ -1186,6 +1287,7 @@
       "badges": [
         "ق + ر"
       ],
+      "pair": "p9r1g0",
       "text": "قَرُ",
       "audio": "word102.wav",
       "timings": null
@@ -1196,6 +1298,7 @@
       "badges": [
         "ق + د"
       ],
+      "pair": "p9r1g1",
       "text": "قُدِ",
       "audio": "word103.wav",
       "timings": null
@@ -1206,6 +1309,7 @@
       "badges": [
         "ق + د"
       ],
+      "pair": "p9r1g1",
       "text": "قُدۡ",
       "audio": "word104.wav",
       "timings": null
@@ -1216,6 +1320,7 @@
       "badges": [
         "ف + ر"
       ],
+      "pair": "p9r2g0",
       "text": "فَرَ",
       "audio": "word105.wav",
       "timings": null
@@ -1226,6 +1331,7 @@
       "badges": [
         "ق + ر"
       ],
+      "pair": "p9r2g0",
       "text": "قَرَ",
       "audio": "word106.wav",
       "timings": null
@@ -1236,6 +1342,7 @@
       "badges": [
         "ف + ز"
       ],
+      "pair": "p9r2g1",
       "text": "فِزَ",
       "audio": "word107.wav",
       "timings": null
@@ -1246,6 +1353,7 @@
       "badges": [
         "ق + ز"
       ],
+      "pair": "p9r2g1",
       "text": "قِزَ",
       "audio": "word108.wav",
       "timings": null
@@ -1256,6 +1364,7 @@
       "badges": [
         "ك + ر"
       ],
+      "pair": "p10r0g0",
       "text": "كَرَ",
       "audio": "word109.wav",
       "timings": null
@@ -1266,6 +1375,7 @@
       "badges": [
         "ك + ر"
       ],
+      "pair": "p10r0g0",
       "text": "كَرۡ",
       "audio": "word110.wav",
       "timings": null
@@ -1276,6 +1386,7 @@
       "badges": [
         "ك + د"
       ],
+      "pair": "p10r0g1",
       "text": "كُدُ",
       "audio": "word111.wav",
       "timings": null
@@ -1286,6 +1397,7 @@
       "badges": [
         "ك + د"
       ],
+      "pair": "p10r0g1",
       "text": "كُدِ",
       "audio": "word112.wav",
       "timings": null
@@ -1296,6 +1408,7 @@
       "badges": [
         "ك + ز"
       ],
+      "pair": "p10r1g0",
       "text": "كِزَ",
       "audio": "word113.wav",
       "timings": null
@@ -1306,6 +1419,7 @@
       "badges": [
         "ك + ز"
       ],
+      "pair": "p10r1g0",
       "text": "كِزُ",
       "audio": "word114.wav",
       "timings": null
@@ -1316,6 +1430,7 @@
       "badges": [
         "ك + ر"
       ],
+      "pair": "p10r1g1",
       "text": "كُرِ",
       "audio": "word115.wav",
       "timings": null
@@ -1326,6 +1441,7 @@
       "badges": [
         "ك + ر"
       ],
+      "pair": "p10r1g1",
       "text": "كُرۡ",
       "audio": "word116.wav",
       "timings": null
@@ -1336,6 +1452,7 @@
       "badges": [
         "ك + ر"
       ],
+      "pair": "p10r2g0",
       "text": "كَرَ",
       "audio": "word117.wav",
       "timings": null
@@ -1346,6 +1463,7 @@
       "badges": [
         "ق + ر"
       ],
+      "pair": "p10r2g0",
       "text": "قَرَ",
       "audio": "word118.wav",
       "timings": null
@@ -1356,6 +1474,7 @@
       "badges": [
         "[ك Light] · ك + د"
       ],
+      "pair": "p10r2g1",
       "text": "كُدَ",
       "audio": "word119.wav",
       "timings": null
@@ -1366,6 +1485,7 @@
       "badges": [
         "[ق Heavy] · ق + د"
       ],
+      "pair": "p10r2g1",
       "text": "قُدَ",
       "audio": "word120.wav",
       "timings": null
@@ -1376,6 +1496,7 @@
       "badges": [
         "ل + ر"
       ],
+      "pair": "p11r0g0",
       "text": "لَرَ",
       "audio": "word121.wav",
       "timings": null
@@ -1386,6 +1507,7 @@
       "badges": [
         "ل + ر"
       ],
+      "pair": "p11r0g0",
       "text": "لَرۡ",
       "audio": "word122.wav",
       "timings": null
@@ -1396,6 +1518,7 @@
       "badges": [
         "ل + د"
       ],
+      "pair": "p11r0g1",
       "text": "لُدُ",
       "audio": "word123.wav",
       "timings": null
@@ -1406,6 +1529,7 @@
       "badges": [
         "ل + د"
       ],
+      "pair": "p11r0g1",
       "text": "لُدِ",
       "audio": "word124.wav",
       "timings": null
@@ -1416,6 +1540,7 @@
       "badges": [
         "ل + ز"
       ],
+      "pair": "p11r1g0",
       "text": "لِزَ",
       "audio": "word125.wav",
       "timings": null
@@ -1426,6 +1551,7 @@
       "badges": [
         "ل + ز"
       ],
+      "pair": "p11r1g0",
       "text": "لِزُ",
       "audio": "word126.wav",
       "timings": null
@@ -1436,6 +1562,7 @@
       "badges": [
         "ل + ر"
       ],
+      "pair": "p11r1g1",
       "text": "لُرِ",
       "audio": "word127.wav",
       "timings": null
@@ -1446,6 +1573,7 @@
       "badges": [
         "ل + ر"
       ],
+      "pair": "p11r1g1",
       "text": "لُرۡ",
       "audio": "word128.wav",
       "timings": null
@@ -1456,6 +1584,7 @@
       "badges": [
         "ك + ر"
       ],
+      "pair": "p11r2g0",
       "text": "كَرَ",
       "audio": "word129.wav",
       "timings": null
@@ -1466,6 +1595,7 @@
       "badges": [
         "ل + ر"
       ],
+      "pair": "p11r2g0",
       "text": "لَرَ",
       "audio": "word130.wav",
       "timings": null
@@ -1476,6 +1606,7 @@
       "badges": [
         "[ك Light] · ك + د"
       ],
+      "pair": "p11r2g1",
       "text": "كُدَ",
       "audio": "word131.wav",
       "timings": null
@@ -1486,6 +1617,7 @@
       "badges": [
         "ل + د"
       ],
+      "pair": "p11r2g1",
       "text": "لُدَ",
       "audio": "word132.wav",
       "timings": null
@@ -1496,6 +1628,7 @@
       "badges": [
         "م + ر"
       ],
+      "pair": "p12r0g0",
       "text": "مَرَ",
       "audio": "word133.wav",
       "timings": null
@@ -1506,6 +1639,7 @@
       "badges": [
         "م + ر"
       ],
+      "pair": "p12r0g0",
       "text": "مَرۡ",
       "audio": "word134.wav",
       "timings": null
@@ -1516,6 +1650,7 @@
       "badges": [
         "م + د"
       ],
+      "pair": "p12r0g1",
       "text": "مُدُ",
       "audio": "word135.wav",
       "timings": null
@@ -1526,6 +1661,7 @@
       "badges": [
         "م + د"
       ],
+      "pair": "p12r0g1",
       "text": "مُدِ",
       "audio": "word136.wav",
       "timings": null
@@ -1536,6 +1672,7 @@
       "badges": [
         "م + ز"
       ],
+      "pair": "p12r1g0",
       "text": "مِزَ",
       "audio": "word137.wav",
       "timings": null
@@ -1546,6 +1683,7 @@
       "badges": [
         "م + ز"
       ],
+      "pair": "p12r1g0",
       "text": "مِزُ",
       "audio": "word138.wav",
       "timings": null
@@ -1556,6 +1694,7 @@
       "badges": [
         "م + ر"
       ],
+      "pair": "p12r1g1",
       "text": "مُرِ",
       "audio": "word139.wav",
       "timings": null
@@ -1566,6 +1705,7 @@
       "badges": [
         "م + ر"
       ],
+      "pair": "p12r1g1",
       "text": "مُرۡ",
       "audio": "word140.wav",
       "timings": null
@@ -1576,6 +1716,7 @@
       "badges": [
         "م + ر"
       ],
+      "pair": "p12r2g0",
       "text": "مَرَ",
       "audio": "word141.wav",
       "timings": null
@@ -1586,6 +1727,7 @@
       "badges": [
         "ف + ر"
       ],
+      "pair": "p12r2g0",
       "text": "فَرَ",
       "audio": "word142.wav",
       "timings": null
@@ -1596,6 +1738,7 @@
       "badges": [
         "م + د"
       ],
+      "pair": "p12r2g1",
       "text": "مُدَ",
       "audio": "word143.wav",
       "timings": null
@@ -1606,6 +1749,7 @@
       "badges": [
         "ف + د"
       ],
+      "pair": "p12r2g1",
       "text": "فُدَ",
       "audio": "word144.wav",
       "timings": null
@@ -1616,6 +1760,7 @@
       "badges": [
         "هـ + ر"
       ],
+      "pair": "p13r0g0",
       "text": "هَرَ",
       "audio": "word145.wav",
       "timings": null
@@ -1626,6 +1771,7 @@
       "badges": [
         "هـ + ر"
       ],
+      "pair": "p13r0g0",
       "text": "هَرۡ",
       "audio": "word146.wav",
       "timings": null
@@ -1636,6 +1782,7 @@
       "badges": [
         "هـ + د"
       ],
+      "pair": "p13r0g1",
       "text": "هُدُ",
       "audio": "word147.wav",
       "timings": null
@@ -1646,6 +1793,7 @@
       "badges": [
         "هـ + د"
       ],
+      "pair": "p13r0g1",
       "text": "هُدِ",
       "audio": "word148.wav",
       "timings": null
@@ -1656,6 +1804,7 @@
       "badges": [
         "هـ + ز"
       ],
+      "pair": "p13r1g0",
       "text": "هِزَ",
       "audio": "word149.wav",
       "timings": null
@@ -1666,6 +1815,7 @@
       "badges": [
         "هـ + ز"
       ],
+      "pair": "p13r1g0",
       "text": "هِزُ",
       "audio": "word150.wav",
       "timings": null
@@ -1676,6 +1826,7 @@
       "badges": [
         "هـ + ر"
       ],
+      "pair": "p13r1g1",
       "text": "هُرِ",
       "audio": "word151.wav",
       "timings": null
@@ -1686,6 +1837,7 @@
       "badges": [
         "هـ + ر"
       ],
+      "pair": "p13r1g1",
       "text": "هُرۡ",
       "audio": "word152.wav",
       "timings": null
@@ -1696,6 +1848,7 @@
       "badges": [
         "هـ + ر"
       ],
+      "pair": "p13r2g0",
       "text": "هَرَ",
       "audio": "word153.wav",
       "timings": null
@@ -1706,6 +1859,7 @@
       "badges": [
         "ح + ر"
       ],
+      "pair": "p13r2g0",
       "text": "حَرَ",
       "audio": "word154.wav",
       "timings": null
@@ -1716,6 +1870,7 @@
       "badges": [
         "هـ + د"
       ],
+      "pair": "p13r2g1",
       "text": "هُدَ",
       "audio": "word155.wav",
       "timings": null
@@ -1726,6 +1881,7 @@
       "badges": [
         "ح + د"
       ],
+      "pair": "p13r2g1",
       "text": "حُدَ",
       "audio": "word156.wav",
       "timings": null
@@ -1736,6 +1892,7 @@
       "badges": [
         "ت + ز"
       ],
+      "pair": "p14r0g0",
       "text": "تُزِ",
       "audio": "word157.wav",
       "timings": null
@@ -1746,6 +1903,7 @@
       "badges": [
         "خ + ر"
       ],
+      "pair": "p14r0g0",
       "text": "خِرَ",
       "audio": "word158.wav",
       "timings": null
@@ -1756,6 +1914,7 @@
       "badges": [
         "ش + ر"
       ],
+      "pair": "p14r0g1",
       "text": "شُرَ",
       "audio": "word159.wav",
       "timings": null
@@ -1766,6 +1925,7 @@
       "badges": [
         "ص + د"
       ],
+      "pair": "p14r0g1",
       "text": "صِدۡ",
       "audio": "word160.wav",
       "timings": null
@@ -1776,6 +1936,7 @@
       "badges": [
         "ط + ز"
       ],
+      "pair": "p14r1g0",
       "text": "طِزَ",
       "audio": "word161.wav",
       "timings": null
@@ -1786,6 +1947,7 @@
       "badges": [
         "ع + ز"
       ],
+      "pair": "p14r1g0",
       "text": "عَزُ",
       "audio": "word162.wav",
       "timings": null
@@ -1796,6 +1958,7 @@
       "badges": [
         "ف + ر"
       ],
+      "pair": "p14r1g1",
       "text": "فِرۡ",
       "audio": "word163.wav",
       "timings": null
@@ -1806,6 +1969,7 @@
       "badges": [
         "ق + ز"
       ],
+      "pair": "p14r1g1",
       "text": "قُزَ",
       "audio": "word164.wav",
       "timings": null
@@ -1816,6 +1980,7 @@
       "badges": [
         "ك + د"
       ],
+      "pair": "p14r2g0",
       "text": "كَدۡ",
       "audio": "word165.wav",
       "timings": null
@@ -1826,6 +1991,7 @@
       "badges": [
         "ل + ز"
       ],
+      "pair": "p14r2g0",
       "text": "لَزِ",
       "audio": "word166.wav",
       "timings": null
@@ -1836,6 +2002,7 @@
       "badges": [
         "م + د"
       ],
+      "pair": "p14r2g1",
       "text": "مَدُ",
       "audio": "word167.wav",
       "timings": null
@@ -1846,6 +2013,7 @@
       "badges": [
         "هـ + د"
       ],
+      "pair": "p14r2g1",
       "text": "هَدِ",
       "audio": "word168.wav",
       "timings": null
@@ -1856,6 +2024,7 @@
       "badges": [
         "س + ب"
       ],
+      "pair": "p15r0g0",
       "text": "سَبَ",
       "audio": "word169.wav",
       "timings": null
@@ -1866,6 +2035,7 @@
       "badges": [
         "س + ب"
       ],
+      "pair": "p15r0g0",
       "text": "سَبۡ",
       "audio": "word170.wav",
       "timings": null
@@ -1876,6 +2046,7 @@
       "badges": [
         "ك + ب"
       ],
+      "pair": "p15r0g1",
       "text": "كُبُ",
       "audio": "word171.wav",
       "timings": null
@@ -1886,6 +2057,7 @@
       "badges": [
         "ك + ب"
       ],
+      "pair": "p15r0g1",
       "text": "كُبِ",
       "audio": "word172.wav",
       "timings": null
@@ -1896,6 +2068,7 @@
       "badges": [
         "ف + ت"
       ],
+      "pair": "p15r1g0",
       "text": "فَتَ",
       "audio": "word173.wav",
       "timings": null
@@ -1906,6 +2079,7 @@
       "badges": [
         "ف + ت"
       ],
+      "pair": "p15r1g0",
       "text": "فَتُ",
       "audio": "word174.wav",
       "timings": null
@@ -1916,6 +2090,7 @@
       "badges": [
         "ل + ث"
       ],
+      "pair": "p15r1g1",
       "text": "لِثِ",
       "audio": "word175.wav",
       "timings": null
@@ -1926,6 +2101,7 @@
       "badges": [
         "ل + ث"
       ],
+      "pair": "p15r1g1",
       "text": "لِثۡ",
       "audio": "word176.wav",
       "timings": null
@@ -1936,6 +2112,7 @@
       "badges": [
         "م + ب"
       ],
+      "pair": "p15r2g0",
       "text": "مَبَ",
       "audio": "word177.wav",
       "timings": null
@@ -1946,6 +2123,7 @@
       "badges": [
         "م + ت"
       ],
+      "pair": "p15r2g0",
       "text": "مَتَ",
       "audio": "word178.wav",
       "timings": null
@@ -1956,6 +2134,7 @@
       "badges": [
         "م + ث"
       ],
+      "pair": "p15r2g1",
       "text": "مِثَ",
       "audio": "word179.wav",
       "timings": null
@@ -1966,6 +2145,7 @@
       "badges": [
         "م + ت"
       ],
+      "pair": "p15r2g1",
       "text": "مِتَ",
       "audio": "word180.wav",
       "timings": null
@@ -1976,6 +2156,7 @@
       "badges": [
         "ع + ن"
       ],
+      "pair": "p16r0g0",
       "text": "عَنَ",
       "audio": "word181.wav",
       "timings": null
@@ -1986,6 +2167,7 @@
       "badges": [
         "ع + ن"
       ],
+      "pair": "p16r0g0",
       "text": "عَنۡ",
       "audio": "word182.wav",
       "timings": null
@@ -1996,6 +2178,7 @@
       "badges": [
         "م + ن"
       ],
+      "pair": "p16r0g1",
       "text": "مُنُ",
       "audio": "word183.wav",
       "timings": null
@@ -2006,6 +2189,7 @@
       "badges": [
         "م + ن"
       ],
+      "pair": "p16r0g1",
       "text": "مُنِ",
       "audio": "word184.wav",
       "timings": null
@@ -2016,6 +2200,7 @@
       "badges": [
         "س + ى"
       ],
+      "pair": "p16r1g0",
       "text": "سَىَ",
       "audio": "word185.wav",
       "timings": null
@@ -2026,6 +2211,7 @@
       "badges": [
         "س + ى"
       ],
+      "pair": "p16r1g0",
       "text": "سَىۡ",
       "audio": "word186.wav",
       "timings": null
@@ -2036,6 +2222,7 @@
       "badges": [
         "ل + ى"
       ],
+      "pair": "p16r1g1",
       "text": "لَىُ",
       "audio": "word187.wav",
       "timings": null
@@ -2046,6 +2233,7 @@
       "badges": [
         "ل + ى"
       ],
+      "pair": "p16r1g1",
       "text": "لَىِ",
       "audio": "word188.wav",
       "timings": null
@@ -2056,6 +2244,7 @@
       "badges": [
         "ع + ن"
       ],
+      "pair": "p16r2g0",
       "text": "عَنَ",
       "audio": "word189.wav",
       "timings": null
@@ -2066,6 +2255,7 @@
       "badges": [
         "ع + ى"
       ],
+      "pair": "p16r2g0",
       "text": "عَىَ",
       "audio": "word190.wav",
       "timings": null
@@ -2076,6 +2266,7 @@
       "badges": [
         "ل + ن"
       ],
+      "pair": "p16r2g1",
       "text": "لَنۡ",
       "audio": "word191.wav",
       "timings": null
@@ -2086,6 +2277,7 @@
       "badges": [
         "ل + ى"
       ],
+      "pair": "p16r2g1",
       "text": "لَىۡ",
       "audio": "word192.wav",
       "timings": null
@@ -2096,6 +2288,7 @@
       "badges": [
         "س + ج"
       ],
+      "pair": "p17r0g0",
       "text": "سَجَ",
       "audio": "word193.wav",
       "timings": null
@@ -2106,6 +2299,7 @@
       "badges": [
         "س + ج"
       ],
+      "pair": "p17r0g0",
       "text": "سَجۡ",
       "audio": "word194.wav",
       "timings": null
@@ -2116,6 +2310,7 @@
       "badges": [
         "ف + ج"
       ],
+      "pair": "p17r0g1",
       "text": "فُجُ",
       "audio": "word195.wav",
       "timings": null
@@ -2126,6 +2321,7 @@
       "badges": [
         "ف + ج"
       ],
+      "pair": "p17r0g1",
       "text": "فُجِ",
       "audio": "word196.wav",
       "timings": null
@@ -2136,6 +2332,7 @@
       "badges": [
         "ل + ح"
       ],
+      "pair": "p17r1g0",
       "text": "لَحَ",
       "audio": "word197.wav",
       "timings": null
@@ -2146,6 +2343,7 @@
       "badges": [
         "ل + ح"
       ],
+      "pair": "p17r1g0",
       "text": "لَحُ",
       "audio": "word198.wav",
       "timings": null
@@ -2156,6 +2354,7 @@
       "badges": [
         "م + ح"
       ],
+      "pair": "p17r1g1",
       "text": "مِحِ",
       "audio": "word199.wav",
       "timings": null
@@ -2166,6 +2365,7 @@
       "badges": [
         "م + ح"
       ],
+      "pair": "p17r1g1",
       "text": "مِحۡ",
       "audio": "word200.wav",
       "timings": null
@@ -2176,6 +2376,7 @@
       "badges": [
         "ب + خ"
       ],
+      "pair": "p17r2g0",
       "text": "بَخَ",
       "audio": "word201.wav",
       "timings": null
@@ -2186,6 +2387,7 @@
       "badges": [
         "ب + خ"
       ],
+      "pair": "p17r2g0",
       "text": "بَخۡ",
       "audio": "word202.wav",
       "timings": null
@@ -2196,6 +2398,7 @@
       "badges": [
         "ك + ح"
       ],
+      "pair": "p17r2g1",
       "text": "كَحَ",
       "audio": "word203.wav",
       "timings": null
@@ -2206,6 +2409,7 @@
       "badges": [
         "ك + خ"
       ],
+      "pair": "p17r2g1",
       "text": "كَخَ",
       "audio": "word204.wav",
       "timings": null
@@ -2216,6 +2420,7 @@
       "badges": [
         "ب + س"
       ],
+      "pair": "p18r0g0",
       "text": "بَسَ",
       "audio": "word205.wav",
       "timings": null
@@ -2226,6 +2431,7 @@
       "badges": [
         "ب + س"
       ],
+      "pair": "p18r0g0",
       "text": "بَسۡ",
       "audio": "word206.wav",
       "timings": null
@@ -2236,6 +2442,7 @@
       "badges": [
         "ل + س"
       ],
+      "pair": "p18r0g1",
       "text": "لُسُ",
       "audio": "word207.wav",
       "timings": null
@@ -2246,6 +2453,7 @@
       "badges": [
         "ل + س"
       ],
+      "pair": "p18r0g1",
       "text": "لُسِ",
       "audio": "word208.wav",
       "timings": null
@@ -2256,6 +2464,7 @@
       "badges": [
         "ع + ش"
       ],
+      "pair": "p18r1g0",
       "text": "عَشَ",
       "audio": "word209.wav",
       "timings": null
@@ -2266,6 +2475,7 @@
       "badges": [
         "ع + ش"
       ],
+      "pair": "p18r1g0",
       "text": "عَشُ",
       "audio": "word210.wav",
       "timings": null
@@ -2276,6 +2486,7 @@
       "badges": [
         "ف + ش"
       ],
+      "pair": "p18r1g1",
       "text": "فِشِ",
       "audio": "word211.wav",
       "timings": null
@@ -2286,6 +2497,7 @@
       "badges": [
         "ف + ش"
       ],
+      "pair": "p18r1g1",
       "text": "فِشۡ",
       "audio": "word212.wav",
       "timings": null
@@ -2296,6 +2508,7 @@
       "badges": [
         "ن + س"
       ],
+      "pair": "p18r2g0",
       "text": "نَسَ",
       "audio": "word213.wav",
       "timings": null
@@ -2306,6 +2519,7 @@
       "badges": [
         "ن + ش"
       ],
+      "pair": "p18r2g0",
       "text": "نَشَ",
       "audio": "word214.wav",
       "timings": null
@@ -2316,6 +2530,7 @@
       "badges": [
         "ت + س"
       ],
+      "pair": "p18r2g1",
       "text": "تَسۡ",
       "audio": "word215.wav",
       "timings": null
@@ -2326,6 +2541,7 @@
       "badges": [
         "ت + ش"
       ],
+      "pair": "p18r2g1",
       "text": "تَشۡ",
       "audio": "word216.wav",
       "timings": null
@@ -2336,6 +2552,7 @@
       "badges": [
         "ق + ص"
       ],
+      "pair": "p19r0g0",
       "text": "قَصَ",
       "audio": "word217.wav",
       "timings": null
@@ -2346,6 +2563,7 @@
       "badges": [
         "ق + ص"
       ],
+      "pair": "p19r0g0",
       "text": "قَصۡ",
       "audio": "word218.wav",
       "timings": null
@@ -2356,6 +2574,7 @@
       "badges": [
         "ت + ص"
       ],
+      "pair": "p19r0g1",
       "text": "تُصُ",
       "audio": "word219.wav",
       "timings": null
@@ -2366,6 +2585,7 @@
       "badges": [
         "ت + ص"
       ],
+      "pair": "p19r0g1",
       "text": "تُصِ",
       "audio": "word220.wav",
       "timings": null
@@ -2376,6 +2596,7 @@
       "badges": [
         "ع + ض"
       ],
+      "pair": "p19r1g0",
       "text": "عَضَ",
       "audio": "word221.wav",
       "timings": null
@@ -2386,6 +2607,7 @@
       "badges": [
         "ع + ض"
       ],
+      "pair": "p19r1g0",
       "text": "عَضُ",
       "audio": "word222.wav",
       "timings": null
@@ -2396,6 +2618,7 @@
       "badges": [
         "ن + ض"
       ],
+      "pair": "p19r1g1",
       "text": "نِضِ",
       "audio": "word223.wav",
       "timings": null
@@ -2406,6 +2629,7 @@
       "badges": [
         "ن + ض"
       ],
+      "pair": "p19r1g1",
       "text": "نِضۡ",
       "audio": "word224.wav",
       "timings": null
@@ -2416,6 +2640,7 @@
       "badges": [
         "ب + س"
       ],
+      "pair": "p19r2g0",
       "text": "بَسَ",
       "audio": "word225.wav",
       "timings": null
@@ -2426,6 +2651,7 @@
       "badges": [
         "[ص Heavy] · ب + ص"
       ],
+      "pair": "p19r2g0",
       "text": "بَصَ",
       "audio": "word226.wav",
       "timings": null
@@ -2436,6 +2662,7 @@
       "badges": [
         "[د Light] · ع + د"
       ],
+      "pair": "p19r2g1",
       "text": "عَدَ",
       "audio": "word227.wav",
       "timings": null
@@ -2446,6 +2673,7 @@
       "badges": [
         "ع + ض"
       ],
+      "pair": "p19r2g1",
       "text": "عَضَ",
       "audio": "word228.wav",
       "timings": null
@@ -2456,6 +2684,7 @@
       "badges": [
         "ب + ط"
       ],
+      "pair": "p20r0g0",
       "text": "بَطَ",
       "audio": "word229.wav",
       "timings": null
@@ -2466,6 +2695,7 @@
       "badges": [
         "ب + ط"
       ],
+      "pair": "p20r0g0",
       "text": "بَطۡ",
       "audio": "word230.wav",
       "timings": null
@@ -2476,6 +2706,7 @@
       "badges": [
         "ق + ط"
       ],
+      "pair": "p20r0g1",
       "text": "قُطُ",
       "audio": "word231.wav",
       "timings": null
@@ -2486,6 +2717,7 @@
       "badges": [
         "ق + ط"
       ],
+      "pair": "p20r0g1",
       "text": "قُطِ",
       "audio": "word232.wav",
       "timings": null
@@ -2496,6 +2728,7 @@
       "badges": [
         "ل + ظ"
       ],
+      "pair": "p20r1g0",
       "text": "لَظَ",
       "audio": "word233.wav",
       "timings": null
@@ -2506,6 +2739,7 @@
       "badges": [
         "ل + ظ"
       ],
+      "pair": "p20r1g0",
       "text": "لَظُ",
       "audio": "word234.wav",
       "timings": null
@@ -2516,6 +2750,7 @@
       "badges": [
         "ح + ظ"
       ],
+      "pair": "p20r1g1",
       "text": "حِظِ",
       "audio": "word235.wav",
       "timings": null
@@ -2526,6 +2761,7 @@
       "badges": [
         "ح + ظ"
       ],
+      "pair": "p20r1g1",
       "text": "حِظۡ",
       "audio": "word236.wav",
       "timings": null
@@ -2536,6 +2772,7 @@
       "badges": [
         "[ت Light] · ب + ت"
       ],
+      "pair": "p20r2g0",
       "text": "بَتَ",
       "audio": "word237.wav",
       "timings": null
@@ -2546,6 +2783,7 @@
       "badges": [
         "ب + ط"
       ],
+      "pair": "p20r2g0",
       "text": "بَطَ",
       "audio": "word238.wav",
       "timings": null
@@ -2556,6 +2794,7 @@
       "badges": [
         "[ذ Light] · ل + ذ"
       ],
+      "pair": "p20r2g1",
       "text": "لَذَ",
       "audio": "word239.wav",
       "timings": null
@@ -2566,6 +2805,7 @@
       "badges": [
         "ل + ظ"
       ],
+      "pair": "p20r2g1",
       "text": "لَظَ",
       "audio": "word240.wav",
       "timings": null
@@ -2576,6 +2816,7 @@
       "badges": [
         "ب + ع"
       ],
+      "pair": "p21r0g0",
       "text": "بَعَ",
       "audio": "word241.wav",
       "timings": null
@@ -2586,6 +2827,7 @@
       "badges": [
         "ب + ع"
       ],
+      "pair": "p21r0g0",
       "text": "بَعۡ",
       "audio": "word242.wav",
       "timings": null
@@ -2596,6 +2838,7 @@
       "badges": [
         "م + ع"
       ],
+      "pair": "p21r0g1",
       "text": "مُعُ",
       "audio": "word243.wav",
       "timings": null
@@ -2606,6 +2849,7 @@
       "badges": [
         "م + ع"
       ],
+      "pair": "p21r0g1",
       "text": "مُعِ",
       "audio": "word244.wav",
       "timings": null
@@ -2616,6 +2860,7 @@
       "badges": [
         "ف + غ"
       ],
+      "pair": "p21r1g0",
       "text": "فَغَ",
       "audio": "word245.wav",
       "timings": null
@@ -2626,6 +2871,7 @@
       "badges": [
         "ف + غ"
       ],
+      "pair": "p21r1g0",
       "text": "فَغُ",
       "audio": "word246.wav",
       "timings": null
@@ -2636,6 +2882,7 @@
       "badges": [
         "ل + غ"
       ],
+      "pair": "p21r1g1",
       "text": "لِغِ",
       "audio": "word247.wav",
       "timings": null
@@ -2646,6 +2893,7 @@
       "badges": [
         "ل + غ"
       ],
+      "pair": "p21r1g1",
       "text": "لِغۡ",
       "audio": "word248.wav",
       "timings": null
@@ -2656,6 +2904,7 @@
       "badges": [
         "س + ع"
       ],
+      "pair": "p21r2g0",
       "text": "سَعَ",
       "audio": "word249.wav",
       "timings": null
@@ -2666,6 +2915,7 @@
       "badges": [
         "س + غ"
       ],
+      "pair": "p21r2g0",
       "text": "سَغَ",
       "audio": "word250.wav",
       "timings": null
@@ -2676,6 +2926,7 @@
       "badges": [
         "ن + ع"
       ],
+      "pair": "p21r2g1",
       "text": "نَعۡ",
       "audio": "word251.wav",
       "timings": null
@@ -2686,6 +2937,7 @@
       "badges": [
         "ن + غ"
       ],
+      "pair": "p21r2g1",
       "text": "نَغۡ",
       "audio": "word252.wav",
       "timings": null
@@ -2696,6 +2948,7 @@
       "badges": [
         "س + ف"
       ],
+      "pair": "p22r0g0",
       "text": "سَفَ",
       "audio": "word253.wav",
       "timings": null
@@ -2706,6 +2959,7 @@
       "badges": [
         "س + ف"
       ],
+      "pair": "p22r0g0",
       "text": "سَفۡ",
       "audio": "word254.wav",
       "timings": null
@@ -2716,6 +2970,7 @@
       "badges": [
         "ل + ف"
       ],
+      "pair": "p22r0g1",
       "text": "لُفُ",
       "audio": "word255.wav",
       "timings": null
@@ -2726,6 +2981,7 @@
       "badges": [
         "ل + ف"
       ],
+      "pair": "p22r0g1",
       "text": "لُفِ",
       "audio": "word256.wav",
       "timings": null
@@ -2736,6 +2992,7 @@
       "badges": [
         "ب + ق"
       ],
+      "pair": "p22r1g0",
       "text": "بَقَ",
       "audio": "word257.wav",
       "timings": null
@@ -2746,6 +3003,7 @@
       "badges": [
         "ب + ق"
       ],
+      "pair": "p22r1g0",
       "text": "بَقُ",
       "audio": "word258.wav",
       "timings": null
@@ -2756,6 +3014,7 @@
       "badges": [
         "ع + ق"
       ],
+      "pair": "p22r1g1",
       "text": "عِقِ",
       "audio": "word259.wav",
       "timings": null
@@ -2766,6 +3025,7 @@
       "badges": [
         "ع + ق"
       ],
+      "pair": "p22r1g1",
       "text": "عِقۡ",
       "audio": "word260.wav",
       "timings": null
@@ -2776,6 +3036,7 @@
       "badges": [
         "ن + ف"
       ],
+      "pair": "p22r2g0",
       "text": "نَفَ",
       "audio": "word261.wav",
       "timings": null
@@ -2786,6 +3047,7 @@
       "badges": [
         "ن + ق"
       ],
+      "pair": "p22r2g0",
       "text": "نَقَ",
       "audio": "word262.wav",
       "timings": null
@@ -2796,6 +3058,7 @@
       "badges": [
         "ت + ف"
       ],
+      "pair": "p22r2g1",
       "text": "تَفۡ",
       "audio": "word263.wav",
       "timings": null
@@ -2806,6 +3069,7 @@
       "badges": [
         "ت + ق"
       ],
+      "pair": "p22r2g1",
       "text": "تَقۡ",
       "audio": "word264.wav",
       "timings": null
@@ -2816,6 +3080,7 @@
       "badges": [
         "س + ك"
       ],
+      "pair": "p23r0g0",
       "text": "سَكَ",
       "audio": "word265.wav",
       "timings": null
@@ -2826,6 +3091,7 @@
       "badges": [
         "س + ك"
       ],
+      "pair": "p23r0g0",
       "text": "سَكۡ",
       "audio": "word266.wav",
       "timings": null
@@ -2836,6 +3102,7 @@
       "badges": [
         "ف + ك"
       ],
+      "pair": "p23r0g1",
       "text": "فُكُ",
       "audio": "word267.wav",
       "timings": null
@@ -2846,6 +3113,7 @@
       "badges": [
         "ف + ك"
       ],
+      "pair": "p23r0g1",
       "text": "فُكِ",
       "audio": "word268.wav",
       "timings": null
@@ -2856,6 +3124,7 @@
       "badges": [
         "ن + ك"
       ],
+      "pair": "p23r1g0",
       "text": "نَكَ",
       "audio": "word269.wav",
       "timings": null
@@ -2866,6 +3135,7 @@
       "badges": [
         "ن + ك"
       ],
+      "pair": "p23r1g0",
       "text": "نَكُ",
       "audio": "word270.wav",
       "timings": null
@@ -2876,6 +3146,7 @@
       "badges": [
         "م + ك"
       ],
+      "pair": "p23r1g1",
       "text": "مِكِ",
       "audio": "word271.wav",
       "timings": null
@@ -2886,6 +3157,7 @@
       "badges": [
         "م + ك"
       ],
+      "pair": "p23r1g1",
       "text": "مِكۡ",
       "audio": "word272.wav",
       "timings": null
@@ -2896,6 +3168,7 @@
       "badges": [
         "[ك Light] · ب + ك"
       ],
+      "pair": "p23r2g0",
       "text": "بَكَ",
       "audio": "word273.wav",
       "timings": null
@@ -2906,6 +3179,7 @@
       "badges": [
         "ب + ق"
       ],
+      "pair": "p23r2g0",
       "text": "بَقَ",
       "audio": "word274.wav",
       "timings": null
@@ -2916,6 +3190,7 @@
       "badges": [
         "[ك Light] · ع + ك"
       ],
+      "pair": "p23r2g1",
       "text": "عَكَ",
       "audio": "word275.wav",
       "timings": null
@@ -2926,6 +3201,7 @@
       "badges": [
         "[ق Heavy] · ع + ق"
       ],
+      "pair": "p23r2g1",
       "text": "عَقَ",
       "audio": "word276.wav",
       "timings": null
@@ -2936,6 +3212,7 @@
       "badges": [
         "ب + ل"
       ],
+      "pair": "p24r0g0",
       "text": "بَلَ",
       "audio": "word277.wav",
       "timings": null
@@ -2946,6 +3223,7 @@
       "badges": [
         "ب + ل"
       ],
+      "pair": "p24r0g0",
       "text": "بَلۡ",
       "audio": "word278.wav",
       "timings": null
@@ -2956,6 +3234,7 @@
       "badges": [
         "س + ل"
       ],
+      "pair": "p24r0g1",
       "text": "سُلُ",
       "audio": "word279.wav",
       "timings": null
@@ -2966,6 +3245,7 @@
       "badges": [
         "س + ل"
       ],
+      "pair": "p24r0g1",
       "text": "سُلِ",
       "audio": "word280.wav",
       "timings": null
@@ -2976,6 +3256,7 @@
       "badges": [
         "ع + م"
       ],
+      "pair": "p24r1g0",
       "text": "عَمَ",
       "audio": "word281.wav",
       "timings": null
@@ -2986,6 +3267,7 @@
       "badges": [
         "ع + م"
       ],
+      "pair": "p24r1g0",
       "text": "عَمُ",
       "audio": "word282.wav",
       "timings": null
@@ -2996,6 +3278,7 @@
       "badges": [
         "ف + م"
       ],
+      "pair": "p24r1g1",
       "text": "فِمِ",
       "audio": "word283.wav",
       "timings": null
@@ -3006,6 +3289,7 @@
       "badges": [
         "ف + م"
       ],
+      "pair": "p24r1g1",
       "text": "فِمۡ",
       "audio": "word284.wav",
       "timings": null
@@ -3016,6 +3300,7 @@
       "badges": [
         "ك + ل"
       ],
+      "pair": "p24r2g0",
       "text": "كَلَ",
       "audio": "word285.wav",
       "timings": null
@@ -3026,6 +3311,7 @@
       "badges": [
         "ك + م"
       ],
+      "pair": "p24r2g0",
       "text": "كَمَ",
       "audio": "word286.wav",
       "timings": null
@@ -3036,6 +3322,7 @@
       "badges": [
         "ت + ل"
       ],
+      "pair": "p24r2g1",
       "text": "تَلۡ",
       "audio": "word287.wav",
       "timings": null
@@ -3046,6 +3333,7 @@
       "badges": [
         "ت + م"
       ],
+      "pair": "p24r2g1",
       "text": "تَمۡ",
       "audio": "word288.wav",
       "timings": null
@@ -3056,6 +3344,7 @@
       "badges": [
         "ب + هـ"
       ],
+      "pair": "p25r0g0",
       "text": "بَهَ",
       "audio": "word289.wav",
       "timings": null
@@ -3066,6 +3355,7 @@
       "badges": [
         "ب + هـ"
       ],
+      "pair": "p25r0g0",
       "text": "بَهۡ",
       "audio": "word290.wav",
       "timings": null
@@ -3076,6 +3366,7 @@
       "badges": [
         "ف + هـ"
       ],
+      "pair": "p25r0g1",
       "text": "فُهُ",
       "audio": "word291.wav",
       "timings": null
@@ -3086,6 +3377,7 @@
       "badges": [
         "ف + هـ"
       ],
+      "pair": "p25r0g1",
       "text": "فُهِ",
       "audio": "word292.wav",
       "timings": null
@@ -3096,6 +3388,7 @@
       "badges": [
         "ع + هـ"
       ],
+      "pair": "p25r1g0",
       "text": "عَهَ",
       "audio": "word293.wav",
       "timings": null
@@ -3106,6 +3399,7 @@
       "badges": [
         "ع + هـ"
       ],
+      "pair": "p25r1g0",
       "text": "عَهُ",
       "audio": "word294.wav",
       "timings": null
@@ -3116,6 +3410,7 @@
       "badges": [
         "م + هـ"
       ],
+      "pair": "p25r1g1",
       "text": "مِهِ",
       "audio": "word295.wav",
       "timings": null
@@ -3126,6 +3421,7 @@
       "badges": [
         "م + هـ"
       ],
+      "pair": "p25r1g1",
       "text": "مِهۡ",
       "audio": "word296.wav",
       "timings": null
@@ -3136,6 +3432,7 @@
       "badges": [
         "ب + هـ"
       ],
+      "pair": "p25r2g0",
       "text": "بَهَ",
       "audio": "word297.wav",
       "timings": null
@@ -3146,6 +3443,7 @@
       "badges": [
         "ب + ح"
       ],
+      "pair": "p25r2g0",
       "text": "بَحَ",
       "audio": "word298.wav",
       "timings": null
@@ -3156,6 +3454,7 @@
       "badges": [
         "س + هـ"
       ],
+      "pair": "p25r2g1",
       "text": "سَهۡ",
       "audio": "word299.wav",
       "timings": null
@@ -3166,6 +3465,7 @@
       "badges": [
         "س + ح"
       ],
+      "pair": "p25r2g1",
       "text": "سَحۡ",
       "audio": "word300.wav",
       "timings": null
@@ -3176,6 +3476,7 @@
       "badges": [
         "ن + ب"
       ],
+      "pair": "p26r0g0",
       "text": "نَبُ",
       "audio": "word301.wav",
       "timings": null
@@ -3186,6 +3487,7 @@
       "badges": [
         "س + ت"
       ],
+      "pair": "p26r0g0",
       "text": "سِتَ",
       "audio": "word302.wav",
       "timings": null
@@ -3196,6 +3498,7 @@
       "badges": [
         "ع + ث"
       ],
+      "pair": "p26r0g1",
       "text": "عَثۡ",
       "audio": "word303.wav",
       "timings": null
@@ -3206,6 +3509,7 @@
       "badges": [
         "م + ن"
       ],
+      "pair": "p26r0g1",
       "text": "مَنِ",
       "audio": "word304.wav",
       "timings": null
@@ -3216,6 +3520,7 @@
       "badges": [
         "ف + ى"
       ],
+      "pair": "p26r1g0",
       "text": "فَىَ",
       "audio": "word305.wav",
       "timings": null
@@ -3226,6 +3531,7 @@
       "badges": [
         "ب + ج"
       ],
+      "pair": "p26r1g0",
       "text": "بُجَ",
       "audio": "word306.wav",
       "timings": null
@@ -3236,6 +3542,7 @@
       "badges": [
         "ن + ح"
       ],
+      "pair": "p26r1g1",
       "text": "نَحِ",
       "audio": "word307.wav",
       "timings": null
@@ -3246,6 +3553,7 @@
       "badges": [
         "ت + خ"
       ],
+      "pair": "p26r1g1",
       "text": "تَخُ",
       "audio": "word308.wav",
       "timings": null
@@ -3256,6 +3564,7 @@
       "badges": [
         "ب + س"
       ],
+      "pair": "p26r2g0",
       "text": "بَسۡ",
       "audio": "word309.wav",
       "timings": null
@@ -3266,6 +3575,7 @@
       "badges": [
         "ل + ش"
       ],
+      "pair": "p26r2g0",
       "text": "لِشَ",
       "audio": "word310.wav",
       "timings": null
@@ -3276,6 +3586,7 @@
       "badges": [
         "ع + ص"
       ],
+      "pair": "p26r2g1",
       "text": "عَصُ",
       "audio": "word311.wav",
       "timings": null
@@ -3286,6 +3597,7 @@
       "badges": [
         "ق + ض"
       ],
+      "pair": "p26r2g1",
       "text": "قَضِ",
       "audio": "word312.wav",
       "timings": null
@@ -3296,6 +3608,7 @@
       "badges": [
         "س + ط"
       ],
+      "pair": "p27r0g0",
       "text": "سَطُ",
       "audio": "word313.wav",
       "timings": null
@@ -3306,6 +3619,7 @@
       "badges": [
         "م + ظ"
       ],
+      "pair": "p27r0g0",
       "text": "مِظَ",
       "audio": "word314.wav",
       "timings": null
@@ -3316,6 +3630,7 @@
       "badges": [
         "ب + ع"
       ],
+      "pair": "p27r0g1",
       "text": "بُعِ",
       "audio": "word315.wav",
       "timings": null
@@ -3326,6 +3641,7 @@
       "badges": [
         "س + غ"
       ],
+      "pair": "p27r0g1",
       "text": "سَغۡ",
       "audio": "word316.wav",
       "timings": null
@@ -3336,6 +3652,7 @@
       "badges": [
         "ع + ف"
       ],
+      "pair": "p27r1g0",
       "text": "عَفُ",
       "audio": "word317.wav",
       "timings": null
@@ -3346,6 +3663,7 @@
       "badges": [
         "ت + ق"
       ],
+      "pair": "p27r1g0",
       "text": "تِقَ",
       "audio": "word318.wav",
       "timings": null
@@ -3356,6 +3674,7 @@
       "badges": [
         "ف + ك"
       ],
+      "pair": "p27r1g1",
       "text": "فَكۡ",
       "audio": "word319.wav",
       "timings": null
@@ -3366,6 +3685,7 @@
       "badges": [
         "ب + ل"
       ],
+      "pair": "p27r1g1",
       "text": "بَلِ",
       "audio": "word320.wav",
       "timings": null
@@ -3376,6 +3696,7 @@
       "badges": [
         "س + م"
       ],
+      "pair": "p27r2g0",
       "text": "سَمَ",
       "audio": "word321.wav",
       "timings": null
@@ -3386,6 +3707,7 @@
       "badges": [
         "ل + هـ"
       ],
+      "pair": "p27r2g0",
       "text": "لَهُ",
       "audio": "word322.wav",
       "timings": null
@@ -3396,6 +3718,7 @@
       "badges": [
         "ع + ب"
       ],
+      "pair": "p27r2g1",
       "text": "عَبۡ",
       "audio": "word323.wav",
       "timings": null
@@ -3406,6 +3729,7 @@
       "badges": [
         "ف + س"
       ],
+      "pair": "p27r2g1",
       "text": "فِسَ",
       "audio": "word324.wav",
       "timings": null

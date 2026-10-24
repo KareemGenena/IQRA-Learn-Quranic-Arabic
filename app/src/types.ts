@@ -60,6 +60,10 @@ export interface LessonSection {
    *  drills, two words said together, where "at a stop" means nothing — so
    *  the cards show no reading tabs even on a Level 3 lesson. */
   readings?: boolean;
+  /** 2 on a section laid out as the paper's right and left boxes (lesson
+   *  34's ة page: right box keep going, left box stop) — two columns at any
+   *  width that can hold them, one column on a phone, in that order. */
+  columns?: number;
 }
 
 /** Lesson 3 shape: one word per recording, with the taught letter marked. */
@@ -81,6 +85,10 @@ export interface LetterWord {
   /** Captions for this card's forms, where they differ card by card (the
    *  workbook lessons); a lesson-wide `formLabels` on the Lesson otherwise. */
   formLabels?: string[];
+  /** Cards that belong together — the two boxes of one row of the paper, or
+   *  the two words of one column group — share a key, and a screen never
+   *  splits them. */
+  pair?: string;
   /** Which lam rule applies, for the silent-letter coloring. */
   lam?: LamType;
   /** A picture that belongs with this card — a waveform, a diagram. */
@@ -194,6 +202,8 @@ export interface LessonItem {
   image?: string;
   forms: Playable[];
   formLabels?: string[];
+  /** See LetterWord.pair: a screen never splits cards that share one. */
+  pair?: string;
   // ── Letter cards ──────────────────────────────────────────────────────
   letter?: string;
   name?: string;
