@@ -34,7 +34,16 @@ function LessonList({
         return (
           <li key={l.id}>
             <a className={`lesson-card is-${state}${l.check ? ' is-check' : ''}`} href={`#/lesson/${l.id}`}>
-              <span className="lesson-no">{state === 'done' ? '✓' : l.check ? '?' : i + 1}</span>
+              {/* The number stays; a done lesson wears a small tick on the
+                  circle's corner instead of losing its number to it. */}
+              <span className="lesson-no">
+                {l.check ? '?' : i + 1}
+                {state === 'done' && (
+                  <span className="lesson-tick" role="img" aria-label="done">
+                    ✓
+                  </span>
+                )}
+              </span>
               <span className="lesson-body">
                 <span className="lesson-title">
                   {l.title}

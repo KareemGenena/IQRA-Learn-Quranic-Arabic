@@ -14,10 +14,12 @@ import type { ReactNode } from 'react';
  * (from the right-hand form to the left-hand one), and split into two
  * isolated runs with the arrow between them the pieces came out in
  * left-to-right order and the arrow pointed the wrong way (the author,
- * 2026-10-24).
+ * 2026-10-24). The same for a plus or a dash between Arabic pieces: a
+ * decomposition ع + د + ن is read right to left, ع first, and split at
+ * the pluses it came out ن + د + ع.
  */
 const AR = '\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\uFB50-\\uFDFF\\uFE70-\\uFEFF';
-const RUN = new RegExp(`[${AR}](?:[${AR} \\u00A0\\u200B-\\u200D\\u2190-\\u2199\\u27F5-\\u27FA]*[${AR}])?`, 'g');
+const RUN = new RegExp(`[${AR}](?:[${AR} \\u00A0\\u200B-\\u200D\\u2190-\\u2199\\u27F5-\\u27FA+\\-\\u2013\\u2014]*[${AR}])?`, 'g');
 
 export function mixed(text: string): ReactNode[] {
   const out: ReactNode[] = [];

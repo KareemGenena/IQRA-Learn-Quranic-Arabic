@@ -1566,6 +1566,25 @@ all five points agreed, in the order they will be built:
    (section 2 "The Level checks"). Not built: self-marked read-aloud, the
    teacher marking a roster, account sync of the score.
 
+**The author's late round of 2026-10-24.** Built: the lesson number
+stays on the home page and a done lesson wears a small gold tick on the
+circle's corner (`.lesson-tick`); a plus or a dash between Arabic pieces
+stays inside one right-to-left run, so a decomposition chip reads ع + د
++ ن from the right (`Mixed.tsx`). **Asked, not built: cards flowing right
+to left.** The author wants card 1 at the right and the ة page of lesson
+34 laid out as the paper is — right box keep going, left box stop — and
+said to stop and ask whether it breaks anything. The assessment: CSS
+`direction: rtl` on `.pair-grid` (cards flow from the right, internals
+kept LTR) breaks nothing mechanical — keys, numbering, calibration,
+clips are untouched — but changes the order on screen in every lesson
+and the companion; the ة page additionally needs its section held to two
+columns (a per-section `columns` on `LessonSection`, the grid class
+`cols-2`) so each pair stays on one row, which on a phone narrower than
+~480 px must fall back to one column with the chip saying which box is
+which; forms inside a card stay stacked top to bottom (`.pair-forms` is
+one column), so lesson 4's alone / وَ / ثُمَّ is unchanged. Waiting on
+the author's yes.
+
 **The author's nine points of 2026-10-24, the evening round, built,
 deployed and pushed.** Level 3 reads, by `lessonLabel`, 34 · 2 · 4 · 35 ·
 3 · 7 · 36 · 37, so "Level 3 lesson 3" is lesson 4 (hamzat waṣl), lesson

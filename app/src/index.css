@@ -583,6 +583,28 @@ body {
   background: #14513a;
 }
 
+/* The tick of a done lesson: a small badge on the number's corner. */
+.lesson-no {
+  position: relative;
+}
+
+.lesson-tick {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #c1a054;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  border: 2px solid var(--card);
+}
+
 /* A Level check: gold, last in its Level, "?" for a number. */
 .lesson-card.is-check .lesson-no {
   background: #c1a054;
