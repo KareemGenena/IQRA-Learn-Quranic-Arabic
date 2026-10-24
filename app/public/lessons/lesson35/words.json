@@ -10,37 +10,37 @@
       "id": "p13",
       "title": "Page 13",
       "titleArabic": "صفحة 13",
-      "hint": "Workbook Level 3, page 13 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
+      "hint": "Hams = whisper. With كۡ let a little air flow out, like a soft whisper. Middle or end of the word, the air still flows. At the end, stop softly — no bounce. Workbook Level 3, page 13 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p14",
       "title": "Page 14",
       "titleArabic": "صفحة 14",
-      "hint": "Workbook Level 3, page 14 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
+      "hint": "Hams = whisper. With تۡ let a little air flow out, like a soft whisper. Say تۡ softly with a little air — it is not a qalqala letter, so no bounce. Workbook Level 3, page 14 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p15",
       "title": "Page 15",
       "titleArabic": "صفحة 15",
-      "hint": "Workbook Level 3, page 15 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
+      "hint": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy. Workbook Level 3, page 15 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p16",
       "title": "Page 16",
       "titleArabic": "صفحة 16",
-      "hint": "Workbook Level 3, page 16 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
+      "hint": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes. Workbook Level 3, page 16 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p17",
       "title": "Page 17",
       "titleArabic": "صفحة 17",
-      "hint": "Workbook Level 3, page 17 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
+      "hint": "The ل of ٱللَّه is heavy after fatha or damma (or when you start), light after kasra. Every other ل is light. لِلَّهِ is a short spelling: لِ + ٱللَّه. The ٱ and one ل are not written. Workbook Level 3, page 17 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p18",
       "title": "Page 18",
       "titleArabic": "صفحة 18",
-      "hint": "Workbook Level 3, page 18 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
+      "hint": "Heavy ر: full, deep sound. Light ر: thin sound. Read the rule above each table first. Workbook Level 3, page 18 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p19",
@@ -52,7 +52,7 @@
       "id": "p20",
       "title": "Page 20",
       "titleArabic": "صفحة 20",
-      "hint": "Workbook Level 3, page 20 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
+      "hint": "Start ٱرۡ with إِ. This kasra is borrowed, so رۡ stays heavy. Workbook Level 3, page 20 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p21",
@@ -64,7 +64,7 @@
       "id": "p22",
       "title": "Page 22",
       "titleArabic": "صفحة 22",
-      "hint": "Workbook Level 3, page 22 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
+      "hint": "فِرۡقٍ: heavy or light when you keep reading; heavy when you stop on it. مِصۡرَ and ٱلۡقِطۡرِ: heavy or light only when you stop. Preferred: مِصۡرَ heavy, ٱلۡقِطۡرِ light. Workbook Level 3, page 22 — Makharij & Sifat. Tap a form to hear it, then trace it on the page."
     }
   ],
   "words": [
@@ -76,7 +76,8 @@
       ],
       "text": "أَكۡثَرَ",
       "audio": "word01.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With كۡ let a little air flow out, like a soft whisper. Middle or end of the word, the air still flows. At the end, stop softly — no bounce."
     },
     {
       "id": 2,
@@ -86,7 +87,8 @@
       ],
       "text": "ذِكۡرَىٰ",
       "audio": "word02.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With كۡ let a little air flow out, like a soft whisper. Middle or end of the word, the air still flows. At the end, stop softly — no bounce."
     },
     {
       "id": 3,
@@ -96,7 +98,8 @@
       ],
       "text": "حُكۡمًا",
       "audio": "word03.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With كۡ let a little air flow out, like a soft whisper. Middle or end of the word, the air still flows. At the end, stop softly — no bounce."
     },
     {
       "id": 4,
@@ -106,7 +109,8 @@
       ],
       "text": "يُشۡرِكۡ",
       "audio": "word04.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With كۡ let a little air flow out, like a soft whisper. Middle or end of the word, the air still flows. At the end, stop softly — no bounce."
     },
     {
       "id": 5,
@@ -116,7 +120,8 @@
       ],
       "text": "أَمۡسِكۡ",
       "audio": "word05.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With كۡ let a little air flow out, like a soft whisper. Middle or end of the word, the air still flows. At the end, stop softly — no bounce."
     },
     {
       "id": 6,
@@ -126,7 +131,8 @@
       ],
       "text": "تُحَرِّكۡ",
       "audio": "word06.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With كۡ let a little air flow out, like a soft whisper. Middle or end of the word, the air still flows. At the end, stop softly — no bounce."
     },
     {
       "id": 7,
@@ -136,7 +142,8 @@
       ],
       "text": "تُتۡلَىٰ",
       "audio": "word07.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With تۡ let a little air flow out, like a soft whisper. Say تۡ softly with a little air — it is not a qalqala letter, so no bounce."
     },
     {
       "id": 8,
@@ -146,7 +153,8 @@
       ],
       "text": "يَتۡلُونَ",
       "audio": "word08.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With تۡ let a little air flow out, like a soft whisper. Say تۡ softly with a little air — it is not a qalqala letter, so no bounce."
     },
     {
       "id": 9,
@@ -156,7 +164,8 @@
       ],
       "text": "أَتۡبَعَ",
       "audio": "word09.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With تۡ let a little air flow out, like a soft whisper. Say تۡ softly with a little air — it is not a qalqala letter, so no bounce."
     },
     {
       "id": 10,
@@ -166,7 +175,8 @@
       ],
       "text": "قَالَتۡ",
       "audio": "word10.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With تۡ let a little air flow out, like a soft whisper. Say تۡ softly with a little air — it is not a qalqala letter, so no bounce."
     },
     {
       "id": 11,
@@ -176,7 +186,8 @@
       ],
       "text": "كَسَبَتۡ",
       "audio": "word11.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With تۡ let a little air flow out, like a soft whisper. Say تۡ softly with a little air — it is not a qalqala letter, so no bounce."
     },
     {
       "id": 12,
@@ -186,7 +197,8 @@
       ],
       "text": "خَلَتۡ",
       "audio": "word12.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Hams = whisper. With تۡ let a little air flow out, like a soft whisper. Say تۡ softly with a little air — it is not a qalqala letter, so no bounce."
     },
     {
       "id": 13,
@@ -196,7 +208,8 @@
       ],
       "text": "خَلَقَ",
       "audio": "word13.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 14,
@@ -206,7 +219,8 @@
       ],
       "text": "خُلِقَ",
       "audio": "word14.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 15,
@@ -216,7 +230,8 @@
       ],
       "text": "خِلَٰلَ",
       "audio": "word15.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 16,
@@ -226,7 +241,8 @@
       ],
       "text": "غَيۡبَ",
       "audio": "word16.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 17,
@@ -236,7 +252,8 @@
       ],
       "text": "غُلِبَتِ",
       "audio": "word17.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 18,
@@ -246,7 +263,8 @@
       ],
       "text": "غِشَٰوَةٌ",
       "audio": "word18.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 19,
@@ -256,7 +274,8 @@
       ],
       "text": "قَبۡلَ",
       "audio": "word19.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 20,
@@ -266,7 +285,8 @@
       ],
       "text": "قُلُوبِ",
       "audio": "word20.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 21,
@@ -276,7 +296,8 @@
       ],
       "text": "قِيلَ",
       "audio": "word21.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 22,
@@ -286,7 +307,8 @@
       ],
       "text": "صَدَقَ",
       "audio": "word22.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 23,
@@ -296,7 +318,8 @@
       ],
       "text": "صُحُفِ",
       "audio": "word23.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 24,
@@ -306,7 +329,8 @@
       ],
       "text": "صِبۡغَةَ",
       "audio": "word24.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter. Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
     },
     {
       "id": 25,
@@ -316,7 +340,8 @@
       ],
       "text": "ضَرَبَ",
       "audio": "word25.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 26,
@@ -326,7 +351,8 @@
       ],
       "text": "ضُرِبَ",
       "audio": "word26.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 27,
@@ -336,7 +362,8 @@
       ],
       "text": "ضِعۡفَ",
       "audio": "word27.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 28,
@@ -346,7 +373,8 @@
       ],
       "text": "طَبَعَ",
       "audio": "word28.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 29,
@@ -356,7 +384,8 @@
       ],
       "text": "طُوبَىٰ",
       "audio": "word29.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 30,
@@ -366,7 +395,8 @@
       ],
       "text": "طِينٍ",
       "audio": "word30.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 31,
@@ -376,7 +406,8 @@
       ],
       "text": "ظَلَمَ",
       "audio": "word31.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 32,
@@ -386,7 +417,8 @@
       ],
       "text": "ظُلِمَ",
       "audio": "word32.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 33,
@@ -396,7 +428,8 @@
       ],
       "text": "ظِلَٰلٍ",
       "audio": "word33.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy. Same deep sound in all three boxes."
     },
     {
       "id": 34,
@@ -406,7 +439,8 @@
       ],
       "text": "ٱللَّهُ أَكۡبَرُ",
       "audio": "word34.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The ل of ٱللَّه is heavy after fatha or damma (or when you start), light after kasra. Every other ل is light. لِلَّهِ is a short spelling: لِ + ٱللَّه. The ٱ and one ل are not written."
     },
     {
       "id": 35,
@@ -416,7 +450,8 @@
       ],
       "text": "هُوَ ٱللَّهُ",
       "audio": "word35.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The ل of ٱللَّه is heavy after fatha or damma (or when you start), light after kasra. Every other ل is light. لِلَّهِ is a short spelling: لِ + ٱللَّه. The ٱ and one ل are not written."
     },
     {
       "id": 36,
@@ -426,7 +461,8 @@
       ],
       "text": "يَبۡعَثُهُمُ ٱللَّهُ",
       "audio": "word36.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The ل of ٱللَّه is heavy after fatha or damma (or when you start), light after kasra. Every other ل is light. لِلَّهِ is a short spelling: لِ + ٱللَّه. The ٱ and one ل are not written."
     },
     {
       "id": 37,
@@ -436,7 +472,8 @@
       ],
       "text": "بِٱللَّهِ",
       "audio": "word37.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The ل of ٱللَّه is heavy after fatha or damma (or when you start), light after kasra. Every other ل is light. لِلَّهِ is a short spelling: لِ + ٱللَّه. The ٱ and one ل are not written."
     },
     {
       "id": 38,
@@ -446,7 +483,8 @@
       ],
       "text": "بِسۡمِ ٱللَّهِ",
       "audio": "word38.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The ل of ٱللَّه is heavy after fatha or damma (or when you start), light after kasra. Every other ل is light. لِلَّهِ is a short spelling: لِ + ٱللَّه. The ٱ and one ل are not written."
     },
     {
       "id": 39,
@@ -456,7 +494,8 @@
       ],
       "text": "لِلَّهِ",
       "audio": "word39.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The ل of ٱللَّه is heavy after fatha or damma (or when you start), light after kasra. Every other ل is light. لِلَّهِ is a short spelling: لِ + ٱللَّه. The ٱ and one ل are not written."
     },
     {
       "id": 40,
@@ -466,7 +505,8 @@
       ],
       "text": "رَمَضَانَ",
       "audio": "word40.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (1): ر has a fatha:  رَ"
     },
     {
       "id": 41,
@@ -476,7 +516,8 @@
       ],
       "text": "رَبَّنَا",
       "audio": "word41.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (1): ر has a fatha:  رَ"
     },
     {
       "id": 42,
@@ -486,7 +527,8 @@
       ],
       "text": "مَرۡيَمَ",
       "audio": "word42.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (2): رۡ comes right after a fatha"
     },
     {
       "id": 43,
@@ -496,7 +538,8 @@
       ],
       "text": "يَرۡجِعُونَ",
       "audio": "word43.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (2): رۡ comes right after a fatha"
     },
     {
       "id": 44,
@@ -506,7 +549,8 @@
       ],
       "text": "وَٱلۡعَصۡرِ",
       "audio": "word44.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (3): Stopping: رۡ comes after a sakin letter (not ي), and before that a fatha"
     },
     {
       "id": 45,
@@ -516,7 +560,8 @@
       ],
       "text": "ٱلنَّارِ",
       "audio": "word45.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (3): Stopping: رۡ comes after a sakin letter (not ي), and before that a fatha"
     },
     {
       "id": 46,
@@ -526,7 +571,8 @@
       ],
       "text": "رُزِقۡنَا",
       "audio": "word46.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (4): ر has a damma:  رُ"
     },
     {
       "id": 47,
@@ -536,7 +582,8 @@
       ],
       "text": "رُسُلُنَا",
       "audio": "word47.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (4): ر has a damma:  رُ"
     },
     {
       "id": 48,
@@ -546,7 +593,8 @@
       ],
       "text": "ٱلۡقُرۡءَانَ",
       "audio": "word48.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (5): رۡ comes right after a damma"
     },
     {
       "id": 49,
@@ -556,7 +604,8 @@
       ],
       "text": "يُرۡزَقُونَ",
       "audio": "word49.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (5): رۡ comes right after a damma"
     },
     {
       "id": 50,
@@ -566,7 +615,8 @@
       ],
       "text": "خُسۡرٍ",
       "audio": "word50.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (6): Stopping: رۡ comes after a sakin letter, and before that a damma"
     },
     {
       "id": 51,
@@ -576,7 +626,8 @@
       ],
       "text": "ٱلۡأُمُورُ",
       "audio": "word51.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (6): Stopping: رۡ comes after a sakin letter, and before that a damma"
     },
     {
       "id": 52,
@@ -586,7 +637,8 @@
       ],
       "text": "قِرۡطَاسٍ",
       "audio": "word52.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (7): رۡ after a kasra, then a heavy letter (without kasra) in the same word"
     },
     {
       "id": 53,
@@ -596,7 +648,8 @@
       ],
       "text": "مِرۡصَادًا",
       "audio": "word53.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (7): رۡ after a kasra, then a heavy letter (without kasra) in the same word"
     },
     {
       "id": 54,
@@ -606,7 +659,8 @@
       ],
       "text": "ٱرۡجِعۡ",
       "audio": "word54.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (8): رۡ after a kasra that is not original (borrowed)"
     },
     {
       "id": 55,
@@ -616,7 +670,8 @@
       ],
       "text": "ٱلَّذِى ٱرۡتَضَىٰ",
       "audio": "word55.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Heavy (8): رۡ after a kasra that is not original (borrowed)"
     },
     {
       "id": 56,
@@ -626,7 +681,8 @@
       ],
       "text": "كَرِيمٍ",
       "audio": "word56.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Light (1): ر has a kasra:  رِ"
     },
     {
       "id": 57,
@@ -636,7 +692,8 @@
       ],
       "text": "رِجَالٌ",
       "audio": "word57.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Light (1): ر has a kasra:  رِ"
     },
     {
       "id": 58,
@@ -646,7 +703,8 @@
       ],
       "text": "فِرۡعَوۡنَ",
       "audio": "word58.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Light (2): رۡ after an original kasra, with no heavy letter after it"
     },
     {
       "id": 59,
@@ -656,7 +714,8 @@
       ],
       "text": "شِرۡعَةً",
       "audio": "word59.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Light (2): رۡ after an original kasra, with no heavy letter after it"
     },
     {
       "id": 60,
@@ -666,7 +725,8 @@
       ],
       "text": "حِجۡرٍ",
       "audio": "word60.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Light (3): Stopping: رۡ comes after a sakin letter that is not heavy, and before that a kasra"
     },
     {
       "id": 61,
@@ -676,7 +736,8 @@
       ],
       "text": "قَدِيرٌ",
       "audio": "word61.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Light (3): Stopping: رۡ comes after a sakin letter that is not heavy, and before that a kasra"
     },
     {
       "id": 62,
@@ -686,7 +747,8 @@
       ],
       "text": "خَيۡرٌ",
       "audio": "word62.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Light (4): Stopping: رۡ comes after a yaa leen  ـَيۡ"
     },
     {
       "id": 63,
@@ -696,7 +758,8 @@
       ],
       "text": "ضَيۡرَ",
       "audio": "word63.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Light (4): Stopping: رۡ comes after a yaa leen  ـَيۡ"
     },
     {
       "id": 64,
@@ -706,7 +769,8 @@
       ],
       "text": "فِرۡقٍ",
       "audio": "word64.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "فِرۡقٍ: heavy or light when you keep reading; heavy when you stop on it. مِصۡرَ and ٱلۡقِطۡرِ: heavy or light only when you stop. Preferred: مِصۡرَ heavy, ٱلۡقِطۡرِ light."
     },
     {
       "id": 65,
@@ -716,7 +780,8 @@
       ],
       "text": "مِصۡرَ",
       "audio": "word65.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "فِرۡقٍ: heavy or light when you keep reading; heavy when you stop on it. مِصۡرَ and ٱلۡقِطۡرِ: heavy or light only when you stop. Preferred: مِصۡرَ heavy, ٱلۡقِطۡرِ light."
     },
     {
       "id": 66,
@@ -726,7 +791,8 @@
       ],
       "text": "ٱلۡقِطۡرِ",
       "audio": "word66.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "فِرۡقٍ: heavy or light when you keep reading; heavy when you stop on it. مِصۡرَ and ٱلۡقِطۡرِ: heavy or light only when you stop. Preferred: مِصۡرَ heavy, ٱلۡقِطۡرِ light."
     }
   ]
 }

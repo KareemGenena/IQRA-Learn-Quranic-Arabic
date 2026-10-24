@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArabicWord } from '../components/ArabicWord';
 import { splitClusters } from '../lib/graphemes';
 import { audibleIndices } from '../lib/timing';
-import { getAudioSrc } from '../lib/audioSource';
 import { speechBounds } from '../lib/audioAnalysis';
 import { allPlayables } from '../lib/lessons';
 import { clearCalibration, loadCalibration, saveCalibration } from '../lib/calibration';
@@ -25,7 +24,9 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
   const [calVersion, setCalVersion] = useState(0);
   const [syncMsg, setSyncMsg] = useState('');
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  /** The capture's player — the lesson's own engine, so a tap is stamped on
+   *  the clock the highlight will run on. */
+  const captureRef = useRef<PlaybackHandle | null>(null);
   const tapsRef = useRef<number[]>([]);
   const previewRef = useRef<PlaybackHandle | null>(null);
 
@@ -47,10 +48,8 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
     stopActivePlayback();
     previewRef.current?.stop();
     previewRef.current = null;
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-    }
+    captureRef.current?.stop();
+    captureRef.current = null;
     setActiveIndex(null);
   };
 
@@ -65,18 +64,21 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
   const startCapture = async () => {
     stopEverything();
     const url = audioUrl(lesson, playable);
-    const [bounds, src] = await Promise.all([speechBounds(url), getAudioSrc(url)]);
+    const bounds = await speechBounds(url);
 
     tapsRef.current = [];
     setTaps([]);
     setPhase('capturing');
 
-    const audio = new Audio(src);
-    audio.playbackRate = rate;
-    audio.preservesPitch = true;
-    audioRef.current = audio;
-
+    // Played through the lesson's own engine and stamped on its clock — what
+    // is being HEARD at the tap. The old capture read a fresh media
+    // element's clock, which runs ahead of the speaker until its output is
+    // open, so every tap was early by that much and the saved timing led the
+    // voice (2026-10-24).
     const finalize = () => {
+      if (captureRef.current !== handle) return;
+      captureRef.current = null;
+      window.clearInterval(tailCheck);
       const captured = tapsRef.current;
       if (captured.length === audible.length) {
         const lastTap = captured[captured.length - 1];
@@ -87,29 +89,23 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
         setPhase('idle');
         setTaps([]);
       }
-      audio.pause();
-      audioRef.current = null;
+      handle.stop();
     };
-
-    audio.addEventListener('ended', finalize);
+    const handle = playWithHighlights(url, [0, bounds.duration], () => {}, finalize, rate);
+    captureRef.current = handle;
     // Don't sit through the silent tail once every letter has been tapped.
-    audio.addEventListener('timeupdate', () => {
-      if (
-        audioRef.current === audio &&
-        tapsRef.current.length === audible.length &&
-        audio.currentTime >= bounds.end
-      ) {
+    const tailCheck = window.setInterval(() => {
+      if (captureRef.current === handle && tapsRef.current.length === audible.length && handle.now() >= bounds.end) {
         finalize();
       }
-    });
-    void audio.play();
+    }, 100);
   };
 
   const recordTap = () => {
-    const audio = audioRef.current;
-    if (phase !== 'capturing' || !audio || tapsRef.current.length >= audible.length) return;
+    const handle = captureRef.current;
+    if (phase !== 'capturing' || !handle || tapsRef.current.length >= audible.length) return;
     // Reaction time is wall-clock; the media only advanced by offset × rate.
-    const t = Math.max(0, audio.currentTime - (offsetMs / 1000) * rate);
+    const t = Math.max(0, handle.now() - (offsetMs / 1000) * rate);
     const prev = tapsRef.current[tapsRef.current.length - 1] ?? -1;
     tapsRef.current = [...tapsRef.current, Math.max(t, prev + 0.01)];
     setTaps(tapsRef.current);
@@ -130,9 +126,8 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
   const preview = async () => {
     if (!boundaries) return;
     stopEverything();
-    const src = await getAudioSrc(audioUrl(lesson, playable));
     previewRef.current = playWithHighlights(
-      src,
+      audioUrl(lesson, playable),
       boundaries,
       setActiveIndex,
       () => {

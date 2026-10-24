@@ -32,6 +32,9 @@ export interface WorkbookItem {
   text: string;
   /** The caption row under the item: "Fat-ha", "د + ر", "[ل silent] · طّ". */
   caption: string;
+  /** The rule line the master prints above the item's table, when it has
+   *  one ("Heavy (1): ر has a fatha: رَ"). */
+  rule?: string;
   audio?: WorkbookAudio;
 }
 
@@ -43,6 +46,9 @@ export interface WorkbookPageData {
   section: string | null;
   /** A sub-heading within the section, when the page has one. */
   part?: string;
+  /** The page's "★ Tip" lines — the rule being practised, in the author's
+   *  words. */
+  tips?: string[];
   items: WorkbookItem[];
 }
 

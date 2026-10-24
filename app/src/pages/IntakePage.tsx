@@ -322,7 +322,7 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
         <label className="intake-field">
           <span>Reading</span>
           <select value={reading} onChange={(e) => setReading(e.target.value as Reading)}>
-            <option value="continuing">Continuing — each word with its final vowel</option>
+            <option value="continuing">Continuing — each word with its final haraka</option>
             <option value="stop">At a stop — each word as read when you stop on it</option>
           </select>
         </label>

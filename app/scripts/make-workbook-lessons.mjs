@@ -152,6 +152,16 @@ for (const n of NUMBERS) {
   const rows = readSheet(sheetPath);
   const captionOf = new Map();
   for (const p of pages) for (const it of p.items) if (!captionOf.has(exact(it.text))) captionOf.set(exact(it.text), it.caption);
+  // What a card studies, for its (i): the rule the master prints above the
+  // item's table ("Heavy (1): ر has a fatha: رَ"), else the page's own tips.
+  // Both in the author's words, from the master; nothing is authored here.
+  const ruleOf = new Map();
+  const tipsOf = new Map();
+  for (const p of pages) {
+    tipsOf.set(p.printed, (p.tips ?? []).join(' '));
+    for (const it of p.items) if (it.rule && !ruleOf.has(exact(it.text))) ruleOf.set(exact(it.text), it.rule);
+  }
+  const studied = (text, pg) => ruleOf.get(exact(text)) || tipsOf.get(pg) || undefined;
 
   const cards = [];
   for (const r of rows) {
@@ -168,7 +178,12 @@ for (const n of NUMBERS) {
     id: `p${pg}`,
     title: `Page ${pg}`,
     titleArabic: `صفحة ${pg}`,
-    hint: `Workbook Level ${meta.level}, page ${pg} — ${sec.title}. Tap a form to hear it, then trace it on the page.`,
+    // The page's tips lead — the rule being practised, as the workbook
+    // teaches it — then the app's own line.
+    hint: [
+      ...(pages.find((p) => p.printed === pg)?.tips ?? []),
+      `Workbook Level ${meta.level}, page ${pg} — ${sec.title}. Tap a form to hear it, then trace it on the page.`,
+    ].join(' '),
   }));
 
   const src = join(ROOT, 'Audio', `Audio - Lesson ${nn}`);
@@ -208,13 +223,13 @@ for (const n of NUMBERS) {
       // Per card, not per lesson: "Shadda with Kasra" rows read Kasra · Shadda
       // where the rest read Fat-ha · Shadda.
       const formLabels = c.texts.map((t) => captionOf.get(exact(t)) ?? '');
-      return { ...base, forms, formLabels };
+      return { ...base, forms, formLabels, meaning: studied(c.texts[0], c.page) };
     }
     const text = c.texts[0];
     const audio = `word${wn}.wav`;
     cut(text, audio);
     const caption = captionOf.get(exact(text));
-    return { ...base, text, audio, timings: null, badges: caption ? [caption] : [] };
+    return { ...base, text, audio, timings: null, badges: caption ? [caption] : [], meaning: studied(text, c.page) };
   });
 
   const lesson = {

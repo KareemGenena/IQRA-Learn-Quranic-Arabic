@@ -512,9 +512,14 @@ export function SectionedLesson({
       <p className="kbd-hint">
         Keyboard: <kbd>N</kbd> next word, <kbd>P</kbd> previous,{' '}
         {cardCount === 1 ? <kbd>1</kbd> : <><kbd>1</kbd>–<kbd>{cardCount}</kbd></>} start at that
-        word, <kbd>←</kbd> <kbd>→</kbd> change page, <kbd>S</kbd> switch the page between read on and at
-        a stop, <kbd>W</kbd> hear this word the other way.
-        {maxForms > 1 && ' Next walks through every way each word is said.'}
+        word, <kbd>←</kbd> <kbd>→</kbd> change page
+        {onReadingToggle && (
+          <>
+            , <kbd>S</kbd> switch the page between read on and at a stop, <kbd>W</kbd> hear this word the
+            other way
+          </>
+        )}
+        .{maxForms > 1 && ' Next walks through every way each word is said.'}
       </p>
     </main>
   );

@@ -101,7 +101,14 @@ function toItem(item: WorkbookItem, no: number): LessonItem {
     letterNames: a.letterNames,
     dimFinalMark: a.dimFinalMark,
   };
-  return { id: no, section: 'workbook', badges: item.caption ? [item.caption] : [], forms: [playable] };
+  return {
+    id: no,
+    section: 'workbook',
+    badges: item.caption ? [item.caption] : [],
+    // The rule above the item's table, as the (i) on the card.
+    meaning: item.rule,
+    forms: [playable],
+  };
 }
 
 /** An item nothing has been recorded for yet: the word, drawn, and said so. */
@@ -205,7 +212,8 @@ export function WorkbookPage({
           Workbook Level {level} · page {printed}
           {sec ? ` · Section ${sec.n}` : ''}
         </p>
-        <ReadingSwitch reading={reading} setReading={setReading} />
+        {/* Two readings are a Level 3 matter (App.tsx, `twoReadings`). */}
+        {level === 3 && <ReadingSwitch reading={reading} setReading={setReading} />}
       </div>
 
       <section className="section-head workbook">
@@ -213,8 +221,14 @@ export function WorkbookPage({
           {sec?.title ?? 'Workbook'}
           {page.part ? ` — ${page.part}` : ''}
         </h3>
-        {/* The workbook's own line here is a tracing instruction; the app's
-            page is for listening. */}
+        {/* The page's own tips — the rule being practised, in the author's
+            words — then the app's line. The workbook's instruction line is a
+            tracing instruction and stays on the paper. */}
+        {page.tips?.map((t) => (
+          <p key={t} className="section-hint">
+            {t}
+          </p>
+        ))}
         <p className="section-hint">Tap any word to hear it. The tracing is on the page.</p>
       </section>
 
@@ -237,7 +251,7 @@ export function WorkbookPage({
               item={toItem(it, i + 1)}
               rate={rate}
               displayNo={i + 1}
-              reading={reading}
+              reading={level === 3 ? reading : undefined}
             />
           ) : (
             <SilentCard key={it.id} item={it} no={i + 1} />

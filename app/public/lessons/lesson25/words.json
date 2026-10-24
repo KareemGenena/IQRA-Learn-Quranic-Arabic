@@ -10,49 +10,49 @@
       "id": "p28",
       "title": "Page 28",
       "titleArabic": "صفحة 28",
-      "hint": "Workbook Level 2, page 28 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+      "hint": "Warm-up! ر د ذ ز و never join the letter after them. Workbook Level 2, page 28 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p29",
       "title": "Page 29",
       "titleArabic": "صفحة 29",
-      "hint": "Workbook Level 2, page 29 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+      "hint": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above. Workbook Level 2, page 29 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p30",
       "title": "Page 30",
       "titleArabic": "صفحة 30",
-      "hint": "Workbook Level 2, page 30 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+      "hint": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound. Workbook Level 2, page 30 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p31",
       "title": "Page 31",
       "titleArabic": "صفحة 31",
-      "hint": "Workbook Level 2, page 31 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+      "hint": "Watch the dot! ـغـ has a dot, ـعـ does not. Workbook Level 2, page 31 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p32",
       "title": "Page 32",
       "titleArabic": "صفحة 32",
-      "hint": "Workbook Level 2, page 32 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+      "hint": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound. Workbook Level 2, page 32 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p33",
       "title": "Page 33",
       "titleArabic": "صفحة 33",
-      "hint": "Workbook Level 2, page 33 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+      "hint": "Watch the shape! ـمـ is a small loop. Workbook Level 2, page 33 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p34",
       "title": "Page 34",
       "titleArabic": "صفحة 34",
-      "hint": "Workbook Level 2, page 34 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+      "hint": "Go slowly! ـهـ in the middle changes shape the most. Workbook Level 2, page 34 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p35",
       "title": "Page 35",
       "titleArabic": "صفحة 35",
-      "hint": "Workbook Level 2, page 35 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
+      "hint": "Shadda ( ّ ) means the letter is said twice. Workbook Level 2, page 35 — Three-Letter Words. Tap a form to hear it, then trace it on the page."
     }
   ],
   "words": [
@@ -64,7 +64,8 @@
       ],
       "text": "وَرَدَ",
       "audio": "word01.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 2,
@@ -74,7 +75,8 @@
       ],
       "text": "نَزَلَ",
       "audio": "word02.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 3,
@@ -84,7 +86,8 @@
       ],
       "text": "كَذَبَ",
       "audio": "word03.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 4,
@@ -94,7 +97,8 @@
       ],
       "text": "صَدَقَ",
       "audio": "word04.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 5,
@@ -104,7 +108,8 @@
       ],
       "text": "صَبَرَ",
       "audio": "word05.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 6,
@@ -114,7 +119,8 @@
       ],
       "text": "كَبُرَ",
       "audio": "word06.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 7,
@@ -124,7 +130,8 @@
       ],
       "text": "عَبَسَ",
       "audio": "word07.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 8,
@@ -134,7 +141,8 @@
       ],
       "text": "قَبَسٍ",
       "audio": "word08.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 9,
@@ -144,7 +152,8 @@
       ],
       "text": "كَتَبَ",
       "audio": "word09.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 10,
@@ -154,7 +163,8 @@
       ],
       "text": "قُتِلَ",
       "audio": "word10.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 11,
@@ -164,7 +174,8 @@
       ],
       "text": "كَثُرَ",
       "audio": "word11.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 12,
@@ -174,7 +185,8 @@
       ],
       "text": "مَثَلُ",
       "audio": "word12.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 13,
@@ -184,7 +196,8 @@
       ],
       "text": "مِنۡهُ",
       "audio": "word13.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 14,
@@ -194,7 +207,8 @@
       ],
       "text": "عَنۡهُ",
       "audio": "word14.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 15,
@@ -204,7 +218,8 @@
       ],
       "text": "بَيۡنَ",
       "audio": "word15.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 16,
@@ -214,7 +229,8 @@
       ],
       "text": "كَيۡفَ",
       "audio": "word16.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Warm-up! ر د ذ ز و never join the letter after them."
     },
     {
       "id": 17,
@@ -224,7 +240,8 @@
       ],
       "text": "رَجَعَ",
       "audio": "word17.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 18,
@@ -234,7 +251,8 @@
       ],
       "text": "وَجَدَ",
       "audio": "word18.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 19,
@@ -244,7 +262,8 @@
       ],
       "text": "وَجۡهُ",
       "audio": "word19.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 20,
@@ -254,7 +273,8 @@
       ],
       "text": "رَحِمَ",
       "audio": "word20.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 21,
@@ -264,7 +284,8 @@
       ],
       "text": "نَحۡنُ",
       "audio": "word21.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 22,
@@ -274,7 +295,8 @@
       ],
       "text": "لَحۡمَ",
       "audio": "word22.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 23,
@@ -284,7 +306,8 @@
       ],
       "text": "بَخِلَ",
       "audio": "word23.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 24,
@@ -294,7 +317,8 @@
       ],
       "text": "سَخِرَ",
       "audio": "word24.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 25,
@@ -304,7 +328,8 @@
       ],
       "text": "نَخۡلٍ",
       "audio": "word25.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 26,
@@ -314,7 +339,8 @@
       ],
       "text": "بَخۡسٍ",
       "audio": "word26.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 27,
@@ -324,7 +350,8 @@
       ],
       "text": "كَسَبَ",
       "audio": "word27.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 28,
@@ -334,7 +361,8 @@
       ],
       "text": "بَسَطَ",
       "audio": "word28.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 29,
@@ -344,7 +372,8 @@
       ],
       "text": "رُسُلُ",
       "audio": "word29.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 30,
@@ -354,7 +383,8 @@
       ],
       "text": "نَسِىَ",
       "audio": "word30.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 31,
@@ -364,7 +394,8 @@
       ],
       "text": "بَشَرٌ",
       "audio": "word31.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 32,
@@ -374,7 +405,8 @@
       ],
       "text": "عَشۡرًا",
       "audio": "word32.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dots! ـجـ has a dot below, ـحـ has none, ـخـ has a dot above."
     },
     {
       "id": 33,
@@ -384,7 +416,8 @@
       ],
       "text": "نَصۡرُ",
       "audio": "word33.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 34,
@@ -394,7 +427,8 @@
       ],
       "text": "مِصۡرَ",
       "audio": "word34.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 35,
@@ -404,7 +438,8 @@
       ],
       "text": "نِصۡفُ",
       "audio": "word35.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 36,
@@ -414,7 +449,8 @@
       ],
       "text": "قَصۡدُ",
       "audio": "word36.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 37,
@@ -424,7 +460,8 @@
       ],
       "text": "حَضَرَ",
       "audio": "word37.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 38,
@@ -434,7 +471,8 @@
       ],
       "text": "غَضِبَ",
       "audio": "word38.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 39,
@@ -444,7 +482,8 @@
       ],
       "text": "رَضِىَ",
       "audio": "word39.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 40,
@@ -454,7 +493,8 @@
       ],
       "text": "خُضۡرٍ",
       "audio": "word40.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 41,
@@ -464,7 +504,8 @@
       ],
       "text": "شَطۡرَ",
       "audio": "word41.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 42,
@@ -474,7 +515,8 @@
       ],
       "text": "مَطَرَ",
       "audio": "word42.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 43,
@@ -484,7 +526,8 @@
       ],
       "text": "خَطِفَ",
       "audio": "word43.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 44,
@@ -494,7 +537,8 @@
       ],
       "text": "نَظَرَ",
       "audio": "word44.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 45,
@@ -504,7 +548,8 @@
       ],
       "text": "نَسۡرُ",
       "audio": "word45.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 46,
@@ -514,7 +559,8 @@
       ],
       "text": "نَصۡرُ",
       "audio": "word46.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 47,
@@ -524,7 +570,8 @@
       ],
       "text": "مَتَرَ",
       "audio": "word47.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 48,
@@ -534,7 +581,8 @@
       ],
       "text": "مَطَرَ",
       "audio": "word48.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 49,
@@ -544,7 +592,8 @@
       ],
       "text": "جَعَلَ",
       "audio": "word49.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 50,
@@ -554,7 +603,8 @@
       ],
       "text": "نِعۡمَ",
       "audio": "word50.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 51,
@@ -564,7 +614,8 @@
       ],
       "text": "مَعَكَ",
       "audio": "word51.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 52,
@@ -574,7 +625,8 @@
       ],
       "text": "نَعَمۡ",
       "audio": "word52.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 53,
@@ -584,7 +636,8 @@
       ],
       "text": "ضَعُفَ",
       "audio": "word53.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 54,
@@ -594,7 +647,8 @@
       ],
       "text": "شُعَبٍ",
       "audio": "word54.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 55,
@@ -604,7 +658,8 @@
       ],
       "text": "يَعِدُ",
       "audio": "word55.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 56,
@@ -614,7 +669,8 @@
       ],
       "text": "ضِعۡفَ",
       "audio": "word56.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 57,
@@ -624,7 +680,8 @@
       ],
       "text": "شُغُلٍ",
       "audio": "word57.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 58,
@@ -634,7 +691,8 @@
       ],
       "text": "صَغَتۡ",
       "audio": "word58.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 59,
@@ -644,7 +702,8 @@
       ],
       "text": "يُغۡنِ",
       "audio": "word59.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 60,
@@ -654,7 +713,8 @@
       ],
       "text": "تَغۡنَ",
       "audio": "word60.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 61,
@@ -664,7 +724,8 @@
       ],
       "text": "مَعَهُ",
       "audio": "word61.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 62,
@@ -674,7 +735,8 @@
       ],
       "text": "يَعۡصِ",
       "audio": "word62.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 63,
@@ -684,7 +746,8 @@
       ],
       "text": "ضَعۡفٍ",
       "audio": "word63.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 64,
@@ -694,7 +757,8 @@
       ],
       "text": "طَغَا",
       "audio": "word64.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the dot! ـغـ has a dot, ـعـ does not."
     },
     {
       "id": 65,
@@ -704,7 +768,8 @@
       ],
       "text": "رَفَعَ",
       "audio": "word65.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 66,
@@ -714,7 +779,8 @@
       ],
       "text": "غَفَرَ",
       "audio": "word66.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 67,
@@ -724,7 +790,8 @@
       ],
       "text": "نَفۡسِ",
       "audio": "word67.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 68,
@@ -734,7 +801,8 @@
       ],
       "text": "سَفَرٍ",
       "audio": "word68.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 69,
@@ -744,7 +812,8 @@
       ],
       "text": "سَقَرَ",
       "audio": "word69.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 70,
@@ -754,7 +823,8 @@
       ],
       "text": "نُقِرَ",
       "audio": "word70.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 71,
@@ -764,7 +834,8 @@
       ],
       "text": "سُقِطَ",
       "audio": "word71.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 72,
@@ -774,7 +845,8 @@
       ],
       "text": "تَقَعَ",
       "audio": "word72.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 73,
@@ -784,7 +856,8 @@
       ],
       "text": "شَكَرَ",
       "audio": "word73.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 74,
@@ -794,7 +867,8 @@
       ],
       "text": "مَكَرَ",
       "audio": "word74.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 75,
@@ -804,7 +878,8 @@
       ],
       "text": "ذُكِرَ",
       "audio": "word75.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 76,
@@ -814,7 +889,8 @@
       ],
       "text": "حُكۡمُ",
       "audio": "word76.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 77,
@@ -824,7 +900,8 @@
       ],
       "text": "سَكَرَ",
       "audio": "word77.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 78,
@@ -834,7 +911,8 @@
       ],
       "text": "سَقَرَ",
       "audio": "word78.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 79,
@@ -844,7 +922,8 @@
       ],
       "text": "مَكَرَ",
       "audio": "word79.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 80,
@@ -854,7 +933,8 @@
       ],
       "text": "مَقَرَ",
       "audio": "word80.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Mufakham (heavy) letters خ ص ض غ ط ق ظ: deep, full sound. Muraqqaq (light) letters: light sound."
     },
     {
       "id": 81,
@@ -864,7 +944,8 @@
       ],
       "text": "خَلَقَ",
       "audio": "word81.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 82,
@@ -874,7 +955,8 @@
       ],
       "text": "عَلِمَ",
       "audio": "word82.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 83,
@@ -884,7 +966,8 @@
       ],
       "text": "ظَلَمَ",
       "audio": "word83.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 84,
@@ -894,7 +977,8 @@
       ],
       "text": "هَلَكَ",
       "audio": "word84.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 85,
@@ -904,7 +988,8 @@
       ],
       "text": "سَلَفَ",
       "audio": "word85.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 86,
@@ -914,7 +999,8 @@
       ],
       "text": "مُلۡكُ",
       "audio": "word86.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 87,
@@ -924,7 +1010,8 @@
       ],
       "text": "عِلۡمٌ",
       "audio": "word87.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 88,
@@ -934,7 +1021,8 @@
       ],
       "text": "خَلَتۡ",
       "audio": "word88.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 89,
@@ -944,7 +1032,8 @@
       ],
       "text": "عَمِلَ",
       "audio": "word89.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 90,
@@ -954,7 +1043,8 @@
       ],
       "text": "سَمِعَ",
       "audio": "word90.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 91,
@@ -964,7 +1054,8 @@
       ],
       "text": "عَمَلَ",
       "audio": "word91.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 92,
@@ -974,7 +1065,8 @@
       ],
       "text": "حَمۡلٍ",
       "audio": "word92.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 93,
@@ -984,7 +1076,8 @@
       ],
       "text": "عَمَدٍ",
       "audio": "word93.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 94,
@@ -994,7 +1087,8 @@
       ],
       "text": "خَمۡرٍ",
       "audio": "word94.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 95,
@@ -1004,7 +1098,8 @@
       ],
       "text": "عَمِىَ",
       "audio": "word95.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 96,
@@ -1014,7 +1109,8 @@
       ],
       "text": "خَمۡطٍ",
       "audio": "word96.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Watch the shape! ـمـ is a small loop."
     },
     {
       "id": 97,
@@ -1024,7 +1120,8 @@
       ],
       "text": "ذَهَبَ",
       "audio": "word97.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 98,
@@ -1034,7 +1131,8 @@
       ],
       "text": "ظَهَرَ",
       "audio": "word98.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 99,
@@ -1044,7 +1142,8 @@
       ],
       "text": "شَهِدَ",
       "audio": "word99.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 100,
@@ -1054,7 +1153,8 @@
       ],
       "text": "عَهِدَ",
       "audio": "word100.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 101,
@@ -1064,7 +1164,8 @@
       ],
       "text": "جَهَرَ",
       "audio": "word101.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 102,
@@ -1074,7 +1175,8 @@
       ],
       "text": "شَهۡرٌ",
       "audio": "word102.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 103,
@@ -1084,7 +1186,8 @@
       ],
       "text": "عَهۡدَ",
       "audio": "word103.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 104,
@@ -1094,7 +1197,8 @@
       ],
       "text": "رَهۡطٍ",
       "audio": "word104.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 105,
@@ -1104,7 +1208,8 @@
       ],
       "text": "كَتَبَ",
       "audio": "word105.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 106,
@@ -1114,7 +1219,8 @@
       ],
       "text": "نَصۡرُ",
       "audio": "word106.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 107,
@@ -1124,7 +1230,8 @@
       ],
       "text": "عَمِلَ",
       "audio": "word107.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 108,
@@ -1134,7 +1241,8 @@
       ],
       "text": "غَفَرَ",
       "audio": "word108.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 109,
@@ -1144,7 +1252,8 @@
       ],
       "text": "جَعَلَ",
       "audio": "word109.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 110,
@@ -1154,7 +1263,8 @@
       ],
       "text": "خَلَقَ",
       "audio": "word110.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 111,
@@ -1164,7 +1274,8 @@
       ],
       "text": "سَقَرَ",
       "audio": "word111.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 112,
@@ -1174,7 +1285,8 @@
       ],
       "text": "بَشَرٌ",
       "audio": "word112.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Go slowly! ـهـ in the middle changes shape the most."
     },
     {
       "id": 113,
@@ -1184,7 +1296,8 @@
       ],
       "text": "رَبُّ",
       "audio": "word113.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 114,
@@ -1194,7 +1307,8 @@
       ],
       "text": "حَقُّ",
       "audio": "word114.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 115,
@@ -1204,7 +1318,8 @@
       ],
       "text": "ثُمَّ",
       "audio": "word115.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 116,
@@ -1214,7 +1329,8 @@
       ],
       "text": "مَسَّ",
       "audio": "word116.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 117,
@@ -1224,7 +1340,8 @@
       ],
       "text": "شَرُّ",
       "audio": "word117.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 118,
@@ -1234,7 +1351,8 @@
       ],
       "text": "ظَنَّ",
       "audio": "word118.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 119,
@@ -1244,7 +1362,8 @@
       ],
       "text": "ضَلَّ",
       "audio": "word119.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 120,
@@ -1254,7 +1373,8 @@
       ],
       "text": "كُلُّ",
       "audio": "word120.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 121,
@@ -1264,7 +1384,8 @@
       ],
       "text": "مَدَّ",
       "audio": "word121.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 122,
@@ -1274,7 +1395,8 @@
       ],
       "text": "خَرَّ",
       "audio": "word122.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 123,
@@ -1284,7 +1406,8 @@
       ],
       "text": "حُبَّ",
       "audio": "word123.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 124,
@@ -1294,7 +1417,8 @@
       ],
       "text": "صَفًّا",
       "audio": "word124.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 125,
@@ -1304,7 +1428,8 @@
       ],
       "text": "رَبِّ",
       "audio": "word125.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 126,
@@ -1314,7 +1439,8 @@
       ],
       "text": "حَقٌّ",
       "audio": "word126.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 127,
@@ -1324,7 +1450,8 @@
       ],
       "text": "شَرٌّ",
       "audio": "word127.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     },
     {
       "id": 128,
@@ -1334,7 +1461,8 @@
       ],
       "text": "ذَرَّةٍ",
       "audio": "word128.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Shadda ( ّ ) means the letter is said twice."
     }
   ]
 }

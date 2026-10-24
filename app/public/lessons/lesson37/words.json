@@ -10,7 +10,7 @@
       "id": "p32",
       "title": "Page 32",
       "titleArabic": "صفحة 32",
-      "hint": "Workbook Level 3, page 32 — Silent Alif. Tap a form to hear it, then trace it on the page."
+      "hint": "Small zero on an alif: round = never said. Rectangle = said only when you stop. Workbook Level 3, page 32 — Silent Alif. Tap a form to hear it, then trace it on the page."
     }
   ],
   "words": [
@@ -22,7 +22,8 @@
       ],
       "text": "قَالُواْ",
       "audio": "word01.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Round zero: قَالُواْ: the alif with a round zero is never said"
     },
     {
       "id": 2,
@@ -32,7 +33,8 @@
       ],
       "text": "ءَامَنُواْ",
       "audio": "word02.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Round zero: قَالُواْ: the alif with a round zero is never said"
     },
     {
       "id": 3,
@@ -42,7 +44,8 @@
       ],
       "text": "كَفَرُواْ",
       "audio": "word03.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Round zero: قَالُواْ: the alif with a round zero is never said"
     },
     {
       "id": 4,
@@ -52,7 +55,8 @@
       ],
       "text": "أَنَا۠",
       "audio": "word04.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
     },
     {
       "id": 5,
@@ -62,7 +66,8 @@
       ],
       "text": "لَّٰكِنَّا۠",
       "audio": "word05.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
     },
     {
       "id": 6,
@@ -72,7 +77,8 @@
       ],
       "text": "قَوَارِيرَا۠",
       "audio": "word06.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
     }
   ]
 }

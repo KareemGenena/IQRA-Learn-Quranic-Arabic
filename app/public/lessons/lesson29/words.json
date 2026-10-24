@@ -10,7 +10,7 @@
       "id": "p54",
       "title": "Page 54",
       "titleArabic": "صفحة 54",
-      "hint": "Workbook Level 2, page 54 — Qalqala. Tap a form to hear it, then trace it on the page."
+      "hint": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ. Workbook Level 2, page 54 — Qalqala. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p55",
@@ -22,7 +22,7 @@
       "id": "p56",
       "title": "Page 56",
       "titleArabic": "صفحة 56",
-      "hint": "Workbook Level 2, page 56 — Qalqala. Tap a form to hear it, then trace it on the page."
+      "hint": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce! Workbook Level 2, page 56 — Qalqala. Tap a form to hear it, then trace it on the page."
     }
   ],
   "words": [
@@ -34,7 +34,8 @@
       ],
       "text": "يَقۡضِى",
       "audio": "word01.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 2,
@@ -44,7 +45,8 @@
       ],
       "text": "يُقۡبَلُ",
       "audio": "word02.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 3,
@@ -54,7 +56,8 @@
       ],
       "text": "يَقۡدِرُ",
       "audio": "word03.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 4,
@@ -64,7 +67,8 @@
       ],
       "text": "يُقۡرِضُ",
       "audio": "word04.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 5,
@@ -74,7 +78,8 @@
       ],
       "text": "مَقۡتًا",
       "audio": "word05.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 6,
@@ -84,7 +89,8 @@
       ],
       "text": "خَلَقۡنَا",
       "audio": "word06.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 7,
@@ -94,7 +100,8 @@
       ],
       "text": "يَقۡبَلُ",
       "audio": "word07.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 8,
@@ -104,7 +111,8 @@
       ],
       "text": "خَلَقۡتَ",
       "audio": "word08.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 9,
@@ -114,7 +122,8 @@
       ],
       "text": "يُطۡعِمُ",
       "audio": "word09.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 10,
@@ -124,7 +133,8 @@
       ],
       "text": "يَطۡمَعُ",
       "audio": "word10.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 11,
@@ -134,7 +144,8 @@
       ],
       "text": "نَطۡوِى",
       "audio": "word11.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 12,
@@ -144,7 +155,8 @@
       ],
       "text": "نُطۡعِمُ",
       "audio": "word12.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 13,
@@ -154,7 +166,8 @@
       ],
       "text": "خَطۡبُكُمۡ",
       "audio": "word13.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 14,
@@ -164,7 +177,8 @@
       ],
       "text": "يُطۡعَمُ",
       "audio": "word14.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 15,
@@ -174,7 +188,8 @@
       ],
       "text": "نَطۡمَعُ",
       "audio": "word15.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 16,
@@ -184,7 +199,8 @@
       ],
       "text": "نَطۡبَعُ",
       "audio": "word16.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Qalqala: the letters قطب جد bounce when they have a sukoon ۡ."
     },
     {
       "id": 17,
@@ -354,7 +370,8 @@
       ],
       "text": "عَدۡنٍ",
       "audio": "word33.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 34,
@@ -364,7 +381,8 @@
       ],
       "text": "صِدۡقٍ",
       "audio": "word34.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 35,
@@ -374,7 +392,8 @@
       ],
       "text": "عَدۡلٍ",
       "audio": "word35.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 36,
@@ -384,7 +403,8 @@
       ],
       "text": "تَدۡرِى",
       "audio": "word36.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 37,
@@ -394,7 +414,8 @@
       ],
       "text": "تَدۡعُ",
       "audio": "word37.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 38,
@@ -404,7 +425,8 @@
       ],
       "text": "عُدۡنَا",
       "audio": "word38.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 39,
@@ -414,7 +436,8 @@
       ],
       "text": "يُدۡرِيكَ",
       "audio": "word39.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 40,
@@ -424,7 +447,8 @@
       ],
       "text": "يَدۡعُونَ",
       "audio": "word40.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 41,
@@ -434,7 +458,8 @@
       ],
       "text": "يَلِدۡ",
       "audio": "word41.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 42,
@@ -444,7 +469,8 @@
       ],
       "text": "يَجِدۡ",
       "audio": "word42.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 43,
@@ -454,7 +480,8 @@
       ],
       "text": "يَكۡسِبۡ",
       "audio": "word43.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 44,
@@ -464,7 +491,8 @@
       ],
       "text": "تَقۡعُدۡ",
       "audio": "word44.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 45,
@@ -474,7 +502,8 @@
       ],
       "text": "تَبّ",
       "audio": "word45.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 46,
@@ -484,7 +513,8 @@
       ],
       "text": "حَقّ",
       "audio": "word46.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 47,
@@ -494,7 +524,8 @@
       ],
       "text": "رَبّ",
       "audio": "word47.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     },
     {
       "id": 48,
@@ -504,7 +535,8 @@
       ],
       "text": "مَدّ",
       "audio": "word48.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop on a word, the last letter drops its haraka and gets a sukoon. If that letter is a qalqala letter with a shadda, say the shadda AND bounce!"
     }
   ]
 }

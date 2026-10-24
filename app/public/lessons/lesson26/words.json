@@ -10,19 +10,19 @@
       "id": "p36",
       "title": "Page 36",
       "titleArabic": "صفحة 36",
-      "hint": "Workbook Level 2, page 36 — Timing. Tap a form to hear it, then trace it on the page."
+      "hint": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out! Workbook Level 2, page 36 — Timing. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p37",
       "title": "Page 37",
       "titleArabic": "صفحة 37",
-      "hint": "Workbook Level 2, page 37 — Timing. Tap a form to hear it, then trace it on the page."
+      "hint": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts. Workbook Level 2, page 37 — Timing. Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p38",
       "title": "Page 38",
       "titleArabic": "صفحة 38",
-      "hint": "Workbook Level 2, page 38 — Timing. Tap a form to hear it, then trace it on the page."
+      "hint": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts. Workbook Level 2, page 38 — Timing. Tap a form to hear it, then trace it on the page."
     }
   ],
   "words": [
@@ -34,7 +34,8 @@
       ],
       "text": "قَتَلَ",
       "audio": "word01.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 2,
@@ -44,7 +45,8 @@
       ],
       "text": "قَالَ",
       "audio": "word02.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 3,
@@ -54,7 +56,8 @@
       ],
       "text": "صَبَرَ",
       "audio": "word03.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 4,
@@ -64,7 +67,8 @@
       ],
       "text": "كَانَ",
       "audio": "word04.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 5,
@@ -74,7 +78,8 @@
       ],
       "text": "قَامَ",
       "audio": "word05.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 6,
@@ -84,7 +89,8 @@
       ],
       "text": "مَالٌ",
       "audio": "word06.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 7,
@@ -94,7 +100,8 @@
       ],
       "text": "نَارٌ",
       "audio": "word07.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 8,
@@ -104,7 +111,8 @@
       ],
       "text": "دَارُ",
       "audio": "word08.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 9,
@@ -114,7 +122,8 @@
       ],
       "text": "عَذَابٌ",
       "audio": "word09.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 10,
@@ -124,7 +133,8 @@
       ],
       "text": "جُنَاحَ",
       "audio": "word10.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 11,
@@ -134,7 +144,8 @@
       ],
       "text": "حِسَابٍ",
       "audio": "word11.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 12,
@@ -144,7 +155,8 @@
       ],
       "text": "يَكَادُ",
       "audio": "word12.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 13,
@@ -154,7 +166,8 @@
       ],
       "text": "رِجَالٌ",
       "audio": "word13.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 14,
@@ -164,7 +177,8 @@
       ],
       "text": "تُرَابٍ",
       "audio": "word14.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 15,
@@ -174,7 +188,8 @@
       ],
       "text": "طَعَامُ",
       "audio": "word15.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 16,
@@ -184,7 +199,8 @@
       ],
       "text": "قَرَارٍ",
       "audio": "word16.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Short haraka = 1 count ●. Madd = 2 counts ●●. Tap it out!"
     },
     {
       "id": 17,
@@ -194,7 +210,8 @@
       ],
       "text": "نُوحٌ",
       "audio": "word17.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 18,
@@ -204,7 +221,8 @@
       ],
       "text": "نُورٌ",
       "audio": "word18.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 19,
@@ -214,7 +232,8 @@
       ],
       "text": "يَقُولُ",
       "audio": "word19.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 20,
@@ -224,7 +243,8 @@
       ],
       "text": "غَفُورٌ",
       "audio": "word20.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 21,
@@ -234,7 +254,8 @@
       ],
       "text": "رَسُولٌ",
       "audio": "word21.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 22,
@@ -244,7 +265,8 @@
       ],
       "text": "يُوسُفَ",
       "audio": "word22.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 23,
@@ -254,7 +276,8 @@
       ],
       "text": "ثَمُودُ",
       "audio": "word23.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 24,
@@ -264,7 +287,8 @@
       ],
       "text": "قُلُوبِ",
       "audio": "word24.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 25,
@@ -274,7 +298,8 @@
       ],
       "text": "قِيلَ",
       "audio": "word25.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 26,
@@ -284,7 +309,8 @@
       ],
       "text": "دِينِ",
       "audio": "word26.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 27,
@@ -294,7 +320,8 @@
       ],
       "text": "سَبِيلِ",
       "audio": "word27.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 28,
@@ -304,7 +331,8 @@
       ],
       "text": "حَكِيمٌ",
       "audio": "word28.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 29,
@@ -314,7 +342,8 @@
       ],
       "text": "عِيسَىٰ",
       "audio": "word29.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 30,
@@ -324,7 +353,8 @@
       ],
       "text": "مُوسَىٰ",
       "audio": "word30.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 31,
@@ -334,7 +364,8 @@
       ],
       "text": "مَتَىٰ",
       "audio": "word31.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 32,
@@ -344,7 +375,8 @@
       ],
       "text": "سَعَىٰ",
       "audio": "word32.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Madd waw ـُو and madd yaa ـِى are 2 counts too. The small alif ـٰ over ى means you say an alif: مُوسَىٰ = Moosaa. 2 counts."
     },
     {
       "id": 33,
@@ -354,7 +386,8 @@
       ],
       "text": "عَلِمَ",
       "audio": "word33.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 34,
@@ -364,7 +397,8 @@
       ],
       "text": "عَلِيمٌ",
       "audio": "word34.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 35,
@@ -374,7 +408,8 @@
       ],
       "text": "كَبُرَ",
       "audio": "word35.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 36,
@@ -384,7 +419,8 @@
       ],
       "text": "كَبِيرٌ",
       "audio": "word36.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 37,
@@ -394,7 +430,8 @@
       ],
       "text": "كَتَبَ",
       "audio": "word37.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 38,
@@ -404,7 +441,8 @@
       ],
       "text": "عَجُوزٌ",
       "audio": "word38.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 39,
@@ -414,7 +452,8 @@
       ],
       "text": "عَادٍ",
       "audio": "word39.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 40,
@@ -424,7 +463,8 @@
       ],
       "text": "شَكُورٌ",
       "audio": "word40.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 41,
@@ -434,7 +474,8 @@
       ],
       "text": "لَهُۥ",
       "audio": "word41.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 42,
@@ -444,7 +485,8 @@
       ],
       "text": "بِهِۦ",
       "audio": "word42.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 43,
@@ -454,7 +496,8 @@
       ],
       "text": "عِبَادَ",
       "audio": "word43.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 44,
@@ -464,7 +507,8 @@
       ],
       "text": "نَصِيبٌ",
       "audio": "word44.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 45,
@@ -474,7 +518,8 @@
       ],
       "text": "يَتُوبُ",
       "audio": "word45.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 46,
@@ -484,7 +529,8 @@
       ],
       "text": "طِينٍ",
       "audio": "word46.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 47,
@@ -494,7 +540,8 @@
       ],
       "text": "شَرَابٌ",
       "audio": "word47.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     },
     {
       "id": 48,
@@ -504,7 +551,8 @@
       ],
       "text": "قَرِيبٌ",
       "audio": "word48.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "The small ۥ after ـهُ means say a waw; the small ۦ after ـهِ means say a yaa: لَهُۥ = لَهُو. 2 counts."
     }
   ]
 }

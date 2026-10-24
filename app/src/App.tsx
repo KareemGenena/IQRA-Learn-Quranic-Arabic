@@ -19,7 +19,7 @@ import { useAccount } from './lib/useAccount';
 import { storeCloudSnapshot } from './lib/calibration';
 import { installAudioWarmup } from './lib/playback';
 import { fetchCloudCalibrations } from './lib/cloudCalibration';
-import { LESSONS, lessonAfter, loadLesson } from './lib/lessons';
+import { LESSONS, lessonAfter, lessonLabel, loadLesson } from './lib/lessons';
 import { markDone, markOpened } from './lib/progress';
 import { cachedConfig, canSeeLesson, canUseFeature, fetchConfig, lessonStatus } from './lib/appConfig';
 import type { AppConfig } from './lib/appConfig';
@@ -204,6 +204,12 @@ export default function App() {
 
   const meta = LESSONS.find((l) => l.id === route.lessonId);
   const lessonAllowed = route.lessonId === 0 || canSeeLesson(config, route.lessonId, admin);
+  // The two readings — read on / at a stop — are a Level 3 matter: the stop
+  // changes the ending of a WORD, and Levels 1 and 2 are letters, syllables
+  // and the first words. The switch and the tabs show only there (the
+  // author, 2026-10-24); elsewhere every card has its one reading.
+  const twoReadings =
+    meta?.level === 3 && !!lesson && !drawsLetterCards(lesson) && lesson.kind !== 'assessment';
 
   // Opening a lesson is the first mark of progress (src/lib/progress.ts).
   useEffect(() => {
@@ -301,7 +307,7 @@ export default function App() {
                     ? 'Audio intake'
                     : route.page === 'admin' && route.lessonId === 0
                     ? 'Admin'
-                    : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}Lesson ${route.lessonId}${meta ? ` — ${meta.title}` : ''}`}
+                    : `${route.page === 'admin' ? 'Admin — ' : route.page === 'notes' ? 'Notes — ' : ''}${lessonLabel(route.lessonId)}${meta ? ` — ${meta.title}` : ''}`}
               </h2>
             )}
           </nav>
@@ -410,11 +416,8 @@ export default function App() {
                     </div>
                     {/* Two readings, one switch: it decides what Play, Play
                         all and N mean on every card, and stays until changed.
-                        Shown on every word-card lesson, recorded or not — a
-                        card without the take says so under the word. */}
-                    {!drawsLetterCards(lesson) && lesson.kind !== 'assessment' && (
-                      <ReadingSwitch reading={reading} setReading={setReading} />
-                    )}
+                        Level 3 only — see `twoReadings`. */}
+                    {twoReadings && <ReadingSwitch reading={reading} setReading={setReading} />}
                   </div>
                   <WorkbookLinks lessonId={route.lessonId} />
                   {showNotes && (
@@ -428,18 +431,18 @@ export default function App() {
                     <LettersLesson
                       lesson={lesson}
                       rate={rate}
-                      reading={reading}
-                      onReadingToggle={() => setReading(reading === 'stop' ? 'continuing' : 'stop')}
+                      reading={twoReadings ? reading : undefined}
+                      onReadingToggle={twoReadings ? () => setReading(reading === 'stop' ? 'continuing' : 'stop') : undefined}
                       onEnd={next ? moveOn : undefined}
                     />
                   ) : lesson.kind === 'words' ? (
-                    <WordsLesson lesson={lesson} rate={rate} reading={reading} />
+                    <WordsLesson lesson={lesson} rate={rate} reading={twoReadings ? reading : undefined} />
                   ) : (
                     <SectionedLesson
                       lesson={lesson}
                       rate={rate}
-                      reading={reading}
-                      onReadingToggle={() => setReading(reading === 'stop' ? 'continuing' : 'stop')}
+                      reading={twoReadings ? reading : undefined}
+                      onReadingToggle={twoReadings ? () => setReading(reading === 'stop' ? 'continuing' : 'stop') : undefined}
                       onEnd={next ? moveOn : undefined}
                     />
                   )}

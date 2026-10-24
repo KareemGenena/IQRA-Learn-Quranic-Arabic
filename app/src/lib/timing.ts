@@ -258,10 +258,17 @@ function letterNameGhunna(base: string, nextBase: string): boolean {
  * What a nūn sākin, tanween or mīm sākin HANDS OVER when its hum carries into
  * the next letter. A hidden or merged nūn is not articulated on its own — the
  * sound in its place is the hum, and the hum is heard as the next letter
- * forms — so the nūn keeps only a brief onset and the rest of its time goes
- * with the hum. A tanween's letter keeps its vowel; only the nasal tail moves.
+ * forms — so the nūn keeps nothing of its own and all of its time goes with
+ * the hum. A tanween's letter keeps its vowel; only the nasal tail moves.
+ *
+ * The onset is 0 since 2026-10-24: the merged or hidden letter gets no time
+ * at all, so the highlight steps from the letter before it straight onto the
+ * letter that carries the hum — كَم مِّن lights كـ, then the second مـ in
+ * violet. At 0.3 the first م held the highlight for a beat, which the author
+ * saw in the continuing reading of that card and not in its stop reading,
+ * and asked to have made uniform: skip straight over it.
  */
-const GHUNNA_ONSET = 0.3;
+const GHUNNA_ONSET = 0;
 const TANWEEN_WEIGHT = 0.5;
 function handedOver(from: LetterCluster): number {
   const marks = marksOf(from.text);
@@ -374,7 +381,8 @@ export function clusterParts(
     ghunna = NAME_HUM;
     w += ghunna;
   }
-  // …and the nūn/tanween/mīm whose hum moved on keeps only its onset.
+  // …and the nūn/mīm whose hum moved on gives up all its time (a tanween's
+  // letter keeps its vowel and gives up the nasal tail).
   if (next && ghunnaInto(cluster, next)) w -= handedOver(cluster);
   else if (opts.letterNames && next && letterNameGhunna(base, baseChar(next.text))) w -= NAME_HANDED;
   if (QALQALAH.has(base) && hasSukoon(marks)) w += QALQALAH_WEIGHT;

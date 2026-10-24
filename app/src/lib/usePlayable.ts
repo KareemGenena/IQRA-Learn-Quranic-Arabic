@@ -2,8 +2,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { splitClusters } from './graphemes';
 import { audibleIndices, ghunnaShares } from './timing';
 import type { HighlightPhase } from './timing';
-import { getAudioSrc } from './audioSource';
-import { audioUrl, playWithHighlights, resolveBoundaries, stopActivePlayback } from './playback';
+import { audioUrl, playWithHighlights, prepareClip, resolveBoundaries, stopActivePlayback, warmAudio } from './playback';
 import type { PlaybackHandle } from './playback';
 import type { Lesson, Playable } from '../types';
 
@@ -26,11 +25,20 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
    *  them to jump to a letter. Empty until something has played. */
   const [boundaries, setBoundaries] = useState<number[]>([]);
   const handleRef = useRef<PlaybackHandle | null>(null);
+  /** Each play is a generation. A second play on this hook, or a stop,
+   *  before the first has its clip supersedes it: the first then neither
+   *  sounds nor resets the state the second has set (two in flight once left
+   *  a card dark while its clip played; a stop during the download once let
+   *  the clip play after the page was left). */
+  const genRef = useRef(0);
 
   const stop = useCallback(() => {
+    genRef.current += 1;
     handleRef.current?.stop();
     handleRef.current = null;
+    setPlaying(false);
     setPaused(false);
+    setLoading(false);
   }, []);
 
   /** Resolves when playback has finished, so callers can chain words.
@@ -39,15 +47,22 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
   const play = useCallback(
     async (start: number | { cluster: number } = 0): Promise<void> => {
       stopActivePlayback();
+      // Still inside the tap: iOS lets a suspended or interrupted context
+      // resume, and the session-key element be unlocked, only from a gesture.
+      warmAudio();
+      const gen = ++genRef.current;
       setPlaying(true);
       setPaused(false);
       setLoading(true);
       try {
         const url = audioUrl(lesson, playable);
-        const [bounds, src] = await Promise.all([
+        // The clip is fetched, decoded and (off 1×) stretched here, so the
+        // player's own call finds it ready and starts at once.
+        const [bounds] = await Promise.all([
           resolveBoundaries(lesson, playable, clusters),
-          getAudioSrc(url),
+          prepareClip(url, rate),
         ]);
+        if (genRef.current !== gen) return; // superseded or stopped meanwhile
         setLoading(false);
         setBoundaries(bounds);
         const indexMap = audibleIndices(clusters, playable.silentClusters);
@@ -60,14 +75,16 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
         });
         await new Promise<void>((resolve) => {
           handleRef.current = playWithHighlights(
-            src,
+            url,
             bounds,
             // Only commit a change: the tick runs every frame.
             (index, phase) => setActive((a) => (a.index === index && a.phase === phase ? a : { index, phase })),
             () => {
-              setPlaying(false);
-              setPaused(false);
-              handleRef.current = null;
+              if (genRef.current === gen) {
+                setPlaying(false);
+                setPaused(false);
+                handleRef.current = null;
+              }
               resolve();
             },
             rate,
@@ -78,9 +95,11 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
         });
       } catch (err) {
         console.error(`playback failed for ${playable.key}:`, err);
-        setLoading(false);
-        setPlaying(false);
-        setPaused(false);
+        if (genRef.current === gen) {
+          setLoading(false);
+          setPlaying(false);
+          setPaused(false);
+        }
       }
     },
     [lesson, playable, clusters, rate],

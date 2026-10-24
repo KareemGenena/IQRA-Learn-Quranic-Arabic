@@ -11,7 +11,9 @@ interface FormProps {
   playable: Playable;
   rate: number;
   label: string;
-  reading: Reading;
+  /** The reading the page is set to. Undefined on a Level 1 or 2 lesson,
+   *  which has one reading and shows no tabs. */
+  reading?: Reading;
   register?: (key: string, play: () => Promise<void>, playOther?: () => Promise<void>) => void;
 }
 
@@ -40,7 +42,7 @@ function Form({ lesson, playable, rate, label, reading, register }: FormProps) {
   const [override, setOverride] = useState<Reading | null>(null);
   // The page's switch resets every card's own choice.
   useEffect(() => setOverride(null), [reading]);
-  const effective: Reading = override ?? reading;
+  const effective: Reading = override ?? reading ?? 'continuing';
   const atStop = effective === 'stop' && !!stop;
 
   const cont = usePlayable(lesson, playable, rate);
@@ -54,11 +56,13 @@ function Form({ lesson, playable, rate, label, reading, register }: FormProps) {
   // the first tap does not wait on the network.
   useEffect(() => {
     const t = window.setTimeout(() => {
-      void warmPlayable(lesson, playable);
-      if (stop) void warmPlayable(lesson, stop);
+      // At the page's speed, so a speed other than 1× is stretched here and
+      // not at the tap.
+      void warmPlayable(lesson, playable, rate);
+      if (stop) void warmPlayable(lesson, stop, rate);
     }, 120);
     return () => window.clearTimeout(t);
-  }, [lesson, playable, stop]);
+  }, [lesson, playable, stop, rate]);
 
   const choose = useCallback(
     (r: Reading) => {
@@ -101,12 +105,13 @@ function Form({ lesson, playable, rate, label, reading, register }: FormProps) {
         />
         <PlayIcon playing={live.playing} loading={busy} />
       </button>
+      {reading !== undefined && (
       <div className="reading-tabs" role="group" aria-label="Which reading this word plays">
         <button
           type="button"
           className={`reading-tab ${effective === 'continuing' ? 'active' : ''} ${cont.playing ? 'playing' : ''}`}
           aria-pressed={effective === 'continuing'}
-          title="With its last vowel, as when the reading carries on"
+          title="With its last haraka, as when the reading carries on"
           onClick={() => void choose('continuing')}
         >
           read on
@@ -122,6 +127,7 @@ function Form({ lesson, playable, rate, label, reading, register }: FormProps) {
           at a stop{!stop && <span className="reading-tab-note"> · not yet recorded</span>}
         </button>
       </div>
+      )}
     </>
   );
 }
@@ -142,7 +148,7 @@ interface Props {
 /** Broadcast so at most one meaning is open at a time. */
 const TIP_EVENT = 'iqra-meaning-open';
 
-export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges, reading = 'continuing' }: Props) {
+export function ItemCard({ lesson, item, rate, displayNo, register, hideBadges, reading }: Props) {
   const [showMeaning, setShowMeaning] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const tipId = useId();

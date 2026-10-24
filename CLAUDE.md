@@ -190,6 +190,26 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   `/go/**`; `companion` in `crosswalk.json`) while the app is switched on,
   and to the PDF page while it is off. Listed under "Practice workbooks" on
   the home page.
+- **Two readings are a Level 3 matter (2026-10-24).** The switch, the
+  per-card tabs and the S / W keys show only on a Level 3 word lesson
+  (`twoReadings` in `App.tsx`: `meta.level === 3`, not letter cards, not a
+  check) and on Level 3 companion pages; everywhere else a card has its one
+  reading and no tabs. The stop changes the ending of a WORD, and Levels 1
+  and 2 are letters, syllables and first words. A card's `reading` prop is
+  `undefined` there, which is what hides the tabs — never a second flag.
+- **A lesson is named by its place, never its number** — `lessonLabel(id)`
+  in `lessons.ts`: "Level 3 · Lesson 4", the Level and the position the
+  home page counts in it. Shown in the lesson header and the recordings
+  page; the id stays what it always was, a key.
+- **The workbook's "★ Tip" lines are the app's hints** (2026-10-24). The
+  parser (`scripts/lib/workbook.mjs`) gives each page its `tips` and each
+  item the `rule` line printed above its table ("Heavy (1): ر has a fatha:
+  رَ", "Round zero: قَالُواْ: …"). A workbook lesson's page hint opens with
+  the page's tips and ends with the app's line; every card's (i) is its
+  table's rule, else the page's tips — the author's own words from the
+  master, nothing authored in code. The companion shows the same tips over
+  the page and the rule as the (i). Where the master has no tip (Level 1's
+  pages) nothing is added. Lessons 35–37 were the ask; it holds for all.
 
 ---
 
@@ -472,6 +492,10 @@ Things that cost real debugging. Do not undo them without reading why.
   (the صٓ of كٓهيعٓصٓ) is a consonant and is not this.
 
 **Rendering**
+- **The ٱل prefix is black** (2026-10-24; `withAlPlayable` passes
+  `prefixClusters: 0`). It was painted in the lesson's accent colour; the
+  author wants it like the rest of the word. The sun lam is still greyed by
+  `derivedSilent()` and the badge still names the rule.
 - Never split an Arabic word into per-letter spans — it breaks cursive joining.
   Colouring part of a word is done by stacking **clipped copies of the same full
   string**, measured with the Range API (`ArabicWord.tsx`).
@@ -479,9 +503,77 @@ Things that cost real debugging. Do not undo them without reading why.
   modified** — never subset it or convert to WOFF2. Serve the original `.otf`.
 
 **Audio**
+- **THE CLOCK IS THE SOUND CARD'S (`playback.ts`, 2026-10-24).** A clip is
+  fetched once as a Blob, decoded once into an `AudioBuffer`
+  (`prepareClip`, LRU of 48), and started through Web Audio
+  (`AudioBufferSourceNode.start(when)`, `when` = now + 30 ms so the start
+  is known to the sample); the highlight reads WHERE THE SOUND IS NOW from
+  `AudioContext.getOutputTimestamp()` — the frame the output device is
+  putting out at this instant, extrapolated by `performance.now()` — and
+  takes the SMALLER of that and `currentTime − outputLatency` (the render
+  clock less the latency the device reports): WebKit's timestamp is the
+  render position, not the output's, so on iOS and on any Bluetooth route
+  the corrected render clock is the one that counts, while in Chrome the
+  timestamp is output-side and wins. The extrapolation from the last
+  output callback is capped at 0.1 s and switched off while the context is
+  not running, and an inaudible `ConstantSourceNode` (offset 1e-7) keeps
+  the sink awake from the first gesture — Chrome parks the output after
+  30 s of silence and restarts it on the next sound, a quarter second in
+  which no frame renders, so the first word after a pause came out late
+  with the highlight running ahead of it. A clip ENDS on the heard clock
+  too: the source's `ended` fires on the render clock, so `finish` waits
+  until that much sound has been heard (the old rule cut the last letter
+  short by the latency on Android and Bluetooth). A pause is stamped at the
+  render position, because the frames already rendered play out. Measured
+  in the pane with a mutation observer on the box (2026-10-24): lesson 5
+  #1 (speech 0.09–2.47 s) walked its three letters in 2.36 s at 1× and
+  1.60 s at 1.5× through the Worker's stretch, both within 20 ms of the
+  clip; the first clip of the session appeared 0.63 s after the tap, the
+  parked sink's restart, and the highlight WAITED for it instead of
+  leading — the keep-alive begins on the page's first gesture, so only a
+  session whose very first tap is a Play pays that once. The
+  media element it replaces opened the device's output on its own schedule
+  (tens to hundreds of ms, different every time, worst on phones) and its
+  `currentTime` ran ahead of the speaker by that much; the warm element
+  (2026-10-12) and the loop started on `playing` (2026-10-20) narrowed the
+  gap and could not close it, and the author still heard an erratic lag on
+  phone and laptop. Speeds 1.25 / 1.5 / 2 (and the calibration page's
+  0.75) are a WSOLA time-stretch of the decoded clip (`wsola.ts`, 40 ms
+  frames, ±8 ms search, pitch unchanged — the browsers' own `playbackRate`
+  algorithm), run in a Worker (`stretch.worker.ts`; on the main thread
+  only where module workers do not exist), computed once per clip and
+  speed, cached, and done as the card appears at the page's speed
+  (`warmPlayable(lesson, playable, rate)`) rather than at the tap; media
+  time = offset + heard × rate. `warmAudio()` is called synchronously at
+  the top of every play — iOS resumes a suspended or `interrupted` context,
+  and unlocks the session-key element, only from a gesture — and the
+  context is woken again on `visibilitychange`; a page going HIDDEN stops
+  whatever is playing, because iOS interrupts Web Audio in the background
+  but lets the media element loop on. `usePlayable` numbers its plays
+  (`genRef`): a second play on the same card, or a stop, before the first
+  has its clip supersedes it, so a superseded play neither sounds nor
+  resets the state the newer one set (two in flight once left a card dark
+  while its clip played; a stop during the download once let the clip play
+  after the page was left). **The calibration page captures on the same
+  clock** — `startCapture` plays through `playWithHighlights` and stamps
+  each tap with `handle.now()`; it used to read a fresh media element's
+  clock, which runs ahead of the speaker until its output is open, so every
+  saved tap was early by that much.
+  The media element remains for two things only: the fallback when there
+  is no AudioContext or a clip will not decode (`elementEngine`, the old
+  code), and on iOS the audio-session key — a silent WAV looped on the
+  warm element WHILE a clip sounds (`holdSession`) puts the page's session
+  in the "playback" category so the silent switch does not mute Web Audio,
+  which it otherwise does. Verified in the pane: the box appears at the
+  tap, walks the word, clears at the end, no console errors; the ear is
+  the author's. **The per-letter boundaries are still the weight model's
+  estimates** (±0.45 s, see "The highlight engine's remaining error") —
+  this fixes the clip starting late or the highlight leading the voice,
+  not where each letter's boundary falls; only calibration does that.
 - Play via **blob: URLs** (`audioSource.ts`), never raw file URLs — media range
   requests through the service-worker cache truncate first playback.
-- **ONE audio element, kept warm** (`playback.ts`, 2026-10-12). The first
+- **Superseded 2026-10-24 by the Web Audio engine above; kept as history.**
+  ONE audio element, kept warm (`playback.ts`, 2026-10-12). The first
   clip of a session came out late and short and the second click put it
   right: a fresh `Audio` element opens the device's output, and until it is
   open the element's clock runs ahead of the sound leaving the speaker — the
@@ -728,6 +820,17 @@ Things that cost real debugging. Do not undo them without reading why.
 - Sukoon 1.2 (leen 1.3) · ghunna +0.9 · qalqalah +0.25 · shadda +0.8 ·
   tanween +0.5 · madd 2 / muttasil and munfasil 4 / lazim 6 · hamzat wasl 0.9.
   Silent letters get zero time and are skipped by the highlight.
+- **The merged or hidden letter gets NO time (2026-10-24).** `GHUNNA_ONSET`
+  is 0: a nūn or mīm sākin whose hum carries into the next letter (idghām,
+  ikhfāʾ, iqlāb, ikhfāʾ shafawī, idghām shafawī) hands over its whole
+  weight, so the highlight steps from the letter before it straight onto
+  the letter that carries the hum — كَم مِّن lights كـ, then the second مـ
+  in violet. At 0.3 the first م held the box for a beat; the author saw
+  that in the continuing reading of lesson 7 #1 and not in its stop
+  reading and asked for the skip to be the rule everywhere. A tanwīn's
+  letter still keeps its vowel and hands over only the nasal tail; a
+  zero-weight letter is still AUDIBLE for the calibration page (a tap per
+  letter), and its two boundaries coincide.
 - **The ghunna is paid to the SECOND letter — all of it.** The hum of
   ikhfāʾ, idghām and iqlāb is heard while the letter *after* the nūn sākin /
   tanween / mīm sākin is being formed, and a hidden or merged nūn is not
@@ -899,6 +1002,9 @@ When an update does not arrive, work down the list rather than guessing.
   `calibrations/lessonN/...`. Renumbering to reorder would silently point every
   calibration at the wrong word — the same fault lesson 4's word ids already
   cost this project once, one level up.
+- **A learner never sees the number.** `lessonLabel(id)` prints "Level 3 ·
+  Lesson 4" from `lessonsByLevel()`; the header used to print the id, and
+  "Lesson 1" after lesson 25 read as a broken order (2026-10-24).
 - Reading order is therefore a separate thing: `LessonMeta.order`, read through
   `orderedLessons()` in `lessons.ts`, which is the one place order is decided.
   Only the Level 1 lessons set `order` (31, 20, 32, 33); the rest sort by id
@@ -1006,6 +1112,8 @@ this time the corrupted records are children's.
   companion page says "Tap any word to hear it. The tracing is on the page."
   and a workbook lesson's page hint reads "Workbook Level 1, page 13 —
   Tanween. Tap a form to hear it, then trace it on the page." (2026-10-12).
+  The workbook's "★ Tip" lines are different: they teach the rule, and
+  they lead the hint (section 2, "The workbook's ★ Tip lines").
 - **Timing dots read right to left.** A caption of counts (●  ●  ● / ●●  ●)
   sits under the word on the page, two dots under the madd; the chip is
   `dir="rtl"` (`badge-dots`) so the two dots are on the right for قَالَ. The
@@ -1019,12 +1127,17 @@ this time the corrupted records are children's.
   chose the workbook's spelling for both (2026-10-10). Code comments may say
   what they like. Likewise never "a, u, i" for the harakat on anything a child
   sees: fat-ha, damma, kasra.
-- **Never say "vowel" for a madd.** A long vowel is a *madd* — "natural madd"
-  where the length matters (ṣilah *grows a natural madd*, badal is *a hamza
-  followed by a natural madd*). "Vowel" is reserved for the short one: a
-  fatha, damma or kasra, the thing a stop drops from the last letter. This
-  applies to blurbs, section hints, badges and anything else a learner sees;
-  code comments may say what they like.
+- **Never say "vowel" at all — a short one is a *haraka*, a long one a
+  *madd*** (the author, 2026-10-24; the earlier rule reserved "vowel" for
+  the short one and he struck that too). "Haraka", plural "harakat": the
+  fat-ha, damma or kasra, the thing a stop drops from the last letter
+  ("the last haraka dropped"). "Madd", "natural madd" where the length
+  matters (ṣilah *grows a natural madd*, badal is *a hamza followed by a
+  natural madd*); where the Arabic name is wanted, spell it as the app and
+  the workbooks already do — look before coining a transliteration. Never
+  "long vowel", never "short vowel". Applies to blurbs, section hints,
+  badges, switch labels, tooltips and anything else a learner sees; code
+  comments may say what they like.
 
 **Working style the author prefers**
 - Verify behaviour, don't assert it. Mechanical checks over spot-checks.
@@ -1399,6 +1512,31 @@ all five points agreed, in the order they will be built:
 6. **Assessments** — BUILT 2026-10-12 as the Level checks, lessons 41–43
    (section 2 "The Level checks"). Not built: self-marked read-aloud, the
    teacher marking a roster, account sync of the score.
+
+**The author's eleven points of 2026-10-24, built the same day.** First,
+what he was hearing: the re-cut clips of 2026-10-20 (commit ee211b8) were
+NEVER DEPLOYED — the live build was 20 Oct 20:33 UTC, before the edge
+rules — so the phone and the web app still played the 22 stop clips that
+begin with a second of click and silence. Deployed now, with everything
+below. 1 the merged letter gets no time (section 3, "The merged or hidden
+letter"); 2 the Web Audio engine (section 3, "THE CLOCK IS THE SOUND
+CARD'S") — the clip starts to the sample and the highlight follows the
+speaker's own clock; what remains is the weight model's ±0.45 s per
+boundary, which only calibration fixes; 3 "haraka", never "vowel" (section
+3, "Wording"), everywhere a learner reads; 4 the switch, tabs and S / W
+keys on Level 3 only (section 2); 5 `lessonLabel` — "Level 2 · Lesson 5 —
+Five-Letter Words" in the header; 6 ٱل black in lesson 2; 7–9 lessons 35,
+36 and 37 carry the workbook's own tip lines over each page and each
+card's table rule as its (i) — and so does every other workbook lesson and
+companion page where the master has a tip; 10 deployed. **To listen to**:
+any card of lesson 7 for the lag (both readings; the stop clips of #22,
+#26, #88, #93, #98, #140 begin clean now); lesson 7 #1 كَم مِّن for the
+skip over the first م; a word at 1.5× for the stretch's quality (WSOLA —
+if it sounds rough, say so: the frame and search sizes are two constants);
+and, on an iPad with the side switch on silent, whether the clips sound
+(the `holdSession` element is what should make them). A three-reviewer
+workflow (`wf_5429010c-017`) read the engine for iOS, clock-math and
+state-machine defects before deploy; its findings are folded in above.
 
 **The author's fourteen points of 2026-10-20, all built the same day
 (commits 6843908 and after):** 1 and 2 no greying at a stop and no greyed

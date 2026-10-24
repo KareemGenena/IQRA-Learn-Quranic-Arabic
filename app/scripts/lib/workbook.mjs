@@ -78,8 +78,10 @@ export function readWorkbook(L) {
         ids.set(base, seen + 1);
         const id = seen ? `${base}#${seen + 1}` : base;
         const caption = captions[i] && captions[i] !== cell ? captions[i] : '';
-        page.items.push({ id, text: cell, caption, row, group });
+        // The rule line printed above this table, if one was.
+        page.items.push({ id, text: cell, caption, row, group, rule: page.rule || undefined });
       });
+      page.rule = null;
       continue;
     }
     const t = textOf(s);
@@ -102,13 +104,30 @@ export function readWorkbook(L) {
       continue;
     }
     if (/IQRA 1447.*Practice Workbook/.test(t)) {
-      page = { physical: pages.length + 3, printed: pages.length + 1, section: section?.id ?? null, rows: 0, items: [] };
+      page = { physical: pages.length + 3, printed: pages.length + 1, section: section?.id ?? null, rows: 0, items: [], tips: [], rule: null };
       pages.push(page);
+      continue;
     }
+    if (!page) continue;
+    // The teaching lines. "★ Tip: …" belongs to the page; a line of the form
+    // "Heavy (1): ر has a fatha: رَ" names the rule of the table that follows
+    // it. A tip may share a paragraph with a rule (Level 3, p.35). Anything
+    // without a colon — a diagram label, a tracing instruction — is neither.
+    const [ruleText, ...tipParts] = t.split('★');
+    for (const part of tipParts) {
+      const tip = part.replace(/^\s*Tip:\s*/, '').trim();
+      if (tip) page.tips.push(tip);
+    }
+    const rule = ruleText.trim();
+    if (rule && rule.includes(':') && hasArabic(rule) && !/^(Trace|Read|Write|Say)\b/.test(rule)) page.rule = rule;
   }
 
   const expected = PDF_PAGES[L] - 2;
   if (pages.length !== expected) console.log(`  !! Level ${L}: ${pages.length} pages read, the PDF has ${expected} content pages`);
-  for (const p of pages) delete p.rows;
+  for (const p of pages) {
+    delete p.rows;
+    delete p.rule;
+    if (!p.tips.length) delete p.tips;
+  }
   return { level: L, pages, sections };
 }

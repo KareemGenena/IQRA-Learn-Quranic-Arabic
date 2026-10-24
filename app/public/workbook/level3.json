@@ -121,6 +121,9 @@
      "row": 2,
      "group": 1
     }
+   ],
+   "tips": [
+    "When you stop, the last letter drops its haraka and takes a sukoon:  رَ ← رۡ   We still write the word as it is in the Mushaf."
    ]
   },
   {
@@ -184,6 +187,10 @@
      "row": 3,
      "group": 1
     }
+   ],
+   "tips": [
+    "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ",
+    "Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
    ]
   },
   {
@@ -247,6 +254,10 @@
      "row": 3,
      "group": 1
     }
+   ],
+   "tips": [
+    "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ",
+    "Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
    ]
   },
   {
@@ -317,6 +328,10 @@
      "row": 3,
      "group": 1
     }
+   ],
+   "tips": [
+    "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same.",
+    "A qalqala letter at the stop still bounces:  بۡ  دۡ"
    ]
   },
   {
@@ -392,6 +407,9 @@
       "key": "37b"
      }
     }
+   ],
+   "tips": [
+    "ل has no sukoon, next letter has a shadda: skip the ل.  Starting here: say ٱ as أَ."
    ]
   },
   {
@@ -447,6 +465,10 @@
      "row": 2,
      "group": 1
     }
+   ],
+   "tips": [
+    "Starting with this word: say ٱ as أَ.",
+    "Stopping on it: the last letter takes a sukoon."
    ]
   },
   {
@@ -523,6 +545,10 @@
      "group": 1
     }
    ],
+   "tips": [
+    "Sukoon on the ل and no shadda after it: say the ل clearly.",
+    "Starting with this word: say ٱ as أَ."
+   ],
    "part": "Lam Qamariyya (moon letters)"
   },
   {
@@ -572,6 +598,9 @@
      "row": 2,
      "group": 1
     }
+   ],
+   "tips": [
+    "Stopping on it: the last letter takes a sukoon."
    ],
    "part": "Lam Qamariyya (moon letters)"
   },
@@ -634,6 +663,9 @@
       "key": "15b"
      }
     }
+   ],
+   "tips": [
+    "Qat' أ إ is always said. Wasl ٱ (small ص on top) is said أَ only when you start with it."
    ]
   },
   {
@@ -690,6 +722,10 @@
      "group": 1
     }
    ],
+   "tips": [
+    "Joined to what comes before: ٱ is silent. Read straight into the next letter.",
+    "Sun letter: ٱ and ل are both silent:  وَٱلتِّينِ ← وَتِّ"
+   ],
    "part": "Hamzat Wasl joined"
   },
   {
@@ -725,6 +761,9 @@
      "row": 1,
      "group": 1
     }
+   ],
+   "tips": [
+    "Two sakin letters meet: one must move. The tanween's noon takes a kasra:  خَيۡرًا ٱلۡ ← خَيۡرَنِ لۡ"
    ]
   },
   {
@@ -781,6 +820,10 @@
      "group": 1
     }
    ],
+   "tips": [
+    "Hams = whisper. With كۡ let a little air flow out, like a soft whisper.",
+    "Middle or end of the word, the air still flows. At the end, stop softly — no bounce."
+   ],
    "part": "Hams (whisper)"
   },
   {
@@ -830,6 +873,10 @@
      "row": 2,
      "group": 1
     }
+   ],
+   "tips": [
+    "Hams = whisper. With تۡ let a little air flow out, like a soft whisper.",
+    "Say تۡ softly with a little air — it is not a qalqala letter, so no bounce."
    ],
    "part": "Hams (whisper)"
   },
@@ -929,6 +976,10 @@
      "group": 2
     }
    ],
+   "tips": [
+    "Heavy letters خ ص ض غ ط ق ظ: full, deep sound. With a kasra, خ غ ق get a little lighter.",
+    "Kasra makes only خ غ ق less heavy. Fatha or damma keeps them fully heavy."
+   ],
    "part": "Tafkheem review"
   },
   {
@@ -1000,6 +1051,10 @@
      "group": 2
     }
    ],
+   "tips": [
+    "These never get lighter: ص ض ط ظ. Even صِ ضِ طِ ظِ stay fully heavy.",
+    "Same deep sound in all three boxes."
+   ],
    "part": "Tafkheem review"
   },
   {
@@ -1050,6 +1105,10 @@
      "group": 1
     }
    ],
+   "tips": [
+    "The ل of ٱللَّه is heavy after fatha or damma (or when you start), light after kasra. Every other ل is light.",
+    "لِلَّهِ is a short spelling: لِ + ٱللَّه. The ٱ and one ل are not written."
+   ],
    "part": "The Lam in ٱللَّه"
   },
   {
@@ -1062,43 +1121,52 @@
      "text": "رَمَضَانَ",
      "caption": "[ر Heavy (1)]   ·   رَ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Heavy (1): ر has a fatha:  رَ"
     },
     {
      "id": "L3S5:ربنا",
      "text": "رَبَّنَا",
      "caption": "[ر Heavy (1)]   ·   رَ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Heavy (1): ر has a fatha:  رَ"
     },
     {
      "id": "L3S5:مريم",
      "text": "مَرۡيَمَ",
      "caption": "[ر Heavy (2)]   ·   مَرۡ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Heavy (2): رۡ comes right after a fatha"
     },
     {
      "id": "L3S5:يرجعون",
      "text": "يَرۡجِعُونَ",
      "caption": "[ر Heavy (2)]   ·   يَرۡ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Heavy (2): رۡ comes right after a fatha"
     },
     {
      "id": "L3S5:والعصر",
      "text": "وَٱلۡعَصۡرِ",
      "caption": "[ر Heavy (3)]   ·   عَصۡرۡ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "rule": "Heavy (3): Stopping: رۡ comes after a sakin letter (not ي), and before that a fatha"
     },
     {
      "id": "L3S5:النار",
      "text": "ٱلنَّارِ",
      "caption": "[ر Heavy (3)]   ·   نَارۡ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "rule": "Heavy (3): Stopping: رۡ comes after a sakin letter (not ي), and before that a fatha"
     }
+   ],
+   "tips": [
+    "Heavy ر: full, deep sound. Light ر: thin sound. Read the rule above each table first."
    ],
    "part": "Raa"
   },
@@ -1113,6 +1181,7 @@
      "caption": "[ر Heavy (4)]   ·   رُ",
      "row": 0,
      "group": 0,
+     "rule": "Heavy (4): ر has a damma:  رُ",
      "audio": {
       "lesson": 1,
       "path": "audio/lesson01/",
@@ -1125,35 +1194,40 @@
      "text": "رُسُلُنَا",
      "caption": "[ر Heavy (4)]   ·   رُ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Heavy (4): ر has a damma:  رُ"
     },
     {
      "id": "L3S5:القرءان",
      "text": "ٱلۡقُرۡءَانَ",
      "caption": "[ر Heavy (5)]   ·   قُرۡ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Heavy (5): رۡ comes right after a damma"
     },
     {
      "id": "L3S5:يرزقون",
      "text": "يُرۡزَقُونَ",
      "caption": "[ر Heavy (5)]   ·   يُرۡ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Heavy (5): رۡ comes right after a damma"
     },
     {
      "id": "L3S5:خسر",
      "text": "خُسۡرٍ",
      "caption": "[ر Heavy (6)]   ·   خُسۡرۡ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "rule": "Heavy (6): Stopping: رۡ comes after a sakin letter, and before that a damma"
     },
     {
      "id": "L3S5:الأمور",
      "text": "ٱلۡأُمُورُ",
      "caption": "[ر Heavy (6)]   ·   مُورۡ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "rule": "Heavy (6): Stopping: رۡ comes after a sakin letter, and before that a damma"
     }
    ],
    "part": "Raa"
@@ -1168,29 +1242,36 @@
      "text": "قِرۡطَاسٍ",
      "caption": "[ر Heavy (7)]   ·   قِرۡطَ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Heavy (7): رۡ after a kasra, then a heavy letter (without kasra) in the same word"
     },
     {
      "id": "L3S5:مرصادا",
      "text": "مِرۡصَادًا",
      "caption": "[ر Heavy (7)]   ·   مِرۡصَ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Heavy (7): رۡ after a kasra, then a heavy letter (without kasra) in the same word"
     },
     {
      "id": "L3S5:ارجع",
      "text": "ٱرۡجِعۡ",
      "caption": "[ر Heavy (8)]   ·   إِرۡ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Heavy (8): رۡ after a kasra that is not original (borrowed)"
     },
     {
      "id": "L3S5:الذى ارتضى",
      "text": "ٱلَّذِى ٱرۡتَضَىٰ",
      "caption": "[ر Heavy (8)]   ·   ذِرۡ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Heavy (8): رۡ after a kasra that is not original (borrowed)"
     }
+   ],
+   "tips": [
+    "Start ٱرۡ with إِ. This kasra is borrowed, so رۡ stays heavy."
    ],
    "part": "Raa"
   },
@@ -1204,28 +1285,32 @@
      "text": "كَرِيمٍ",
      "caption": "[ر Light (1)]   ·   رِ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Light (1): ر has a kasra:  رِ"
     },
     {
      "id": "L3S5:رجال",
      "text": "رِجَالٌ",
      "caption": "[ر Light (1)]   ·   رِ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Light (1): ر has a kasra:  رِ"
     },
     {
      "id": "L3S5:فرعون",
      "text": "فِرۡعَوۡنَ",
      "caption": "[ر Light (2)]   ·   فِرۡ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Light (2): رۡ after an original kasra, with no heavy letter after it"
     },
     {
      "id": "L3S5:شرعة",
      "text": "شِرۡعَةً",
      "caption": "[ر Light (2)]   ·   شِرۡ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Light (2): رۡ after an original kasra, with no heavy letter after it"
     }
    ],
    "part": "Raa"
@@ -1240,28 +1325,32 @@
      "text": "حِجۡرٍ",
      "caption": "[ر Light (3)]   ·   حِجۡرۡ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Light (3): Stopping: رۡ comes after a sakin letter that is not heavy, and before that a kasra"
     },
     {
      "id": "L3S5:قدير",
      "text": "قَدِيرٌ",
      "caption": "[ر Light (3)]   ·   دِيرۡ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Light (3): Stopping: رۡ comes after a sakin letter that is not heavy, and before that a kasra"
     },
     {
      "id": "L3S5:خير",
      "text": "خَيۡرٌ",
      "caption": "[ر Light (4)]   ·   خَيۡرۡ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Light (4): Stopping: رۡ comes after a yaa leen  ـَيۡ"
     },
     {
      "id": "L3S5:ضير",
      "text": "ضَيۡرَ",
      "caption": "[ر Light (4)]   ·   ضَيۡرۡ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Light (4): Stopping: رۡ comes after a yaa leen  ـَيۡ"
     },
     {
      "id": "L3S5:فرق",
@@ -1285,6 +1374,10 @@
      "group": 2
     }
    ],
+   "tips": [
+    "فِرۡقٍ: heavy or light when you keep reading; heavy when you stop on it.",
+    "مِصۡرَ and ٱلۡقِطۡرِ: heavy or light only when you stop. Preferred: مِصۡرَ heavy, ٱلۡقِطۡرِ light."
+   ],
    "part": "Raa"
   },
   {
@@ -1297,28 +1390,32 @@
      "text": "رَبَّهُم بِهِمۡ",
      "caption": "[م Ikhfaa]   ·   هُم بِ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Ikhfaa shafawi: م before ب: hum (ghunna) from the nose, lips lightly closed, 2 counts"
     },
     {
      "id": "L3S6:ترميهم بحجارة",
      "text": "تَرۡمِيهِم بِحِجَارَةٍ",
      "caption": "[م Ikhfaa]   ·   هِم بِ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Ikhfaa shafawi: م before ب: hum (ghunna) from the nose, lips lightly closed, 2 counts"
     },
     {
      "id": "L3S6:لهم مغفرة",
      "text": "لَهُم مَّغۡفِرَةٌ",
      "caption": "[م Idgham]   ·   هُم مَّ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Idgham shafawi: م before م: merge into one مّ with ghunna, 2 counts"
     },
     {
      "id": "L3S6:عليهم مؤصدة",
      "text": "عَلَيۡهِم مُّؤۡصَدَةٌ",
      "caption": "[م Idgham]   ·   هِم مُّ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Idgham shafawi: م before م: merge into one مّ with ghunna, 2 counts"
     },
     {
      "id": "L3S6:عليهم ولا",
@@ -1326,6 +1423,7 @@
      "caption": "[مۡ Izhar]   ·   هِمۡ وَ",
      "row": 2,
      "group": 0,
+     "rule": "Izhar shafawi: مۡ before any other letter: say it clearly, especially before و and ف",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1340,6 +1438,7 @@
      "caption": "[مۡ Izhar]   ·   هُمۡ فِ",
      "row": 2,
      "group": 1,
+     "rule": "Izhar shafawi: مۡ before any other letter: say it clearly, especially before و and ف",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1348,6 +1447,9 @@
       "stopFile": "word008-waqf.wav"
      }
     }
+   ],
+   "tips": [
+    "No sukoon on م in the Mushaf = don't say it clearly; hide it or merge it."
    ]
   },
   {
@@ -1361,6 +1463,7 @@
      "caption": "[ء Izhar]   ·   نۡ ءَ",
      "row": 0,
      "group": 0,
+     "rule": "Izhar (ء هـ): say نۡ or tanween clearly before a throat letter",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1375,6 +1478,7 @@
      "caption": "[هـ Izhar]   ·   نۡ هَ",
      "row": 0,
      "group": 1,
+     "rule": "Izhar (ء هـ): say نۡ or tanween clearly before a throat letter",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1389,6 +1493,7 @@
      "caption": "[ع Izhar]   ·   نۡ عِ",
      "row": 1,
      "group": 0,
+     "rule": "Izhar (ع ح): say نۡ or tanween clearly before a throat letter",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1402,7 +1507,8 @@
      "text": "عَلِيمٌ حَكِيمٌ",
      "caption": "[ح Izhar]   ·   مٌ حَ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Izhar (ع ح): say نۡ or tanween clearly before a throat letter"
     },
     {
      "id": "L3S7:عفوا غفورا",
@@ -1410,6 +1516,7 @@
      "caption": "[غ Izhar]   ·   وًّا غَ",
      "row": 2,
      "group": 0,
+     "rule": "Izhar (غ خ): say نۡ or tanween clearly before a throat letter",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1423,8 +1530,12 @@
      "text": "مِنۡ خَيۡرٍ",
      "caption": "[خ Izhar]   ·   نۡ خَ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "rule": "Izhar (غ خ): say نۡ or tanween clearly before a throat letter"
     }
+   ],
+   "tips": [
+    "Tanween ends with a hidden نۡ, so it follows the same rules."
    ]
   },
   {
@@ -1438,6 +1549,7 @@
      "caption": "[ي Ghunna]   ·   مَن يَ",
      "row": 0,
      "group": 0,
+     "rule": "Idgham with ghunna (ي و): ن is not said: merge into the next letter with ghunna, 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1452,6 +1564,7 @@
      "caption": "[و Ghunna]   ·   مِن وَ",
      "row": 0,
      "group": 1,
+     "rule": "Idgham with ghunna (ي و): ن is not said: merge into the next letter with ghunna, 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1465,14 +1578,16 @@
      "text": "مِن نَّذِيرٍ",
      "caption": "[ن Ghunna]   ·   مِن نَّ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Idgham with ghunna (ن م): ن is not said: merge into the next letter with ghunna, 2 counts"
     },
     {
      "id": "L3S7:مثلا ما",
      "text": "مَثَلًا مَّا",
      "caption": "[م Ghunna]   ·   لًا مَّ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Idgham with ghunna (ن م): ن is not said: merge into the next letter with ghunna, 2 counts"
     },
     {
      "id": "L3S7:من لدنه",
@@ -1480,6 +1595,7 @@
      "caption": "[ل No ghunna]   ·   مِن لَّ",
      "row": 2,
      "group": 0,
+     "rule": "Idgham without ghunna (ل ر): ن is not said: merge fully into ل or ر, no ghunna",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1493,8 +1609,12 @@
      "text": "غَفُورٌ رَّحِيمٌ",
      "caption": "[ر No ghunna]   ·   رٌ رَّ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "rule": "Idgham without ghunna (ل ر): ن is not said: merge fully into ل or ر, no ghunna"
     }
+   ],
+   "tips": [
+    "No shadda on ي و: the merge is not complete."
    ]
   },
   {
@@ -1508,6 +1628,7 @@
      "caption": "[ب Iqlab]   ·   نۢ بَ",
      "row": 0,
      "group": 0,
+     "rule": "Iqlab (ب): ن or tanween before ب turns into a م, with ghunna, 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1522,6 +1643,7 @@
      "caption": "[ب Iqlab]   ·   مُّۢ بُ",
      "row": 0,
      "group": 1,
+     "rule": "Iqlab (ب): ن or tanween before ب turns into a م, with ghunna, 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1536,6 +1658,7 @@
      "caption": "[ت Light ghunna]   ·   نتُ",
      "row": 1,
      "group": 0,
+     "rule": "Ikhfaa, light ghunna (ت ث): hide the ن with a light ghunna, 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1549,14 +1672,16 @@
      "text": "مِن ثَمَرَةٍ",
      "caption": "[ث Light ghunna]   ·   ن ثَ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Ikhfaa, light ghunna (ت ث): hide the ن with a light ghunna, 2 counts"
     },
     {
      "id": "L3S7:من جوع",
      "text": "مِن جُوعٍ",
      "caption": "[ج Light ghunna]   ·   ن جُ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "rule": "Ikhfaa, light ghunna (ج د): hide the ن with a light ghunna, 2 counts"
     },
     {
      "id": "L3S7:من دون",
@@ -1564,6 +1689,7 @@
      "caption": "[د Light ghunna]   ·   ن دُ",
      "row": 2,
      "group": 1,
+     "rule": "Ikhfaa, light ghunna (ج د): hide the ن with a light ghunna, 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1572,6 +1698,9 @@
       "stopFile": "word134-waqf.wav"
      }
     }
+   ],
+   "tips": [
+    "Ikhfaa: hide the ن with ghunna for 2 counts, with the tongue getting ready for the next letter."
    ]
   },
   {
@@ -1584,21 +1713,24 @@
      "text": "مِن ذَكَرٍ",
      "caption": "[ذ Light ghunna]   ·   ن ذَ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Ikhfaa, light ghunna (ذ ز): hide the ن with a light ghunna, 2 counts"
     },
     {
      "id": "L3S7:أنزلنا",
      "text": "أَنزَلۡنَا",
      "caption": "[ز Light ghunna]   ·   نزَ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Ikhfaa, light ghunna (ذ ز): hide the ن with a light ghunna, 2 counts"
     },
     {
      "id": "L3S7:من سللة",
      "text": "مِن سُلَٰلَةٍ",
      "caption": "[س Light ghunna]   ·   ن سُ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Ikhfaa, light ghunna (س ش): hide the ن with a light ghunna, 2 counts"
     },
     {
      "id": "L3S7:من شر",
@@ -1606,6 +1738,7 @@
      "caption": "[ش Light ghunna]   ·   ن شَ",
      "row": 1,
      "group": 1,
+     "rule": "Ikhfaa, light ghunna (س ش): hide the ن with a light ghunna, 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1619,7 +1752,8 @@
      "text": "يُنفِقُونَ",
      "caption": "[ف Light ghunna]   ·   نفِ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "rule": "Ikhfaa, light ghunna (ف ك): hide the ن with a light ghunna, 2 counts"
     },
     {
      "id": "L3S7:من كل",
@@ -1627,6 +1761,7 @@
      "caption": "[ك Light ghunna]   ·   ن كُ",
      "row": 2,
      "group": 1,
+     "rule": "Ikhfaa, light ghunna (ف ك): hide the ن with a light ghunna, 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1647,28 +1782,32 @@
      "text": "مِن صَلۡصَٰلٍ",
      "caption": "[ص Heavy ghunna]   ·   ن صَ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Ikhfaa, heavy ghunna (ص ض): before a heavy letter the ghunna is heavy (full, deep), 2 counts"
     },
     {
      "id": "L3S7:من ضر",
      "text": "مِن ضُرٍّ",
      "caption": "[ض Heavy ghunna]   ·   ن ضُ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Ikhfaa, heavy ghunna (ص ض): before a heavy letter the ghunna is heavy (full, deep), 2 counts"
     },
     {
      "id": "L3S7:من طين",
      "text": "مِن طِينٍ",
      "caption": "[ط Heavy ghunna]   ·   ن طِ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Ikhfaa, heavy ghunna (ط ظ): before a heavy letter the ghunna is heavy (full, deep), 2 counts"
     },
     {
      "id": "L3S7:من ظهورهم",
      "text": "مِن ظُهُورِهِمۡ",
      "caption": "[ظ Heavy ghunna]   ·   ن ظُ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Ikhfaa, heavy ghunna (ط ظ): before a heavy letter the ghunna is heavy (full, deep), 2 counts"
     },
     {
      "id": "L3S7:من قبل",
@@ -1676,6 +1815,7 @@
      "caption": "[ق Heavy ghunna]   ·   ن قَ",
      "row": 2,
      "group": 0,
+     "rule": "Ikhfaa, heavy ghunna (ق ص): before a heavy letter the ghunna is heavy (full, deep), 2 counts",
      "audio": {
       "lesson": 7,
       "path": "audio/lesson07/",
@@ -1689,8 +1829,12 @@
      "text": "رِيحًا صَرۡصَرًا",
      "caption": "[ص Heavy ghunna]   ·   حًا صَ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "rule": "Ikhfaa, heavy ghunna (ق ص): before a heavy letter the ghunna is heavy (full, deep), 2 counts"
     }
+   ],
+   "tips": [
+    "Only ص ض ط ظ ق make the ghunna heavy. All other ikhfaa letters: light ghunna."
    ]
   },
   {
@@ -1703,43 +1847,52 @@
      "text": "أَم مَّنۡ",
      "caption": "[م Mithlain]   ·   م مَّ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Mithlain (م ن): the first letter merges into the same letter, with ghunna, 2 counts"
     },
     {
      "id": "L3S8:إن نحن",
      "text": "إِن نَّحۡنُ",
      "caption": "[ن Mithlain]   ·   ن نَّ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Mithlain (م ن): the first letter merges into the same letter, with ghunna, 2 counts"
     },
     {
      "id": "L3S8:وقد دخلوا",
      "text": "وَقَد دَّخَلُواْ",
      "caption": "[د Mithlain]   ·   د دَّ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Mithlain (د ل): say it once with a shadda; no qalqala on دۡ"
     },
     {
      "id": "L3S8:بل لا",
      "text": "بَل لَّا",
      "caption": "[ل Mithlain]   ·   ل لَّ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Mithlain (د ل): say it once with a shadda; no qalqala on دۡ"
     },
     {
      "id": "L3S8:يدرككم",
      "text": "يُدۡرِككُّمُ",
      "caption": "[ك Mithlain]   ·   ككُّ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "rule": "Mithlain (ك ب): say it once with a shadda; no qalqala on بۡ"
     },
     {
      "id": "L3S8:اضرب بعصاك",
      "text": "ٱضۡرِب بِّعَصَاكَ",
      "caption": "[ب Mithlain]   ·   ب بِّ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "rule": "Mithlain (ك ب): say it once with a shadda; no qalqala on بۡ"
     }
+   ],
+   "tips": [
+    "Two same letters: the first is sakin and merges into the second. Say it once with a shadda."
    ]
   },
   {
@@ -1752,43 +1905,52 @@
      "text": "إِذ ظَّلَمُوٓاْ",
      "caption": "[ظ Mutajanisain]   ·   ذ ظَّ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Mutajanisain (ذ←ظ, د←ت): same makhraj: the first letter merges fully into the second"
     },
     {
      "id": "L3S8:قد تبين",
      "text": "قَد تَّبَيَّنَ",
      "caption": "[ت Mutajanisain]   ·   د تَّ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Mutajanisain (ذ←ظ, د←ت): same makhraj: the first letter merges fully into the second"
     },
     {
      "id": "L3S8:أثقلت دعوا",
      "text": "أَثۡقَلَت دَّعَوَا",
      "caption": "[د Mutajanisain]   ·   ت دَّ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Mutajanisain (ت←د, ت←ط): same makhraj: the first letter merges fully into the second"
     },
     {
      "id": "L3S8:قالت طآئفة",
      "text": "قَالَت طَّآئِفَةٌ",
      "caption": "[ط Mutajanisain]   ·   ت طَّ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Mutajanisain (ت←د, ت←ط): same makhraj: the first letter merges fully into the second"
     },
     {
      "id": "L3S8:يلهث ذلك",
      "text": "يَلۡهَث ذَّٰلِكَ",
      "caption": "[ذ Mutajanisain]   ·   ث ذَّ",
      "row": 2,
-     "group": 0
+     "group": 0,
+     "rule": "Mutajanisain (ث←ذ, ب←م): same makhraj: the first letter merges fully into the second"
     },
     {
      "id": "L3S8:اركب معنا",
      "text": "ٱرۡكَب مَّعَنَا",
      "caption": "[م Mutajanisain]   ·   ب مَّ",
      "row": 2,
-     "group": 1
+     "group": 1,
+     "rule": "Mutajanisain (ث←ذ, ب←م): same makhraj: the first letter merges fully into the second"
     }
+   ],
+   "tips": [
+    "Mutajanisain: two different letters from the same makhraj."
    ]
   },
   {
@@ -1801,29 +1963,36 @@
      "text": "أَحَطتُ",
      "caption": "[ت Incomplete]   ·   طتُ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Mutajanisain, incomplete (ط←ت): the heavy sound of طۡ stays, and there's no qalqala"
     },
     {
      "id": "L3S8:بسطت",
      "text": "بَسَطتَ",
      "caption": "[ت Incomplete]   ·   طتَ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Mutajanisain, incomplete (ط←ت): the heavy sound of طۡ stays, and there's no qalqala"
     },
     {
      "id": "L3S8:قل رب",
      "text": "قُل رَّبِّ",
      "caption": "[ر Mutaqaribain]   ·   ل رَّ",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Mutaqaribain (ل←ر, ق←ك): letters with close makharij: the first merges fully into the second"
     },
     {
      "id": "L3S8:ألم نخلقكم",
      "text": "أَلَمۡ نَخۡلُقكُّم",
      "caption": "[ك Mutaqaribain]   ·   قكُّ",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Mutaqaribain (ل←ر, ق←ك): letters with close makharij: the first merges fully into the second"
     }
+   ],
+   "tips": [
+    "In نَخۡلُقكُّم the ق disappears fully: say كّ."
    ]
   },
   {
@@ -1836,50 +2005,62 @@
      "text": "قَالُواْ",
      "caption": "[ا Silent]   ·   لُواْ",
      "row": 0,
-     "group": 0
+     "group": 0,
+     "rule": "Round zero: قَالُواْ: the alif with a round zero is never said"
     },
     {
      "id": "L3S9:ءامنوا",
      "text": "ءَامَنُواْ",
      "caption": "[ا Silent]   ·   نُواْ",
      "row": 0,
-     "group": 1
+     "group": 1,
+     "rule": "Round zero: قَالُواْ: the alif with a round zero is never said"
     },
     {
      "id": "L3S9:كفروا",
      "text": "كَفَرُواْ",
      "caption": "[ا Silent]   ·   رُواْ",
      "row": 0,
-     "group": 2
+     "group": 2,
+     "rule": "Round zero: قَالُواْ: the alif with a round zero is never said"
     },
     {
      "id": "L3S9:أنا",
      "text": "أَنَا۠",
      "caption": "[ا Say at stop]   ·   نَا۠",
      "row": 1,
-     "group": 0
+     "group": 0,
+     "rule": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
     },
     {
      "id": "L3S9:لكنا",
      "text": "لَّٰكِنَّا۠",
      "caption": "[ا Say at stop]   ·   نَّا۠",
      "row": 1,
-     "group": 1
+     "group": 1,
+     "rule": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
     },
     {
      "id": "L3S9:قواريرا",
      "text": "قَوَارِيرَا۠",
      "caption": "[ا Say at stop]   ·   رَا۠",
      "row": 1,
-     "group": 2
+     "group": 2,
+     "rule": "Rectangular zero: أَنَا۠: silent when you keep reading; when you stop, say a short alif (2 counts)"
     }
+   ],
+   "tips": [
+    "Small zero on an alif: round = never said. Rectangle = said only when you stop."
    ]
   },
   {
    "physical": 35,
    "printed": 33,
    "section": "L3S10",
-   "items": []
+   "items": [],
+   "tips": [
+    "Waqf signs sit above the last word. They tell you where to stop or keep reading."
+   ]
   },
   {
    "physical": 36,

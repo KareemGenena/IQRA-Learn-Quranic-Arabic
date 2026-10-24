@@ -10,25 +10,25 @@
       "id": "p1",
       "title": "Page 1",
       "titleArabic": "صفحة 1",
-      "hint": "Workbook Level 3, page 1 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
+      "hint": "When you stop, the last letter drops its haraka and takes a sukoon:  رَ ← رۡ   We still write the word as it is in the Mushaf. Workbook Level 3, page 1 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p2",
       "title": "Page 2",
       "titleArabic": "صفحة 2",
-      "hint": "Workbook Level 3, page 2 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
+      "hint": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا Workbook Level 3, page 2 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p3",
       "title": "Page 3",
       "titleArabic": "صفحة 3",
-      "hint": "Workbook Level 3, page 3 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
+      "hint": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop. Workbook Level 3, page 3 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
     },
     {
       "id": "p4",
       "title": "Page 4",
       "titleArabic": "صفحة 4",
-      "hint": "Workbook Level 3, page 4 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
+      "hint": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ Workbook Level 3, page 4 — Stopping (Waqf). Tap a form to hear it, then trace it on the page."
     }
   ],
   "words": [
@@ -40,7 +40,8 @@
       ],
       "text": "قُتِلَ كَيۡفَ قَدَّرَ",
       "audio": "word01.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop, the last letter drops its haraka and takes a sukoon:  رَ ← رۡ   We still write the word as it is in the Mushaf."
     },
     {
       "id": 2,
@@ -50,7 +51,8 @@
       ],
       "text": "نَشۡرَحۡ لَكَ صَدۡرَكَ",
       "audio": "word02.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop, the last letter drops its haraka and takes a sukoon:  رَ ← رۡ   We still write the word as it is in the Mushaf."
     },
     {
       "id": 3,
@@ -60,7 +62,8 @@
       ],
       "text": "أَدۡرَىٰكَ مَا سَقَرُ",
       "audio": "word03.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop, the last letter drops its haraka and takes a sukoon:  رَ ← رۡ   We still write the word as it is in the Mushaf."
     },
     {
       "id": 4,
@@ -70,7 +73,8 @@
       ],
       "text": "عَٰبِدُونَ مَآ أَعۡبُدُ",
       "audio": "word04.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop, the last letter drops its haraka and takes a sukoon:  رَ ← رۡ   We still write the word as it is in the Mushaf."
     },
     {
       "id": 5,
@@ -80,7 +84,8 @@
       ],
       "text": "كَانَ عَذَابِى وَنُذُرِ",
       "audio": "word05.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop, the last letter drops its haraka and takes a sukoon:  رَ ← رۡ   We still write the word as it is in the Mushaf."
     },
     {
       "id": 6,
@@ -90,7 +95,8 @@
       ],
       "text": "فَيَقُولُ رَبِّىٓ أَكۡرَمَنِ",
       "audio": "word06.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "When you stop, the last letter drops its haraka and takes a sukoon:  رَ ← رۡ   We still write the word as it is in the Mushaf."
     },
     {
       "id": 7,
@@ -100,7 +106,8 @@
       ],
       "text": "يَقۡدِرَ عَلَيۡهِ أَحَدٌ",
       "audio": "word07.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
     },
     {
       "id": 8,
@@ -110,7 +117,8 @@
       ],
       "text": "مَا فِيهِ مُزۡدَجَرٌ",
       "audio": "word08.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
     },
     {
       "id": 9,
@@ -120,7 +128,8 @@
       ],
       "text": "بَعۡضَهُمۡ عَلَىٰ بَعۡضٍ",
       "audio": "word09.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
     },
     {
       "id": 10,
@@ -130,7 +139,8 @@
       ],
       "text": "عَلَيۡهِ مِنۡ أَجۡرٍ",
       "audio": "word10.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
     },
     {
       "id": 11,
@@ -140,7 +150,8 @@
       ],
       "text": "كَانَ بِكُمۡ رَحِيمًا",
       "audio": "word11.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
     },
     {
       "id": 12,
@@ -150,7 +161,8 @@
       ],
       "text": "أَوۡ أَشَدَّ ذِكۡرًا",
       "audio": "word12.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
     },
     {
       "id": 13,
@@ -160,7 +172,8 @@
       ],
       "text": "عَذَابَ رَبِّكَ لَوَٰقِعٌ",
       "audio": "word13.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
     },
     {
       "id": 14,
@@ -170,7 +183,8 @@
       ],
       "text": "خَٰلِدِينَ فِيهَآ أَبَدًا",
       "audio": "word14.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop on ـٌ or ـٍ: the tanween drops and the letter takes a sukoon:  دٌ ← دۡ Stop on ـً: say an alif instead, 2 counts (madd iwad):  مًا ← مَا"
     },
     {
       "id": 15,
@@ -180,7 +194,8 @@
       ],
       "text": "قُوَّةً إِلَىٰ قُوَّتِكُمۡ",
       "audio": "word15.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
     },
     {
       "id": 16,
@@ -190,7 +205,8 @@
       ],
       "text": "أَشَدَّ مِنۡهُمۡ قُوَّةً",
       "audio": "word16.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
     },
     {
       "id": 17,
@@ -200,7 +216,8 @@
       ],
       "text": "ثَلَٰثَةَ أَيَّامٍ",
       "audio": "word17.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
     },
     {
       "id": 18,
@@ -210,7 +227,8 @@
       ],
       "text": "ثَالِثُ ثَلَٰثَةٍ",
       "audio": "word18.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
     },
     {
       "id": 19,
@@ -220,7 +238,8 @@
       ],
       "text": "ءَايَةً أُخۡرَىٰ",
       "audio": "word19.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
     },
     {
       "id": 20,
@@ -230,7 +249,8 @@
       ],
       "text": "لَكُمۡ ءَايَةً",
       "audio": "word20.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
     },
     {
       "id": 21,
@@ -240,7 +260,8 @@
       ],
       "text": "لَهُمۡ شَهَٰدَةً أَبَدًا",
       "audio": "word21.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
     },
     {
       "id": 22,
@@ -250,7 +271,8 @@
       ],
       "text": "أَكۡبَرُ شَهَٰدَةً",
       "audio": "word22.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Taa marbuta ة: keep reading → say ت  ·  stop → say هۡ Even with ةً you stop with هۡ — no alif. Right box: keep going. Left box: stop."
     },
     {
       "id": 23,
@@ -260,7 +282,8 @@
       ],
       "text": "وَإِيَّاكَ نَسۡتَعِينُ",
       "audio": "word23.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ"
     },
     {
       "id": 24,
@@ -270,7 +293,8 @@
       ],
       "text": "وَلَا هُمۡ يَحۡزَنُونَ",
       "audio": "word24.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ"
     },
     {
       "id": 25,
@@ -280,7 +304,8 @@
       ],
       "text": "لَعَلَّكُمۡ تَتَّقُونَ",
       "audio": "word25.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ"
     },
     {
       "id": 26,
@@ -290,7 +315,8 @@
       ],
       "text": "فَكَيۡفَ كَانَ عِقَابِ",
       "audio": "word26.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ"
     },
     {
       "id": 27,
@@ -300,7 +326,8 @@
       ],
       "text": "يَفۡعَلُ مَا يُرِيدُ",
       "audio": "word27.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ"
     },
     {
       "id": 28,
@@ -310,7 +337,8 @@
       ],
       "text": "بِمَا تَعۡمَلُونَ بَصِيرٌ",
       "audio": "word28.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ"
     },
     {
       "id": 29,
@@ -320,7 +348,8 @@
       ],
       "text": "يَشَآءُ بِغَيۡرِ حِسَابٍ",
       "audio": "word29.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ"
     },
     {
       "id": 30,
@@ -330,7 +359,8 @@
       ],
       "text": "مِنۡ هَادٍ",
       "audio": "word30.wav",
-      "timings": null
+      "timings": null,
+      "meaning": "Stop right after a madd letter: stretch it 2, 4 or 6 counts (madd aarid). Pick one and keep it the same. A qalqala letter at the stop still bounces:  بۡ  دۡ"
     }
   ]
 }

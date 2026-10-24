@@ -248,7 +248,7 @@ export const LESSONS: LessonMeta[] = [
     order: 1,
     title: 'Stopping',
     titleArabic: 'الوقف',
-    blurb: 'What happens to the last letter when you stop on a word — the vowel drops, a madd grows.',
+    blurb: 'What happens to the last letter when you stop on a word — the last haraka drops, a madd grows.',
   },
   {
     id: 35,
@@ -340,6 +340,22 @@ export function lessonsByLevel(lessons: LessonMeta[] = LESSONS) {
   return LEVELS.map((lv) => ({ ...lv, lessons: ordered.filter((l) => l.level === lv.level) }));
 }
 
+/**
+ * How a lesson is named wherever its number is shown — "Level 3 · Lesson 4":
+ * its Level and its place in that Level's sequence, the same count the home
+ * page shows beside it. Never the id: that is the lesson's identity, not its
+ * position, and printing it read as a broken order ("Lesson 1" after lesson
+ * 25 — the author, 2026-10-24). One function, so no page can disagree with
+ * the home page.
+ */
+export function lessonLabel(id: number, lessons: LessonMeta[] = LESSONS): string {
+  for (const lv of lessonsByLevel(lessons)) {
+    const i = lv.lessons.findIndex((l) => l.id === id);
+    if (i >= 0) return `${lv.title} · Lesson ${i + 1}`;
+  }
+  return `Lesson ${id}`;
+}
+
 const pad = (n: number) => String(n).padStart(2, '0');
 
 export async function loadLesson(id: number): Promise<Lesson> {
@@ -353,8 +369,10 @@ export function isPairWord(w: SimpleWord | PairWord): w is PairWord {
   return (w as PairWord).bare !== undefined;
 }
 
-/** The ال prefix is always exactly two clusters: the alif and the lam. */
-const AL_CLUSTERS = 2;
+// The ال prefix was painted in the accent colour (its two clusters, the alif
+// and the lam) until 2026-10-24: the author wants it black like the rest of
+// the word. The sun lam is still greyed, by `derivedSilent`, and the badge
+// still names the rule.
 
 export function barePlayable(word: PairWord): Playable {
   return {
@@ -378,7 +396,7 @@ export function withAlPlayable(word: PairWord): Playable {
     // In a shamsiyya word the lam is written but not pronounced — it
     // assimilates into the doubled letter that follows.
     silentClusters: derivedSilent(word.withAl.text),
-    prefixClusters: AL_CLUSTERS,
+    prefixClusters: 0,
   };
 }
 

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { SignInPanel } from '../components/SignInPanel';
-import { LESSONS } from '../lib/lessons';
+import { LESSONS, lessonLabel } from '../lib/lessons';
 import {
   addRecording,
   deleteRecording,
@@ -248,7 +248,7 @@ function RecordingRow({
 
       {lesson && (
         <a className="recording-lesson" href={`#/lesson/${lesson.id}`}>
-          Lesson {lesson.id} — {lesson.title}
+          {lessonLabel(lesson.id)} — {lesson.title}
         </a>
       )}
 
@@ -418,7 +418,7 @@ function RecordingForm({
             <option value={0}>No particular lesson</option>
             {LESSONS.map((l) => (
               <option key={l.id} value={l.id}>
-                Lesson {l.id} — {l.title}
+                {lessonLabel(l.id)} — {l.title}
               </option>
             ))}
           </select>
