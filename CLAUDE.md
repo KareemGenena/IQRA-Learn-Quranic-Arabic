@@ -83,7 +83,9 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
 - **Letter-by-letter highlighting** driven by per-letter timings.
 - **Admin**: publish/take-down/delete lessons and toggle features at runtime;
   tap-to-calibrate timings that sync to every device.
-- **Laser pointer** for teaching over a shared screen.
+- **Laser pointer** for teaching over a shared screen: a red dot under the
+  pointer and a trail that fades a second after the last mark; on a phone
+  the finger is the laser and two fingers scroll (2026-10-25).
 - **Notes** — endless per-lesson canvas: stylus draws, finger scrolls, typing in
   Uthmanic Hafs with a Quranic-mark palette. Local-only so far.
 - **Lesson 5** — madd muttasil and munfasil, both held four harakat.
@@ -217,9 +219,26 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   a rate for the calibration page)**, the workbook bars, the notes bar,
   the admin bar, and the floating Laser pill that covered the pager on a
   phone. The author's screenshot showed a song's name three times before
-  its first card (2026-10-25). **The contents drawer** (`ContentsMenu`,
-  the header's ☰) lists every Level and its lessons, the workbooks and the
-  account from any page, and a link opens the lesson itself.
+  its first card (2026-10-25). **The contents drawer** (`ContentsMenu`)
+  lists every Level and its lessons, the workbooks and the account from
+  any page, and a link opens the lesson itself. **It opens from a tab on
+  the page's right edge** (`.menu-tab`, fixed, the side the drawer slides
+  from, reachable however far down a lesson the page is) — the author
+  found a ☰ among the header's buttons "peripheral" (2026-10-25, the
+  evening). **The header's Admin link is hidden on a lesson page**: the
+  gear's "Manage lessons" is the same page. **The laser** (`LaserPointer`,
+  rewritten the same evening): the overlay hides the system cursor and
+  draws a red dot wherever the pointer is — mouse, pen or finger — and a
+  trail while pressing, which fades a second after the last mark; on a
+  phone ONE finger is the laser and TWO fingers scroll (the component pans
+  the scrollable under them; a mouse wheel scrolls as ever). The way out:
+  the tool button (the `.lesson-crumb` row sits above the overlay, z-index
+  905 over 900), the "Laser on · tap to turn off" chip fixed at the top,
+  or Escape. Before this the overlay showed a crosshair, a red frame and
+  no dot, the button under it could not be reached, and on a phone —
+  where a finger only scrolled — the frame was the whole feature. The icon
+  is a slanted pointer with a red dot and rays at its tip, white once the
+  button itself is red (`--laser`).
 - **A lesson is named by its place, never its number** — `lessonLabel(id)`
   in `lessons.ts`: "Level 3 · Lesson 4", the Level and the position the
   home page counts in it. Shown in the lesson header and the recordings
@@ -850,7 +869,12 @@ Things that cost real debugging. Do not undo them without reading why.
 - Room tone ignores the first and last **0.5 s**. The first take ever made
   reported speech at 0.21–0.32 s in a room whose floor was −86 dBFS: those were
   the mouse clicks starting and stopping the recording. Every speaker will make
-  them, every time.
+  them, every time. **And a room is "speech" only when what stands out of
+  it also peaks above −40 dBFS** (2026-10-25): the author's Yeti GX has a
+  floor of −85 dBFS, where a tick nobody hears — a mouse settling at
+  0.6 s, −51 dBFS — was 34 dB above the floor and failed the take; no word
+  in the corpus peaks under −33 dBFS. The ratio alone was the rule, and a
+  quieter microphone than the rule had ever met broke it.
 - The **speaker profile** — room tone, بَا/بِي/بُو, and one carrier phrase —
   is recorded once per session. It is worthless to the lessons and
   indispensable to the pronunciation work: vowel formants scale with the vocal
@@ -859,7 +883,17 @@ Things that cost real debugging. Do not undo them without reading why.
   fact, which is why it is in the first version.
 - `intake.json` is written beside the audio: sheet, row, text, speaker,
   consent, levels, take count. The generators ignore it; the corpus cannot be
-  built without it.
+  built without it. **Since 2026-10-25 it holds EVERY session written into
+  the folder** — `{ sessions: [...] }`, oldest first, a re-save of a
+  session replacing its own entry, a file from before (one bare manifest)
+  becoming the first entry. It used to be the LAST session's manifest
+  alone: the alphabet's three sessions into one folder overwrote each
+  other, and the first two are gone from disk (the browser's intake store
+  still has them). The Save panel says what it wrote BY KIND — the takes,
+  and the five speaker-profile files, which every session rewrites into
+  the same folder ("5 over a file that was already there" read as an
+  error) — and names a take that would not survive the split with the
+  check's own words, instead of counting them.
 
 **Word ids and calibrations**
 - A word's id belongs to its **table row**, and is spent whether or not the row
@@ -1239,20 +1273,45 @@ this time the corrupted records are children's.
   the way to its nearest neighbor (`tapRadius`), so the two dots of ت are
   told apart. **The letter is painted PIXEL BY PIXEL, never stroked
   beside** (`tracePaint.ts`, 2026-10-25, the second painter in a day): the
-  glyph is drawn on a canvas and every pixel of its ink is given to the
-  NEAREST point of the letter's strokes — which stroke, and how far along
-  it — so a pixel is colored when its stroke is done, or is the one being
-  traced and the finger has passed its share. The start of ط's loop lights
-  the start of the loop and nothing else, not the lower loop, not the
-  stem, and a dot never lights its neighbor. The first painter was an SVG
-  mask of the strokes drawn with a wide brush (1.15× the glyph's thickest
-  stroke, `trace.brush`), and a brush cannot know which pixels are "the
+  glyph is drawn on a canvas and every pixel of its ink is given a MOMENT
+  — which stroke lights it, and how far along that stroke — so a pixel is
+  colored when its stroke is done, or is the one being traced and the
+  finger has passed its share. The start of ط's loop lights the start of
+  the loop and nothing else, not the lower loop, not the stem, and a dot
+  never lights its neighbor. The first painter was an SVG mask of the
+  strokes drawn with a wide brush (1.15× the glyph's thickest stroke,
+  `trace.brush`), and a brush cannot know which pixels are "the
   corresponding segment" — it spilled onto every part within its width.
-  The raster is built once per card and size (~100 k ink pixels against
-  ~100 stroke points, tens of ms) and repainted in one pass on each
-  change; the SVG above it keeps the guide, the dot, the ARROW a little
-  way along the line (which way to go), the dot rings (the dot's own size,
-  `trace.dotRadius`) and the teacher's drawing. The demonstration keeps
+  **The moment is found by two rules (the same evening, after the
+  author's "teeth" and "holes"):** (1) the pixel's place along a stroke
+  is its projection onto the nearest SEGMENT of the polyline, never its
+  nearest sample point — where two parts run close (the head of ع along
+  the top of its body, the two sides of هـ's loop) the nearest point
+  flipped from pixel to pixel with the 48-point sampling and the front
+  came out as a sawtooth; (2) the pixel lights at the EARLIEST moment
+  among every segment whose ink it is: within the stroke's own half-width
+  there (a chord through the glyph at the segment's midpoint, capped at
+  2.5 medians so a junction's chord does not run up ط's stem), times
+  1.15 plus 1.5 device px, with a clear line of ink between pixel and
+  segment so the reach never leaps a gap (the teeth of س, a dot and its
+  letter, the hamza inside ك). So where a stroke crosses itself (هـ) or a
+  later stroke stands on an earlier one (ط's stem on its loop) the first
+  pass inks the overlap as a pen does on paper and the later pass finds it
+  inked — no hole waits for the second pass, nothing is painted twice,
+  and the creep at a junction is one stroke width, the ink's own. A pixel
+  no segment reaches falls to the nearest segment it can see; a dot's
+  reach is its own radius exactly. The author asked for ideas on the
+  overlaps ("the later part can appear half opacified") — with opaque
+  color there is no half: the overlap is simply inked by whoever passes
+  first. The raster is built once per card and size (~100 k ink pixels
+  against a few hundred segments behind a bounding-box test: 5–44 ms per
+  board at 440 px and device ratio 1 in the pane, read from
+  `performance.getEntriesByName('trace-raster')`; four times that at a
+  phone's scale of 2) and
+  repainted in one pass on each change; the SVG above it keeps the guide,
+  the dot, the ARROW — a small open chevron on the dotted line a little
+  way from the dot, never a solid head — the dot rings (the dot's own
+  size, `trace.dotRadius`) and the teacher's drawing. The demonstration keeps
   every stroke it has painted while it paints the next. On a phone the
   board is `touch-action: pan-y`: the page scrolls under a finger that
   lands away from the dot, and the card's own non-passive touch listeners
@@ -1924,8 +1983,37 @@ speed buttons are gone everywhere, the laser lives in the tool row, the
 contents drawer opens from ☰ (section 3, "The lesson page's head"). He has
 taught his own strokes for several letters in the cloud (ت ط among them —
 the card says "teacher's strokes"); `node scripts/tracing/pull-cloud.mjs`
-bakes them in. **Waiting on the author:** which letters still need his
-hand; the recording.
+bakes them in.
+
+**The author's ten points of 2026-10-25 (the third round, the evening),
+built, committed and deployed.** First, **Level 1 is RECORDED**: all 60
+takes are in `Audio/Audio - Kids Alphabet/` (29 lines, 2 songs, 29
+names, three intake sessions from one sheet) and `make-alphabet.mjs` cut
+60 clips into `public/audio/lesson20|30|31|32`. **The generator now cuts
+each take to one piece through `splitIntoN(wav, 1)`** instead of copying
+it whole: every take had the record click in its first 0.02–0.35 s (up to
+as loud as the voice) and a beat of silence before the voice at ~1 s,
+which the whole copy kept and the splitter's edge rules drop, printing
+each decision (57 lines; one stray tail on ى, 0.09 of peak). No
+`AUDIO_VERSION` bump: no alphabet clip had ever been deployed. Then: the
+laser is a red dot with a trail, the finger is the laser on a phone, two
+fingers scroll, and the tool button, a chip at the top or Escape turn it
+off (section 3, "The lesson page's head"); a new laser icon; the Admin
+link off the lesson page; the contents tab on the page's right edge; the
+arrow a small chevron; the painting's two new rules — segments, not
+points, and the earliest covering pass — which took the teeth and the
+holes out of ع, هـ and ط (section 3, "Tracing"; verified frame by frame
+in the pane, the demonstration and a finger's trace paint through the
+same function); the room-tone check no longer calls a −51 dBFS tick in
+a −85 dBFS room "speech" (section 3, "Audio intake"); the Save panel
+names what it wrote by kind and which take would fail, and `intake.json`
+keeps every session (same section). **Next, the author:** tap-calibrate
+the 29 lines and the 2 songs (`#/admin/20`, `#/admin/31`, `#/admin/32`;
+the names are one word each and can wait), hear a few name clips on the
+tracing cards and a line on a letter card, then Publish Level 1 from
+`#/admin`. Not verified by me: the two-finger scroll and the finger
+laser on a real phone (synthesized touches in the pane only); the sound
+of the trimmed clips.
 
 **Waiting on the author:** a home for ىٰ، لا، ة (once he decides
 the content); hearing the tracing card's name clip once table 9 is
@@ -1992,8 +2080,10 @@ line), utterances 1, Reading "Continuing", and record 29 lines; then
 **table 8** for the two songs (`song-names.wav`, `song-sounds.wav`, whole);
 then **table 9** for the 29 names (`باء.wav` …) — all into
 `Audio/Audio - Kids Alphabet/`; run
-`node scripts/make-alphabet.mjs`, which cuts nothing (every take is whole)
-and then lists what to **tap-calibrate** — the 29 lines and the 2 songs
+`node scripts/make-alphabet.mjs`, which cuts each take to ONE piece with
+the edges trimmed (the record click dropped, as in every lesson; DONE
+2026-10-25, all 60) and then lists what to **tap-calibrate** — the 29
+lines and the 2 songs
 (a name is one word and needs none), a tap per Arabic letter
 (بَ بُ بِ نَبۡ is five; the first tap also ends the picture's glow), and the
 songs cannot work at all without it. Then Publish from `#/admin`.

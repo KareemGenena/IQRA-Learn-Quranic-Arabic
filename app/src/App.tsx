@@ -235,6 +235,12 @@ export default function App() {
           it had covered the pager on a phone (2026-10-25). */}
       {showLaser && <LaserPointer active={laser} onExit={() => setLaser(false)} />}
       <ContentsMenu config={config} admin={admin} currentId={route.lessonId} open={menu} onClose={() => setMenu(false)} />
+      {/* The contents: a tab on the page's right edge, where the drawer
+          opens from, reachable however far down a lesson the page is — not
+          a button among the header's (the author, 2026-10-25). */}
+      <button type="button" className="menu-tab" aria-label="Contents" aria-expanded={menu} onClick={() => setMenu(true)}>
+        <span aria-hidden="true">☰</span>
+      </button>
 
       <header className="app-header">
         <a className="brand" href="#/">
@@ -245,15 +251,14 @@ export default function App() {
           </span>
         </a>
         <div className="header-actions">
-          <button type="button" className="menu-btn" aria-label="Contents" aria-expanded={menu} onClick={() => setMenu(true)}>
-            <span aria-hidden="true">☰</span>
-          </button>
           {/* The installed PWA has no address bar, so signing in needs a
               control here rather than a typed URL. Hidden on the sign-in
-              page itself, where it would just point at the current page. */}
+              page itself, where it would just point at the current page.
+              The Admin link stays off a lesson page: the gear in the
+              lesson's tool row reaches the same page (2026-10-25). */}
           {signingIn ? null : account.signedIn ? (
             <>
-              {admin && (
+              {admin && route.page !== 'lesson' && (
                 <a className="account-btn" href="#/admin">
                   Admin
                 </a>

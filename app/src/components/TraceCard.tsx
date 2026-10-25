@@ -158,7 +158,10 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
     const canvas = canvasRef.current;
     if (!canvas || !geom || !letter) return;
     const scale = Math.min(2, window.devicePixelRatio || 1);
+    const t0 = performance.now();
     const raster: PaintRaster | null = buildRaster(letter, FONT, geom, size, templates, scale);
+    // `performance.getEntriesByName('trace-raster')` in the console: how long each board took
+    performance.measure('trace-raster', { start: t0 });
     if (!raster) return;
     const gray = getComputedStyle(canvas).getPropertyValue('--trace-gray').trim() || '#d9dde3';
     painter.current = new Painter(canvas, raster, letter, FONT, geom, gray);
@@ -660,7 +663,9 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
               )}
               {arrow && (
                 <g className="trace-arrow" transform={`translate(${arrow.at[0].toFixed(1)} ${arrow.at[1].toFixed(1)}) rotate(${arrow.angle.toFixed(1)})`}>
-                  <path d={`M${-sw * 0.5} ${-sw * 0.38} L${sw * 0.3} 0 L${-sw * 0.5} ${sw * 0.38} Z`} />
+                  {/* a small open chevron on the dotted line, not a solid head (the author, 2026-10-25) */}
+                  <path className="halo" d={`M${-sw * 0.26} ${-sw * 0.26} L0 0 L${-sw * 0.26} ${sw * 0.26}`} />
+                  <path d={`M${-sw * 0.26} ${-sw * 0.26} L0 0 L${-sw * 0.26} ${sw * 0.26}`} />
                 </g>
               )}
               {dot && <circle key={nudge} className="trace-dot" cx={dot[0]} cy={dot[1]} r={sw * 0.42} />}

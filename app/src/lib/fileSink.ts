@@ -57,6 +57,16 @@ export async function writeFile(
   await stream.close();
 }
 
+/** A text file in the folder, or null when there is none. */
+export async function readText(dir: FileSystemDirectoryHandle, name: string): Promise<string | null> {
+  try {
+    const handle = await dir.getFileHandle(name);
+    return await (await handle.getFile()).text();
+  } catch {
+    return null;
+  }
+}
+
 /** Names already in the folder — so overwriting an existing take is a choice. */
 export async function listFolder(dir: FileSystemDirectoryHandle): Promise<string[]> {
   const names: string[] = [];

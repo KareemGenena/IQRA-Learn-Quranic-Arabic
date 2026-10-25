@@ -1,0 +1,692 @@
+{
+  "batch": "Alphabet names",
+  "source": "الحروف الهجائية.docx",
+  "speaker": "Kareem Genena",
+  "consent": true,
+  "reading": "continuing",
+  "createdAt": "2026-10-25T22:36:34.270Z",
+  "writtenAt": "2026-10-25T22:42:35.498Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36 Edg/156.0.0.0",
+  "recordings": [
+    {
+      "file": "speaker-roomtone.wav",
+      "kind": "profile",
+      "text": "—",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": null,
+      "expectedUtterances": 0,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 3.157,
+      "peak": 0.0045,
+      "noiseFloor": 0.000056,
+      "snrDb": 34.3,
+      "piecesFound": 1,
+      "cutInto": [
+        0.34
+      ],
+      "recordedAt": "2026-10-25T22:36:46.471Z"
+    },
+    {
+      "file": "speaker-vowel-a.wav",
+      "kind": "profile",
+      "text": "بَا",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": null,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.56,
+      "peak": 0.2908,
+      "noiseFloor": 0.000051,
+      "snrDb": 66,
+      "piecesFound": 1,
+      "cutInto": [
+        0.73
+      ],
+      "recordedAt": "2026-10-25T22:36:54.624Z"
+    },
+    {
+      "file": "speaker-vowel-i.wav",
+      "kind": "profile",
+      "text": "بِي",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": null,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.816,
+      "peak": 0.1492,
+      "noiseFloor": 0.000105,
+      "snrDb": 56.5,
+      "piecesFound": 1,
+      "cutInto": [
+        0.74
+      ],
+      "recordedAt": "2026-10-25T22:37:03.196Z"
+    },
+    {
+      "file": "speaker-vowel-u.wav",
+      "kind": "profile",
+      "text": "بُو",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": null,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.731,
+      "peak": 0.1726,
+      "noiseFloor": 0.000061,
+      "snrDb": 64.5,
+      "piecesFound": 1,
+      "cutInto": [
+        0.78
+      ],
+      "recordedAt": "2026-10-25T22:37:11.420Z"
+    },
+    {
+      "file": "speaker-carrier.wav",
+      "kind": "profile",
+      "text": "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": null,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 5.717,
+      "peak": 0.2977,
+      "noiseFloor": 0.000228,
+      "snrDb": 52,
+      "piecesFound": 3,
+      "cutInto": [
+        4.21
+      ],
+      "recordedAt": "2026-10-25T22:37:23.789Z"
+    },
+    {
+      "file": "باء.wav",
+      "kind": "word",
+      "text": "بَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 0,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.2012,
+      "noiseFloor": 0.000053,
+      "snrDb": 64.1,
+      "piecesFound": 1,
+      "cutInto": [
+        0.6
+      ],
+      "recordedAt": "2026-10-25T22:37:38.128Z"
+    },
+    {
+      "file": "تاء.wav",
+      "kind": "word",
+      "text": "تَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 1,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.389,
+      "peak": 0.2694,
+      "noiseFloor": 0.000059,
+      "snrDb": 63.9,
+      "piecesFound": 1,
+      "cutInto": [
+        0.59
+      ],
+      "recordedAt": "2026-10-25T22:37:47.868Z"
+    },
+    {
+      "file": "ثاء.wav",
+      "kind": "word",
+      "text": "ثَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 2,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.731,
+      "peak": 0.324,
+      "noiseFloor": 0.00006,
+      "snrDb": 64.9,
+      "piecesFound": 1,
+      "cutInto": [
+        0.75
+      ],
+      "recordedAt": "2026-10-25T22:37:57.624Z"
+    },
+    {
+      "file": "جيم.wav",
+      "kind": "word",
+      "text": "جِيم",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 3,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.816,
+      "peak": 0.1969,
+      "noiseFloor": 0.000057,
+      "snrDb": 63.9,
+      "piecesFound": 1,
+      "cutInto": [
+        0.94
+      ],
+      "recordedAt": "2026-10-25T22:38:07.227Z"
+    },
+    {
+      "file": "حاء.wav",
+      "kind": "word",
+      "text": "حَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 4,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.816,
+      "peak": 0.32,
+      "noiseFloor": 0.000086,
+      "snrDb": 60.1,
+      "piecesFound": 1,
+      "cutInto": [
+        0.8
+      ],
+      "recordedAt": "2026-10-25T22:38:16.035Z"
+    },
+    {
+      "file": "خاء.wav",
+      "kind": "word",
+      "text": "خَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 5,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.304,
+      "peak": 0.3545,
+      "noiseFloor": 0.000068,
+      "snrDb": 64,
+      "piecesFound": 1,
+      "cutInto": [
+        0.78
+      ],
+      "recordedAt": "2026-10-25T22:38:26.295Z"
+    },
+    {
+      "file": "دال.wav",
+      "kind": "word",
+      "text": "دَال",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 6,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.304,
+      "peak": 0.2974,
+      "noiseFloor": 0.000057,
+      "snrDb": 65.3,
+      "piecesFound": 1,
+      "cutInto": [
+        0.88
+      ],
+      "recordedAt": "2026-10-25T22:38:35.853Z"
+    },
+    {
+      "file": "ذال.wav",
+      "kind": "word",
+      "text": "ذَال",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 7,
+      "expectedUtterances": 1,
+      "take": 2,
+      "takesMade": 2,
+      "sampleRate": 48000,
+      "duration": 2.645,
+      "peak": 0.2482,
+      "noiseFloor": 0.000091,
+      "snrDb": 59.7,
+      "piecesFound": 1,
+      "cutInto": [
+        0.97
+      ],
+      "recordedAt": "2026-10-25T22:38:55.279Z"
+    },
+    {
+      "file": "راء.wav",
+      "kind": "word",
+      "text": "رَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 8,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.326,
+      "noiseFloor": 0.000114,
+      "snrDb": 59.2,
+      "piecesFound": 1,
+      "cutInto": [
+        0.68
+      ],
+      "recordedAt": "2026-10-25T22:39:05.535Z"
+    },
+    {
+      "file": "زاي.wav",
+      "kind": "word",
+      "text": "زَاي",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 9,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.645,
+      "peak": 0.2692,
+      "noiseFloor": 0.000057,
+      "snrDb": 63.8,
+      "piecesFound": 1,
+      "cutInto": [
+        1.04
+      ],
+      "recordedAt": "2026-10-25T22:39:14.506Z"
+    },
+    {
+      "file": "سين.wav",
+      "kind": "word",
+      "text": "سِين",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 10,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.56,
+      "peak": 0.3521,
+      "noiseFloor": 0.000064,
+      "snrDb": 65,
+      "piecesFound": 1,
+      "cutInto": [
+        1.03
+      ],
+      "recordedAt": "2026-10-25T22:39:23.566Z"
+    },
+    {
+      "file": "شين.wav",
+      "kind": "word",
+      "text": "شِين",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 11,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.731,
+      "peak": 0.2505,
+      "noiseFloor": 0.00005,
+      "snrDb": 63.3,
+      "piecesFound": 1,
+      "cutInto": [
+        1.11
+      ],
+      "recordedAt": "2026-10-25T22:39:33.327Z"
+    },
+    {
+      "file": "صاد.wav",
+      "kind": "word",
+      "text": "صَاد",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 12,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.3018,
+      "noiseFloor": 0.000052,
+      "snrDb": 65.6,
+      "piecesFound": 1,
+      "cutInto": [
+        1.07
+      ],
+      "recordedAt": "2026-10-25T22:39:44.103Z"
+    },
+    {
+      "file": "ضاد.wav",
+      "kind": "word",
+      "text": "ضَاد",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 13,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.2331,
+      "noiseFloor": 0.00006,
+      "snrDb": 61.4,
+      "piecesFound": 1,
+      "cutInto": [
+        0.97
+      ],
+      "recordedAt": "2026-10-25T22:39:53.775Z"
+    },
+    {
+      "file": "طاء.wav",
+      "kind": "word",
+      "text": "طَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 14,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.2693,
+      "noiseFloor": 0.000046,
+      "snrDb": 65.4,
+      "piecesFound": 1,
+      "cutInto": [
+        0.64
+      ],
+      "recordedAt": "2026-10-25T22:40:02.550Z"
+    },
+    {
+      "file": "ظاء.wav",
+      "kind": "word",
+      "text": "ظَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 15,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.901,
+      "peak": 0.2777,
+      "noiseFloor": 0.000047,
+      "snrDb": 66.1,
+      "piecesFound": 1,
+      "cutInto": [
+        0.87
+      ],
+      "recordedAt": "2026-10-25T22:40:12.286Z"
+    },
+    {
+      "file": "عين.wav",
+      "kind": "word",
+      "text": "عَيۡن",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 16,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.56,
+      "peak": 0.24,
+      "noiseFloor": 0.000056,
+      "snrDb": 62.5,
+      "piecesFound": 1,
+      "cutInto": [
+        1.04
+      ],
+      "recordedAt": "2026-10-25T22:40:21.270Z"
+    },
+    {
+      "file": "غين.wav",
+      "kind": "word",
+      "text": "غَيۡن",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 17,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.731,
+      "peak": 0.2684,
+      "noiseFloor": 0.00006,
+      "snrDb": 62.5,
+      "piecesFound": 1,
+      "cutInto": [
+        1.03
+      ],
+      "recordedAt": "2026-10-25T22:40:29.624Z"
+    },
+    {
+      "file": "فاء.wav",
+      "kind": "word",
+      "text": "فَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 18,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.2808,
+      "noiseFloor": 0.000058,
+      "snrDb": 64.3,
+      "piecesFound": 1,
+      "cutInto": [
+        0.84
+      ],
+      "recordedAt": "2026-10-25T22:40:40.321Z"
+    },
+    {
+      "file": "قاف.wav",
+      "kind": "word",
+      "text": "قَاف",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 19,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.56,
+      "peak": 0.2599,
+      "noiseFloor": 0.000046,
+      "snrDb": 67.3,
+      "piecesFound": 1,
+      "cutInto": [
+        0.9
+      ],
+      "recordedAt": "2026-10-25T22:40:49.401Z"
+    },
+    {
+      "file": "كاف.wav",
+      "kind": "word",
+      "text": "كَاف",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 20,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.645,
+      "peak": 0.3328,
+      "noiseFloor": 0.000044,
+      "snrDb": 66.4,
+      "piecesFound": 1,
+      "cutInto": [
+        0.99
+      ],
+      "recordedAt": "2026-10-25T22:40:58.792Z"
+    },
+    {
+      "file": "لام.wav",
+      "kind": "word",
+      "text": "لَام",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 21,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.389,
+      "peak": 0.254,
+      "noiseFloor": 0.000051,
+      "snrDb": 64.6,
+      "piecesFound": 1,
+      "cutInto": [
+        0.99
+      ],
+      "recordedAt": "2026-10-25T22:41:08.299Z"
+    },
+    {
+      "file": "ميم.wav",
+      "kind": "word",
+      "text": "مِيم",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 22,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.178,
+      "noiseFloor": 0.000047,
+      "snrDb": 64.2,
+      "piecesFound": 1,
+      "cutInto": [
+        0.94
+      ],
+      "recordedAt": "2026-10-25T22:41:18.379Z"
+    },
+    {
+      "file": "نون.wav",
+      "kind": "word",
+      "text": "نُون",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 23,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.56,
+      "peak": 0.1594,
+      "noiseFloor": 0.000054,
+      "snrDb": 61.9,
+      "piecesFound": 1,
+      "cutInto": [
+        1.03
+      ],
+      "recordedAt": "2026-10-25T22:41:27.179Z"
+    },
+    {
+      "file": "هاء.wav",
+      "kind": "word",
+      "text": "هَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 24,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.389,
+      "peak": 0.2478,
+      "noiseFloor": 0.000044,
+      "snrDb": 64.7,
+      "piecesFound": 1,
+      "cutInto": [
+        0.8
+      ],
+      "recordedAt": "2026-10-25T22:41:35.987Z"
+    },
+    {
+      "file": "واو.wav",
+      "kind": "word",
+      "text": "وَاو",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 25,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.304,
+      "peak": 0.3265,
+      "noiseFloor": 0.000048,
+      "snrDb": 64.2,
+      "piecesFound": 1,
+      "cutInto": [
+        0.92
+      ],
+      "recordedAt": "2026-10-25T22:41:45.103Z"
+    },
+    {
+      "file": "ياء.wav",
+      "kind": "word",
+      "text": "يَاء",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 26,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.2328,
+      "noiseFloor": 0.00005,
+      "snrDb": 63.8,
+      "piecesFound": 1,
+      "cutInto": [
+        0.76
+      ],
+      "recordedAt": "2026-10-25T22:41:54.426Z"
+    },
+    {
+      "file": "ألف.wav",
+      "kind": "word",
+      "text": "أَلِف",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 27,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.475,
+      "peak": 0.159,
+      "noiseFloor": 0.000048,
+      "snrDb": 61.5,
+      "piecesFound": 1,
+      "cutInto": [
+        0.8
+      ],
+      "recordedAt": "2026-10-25T22:42:08.832Z"
+    },
+    {
+      "file": "همزة.wav",
+      "kind": "word",
+      "text": "هَمۡزَة",
+      "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+      "row": 28,
+      "expectedUtterances": 1,
+      "take": 1,
+      "takesMade": 1,
+      "sampleRate": 48000,
+      "duration": 2.731,
+      "peak": 0.1932,
+      "noiseFloor": 0.000038,
+      "snrDb": 65.4,
+      "piecesFound": 1,
+      "cutInto": [
+        0.93
+      ],
+      "recordedAt": "2026-10-25T22:42:19.741Z"
+    }
+  ]
+}

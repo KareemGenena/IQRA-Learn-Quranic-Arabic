@@ -30,11 +30,20 @@ const Icon = {
       <path d="M12 6v14" fill="none" stroke="currentColor" strokeWidth="1.7" />
     </svg>
   ),
+  // a pointer held at a slant, its red dot and rays at the tip — red on the
+  // button, white once the button itself is red (`--laser`)
   laser: (
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-      <path d="M3 21l6-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M8 13l3 3 7.5-7.5a2.1 2.1 0 0 0-3-3z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      <circle cx="19" cy="5" r="1.6" fill="currentColor" />
+      <path d="M4.5 19.5l8-8" fill="none" stroke="currentColor" strokeWidth="4.2" strokeLinecap="round" />
+      <path d="M12.5 11.5l1.8-1.8" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      <circle cx="17.6" cy="6.4" r="2.5" style={{ fill: 'var(--laser, #e11)' }} />
+      <path
+        d="M17.6 1.6v1.7M22.4 6.4h-1.7M21 3l-1.2 1.2M21 9.8l-1.2-1.2M17.6 9.5v1.7"
+        fill="none"
+        style={{ stroke: 'var(--laser, #e11)' }}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   ),
   gear: (

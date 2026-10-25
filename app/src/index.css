@@ -1734,51 +1734,52 @@ a.pill-half:hover {
   inset: 0;
   z-index: 900;
   /* The overlay takes the pointer so nothing underneath is tapped by
-     accident, and touch drags draw instead of scrolling the page. */
+     accident; a finger is the laser and two fingers scroll (the component
+     does the scrolling), so the browser gets no gesture. The system cursor
+     is hidden: the red dot the canvas draws is the pointer. */
   touch-action: none;
-  cursor: crosshair;
+  cursor: none;
 }
 
-.laser-toggle {
+/* The way out, on a phone as on a laptop: a chip at the top above the
+   overlay (the lesson's tool row stays above it too). The red frame the
+   mode used to draw read, on a phone, as the whole feature (2026-10-25). */
+.laser-exit {
   position: fixed;
   z-index: 950;
-  right: 16px;
-  bottom: 76px;
-  min-height: 48px;
-  padding: 12px 18px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
   border-radius: 999px;
-  border: 1px solid var(--card-border);
+  border: 1px solid #e11;
   background: var(--card);
-  color: var(--text-soft);
-  font-size: 14px;
+  color: #e11;
+  font: inherit;
+  font-size: 13px;
   font-weight: 600;
+  white-space: nowrap;
   box-shadow: var(--shadow-lift);
   cursor: pointer;
 }
-
-.laser-toggle:hover {
-  border-color: #e11;
-  color: #e11;
-}
-
-.laser-toggle.on {
+.laser-exit:hover { background: #e11; color: #fff; }
+.laser-exit-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   background: #e11;
-  border-color: #e11;
-  color: #fff;
+  box-shadow: 0 0 6px 2px rgba(255, 34, 34, 0.45);
 }
-
-/* A calm red frame while pointing, so the mode is never a mystery. */
-.app.laser-on::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 899;
-  pointer-events: none;
-  border: 3px solid rgba(255, 34, 34, 0.55);
-}
+.laser-exit:hover .laser-exit-dot { background: #fff; }
+/* the lesson's tool row keeps its laser button clickable over the overlay */
+.lesson-crumb { position: relative; z-index: 905; }
 
 @media print {
-  .laser-toggle,
+  .laser-exit,
   .laser-canvas {
     display: none;
   }
@@ -3582,8 +3583,10 @@ kbd {
 .trace-canvas { pointer-events: none; }
 .trace-overlay { touch-action: inherit; }
 .authoring .trace-board { touch-action: none; }
-/* the arrow a little way along the line from the dot: which way to go */
-.trace-arrow path { fill: currentColor; stroke: #fff; stroke-width: 2; stroke-linejoin: round; }
+/* the arrow a little way along the line from the dot: which way to go — a
+   small open chevron over the dotted line, a white halo under it */
+.trace-arrow path { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.8; }
+.trace-arrow path.halo { stroke: #fff; stroke-width: 5.5; opacity: 0.9; }
 /* the teacher drawing a template */
 .trace-author { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9; }
 circle.trace-author { fill: currentColor; stroke: none; }
@@ -3647,7 +3650,8 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 .tool:hover, .tool:focus-visible, .tool-menu[open] > .tool { border-color: var(--accent); color: var(--accent); }
 .tool-label { max-width: 0; overflow: hidden; white-space: nowrap; transition: max-width 0.25s ease, margin-left 0.25s ease; }
 .tool:hover .tool-label, .tool:focus-visible .tool-label, .tool.on .tool-label, .tool-menu[open] > .tool .tool-label { max-width: 140px; margin-left: 6px; }
-.tool.on { background: #e11; border-color: #e11; color: #fff; }
+.tool { --laser: #e11; }
+.tool.on { background: #e11; border-color: #e11; color: #fff; --laser: #fff; }
 .tool.admin:hover, .tool-menu[open] > .tool.admin { border-color: var(--text-soft); color: var(--text); }
 .tool-menu { position: relative; }
 .tool-pop {
@@ -3669,18 +3673,29 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 .tool-pop a:hover { text-decoration: underline; }
 .tool-pop .status-pill { align-self: flex-start; }
 
-/* the header's ☰ and the contents drawer */
-.menu-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
+/* the contents: a tab on the page's right edge (the drawer opens from
+   there), under the drawer's backdrop and above the laser's overlay */
+.menu-tab {
+  position: fixed;
+  z-index: 940;
+  right: 0;
+  top: 38vh;
+  width: 30px;
+  height: 56px;
+  padding: 0;
+  border-radius: 12px 0 0 12px;
   border: 1px solid var(--card-border);
+  border-right: none;
   background: var(--card);
-  color: var(--text);
-  font-size: 18px;
+  color: var(--text-soft);
+  font-size: 17px;
+  line-height: 1;
+  box-shadow: var(--shadow-lift);
   cursor: pointer;
+  transition: width 0.15s, color 0.15s;
 }
-.menu-btn:hover { border-color: var(--accent); color: var(--accent); }
+.menu-tab:hover, .menu-tab:focus-visible { width: 36px; color: var(--accent); border-color: var(--accent); }
+@media print { .menu-tab { display: none; } }
 .menu-backdrop { position: fixed; inset: 0; z-index: 960; background: rgba(0, 0, 0, 0.28); }
 .menu-drawer {
   position: absolute;
@@ -3712,6 +3727,10 @@ circle.trace-ink { fill: currentColor; stroke: none; }
   .lesson-where { flex-basis: 100%; order: 3; }
   .lesson-tools { margin-left: auto; }
 }
+
+/* the takes that would not survive the split, named */
+.intake-bad { margin: 4px 0 10px; padding-left: 18px; color: #b3261e; }
+.intake-bad li { margin: 2px 0; }
 
 /* the rest of the sheet's row, read while recording a slot that only names
    the file — the teacher's whole line for ب, the 28 names of a song */

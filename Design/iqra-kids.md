@@ -1318,3 +1318,25 @@ laser; the tools are a row of icons at the top right and the contents open
 from the header's ☰ on every page. The intake tool opens the alphabet sheet
 on its spoken-lines table. The author has taught his own strokes for
 several letters, which every device now traces.
+
+**2026-10-25, the third round — ten points, the evening.** The author
+recorded all three tables (60 takes) and reviewed the second round on a
+laptop and a phone. The laser showed a crosshair and no dot, could not be
+turned off from under its own overlay, and on the phone was a red frame
+and nothing else: it is now a red dot under the pointer with a fading
+trail, the finger is the laser on a phone, two fingers scroll, and the
+tool button, a chip at the top or Escape turn it off; the icon is a
+pointer with a red tip. The header's Admin link is hidden inside a lesson
+(the gear has it); the contents open from a tab on the page's right edge;
+the arrow is a small chevron on the dotted line. The painting's teeth and
+holes: a pixel's place is its projection onto the nearest segment, not
+the nearest sample point (the teeth), and it lights at the earliest pass
+whose ink it is, within the stroke's own half-width and with a clear line
+of ink between (the holes) — the first pass through a crossing inks it,
+as a pen does; his worry that the later part would look "half opacified"
+does not arise with opaque color. The room-tone check learned that a
+−51 dBFS tick in a −85 dBFS room is not speech, the alphabet generator
+cuts each take to one piece with the record click dropped, and the intake
+tool says what it wrote by kind and keeps every session in `intake.json`.
+What is left before Level 1 can be used: his tap calibration of the 29
+lines and the 2 songs, a listen, and Publish.

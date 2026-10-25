@@ -67,3 +67,13 @@ given to the nearest stroke point (stroke, share along it), and the canvas
 shows a pixel's color when its stroke is done or the finger has passed its
 share. `dotRadius` in strokes.json is a dot's size for the ring the card
 draws on it.
+
+## 2026-10-25, evening — segments and the earliest pass
+
+Two rules replaced "nearest point" (teeth where two parts of a letter run
+close; holes where a stroke crosses itself or a later stroke stands on an
+earlier one): a pixel's share is its projection onto the nearest SEGMENT,
+and it lights at the earliest pass whose ink it is — any segment within
+the stroke's own half-width there (a chord through the glyph, capped at
+2.5 medians) with a clear line of ink between. `brush` in strokes.json is
+no longer read by the card; it stays as a measurement.

@@ -27,7 +27,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { readWav, writeSegment } from './lib/wav.mjs';
+import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
 import { readZipEntry } from './lib/zip.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -348,7 +348,7 @@ const L30 = {
 
 const LESSONS = [L31, L20, L32, L30, L33];
 
-// ── audio: every take whole, mono ─────────────────────────────────────────
+// ── audio: one piece per take, edges trimmed, mono ────────────────────────
 const byName = new Map();
 if (existsSync(AUDIO_SRC)) {
   for (const f of readdirSync(AUDIO_SRC)) {
@@ -375,11 +375,18 @@ for (const t of takes) {
   const wav = readWav(join(AUDIO_SRC, match.file));
   const dir = join(PUBLIC, 'audio', `lesson${clipHome.get(t.clip)}`);
   mkdirSync(dir, { recursive: true });
-  writeSegment(wav, 0, wav.frames, join(dir, t.clip), { mono: true });
+  // One piece per take, but cut as every lesson's clips are: the splitter
+  // at one piece drops the record click (every take here has one, 0.02–0.35
+  // s, up to as loud as the voice), the beat of silence before the voice
+  // and the stop click after it, and prints each decision. Copying the
+  // take whole left the click in every clip (2026-10-25).
+  const { segments } = splitIntoN(wav, 1);
+  const [from, to] = segments[0] ?? [0, wav.frames];
+  writeSegment(wav, from, to, join(dir, t.clip), { mono: true });
   written += 1;
 }
 if (existsSync(AUDIO_SRC)) {
-  const unused = readdirSync(AUDIO_SRC).filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f)).map((f) => f.replace(/\.wav$/i, ''));
+  const unused = readdirSync(AUDIO_SRC).filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f) && !f.startsWith('speaker-')) /* the profile belongs beside the takes */.map((f) => f.replace(/\.wav$/i, ''));
   if (unused.length) problems.push(`${unused.length} recording(s) match no row: ${unused.join('، ')}`);
 }
 

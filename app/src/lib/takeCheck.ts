@@ -320,7 +320,12 @@ export function verdict(report: TakeReport, expected: number): TakeVerdict {
     // recording all clear — so every take failed. Every word take in the
     // corpus sits at least 39 dB above its own floor; a quiet room with a
     // stray knock lands around 15-25, so 30 separates them with room to spare.
-    if (report.snr > 30) {
+    // AND by how loud it is: the author's Yeti GX has a floor of −85 dBFS
+    // (2026-10-25), where a tick nobody hears, at −51 dBFS, stood 34 dB
+    // above it and the room was called speech. No word in the corpus peaks
+    // under −33 dBFS, so anything under −40 dBFS is the room whatever its
+    // ratio to the floor.
+    if (report.snr > 30 && report.peak > 0.01) {
       return { level: 'bad', notes: ['Something was said — this one wants the room on its own.'] };
     }
     if (report.duration < 2) {

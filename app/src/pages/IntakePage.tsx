@@ -33,6 +33,7 @@ import {
   listFolder,
   makeZip,
   pickFolder,
+  readText,
   writeFile,
 } from '../lib/fileSink';
 import {
@@ -983,6 +984,30 @@ function manifest(session: IntakeSession, takes: TakeMap) {
   };
 }
 
+/**
+ * intake.json holds EVERY session written into the folder, oldest first —
+ * one folder takes several sessions (the alphabet's three tables; a stop
+ * reading after a continuing one), and the file used to be the LAST
+ * session's manifest alone, overwritten on each write (2026-10-25). A
+ * re-save of the same session replaces its own entry; a file from before,
+ * one bare manifest, becomes the first entry.
+ */
+function sessionsFile(existing: string | null, current: ReturnType<typeof manifest>): string {
+  let sessions: Array<{ createdAt?: string }> = [];
+  if (existing) {
+    try {
+      const parsed = JSON.parse(existing) as { sessions?: unknown; recordings?: unknown; createdAt?: string };
+      if (Array.isArray(parsed.sessions)) sessions = parsed.sessions as Array<{ createdAt?: string }>;
+      else if (Array.isArray(parsed.recordings)) sessions = [parsed];
+    } catch {
+      // an unreadable file is replaced, not merged into
+    }
+  }
+  sessions = sessions.filter((s) => s.createdAt !== current.createdAt);
+  sessions.push(current);
+  return JSON.stringify({ sessions }, null, 2);
+}
+
 function SavePanel({
   session,
   takes,
@@ -1009,7 +1034,13 @@ function SavePanel({
     [session, takes],
   );
 
-  const bad = keepers.filter(({ slot, take }) => verdict(take.report, slot.expect).level === 'bad');
+  const bad = keepers
+    .map(({ slot, take }) => ({ slot, verdict: verdict(take.report, slot.expect) }))
+    .filter((x) => x.verdict.level === 'bad');
+  const words = keepers.filter(({ slot }) => slot.kind !== 'profile');
+  const wordSlots = session.slots.filter((s) => s.kind !== 'profile').length;
+  const profileKept = keepers.length - words.length;
+  const profileSlots = session.slots.length - wordSlots;
 
   const toFolder = async () => {
     if (!dir) return;
@@ -1024,20 +1055,35 @@ function SavePanel({
       const stop = (session.reading ?? 'continuing') === 'stop';
       const target = stop ? await dir.getDirectoryHandle(STOP_DIR, { create: true }) : dir;
       const before = new Set(await listFolder(target));
-      let replaced = 0;
+      // Said by kind: the five profile files are rewritten by every session
+      // into the same folder, and "5 over a file that was already there"
+      // read as an error (the author, 2026-10-25). A take replacing a take
+      // is named.
+      let replacedProfile = 0;
+      const replacedTakes: string[] = [];
       for (const { slot, take } of keepers) {
-        if (before.has(slot.fileName)) replaced += 1;
+        if (before.has(slot.fileName)) {
+          if (slot.kind === 'profile') replacedProfile += 1;
+          else replacedTakes.push(slot.fileName);
+        }
         await writeFile(target, slot.fileName, take.blob);
       }
       await writeFile(
         target,
         'intake.json',
-        new Blob([JSON.stringify(manifest(session, takes), null, 2)], { type: 'application/json' }),
+        new Blob([sessionsFile(await readText(target, 'intake.json'), manifest(session, takes))], { type: 'application/json' }),
       );
-      setStatus(
-        `Wrote ${keepers.length} file${keepers.length === 1 ? '' : 's'} into ${dir.name}${stop ? `/${STOP_DIR}` : ''}` +
-          (replaced ? `, ${replaced} of them over a file that was already there.` : '.'),
-      );
+      const where = `${dir.name}${stop ? `/${STOP_DIR}` : ''}`;
+      const parts = [
+        `Wrote ${words.length} take${words.length === 1 ? '' : 's'}${profileKept ? ` and the ${profileKept} speaker-profile files` : ''} into ${where}.`,
+      ];
+      if (replacedProfile) {
+        parts.push('The profile replaced the one already in the folder — expected when the same speaker records another session in the same room.');
+      }
+      if (replacedTakes.length) {
+        parts.push(`${replacedTakes.length} take${replacedTakes.length === 1 ? '' : 's'} replaced a file of the same name: ${replacedTakes.join('، ')}.`);
+      }
+      setStatus(parts.join(' '));
     } catch (err) {
       setStatus(err instanceof Error ? `Could not write: ${err.message}` : 'Could not write.');
     } finally {
@@ -1053,7 +1099,7 @@ function SavePanel({
         ...keepers.map(({ slot, take }) => ({ name: `${prefix}${slot.fileName}`, data: take.blob })),
         {
           name: `${prefix}intake.json`,
-          data: new Blob([JSON.stringify(manifest(session, takes), null, 2)]),
+          data: new Blob([sessionsFile(null, manifest(session, takes))]),
         },
       ]);
       download(`${session.batch || 'intake'}.zip`, zip);
@@ -1067,9 +1113,20 @@ function SavePanel({
     <section className="account-card intake-card">
       <h3 className="account-heading">Save</h3>
       <p className="account-hint">
-        {keepers.length} of {session.slots.length} slots have a kept take.
-        {bad.length > 0 && ` ${bad.length} would fail the split as recorded.`}
+        {words.length} of {wordSlots} take{wordSlots === 1 ? '' : 's'} kept
+        {profileSlots ? `, and ${profileKept} of ${profileSlots} speaker-profile recordings` : ''}.
       </p>
+      {/* Named, with the check's own words: a count of "would fail" gave
+          the author nothing to act on (2026-10-25). */}
+      {bad.length > 0 && (
+        <ul className="account-hint intake-bad">
+          {bad.map(({ slot, verdict: v }) => (
+            <li key={slot.id}>
+              <span dir="ltr">{slot.fileName}</span> — {v.notes.join(' ')}
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="cal-actions">
         <button
           type="button"
