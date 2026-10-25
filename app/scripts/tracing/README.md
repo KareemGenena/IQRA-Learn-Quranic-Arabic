@@ -59,3 +59,11 @@ last waypoint to the skeleton's end where one lies within a tenth of the
 box along a line (`toEnd`), so a stroke reaches the glyph's tips, and
 measures each glyph's thickest stroke by a chamfer distance transform
 (`maxInscribed`) → `brush` in strokes.json, the width the card paints with.
+
+## 2026-10-25, later — pixel painting
+
+`src/lib/tracePaint.ts` replaces the SVG mask: the glyph's pixels are each
+given to the nearest stroke point (stroke, share along it), and the canvas
+shows a pixel's color when its stroke is done or the finger has passed its
+share. `dotRadius` in strokes.json is a dot's size for the ring the card
+draws on it.

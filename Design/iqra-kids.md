@@ -1302,3 +1302,19 @@ every stroke's end by half a stroke, so the tail of ت and the tip of ش were
 never reached; a stroke's ends are pulled to the skeleton's tips. The
 Firestore rule for his own strokes is deployed, so "Teach the strokes"
 saves. He also rewrote the spoken lines in the sheet himself (table 7).
+
+**2026-10-25, the second round — eleven points.** The painting is pixel
+by pixel now: every pixel of the glyph belongs to its nearest stroke
+point, so a stroke lights only its own segment, the start of ط lights the
+start of ط's loop and nothing else, and a dot never lights its neighbor
+(`src/lib/tracePaint.ts`). An arrow a little way along the line shows the
+way; the demonstration's strokes stay as the next is painted; a dot's ring
+is the dot's size; on a phone the page scrolls under the board unless the
+touch begins at the dot, and a new card scrolls its board into view. For
+the author's friend who cannot write: "Watch all" plays each letter's name
+and demonstration and turns the cards itself, and D replays. The lesson
+page lost its triple title, the speed buttons, the bars and the floating
+laser; the tools are a row of icons at the top right and the contents open
+from the header's ☰ on every page. The intake tool opens the alphabet sheet
+on its spoken-lines table. The author has taught his own strokes for
+several letters, which every device now traces.

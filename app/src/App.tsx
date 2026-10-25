@@ -4,7 +4,8 @@ import { WorkbookIndex, WorkbookPage } from './pages/WorkbookPage';
 import { AssessmentPage } from './pages/AssessmentPage';
 import { ReadingSwitch } from './components/ReadingSwitch';
 import { LettersLesson, drawsLetterCards } from './pages/LettersLesson';
-import { WorkbookLinks } from './components/WorkbookLinks';
+import { LessonTools } from './components/LessonTools';
+import { ContentsMenu } from './components/ContentsMenu';
 import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
 import { AdminPage } from './pages/AdminPage';
@@ -39,7 +40,6 @@ type Theme = 'light' | 'dark';
 
 // Speed-ups only: the recordings are already at a slow teaching pace, and the
 // browser's time-stretcher sounds robotic below 1×.
-const RATES = [1, 1.25, 1.5, 2];
 
 function initialTheme(): Theme {
   const saved = localStorage.getItem('iqra-theme');
@@ -47,10 +47,11 @@ function initialTheme(): Theme {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-function initialRate(): number {
-  const saved = Number(localStorage.getItem('iqra-rate'));
-  return RATES.includes(saved) ? saved : 1;
-}
+/** Playback speed. The 1×/1.25×/1.5×/2× buttons went on 2026-10-25 (the
+ *  author: not needed, anywhere); the engine still takes a rate, so the
+ *  admin's calibration page keeps its own. Learners hear every clip as
+ *  recorded. */
+const RATE = 1;
 
 /** Continuing unless the learner switched: that is how every clip recorded
  *  before 2026-10-11 reads, and how a word is met in its āyah. */
@@ -128,9 +129,10 @@ export default function App() {
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [error, setError] = useState(false);
   const [theme, setTheme] = useState<Theme>(initialTheme);
-  const [rate, setRate] = useState<number>(initialRate);
+  const rate = RATE;
   const [reading, setReading] = useState<Reading>(initialReading);
   const [laser, setLaser] = useState(false);
+  const [menu, setMenu] = useState(false);
   const [config, setConfig] = useState<AppConfig>(cachedConfig);
 
   // Who is signed in. `admin` is an email match, never merely "has a session"
@@ -161,10 +163,6 @@ export default function App() {
   // Open the audio output on the first tap or key, before any Play — the
   // first clip of a session used to come out late and short (playback.ts).
   useEffect(() => installAudioWarmup(), []);
-
-  useEffect(() => {
-    localStorage.setItem('iqra-rate', String(rate));
-  }, [rate]);
 
   useEffect(() => {
     localStorage.setItem('iqra-reading', reading);
@@ -233,19 +231,10 @@ export default function App() {
 
   return (
     <div className={`app ${laser ? 'laser-on' : ''}`}>
-      {showLaser && (
-        <>
-          <LaserPointer active={laser} onExit={() => setLaser(false)} />
-          <button
-            type="button"
-            className={`laser-toggle ${laser ? 'on' : ''}`}
-            aria-pressed={laser}
-            onClick={() => setLaser((v) => !v)}
-          >
-            {laser ? 'Laser on — tap to exit' : 'Laser'}
-          </button>
-        </>
-      )}
+      {/* The laser's switch is in the lesson's tool row; the floating pill
+          it had covered the pager on a phone (2026-10-25). */}
+      {showLaser && <LaserPointer active={laser} onExit={() => setLaser(false)} />}
+      <ContentsMenu config={config} admin={admin} currentId={route.lessonId} open={menu} onClose={() => setMenu(false)} />
 
       <header className="app-header">
         <a className="brand" href="#/">
@@ -256,6 +245,9 @@ export default function App() {
           </span>
         </a>
         <div className="header-actions">
+          <button type="button" className="menu-btn" aria-label="Contents" aria-expanded={menu} onClick={() => setMenu(true)}>
+            <span aria-hidden="true">☰</span>
+          </button>
           {/* The installed PWA has no address bar, so signing in needs a
               control here rather than a typed URL. Hidden on the sign-in
               page itself, where it would just point at the current page. */}
@@ -290,9 +282,29 @@ export default function App() {
 
       {route.page !== 'home' && (
         <>
-          <nav className="breadcrumb">
+          <nav className={`breadcrumb ${route.page === 'lesson' ? 'lesson-crumb' : ''}`}>
             <a href="#/">← All lessons</a>
-            {!signingIn && (
+            {/* A lesson's name, once, small: the section box below is the
+                page's one heading. The level and lesson number stay — a
+                learner never sees the id. */}
+            {route.page === 'lesson' && route.lessonId > 0 && (
+              <span className="lesson-where">
+                {lessonLabel(route.lessonId)}
+                {meta ? ` · ${meta.title}` : ''}
+              </span>
+            )}
+            {route.page === 'lesson' && lesson && lessonAllowed && (
+              <LessonTools
+                lessonId={route.lessonId}
+                notes={showNotes}
+                laser={showLaser}
+                laserOn={laser}
+                onLaser={() => setLaser((v) => !v)}
+                admin={admin}
+                status={lessonStatus(config, route.lessonId)}
+              />
+            )}
+            {!signingIn && route.page !== 'lesson' && (
               <h2>
                 {route.page === 'workbook'
                   ? route.level
@@ -389,42 +401,16 @@ export default function App() {
 
               {lessonAllowed && lesson && route.page === 'lesson' && (
                 <>
-                  {admin && (
-                    <p className="admin-bar">
-                      <span className={`status-pill ${lessonStatus(config, route.lessonId)}`}>
-                        {lessonStatus(config, route.lessonId)}
-                      </span>
-                      <a href={`#/admin/${route.lessonId}`}>Calibrate timings</a>
-                      <a href="#/intake">Audio intake</a>
-                      <a href="#/admin">Manage lessons</a>
-                    </p>
-                  )}
-                  <div className="toolbar">
-                    <p className="lesson-ar-head" dir="rtl" lang="ar">
-                      {lesson.titleArabic}
-                    </p>
-                    <div className="rate-group" role="group" aria-label="Playback speed">
-                      {RATES.map((r) => (
-                        <button
-                          key={r}
-                          type="button"
-                          className={`rate-btn ${r === rate ? 'active' : ''}`}
-                          onClick={() => setRate(r)}
-                        >
-                          {r}×
-                        </button>
-                      ))}
+                  {/* Two readings, one switch: it decides what Play, Play
+                      all and N mean on every card, and stays until changed.
+                      Level 3 only — see `twoReadings`. The Arabic title, the
+                      speed buttons, the workbook and notes bars and the admin
+                      bar that stood here went into the tool row above
+                      (2026-10-25). */}
+                  {twoReadings && (
+                    <div className="toolbar">
+                      <ReadingSwitch reading={reading} setReading={setReading} />
                     </div>
-                    {/* Two readings, one switch: it decides what Play, Play
-                        all and N mean on every card, and stays until changed.
-                        Level 3 only — see `twoReadings`. */}
-                    {twoReadings && <ReadingSwitch reading={reading} setReading={setReading} />}
-                  </div>
-                  <WorkbookLinks lessonId={route.lessonId} />
-                  {showNotes && (
-                    <p className="notes-link">
-                      <a href={`#/notes/${route.lessonId}`}>📝 Open notes for this lesson</a>
-                    </p>
                   )}
                   {lesson.kind === 'assessment' ? (
                     <AssessmentPage lesson={lesson} rate={rate} />

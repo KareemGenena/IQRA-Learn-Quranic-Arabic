@@ -140,9 +140,11 @@ export interface LetterWord {
  *  glyph (scripts/tracing/), never drawn by hand over a different shape. */
 export interface LetterTrace {
   strokes: [number, number][][];
-  /** The glyph's thickest stroke as a share of its ink box's longer side —
-   *  the brush the card paints with, so the color fills the whole letter. */
+  /** The glyph's thickest stroke as a share of its ink box's longer side. */
   brush?: number;
+  /** A dot's size (the rhombus's half-diagonal), the same share — the ring
+   *  drawn on a dot to tap is the dot's own size. */
+  dotRadius?: number;
 }
 
 /** The back of a letter card: the shape a letter takes at the beginning of

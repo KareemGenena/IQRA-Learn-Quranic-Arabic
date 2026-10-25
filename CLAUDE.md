@@ -206,6 +206,20 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   reading and no tabs. The stop changes the ending of a WORD, and Levels 1
   and 2 are letters, syllables and first words. A card's `reading` prop is
   `undefined` there, which is what hides the tabs — never a second flag.
+- **The lesson page's head is one small line and a row of icons
+  (2026-10-25).** "Level 1 · Lesson 4 · Tracing the Letters" in 13 px
+  (`lesson-where`), then `LessonTools`: notes, the workbook page(s), the
+  laser and, for the admin, a gear whose popover holds the status pill
+  and Calibrate / Audio intake / Manage lessons — each icon grows its
+  label on hover. The section box is the page's ONE heading. Gone: the
+  breadcrumb's bold title, the standalone grey Arabic title, the
+  1×–2× **speed buttons (everywhere; `RATE` is 1, the engine still takes
+  a rate for the calibration page)**, the workbook bars, the notes bar,
+  the admin bar, and the floating Laser pill that covered the pager on a
+  phone. The author's screenshot showed a song's name three times before
+  its first card (2026-10-25). **The contents drawer** (`ContentsMenu`,
+  the header's ☰) lists every Level and its lessons, the workbooks and the
+  account from any page, and a link opens the lesson itself.
 - **A lesson is named by its place, never its number** — `lessonLabel(id)`
   in `lessons.ts`: "Level 3 · Lesson 4", the Level and the position the
   home page counts in it. Shown in the lesson header and the recordings
@@ -1223,14 +1237,32 @@ this time the corrupted records are children's.
   of it, so the chord across ت's mouth and the flat swipe along س's teeth
   stall and then wander off the stalled window. A dot's radius is half
   the way to its nearest neighbor (`tapRadius`), so the two dots of ت are
-  told apart. **The letter is painted, never stroked beside**: the colored
-  glyph (`.trace-paint`, SVG text in the family color) is clipped by a
-  `<mask>` holding the strokes traced so far, drawn with a brush 1.15×
-  the glyph's THICKEST stroke (`trace.brush`, the deriver's chamfer
-  distance transform over the body, as a share of the ink box's longer
-  side — د's base is 0.22, ر 0.16, ا 0.08; a fixed 0.18 left د and ل
-  half grey), so whatever the stroke's exact line the color fills the
-  grey letter and nothing else; a stroke's first and last waypoints are
+  told apart. **The letter is painted PIXEL BY PIXEL, never stroked
+  beside** (`tracePaint.ts`, 2026-10-25, the second painter in a day): the
+  glyph is drawn on a canvas and every pixel of its ink is given to the
+  NEAREST point of the letter's strokes — which stroke, and how far along
+  it — so a pixel is colored when its stroke is done, or is the one being
+  traced and the finger has passed its share. The start of ط's loop lights
+  the start of the loop and nothing else, not the lower loop, not the
+  stem, and a dot never lights its neighbor. The first painter was an SVG
+  mask of the strokes drawn with a wide brush (1.15× the glyph's thickest
+  stroke, `trace.brush`), and a brush cannot know which pixels are "the
+  corresponding segment" — it spilled onto every part within its width.
+  The raster is built once per card and size (~100 k ink pixels against
+  ~100 stroke points, tens of ms) and repainted in one pass on each
+  change; the SVG above it keeps the guide, the dot, the ARROW a little
+  way along the line (which way to go), the dot rings (the dot's own size,
+  `trace.dotRadius`) and the teacher's drawing. The demonstration keeps
+  every stroke it has painted while it paints the next. On a phone the
+  board is `touch-action: pan-y`: the page scrolls under a finger that
+  lands away from the dot, and the card's own non-passive touch listeners
+  take only the touch that begins a stroke (or lands on the letter during
+  the demonstration) and every move while one is under way — a board that
+  took every touch left a phone with nowhere to scroll from. A new card
+  scrolls its board into view on a phone. "Watch all" plays each letter's
+  name and demonstration and turns the card itself (a synthetic
+  ArrowRight), for a learner who cannot write; D replays the
+  demonstration. A stroke's first and last waypoints are
   pulled to the skeleton's END where one lies within a tenth of the box
   along a line (`toEnd`, never across a junction), then pushed to the
   ink's edge, so the pen reaches the tail of ت and the tip of ش — the
@@ -1879,6 +1911,21 @@ committed, pushed and deployed. **Waiting on the author:** trace on the
 iPad and, for any letter that still reads wrong, "Teach the strokes" →
 Save (then `node scripts/tracing/pull-cloud.mjs` and a re-derive bakes
 it in); record tables 7, 8, 9; hear the names.
+
+**The author's eleven points of 2026-10-25 (the second round), built,
+committed and deployed:** the intake tool opens the alphabet sheet on its
+first Slot table (the merged list had guessed four wrong columns and
+offered 233 "words"); the tracing is painted pixel by pixel with no spill
+(section 3, "Tracing"), the demonstration's strokes stick, an arrow shows
+the way from the dot, a dot's ring is the dot's size, the page scrolls
+under the board, a new card scrolls into view, "Watch all" and D for a
+learner who cannot write; the lesson head is one line and a tool row, the
+speed buttons are gone everywhere, the laser lives in the tool row, the
+contents drawer opens from ☰ (section 3, "The lesson page's head"). He has
+taught his own strokes for several letters in the cloud (ت ط among them —
+the card says "teacher's strokes"); `node scripts/tracing/pull-cloud.mjs`
+bakes them in. **Waiting on the author:** which letters still need his
+hand; the recording.
 
 **Waiting on the author:** a home for ىٰ، لا، ة (once he decides
 the content); hearing the tracing card's name clip once table 9 is

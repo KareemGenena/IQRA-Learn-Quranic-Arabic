@@ -146,7 +146,11 @@ for (let n = 0; n < letters.length; n++) {
   const taps = pieces
     .sort((a, b) => (Math.abs(a.y - b.y) > 0.12 * bh ? b.y - a.y : b.x - a.x))
     .map((p) => [norm([p.x, p.y]).map(round)]);
-  out[letter] = { strokes: [...strokes, ...taps], brush: round(thickness) };
+  // A dot's size: half the longer side of a dot's box (the rhombus's
+  // half-diagonal), as a share of the ink box's longer side — the ring the
+  // card draws on a dot is the dot's own size, no more.
+  const dotRadius = dots.length ? dots.reduce((a, c) => a + Math.max(c.x1 - c.x0, c.y1 - c.y0) / 2, 0) / dots.length / Math.max(bw, bh) : 0;
+  out[letter] = { strokes: [...strokes, ...taps], brush: round(thickness), ...(dotRadius ? { dotRadius: round(dotRadius) } : {}) };
   report.push(`${letter}: ${strokes.length} stroke(s) + ${taps.length} tap(s), box ${bw}×${bh}, brush ${thickness.toFixed(3)}`);
 
   // proof tile: the glyph light, the strokes colored, numbered, arrowed

@@ -208,9 +208,14 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
       setSource(file.name);
       setTables(all);
       if (table.length) {
-        // Every table at once, as before — a sheet of several headed tables
-        // (lesson 7's five) is one lesson; the alphabet sheet is picked from.
-        chooseTable(all, -1);
+        // A sheet built for this tool has tables headed "Slot": open on the
+        // first of them (the alphabet sheet's spoken lines), never on the
+        // merged list, whose column guess over nine tables ticked the names,
+        // the fat-ha forms and the makhraj (the author, 2026-10-25). A sheet
+        // of several headed tables with no Slot column (lesson 7's five) is
+        // one lesson and stays one list.
+        const first = all.findIndex((t) => slotColumn(t.rows) >= 0);
+        chooseTable(all, first);
       } else {
         // Not every sheet is a Word table — some are written as plain
         // paragraphs. Those land in the same editable list, so the rest of the
