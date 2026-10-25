@@ -1124,3 +1124,181 @@ the mnemonics, the shape families, one recording per letter, the strip, the
 §1's law gains its fourth hat: a lesson's **level** is a heading, never an
 identity. Moving a lesson between levels changes one number in `lessons.ts`
 and nothing else.
+
+---
+
+## 13. Iteration 7 — the author's review of lesson 20 and the song, 2026-10-24
+
+Thirteen points after seeing the letter cards, the tanween lesson and the
+names song on screen. The clear ones are built (verified in the pane, not
+yet committed); the suggestions wait for him at the end.
+
+**The sheet was edited, not the generator.** `Word Tables/الحروف
+الهجائية.docx` is the source the intake tool reads for its slots, so a card
+deleted only in the generator would still be offered for recording. The
+edit was done on `word/document.xml` inside the zip with the repo's docx
+writer (`Workbooks/build/docx.mjs`), every changed cell and deleted row
+printed, tag balance checked (7 tables, 127 rows, 693 cells after) — table
+4 (the special letters), table 5 (song 1's first letter), table 7 (what
+the teacher says). Git holds the before and after; the one-off script was
+not kept.
+
+- **The hamza is the plain ء, flat on the line**, with the workbook's own
+  forms ءَ ءُ ءِ نَأۡ (Level 1, page 12). The three seat cards — ؤ (مُؤۡمِن),
+  ئ (سُئِلَ), ء (جُزۡء) — are gone: *"I don't think this is the right place
+  to show the forms of the hamza. These kids are just learning the
+  alphabet."* The seats wait for the hamza lesson in Level 2 (28).
+- **و keeps fat-ha, damma, kasra, sukoon** — the madd form نُو went
+  ("madd coming later"). The same for the yaa's نِي.
+- **ى and يـ are one card.** The letter is ى (the duck); the forms are
+  ىَ ىُ ىِ نَىۡ — DOTLESS, codepoint for codepoint the workbook's page 12
+  (the sheet had يَـ يُـ يِـ, the joined dotted form, and the author:
+  *"The ى in the Quran has no dots below. Fix."*); فِى is gone. The shape
+  change is taught by a FLIP: a prompt under the duck ("Tap me to see how I
+  change shape at the beginning of a word") turns the card on its vertical
+  axis to يـ with the duck in the boat, two bubbles below, and "Show
+  original form" turns it back; a tip line under the sounds says it in
+  words. ىٰ (مُوسَىٰ) is still its own card, pending the suggestion below.
+- **ا has بَا تَا ثَا** (labelled Madd) in place of نَا, and the tip: *Alif
+  comes after a letter with a fat-ha and makes that fat-ha longer. That is
+  why it is called a letter of madd — madd means to make longer.* The
+  author offered to hear a better idea first; none was built.
+- **The card's number is its place in its section** — every card read "1"
+  because the number was the card's place on a one-card screen.
+- **Pictures ك ل م ن ه ة ء و ى ي ا لا re-cut** inside their frames: the
+  first cut left a frame edge on م ه ء و and cut the duck's head, the
+  tadpole's tail and the lighthouse's top. The panels on the ChatGPT sheet
+  are not on a uniform grid (panel 4's frame starts 17 px before its
+  quarter, 6 px from panel 3's), so the frame is found as the thin run of
+  frame color nearest each cell boundary, the object's box is measured
+  inside it, and a square around the object is kept inside the frame —
+  never padded (a pad put white under the water of the duck and the
+  lighthouse). `IMAGE_VERSION` is v2.
+- **Lesson 21 pages by the workbook's page**: four letters a screen, in
+  four columns (`.pair-grid.cols-4`; two by two on a phone). Three per
+  screen had given ب ت ث | ج | ح خ د | ذ. Lessons 22 and 23 follow.
+- **The names song opens on the plain ا**, and **the strip flows by
+  itself** — see `CLAUDE.md` §3 "The song strip flows by itself": the
+  family being sung centered and bright, the others dimmed, a glide to the
+  next family ending as its first letter is sung, Play/Pause only, a tap on
+  a letter to start there. *"I am supposed to sing this alphabet song as a
+  whole. The letter sliding should be AUTOMATIC as I sing."*
+
+**32 letter cards, 34 takes** (the two songs included) — the recording
+plan in `CLAUDE.md` §5 counts them.
+
+**Suggested, not built — the author to decide:**
+
+1. **A home for ىٰ, ة and لا.** They are not letters a child meets in the
+   alphabet but shapes a reader meets in words: the alif written as a yaa
+   (مُوسَىٰ), the taa marbuta (رَحۡمَةَ), the laam-alif ligature (وَلَا).
+   Proposal: **lesson 30, "Different Letter Forms", Level 2, right after
+   Hamza (28)**, in the workbook's order where it has them (Level 2's
+   hamza section already carries ءَارَ-style rows; Level 3 §4 "Silent
+   Alif" has the ىٰ words) and a short authored sheet where it does not —
+   one card per shape, three words each from the Mushaf, verified against
+   the corpus like lesson 7. Until then the three stay at the end of lesson
+   20's last section, where a teacher can skip them.
+2. **The dimmed neighbors on the strip** are at 0.22 opacity so the eye
+   sees the next family arriving; hiding them outright is one number.
+3. **Tap-to-start on the strip** replaced Next as the only way to begin
+   mid-song; it can go if a child's stray tap is a problem in class.
+
+### The evening round, 2026-10-24 — order, recording, tracing
+
+**Order.** The author: *"هـ then و then ى, then ا."* The hamza row moved
+after the alif in the sheet (tables 4 and 7), so the last section is
+و ى ا ء — the author did not place the hamza; after the alif is the
+reading taken, flagged for him. **ىٰ، لا and ة left lesson 20** for a
+lesson he will design later. Their rows, kept here as its seed:
+
+| letter | name | forms | mnemonic | note |
+|---|---|---|---|---|
+| ىٰ | — | مُوسَىٰ | A duck | An alif in disguise — the dagger alif on top says so. Script: *Here is the duck again. But this time it is not a yaa at all — it is an alif in disguise! You can tell by the little alif sitting on top. Listen: مُوسَىٰ.* |
+| لا | لَام أَلِف | لَا · وَلَا | Two oars crossed in a V | Two letters written as one shape. Script: *This is laam and alif holding hands. It looks like two oars crossed. Two letters, one shape. We read it لَا. And in a word — وَلَا.* |
+| ة | تَاء مَرۡبُوطَة | ءَاخِرَةِ · رَحۡمَةَ | The knot with two bubbles above it | A taa wearing the haa's shape. Script: *This is the taa marbuta — a taa wearing the haa's shape. It looks like the knot with two bubbles above it. Taa marbuta has two dots on top. Listen: ءَاخِرَةِ. Taa marbuta sometimes looks like this — رَحۡمَةَ.* |
+
+**Recording, from one sheet.** The author asked for the lesson-20 script
+"ready for the audio intake system", the song likewise, and a recording of
+each letter's name for the tracing cards. All three are tables of the one
+sheet now (7, 8, 9), and the intake tool learned to read a sheet table by
+table and to take a "Slot" column as the file names, with the rest of the
+row as the prompt on screen while recording. `CLAUDE.md` §5 has the steps.
+
+**Lesson 30 — Tracing the Letters.** *"ONE lesson for writing practice on a
+screen with a finger (or a pen — but has to accept finger strokes)… One
+letter per screen. The screen DRAWS the letter live with the correct stroke
+form, the student is asked to write over it… a correct click sound when the
+tracing is accurate. An error sound when not with a message which says try
+again… a recording for the name of the letter… The lighthouse then asks the
+student to trace the letter… I don't want an error message when it's only
+incomplete… I want it clean, professional."* Built as designed in
+`CLAUDE.md` §3 ("Tracing"): the strokes are the font's own glyph thinned
+and walked through authored waypoints; the rule is geometry (a band, a
+short lookahead, progress that only advances), with no clock; incomplete
+is never wrong, only leaving the line is. The lighthouse asks with her beam
+on the board and is pleased with `manara-well-done.png`. The sounds are
+synthesized. What the author should feel for on the iPad: the band (0.11 of
+the board) and the lookahead (one band) — both in `tolerances()`; and the
+glide of the demonstration (0.55–1.7 s a stroke).
+
+Not built, on purpose: no per-letter record of what was traced (the roster
+seat question, §3 "Not built"); no pencil-only mode; no free writing without
+the guide.
+
+### 2026-10-25 — the author's check of the tracing, and the spoken script
+
+**The tracing.** *"This is not how Arabic letters are written. Wrong for
+ع غ ف ق ص ض ج ح خ and several others… the tracing guide has to cover the
+whole grey area… I suppose you can have me trace them and use my strokes
+as the template if we really need to."* Both were done. The letter is now
+painted along the stroke (the colored glyph shown through a mask of what
+has been traced, with a brush wider than the glyph's stroke), so the
+color covers the grey exactly, to the tips. The writing orders were
+rewritten from handwriting practice — ج ح خ: along the head right to left,
+then down the left side into the bowl and round to the end; س ش: from the
+top of the first tooth, the teeth, the bowl; ص ض: the loop from its right
+end, over the top, round the left, back along the bottom; then the bowl
+from the loop's left; ط ظ: the loop, then the stem from the top; ع غ: the
+head from its right end over the top, round and back to the waist, then
+the bowl; ف: over the loop and down its left side into the body (an open
+loop); ق: the loop closed, then the bowl from its right; ك: top down, then
+the base to the left, then the sign; م: over the head and down the tail;
+هـ: the loop, then the bar; و: the loop closed, then the tail; ى: the hook,
+the tooth, the bowl, in one pass ending at the right; ء: the crescent,
+then the base to the right — and the teacher can replace any of them with
+his own hand: "Teach the strokes" on the card (admin), draw, Save; every
+device traces his strokes from then on. **His hand is the source; the
+font's are the stand-in.** Two more rules in the engine: a stroke's turning
+points are checkpoints (no straight line across ت's mouth or along س's
+teeth), and a dot's radius is half the way to its neighbor.
+
+**The spoken script** for lesson 20 follows the author's template — *This
+is the letter baa. It looks like a boat with one bubble below it. It
+sounds like the English letter b. With a fat-ha it sounds like baa, with a
+damma boo, with a kasra bee. Now your turn. Say it.* — for all 29 letters,
+in table 7 of the sheet, with an English likeness where there is a fair one
+(ث the beginning of *three*, ذ the th of *this*, ط a heavy t close to
+*tart*, خ clearing the throat, غ gargling, ء the catch in *uh-oh*), "no
+letter like it in English" for ح ع ض ق, and alif's line about madd. One
+sentence the template did not have was kept, because the card still shows
+the form: *With a sukoon after نَ it is nab (نَبۡ)* — the author to strike
+it in Word if he wants the line without it.
+
+**2026-10-25, later — the author's eighteen points on the tracing.** He
+checked every letter and wrote the orders himself; they are the defaults
+now (`scripts/tracing/waypoints.json`, listed in `CLAUDE.md` §3,
+"Tracing"): ج ح خ from the left of the head bar, right, then down; ص ض
+from the loop's bottom-left round the loop to the tooth then the bowl, one
+stroke; ط ظ the loop then the stem top to bottom; ع غ one stroke from the
+head's right tip; ف ق from the loop's bottom-right round and on; ك's sign
+is a small hamza, traced from its top, not a dot; م from the head's
+top-left; هـ one stroke from the loop's top; و from the loop's right, under,
+up and over, then the tail; ى one stroke, never back; ء head then base.
+Two faults behind "the color does not fill the letter": the brush was a
+fixed share of the box and د's base is twice that — it is now the glyph's
+own thickest stroke, measured per letter — and the thinning retracted
+every stroke's end by half a stroke, so the tail of ت and the tip of ش were
+never reached; a stroke's ends are pulled to the skeleton's tips. The
+Firestore rule for his own strokes is deployed, so "Teach the strokes"
+saves. He also rewrote the spoken lines in the sheet himself (table 7).

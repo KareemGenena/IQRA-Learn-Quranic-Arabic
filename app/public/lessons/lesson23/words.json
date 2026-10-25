@@ -4,43 +4,49 @@
   "titleArabic": "الشدة",
   "kind": "letters",
   "audioPath": "audio/lesson23/",
-  "perPage": 3,
+  "perPage": 4,
   "sections": [
     {
       "id": "p27",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p28",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p29",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p30",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p31",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p32",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     }
   ],
   "words": [

@@ -456,14 +456,23 @@ export function SectionedLesson({
         </p>
       </section>
 
-      <div className={`pair-grid${page.section?.columns === 2 ? ' cols-2' : ''}`}>
+      <div
+        className={`pair-grid${page.section?.columns === 2 ? ' cols-2' : ''}${page.section?.columns === 4 ? ' cols-4' : ''}`}
+      >
         {page.items.map((item, i) => (
           <Card
             key={item.id}
             lesson={lesson}
             item={item}
             rate={rate}
-            displayNo={i + 1}
+            // The number on the card is the digit key that starts it — its
+            // place on the screen. A lesson of ONE card per screen (the
+            // letter lessons) would number every card 1, so there it is the
+            // card's place in its section, the number the contents list
+            // shows (the author, 2026-10-24: every letter card read "1").
+            // Keyed on the LESSON, not the screen: a lone last card of a
+            // four-a-screen section is still "1", the key that starts it.
+            displayNo={lesson.perPage === 1 ? page.indexInGroup : i + 1}
             register={register}
             hideBadges={page.quiz}
             reading={page.section?.readings === false ? undefined : reading}

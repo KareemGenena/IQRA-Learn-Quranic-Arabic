@@ -967,6 +967,20 @@ a.pill-half:hover {
   }
 }
 
+/* A workbook page of FOUR letters (harakat, tanween, natural madd: a letter
+   and its forms per column) is one screen of four, in one row as on the
+   paper — auto-fit gave three and the fourth letter a row of its own (the
+   author, 2026-10-24: "ج by itself"). Two by two on a phone. */
+.pair-grid.cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 760px) {
+  .pair-grid.cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .pair-card {
   direction: ltr;
   display: flex;
@@ -3442,6 +3456,182 @@ kbd {
 .song-letter { padding: 0 0.08em; border-radius: 0.12em; transition: background 0.15s, box-shadow 0.15s; }
 .song-letter.on { background: var(--highlight); box-shadow: 0 0 0 2px var(--highlight-border); }
 .song-letter.group-start { margin-inline-start: 0.9em; }
+
+/* The strip flows by itself (2026-10-24): while the song plays its place is
+   set every frame from the engine's clock, with no CSS easing (`live`); at
+   rest the CSS glide carries it to the focused family. A letter is a button
+   — a tap starts the song from its family — drawn as plain type. The family
+   being sung is bright and every other one dimmed, so only the family in
+   turn reads; the neighbors are there to be seen arriving. */
+.song-strip.live { transition: none; }
+.song-strip .song-letter {
+  appearance: none;
+  background: none;
+  border: 0;
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, opacity 0.3s;
+}
+.song-strip .song-letter.on { background: var(--highlight); box-shadow: 0 0 0 2px var(--highlight-border); }
+.song-strip .song-letter.dim { opacity: 0.22; }
+.song-lesson .pager { justify-content: center; }
+
+/* ── the back of a letter card (2026-10-24) ──
+   ى turns on its vertical axis to يـ, the duck jumping into the boat: two
+   faces in one box, the back pre-turned and hidden until the box turns. The
+   front face gives the box its height. */
+.letter-flip { perspective: 1400px; }
+.letter-flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.letter-flip.flipped .letter-flip-inner { transform: rotateY(180deg); }
+.flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-face.back { position: absolute; inset: 0; transform: rotateY(180deg); }
+.letter-flip .letter-pic img { cursor: pointer; }
+.flip-prompt {
+  margin-top: 2px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--card);
+  color: var(--accent);
+  font-size: 13px;
+  cursor: pointer;
+  max-width: 28ch;
+  animation: flip-prompt-in 0.5s ease-out 0.8s both;
+}
+.flip-prompt:hover { background: var(--accent); color: #fff; }
+@keyframes flip-prompt-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* The card sits in the right-to-left `.pair-grid` and keeps that direction
+   on purpose — number top right, picture right, letter left is how the
+   author sees it — but its English lines are English: a trailing full stop
+   in an RTL paragraph was drawn at the START of the line (2026-10-24). */
+.letter-card { direction: rtl; }
+.letter-tip, .letter-pic figcaption, .flip-prompt { direction: ltr; }
+
+/* ── tracing a letter (lesson 30, 2026-10-24) ──
+   Manāra and her bubble beside a square board; the gray glyph is SVG text
+   in the Mushaf face, the strokes are drawn over it in the family color
+   (`currentColor` from `.fam-N` on the card), the dot pulses where the
+   finger should go. The board takes the finger itself (touch-action none),
+   never the page's scroll. */
+.trace-card { direction: ltr; }
+.trace-card .letter-top { direction: rtl; }
+.trace-stage {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+}
+.trace-mascot { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.trace-manara { width: 120px; transition: opacity 0.2s; }
+.trace-bubble {
+  position: relative;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  font-size: 15px;
+  line-height: 1.45;
+  text-align: center;
+  max-width: 22ch;
+  color: var(--text);
+}
+.trace-bubble::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--card);
+  border-left: 1px solid var(--card-border);
+  border-top: 1px solid var(--card-border);
+  transform: translateX(-50%) rotate(45deg);
+}
+.trace-board {
+  width: min(100%, 440px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+.trace-board svg { display: block; width: 100%; height: 100%; }
+.trace-guide { fill: #d9dde3; }
+:root[data-theme='dark'] .trace-guide { fill: #3a4452; }
+/* the letter itself, in the family color, shown only where the mask of the
+   strokes traced so far lets it through */
+.trace-paint { fill: currentColor; }
+.trace-paint.off { fill: #d9534f; }
+/* the teacher drawing a template */
+.trace-author { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9; }
+circle.trace-author { fill: currentColor; stroke: none; }
+.trace-author.live { opacity: 0.55; }
+.trace-author-no { font: 700 14px system-ui, sans-serif; fill: currentColor; }
+.trace-taught { font-family: system-ui, sans-serif; font-size: 12px; color: var(--text-soft); }
+.trace-note { text-align: center; margin-top: 8px; }
+.authoring .trace-board { outline: 2px dashed var(--accent); outline-offset: 3px; }
+.trace-ink { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+circle.trace-ink { fill: currentColor; stroke: none; }
+.trace-ink.demo { opacity: 0.9; }
+.trace-ink.progress.off { stroke: #d9534f; transition: opacity 0.4s; opacity: 0.35; }
+.trace-guide-line { fill: none; stroke: currentColor; opacity: 0.35; stroke-dasharray: 2 7; stroke-linecap: round; }
+.trace-pen { fill: #fff; stroke: currentColor; stroke-width: 3; }
+.trace-dot { fill: currentColor; stroke: #fff; stroke-width: 3; animation: trace-pulse 1.1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.trace-target { fill: none; stroke: currentColor; stroke-width: 3; stroke-dasharray: 4 5; animation: trace-pulse 1.1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes trace-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+.traced .trace-board { animation: trace-glow 0.9s ease-out; }
+@keyframes trace-glow {
+  0% { box-shadow: 0 0 0 0 var(--highlight-border); }
+  60% { box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
+  100% { box-shadow: var(--shadow); }
+}
+.trace-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+@media (max-width: 640px) {
+  .trace-stage { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .trace-mascot { flex-direction: row; justify-content: center; align-items: center; }
+  .trace-manara { width: 72px; }
+  .trace-bubble::before { top: 50%; left: -8px; transform: translateY(-50%) rotate(-45deg); }
+}
+
+/* the rest of the sheet's row, read while recording a slot that only names
+   the file — the teacher's whole line for ب, the 28 names of a song */
+.intake-prompt {
+  max-width: 64ch;
+  margin: 6px auto 10px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* one teaching line under the sounds — alif's "makes the fat-ha longer" */
+.letter-tip {
+  margin: 14px auto 0;
+  max-width: 48ch;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
 
 /* the places page — the workbook's makhraj page, one place per card */
 .place-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 16px 18px 18px; box-shadow: var(--shadow); }

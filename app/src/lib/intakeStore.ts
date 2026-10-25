@@ -27,6 +27,9 @@ export interface Slot {
   text: string;
   /** What to do, in English, for the calibration slots. */
   hint?: string;
+  /** The rest of the sheet's row — the line to say, what lights up — shown
+   *  while recording a slot that only names the file ("ب"). */
+  prompt?: string;
   /** Derived from the text, never typed. */
   fileName: string;
   /** How many utterances the take should contain, for the split gate. */

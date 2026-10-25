@@ -132,6 +132,15 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   34–37** do the same for Workbook Level 3's uncovered sections — Stopping
   34, Makharij & Sifat 35, Idghām of Two Letters 36, Silent Alif 37 — placed
   in the workbook's order among lessons 2, 4, 3 and 7 (118 forms).
+- **Lesson 30 — Tracing the Letters** (Level 1 · Lesson 4, draft,
+  2026-10-24): the 29 letters of lesson 20, one a screen. The card plays
+  the letter's name, the letter draws itself stroke by stroke in its
+  family color over the gray glyph, and Manāra asks the learner to trace it
+  with a finger or a pen; a stroke done clicks, the letter done chimes,
+  leaving the line knocks and restarts the stroke — never a slow or lifted
+  finger. Strokes derived from the font (`scripts/tracing/`), the rule in
+  `src/lib/tracing.ts` (section 3, "Tracing"). Names recorded from the
+  sheet's table 9.
 - **The Level checks** (lessons 41, 42, 43; draft) — one at the end of each
   Level, built by `node scripts/make-assessments.mjs` from the Level's own
   clips, never recorded or authored: 14 hear-and-point items (a clip plays,
@@ -1134,6 +1143,131 @@ this time the corrupted records are children's.
   `.image-pop` show on `.info-btn:hover + …`, on `:focus-visible` or on
   the tap's `.open` — the old `.pair-head:hover` rule popped the meaning
   up with the pointer anywhere on the card's head (2026-10-24).
+- **The song strip flows by itself (2026-10-24).** `SongCards` has no
+  Back/Next: Play/Pause (and Space) only, and a tap on a letter starts the
+  song from its family. The family being sung is centered and bright, every
+  other family dimmed (`.song-letter.dim`), and in the last `GLIDE_S`
+  (0.6 s, or half the family's time if shorter) before the next family's
+  first letter the strip glides so that family is centered AS its first
+  letter is sung — three letters' width for ب ت ث after ا, one for ك after
+  ل, in the same time, so the speed follows the song. The position is a
+  function of the MEDIA TIME, set every frame from the engine's own clock
+  (`now()` on `usePlayable`, the handle's `now`), never from React state:
+  a pause holds it, a seek jumps it, the CSS transition is switched off
+  while playing (`.song-strip.live`) and carries the at-rest glides. The
+  author asked for exactly this: the letters must slide as he sings, with
+  no Next to press. Until the song is calibrated the automatic timings mean
+  nothing for a sung rhythm. Three things a review caught the same day: a
+  start is by CLUSTER (`play({ cluster })`), because the hook's boundaries
+  are empty until the first play has resolved and `play(onsets[focus])`
+  started a tapped ك at ا; the strip goes back to ا only when the song
+  REACHED ITS END (the frame loop's last media time within 0.25 s of the
+  last boundary) — playback also stops when the page is hidden, and a
+  teacher who paused on ق must find ق on coming back; and the at-rest
+  centering runs while paused too, so a turned iPad re-centers. Verified
+  in the pane with rAF patched and a synthetic 30 s clip of 28 tone bursts
+  (deleted after): held, glide in the last 0.6 s, landing at the onset,
+  bright family switching at the onset, a tapped ك played from ك.
+- **`columns: 4` on a section draws it four across** (`.pair-grid.cols-4`,
+  two by two under 760 px); `make-workbook-lessons.mjs` writes it on every
+  section of a lesson whose cards hold several forms (21, 22, 23 — the
+  paper's four letters a page), and `perPage` is 4 there. Keyed on the
+  SECTION, never on `perPage === 4`: lessons 2, 3 and 5 page by four as
+  well and were drawn four across at tablet widths for an hour.
+- **The card's number is keyed on the lesson's `perPage`, not on the
+  screen's count**: a lone last card of a four-a-screen section is still
+  "1", the key that starts it.
+- **A letter card is right-to-left on purpose; its English lines are not.**
+  `.letter-card { direction: rtl }` (number top right, picture right,
+  letter left — how the author sees it, inherited from `.pair-grid` since
+  cards flow from the right) and `.letter-tip`, the figcaption and the flip
+  prompt are `ltr`: a trailing full stop in an RTL paragraph was drawn at
+  the START of the line (2026-10-24).
+- **A letter card may have a back** (`flip` on the word — ى turns to يـ,
+  the duck jumping into the boat) and **one teaching line** (`tip` — alif's
+  "makes the fat-ha longer"). Both are app wording kept in
+  `make-alphabet.mjs` (`TIP`, `FLIP`), keyed by the letter AS THE SHEET
+  WRITES IT, never its key: ىٰ keys to ى and must not inherit the duck's
+  back. The flip is two faces in one box (`.letter-flip`,
+  `backface-visibility: hidden`, the back pre-turned), the front face gives
+  the box its height, and a card always opens on its front.
+- **Tracing (lesson 30, 2026-10-24): the strokes are the font's, the rule
+  is geometry, and only leaving the line is wrong.** Each letter's strokes
+  are DERIVED from the glyph — `scripts/tracing/render-glyphs.mjs` renders
+  the 29 letters in headless Chrome, `derive-strokes.mjs` thins each to its
+  centerline (Zhang–Suen) and walks it through the letter's authored
+  waypoints (`waypoints.json`: the only authored thing — ORDER and
+  DIRECTION; the shape is the font's), splitting touching dots to the
+  count the letter carries; `strokes.json` holds every stroke as 48 points
+  in the frame of the glyph's INK BOX (0–1, dots included; a one-point
+  stroke is a tap) and `make-alphabet.mjs` folds it into lesson 30. Read
+  the proof montage the script writes before trusting a change: a waypoint
+  that snaps to the wrong arm walks the wrong way (د did). At runtime
+  `TraceCard` draws the letter as SVG text in the Mushaf face, measures its
+  ink box with canvas `measureText` (`actualBoundingBox*`, the same frame)
+  and lays the strokes on it; the font is never parsed or modified. The
+  rule (`src/lib/tracing.ts`, pure): a touch starts only near the dot (the
+  stroke's start, or where the finger last reached); while it moves, the
+  nearest point on the stroke is looked for in a window of ONE BAND ahead
+  (and a band and a half behind) and progress only advances; farther from
+  the line than the band (0.11 of the board, a finger's width) is the one
+  mistake — knock, "Try again", the stroke restarts; slow, stopped or
+  lifted is never wrong — the dot waits where the finger left; reaching
+  0.94 of the length completes the stroke, lifted or not. The lookahead is
+  short ON PURPOSE: at 0.22 of the stroke a 130 px hop across the mouth of
+  a bowl was accepted as progress. Note that a straight line across a
+  SHALLOW bowl (ت) stays within a finger's width of it and does count —
+  the band, not the shape, decides — which is why (2026-10-25) a stroke's
+  TURNING POINTS are checkpoints: the window does not pass the bottom of
+  a bowl or the tip of a tooth until the finger has come within 0.45 band
+  of it, so the chord across ت's mouth and the flat swipe along س's teeth
+  stall and then wander off the stalled window. A dot's radius is half
+  the way to its nearest neighbor (`tapRadius`), so the two dots of ت are
+  told apart. **The letter is painted, never stroked beside**: the colored
+  glyph (`.trace-paint`, SVG text in the family color) is clipped by a
+  `<mask>` holding the strokes traced so far, drawn with a brush 1.15×
+  the glyph's THICKEST stroke (`trace.brush`, the deriver's chamfer
+  distance transform over the body, as a share of the ink box's longer
+  side — د's base is 0.22, ر 0.16, ا 0.08; a fixed 0.18 left د and ل
+  half grey), so whatever the stroke's exact line the color fills the
+  grey letter and nothing else; a stroke's first and last waypoints are
+  pulled to the skeleton's END where one lies within a tenth of the box
+  along a line (`toEnd`, never across a junction), then pushed to the
+  ink's edge, so the pen reaches the tail of ت and the tip of ش — the
+  thinning retracts every end by half a stroke, and the tips stayed grey
+  (the author, 2026-10-25). **The writing orders are the author's**
+  (`waypoints.json`, 2026-10-25): ج ح خ from the LEFT end of the head
+  bar, right along it, then down the curve; ص ض from the loop's
+  bottom-left up and round the loop to the tooth, then down the bowl, one
+  stroke; ط ظ the loop from its left end, then the stem top to bottom;
+  ع غ from the head's right tip, one stroke; ف ق from the loop's
+  bottom-right round the loop and on; ك the body, then its sign traced
+  from its top (`strokeAll`: the sign is a stroke, not a dot); م from the
+  head's top-left; هـ from the loop's top, round and back down its left
+  side to the bar, one stroke; و from the loop's right, under, up and
+  over, then the tail; ى hook, tooth, bowl to the right tip, never back;
+  ء the head then the whole base. **The teacher's hand wins**: the admin's
+  "Teach the strokes" records his strokes on the board (smoothed,
+  resampled to 48 points, normalized to the ink box; a touch shorter than
+  0.8 band is a dot) into Firestore `tracing/{letter}` (`tracingStore.ts`,
+  REST like the calibrations; the strokes flattened to `{p: [x0,y0,…]}`
+  because Firestore holds no array in an array), fetched once a session
+  and kept in localStorage; `cloudTrace(letter)` beats the baked strokes
+  on every card, and `scripts/tracing/pull-cloud.mjs` → `authored.json`
+  bakes them in on the next derive. No clock anywhere. Card flow: the name
+  (table 9's recording; a missing clip fails quietly) → the letter draws
+  itself (rAF, a pen along each stroke; a touch cuts it short) → Manāra
+  asks (`manara-beam.png` points at the board) → traced: chime,
+  `manara-well-done.png`. Sounds are synthesized (`sounds.ts`), not
+  recorded. Verified in the pane with synthesized PointerEvents: a touch
+  off the dot ignored, a walk away from the line knocked and reset, a
+  half-trace kept with the dot at the midpoint, the dots tapped in order,
+  "Well done!".
+- **A hash navigation does not reload the app.** The module caches —
+  `audioSource`'s blobs, `audioAnalysis`'s speech bounds — live on across
+  `#/` changes, so a clip replaced on disk is still the old one in the page
+  until a FULL reload (`http://localhost:5173/?fresh=1#/lesson/31`). Cost
+  twenty minutes of "the song's timing is collapsed" (2026-10-24).
 - **Arabic inside English is wrapped** (`Mixed.tsx`, `.ar-run`): every
   Arabic run in a hint or a chip gets the Mushaf face at 2× the text
   around it, isolated for bidi — 1.4× was still unreadable to the author;
@@ -1693,6 +1827,90 @@ Tanzil text is stored verbatim and its codepoints mapped for the font in
 memory, never written back; and grammar data must be runtime-cached like
 audio, never precached.
 
+**The evening round, 2026-10-24 (iteration 7, continued; `Design/iqra-kids.md`
+§13).** Built and verified in the pane, `npm run build` clean, NOT committed
+or deployed: (1) lesson 20's last letters are **و ى ا ء** — the hamza row
+moved after the alif in the sheet, and ىٰ، لا، ة left (their rows deleted;
+their text is in `Design/iqra-kids.md` §13 as the seed of a lesson to be
+designed later). 29 cards. (2) **Recording, all from one sheet** —
+`Word Tables/الحروف الهجائية.docx` now has NINE tables: 7 the spoken line
+per letter (29), **8 the two songs** (slots `song-names`, `song-sounds`,
+the sung names/sounds beside them), **9 the letter NAMES** (slot = the
+name, بَاء → `باء.wav`, for the tracing lesson). The intake tool reads a
+sheet TABLE BY TABLE (a picker when there are several; "All" keeps lesson
+7's five tables as one list), takes a column headed **Slot** as the one
+that names the files — whatever Arabic the other columns carry — keeps
+every row below the header (Latin slots too) and shows the rest of the row
+as the PROMPT while recording (`Slot.prompt`). Everything goes into
+`Audio/Audio - Kids Alphabet/`: **29 letter lines + 2 songs + 29 names =
+60 takes, every one a single piece**, then `node scripts/make-alphabet.mjs`.
+(3) **Lesson 30, "Tracing the Letters"** — Level 1 · Lesson 4, between the
+sounds song and the places (33 → Lesson 5; 21–23 → 6–8): section 3,
+"Tracing". **Tracing, the second round (2026-10-25).** The author checked the
+letters: *"This is not how Arabic letters are written… the tracing guide
+has to cover the whole grey area… several critical errors."* Built: the
+letter is PAINTED, not stroked beside — the colored glyph clipped by a
+mask of the strokes traced so far, drawn with a brush wider than the
+glyph's thickest part, so the color fills exactly the grey (section 3,
+"Tracing"); every stroke's ends are pushed to the ink's edge; the writing
+orders were rewritten (ج ح خ right → left along the head then down the
+left side, no return; س from the first tooth's top; ف an open loop; ق the
+loop closed then the bowl; م an open head then the tail; هـ loop then bar;
+ء crescent then base; ى one pass ending at the right) and the proof now
+arrows every third point so a retrace shows; CHECKPOINTS at a stroke's
+turning points stop the shortcut across ت's mouth and along س's teeth; a
+dot's radius is half the way to its neighbor; a turned iPad restarts the
+demonstration; the sounds' context is opened on the touch; the
+generator's advice line and the sheet's intro say tables 7, 8, 9. And
+**the teacher's hand is the source**: the admin's "Teach the strokes" on
+a card records his own strokes (a short touch is a dot) and saves them to
+Firestore `tracing/{letter}` (section 3; `tracingStore.ts`;
+`firestore.rules` has the block, DEPLOYED 2026-10-25); every device
+then traces his strokes; `node scripts/tracing/pull-cloud.mjs` bakes them
+into `authored.json` → `strokes.json`. The sixteen findings of the
+2026-10-24 review are all closed. **The author's eighteen points of
+2026-10-25** (the painting left tips and thick parts grey; every looped
+letter's order; the ك sign; ى back-and-forth; the save refused): built —
+brush from the glyph's own thickness, ends pulled to the skeleton's tips,
+the orders exactly as he gave them (section 3, "Tracing"), the rules
+deployed, his edited script read from the sheet — verified in the pane
+(ت د ع ك ء paint fully; every order on the proof sheet), built,
+committed, pushed and deployed. **Waiting on the author:** trace on the
+iPad and, for any letter that still reads wrong, "Teach the strokes" →
+Save (then `node scripts/tracing/pull-cloud.mjs` and a re-derive bakes
+it in); record tables 7, 8, 9; hear the names.
+
+**Waiting on the author:** a home for ىٰ، لا، ة (once he decides
+the content); hearing the tracing card's name clip once table 9 is
+recorded; trying the tracing on the iPad with a finger and a pencil (the
+band and the lookahead are two numbers in `tolerances()`); whether a
+"Trace it again" after "Well done!" should also count the letter traced in
+the progress store (nothing per letter is stored today).
+
+**The author's review of lesson 20 and the song, 2026-10-24 (iteration 7;
+`Design/iqra-kids.md` §13).** Built, verified in the pane, built with
+`npm run build`, NOT committed or deployed: the card number is the card's
+place in its section (every letter card read "1"); ك ل م ن ه ة ء و ى ي ا لا
+re-cut inside their frames (`IMAGE_VERSION` v2); the hamza card is the
+plain ء with the workbook's own ءَ ءُ ءِ نَأۡ and the three seat cards ؤ ئ ء
+are gone; و lost نُو; ى and يـ are ONE card — ىَ ىُ ىِ نَىۡ, dotless as the
+workbook writes them, a tip line, and the flip to يـ — and ىٰ is still its
+own card; ا has بَا تَا ثَا and the madd tip; lesson 21 pages by the
+workbook's four letters in four columns (lessons 22 and 23 regenerated with
+it); the names song opens on the plain ا and its strip flows by itself.
+**All of it is in the sheet** — `Word Tables/الحروف الهجائية.docx` was
+edited in place (tables 4, 5 and 7; every change printed; the script is
+not kept — git holds the before and after), so the intake tool's slots and
+the generator agree: **32 letter cards + 2 songs = 34 takes.** The new
+teacher lines for ء، و، ى and ا in table 7 are mine to be reworded by the
+author in Word. **Waiting on the author:** (1) a home for ىٰ, ة and لا — the
+proposal is a Level 2 lesson 30, "Different Letter Forms", right after
+Hamza (28), cut from the workbook like 21–29 where its sections exist and
+authored as a short sheet where they do not; nothing is built; (2) whether
+the dimmed neighbors on the song strip (opacity 0.22) should be hidden
+outright; (3) whether a tap on a strip letter should stay (it is the only
+way to start mid-song now that Next is gone).
+
 **Level 1, the letters — lessons 31, 20, 32, 33 exist as drafts (iteration
 6, 2026-10-10; once "IQRA Kids", folded into the one curriculum on
 2026-10-11).** The Baghdadi qaida for the Masjid's Maktab, taught live by a
@@ -1719,12 +1937,17 @@ sources in `Design/kids-art/makhraj-canva/`, the app ships 480 px palette
 copies, and the generator reports 37 pictures wanted, 37 present. (A set I
 drew myself as SVG was withdrawn at the author's request the same day; it is
 in history at `b7942c3`, not in the tree.) **The only thing left before
-Level 1 can be used in a class is the recording: 38 takes** — open the sheet in
-the intake tool, record the **Slot column of its last table only**, expect 1,
-one whole line per letter (36), then the two songs as `song-names.wav` and
-`song-sounds.wav` into `Audio/Audio - Kids Alphabet/`; run
+Level 1 can be used in a class is the recording: 60 takes** (29 letter
+lines, 2 songs, 29 letter names — 38 before the 2026-10-24 rounds) — open
+`Word Tables/الحروف الهجائية.docx` in the intake tool, pick **table 7**
+(the picker; the Slot column is ticked by itself and each slot shows its
+line), utterances 1, Reading "Continuing", and record 29 lines; then
+**table 8** for the two songs (`song-names.wav`, `song-sounds.wav`, whole);
+then **table 9** for the 29 names (`باء.wav` …) — all into
+`Audio/Audio - Kids Alphabet/`; run
 `node scripts/make-alphabet.mjs`, which cuts nothing (every take is whole)
-and then lists what to **tap-calibrate** — all 38, a tap per Arabic letter
+and then lists what to **tap-calibrate** — the 29 lines and the 2 songs
+(a name is one word and needs none), a tap per Arabic letter
 (بَ بُ بِ نَبۡ is five; the first tap also ends the picture's glow), and the
 songs cannot work at all without it. Then Publish from `#/admin`.
 

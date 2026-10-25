@@ -4,49 +4,56 @@
   "titleArabic": "المد الطبيعي",
   "kind": "letters",
   "audioPath": "audio/lesson22/",
-  "perPage": 3,
+  "perPage": 4,
   "sections": [
     {
       "id": "p20",
       "title": "Natural Madd",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p21",
       "title": "Natural Madd",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p22",
       "title": "Natural Madd",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p23",
       "title": "Natural Madd",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p24",
       "title": "Natural Madd",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p25",
       "title": "Natural Madd",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     },
     {
       "id": "p26",
       "title": "Natural Madd",
       "titleArabic": "",
-      "hint": "Tap a form to hear it."
+      "hint": "Tap a form to hear it.",
+      "columns": 4
     }
   ],
   "words": [

@@ -39,8 +39,9 @@ const AUDIO_CACHE = `iqra-audio-${AUDIO_VERSION}`;
  * Bump this when a picture is redrawn.
  *
  * v1: the seaside letter mnemonics, 2026-09-06.
+ * v2: ك ل م ن ه ة ء و ى ي ا لا re-cut inside their frames, 2026-10-24.
  */
-const IMAGE_VERSION = 'v1';
+const IMAGE_VERSION = 'v2';
 const IMAGE_CACHE = `iqra-images-${IMAGE_VERSION}`;
 
 /** Deletes the audio and image caches of earlier versions when a new worker

@@ -34,7 +34,7 @@ export const DEFAULT_CONFIG: AppConfig = {
     1: 'published', 2: 'published', 3: 'draft', 4: 'draft', 5: 'published', 6: 'draft', 7: 'draft',
     // Level 1 — the letters (the qaida, once "IQRA Kids"). Draft until they
     // have been recorded and used in a real class. See Design/iqra-kids.md.
-    20: 'draft', 31: 'draft', 32: 'draft', 33: 'draft',
+    20: 'draft', 31: 'draft', 32: 'draft', 30: 'draft', 33: 'draft',
     // Cut from the workbooks (lessons.map.json). Draft until recorded.
     21: 'draft', 22: 'draft', 23: 'draft', 24: 'draft', 25: 'draft', 26: 'draft', 27: 'draft', 28: 'draft', 29: 'draft',
     34: 'draft', 35: 'draft', 36: 'draft', 37: 'draft',

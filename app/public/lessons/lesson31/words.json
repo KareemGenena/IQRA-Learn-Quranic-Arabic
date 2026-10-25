@@ -18,7 +18,7 @@
     "mode": "names",
     "steps": [
       {
-        "text": "أ",
+        "text": "ا",
         "group": 0,
         "family": 0
       },
@@ -163,7 +163,7 @@
     {
       "id": 1,
       "section": "song",
-      "text": "أ ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن هـ و ى",
+      "text": "ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن هـ و ى",
       "audio": "song-names.wav",
       "timings": null,
       "badges": []

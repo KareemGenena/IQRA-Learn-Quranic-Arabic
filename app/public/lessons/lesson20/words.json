@@ -27,9 +27,9 @@
     },
     {
       "id": "special",
-      "title": "The Hamza, the Madd Letters, لا and ة",
-      "titleArabic": "الهمزة وحروف المد",
-      "hint": "These do not behave like the others. Take them slowly."
+      "title": "The Letters — و ى ا ء",
+      "titleArabic": "الحروف ٤",
+      "hint": "و and ى, then the alif — a letter of madd — then the hamza. Take them slowly."
     }
   ],
   "words": [
@@ -58,7 +58,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter baa. It looks like a boat. Look — one bubble under it. Baa has one dot under it. With a fat-ha it's بَ. With a damma it's بُ. With a kasra it's بِ. And with a sukoon after نَ, it's نَبۡ."
+      "script": "This is the letter baa. It looks like a boat with one bubble below it. It sounds like the English letter b, as in boat. With a fat-ha it sounds like baa, with a damma boo, with a kasra bee. With a sukoon after نَ it is nab (نَبۡ). Now your turn. Say it."
     },
     {
       "id": 2,
@@ -85,7 +85,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter taa. It looks like the same boat. Look — two bubbles on top. Taa has two dots on top. With a fat-ha it's تَ. With a damma it's تُ. With a kasra it's تِ. And with a sukoon after نَ, it's نَتۡ."
+      "script": "This is the letter taa. It looks like the same boat, with two bubbles on top. It sounds like the English letter t, as in tea. With a fat-ha it sounds like taa, with a damma too, with a kasra tee. With a sukoon after نَ it is nat (نَتۡ). Now your turn."
     },
     {
       "id": 3,
@@ -112,7 +112,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter thaa. It looks like the same boat. Look — three bubbles on top. Thaa has three dots on top. With a fat-ha it's ثَ. With a damma it's ثُ. With a kasra it's ثِ. And with a sukoon after نَ, it's نَثۡ."
+      "script": "This is the letter thaa. It looks like the same boat, with three bubbles on top. It sounds like the beginning of the number three. With a fat-ha it sounds like thaa, with a damma thoo, with a kasra thee. With a sukoon after نَ it is nath (نَثۡ). Now your turn."
     },
     {
       "id": 4,
@@ -139,7 +139,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter jeem. It looks like a crescent moon lying on its back. Look — one bubble inside it. Jeem has one dot under it. With a fat-ha it's جَ. With a damma it's جُ. With a kasra it's جِ. And with a sukoon after نَ, it's نَجۡ."
+      "script": "This is the letter jeem. It looks like a crescent moon lying on its back, with one bubble inside it. It sounds like the English letter j, as in jam. With a fat-ha it sounds like jaa, with a damma joo, with a kasra jee. With a sukoon after نَ it is naj (نَجۡ). Now your turn."
     },
     {
       "id": 5,
@@ -166,7 +166,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter ḥaa. It looks like the same crescent moon. Look — no bubbles at all. Ḥaa has no dots. With a fat-ha it's حَ. With a damma it's حُ. With a kasra it's حِ. And with a sukoon after نَ, it's نَحۡ."
+      "script": "This is the letter ḥaa. It looks like the same crescent moon, with no bubbles at all. There is no letter like it in English: it is a soft breath from the throat. With a fat-ha it sounds like ḥaa, with a damma ḥoo, with a kasra ḥee. With a sukoon after نَ it is naḥ (نَحۡ). Now your turn."
     },
     {
       "id": 6,
@@ -193,7 +193,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter khaa. It looks like the same crescent moon. Look — one bubble on top. Khaa has one dot on top. With a fat-ha it's خَ. With a damma it's خُ. With a kasra it's خِ. And with a sukoon after نَ, it's نَخۡ."
+      "script": "This is the letter khaa. It looks like the same crescent moon, with one bubble on top. It sounds like snoring. With a fat-ha it sounds like khaa, with a damma khoo, with a kasra khee. With a sukoon after نَ it is nakh (نَخۡ). Now your turn."
     },
     {
       "id": 7,
@@ -220,7 +220,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter daal. It looks like a fishing hook hanging high on its line. Look — no bubbles at all. Daal has no dots. With a fat-ha it's دَ. With a damma it's دُ. With a kasra it's دِ. And with a sukoon after نَ, it's نَدۡ."
+      "script": "This is the letter daal. It looks like a fishing hook hanging high on its line. It sounds like the English letter d, as in door. With a fat-ha it sounds like daa, with a damma doo, with a kasra dee. With a sukoon after نَ it is nad (نَدۡ). Now your turn."
     },
     {
       "id": 8,
@@ -247,7 +247,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter dhaal. It looks like the same hanging hook. Look — one bubble on top. Dhaal has one dot on top. With a fat-ha it's ذَ. With a damma it's ذُ. With a kasra it's ذِ. And with a sukoon after نَ, it's نَذۡ."
+      "script": "This is the letter dhaal. It looks like the same hanging hook, with one bubble on top. It sounds like the th in this and that. With a fat-ha it sounds like dhaa, with a damma dhoo, with a kasra dhee. With a sukoon after نَ it is nadh (نَذۡ). Now your turn."
     },
     {
       "id": 9,
@@ -274,7 +274,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter raa. It looks like a fishing hook lying down on the sand. Look — no bubbles at all. Raa has no dots. With a fat-ha it's رَ. With a damma it's رُ. With a kasra it's رِ. And with a sukoon after نَ, it's نَرۡ."
+      "script": "This is the letter raa. It looks like a fishing hook lying down on the sand. It sounds like the Spanish r, erreh. With a fat-ha it sounds like raa, with a damma roo, with a kasra ree. With a sukoon after نَ it is nar (نَرۡ). Now your turn."
     },
     {
       "id": 10,
@@ -301,7 +301,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter zaay. It looks like the same hook on the sand. Look — one bubble on top. Zaay has one dot on top. With a fat-ha it's زَ. With a damma it's زُ. With a kasra it's زِ. And with a sukoon after نَ, it's نَزۡ."
+      "script": "This is the letter zaay. It looks like the same hook on the sand, with one bubble on top. It sounds like the English letter z, as in zoo. With a fat-ha it sounds like zaa, with a damma zoo, with a kasra zee. With a sukoon after نَ it is naz (نَزۡ). Now your turn."
     },
     {
       "id": 11,
@@ -328,7 +328,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter seen. It looks like a sea snake with three humps. Look — no bubbles at all. Seen has no dots. With a fat-ha it's سَ. With a damma it's سُ. With a kasra it's سِ. And with a sukoon after نَ, it's نَسۡ."
+      "script": "This is the letter seen. It looks like a sea snake with three humps. It sounds like the English letter s, as in snake. With a fat-ha it sounds like saa, with a damma soo, with a kasra see. With a sukoon after نَ it is nas (نَسۡ). Now your turn."
     },
     {
       "id": 12,
@@ -355,7 +355,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter sheen. It looks like the same snake. Look — three bubbles on top. Sheen has three dots on top. With a fat-ha it's شَ. With a damma it's شُ. With a kasra it's شِ. And with a sukoon after نَ, it's نَشۡ."
+      "script": "This is the letter sheen. It looks like the same snake, with three bubbles on top. It sounds like sh, as in ship. With a fat-ha it sounds like shaa, with a damma shoo, with a kasra shee. With a sukoon after نَ it is nash (نَشۡ). Now your turn."
     },
     {
       "id": 13,
@@ -382,7 +382,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter ṣaad. It looks like a whale with a long flat tail. Look — no bubbles at all. Ṣaad has no dots. With a fat-ha it's صَ. With a damma it's صُ. With a kasra it's صِ. And with a sukoon after نَ, it's نَصۡ."
+      "script": "This is the letter ṣaad. It looks like a whale with a long flat tail. It is a heavy s: close to the s in sauce. With a fat-ha it sounds like ṣaa, with a damma ṣoo, with a kasra ṣee. With a sukoon after نَ it is naṣ (نَصۡ). Now your turn."
     },
     {
       "id": 14,
@@ -409,7 +409,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter ḍaad. It looks like the same whale. Look — one bubble on top. Ḍaad has one dot on top. With a fat-ha it's ضَ. With a damma it's ضُ. With a kasra it's ضِ. And with a sukoon after نَ, it's نَضۡ."
+      "script": "This is the letter ḍaad. It looks like the same whale, with one bubble on top. It is a heavy d, with the tongue wide and pressed against the side teeth. There is no letter like it in English — Arabic is called the language of the ḍaad. With a fat-ha it sounds like ḍaa, with a damma ḍoo, with a kasra ḍee. With a sukoon after نَ it is naḍ (نَضۡ). Now your turn."
     },
     {
       "id": 15,
@@ -436,7 +436,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter ṭaa. It looks like the whale spouting water straight up. Look — no bubbles at all. Ṭaa has no dots. With a fat-ha it's طَ. With a damma it's طُ. With a kasra it's طِ. And with a sukoon after نَ, it's نَطۡ."
+      "script": "This is the letter ṭaa. It looks like the whale spouting water straight up. It is a heavy t, close to the t in tart. With a fat-ha it sounds like ṭaa, with a damma ṭoo, with a kasra ṭee. With a sukoon after نَ it is naṭ (نَطۡ). Now your turn. Say it."
     },
     {
       "id": 16,
@@ -463,7 +463,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter ẓaa. It looks like the same spouting whale. Look — one bubble on top. Ẓaa has one dot on top. With a fat-ha it's ظَ. With a damma it's ظُ. With a kasra it's ظِ. And with a sukoon after نَ, it's نَظۡ."
+      "script": "This is the letter ẓaa. It looks like the same spouting whale, with one bubble on top. It is a heavy dhaal, said with a full mouth. With a fat-ha it sounds like ẓaa, with a damma ẓoo, with a kasra ẓee. With a sukoon after نَ it is naẓ (نَظۡ). Now your turn."
     },
     {
       "id": 17,
@@ -490,7 +490,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter ʿayn. It looks like a curly seaweed frond — a backwards three. Look — no bubbles at all. ʿayn has no dots. With a fat-ha it's عَ. With a damma it's عُ. With a kasra it's عِ. And with a sukoon after نَ, it's نَعۡ."
+      "script": "This is the letter ʿayn. It looks like a curly seaweed frond, or a backwards three. There is no letter like it in English. It comes from throat. With a fat-ha it sounds like ʿaa, with a damma ʿoo, with a kasra ʿee. With a sukoon after نَ it is naʿ (نَعۡ). Now your turn."
     },
     {
       "id": 18,
@@ -517,7 +517,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter ghayn. It looks like the same curly frond. Look — one bubble on top. Ghayn has one dot on top. With a fat-ha it's غَ. With a damma it's غُ. With a kasra it's غِ. And with a sukoon after نَ, it's نَغۡ."
+      "script": "This is the letter ghayn. It looks like the same curly frond, with one bubble on top. It sounds like gargling water — or the French r. With a fat-ha it sounds like ghaa, with a damma ghoo, with a kasra ghee. With a sukoon after نَ it is nagh (نَغۡ). Now your turn."
     },
     {
       "id": 19,
@@ -544,7 +544,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter faa. It looks like a fishing net with a handle. Look — one bubble on top. Faa has one dot on top. With a fat-ha it's فَ. With a damma it's فُ. With a kasra it's فِ. And with a sukoon after نَ, it's نَفۡ."
+      "script": "This is the letter faa. It looks like a fishing net with a handle, with one bubble on top. It sounds like the English letter f, as in fish. With a fat-ha it sounds like faa, with a damma foo, with a kasra fee. With a sukoon after نَ it is naf (نَفۡ). Now your turn."
     },
     {
       "id": 20,
@@ -571,7 +571,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter qaaf. It looks like the same net, but deeper. Look — two bubbles on top. Qaaf has two dots on top. With a fat-ha it's قَ. With a damma it's قُ. With a kasra it's قِ. And with a sukoon after نَ, it's نَقۡ."
+      "script": "This is the letter qaaf. It looks like the same net, deeper, with two bubbles on top. It is a deep k from the very back of the throat, like the caw of a crow. No letter in English is quite like it. With a fat-ha it sounds like qaa, with a damma qoo, with a kasra qee. With a sukoon after نَ it is naq (نَقۡ). Now your turn."
     },
     {
       "id": 21,
@@ -598,7 +598,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter kaaf. It looks like a deck chair with a cushion in it. Look — no bubbles at all. Kaaf has no dots. With a fat-ha it's كَ. With a damma it's كُ. With a kasra it's كِ. And with a sukoon after نَ, it's نَكۡ."
+      "script": "This is the letter kaaf. It looks like a deck chair with a cushion in it. It sounds like the English letter k, as in kite. With a fat-ha it sounds like kaa, with a damma koo, with a kasra kee. With a sukoon after نَ it is nak (نَكۡ). Now your turn."
     },
     {
       "id": 22,
@@ -625,7 +625,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter laam. It looks like a snorkel. Look — no bubbles at all. Laam has no dots. With a fat-ha it's لَ. With a damma it's لُ. With a kasra it's لِ. And with a sukoon after نَ, it's نَلۡ."
+      "script": "This is the letter laam. It looks like a snorkel. It sounds like the English letter l, as in lemon. With a fat-ha it sounds like laa, with a damma loo, with a kasra lee. With a sukoon after نَ it is nal (نَلۡ). Now your turn."
     },
     {
       "id": 23,
@@ -652,7 +652,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter meem. It looks like a buoy with its rope to its left. Look — no bubbles at all. Meem has no dots. With a fat-ha it's مَ. With a damma it's مُ. With a kasra it's مِ. And with a sukoon after نَ, it's نَمۡ."
+      "script": "This is the letter meem. It looks like a buoy with its rope to its left. It sounds like the English letter m, as in moon. With a fat-ha it sounds like maa, with a damma moo, with a kasra mee. With a sukoon after نَ it is nam (نَمۡ). Now your turn."
     },
     {
       "id": 24,
@@ -679,7 +679,7 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter noon. It looks like a round bowl. Look — one bubble on top. Noon has one dot on top. With a fat-ha it's نَ. With a damma it's نُ. With a kasra it's نِ. And with a sukoon after نَ, it's نَنۡ."
+      "script": "This is the letter noon. It looks like a round bowl with one bubble on top. It sounds like the English letter n, as in nose. With a fat-ha it sounds like naa, with a damma noo, with a kasra nee. With a sukoon after نَ it is nan (نَنۡ). Now your turn."
     },
     {
       "id": 25,
@@ -706,91 +706,10 @@
         "Kasra",
         "Sukoon"
       ],
-      "script": "This is the letter haa. It looks like a knot in a rope. Look — no bubbles at all. Haa has no dots. With a fat-ha it's هَـ. With a damma it's هُـ. With a kasra it's هِـ. And with a sukoon after نَ, it's نَهۡ."
+      "script": "This is the letter haa. It looks like a knot in a rope. It sounds like the English letter h, as in hat. With a fat-ha it sounds like haa, with a damma hoo, with a kasra hee. With a sukoon after نَ it is nah (نَهۡ). Now your turn."
     },
     {
       "id": 26,
-      "section": "special",
-      "letter": "أ",
-      "name": "هَمۡزَة",
-      "makhraj": "Throat الحلق",
-      "mnemonic": "A wave crest curling over",
-      "image": "ء.png",
-      "family": 0,
-      "badges": [],
-      "text": "أَ أُ إِ نَأۡ",
-      "audio": "word26.wav",
-      "timings": null,
-      "parts": [
-        "أَ",
-        "أُ",
-        "إِ",
-        "نَأۡ"
-      ],
-      "labels": [
-        "Fat-ha",
-        "Damma",
-        "Kasra",
-        "Sukoon"
-      ],
-      "script": "This is the hamza. It looks like a little wave curling over. The hamza likes to sit on other letters — here it is sitting on an alif. The hamza has no dots. With a fat-ha it's أَ. With a damma it's أُ. With a kasra it sits under the alif — إِ. And with a sukoon after نَ, it's نَأۡ."
-    },
-    {
-      "id": 27,
-      "section": "special",
-      "letter": "ؤ",
-      "makhraj": "Throat الحلق",
-      "family": 0,
-      "badges": [],
-      "text": "مُؤۡمِن",
-      "audio": "word27.wav",
-      "timings": null,
-      "parts": [
-        "مُؤۡمِن"
-      ],
-      "labels": [
-        "Word"
-      ],
-      "script": "Here the hamza is sitting on a waw. Listen: مُؤۡمِن."
-    },
-    {
-      "id": 28,
-      "section": "special",
-      "letter": "ئ",
-      "makhraj": "Throat الحلق",
-      "family": 0,
-      "badges": [],
-      "text": "سُئِلَ",
-      "audio": "word28.wav",
-      "timings": null,
-      "parts": [
-        "سُئِلَ"
-      ],
-      "labels": [
-        "Word"
-      ],
-      "script": "Here the hamza is sitting on a nabra. Listen: سُئِلَ."
-    },
-    {
-      "id": 29,
-      "section": "special",
-      "letter": "ء",
-      "makhraj": "Throat الحلق",
-      "family": 0,
-      "badges": [],
-      "text": "جُزۡء",
-      "audio": "word29.wav",
-      "timings": null,
-      "parts": [
-        "جُزۡء"
-      ],
-      "labels": [
-        "Word"
-      ],
-      "script": "And here the hamza sits on nothing at all — all by itself on the sand. Listen: جُزۡء."
-    },
-    {
-      "id": 30,
       "section": "special",
       "letter": "و",
       "name": "وَاو",
@@ -799,96 +718,60 @@
       "image": "و.png",
       "family": 15,
       "badges": [],
-      "text": "وَ وُ وِ نَوۡ نُو",
-      "audio": "word30.wav",
+      "text": "وَ وُ وِ نَوۡ",
+      "audio": "word26.wav",
       "timings": null,
       "parts": [
         "وَ",
         "وُ",
         "وِ",
-        "نَوۡ",
-        "نُو"
+        "نَوۡ"
       ],
       "labels": [
         "Fat-ha",
         "Damma",
         "Kasra",
-        "Sukoon",
-        "Madd"
+        "Sukoon"
       ],
-      "script": "This is the letter waw. It looks like a tadpole — a round body with a tail sweeping to the side. Waw has no dots. With a fat-ha it's وَ. With a damma it's وُ. With a kasra it's وِ. After نَ with a sukoon it's نَوۡ. And after نُ it stretches — نُو."
+      "script": "This is the letter waw. It looks like a tadpole. It sounds like the English letter w, as in wing. With a fat-ha it sounds like waa, with a damma woo, with a kasra wee. With a sukoon after نَ it is naw (نَوۡ). Now your turn."
     },
     {
-      "id": 31,
+      "id": 27,
       "section": "special",
       "letter": "ى",
-      "makhraj": "Empty space الجوف",
+      "name": "يَاء",
+      "makhraj": "Tongue اللسان / Empty space الجوف",
       "mnemonic": "A duck",
       "image": "ى.png",
       "family": 16,
       "badges": [],
-      "text": "فِى",
-      "audio": "word31.wav",
+      "text": "ىَ ىُ ىِ نَىۡ",
+      "audio": "word27.wav",
       "timings": null,
       "parts": [
-        "فِى"
-      ],
-      "labels": [
-        "Word"
-      ],
-      "script": "This is the letter yaa — but look, it has no dots. It looks like a duck floating on the water. You will see it at the end of a word, like فِى. Listen: فِى."
-    },
-    {
-      "id": 32,
-      "section": "special",
-      "letter": "يـ",
-      "name": "يَاء",
-      "makhraj": "Tongue اللسان / Empty space الجوف",
-      "mnemonic": "The duck in the boat — two bubbles below",
-      "image": "ي.png",
-      "family": 16,
-      "badges": [],
-      "text": "يَـ يُـ يِـ نَيۡ نِي",
-      "audio": "word32.wav",
-      "timings": null,
-      "parts": [
-        "يَـ",
-        "يُـ",
-        "يِـ",
-        "نَيۡ",
-        "نِي"
+        "ىَ",
+        "ىُ",
+        "ىِ",
+        "نَىۡ"
       ],
       "labels": [
         "Fat-ha",
         "Damma",
         "Kasra",
-        "Sukoon",
-        "Madd"
+        "Sukoon"
       ],
-      "script": "Now the duck jumps into the boat! When yaa joins the letter after it, it looks like the boat, with two bubbles under it. Yaa has two dots under it. With a fat-ha it's يَ. With a damma it's يُ. With a kasra it's يِ. After نَ with a sukoon it's نَيۡ. And after نِ it stretches — نِي."
+      "tip": "At the beginning of a word, ى changes its shape to يـ and takes two dots below it.",
+      "flip": {
+        "letter": "يـ",
+        "image": "ي.png",
+        "mnemonic": "The duck jumps into the boat — two bubbles below",
+        "prompt": "Tap me to see how I change shape at the beginning of a word",
+        "back": "Show original form"
+      },
+      "script": "This is the letter yaa. It looks like a duck floating on the water. It sounds like the English letter y, as in yes. With a fat-ha it sounds like yaa, with a damma yoo, with a kasra yee. With a sukoon after نَ it is nay (نَىۡ). At the beginning of a word the duck jumps into the boat and gets two dots under it — يـ. Now your turn."
     },
     {
-      "id": 33,
-      "section": "special",
-      "letter": "ىٰ",
-      "makhraj": "Empty space الجوف",
-      "mnemonic": "A duck",
-      "image": "ى.png",
-      "family": 16,
-      "badges": [],
-      "text": "مُوسَىٰ",
-      "audio": "word33.wav",
-      "timings": null,
-      "parts": [
-        "مُوسَىٰ"
-      ],
-      "labels": [
-        "Word"
-      ],
-      "script": "Here is the duck again. But this time it is not a yaa at all — it is an alif in disguise! You can tell by the little alif sitting on top. Listen: مُوسَىٰ. Listen: مُوسَىٰ."
-    },
-    {
-      "id": 34,
+      "id": 28,
       "section": "special",
       "letter": "ا",
       "name": "أَلِف",
@@ -897,62 +780,48 @@
       "image": "ا.png",
       "family": 0,
       "badges": [],
-      "text": "نَا",
-      "audio": "word34.wav",
+      "text": "بَا تَا ثَا",
+      "audio": "word28.wav",
       "timings": null,
       "parts": [
-        "نَا"
+        "بَا",
+        "تَا",
+        "ثَا"
       ],
       "labels": [
+        "Madd",
+        "Madd",
         "Madd"
       ],
-      "script": "This is the letter alif. It looks like a lighthouse — tall and straight. Alif has no dots, and no fat-ha, damma or kasra of its own. It makes the letter before it long. After نَ it stretches — نَا."
+      "tip": "Alif comes after a letter with a fat-ha and makes that fat-ha longer. That is why it is called a letter of madd — madd means to make longer.",
+      "script": "This is the letter alif. It looks like a lighthouse — tall and straight. Alif has no sound of its own: it comes after a letter with a fat-ha and makes that fat-ha longer. That is why it is called a letter of madd — madd means to make longer. Listen: baa, taa, thaa. Now your turn."
     },
     {
-      "id": 35,
+      "id": 29,
       "section": "special",
-      "letter": "لا",
-      "name": "لَام أَلِف",
-      "makhraj": "Tongue اللسان",
-      "mnemonic": "Two oars crossed in a V",
-      "image": "لا.png",
-      "family": 11,
+      "letter": "ء",
+      "name": "هَمۡزَة",
+      "makhraj": "Throat الحلق",
+      "mnemonic": "A wave crest curling over",
+      "image": "ء.png",
+      "family": 0,
       "badges": [],
-      "text": "لَا وَلَا",
-      "audio": "word35.wav",
+      "text": "ءَ ءُ ءِ نَأۡ",
+      "audio": "word29.wav",
       "timings": null,
       "parts": [
-        "لَا",
-        "وَلَا"
+        "ءَ",
+        "ءُ",
+        "ءِ",
+        "نَأۡ"
       ],
       "labels": [
-        "Alone",
-        "In a word"
+        "Fat-ha",
+        "Damma",
+        "Kasra",
+        "Sukoon"
       ],
-      "script": "This is laam and alif holding hands. It looks like two oars crossed. Two letters, one shape. We read it لَا. And in a word — وَلَا."
-    },
-    {
-      "id": 36,
-      "section": "special",
-      "letter": "ة",
-      "name": "تَاء مَرۡبُوطَة",
-      "makhraj": "Tongue اللسان (Throat الحلق at a stop)",
-      "mnemonic": "The knot with two bubbles above it",
-      "image": "ة.png",
-      "family": 14,
-      "badges": [],
-      "text": "ءَاخِرَةِ رَحۡمَةَ",
-      "audio": "word36.wav",
-      "timings": null,
-      "parts": [
-        "ءَاخِرَةِ",
-        "رَحۡمَةَ"
-      ],
-      "labels": [
-        "Word",
-        "Word"
-      ],
-      "script": "This is the taa marbuta — a taa wearing the haa's shape. It looks like the knot with two bubbles above it. Taa marbuta has two dots on top. Listen: ءَاخِرَةِ. Taa marbuta sometimes looks like this — رَحۡمَةَ."
+      "script": "This is the letter hamza. It looks like a little wave curling over. It’s the sound when you say uh-oh. With a fat-ha it sounds like ʾa, with a damma ʾoo, with a kasra ʾee. With a sukoon after نَ it is naʾ, sitting up on an alif (نَأۡ). Now your turn."
     }
   ]
 }

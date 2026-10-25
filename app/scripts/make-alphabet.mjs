@@ -24,7 +24,7 @@
  * Run:  node scripts/make-alphabet.mjs
  */
 
-import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readWav, writeSegment } from './lib/wav.mjs';
@@ -69,8 +69,10 @@ for (const row of allRows) {
   if (row[0] === 'Letter' || row[0] === '#' || row[0].startsWith('Slot')) blocks.push({ head: row, rows: [] });
   else if (blocks.length) blocks[blocks.length - 1].rows.push(row);
 }
-if (blocks.length !== 7) problems.push(`expected 7 tables in the sheet, found ${blocks.length}`);
-const [ORD1, ORD2, ORD3, SPECIAL, SONG1, SONG2, SCRIPT] = blocks;
+if (blocks.length !== 9) problems.push(`expected 9 tables in the sheet, found ${blocks.length}`);
+// 8: the two songs (slot · what is sung), 9: the letter names, one word each,
+// for the tracing lesson (slot = the name · letter · what to say).
+const [ORD1, ORD2, ORD3, SPECIAL, SONG1, SONG2, SCRIPT, SONGS, NAMES] = blocks;
 
 // ── shape families, from song 1's table — the color every letter wears ────
 /** bare letter → family index (0..16), consecutive shape groups in the usual order */
@@ -82,12 +84,37 @@ const FAMILY = new Map();
     if (r[3] !== last) { fam += 1; last = r[3]; }
     FAMILY.set(key(r[1]), fam);
   }
-  // letters the song shows under another shape
-  for (const [k, of] of [['ا', 'أ'], ['ء', 'أ'], ['ؤ', 'أ'], ['ئ', 'أ'], ['إ', 'أ'], ['ي', 'ى'], ['ة', 'ه'], ['لا', 'ل']]) {
-    if (!FAMILY.has(k) && FAMILY.has(of)) FAMILY.set(k, FAMILY.get(of));
+  // Letters the song shows under another shape share its family — whichever
+  // of them the song's table happens to write (the first letter is the plain
+  // ا since 2026-10-24; it was أ).
+  for (const kin of [['ا', 'أ', 'ء', 'ؤ', 'ئ', 'إ'], ['ى', 'ي'], ['ه', 'ة'], ['ل', 'لا']]) {
+    const found = kin.find((k) => FAMILY.has(k));
+    if (found !== undefined) for (const k of kin) if (!FAMILY.has(k)) FAMILY.set(k, FAMILY.get(found));
   }
 }
 const familyOf = (letter) => FAMILY.get(key(letter)) ?? 0;
+
+/**
+ * The one teaching line a card shows under its sounds, and the shape on the
+ * back of a card. App wording, kept here rather than in the sheet: the
+ * sheet's Note column is the author's margin, and what the teacher SAYS is
+ * the script table. (The author, 2026-10-24: ى merges with يـ, the card
+ * flips from the duck to the duck in the boat; alif gets بَا تَا ثَا and a
+ * line on why it is a letter of madd.)
+ */
+const TIP = {
+  'ى': 'At the beginning of a word, ى changes its shape to يـ and takes two dots below it.',
+  'ا': 'Alif comes after a letter with a fat-ha and makes that fat-ha longer. That is why it is called a letter of madd — madd means to make longer.',
+};
+const FLIP = {
+  'ى': {
+    letter: 'يـ',
+    image: 'ي.png',
+    mnemonic: 'The duck jumps into the boat — two bubbles below',
+    prompt: 'Tap me to see how I change shape at the beginning of a word',
+    back: 'Show original form',
+  },
+};
 
 const isHarakaTriple = (forms) =>
   forms.length >= 3 && forms.slice(0, 3).every((f) => f && key(f).length <= 2);
@@ -138,11 +165,14 @@ function letterCard(cells, { special, section }) {
   const highlight = sr[2] || forms.join(' ');
   if (key(highlight) !== key(forms.join(' '))) problems.push(`#${id} ${letter}: the Arabic that lights up (${highlight}) is not the row's forms (${forms.join(' ')})`);
 
-  const labels = triple
-    ? ['Fat-ha', 'Damma', 'Kasra', 'Sukoon', 'Madd'].slice(0, forms.length)
-    : bare === 'ا' ? ['Madd']
-    : bare === 'لا' ? ['Alone', 'In a word']
-    : forms.map(() => 'Word');
+  // Alif first: its بَا تَا ثَا are two-letter keys and would pass for a
+  // harakat triple.
+  const labels = bare === 'ا'
+    ? forms.map(() => 'Madd')
+    : triple
+      ? ['Fat-ha', 'Damma', 'Kasra', 'Sukoon', 'Madd'].slice(0, forms.length)
+      : bare === 'لا' ? ['Alone', 'In a word']
+      : forms.map(() => 'Word');
 
   takes.push({ key: slot, clip: `word${n}.wav`, of: `#${id} ${letter}` });
 
@@ -162,6 +192,10 @@ function letterCard(cells, { special, section }) {
     timings: null,
     parts: forms,
     labels,
+    // By the letter as the sheet writes it, not its key: ىٰ keys to ى too,
+    // and must not inherit the duck's back.
+    tip: TIP[letter],
+    flip: FLIP[letter],
     script: sr[1],
   };
 }
@@ -182,7 +216,9 @@ const L20 = {
     { id: 'one', title: 'The Letters — ب to ز', titleArabic: 'الحروف ١', hint: HINT },
     { id: 'two', title: 'The Letters — س to ق', titleArabic: 'الحروف ٢', hint: HINT },
     { id: 'three', title: 'The Letters — ك to هـ', titleArabic: 'الحروف ٣', hint: HINT },
-    { id: 'special', title: 'The Hamza, the Madd Letters, لا and ة', titleArabic: 'الهمزة وحروف المد', hint: 'These do not behave like the others. Take them slowly.' },
+    // The author's order (2026-10-24): و ى ا ء. ىٰ، لا and ة left for a
+    // lesson of their own.
+    { id: 'special', title: 'The Letters — و ى ا ء', titleArabic: 'الحروف ٤', hint: 'و and ى, then the alif — a letter of madd — then the hamza. Take them slowly.' },
   ],
   words: [
     ...cardsFrom(ORD1, 'one'),
@@ -263,7 +299,54 @@ const L33 = {
   })),
 };
 
-const LESSONS = [L31, L20, L32, L33];
+// ── tracing the letters — one letter a screen, drawn live, then traced ─────
+/**
+ * Lesson 30: the same 29 letters in the same order, each with its stroke
+ * template (`scripts/tracing/strokes.json`, derived from the font's own
+ * glyphs — see scripts/tracing/README.md) and the recording of its NAME
+ * (table 9: one word, said once), which plays as the card opens. A letter
+ * without a template is still a card — it says so instead of tracing.
+ */
+const STROKES_PATH = join(here, 'tracing', 'strokes.json');
+const STROKES = existsSync(STROKES_PATH) ? JSON.parse(readFileSync(STROKES_PATH, 'utf8')) : {};
+const nameRows = NAMES?.rows ?? [];
+if (SONGS && SONGS.rows.length !== 2) problems.push(`table 8 should hold the two songs, found ${SONGS.rows.length} rows`);
+const L30 = {
+  lesson: 30,
+  title: 'Tracing the Letters',
+  titleArabic: 'كتابة الحروف',
+  kind: 'letters',
+  audioPath: 'audio/lesson30/',
+  imagePath: 'images/kids/',
+  perPage: 1,
+  sections: L20.sections.map((s) => ({
+    ...s,
+    hint: 'Watch the letter draw itself, then trace it with your finger: start at the dot and follow the line.',
+  })),
+  words: L20.words.map((w, i) => {
+    const id = i + 1;
+    const n = pad2(id);
+    const nr = nameRows.find((r) => key(r[1]) === key(w.letter));
+    if (!nr) problems.push(`table 9 has no name row for the letter ${w.letter}`);
+    else takes.push({ key: key(nr[0]), clip: `name${n}.wav`, of: `#${id} ${w.letter} — its name` });
+    const trace = STROKES[w.letter];
+    if (!trace) problems.push(`no stroke template for ${w.letter} in scripts/tracing/strokes.json`);
+    return {
+      id,
+      section: w.section,
+      letter: w.letter,
+      name: w.name,
+      family: w.family,
+      badges: [],
+      text: w.name ?? w.letter,
+      audio: nr ? `name${n}.wav` : undefined,
+      timings: null,
+      trace: trace ?? null,
+    };
+  }),
+};
+
+const LESSONS = [L31, L20, L32, L30, L33];
 
 // ── audio: every take whole, mono ─────────────────────────────────────────
 const byName = new Map();
@@ -314,7 +397,7 @@ console.log(`\ntakes expected: ${takes.length}  (every one a single piece — se
 console.log(`recorded      : ${takes.length - missing.length}`);
 console.log(`clips written : ${written}`);
 if (missing.length) {
-  console.log(`\nNOT RECORDED YET — ${missing.length}: record the Slot column of the sheet's last table, then the two songs as song-names.wav and song-sounds.wav`);
+  console.log(`\nNOT RECORDED YET — ${missing.length}: in the intake tool open the sheet and record table 7 (the spoken lines), table 8 (the two songs) and table 9 (the letter names), each by its Slot column, into Audio/Audio - Kids Alphabet/`);
   console.log('  ' + missing.map((m) => m.split('  ')[0]).join('  '));
 }
 const needsTap = takes.filter((t) => byName.has(t.key)).map((t) => t.of);
@@ -323,7 +406,10 @@ console.log(needsTap.length ? '  ' + needsTap.join(' · ') : '  nothing recorded
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');
 
 const wantImages = new Set();
-for (const l of LESSONS) for (const w of l.words) if (w.image) wantImages.add(w.image);
+for (const l of LESSONS) for (const w of l.words) {
+  if (w.image) wantImages.add(w.image);
+  if (w.flip?.image) wantImages.add(w.flip.image);
+}
 const have = new Set(existsSync(join(PUBLIC, 'images', 'kids')) ? readdirSync(join(PUBLIC, 'images', 'kids')) : []);
 const noImage = [...wantImages].filter((f) => !have.has(f));
 console.log(`\npictures: ${wantImages.size} wanted, ${wantImages.size - noImage.length} present${noImage.length ? `\n  missing: ${noImage.join(' ')}` : ''}`);

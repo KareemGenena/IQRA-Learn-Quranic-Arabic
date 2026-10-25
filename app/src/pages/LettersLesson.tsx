@@ -2,6 +2,7 @@ import { SectionedLesson } from './SectionedLesson';
 import { LetterCard } from '../components/LetterCard';
 import { PlaceCard } from '../components/PlaceCard';
 import { SongCards } from '../components/SongCards';
+import { TraceCard } from '../components/TraceCard';
 import type { Lesson, LetterWord, Reading } from '../types';
 
 /**
@@ -45,13 +46,16 @@ export function LettersLesson({
   // Keyed by lesson: going from one song straight to the other must not carry
   // the first song's place along — React would otherwise keep the instance.
   if (lesson.song) return <SongCards key={lesson.lesson} lesson={lesson} rate={rate} />;
-  const places = (lesson.words as LetterWord[]).some((w) => w.place);
+  const words = lesson.words as LetterWord[];
+  const places = words.some((w) => w.place);
+  // A tracing card carries `trace` (null where no template exists yet).
+  const tracing = words.some((w) => w.trace !== undefined);
   return (
     <SectionedLesson
       key={lesson.lesson}
       lesson={lesson}
       rate={rate}
-      Card={places ? PlaceCard : LetterCard}
+      Card={places ? PlaceCard : tracing ? TraceCard : LetterCard}
       onEnd={onEnd}
       reading={reading}
       onReadingToggle={onReadingToggle}

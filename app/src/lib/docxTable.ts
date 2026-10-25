@@ -70,19 +70,26 @@ function textOf(fragment: string): string {
   return out.trim();
 }
 
-export interface DocxContent {
-  /** Table rows, each a list of cell texts. Empty when the file has no table. */
+/** One table of the sheet, with the heading written above it. */
+export interface DocxTable {
+  /** The first paragraph with text between the previous table and this one — "Spoken lines — …". */
+  title: string;
   rows: string[][];
+}
+
+export interface DocxContent {
+  /** Table rows of EVERY table, each a list of cell texts. Empty when the file has no table. */
+  rows: string[][];
+  /** The same rows, table by table, so a sheet of several tables can be
+   *  recorded one table at a time (the alphabet sheet: its spoken lines, its
+   *  songs, its letter names are three tables of one file). */
+  tables: DocxTable[];
   /** Every non-empty paragraph, for sheets written without a table. */
   paragraphs: string[];
 }
 
-export async function readDocx(file: File): Promise<DocxContent> {
-  const xml = new TextDecoder('utf-8').decode(
-    await readZipEntry(await file.arrayBuffer(), 'word/document.xml'),
-  );
-
-  const rows = xml
+const rowsOf = (tbl: string) =>
+  tbl
     .split(/<w:tr[ >]/)
     .slice(1)
     .map((r) =>
@@ -93,13 +100,41 @@ export async function readDocx(file: File): Promise<DocxContent> {
         .map((c) => textOf(c.split('</w:tc>')[0])),
     );
 
+export async function readDocx(file: File): Promise<DocxContent> {
+  const xml = new TextDecoder('utf-8').decode(
+    await readZipEntry(await file.arrayBuffer(), 'word/document.xml'),
+  );
+
+  const tables: DocxTable[] = [];
+  let at = 0;
+  for (;;) {
+    const a = xml.indexOf('<w:tbl>', at);
+    if (a < 0) break;
+    const b = xml.indexOf('</w:tbl>', a) + '</w:tbl>'.length;
+    // The table's title: the last HEADING before it (the sheet's "Spoken
+    // lines — …"), else the first paragraph with text in the gap.
+    const gap = xml.slice(at, a);
+    const paras = gap.split(/<w:p[ >]/).slice(1).map((p) => p.split('</w:p>')[0]);
+    const headings = paras.filter((p) => /<w:pStyle w:val="Heading/.test(p)).map(textOf).filter(Boolean);
+    const title = headings[headings.length - 1] ?? paras.map(textOf).find(Boolean) ?? `Table ${tables.length + 1}`;
+    tables.push({ title, rows: rowsOf(xml.slice(a, b)) });
+    at = b;
+  }
+  const rows = tables.flatMap((t) => t.rows);
+
   const paragraphs = xml
     .split(/<w:p[ >]/)
     .slice(1)
     .map((p) => textOf(p.split('</w:p>')[0]))
     .filter(Boolean);
 
-  return { rows, paragraphs };
+  return { rows, tables, paragraphs };
+}
+
+/** The column headed "Slot" — the one cell per row that names the file, on
+ *  the sheets built for the intake tool — or -1 where there is none. */
+export function slotColumn(rows: string[][]): number {
+  return (rows[0] ?? []).findIndex((h) => /^slot\b/i.test(h.trim()));
 }
 
 /**
@@ -143,6 +178,11 @@ export function guessWordColumn(rows: string[][]): number {
  * follow the sheet left to right within each row.
  */
 export function guessWordColumns(rows: string[][]): number[] {
+  // A header that says "Slot" settles it: that column, and only that
+  // column, names the files — whatever Arabic the other columns carry (the
+  // alphabet sheet's "What to say" is full of it).
+  const slot = slotColumn(rows);
+  if (slot >= 0) return [slot];
   const arabicLetters = /[ء-ي]/g;
   const width = Math.max(0, ...rows.map((r) => r.length));
   const scores: number[] = [];

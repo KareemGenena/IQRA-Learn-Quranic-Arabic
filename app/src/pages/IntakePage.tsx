@@ -23,7 +23,9 @@
 import type { Reading } from '../types';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { nameProblem, sheetFileNames } from '../lib/audioName';
-import { readDocx, guessWordColumns } from '../lib/docxTable';
+import { readDocx, guessWordColumns, slotColumn } from '../lib/docxTable';
+import type { DocxTable } from '../lib/docxTable';
+import { Mixed } from '../components/Mixed';
 import {
   canWriteToFolder,
   download,
@@ -136,6 +138,11 @@ export function IntakePage() {
 function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
   const [source, setSource] = useState('typed by hand');
   const [rows, setRows] = useState<string[][]>([]);
+  /** The sheet's tables, for a sheet that holds several; -1 records them all. */
+  const [tables, setTables] = useState<DocxTable[]>([]);
+  const [tableIx, setTableIx] = useState(-1);
+  /** What the rest of a row says, by the slot's text — shown while recording. */
+  const [prompts, setPrompts] = useState<Map<string, string>>(() => new Map());
   /** The sheet columns being recorded — a nūn sākinah row has two examples. */
   const [columns, setColumns] = useState<number[]>([]);
   const [words, setWords] = useState('');
@@ -153,6 +160,23 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
    * list and the generator's ids agree.
    */
   const fill = (table: string[][], cols: number[]) => {
+    // A column headed "Slot" is the one the sheet built for this tool: every
+    // row below the header is a slot, whatever it holds — a bare letter (ب),
+    // a name (بَاء) or a Latin file name (song-names) — and the rest of the
+    // row is what to say, kept as the slot's prompt.
+    const slot = slotColumn(table);
+    if (cols.length === 1 && cols[0] === slot) {
+      const body = table.slice(1).filter((r) => (r[slot] ?? '').trim());
+      const next = new Map<string, string>();
+      for (const r of body) {
+        const rest = r.filter((_, c) => c !== slot).map((c) => c.trim()).filter(Boolean);
+        if (rest.length) next.set(r[slot].trim(), rest.join(' — '));
+      }
+      setPrompts(next);
+      setWords(body.map((r) => r[slot].trim()).join('\n'));
+      return;
+    }
+    setPrompts(new Map());
     const arabic = /[ء-ي]/g;
     // With several columns ticked, a lone letter in one of them is a label
     // (the mīm table's Letter column sits where the nūn tables' examples do),
@@ -167,21 +191,32 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
     );
   };
 
+  /** One table of the sheet, or all of them (-1): the rows the slots come from. */
+  const chooseTable = (all: DocxTable[], ix: number) => {
+    const table = ix >= 0 && all[ix] ? all[ix].rows : all.flatMap((t) => t.rows);
+    const cols = guessWordColumns(table);
+    setTableIx(ix);
+    setRows(table);
+    setColumns(cols);
+    fill(table, cols);
+  };
+
   const openDocx = async (file: File) => {
     setError('');
     try {
-      const { rows: table, paragraphs } = await readDocx(file);
+      const { rows: table, tables: all, paragraphs } = await readDocx(file);
       setSource(file.name);
+      setTables(all);
       if (table.length) {
-        const cols = guessWordColumns(table);
-        setRows(table);
-        setColumns(cols);
-        fill(table, cols);
+        // Every table at once, as before — a sheet of several headed tables
+        // (lesson 7's five) is one lesson; the alphabet sheet is picked from.
+        chooseTable(all, -1);
       } else {
         // Not every sheet is a Word table — some are written as plain
         // paragraphs. Those land in the same editable list, so the rest of the
         // page never has to know the difference.
         setRows([]);
+        setPrompts(new Map());
         const arabic = /[ء-ي]/;
         setWords(paragraphs.filter((p) => arabic.test(p)).join('\n'));
       }
@@ -219,6 +254,7 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
           fileName: names[i],
           expect,
           row: i,
+          ...(prompts.get(text) ? { prompt: prompts.get(text) } : {}),
         })),
       ],
       chosen: {},
@@ -245,6 +281,20 @@ function SetupPanel({ onBegin }: { onBegin: (s: IntakeSession) => void }) {
           }}
         />
         {error && <p className="gate-error">{error}</p>}
+
+        {tables.length > 1 && (
+          <label className="intake-field">
+            <span>Which table — this sheet has {tables.length}</span>
+            <select value={tableIx} onChange={(e) => chooseTable(tables, Number(e.target.value))}>
+              <option value={-1}>All of them, as one list</option>
+              {tables.map((t, i) => (
+                <option key={i} value={i}>
+                  Table {i + 1} — {t.title.slice(0, 60)} ({Math.max(0, t.rows.length - 1)} rows)
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
 
         {rows.length > 0 && (
           <fieldset className="intake-field intake-columns">
@@ -634,6 +684,11 @@ function Recorder({
           {slot.text}
         </p>
         {slot.hint && <p className="account-hint intake-hint">{slot.hint}</p>}
+        {slot.prompt && (
+          <p className="intake-prompt">
+            <Mixed text={slot.prompt} />
+          </p>
+        )}
         <p className="intake-filename" dir="ltr">
           {slot.fileName}
         </p>

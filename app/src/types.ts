@@ -123,8 +123,38 @@ export interface LetterWord {
   script?: string;
   /** Shape family (0–16): the color a letter wears everywhere in the letter lessons. */
   family?: number;
+  /** One teaching line under the sounds — "Alif comes after a fat-ha…". */
+  tip?: string;
+  /** The letter's other shape, on the back of the card: ى flips to يـ, the
+   *  duck jumps into the boat (the author, 2026-10-24). */
+  flip?: LetterFlip;
   /** A card of the "where the letters come from" page: no recording. */
   place?: PlaceInfo;
+  /** A tracing card: the letter's strokes, in the frame of its ink box
+   *  (0–1 across, 0–1 down), each a polyline in writing order; a stroke of
+   *  one point is a dot to tap. `null` where no template exists yet. */
+  trace?: LetterTrace | null;
+}
+
+/** The strokes of one letter for tracing — derived from the font's own
+ *  glyph (scripts/tracing/), never drawn by hand over a different shape. */
+export interface LetterTrace {
+  strokes: [number, number][][];
+  /** The glyph's thickest stroke as a share of its ink box's longer side —
+   *  the brush the card paints with, so the color fills the whole letter. */
+  brush?: number;
+}
+
+/** The back of a letter card: the shape a letter takes at the beginning of
+ *  a word, with its own picture. Tapping the prompt flips the card. */
+export interface LetterFlip {
+  letter: string;
+  image: string;
+  mnemonic?: string;
+  /** "Tap me to see how I change shape at the beginning of a word" */
+  prompt: string;
+  /** "Show original form" */
+  back: string;
 }
 
 /** One of the five places a letter is made, as the workbook lists them. */
@@ -211,7 +241,11 @@ export interface LessonItem {
   labels?: string[];
   parts?: string[];
   family?: number;
+  tip?: string;
+  /** See LetterWord.flip; the image is a full URL here. */
+  flip?: LetterFlip;
   place?: PlaceInfo;
+  trace?: LetterTrace | null;
 }
 
 /**

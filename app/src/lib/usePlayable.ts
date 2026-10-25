@@ -121,6 +121,10 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
     handleRef.current?.seek(time);
   }, []);
 
+  /** The media time being heard right now, or null when nothing plays —
+   *  the song strip glides on it, frame by frame. */
+  const now = useCallback(() => handleRef.current?.now() ?? null, []);
+
   const toggle = useCallback(() => {
     // A tap while the first tap's clip is still downloading used to cancel
     // it — and the clip then arrived to a card that said it was not playing.
@@ -145,6 +149,7 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
     pause,
     resume,
     seek,
+    now,
     toggle,
   };
 }

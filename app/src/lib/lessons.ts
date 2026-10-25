@@ -155,8 +155,18 @@ export const LESSONS: LessonMeta[] = [
     blurb: 'Every letter sung with fat-ha, damma and kasra.',
   },
   {
-    id: 33,
+    // Tracing, between the sounds song and the places (the author,
+    // 2026-10-24): one letter a screen, drawn live, then traced by finger.
+    id: 30,
     order: 4,
+    level: 1,
+    title: 'Tracing the Letters',
+    titleArabic: 'كتابة الحروف',
+    blurb: 'Each letter draws itself, stroke by stroke; then you trace it with a finger or a pen.',
+  },
+  {
+    id: 33,
+    order: 5,
     level: 1,
     title: 'Where the Letters Come From',
     titleArabic: 'مخارج الحروف',
@@ -171,7 +181,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 21,
     level: 1,
-    order: 5,
+    order: 6,
     title: 'Tanween',
     titleArabic: 'التنوين',
     blurb: 'Every letter with its three harakat and its three tanween, as the workbook writes them, page by page.',
@@ -179,7 +189,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 22,
     level: 1,
-    order: 6,
+    order: 7,
     title: 'Natural Madd',
     titleArabic: 'المد الطبيعي',
     blurb: 'Each letter held on alif, waw and yaa, beside its fat-ha, damma and kasra.',
@@ -187,7 +197,7 @@ export const LESSONS: LessonMeta[] = [
   {
     id: 23,
     level: 1,
-    order: 7,
+    order: 8,
     title: 'Shadda',
     titleArabic: 'الشدة',
     blurb: 'Two letters, then the second one doubled — hear the shadda land.',
@@ -535,7 +545,12 @@ export function toItems(lesson: Lesson): LessonItem[] {
       labels: w.labels,
       parts: w.parts,
       family: w.family,
+      tip: w.tip,
+      flip: w.flip
+        ? { ...w.flip, image: `${import.meta.env.BASE_URL}${lesson.imagePath ?? ''}${w.flip.image}?v=${__IMAGE_VERSION__}` }
+        : undefined,
       place: w.place,
+      trace: w.trace,
     }));
   }
   return (lesson.words as PairWord[]).map((w) => ({

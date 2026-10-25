@@ -234,6 +234,21 @@ service cloud.firestore {
         && request.resource.data.appVisible is bool;
     }
 
+    // The teacher's own tracing templates (lesson 30), one doc per letter:
+    //   tracing/{letter}  ->  { s: [ { p: [x0, y0, x1, y1, …] }, … ], at }
+    // Anyone can read (every device traces with them); only the admin
+    // writes, from the card's "Teach the strokes". Shape-checked here and
+    // again on read (src/lib/tracingStore.ts), strokes.json the fallback.
+    match /tracing/{letter} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['s', 'at'])
+        && request.resource.data.s is list
+        && request.resource.data.s.size() >= 1
+        && request.resource.data.s.size() <= 12;
+      allow delete: if isAdmin();
+    }
+
     match /calibrations/{lessonId}/words/{wordId} {
       allow read: if true;
       allow create, update: if request.auth != null

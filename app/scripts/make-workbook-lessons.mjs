@@ -260,7 +260,9 @@ for (const n of NUMBERS) {
       title: partOf.get(c.page) || meta.title,
       titleArabic: '',
       hint: lines.length ? lines.join('\n') : 'Tap a form to hear it.',
-      ...(columnsOf(c.page) ? { columns: columnsOf(c.page) } : {}),
+      // The map's columns where it gives them; else a page of letters with
+      // their forms is drawn four across, as the paper has it.
+      ...((columnsOf(c.page) ?? (multi ? 4 : undefined)) ? { columns: columnsOf(c.page) ?? 4 } : {}),
     });
   }
 
@@ -320,7 +322,11 @@ for (const n of NUMBERS) {
     titleArabic: meta.titleArabic,
     kind: 'letters',
     audioPath: `audio/lesson${nn}/`,
-    perPage: multi ? 3 : 6,
+    // A screen is the workbook's page where it fits: the harakat, tanween and
+    // madd pages hold FOUR letters each, and three per screen broke them
+    // ب ت ث | ج | ح خ د | ذ (the author, 2026-10-24). Shadda's eight-letter
+    // pages make two screens of four.
+    perPage: multi ? 4 : 6,
     sections,
     words,
   };
