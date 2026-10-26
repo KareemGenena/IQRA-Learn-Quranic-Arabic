@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+import type { MouseEvent } from 'react';
 import { workbookLinks } from '../lib/workbook';
 import type { LessonStatus } from '../lib/appConfig';
 
@@ -9,7 +11,17 @@ import type { LessonStatus } from '../lib/appConfig';
  * (admin bar, workbook buttons, notes button, a floating laser pill) that
  * pushed a lesson's first card below the fold on a phone (the author,
  * 2026-10-25).
+ *
+ * On a phone there is no hover, so a tap on a tool that LEAVES the page —
+ * notes, the workbook — first opens its label, and a second tap goes; a tap
+ * anywhere else closes it again (the author, 2026-10-25: "make the click
+ * expand the button … so the user can decide whether or not they want to
+ * navigate away"). The laser and the gear act at once, as before; tapped
+ * again they close, and their label goes with them.
  */
+
+/** No hover: a phone or a tablet, where the first tap must not navigate. */
+const noHover = () => typeof window !== 'undefined' && window.matchMedia?.('(hover: none)').matches === true;
 
 const Icon = {
   notes: (
@@ -78,16 +90,56 @@ export function LessonTools({
   status: LessonStatus;
 }) {
   const links = workbookLinks(lessonId);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+
+  // A tap outside the row folds the label back and shuts an open menu —
+  // a <details> stays open by itself until its own summary is tapped.
+  useEffect(() => {
+    const onDown = (e: PointerEvent) => {
+      const bar = barRef.current;
+      if (!bar || bar.contains(e.target as Node)) return;
+      setExpanded(null);
+      bar.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
+    };
+    document.addEventListener('pointerdown', onDown);
+    return () => document.removeEventListener('pointerdown', onDown);
+  }, []);
+
+  /** On a phone the first tap on a link only opens its label. */
+  const firstTapOpens = (key: string) => (e: MouseEvent) => {
+    // e.detail is 0 for a click made by the keyboard: Enter on a focused
+    // tool, whose label is already open, goes straight through
+    if (noHover() && e.detail > 0 && expanded !== key) {
+      e.preventDefault();
+      setExpanded(key);
+      return;
+    }
+    setExpanded(null);
+  };
+
   return (
-    <div className="lesson-tools" role="toolbar" aria-label="Lesson tools">
+    <div className="lesson-tools" role="toolbar" aria-label="Lesson tools" ref={barRef}>
       {notes && (
-        <a className="tool" href={`#/notes/${lessonId}`} aria-label="Notes for this lesson">
+        <a
+          className={`tool ${expanded === 'notes' ? 'expanded' : ''}`}
+          href={`#/notes/${lessonId}`}
+          aria-label="Notes for this lesson"
+          onClick={firstTapOpens('notes')}
+        >
           {Icon.notes}
           <span className="tool-label">Notes</span>
         </a>
       )}
       {links.length === 1 && (
-        <a className="tool" href={links[0].url} target="_blank" rel="noopener" aria-label={`Workbook Level ${links[0].level}, page ${links[0].page ?? ''}`}>
+        <a
+          className={`tool ${expanded === 'workbook' ? 'expanded' : ''}`}
+          href={links[0].url}
+          target="_blank"
+          rel="noopener"
+          aria-label={`Workbook Level ${links[0].level}, page ${links[0].page ?? ''}`}
+          onClick={firstTapOpens('workbook')}
+        >
           {Icon.book}
           <span className="tool-label">Workbook{links[0].page !== null ? ` p. ${links[0].page}` : ''}</span>
         </a>
@@ -109,7 +161,7 @@ export function LessonTools({
         </details>
       )}
       {laser && (
-        <button type="button" className={`tool ${laserOn ? 'on' : ''}`} aria-pressed={laserOn} aria-label={laserOn ? 'Laser on — tap to exit' : 'Laser pointer'} onClick={onLaser}>
+        <button type="button" className={`tool ${laserOn ? 'on' : ''}`} aria-pressed={laserOn} aria-label={laserOn ? 'Laser on — tap to exit' : 'Laser pointer'} onClick={() => { setExpanded(null); onLaser(); }}>
           {Icon.laser}
           <span className="tool-label">{laserOn ? 'Laser on' : 'Laser'}</span>
         </button>

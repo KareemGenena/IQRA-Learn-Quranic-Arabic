@@ -6,6 +6,7 @@ import { ReadingSwitch } from './components/ReadingSwitch';
 import { LettersLesson, drawsLetterCards } from './pages/LettersLesson';
 import { LessonTools } from './components/LessonTools';
 import { ContentsMenu } from './components/ContentsMenu';
+import { InstallPrompt } from './components/InstallPrompt';
 import { WordsLesson } from './pages/WordsLesson';
 import { SectionedLesson } from './pages/SectionedLesson';
 import { AdminPage } from './pages/AdminPage';
@@ -228,19 +229,17 @@ export default function App() {
     !account.signedIn;
   const showLaser = canUseFeature(config, 'laser', admin);
   const showNotes = canUseFeature(config, 'notes', admin);
+  // The workbook companion is published like a lesson: the admin sees it
+  // while it is a draft, everyone once it is switched on (2026-10-25).
+  const showWorkbooks = canUseFeature(config, 'workbooks', admin);
 
   return (
     <div className={`app ${laser ? 'laser-on' : ''}`}>
       {/* The laser's switch is in the lesson's tool row; the floating pill
           it had covered the pager on a phone (2026-10-25). */}
       {showLaser && <LaserPointer active={laser} onExit={() => setLaser(false)} />}
-      <ContentsMenu config={config} admin={admin} currentId={route.lessonId} open={menu} onClose={() => setMenu(false)} />
-      {/* The contents: a tab on the page's right edge, where the drawer
-          opens from, reachable however far down a lesson the page is — not
-          a button among the header's (the author, 2026-10-25). */}
-      <button type="button" className="menu-tab" aria-label="Contents" aria-expanded={menu} onClick={() => setMenu(true)}>
-        <span aria-hidden="true">☰</span>
-      </button>
+      <ContentsMenu config={config} admin={admin} workbooks={showWorkbooks} currentId={route.lessonId} open={menu} onClose={() => setMenu(false)} />
+      <InstallPrompt />
 
       <header className="app-header">
         <a className="brand" href="#/">
@@ -280,10 +279,15 @@ export default function App() {
           >
             {theme === 'dark' ? '☀️' : '🌙'}
           </button>
+          {/* The contents, always the rightmost thing at the top (the
+              author, 2026-10-25: "on the top but to the right"). */}
+          <button type="button" className="menu-btn" aria-label="Contents" aria-expanded={menu} onClick={() => setMenu(true)}>
+            <span aria-hidden="true">☰</span>
+          </button>
         </div>
       </header>
 
-      {route.page === 'home' && <HomePage config={config} admin={admin} />}
+      {route.page === 'home' && <HomePage config={config} admin={admin} workbooks={showWorkbooks} />}
 
       {route.page !== 'home' && (
         <>
@@ -336,7 +340,11 @@ export default function App() {
 
           {route.page === 'recordings' && <RecordingsPage account={account} />}
 
+          {route.page === 'workbook' && !showWorkbooks && (
+            <p className="loading">The workbook pages are not published yet.</p>
+          )}
           {route.page === 'workbook' &&
+            showWorkbooks &&
             (route.level ? (
               <WorkbookPage
                 level={route.level}

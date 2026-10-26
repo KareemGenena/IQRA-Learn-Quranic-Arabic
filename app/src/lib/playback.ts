@@ -372,7 +372,7 @@ export async function prepareClip(url: string, rate = 1): Promise<Clip> {
  * vite.config.ts. Everything that fetches a clip must go through here.
  */
 export function audioUrl(lesson: Lesson, playable: Playable): string {
-  return `${import.meta.env.BASE_URL}${lesson.audioPath}${playable.audio}?v=${__AUDIO_VERSION__}`;
+  return `${import.meta.env.BASE_URL}${lesson.audioPath}${playable.audio}?v=${__AUDIO_VERSION__}${playable.rev ? `.${playable.rev}` : ''}`;
 }
 
 /**
@@ -672,6 +672,9 @@ export function playWithHighlights(
   ghunnaShares?: number[],
   /** Begin part-way through — a song resumed at the card the teacher chose. */
   startAt = 0,
+  /** Sound the clip to its own end rather than a quarter second after the
+   *  last boundary: a letter card's "Now your turn" is heard, unlit. */
+  playToEnd = false,
 ): PlaybackHandle {
   stopActivePlayback();
   warmAudio();
@@ -680,6 +683,9 @@ export function playWithHighlights(
   let finished = false;
   let paused = false;
   const lastBoundary = boundaries[boundaries.length - 1];
+  /** Where the engine stops on its own: just after the last boundary, or
+   *  the end of the clip. */
+  const stopAt = playToEnd ? Infinity : lastBoundary;
 
   const finish = () => {
     if (finished) return;
@@ -713,9 +719,9 @@ export function playWithHighlights(
       const c = clip.buffer ? context() : null;
       if (clip.buffer && c) {
         holdSession(true);
-        engine = bufferEngine(c, clip.buffer, rate, report, lastBoundary, finish);
+        engine = bufferEngine(c, clip.buffer, rate, report, stopAt, finish);
       } else if (clip.src) {
-        engine = elementEngine(clip.src, rate, report, lastBoundary, finish);
+        engine = elementEngine(clip.src, rate, report, stopAt, finish);
       } else {
         finish();
         return;

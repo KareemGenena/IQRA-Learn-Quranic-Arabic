@@ -91,6 +91,7 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
             indexMap,
             shares,
             startAt,
+            playable.playToEnd,
           );
         });
       } catch (err) {

@@ -1,6 +1,7 @@
 /** Lesson loading and normalisation into Playables. */
 
 import { splitClusters, baseChar, derivedSilent } from './graphemes';
+import { phraseBoundaries } from './timing';
 import type { Lesson, LessonItem, LetterWord, PairWord, Playable, SimpleWord } from '../types';
 
 export interface LessonMeta {
@@ -170,7 +171,7 @@ export const LESSONS: LessonMeta[] = [
     level: 1,
     title: 'Where the Letters Come From',
     titleArabic: 'مخارج الحروف',
-    blurb: 'Mouth space, throat, tongue, lips and nose — the five places, as in the workbook.',
+    blurb: 'Mouth space, throat, tongue, lips and nose — the five places.',
   },
 
   // ── Lessons cut from the practice workbooks (Workbooks/lessons.map.json,
@@ -506,7 +507,8 @@ function letterPlayables(word: LetterWord): Playable[] {
       key: String(word.id),
       text: word.text,
       audio: word.audio,
-      timings: word.timings,
+      rev: word.audioRev,
+      timings: phraseTimings(word) ?? word.timings,
       stop: word.stop,
       silentClusters: derivedSilent(word.text),
       letterNames: word.letterNames,
@@ -517,8 +519,29 @@ function letterPlayables(word: LetterWord): Playable[] {
       highlightCluster: word.target
         ? findTargetCluster(word.text, word.target.letter, word.target.position)
         : undefined,
+      // A letter card (its sound cards and the teacher's spoken line):
+      // lit phrase by phrase, and heard to the end — "Now your turn, say
+      // baa boo bee nab" lights nothing (the author, 2026-10-25).
+      ...(word.parts?.length && word.script ? { playToEnd: true, segments: partStarts(word.parts) } : {}),
     },
   ];
+}
+
+/** The cluster each part of a letter card begins at — نَبۡ is two clusters. */
+function partStarts(parts: string[]): number[] {
+  const out: number[] = [];
+  let at = 0;
+  for (const p of parts) {
+    out.push(at);
+    at += splitClusters(p).length;
+  }
+  return out;
+}
+
+/** A letter card's baked phrase times, spread over its letters. */
+function phraseTimings(word: LetterWord): number[] | null {
+  if (!word.parts?.length || !word.phrases) return null;
+  return phraseBoundaries(splitClusters(word.text), derivedSilent(word.text), partStarts(word.parts), word.phrases);
 }
 
 /** Normalises any paged lesson into the cards the page component renders. */

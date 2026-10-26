@@ -15,7 +15,10 @@ const objectUrls = new Map<string, Promise<string>>();
 export function getAudioBlob(url: string): Promise<Blob> {
   let p = blobs.get(url);
   if (!p) {
-    p = fetch(url).then((r) => {
+    // `no-cache`: revalidate with the server rather than trust the browser's
+    // HTTP cache, which can hold the HTML page a clip was answered with
+    // before it existed (2026-10-25; AUDIO_VERSION in vite.config.ts).
+    p = fetch(url, { cache: 'no-cache' }).then((r) => {
       if (!r.ok) throw new Error(`audio fetch failed: ${r.status} ${url}`);
       // A missing clip does not 404 here. Hosting rewrites every unmatched
       // path to index.html, so a typo in a filename comes back as 200 with an

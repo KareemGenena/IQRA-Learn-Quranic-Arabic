@@ -28,7 +28,8 @@ interface FirestoreValue {
 function validBoundaries(arr: number[]): boolean {
   return (
     arr.length >= 2 &&
-    arr.length <= 12 &&
+    // a song: 29 boundaries (the names) or 85 (the sounds), 2026-10-25
+    arr.length <= 300 &&
     arr.every((v, i) => Number.isFinite(v) && v >= 0 && (i === 0 || v > arr[i - 1]))
   );
 }

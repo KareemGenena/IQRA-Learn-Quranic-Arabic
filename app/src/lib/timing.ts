@@ -478,6 +478,36 @@ function applyWaqf(weights: number[], clusters: LetterCluster[], held: number): 
 }
 
 /**
+ * Per-letter boundaries from per-PHRASE times: `segments` the cluster each
+ * part begins at, `phrases` when each part's phrase begins and, last, when
+ * the lit part ends. Each phrase is shared evenly among its audible
+ * letters, so a letter card lights its whole sound card through the phrase
+ * whichever letter of نَبۡ is "active". Null when the two do not fit.
+ */
+export function phraseBoundaries(
+  clusters: LetterCluster[],
+  silent: number[],
+  segments: number[],
+  phrases: number[],
+): number[] | null {
+  if (phrases.length !== segments.length + 1 || !segments.length) return null;
+  const audible = audibleIndices(clusters, silent);
+  const out: number[] = [];
+  for (let p = 0; p < segments.length; p++) {
+    const from = segments[p];
+    const to = p + 1 < segments.length ? segments[p + 1] : clusters.length;
+    const mine = audible.filter((c) => c >= from && c < to);
+    if (!mine.length) return null;
+    const a = phrases[p];
+    const b = phrases[p + 1];
+    if (!(b > a)) return null;
+    mine.forEach((_, k) => out.push(a + ((b - a) * k) / mine.length));
+  }
+  out.push(phrases[phrases.length - 1]);
+  return out.length === audible.length + 1 ? out : null;
+}
+
+/**
  * Build boundary times (length = audible letter count + 1) by distributing
  * the speech span [speechStart, speechEnd] across the audible letters by
  * weight.

@@ -259,14 +259,20 @@ for (const n of NUMBERS) {
       id,
       title: partOf.get(c.page) || meta.title,
       titleArabic: '',
-      hint: lines.length ? lines.join('\n') : 'Tap a form to hear it.',
+      // The map's own line for a lesson whose master has no tip (Level 1's
+      // pages): "Tanween means to add the sound of a nun sakinah…" (the
+      // author, 2026-10-25).
+      hint: lines.length ? lines.join('\n') : (meta.hint ?? 'Tap a form to hear it.'),
       // The map's columns where it gives them; else a page of letters with
       // their forms is drawn four across, as the paper has it.
       ...((columnsOf(c.page) ?? (multi ? 4 : undefined)) ? { columns: columnsOf(c.page) ?? 4 } : {}),
     });
   }
 
-  const src = join(ROOT, 'Audio', `Audio - Lesson ${nn}`);
+  // The author's own folder name where the map gives one ("Audio - Tanween"),
+  // else the default.
+  const audioDir = meta.audio ?? `Audio - Lesson ${nn}`;
+  const src = join(ROOT, 'Audio', audioDir);
   const outDir = join(PUB, 'audio', `lesson${nn}`);
   const takes = takesOf(src);
   const counts = keyCounts(cards.flatMap((c) => c.texts));
@@ -303,7 +309,10 @@ for (const n of NUMBERS) {
       // Per card, not per lesson: "Shadda with Kasra" rows read Kasra · Shadda
       // where the rest read Fat-ha · Shadda.
       const formLabels = c.texts.map((t) => captionOf.get(exact(t)) ?? '');
-      return { ...base, forms, formLabels };
+      // A chip the map gives a card by any of its forms' text — بَمَّ and بَنَّ
+      // wear "Ghunna" (2026-10-25), no further explanation: the teacher's.
+      const badges = [...new Set(c.texts.flatMap((t) => meta.badges?.[t.normalize('NFC')] ?? []))];
+      return { ...base, forms, formLabels, badges };
     }
     const text = c.texts[0];
     const audio = `word${wn}.wav`;
@@ -338,8 +347,8 @@ for (const n of NUMBERS) {
   console.log(
     `lesson ${n} (${meta.title}): ${cards.length} cards, ${forms} forms over ${sections.length} pages; ${written} clips cut, ${notYet.length} not yet recorded`,
   );
-  if (!existsSync(src)) console.log(`  no Audio - Lesson ${nn} folder yet — record ${meta.sheet} in the intake tool`);
-  const unused = [...takes.byExact.values()].map((v) => v.file).filter((f) => !used.has(f));
+  if (!existsSync(src)) console.log(`  no ${audioDir} folder yet — record ${meta.sheet} in the intake tool`);
+  const unused = [...takes.byExact.values()].map((v) => v.file).filter((f) => !used.has(f) && !f.startsWith('speaker-'));
   if (unused.length) console.log(`  takes matching no row: ${unused.join(', ')}`);
   if (ambiguous.size) console.log(`  AMBIGUOUS, not used: ${[...ambiguous].join('; ')}`);
 }

@@ -28,7 +28,9 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readWav, splitIntoN, writeSegment } from './lib/wav.mjs';
+import { alignTokens, divide, envelope, linePauses, speechRuns, tokenize } from './lib/align.mjs';
 import { readZipEntry } from './lib/zip.mjs';
+import { createHash } from 'crypto';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
@@ -275,11 +277,11 @@ const L32 = songLesson(32, SONG2, {
 
 // ── where the letters come from — the workbook's five places ──────────────
 const PLACES = [
-  { zone: 'jawf', title: 'Mouth space', titleArabic: 'الجوف', note: 'The madd letters.', letters: ['ا', 'و', 'ى'] },
-  { zone: 'throat', title: 'Throat', titleArabic: 'الحلق', note: '6 letters.', letters: ['ء', 'ه', 'ع', 'ح', 'غ', 'خ'] },
-  { zone: 'tongue', title: 'Tongue', titleArabic: 'اللسان', note: 'All the other 18 letters.', letters: ['ت', 'ث', 'ج', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ق', 'ك', 'ل', 'ن', 'ي'] },
-  { zone: 'lips', title: 'Lips', titleArabic: 'الشفتان', note: '4 letters.', letters: ['ب', 'م', 'و', 'ف'] },
-  { zone: 'nose', title: 'Nose', titleArabic: 'الخيشوم', note: 'Ghunna — 2 letters.', letters: ['ن', 'م'] },
+  { zone: 'jawf', title: 'Mouth space', titleArabic: 'الجوف', note: 'The madd letters', letters: ['ا', 'و', 'ى'] },
+  { zone: 'throat', title: 'Throat', titleArabic: 'الحلق', note: '6 letters', letters: ['ء', 'ه', 'ع', 'ح', 'غ', 'خ'] },
+  { zone: 'tongue', title: 'Tongue', titleArabic: 'اللسان', note: 'All the other 18 letters', letters: ['ت', 'ث', 'ج', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ق', 'ك', 'ل', 'ن', 'ي'] },
+  { zone: 'lips', title: 'Lips', titleArabic: 'الشفتان', note: '4 letters', letters: ['ب', 'م', 'و', 'ف'] },
+  { zone: 'nose', title: 'Nose', titleArabic: 'الخيشوم', note: 'Ghunna — 2 letters', letters: ['ن', 'م'] },
 ];
 const L33 = {
   lesson: 33,
@@ -289,7 +291,7 @@ const L33 = {
   audioPath: 'audio/lesson20/',
   imagePath: 'images/kids/',
   perPage: 1,
-  sections: [{ id: 'places', title: 'Where the Letters Come From', titleArabic: 'مخارج الحروف', hint: 'Five places — mouth space, throat, tongue, lips and nose — as in the workbook.' }],
+  sections: [{ id: 'places', title: 'Where the Letters Come From', titleArabic: 'مخارج الحروف', hint: 'Five places — mouth space, throat, tongue, lips and nose.' }],
   words: PLACES.map((p, i) => ({
     id: i + 1,
     section: 'places',
@@ -383,11 +385,203 @@ for (const t of takes) {
   const { segments } = splitIntoN(wav, 1);
   const [from, to] = segments[0] ?? [0, wav.frames];
   writeSegment(wav, from, to, join(dir, t.clip), { mono: true });
+  // The clip's own hash joins its URL (`rev`): a retake under the same
+  // filename — ت, 2026-10-25 — is then a new URL to the CDN, the browser and
+  // the worker, with no AUDIO_VERSION bump making everyone re-fetch all.
+  const rev = createHash('sha1').update(readFileSync(join(dir, t.clip))).digest('hex').slice(0, 8);
+  for (const l of LESSONS) if (l.lesson === clipHome.get(t.clip)) for (const w of l.words) if (w.audio === t.clip) w.audioRev = rev;
   written += 1;
 }
 if (existsSync(AUDIO_SRC)) {
   const unused = readdirSync(AUDIO_SRC).filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f) && !f.startsWith('speaker-')) /* the profile belongs beside the takes */.map((f) => f.replace(/\.wav$/i, ''));
   if (unused.length) problems.push(`${unused.length} recording(s) match no row: ${unused.join('، ')}`);
+}
+
+// ── timing from the sound itself (2026-10-25) ─────────────────────────────
+/**
+ * A letter card lights by PHRASE, not by letter: the picture while the
+ * teacher talks about the picture, each sound card through its own phrase
+ * ("With a fat-ha it sounds like baa"), and nothing from "Now your turn" on
+ * (the author, 2026-10-25). `phrases` holds when each sound card's phrase
+ * begins and, last, when "Now your turn" does — found by matching the
+ * script's words to the stretches of sound in the cut clip
+ * (scripts/lib/align.mjs). The app spreads each phrase over its letters, so
+ * the timing stays in the usual per-letter shape and a tap calibration
+ * (one tap per sound card, one at "Now your turn") still wins over it.
+ *
+ * Songs: their lines are cut at the breaths and each line divided among its
+ * notes at the dips in its loudness — so the green box moves when a letter
+ * is SUNG, not when the harakat weights guess it is (the sounds song's box
+ * lagged a syllable behind, 2026-10-25).
+ */
+const clipPath = (lessonId, clip) => join(PUBLIC, 'audio', `lesson${lessonId}`, clip);
+const r2 = (x) => Math.round(x * 100) / 100;
+
+/** What the teacher says, as the aligner reads it, and the sounds he
+ *  demonstrates (drawn out, and always parted by a pause). */
+function spokenOf(script, repeat) {
+  let s = script.replace(/\s*\([^)]*[؀-ۿ][^)]*\)/g, '').replace(/\s+[—–]\s+/g, ', ');
+  const sounds = [];
+  const listen = /Listen:\s*([^.]+)\./i.exec(s);
+  if (listen) sounds.push(...listen[1].split(/,\s*/).map((x) => x.trim()).filter(Boolean));
+  else {
+    for (const re of [/with a fat-ha it sounds like ([^\s,.;]+)/i, /with a damma ([^\s,.;]+)/i, /with a kasra ([^\s,.;]+)/i, /with a sukoon after \S+ it is ([^\s,.;]+)/i]) {
+      const m = re.exec(s);
+      if (m) sounds.push(m[1]);
+    }
+  }
+  // He closes most lines with "Now your turn, say baa boo bee nab" — the
+  // sheet writes "Now your turn." — so both readings are tried and the one
+  // that fits the recording better is kept.
+  if (repeat) s = s.replace(/Now your turn\.?(\s*Say it\.)?\s*$/i, `Now your turn. Say ${sounds.join(', ')}.`);
+  return { text: s, sounds, listen: !!listen };
+}
+
+/** The words that begin each sound card's phrase, and the word that ends
+ *  the lit part (the first of the sentence after the last phrase). */
+function anchorsOf(tokens, listen, parts) {
+  const low = tokens.map((t) => t.bare.toLowerCase());
+  const at = (seq) => {
+    for (let i = 0; i + seq.length <= low.length; i++) if (seq.every((w, k) => low[i + k] === w)) return i;
+    return -1;
+  };
+  let starts;
+  if (listen) {
+    const l = at(['listen']);
+    starts = l < 0 ? [] : parts.map((_, i) => l + 1 + i);
+  } else {
+    starts = [at(['with', 'a', 'fat-ha']), at(['with', 'a', 'damma']), at(['with', 'a', 'kasra']), at(['with', 'a', 'sukoon'])].slice(0, parts.length);
+  }
+  if (starts.length !== parts.length || starts.some((k) => k < 0 || k >= tokens.length)) return null;
+  let end = -1;
+  for (let i = starts[starts.length - 1]; i + 1 < tokens.length; i++) {
+    if (tokens[i].after === 2) {
+      end = i + 1;
+      break;
+    }
+  }
+  return end < 0 ? null : { starts, end };
+}
+
+/** Where each sound card's phrase begins, and where "Now your turn" does. */
+function phrasesOf(wav, word) {
+  const env = envelope(wav);
+  // a stretch under 100 ms is a click or a breath, never a word (ء's take
+  // has an 80 ms click between two sounds, and it was read as ʾoo)
+  const runs = speechRuns(env, { minGap: 0.1, minRun: 0.1 });
+  let best = null;
+  for (const repeat of [true, false]) {
+    const { text, sounds, listen } = spokenOf(word.script, repeat);
+    const tokens = tokenize(text, { sounds });
+    const anchors = anchorsOf(tokens, listen, word.parts);
+    if (!anchors) continue;
+    const al = alignTokens(runs, tokens, { keep: new Set([...anchors.starts, anchors.end]) });
+    if (!best || al.cost < best.al.cost) best = { tokens, al, anchors, repeat };
+  }
+  if (!best) return null;
+  const { al, anchors } = best;
+  const times = [...anchors.starts, anchors.end].map((k) => al.starts[k]);
+  if (times.some((t) => t == null)) return null;
+  for (let i = 1; i < times.length; i++) if (times[i] - times[i - 1] < 0.3) return null;
+  // The closing "say baa…" is said at an easy pace; when the stretch that
+  // holds its first sound is far too short for its words, the end of the
+  // take does not match the script (ء's take
+  // leaves out "sitting up on an alif", and the aligner pushed "Now your
+  // turn" one stretch late, 2026-10-25). Said so, so the card is calibrated.
+  const cum = [0];
+  for (const t of best.tokens) cum.push(cum[cum.length - 1] + t.units);
+  const firstSound = best.tokens.findIndex((t, k) => k > anchors.end && t.sound);
+  const tight = (k) => {
+    const g = al.groups.find((x) => k >= x.from && k < x.to);
+    if (!g) return false;
+    const [a, b] = runs[g.run];
+    return (b - a) / (al.alpha * (cum[g.to] - cum[g.from])) < 0.6;
+  };
+  // ("Now" alone is no test: it opens on a quiet n, and ر's "Now" is a
+  // short stretch of its own, rightly.)
+  const misfit = firstSound > 0 && tight(firstSound);
+  return { times, cost: al.cost, repeat: best.repeat, misfit, left: al.left.map((k) => best.tokens[k].bare) };
+}
+
+const phraseLines = [];
+for (const w of L20.words) {
+  const p = clipPath(20, w.audio);
+  if (!w.script || !existsSync(p)) continue;
+  const res = phrasesOf(readWav(p), w);
+  if (!res) {
+    problems.push(`#${w.id} ${w.letter}: the script's phrases were not found in its recording — the card will light by the automatic estimate until it is calibrated`);
+    continue;
+  }
+  w.phrases = res.times.map(r2);
+  phraseLines.push(
+    `  #${String(w.id).padStart(2)} ${w.letter.padEnd(2)}  ${w.phrases.map((t) => t.toFixed(2).padStart(5)).join(' · ')}` +
+      `   fit ${res.cost.toFixed(2)}${res.cost > 0.55 || res.misfit ? '  ← listen, calibrate if it is off' : ''}` +
+      (res.misfit ? '   the end of the take does not match the script' : '') +
+      // a phrase left out, not a stray word the fit found cheaper to drop
+      (res.left.length >= 3 ? `   not in the take?: "${res.left.join(' ')}"` : ''),
+  );
+}
+
+/** A song's note boundaries from its breaths and its notes' onsets:
+ *  `lineSizes` steps per line, `syllablesOf(step)` how many notes a step is
+ *  sung as (alif is a-lif, two; every other name and sound one). */
+function songTimings(wav, lineSizes, syllablesOf) {
+  const env = envelope(wav);
+  const lp = linePauses(env, lineSizes.length - 1);
+  if (!lp) return null;
+  const out = [];
+  let step = 0;
+  lineSizes.forEach((size, L) => {
+    const from = L === 0 ? lp.start : lp.pauses[L - 1].end;
+    const to = L === lineSizes.length - 1 ? lp.end : lp.pauses[L].start;
+    const sylls = Array.from({ length: size }, (_, k) => syllablesOf(step + k));
+    const cuts = divide(env, from, to, sylls.flatMap((n) => Array(n).fill(1)));
+    // keep the cut where each STEP begins, not the one inside a-lif
+    let at = 0;
+    for (const n of sylls) {
+      out.push(cuts[at]);
+      at += n;
+    }
+    step += size;
+  });
+  out.push(lp.end);
+  return out;
+}
+const songLines = [];
+for (const [L, lineSizes, weightOf, lineSteps] of [
+  // the names: four lines of seven, a breath between (ا…خ · د…ص · ض…ق · ك…ى)
+  [L31, [7, 7, 7, 7], (i) => (i === 0 ? 2 : 1), 7],
+  // the sounds: a letter's three, a breath, the next letter's
+  [L32, Array(28).fill(3), () => 1, 6],
+]) {
+  const w = L.words[0];
+  const p = clipPath(L.lesson, w.audio);
+  const steps = L.song.steps.length;
+  // A karaoke line: what is on the screen at once (song.lines = the step
+  // each line starts at) — a sung line of seven names, two letters' sounds.
+  L.song.lines = Array.from({ length: Math.ceil(steps / lineSteps) }, (_, k) => k * lineSteps);
+  if (!existsSync(p)) continue;
+  if (lineSizes.reduce((s, n) => s + n, 0) !== steps) {
+    problems.push(`lesson ${L.lesson}: ${steps} steps do not make lines of ${lineSizes.join('+')} — the song keeps the automatic timing`);
+    continue;
+  }
+  const t = songTimings(readWav(p), lineSizes, weightOf);
+  if (!t) {
+    problems.push(`lesson ${L.lesson}: its breaths could not be found — the song keeps the automatic timing`);
+    continue;
+  }
+  w.timings = t.map(r2);
+  const lens = lineSizes.map((n, k) => {
+    const s = lineSizes.slice(0, k).reduce((a, b) => a + b, 0);
+    return w.timings[s + n] - w.timings[s];
+  });
+  const sorted = [...lens].sort((a, b) => a - b);
+  const median = sorted[Math.floor(sorted.length / 2)];
+  const odd = lens.map((x, k) => (x < median * 0.6 || x > median * 1.6 ? k + 1 : 0)).filter(Boolean);
+  songLines.push(
+    `  ${L.lesson}  ${lineSizes.length} lines, each ${sorted[0].toFixed(2)}–${sorted[sorted.length - 1].toFixed(2)} s (median ${median.toFixed(2)})` +
+      (odd.length ? `  ← uneven line(s) ${odd.join(', ')}: listen` : ''),
+  );
 }
 
 // ── write ─────────────────────────────────────────────────────────────────
@@ -407,9 +601,14 @@ if (missing.length) {
   console.log(`\nNOT RECORDED YET — ${missing.length}: in the intake tool open the sheet and record table 7 (the spoken lines), table 8 (the two songs) and table 9 (the letter names), each by its Slot column, into Audio/Audio - Kids Alphabet/`);
   console.log('  ' + missing.map((m) => m.split('  ')[0]).join('  '));
 }
-const needsTap = takes.filter((t) => byName.has(t.key)).map((t) => t.of);
-console.log(`\nNEEDS TAP CALIBRATION (admin → the lesson → Calibrate timings): ${needsTap.length} of ${takes.length} recorded`);
-console.log(needsTap.length ? '  ' + needsTap.join(' · ') : '  nothing recorded yet. Every letter and both songs will need tapping once they are — a tap per Arabic letter, so بَ بُ بِ نَبۡ is five.');
+console.log(`\nPHRASES, from each recording (fat-ha · damma · kasra · sukoon · "Now your turn", seconds) — ${phraseLines.length} of ${L20.words.length} cards:`);
+if (phraseLines.length) console.log(phraseLines.join('\n'));
+console.log(`\nSONGS, timed from their breaths and dips:`);
+console.log(songLines.length ? songLines.join('\n') : '  not recorded yet');
+console.log(
+  '\nCalibration is now a correction, not a necessity: where a card or a song lights at the wrong moment, admin → the lesson →' +
+    ' Calibrate timings — a letter card takes a tap as each sound card\'s phrase begins and one at "Now your turn"; a song a tap per letter.',
+);
 console.log(problems.length ? `\nNEEDS REVIEW:\n  ${problems.join('\n  ')}` : '\nvalidation: all OK');
 
 const wantImages = new Set();

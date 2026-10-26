@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { LESSONS, lessonsByLevel } from '../lib/lessons';
 import { canSeeLesson, lessonStatus } from '../lib/appConfig';
 import type { AppConfig } from '../lib/appConfig';
+import { OPEN_INSTALL_EVENT, canOfferInstall } from './InstallPrompt';
 
 /**
  * The contents, from anywhere: a drawer from the header's ☰ with every
@@ -13,12 +14,14 @@ import type { AppConfig } from '../lib/appConfig';
 export function ContentsMenu({
   config,
   admin,
+  workbooks,
   currentId,
   open,
   onClose,
 }: {
   config: AppConfig;
   admin: boolean;
+  workbooks: boolean;
   currentId: number;
   open: boolean;
   onClose: () => void;
@@ -71,15 +74,29 @@ export function ContentsMenu({
               </ol>
             </section>
           ))}
-          <a className="menu-link" href="#/workbook" onClick={onClose}>
-            Practice workbooks
-          </a>
+          {workbooks && (
+            <a className="menu-link" href="#/workbook" onClick={onClose}>
+              Practice workbooks
+            </a>
+          )}
           <a className="menu-link" href="#/recordings" onClick={onClose}>
             Class recordings
           </a>
           <a className="menu-link" href="#/account" onClick={onClose}>
             Account
           </a>
+          {canOfferInstall() && (
+            <button
+              type="button"
+              className="menu-link menu-install"
+              onClick={() => {
+                onClose();
+                window.dispatchEvent(new Event(OPEN_INSTALL_EVENT));
+              }}
+            >
+              Install as an app
+            </button>
+          )}
         </nav>
       </aside>
     </div>

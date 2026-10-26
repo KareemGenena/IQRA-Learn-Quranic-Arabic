@@ -67,7 +67,7 @@ function LessonList({
   );
 }
 
-export function HomePage({ config, admin }: { config: AppConfig; admin: boolean }) {
+export function HomePage({ config, admin, workbooks }: { config: AppConfig; admin: boolean; workbooks: boolean }) {
   const visible = (l: LessonMeta) => canSeeLesson(config, l.id, admin);
   const levels = lessonsByLevel(LESSONS)
     .map((lv) => ({ ...lv, lessons: lv.lessons.filter(visible) }))
@@ -128,9 +128,15 @@ export function HomePage({ config, admin }: { config: AppConfig; admin: boolean 
       ))}
 
       {/* The electronic side of the paper: the workbooks page by page, each
-          word said aloud. A section opener's QR lands there too. */}
+          word said aloud. A section opener's QR lands there too. Published
+          like a lesson: the admin sees it as a draft until it is switched on
+          in Manage lessons. */}
+      {workbooks && (
       <section className="level-section">
-        <h3>Practice workbooks</h3>
+        <h3>
+          Practice workbooks{' '}
+          {(config.features.workbooks ?? 'admin') !== 'everyone' && <span className="status-pill draft">draft</span>}
+        </h3>
         <p className="lesson-blurb">The three workbooks, page by page, with each word said aloud.</p>
         <ul className="lesson-list">
           <li>
@@ -149,6 +155,7 @@ export function HomePage({ config, admin }: { config: AppConfig; admin: boolean 
           </li>
         </ul>
       </section>
+      )}
 
       {levels.length === 0 && <p className="loading">No lessons are published yet.</p>}
       {/* Which build this device is actually running. An installed app has no

@@ -10,42 +10,42 @@
       "id": "p27",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it.",
+      "hint": "A shadda hides an extra letter with a sukoon before the haraka: بَّ is بۡ followed by بَ. That is why it takes a little longer to say. Tap to hear it.",
       "columns": 4
     },
     {
       "id": "p28",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it.",
+      "hint": "A shadda hides an extra letter with a sukoon before the haraka: بَّ is بۡ followed by بَ. That is why it takes a little longer to say. Tap to hear it.",
       "columns": 4
     },
     {
       "id": "p29",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it.",
+      "hint": "A shadda hides an extra letter with a sukoon before the haraka: بَّ is بۡ followed by بَ. That is why it takes a little longer to say. Tap to hear it.",
       "columns": 4
     },
     {
       "id": "p30",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it.",
+      "hint": "A shadda hides an extra letter with a sukoon before the haraka: بَّ is بۡ followed by بَ. That is why it takes a little longer to say. Tap to hear it.",
       "columns": 4
     },
     {
       "id": "p31",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it.",
+      "hint": "A shadda hides an extra letter with a sukoon before the haraka: بَّ is بۡ followed by بَ. That is why it takes a little longer to say. Tap to hear it.",
       "columns": 4
     },
     {
       "id": "p32",
       "title": "Shadda",
       "titleArabic": "",
-      "hint": "Tap a form to hear it.",
+      "hint": "A shadda hides an extra letter with a sukoon before the haraka: بَّ is بۡ followed by بَ. That is why it takes a little longer to say. Tap to hear it.",
       "columns": 4
     }
   ],
@@ -536,7 +536,9 @@
     {
       "id": 24,
       "section": "p29",
-      "badges": [],
+      "badges": [
+        "Ghunna"
+      ],
       "forms": [
         {
           "text": "بَمَ",
@@ -557,7 +559,9 @@
     {
       "id": 25,
       "section": "p30",
-      "badges": [],
+      "badges": [
+        "Ghunna"
+      ],
       "forms": [
         {
           "text": "بَنَ",
@@ -665,12 +669,12 @@
       "badges": [],
       "forms": [
         {
-          "text": "عَفِ",
+          "text": "عَقِ",
           "audio": "word30a.wav",
           "timings": null
         },
         {
-          "text": "عَفِّ",
+          "text": "عَقِّ",
           "audio": "word30b.wav",
           "timings": null
         }
@@ -682,16 +686,16 @@
     },
     {
       "id": 31,
-      "section": "p31",
+      "section": "p32",
       "badges": [],
       "forms": [
         {
-          "text": "عَقِ",
+          "text": "عَسِ",
           "audio": "word31a.wav",
           "timings": null
         },
         {
-          "text": "عَقِّ",
+          "text": "عَسِّ",
           "audio": "word31b.wav",
           "timings": null
         }
@@ -707,12 +711,12 @@
       "badges": [],
       "forms": [
         {
-          "text": "عَسِ",
+          "text": "عَشِ",
           "audio": "word32a.wav",
           "timings": null
         },
         {
-          "text": "عَسِّ",
+          "text": "عَشِّ",
           "audio": "word32b.wav",
           "timings": null
         }
@@ -728,12 +732,12 @@
       "badges": [],
       "forms": [
         {
-          "text": "عَشِ",
+          "text": "عَصِ",
           "audio": "word33a.wav",
           "timings": null
         },
         {
-          "text": "عَشِّ",
+          "text": "عَصِّ",
           "audio": "word33b.wav",
           "timings": null
         }
@@ -749,34 +753,13 @@
       "badges": [],
       "forms": [
         {
-          "text": "عَصِ",
+          "text": "عَضِ",
           "audio": "word34a.wav",
           "timings": null
         },
         {
-          "text": "عَصِّ",
-          "audio": "word34b.wav",
-          "timings": null
-        }
-      ],
-      "formLabels": [
-        "Kasra",
-        "Shadda"
-      ]
-    },
-    {
-      "id": 35,
-      "section": "p32",
-      "badges": [],
-      "forms": [
-        {
-          "text": "عَضِ",
-          "audio": "word35a.wav",
-          "timings": null
-        },
-        {
           "text": "عَضِّ",
-          "audio": "word35b.wav",
+          "audio": "word34b.wav",
           "timings": null
         }
       ],

@@ -200,7 +200,29 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   id>` on the landing site sends a QR reader (`site/public/go.html`, rewrite
   `/go/**`; `companion` in `crosswalk.json`) while the app is switched on,
   and to the PDF page while it is off. Listed under "Practice workbooks" on
-  the home page.
+  the home page. **Published like a lesson (2026-10-25)**: the feature
+  `workbooks` in `config/app` (Manage lessons → "Workbook pages") — while
+  it is `admin` the home page's section (marked draft), the drawer's link
+  and the `#/workbook` routes show to the admin only; a learner who
+  follows a link gets "not published yet". The lesson tool row's workbook
+  icon is the printed PDF on the landing site, which is public, and stays.
+- **Install as an app** (`InstallPrompt.tsx`, 2026-10-25): on the first
+  visit, a small card rises from the bottom 2.5 s after the page opens —
+  no backdrop, nothing blocked — asking to install. Install calls the
+  browser's own prompt (`beforeinstallprompt`, kept from the moment the
+  browser offers it, before React mounts) and, once accepted, says where
+  the app is now (home screen or app list on a phone; Start menu, Dock or
+  Applications on a computer). An iPhone or iPad has no prompt in any
+  browser, so the card shows Share → Add to Home Screen → Add. Elsewhere
+  it says where the browser keeps its install command. "Not now" is
+  remembered (`iqra-install`) and the card never comes back by itself;
+  "Install as an app" in the drawer reopens it — the entry shows only
+  where installing is possible (`canOfferInstall`: a phone or tablet, or
+  a computer whose browser offered its prompt). Nothing shows when the
+  app already runs installed. Chrome hands the page its prompt only after
+  a tap and some time on it, so a card already showing the menu steps
+  turns back to the one-tap offer when the prompt arrives. On iOS 26
+  Safari's default layout Share hides behind "···", and step 1 says so.
 - **Two readings are a Level 3 matter (2026-10-24).** The switch, the
   per-card tabs and the S / W keys show only on a Level 3 word lesson
   (`twoReadings` in `App.tsx`: `meta.level === 3`, not letter cards, not a
@@ -221,11 +243,17 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   phone. The author's screenshot showed a song's name three times before
   its first card (2026-10-25). **The contents drawer** (`ContentsMenu`)
   lists every Level and its lessons, the workbooks and the account from
-  any page, and a link opens the lesson itself. **It opens from a tab on
-  the page's right edge** (`.menu-tab`, fixed, the side the drawer slides
-  from, reachable however far down a lesson the page is) — the author
-  found a ☰ among the header's buttons "peripheral" (2026-10-25, the
-  evening). **The header's Admin link is hidden on a lesson page**: the
+  any page, and a link opens the lesson itself. **Its ☰ is the RIGHTMOST
+  thing at the top** (`.menu-btn`, last in `header-actions`, after the
+  theme toggle). For one round it was a tab on the page's right edge; the
+  author meant "on the top, to the right" (2026-10-25). **On a phone a
+  tool that leaves the page opens its label first**: Notes and the
+  Workbook take one tap to grow their label (`.tool.expanded`) and a
+  second to go; a tap anywhere else folds it and shuts an open gear menu.
+  The laser and the gear act on the first tap. Every hover rule of the row
+  sits under `@media (hover: hover)`: on a touch screen `:hover` stays
+  stuck after a tap, which left the laser's and the gear's labels open
+  after they were turned off. **The header's Admin link is hidden on a lesson page**: the
   gear's "Manage lessons" is the same page. **The laser** (`LaserPointer`,
   rewritten the same evening): the overlay hides the system cursor and
   draws a red dot wherever the pointer is — mouse, pen or finger — and a
@@ -563,6 +591,15 @@ Things that cost real debugging. Do not undo them without reading why.
   (the صٓ of كٓهيعٓصٓ) is a consonant and is not this.
 
 **Rendering**
+- **The Mushaf face is `'Uthmanic Hafs'` in CSS** — the family the
+  `@font-face` declares — never `'KFGQPC Uthmanic Script HAFS'`, the
+  file's INTERNAL name, which matches only a font installed on the device.
+  Every rule that said "the Mushaf face" in a comment (Arabic in hints and
+  chips, the Arabic-only chip, a letter card's big letter and small sound
+  cards, the songs, the places, the letter name) named the internal one
+  and drew in Noto Naskh on every device until 2026-10-25 — measured in
+  the pane: identical metrics to Noto. The Mushaf face draws the same
+  size or a little larger at the same font-size, so no size changed.
 - **The ٱل prefix is black** (2026-10-24; `withAlPlayable` passes
   `prefixClusters: 0`). It was painted in the lesson's accent colour; the
   author wants it like the rest of the word. The sun lam is still greyed by
@@ -802,10 +839,17 @@ Things that cost real debugging. Do not undo them without reading why.
   sharing a column, and each is its own card. Form labels are per CARD
   (`formLabels` on the word; `ItemCard` reads the card's before the
   lesson's): the "Shadda with Kasra" rows read Kasra · Shadda. Takes go in
-  `Audio/Audio - Lesson NN/` (with `وقف/`), matched by `takes.mjs` (exact
+  `Audio/Audio - Lesson NN/` (with `وقف/`) — or the folder the map names
+  (`audio`: the author recorded 21–23 into "Audio - Tanween", "Audio -
+  Natural Madd", "Audio - Shadda", 2026-10-25) — matched by `takes.mjs` (exact
   text, else an unambiguous key); clips `wordNN{a..f}.wav` or `wordNN.wav`;
   a card's id is its ordinal in the sheet and is spent whether recorded or
-  not. The shared parser is `scripts/lib/workbook.mjs` (`readWorkbook`,
+  not (deleting a row DOES shift the ids after it: the عَفِ / عَفِّ rows of
+  lesson 23 went on 2026-10-25, before any calibration existed there).
+  The map may also give a lesson its title-box line (`hint`, for pages
+  whose master has no tip — 21's "Tanween means to add the sound of a nun
+  sakinah after the haraka") and a card a chip by any of its forms' text
+  (`badges` — "Ghunna" on بَمَّ and بَنَّ, keys NFC). The shared parser is `scripts/lib/workbook.mjs` (`readWorkbook`,
   items with `row` and `group`); the companion uses it too. Word opens the
   generated sheets (checked with `word-pages.ps1`: Lesson 23 is 5 pages).
 - A sheet correction is applied in the generator and **reported on every
@@ -1082,6 +1126,20 @@ When an update does not arrive, work down the list rather than guessing.
   and the worker stored it under the new cache name for thirty days. The
   author heard the old كهيعص on the web app for that reason while localhost
   played the new one. A versioned URL is a different key in all four.
+  **v5 (2026-10-25), and two guards.** Lessons 20–23 and 30–32 listed
+  their clips in `words.json` BEFORE the clips existed; a device that
+  opened one was answered with index.html for every clip URL, and the
+  browser kept that answer for a day under the `/audio/**` max-age — the
+  author's phone played no letter while the laptop, which had not asked
+  early, did. v5 is new URLs; and every clip fetch now REVALIDATES
+  (`cache: 'no-cache'` in `getAudioBlob`, `fetchOptions` on the worker's
+  audio and picture rules), so a stale answer is never handed back again
+  (a real clip costs a 304). **A clip may carry its own hash** (`audioRev`
+  in words.json → `Playable.rev` → `?v=v5.<rev>`): `make-alphabet.mjs`
+  writes the first 8 hex of each clip's SHA-1, so a single retake (ت) is a
+  new URL by itself — no global bump making every learner re-fetch every
+  clip. The other generators do not write it yet; for their clips the
+  global bump stands.
 - **A missing file does not 404 here.** Hosting rewrites `**` to `index.html`,
   so `/audio/lesson05/typo.wav` answers *200 text/html*. Left alone, CacheFirst
   would keep that HTML page as the recording for a month. Both layers now check
@@ -1191,31 +1249,45 @@ this time the corrupted records are children's.
   `.image-pop` show on `.info-btn:hover + …`, on `:focus-visible` or on
   the tap's `.open` — the old `.pair-head:hover` rule popped the meaning
   up with the pointer anywhere on the card's head (2026-10-24).
-- **The song strip flows by itself (2026-10-24).** `SongCards` has no
-  Back/Next: Play/Pause (and Space) only, and a tap on a letter starts the
-  song from its family. The family being sung is centered and bright, every
-  other family dimmed (`.song-letter.dim`), and in the last `GLIDE_S`
-  (0.6 s, or half the family's time if shorter) before the next family's
-  first letter the strip glides so that family is centered AS its first
-  letter is sung — three letters' width for ب ت ث after ا, one for ك after
-  ل, in the same time, so the speed follows the song. The position is a
-  function of the MEDIA TIME, set every frame from the engine's own clock
-  (`now()` on `usePlayable`, the handle's `now`), never from React state:
-  a pause holds it, a seek jumps it, the CSS transition is switched off
-  while playing (`.song-strip.live`) and carries the at-rest glides. The
-  author asked for exactly this: the letters must slide as he sings, with
-  no Next to press. Until the song is calibrated the automatic timings mean
-  nothing for a sung rhythm. Three things a review caught the same day: a
-  start is by CLUSTER (`play({ cluster })`), because the hook's boundaries
-  are empty until the first play has resolved and `play(onsets[focus])`
-  started a tapped ك at ا; the strip goes back to ا only when the song
-  REACHED ITS END (the frame loop's last media time within 0.25 s of the
-  last boundary) — playback also stops when the page is hidden, and a
-  teacher who paused on ق must find ق on coming back; and the at-rest
-  centering runs while paused too, so a turned iPad re-centers. Verified
-  in the pane with rAF patched and a synthetic 30 s clip of 28 tone bursts
-  (deleted after): held, glide in the last 0.6 s, landing at the onset,
-  bright family switching at the onset, a tapped ك played from ك.
+- **A song is sung along line by line — karaoke, never a moving strip
+  (2026-10-25).** The strip that glided under the sung letter (a glide
+  per letter, a third of a second for a single) made the author dizzy.
+  `SongCards` now shows ONE line, large and still: a sung line of seven
+  names (ا…خ · د…ص · ض…ق · ك…ى — the song's own breaths), two letters'
+  sounds in the sounds song (`song.lines` in words.json, the step each
+  line starts at). The sung letter wears the green box, with no CSS fade
+  (a 0.15 s fade on it read as the box lagging the voice); the line on
+  screen gives way to the next `LEAD_S` (0.3 s) before that line's first
+  note, by a short fade, never a slide. Below, the whole song small, one
+  row per line, the current one marked; a tap on a row goes there. Which
+  line shows is a function of the MEDIA TIME read every frame from the
+  engine's clock (`now`), so a pause holds it and a seek jumps it. Play /
+  Pause and Space; a tap on a letter starts from that letter, by CLUSTER
+  (the hook's boundaries are empty until a first play resolves). The song
+  goes back to its first line only when it REACHED ITS END — playback
+  also stops when the page is hidden, and a teacher who paused on ق must
+  find ق's line on coming back. **The songs are timed from their own
+  recordings** (`scripts/lib/align.mjs`): the lines are cut at the
+  longest pauses near an even split (`linePauses`), and each line is
+  divided among its notes (`divide`) by a dynamic programme over every
+  place a sung note can begin — where the loudness JUMPS back up (a vowel
+  after its consonant, the voice after a breath; a rise that stays below
+  the speech level is the room inside a breath and does not count), a
+  clear dip (a legato da-du-di), and the plain even beat as a worthless
+  fallback so a line always splits — choosing the deepest set whose note
+  lengths stay near the expected ones, no note under 30 % of its expected
+  length. alif is sung a-lif, TWO notes, and the cut inside it is dropped.
+  Three wrong turns cost a round each and are worth not repeating: one cut
+  at a time near the even beat (alif is long, and ب's window lay inside
+  it); the lowest point as the only candidate (a consonant is a low
+  STRETCH — the j of jiim is 0.2 s at −18 dB — not a point); and a
+  consonant's burst counted as a note (دَ came out 0.14 s long). The sounds
+  song reads fat-ha ≈ 0.5–0.7 s, damma ≈ 0.5 s, kasra to the next breath
+  for all 28 letters. A tap calibration still wins over these — and now
+  reaches every device: the cloud took at most 12 boundaries per word
+  (`validBoundaries` in `cloudCalibration.ts` and the `calibrations` rule
+  in `firestore.rules`), a song needs 29 or 85, so a song calibrated on
+  the laptop stayed on the laptop. The cap is 300 (2026-10-25).
 - **`columns: 4` on a section draws it four across** (`.pair-grid.cols-4`,
   two by two under 760 px); `make-workbook-lessons.mjs` writes it on every
   section of a lesson whose cards hold several forms (21, 22, 23 — the
@@ -1239,6 +1311,49 @@ this time the corrupted records are children's.
   back. The flip is two faces in one box (`.letter-flip`,
   `backface-visibility: hidden`, the back pre-turned), the front face gives
   the box its height, and a card always opens on its front.
+- **A letter card lights by PHRASE (2026-10-25).** One take per card, the
+  teacher's whole line: the picture glows while he talks about the
+  picture; each sound card is lit through its own phrase ("With a fat-ha
+  it sounds like baa", "with a damma boo", …, "With a sukoon after نَ it
+  is nab"); from "Now your turn, say baa boo bee nab" on nothing is lit
+  and the clip plays to its END (`playToEnd` on the Playable — the engine
+  otherwise stops a quarter second after the last boundary). The times
+  are found in the recording by `make-alphabet.mjs`
+  (`scripts/lib/align.mjs`, `alignTokens`): the script's words are matched
+  to the stretches of sound between pauses by a dynamic programme — each
+  stretch takes a run of words whose predicted length fits it; a stretch
+  may be noise and take none; a break where the script has no
+  punctuation costs more; two demonstrated sounds in one stretch cost
+  more (he always pauses between them); stretches under 80 ms are clicks.
+  The script is tried as written and with "Say baa, boo, bee, nab." after
+  "Now your turn", and the better fit kept — every card but the alif
+  repeats the sounds. `phrases` in words.json is when each sound card's
+  phrase begins plus when "Now your turn" begins; `phraseBoundaries` in
+  `timing.ts` spreads a phrase evenly over its letters, so the timing
+  keeps the usual per-letter shape and resolves below a calibration.
+  Every card's fit is printed on each run. **Its
+  calibration is one tap as each sound card's phrase begins and one at
+  "Now your turn"** (`segments` on the Playable; the admin page says so),
+  never a tap per letter. Before this, the automatic estimate spread the
+  whole 25 s over five letters and the picture never glowed. **What the
+  review of the aligner taught (2026-10-25, `wf_670d41b6-da5`)**, each
+  checked against the loudness and, for ت, the zero-crossing rate (an
+  aspirated t opens at 9–11 crossings/ms, a w at under 1): an Arabic
+  token in the script ("after نَ") is demonstrated, set apart by pauses
+  like baa — without that, ى's sukoon card went dark as "nay" began; a
+  sentence end with NO pause costs 3 — without it, "nab. Now your turn"
+  was read as one stretch; a stretch under 0.1 s is a click — five cards
+  had "With" placed on a 0.06–0.08 s blip, their fat-ha a second early;
+  a word may be left out at a cost, never one the caller anchors on. And
+  this speaker pauses before the word that matters ("With a … fat-ha"),
+  so a long pause where the script runs on is NOT evidence of a
+  misreading (a rule saying so moved ت wrongly and was dropped). **ء's
+  take does not say "sitting up on an alif"** (two reviewers, from the
+  loudness): the generator flags it — "the end of the take does not match
+  the script", when the stretch holding the first closing sound is far
+  too short for its words — and its sound card stays lit through "Now
+  your turn" until it is calibrated (last tap ≈ 19.3 s) or the sheet's
+  line is made to match the take.
 - **Tracing (lesson 30, 2026-10-24): the strokes are the font's, the rule
   is geometry, and only leaving the line is wrong.** Each letter's strokes
   are DERIVED from the glyph — `scripts/tracing/render-glyphs.mjs` renders
@@ -2013,7 +2128,48 @@ the names are one word each and can wait), hear a few name clips on the
 tracing cards and a line on a letter card, then Publish Level 1 from
 `#/admin`. Not verified by me: the two-finger scroll and the finger
 laser on a real phone (synthesized touches in the pane only); the sound
-of the trimmed clips.
+of the trimmed clips. (The "contents tab on the page's right edge" of
+this round was a misreading, undone the next round: the ☰ is the
+rightmost thing in the header.)
+
+**The author's nineteen points of 2026-10-25 (the fourth round, late
+evening), built, reviewed, committed and deployed.** 1 the ☰ back at the
+top right; 2–3 the tool row on a phone (section 2, "The lesson page's
+head"); 4 the letter cards lit by phrase and the calibration by phrase
+(section 3, "A letter card lights by PHRASE"); 5 the phone that played no
+letter — the clips were listed before they existed and a day-long cached
+HTML answer stood in for them (section 3, "Updates reaching people", v5);
+6 the ت retake made cheap: a clip's own hash in its URL (same place);
+7–8 the songs as karaoke lines, timed from their recordings (section 3,
+"A song is sung along line by line"); 9 the workbook companion behind a
+publish switch (section 2); 10–13 the places lesson — English lines left
+to right, no full stops, one amber color (the lit spot in the pictures),
+no Play all, the hint without "as in the workbook"; 14–16 the title-box
+lines of 21–23, from the map's `hint`; **lessons 21, 22 and 23 are
+RECORDED and cut** (168 + 168 + 68 forms from the author's folders; one
+stray head dropped on ظُنَ, 0.21 of peak — listen); 17 the install card
+(section 2); 18 "Ghunna" on بَمَّ and بَنَّ; 19 عَفِ / عَفِّ out of the
+shadda sheet (Word opens it, 5 pages) and so out of the app — the two
+takes stay in "Audio - Shadda", reported as matching no row, and the
+workbook companion still shows the printed page's pair. Found on the
+way: the Mushaf face was named by its internal family name everywhere
+in CSS and drew in Noto (section 3, "Rendering"). **Next, the author:**
+re-record ت (intake → the alphabet sheet → table 7 → tap the ت slot in
+the list → record → Save into "Audio - Kids Alphabet"; then
+`node scripts/make-alphabet.mjs`, build, deploy — its new hash reaches
+every device, no version bump); calibrate card ء (#/admin/20, card 29:
+its take leaves out "sitting up on an alif", so its last tap goes at
+"Now your turn", ≈ 19.3 s) or make its line in table 7 match the take;
+listen to both songs and the letter cards, and calibrate only what
+lights at the wrong moment; listen to lessons 21–23 and Publish them;
+publish the workbook pages when ready. **The review** (`wf_670d41b6-da5`,
+6 agents, 1.23 M subagent tokens) confirmed ten defects, all fixed: the
+song calibrations capped at 12 boundaries in the cloud, the ☰ under the
+laser's overlay, iOS 26's hidden Share button, the drawer's install
+entry on computers that cannot install, the Android prompt arriving
+after the card, a keyboard Enter swallowed on a touch screen, the places
+page's keyboard line, lesson 33's home-page "as in the workbook", and
+the aligner's misreadings of ى and ء (ء flagged, see above).
 
 **Waiting on the author:** a home for ىٰ، لا، ة (once he decides
 the content); hearing the tracing card's name clip once table 9 is

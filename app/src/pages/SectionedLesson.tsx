@@ -147,6 +147,8 @@ export function SectionedLesson({
   onReadingToggle?: () => void;
 }) {
   const pages = useMemo(() => buildPages(lesson), [lesson]);
+  /** False for a lesson of diagrams only (the places), which has nothing to play. */
+  const hasAudio = useMemo(() => pages.some((p) => p.items.some((it) => it.forms.length > 0)), [pages]);
   // A lesson always opens on its first page (the author's call, 2026-10-11:
   // landing part-way through read as a fault). The remembered place is
   // offered instead, once, in a bubble that goes away by itself.
@@ -513,9 +515,12 @@ export function SectionedLesson({
         <button type="button" className="btn nav-btn" onClick={() => goto(pageNo - 1)} disabled={pageNo === 0}>
           Back
         </button>
-        <button type="button" className="btn primary play-all" onClick={() => void playAll()}>
-          {playingAll ? 'Stop' : 'Play all'}
-        </button>
+        {/* Nothing to play on a page of diagrams (the places lesson). */}
+        {hasAudio && (
+          <button type="button" className="btn primary play-all" onClick={() => void playAll()}>
+            {playingAll ? 'Stop' : 'Play all'}
+          </button>
+        )}
         <button
           type="button"
           className="btn nav-btn"
@@ -548,6 +553,11 @@ export function SectionedLesson({
       {/* Single keys, no chords: this is read by someone speaking commands to
           an iPad, where "press N" is one utterance and Shift+number is not
           reachable at all. */}
+      {!hasAudio ? (
+        <p className="kbd-hint">
+          Keyboard: <kbd>←</kbd> <kbd>→</kbd> (or <kbd>N</kbd> <kbd>P</kbd>) change page.
+        </p>
+      ) : (
       <p className="kbd-hint">
         Keyboard: <kbd>N</kbd> next word, <kbd>P</kbd> previous,{' '}
         {cardCount === 1 ? <kbd>1</kbd> : <><kbd>1</kbd>–<kbd>{cardCount}</kbd></>} start at that
@@ -560,6 +570,7 @@ export function SectionedLesson({
         )}
         .{maxForms > 1 && ' Next walks through every way each word is said.'}
       </p>
+      )}
     </main>
   );
 }

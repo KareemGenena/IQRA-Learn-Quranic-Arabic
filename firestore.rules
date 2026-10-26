@@ -256,7 +256,7 @@ service cloud.firestore {
         && request.resource.data.keys().hasOnly(['b'])
         && request.resource.data.b is list
         && request.resource.data.b.size() >= 2
-        && request.resource.data.b.size() <= 12;
+        && request.resource.data.b.size() <= 300;
       allow delete: if request.auth != null
         && request.auth.token.email == 'kintegracion@gmail.com';
     }

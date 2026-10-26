@@ -121,6 +121,15 @@ export interface LetterWord {
   parts?: string[];
   /** What the teacher says on that recording, for the admin's reference. */
   script?: string;
+  /** When each part's PHRASE begins in the recording ("With a fat-ha it
+   *  sounds like baa" for بَ), and, last, when "Now your turn" does — one
+   *  more entry than `parts`. Found from the recording by the generator
+   *  (scripts/lib/align.mjs); the app spreads each phrase over its letters.
+   *  Before the first, the picture glows; after the last, nothing is lit. */
+  phrases?: number[];
+  /** A short hash of the clip's bytes (make-alphabet.mjs): joins the clip URL, so a
+   *  re-recorded clip under the same filename reaches every device. */
+  audioRev?: string;
   /** Shape family (0–16): the color a letter wears everywhere in the letter lessons. */
   family?: number;
   /** One teaching line under the sounds — "Alif comes after a fat-ha…". */
@@ -200,7 +209,9 @@ export interface Lesson {
    *  Shown under a meaning only when that meaning is a quotation. */
   meaningSource?: string;
   /** Set on the two alphabet songs: one recording, shown as a run of cards. */
-  song?: { mode: 'names' | 'sounds'; steps: SongStep[] };
+  /** `lines`: the step each karaoke line starts at — what is on the screen
+   *  at once (a sung line of seven names; two letters' sounds). */
+  song?: { mode: 'names' | 'sounds'; steps: SongStep[]; lines?: number[] };
   words: SimpleWord[] | PairWord[] | LetterWord[];
   // ── A Level check (kind 'assessment'; scripts/make-assessments.mjs) ────
   level?: number;
@@ -278,4 +289,15 @@ export interface Playable {
   waqfMadd?: number;
   /** Gray the final letter's vowel — the stop that the clip makes. */
   dimFinalMark?: boolean;
+  /** A short hash of the clip's bytes, written by the generator: part of
+   *  the clip's URL, so a re-recorded clip under the same filename is a new
+   *  URL to every cache without a global AUDIO_VERSION bump (2026-10-25). */
+  rev?: string;
+  /** Play the clip to its end even after the last boundary — a letter
+   *  card's "Now your turn" is heard with nothing lit. */
+  playToEnd?: boolean;
+  /** Where each part (a letter card's sound card) begins, as a cluster
+   *  index: the calibration page takes one tap per part, then one at the
+   *  end of the lit part, instead of a tap per letter. */
+  segments?: number[];
 }

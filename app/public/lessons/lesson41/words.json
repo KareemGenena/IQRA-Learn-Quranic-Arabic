@@ -5,6 +5,315 @@
   "kind": "assessment",
   "audioPath": "",
   "level": 1,
-  "items": [],
+  "items": [
+    {
+      "id": 1,
+      "type": "hear",
+      "text": "صَ",
+      "audio": {
+        "lesson": 21,
+        "path": "audio/lesson21/",
+        "file": "word13a.wav",
+        "key": "13a"
+      },
+      "options": [
+        "ظًا",
+        "طٍ",
+        "صَ",
+        "طُ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 21,
+        "id": 13
+      }
+    },
+    {
+      "id": 2,
+      "type": "hear",
+      "text": "خَدُ",
+      "audio": {
+        "lesson": 22,
+        "path": "audio/lesson22/",
+        "file": "word06a.wav",
+        "key": "6a"
+      },
+      "options": [
+        "دُدُ",
+        "خُدُ",
+        "خِيدُ",
+        "خَدُ"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 22,
+        "id": 6
+      }
+    },
+    {
+      "id": 3,
+      "type": "hear",
+      "text": "بَكَ",
+      "audio": {
+        "lesson": 23,
+        "path": "audio/lesson23/",
+        "file": "word22a.wav",
+        "key": "22a"
+      },
+      "options": [
+        "بَعَّ",
+        "بَكَ",
+        "بَغَّ",
+        "بَظَّ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 23,
+        "id": 22
+      }
+    },
+    {
+      "id": 4,
+      "type": "hear",
+      "text": "ضُ",
+      "audio": {
+        "lesson": 21,
+        "path": "audio/lesson21/",
+        "file": "word14c.wav",
+        "key": "14c"
+      },
+      "options": [
+        "طٍ",
+        "ضُ",
+        "ظٌ",
+        "ضٌ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 21,
+        "id": 14
+      }
+    },
+    {
+      "id": 5,
+      "type": "hear",
+      "text": "ضِينَ",
+      "audio": {
+        "lesson": 22,
+        "path": "audio/lesson22/",
+        "file": "word14f.wav",
+        "key": "14f"
+      },
+      "options": [
+        "ضُونَ",
+        "ضَانَ",
+        "صُونَ",
+        "ضِينَ"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 22,
+        "id": 14
+      }
+    },
+    {
+      "id": 6,
+      "type": "hear",
+      "text": "بَمَّ",
+      "audio": {
+        "lesson": 23,
+        "path": "audio/lesson23/",
+        "file": "word24b.wav",
+        "key": "24b"
+      },
+      "options": [
+        "بَظَّ",
+        "بَمَّ",
+        "بَظَ",
+        "بَغَ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 23,
+        "id": 24
+      }
+    },
+    {
+      "id": 7,
+      "type": "hear",
+      "text": "ثًا",
+      "audio": {
+        "lesson": 21,
+        "path": "audio/lesson21/",
+        "file": "word03b.wav",
+        "key": "3b"
+      },
+      "options": [
+        "جِ",
+        "تَ",
+        "بٌ",
+        "ثًا"
+      ],
+      "answer": 3,
+      "source": {
+        "lesson": 21,
+        "id": 3
+      }
+    },
+    {
+      "id": 8,
+      "type": "hear",
+      "text": "تَدَ",
+      "audio": {
+        "lesson": 22,
+        "path": "audio/lesson22/",
+        "file": "word02a.wav",
+        "key": "2a"
+      },
+      "options": [
+        "تِيدَ",
+        "تَدَ",
+        "تِدَ",
+        "جَدَ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 22,
+        "id": 2
+      }
+    },
+    {
+      "id": 9,
+      "type": "hear",
+      "text": "بَبَّ",
+      "audio": {
+        "lesson": 23,
+        "path": "audio/lesson23/",
+        "file": "word02b.wav",
+        "key": "2b"
+      },
+      "options": [
+        "بَخَ",
+        "بَبَّ",
+        "بَجَّ",
+        "بَثَ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 23,
+        "id": 2
+      }
+    },
+    {
+      "id": 10,
+      "type": "hear",
+      "text": "تَ",
+      "audio": {
+        "lesson": 21,
+        "path": "audio/lesson21/",
+        "file": "word02a.wav",
+        "key": "2a"
+      },
+      "options": [
+        "بٍ",
+        "تَ",
+        "جًا",
+        "تًا"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 21,
+        "id": 2
+      }
+    },
+    {
+      "id": 11,
+      "type": "hear",
+      "text": "نُنِ",
+      "audio": {
+        "lesson": 22,
+        "path": "audio/lesson22/",
+        "file": "word24c.wav",
+        "key": "24c"
+      },
+      "options": [
+        "نُونِ",
+        "نُنِ",
+        "نِنِ",
+        "مَنِ"
+      ],
+      "answer": 1,
+      "source": {
+        "lesson": 22,
+        "id": 24
+      }
+    },
+    {
+      "id": 12,
+      "type": "hear",
+      "text": "بَمَ",
+      "audio": {
+        "lesson": 23,
+        "path": "audio/lesson23/",
+        "file": "word24a.wav",
+        "key": "24a"
+      },
+      "options": [
+        "بَمَ",
+        "بَظَّ",
+        "بَغَّ",
+        "بَمَّ"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 23,
+        "id": 24
+      }
+    },
+    {
+      "id": 13,
+      "type": "hear",
+      "text": "سِ",
+      "audio": {
+        "lesson": 21,
+        "path": "audio/lesson21/",
+        "file": "word11e.wav",
+        "key": "11e"
+      },
+      "options": [
+        "رُ",
+        "سٌ",
+        "سِ",
+        "رِ"
+      ],
+      "answer": 2,
+      "source": {
+        "lesson": 21,
+        "id": 11
+      }
+    },
+    {
+      "id": 14,
+      "type": "hear",
+      "text": "مُنِ",
+      "audio": {
+        "lesson": 22,
+        "path": "audio/lesson22/",
+        "file": "word23c.wav",
+        "key": "23c"
+      },
+      "options": [
+        "مُنِ",
+        "نُنِ",
+        "نِنِ",
+        "مَنِ"
+      ],
+      "answer": 0,
+      "source": {
+        "lesson": 22,
+        "id": 23
+      }
+    }
+  ],
   "words": []
 }

@@ -898,7 +898,7 @@ a.pill-half:hover {
    are smaller still, so 2× reads as one size with the Latin, not as a
    mismatch (the author asked for "x2", 2026-10-24). */
 .ar-run {
-  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
   font-size: 2em;
   line-height: 1;
   letter-spacing: 0;
@@ -913,7 +913,7 @@ a.pill-half:hover {
 
 /* A chip of Arabic alone: the Mushaf face at reading size, nothing else. */
 .type-badge.badge-ar {
-  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
   font-size: 20px;
   line-height: 1.15;
   padding: 2px 10px;
@@ -3211,7 +3211,7 @@ kbd {
 }
 
 .letter-name {
-  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
   font-size: 22px;
   color: var(--text-soft);
 }
@@ -3248,7 +3248,7 @@ kbd {
 }
 
 .letter-big {
-  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
   font-size: clamp(120px, 22vw, 200px);
   line-height: 1.1;
   text-align: center;
@@ -3388,7 +3388,7 @@ kbd {
   display: flex;
   gap: 0.35em;
   justify-content: center;
-  font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
   font-size: clamp(88px, 18vw, 160px);
   line-height: 1.2;
 }
@@ -3443,39 +3443,76 @@ kbd {
 .letter-stage { grid-template-columns: 1fr 1fr; gap: 20px; }
 .letter-pic img { transition: box-shadow 0.2s; }
 .letter-pic.glow img { box-shadow: 0 0 0 4px var(--highlight-border), 0 0 26px var(--highlight-border); }
-.small-form-text { font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif; font-size: 44px; line-height: 1.3; }
+.small-form-text { font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif; font-size: 44px; line-height: 1.3; }
 .letter-actions { display: flex; justify-content: center; margin-top: 16px; }
 .play-letter { display: inline-flex; align-items: center; gap: 8px; }
 @media (max-width: 640px) {
   .letter-stage { grid-template-areas: 'pic letter'; }
 }
 
-/* the song strip: one long line of letters that glides so the sung one is centered */
-.song-view { position: relative; overflow: hidden; height: 250px; background: var(--card); border: 1px solid var(--card-border); border-radius: 20px; box-shadow: var(--shadow); }
-.song-strip { position: absolute; right: 0; top: 0; height: 100%; display: inline-flex; align-items: center; gap: 0.3em; white-space: nowrap; font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif; font-size: clamp(88px, 16vw, 150px); line-height: 1.2; transition: transform 0.35s ease; will-change: transform; }
-.song-view.sounds .song-strip { font-size: clamp(64px, 12vw, 110px); }
-.song-letter { padding: 0 0.08em; border-radius: 0.12em; transition: background 0.15s, box-shadow 0.15s; }
-.song-letter.on { background: var(--highlight); box-shadow: 0 0 0 2px var(--highlight-border); }
-.song-letter.group-start { margin-inline-start: 0.9em; }
-
-/* The strip flows by itself (2026-10-24): while the song plays its place is
-   set every frame from the engine's clock, with no CSS easing (`live`); at
-   rest the CSS glide carries it to the focused family. A letter is a button
-   — a tap starts the song from its family — drawn as plain type. The family
-   being sung is bright and every other one dimmed, so only the family in
-   turn reads; the neighbors are there to be seen arriving. */
-.song-strip.live { transition: none; }
-.song-strip .song-letter {
+/* the song, karaoke (2026-10-25): one line at a time, large and still; the
+   sung letter wears the green box; a new line fades in, never slides */
+.song-view {
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 12px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+.song-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.12em 0.18em;
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  font-size: clamp(40px, 8.5vw, 100px);
+  line-height: 1.25;
+  animation: song-line-in 0.28s ease-out;
+}
+.song-view.sounds .song-line { font-size: clamp(38px, 7.5vw, 92px); }
+@keyframes song-line-in { from { opacity: 0; } to { opacity: 1; } }
+.song-line .song-letter {
   appearance: none;
   background: none;
   border: 0;
   font: inherit;
   line-height: inherit;
+  padding: 0 0.08em;
+  border-radius: 0.12em;
   cursor: pointer;
-  transition: background 0.15s, box-shadow 0.15s, opacity 0.3s;
+  transition: none;
 }
-.song-strip .song-letter.on { background: var(--highlight); box-shadow: 0 0 0 2px var(--highlight-border); }
-.song-strip .song-letter.dim { opacity: 0.22; }
+/* the box appears at once: a fade on it read as the box lagging the voice */
+.song-line .song-letter.on { background: var(--highlight); box-shadow: 0 0 0 2px var(--highlight-border); }
+.song-line .song-letter.group-start { margin-inline-start: 0.3em; }
+/* the whole song, small: one row per line */
+.song-lines { list-style: none; margin: 18px auto 0; padding: 0; max-width: 760px; display: flex; flex-direction: column; gap: 4px; }
+.song-lines.sounds { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px 8px; }
+.song-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.15em 0.45em;
+  padding: 2px 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: none;
+  color: var(--text-soft);
+  font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif;
+  font-size: 26px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.song-row.current { color: var(--text); background: var(--card); border-color: var(--card-border); box-shadow: var(--shadow); }
+.song-mini.on { color: var(--accent); }
+@media (hover: hover) { .song-row:hover { border-color: var(--card-border); } }
 .song-lesson .pager { justify-content: center; }
 
 /* ── the back of a letter card (2026-10-24) ──
@@ -3647,12 +3684,22 @@ circle.trace-ink { fill: currentColor; stroke: none; }
   transition: border-color 0.15s, color 0.15s;
 }
 .tool::-webkit-details-marker { display: none; }
-.tool:hover, .tool:focus-visible, .tool-menu[open] > .tool { border-color: var(--accent); color: var(--accent); }
+/* A label grows on HOVER only where there is a hover — a mouse. On a
+   phone a tap leaves :hover stuck on the button, so a tool that was tapped
+   twice (the laser on and off, the gear open and shut) stayed open
+   (2026-10-25). There, `.expanded` (the first tap on a link) and the
+   tool's own state (`.on`, an open menu) are what grow it. */
+.tool:focus-visible, .tool.expanded, .tool-menu[open] > .tool { border-color: var(--accent); color: var(--accent); }
 .tool-label { max-width: 0; overflow: hidden; white-space: nowrap; transition: max-width 0.25s ease, margin-left 0.25s ease; }
-.tool:hover .tool-label, .tool:focus-visible .tool-label, .tool.on .tool-label, .tool-menu[open] > .tool .tool-label { max-width: 140px; margin-left: 6px; }
+.tool:focus-visible .tool-label, .tool.expanded .tool-label, .tool.on .tool-label, .tool-menu[open] > .tool .tool-label { max-width: 140px; margin-left: 6px; }
+@media (hover: hover) {
+  .tool:hover { border-color: var(--accent); color: var(--accent); }
+  .tool:hover .tool-label { max-width: 140px; margin-left: 6px; }
+}
 .tool { --laser: #e11; }
 .tool.on { background: #e11; border-color: #e11; color: #fff; --laser: #fff; }
-.tool.admin:hover, .tool-menu[open] > .tool.admin { border-color: var(--text-soft); color: var(--text); }
+.tool-menu[open] > .tool.admin { border-color: var(--text-soft); color: var(--text); }
+@media (hover: hover) { .tool.admin:hover { border-color: var(--text-soft); color: var(--text); } }
 .tool-menu { position: relative; }
 .tool-pop {
   position: absolute;
@@ -3673,29 +3720,21 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 .tool-pop a:hover { text-decoration: underline; }
 .tool-pop .status-pill { align-self: flex-start; }
 
-/* the contents: a tab on the page's right edge (the drawer opens from
-   there), under the drawer's backdrop and above the laser's overlay */
-.menu-tab {
-  position: fixed;
-  z-index: 940;
-  right: 0;
-  top: 38vh;
-  width: 30px;
-  height: 56px;
-  padding: 0;
-  border-radius: 12px 0 0 12px;
+/* the header's ☰ — always the rightmost thing at the top — and the drawer */
+.menu-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
   border: 1px solid var(--card-border);
-  border-right: none;
   background: var(--card);
-  color: var(--text-soft);
-  font-size: 17px;
-  line-height: 1;
-  box-shadow: var(--shadow-lift);
+  color: var(--text);
+  font-size: 18px;
   cursor: pointer;
-  transition: width 0.15s, color 0.15s;
 }
-.menu-tab:hover, .menu-tab:focus-visible { width: 36px; color: var(--accent); border-color: var(--accent); }
-@media print { .menu-tab { display: none; } }
+@media (hover: hover) { .menu-btn:hover { border-color: var(--accent); color: var(--accent); } }
+/* above the laser's overlay (900), like the lesson's tool row (905): the
+   contents can be opened while pointing */
+.app-header .menu-btn { position: relative; z-index: 905; }
 .menu-backdrop { position: fixed; inset: 0; z-index: 960; background: rgba(0, 0, 0, 0.28); }
 .menu-drawer {
   position: absolute;
@@ -3756,11 +3795,16 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 /* the places page — the workbook's makhraj page, one place per card */
 .place-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 18px; padding: 16px 18px 18px; box-shadow: var(--shadow); }
 .place-title { font-weight: 700; font-size: 18px; display: inline-flex; gap: 10px; align-items: baseline; }
-.place-title-ar { font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif; font-weight: 400; font-size: 20px; color: var(--text-soft); }
+.place-title-ar { font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif; font-weight: 400; font-size: 20px; color: var(--text-soft); }
 .place-stage { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 10px; }
 .place-pic { width: 220px; max-width: 45%; height: auto; }
-.place-letters { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25em; font-family: 'KFGQPC Uthmanic Script HAFS', 'Noto Naskh Arabic', serif; font-size: clamp(44px, 7vw, 68px); line-height: 1.3; max-width: 100%; }
+.place-letters { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25em; font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif; font-size: clamp(44px, 7vw, 68px); line-height: 1.3; max-width: 100%; }
 .place-note { text-align: center; color: var(--text-soft); margin: 10px 0 0; }
+/* one color for every letter of the places lesson: the amber of the lit
+   place in the pictures (2026-10-25) */
+.place-card { --place-letter: #9a6a12; }
+:root[data-theme='dark'] .place-card { --place-letter: #e3b85c; }
+.place-letter { color: var(--place-letter); padding: 0 0.08em; }
 
 /* the workbook, from a lesson */
 /* The workbook buttons under a lesson's title: one per matching section,
@@ -3832,4 +3876,46 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 
 .pair-card.silent {
   opacity: 0.9;
+}
+
+/* ── install as an app (2026-10-25) ──
+   A card that rises from the bottom once, on the first visit: no backdrop,
+   nothing behind it blocked, closed with ×, "Not now" or Escape. Under the
+   contents drawer (960), over the page. */
+.install-card {
+  position: fixed;
+  z-index: 930;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: min(380px, calc(100vw - 32px));
+  padding: 16px 16px 14px;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  color: var(--text);
+  box-shadow: var(--shadow-lift);
+  animation: install-in 0.3s ease-out;
+}
+@keyframes install-in { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+.install-close { position: absolute; top: 8px; right: 10px; width: 30px; height: 30px; border: 0; border-radius: 999px; background: none; color: var(--text-soft); font-size: 20px; cursor: pointer; }
+.install-head { display: flex; gap: 12px; align-items: flex-start; padding-right: 22px; }
+.install-head strong { display: block; font-size: 16px; margin-bottom: 4px; }
+.install-head p { margin: 0; font-size: 14px; line-height: 1.45; color: var(--text-soft); }
+.install-icon { width: 48px; height: 48px; border-radius: 12px; flex: none; }
+.install-steps { margin: 12px 0 0; padding-left: 22px; font-size: 14px; line-height: 1.6; }
+.install-share { width: 18px; height: 18px; vertical-align: -3px; color: var(--accent); }
+.install-after { margin: 10px 0 0; font-size: 14px; color: var(--text-soft); }
+.install-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+@media (max-width: 520px) {
+  .install-card { left: 12px; right: 12px; width: auto; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+}
+.menu-install { width: 100%; border: 0; background: none; text-align: left; font: inherit; font-weight: 600; cursor: pointer; }
+@media print { .install-card { display: none; } }
+/* the sounds song's rows are two letters' sounds: smaller on a phone so a
+   row stays on one line in its column */
+.song-lines.sounds .song-row { font-size: 22px; gap: 0.1em 0.3em; }
+@media (max-width: 520px) {
+  .song-lines.sounds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .song-lines.sounds .song-row { font-size: 19px; padding: 2px 4px; }
+  .song-row { font-size: 22px; }
 }

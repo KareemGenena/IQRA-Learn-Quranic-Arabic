@@ -41,7 +41,9 @@ export const DEFAULT_CONFIG: AppConfig = {
     // The Level checks. Draft until the author has tried them.
     41: 'draft', 42: 'draft', 43: 'draft',
   },
-  features: { laser: 'admin', notes: 'admin' },
+  // `workbooks`: the companion pages (#/workbook) — draft until the author
+  // switches them on in Manage lessons (2026-10-25).
+  features: { laser: 'admin', notes: 'admin', workbooks: 'admin' },
 };
 
 const CACHE_KEY = 'iqra-app-config';

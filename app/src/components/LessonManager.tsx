@@ -6,6 +6,7 @@ import type { AppConfig, FeatureAudience, LessonStatus } from '../lib/appConfig'
 const FEATURES: { key: string; label: string }[] = [
   { key: 'laser', label: 'Laser pointer' },
   { key: 'notes', label: 'Lesson notes' },
+  { key: 'workbooks', label: 'Workbook pages (Listen to a workbook page)' },
 ];
 
 const NEXT_LABEL: Record<LessonStatus, string> = {

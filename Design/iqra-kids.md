@@ -1340,3 +1340,22 @@ cuts each take to one piece with the record click dropped, and the intake
 tool says what it wrote by kind and keeps every session in `intake.json`.
 What is left before Level 1 can be used: his tap calibration of the 29
 lines and the 2 songs, a listen, and Publish.
+
+**2026-10-25, the fourth round — nineteen points, late evening.** The
+letter cards light by PHRASE now: the picture through the introduction,
+each sound card through "With a fat-ha it sounds like baa" and its
+siblings, nothing during "Now your turn, say baa boo bee nab", which
+plays to its end. The phrase times are found in each recording by
+matching the script's words to the pauses (`scripts/lib/align.mjs`), so
+the cards work before any calibration, and a calibration is five taps —
+one per sound card and one at "Now your turn". The songs became karaoke:
+one line on screen, still, the sung letter boxed, the next line fading
+in as it begins (the sliding strip made the author dizzy), timed from
+the song's own breaths and note onsets. The places lesson wears one
+amber color — the lit spot in its pictures — instead of the family
+colors, has no Play, and its English reads left to right. Lessons 21–23
+(tanween, natural madd, shadda) are recorded and carry the author's
+teaching lines in their title boxes; بَمَّ and بَنَّ wear "Ghunna"; عَفِ
+/ عَفِّ left the shadda sheet. The Arabic everywhere in Level 1 (letter
+cards, songs, places, chips) is now truly the Mushaf face — it had been
+Noto Naskh under a wrong font name. Open: the author re-records ت.

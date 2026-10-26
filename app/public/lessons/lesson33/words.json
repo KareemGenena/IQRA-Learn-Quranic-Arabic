@@ -11,7 +11,7 @@
       "id": "places",
       "title": "Where the Letters Come From",
       "titleArabic": "مخارج الحروف",
-      "hint": "Five places — mouth space, throat, tongue, lips and nose — as in the workbook."
+      "hint": "Five places — mouth space, throat, tongue, lips and nose."
     }
   ],
   "words": [
@@ -24,7 +24,7 @@
         "zone": "jawf",
         "title": "Mouth space",
         "titleArabic": "الجوف",
-        "note": "The madd letters.",
+        "note": "The madd letters",
         "letters": [
           {
             "text": "ا",
@@ -50,7 +50,7 @@
         "zone": "throat",
         "title": "Throat",
         "titleArabic": "الحلق",
-        "note": "6 letters.",
+        "note": "6 letters",
         "letters": [
           {
             "text": "ء",
@@ -88,7 +88,7 @@
         "zone": "tongue",
         "title": "Tongue",
         "titleArabic": "اللسان",
-        "note": "All the other 18 letters.",
+        "note": "All the other 18 letters",
         "letters": [
           {
             "text": "ت",
@@ -174,7 +174,7 @@
         "zone": "lips",
         "title": "Lips",
         "titleArabic": "الشفتان",
-        "note": "4 letters.",
+        "note": "4 letters",
         "letters": [
           {
             "text": "ب",
@@ -204,7 +204,7 @@
         "zone": "nose",
         "title": "Nose",
         "titleArabic": "الخيشوم",
-        "note": "Ghunna — 2 letters.",
+        "note": "Ghunna — 2 letters",
         "letters": [
           {
             "text": "ن",

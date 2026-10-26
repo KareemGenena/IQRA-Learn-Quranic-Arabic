@@ -1,42 +1,39 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePlayable } from '../lib/usePlayable';
 import { toItems } from '../lib/lessons';
 import type { Lesson } from '../types';
 
 /**
- * An alphabet song as a strip of letters that flows BY ITSELF as the song
- * is sung.
+ * An alphabet song, sung along line by line — karaoke, not a moving strip.
  *
- * The song is ONE recording. All the letters sit on one long strip, right to
- * left, sisters together with a wider gap and a change of family color. The
- * family being sung is centered and bright, every other family dimmed; the
- * sung letter wears the app's green box. When a family's turn comes the
- * strip GLIDES so that the family is centered as its first letter is sung —
- * three letters' width for ب ت ث after ا, one letter's width for ك after ل,
- * in the same time, so the speed of the glide follows the song (the author,
- * 2026-10-24: the strip must move as he sings, with no Next to press). There
- * is a Play/Pause and nothing else to press; a tap on a letter starts the
- * song from its family.
+ * The song is ONE recording. The screen shows one LINE of it at a time,
+ * large and still: a sung line of seven names in the names song (ا…خ ·
+ * د…ص · ض…ق · ك…ى), two letters' sounds in the sounds song. The letter being
+ * sung wears the app's green box; nothing else moves. Just before the next
+ * line is sung the line on screen gives way to it — a short fade, never a
+ * slide. Below, the whole song small, one row per line, the current one
+ * marked: the teacher sees where the class is and taps a row to go there.
  *
- * The strip's position is a function of the media time, set every frame
- * from the engine's own clock (`now`) — the same clock the green box runs
- * on — so a pause holds it, a seek jumps it, and a calibrated song glides at
- * exactly the right moments. Until the song is calibrated by tapping along,
- * the automatic timings mean nothing for a sung rhythm: calibration is the
- * whole timing for a song.
+ * Why (the author, 2026-10-25): the strip that glided under the sung letter
+ * made him dizzy — a glide for every single letter, a third of a second
+ * each. Letters standing still while the box walks along them is how a
+ * child follows a printed line, and a line that turns every few seconds
+ * reads like a page.
  *
- * Not a video: a video would be a second copy of the content, re-rendered on
- * every retake, with no pause on a letter and no use of the calibration.
+ * Which line is on screen is a function of the MEDIA TIME, read every frame
+ * from the engine's own clock (`now`), the clock the green box runs on: a
+ * pause holds it, a seek jumps it. The timing is baked from the recording
+ * itself (the song's breaths and its notes' onsets, scripts/lib/align.mjs);
+ * a tap calibration still overrides it.
  *
- * Each letter is its own element. The letters are STANDALONE and do not
- * join, so the never-split-a-word rule — which protects cursive joining — is
- * not touched.
+ * Play/Pause (and Space) only; a tap on a letter starts the song from that
+ * letter. Each letter is its own element — they are standalone and do not
+ * join, so the never-split-a-word rule is not touched.
  */
 
-/** A glide ends as the family's first letter is sung and takes at most this
- *  long; a family sung faster than that gives up half its time to it. */
-const GLIDE_S = 0.6;
-const ease = (u: number) => u * u * (3 - 2 * u);
+/** A line gives way this long before its successor's first note, so the
+ *  new line is on screen as it is sung. */
+const LEAD_S = 0.3;
 
 export function SongCards({ lesson, rate }: { lesson: Lesson; rate: number }) {
   const song = lesson.song;
@@ -46,150 +43,93 @@ export function SongCards({ lesson, rate }: { lesson: Lesson; rate: number }) {
     playable,
     rate,
   );
+  const steps = useMemo(() => song?.steps ?? [], [song]);
 
-  /** Step indices, group by group — a shape family, or a letter in the sounds song. */
-  const groups = useMemo(() => {
-    const out: number[][] = [];
-    (song?.steps ?? []).forEach((s, i) => {
-      (out[s.group] ??= []).push(i);
-    });
-    return out.filter(Boolean);
-  }, [song]);
-  const groupOf = useCallback((step: number) => groups.findIndex((g) => g.includes(step)), [groups]);
-  /** When each family begins, in media time — known once the clip has played. */
-  const onsets = useMemo(() => groups.map((g) => boundaries[g[0]] ?? 0), [groups, boundaries]);
+  /** [first step, step after the last] of every line. Without `song.lines`
+   *  (an older words.json) a line is a group — a shape family, or a letter. */
+  const lines = useMemo(() => {
+    let starts = song?.lines?.length ? song.lines : [];
+    if (!starts.length) starts = steps.map((s, i) => (i === 0 || s.group !== steps[i - 1].group ? i : -1)).filter((i) => i >= 0);
+    return starts.map((a, k) => [a, starts[k + 1] ?? steps.length] as [number, number]);
+  }, [song, steps]);
+  const lineOf = useCallback((step: number) => Math.max(0, lines.findIndex(([a, b]) => step >= a && step < b)), [lines]);
 
-  // The family at the center when nothing plays. It follows the song, so a
-  // pause leaves the strip where the song is; when the song has REACHED ITS
-  // END it goes back to the first family, so Play begins again from the
-  // start. Only then: playback also stops when the page is hidden (the
-  // warm-up's visibilitychange) or a clip fails, and a teacher who paused on
-  // ق and answered a message must find ق, not ا, on coming back.
-  const [focus, setFocus] = useState(0);
-  const sung = activeIndex !== null ? groupOf(activeIndex) : -1;
-  useEffect(() => {
-    if (sung >= 0) setFocus(sung);
-  }, [sung]);
-  /** The media time the frame loop last saw — how the end is told from a stop. */
-  const lastSeen = useRef(0);
-  const wasPlaying = useRef(false);
-  useEffect(() => {
-    const end = boundaries[boundaries.length - 1];
-    if (wasPlaying.current && !playing && end !== undefined && lastSeen.current >= end - 0.25) setFocus(0);
-    wasPlaying.current = playing;
-  }, [playing, boundaries]);
-  /** Until the first play has resolved the clip's timing there are no onsets
-   *  to glide by, and a start is given by CLUSTER, which the hook resolves
-   *  against the bounds it fetches — `play(onsets[focus])` was 0 for every
-   *  family on a fresh page, so a tapped ك started the song at ا. */
+  const [line, setLine] = useState(0);
   const timed = boundaries.length > 0;
 
-  // Each family's resting center, measured from its first and last letter's
-  // rectangles with the strip's CURRENT translation taken back out — so it is
-  // right whether a glide has finished or not, and whatever RTL does to
-  // offsets (the first version used offsets and sent ب the wrong way).
-  const viewRef = useRef<HTMLDivElement>(null);
-  const stripRef = useRef<HTMLDivElement>(null);
-  const centers = useRef<number[]>([]);
-  const viewWidth = useRef(0);
-  const measure = useCallback(() => {
-    const view = viewRef.current;
-    const strip = stripRef.current;
-    if (!view || !strip) return;
-    const t = getComputedStyle(strip).transform;
-    const current = t && t !== 'none' ? new DOMMatrixReadOnly(t).e : 0;
-    const vr = view.getBoundingClientRect();
-    viewWidth.current = vr.width;
-    centers.current = groups.map((g) => {
-      const a = (strip.children[g[0]] as HTMLElement | undefined)?.getBoundingClientRect();
-      const b = (strip.children[g[g.length - 1]] as HTMLElement | undefined)?.getBoundingClientRect();
-      if (!a || !b) return 0;
-      return (Math.min(a.left, b.left) + Math.max(a.right, b.right)) / 2 - current - vr.left;
-    });
-  }, [groups]);
-  /** The translation that puts family `g` at the center of the view. */
-  const dxOf = useCallback((g: number) => viewWidth.current / 2 - (centers.current[g] ?? 0), []);
-  /** Moves the strip: `live` is the per-frame motion, with no CSS easing. */
-  const setX = useCallback((dx: number, live: boolean) => {
-    const strip = stripRef.current;
-    if (!strip) return;
-    strip.classList.toggle('live', live);
-    strip.style.transform = `translateX(${dx}px)`;
-  }, []);
+  /** The line on screen while the song plays: the last one whose first note
+   *  is less than LEAD_S away. */
+  const lineAt = useCallback(
+    (t: number) => {
+      let k = 0;
+      while (k + 1 < lines.length && t >= (boundaries[lines[k + 1][0]] ?? Infinity) - LEAD_S) k++;
+      return k;
+    },
+    [lines, boundaries],
+  );
 
-  // At rest, and while paused: the focused family at the center, with the
-  // CSS glide — so a resize (an iPad turned) during a pause re-centers it.
-  const [tick, setTick] = useState(0);
-  useLayoutEffect(() => {
-    if (playing && !paused) return;
-    measure();
-    setX(dxOf(focus), false);
-  }, [focus, playing, paused, tick, lesson, measure, dxOf, setX]);
-  useEffect(() => {
-    const bump = () => setTick((t) => t + 1);
-    window.addEventListener('resize', bump);
-    void document.fonts?.ready.then(bump);
-    return () => window.removeEventListener('resize', bump);
-  }, []);
-
-  // Playing: the strip's place is a function of the media time, set every
-  // frame. The family whose turn it is sits at the center; in the last part
-  // of its time the strip glides to the next, arriving as that family's
-  // first letter is sung.
+  /** The media time the frame loop last saw — how the end is told from a stop. */
+  const lastSeen = useRef(0);
   useEffect(() => {
     if (!playing || paused || !timed) return;
-    measure();
-    const dxAt = (t: number) => {
-      let k = 0;
-      while (k + 1 < onsets.length && t >= onsets[k + 1]) k++;
-      if (k + 1 < onsets.length) {
-        const g = Math.min(GLIDE_S, 0.5 * (onsets[k + 1] - onsets[k]));
-        const start = onsets[k + 1] - g;
-        if (g > 0 && t >= start) return dxOf(k) + (dxOf(k + 1) - dxOf(k)) * ease((t - start) / g);
-      }
-      return dxOf(k);
-    };
     let raf = 0;
     const frame = () => {
       const t = now();
       if (t !== null) {
         lastSeen.current = t;
-        setX(dxAt(t), true);
+        const k = lineAt(t);
+        setLine((l) => (l === k ? l : k));
       }
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
-    const onResize = () => measure();
-    window.addEventListener('resize', onResize);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', onResize);
-    };
-  }, [playing, paused, timed, onsets, measure, dxOf, setX, now]);
+    return () => cancelAnimationFrame(raf);
+  }, [playing, paused, timed, now, lineAt]);
 
-  /** A tap on a letter: the song from that family. */
-  const go = useCallback(
-    (g: number) => {
-      if (g < 0 || g >= groups.length) return;
-      if (playing) {
-        seek(onsets[g] ?? 0);
-        if (paused) setX(dxOf(g), false);
-      } else setFocus(g);
+  // When the song has REACHED ITS END it goes back to the first line, so
+  // Play begins again from the start. Only then: playback also stops when
+  // the page is hidden, and a teacher who paused on ق and answered a message
+  // must find ق's line, not the first, on coming back.
+  const wasPlaying = useRef(false);
+  useEffect(() => {
+    const end = boundaries[boundaries.length - 1];
+    if (wasPlaying.current && !playing && end !== undefined && lastSeen.current >= end - 0.25) setLine(0);
+    wasPlaying.current = playing;
+  }, [playing, boundaries]);
+
+  /** A tap on a letter: the song from that letter. */
+  const fromStep = useCallback(
+    (i: number) => {
+      if (playing && timed) {
+        seek(boundaries[i] ?? 0);
+        if (paused) setLine(lineOf(i));
+        return;
+      }
+      setLine(lineOf(i));
+      void play({ cluster: i });
     },
-    [groups.length, playing, paused, onsets, seek, setX, dxOf],
+    [playing, timed, paused, boundaries, seek, play, lineOf],
+  );
+
+  /** A tap on a row of the whole song: that line, playing or not. */
+  const toLine = useCallback(
+    (k: number) => {
+      setLine(k);
+      if (playing && timed) seek(boundaries[lines[k][0]] ?? 0);
+    },
+    [playing, timed, boundaries, lines, seek],
   );
 
   const togglePlay = useCallback(() => {
     if (!playing) {
-      // By cluster: a step is a cluster in both songs (no silent clusters,
-      // the tatweel of هَـ merged), and the hook resolves it against the
-      // timing it has just fetched — right on the first play of the page.
-      void play({ cluster: groups[focus]?.[0] ?? 0 });
+      // By cluster: a step is a cluster in both songs, and the hook resolves
+      // it against the timing it has just fetched — right on a first play.
+      void play({ cluster: lines[line]?.[0] ?? 0 });
       return;
     }
     if (paused) resume();
     else pause();
-  }, [playing, paused, focus, groups, play, pause, resume]);
+  }, [playing, paused, line, lines, play, pause, resume]);
 
   // Single keys only, as everywhere: someone may be driving this by voice.
   useEffect(() => {
@@ -209,8 +149,9 @@ export function SongCards({ lesson, rate }: { lesson: Lesson; rate: number }) {
   if (!song || !playable) return <p className="loading">This song has no card yet.</p>;
 
   const section = lesson.sections?.[0];
-  const bright = playing && sung >= 0 ? sung : focus;
-  const starts = new Set(groups.map((g) => g[0]));
+  const [from, to] = lines[line] ?? [0, 0];
+  const range = (a: number, b: number) => Array.from({ length: b - a }, (_, k) => a + k);
+  const startsGroup = (i: number) => i > 0 && steps[i].group !== steps[i - 1].group;
 
   return (
     <main className="song-lesson">
@@ -224,22 +165,20 @@ export function SongCards({ lesson, rate }: { lesson: Lesson; rate: number }) {
         <p className="section-hint">{section?.hint}</p>
       </section>
 
-      <div className={`song-view ${song.mode}`} ref={viewRef}>
-        <div className="song-strip" ref={stripRef} dir="rtl" lang="ar">
-          {song.steps.map((s, i) => {
-            const g = groupOf(i);
-            return (
-              <button
-                type="button"
-                key={i}
-                className={`song-letter fam-${(s.family ?? 0) % 7} ${i === activeIndex ? 'on' : ''} ${starts.has(i) && i > 0 ? 'group-start' : ''} ${g !== bright ? 'dim' : ''}`}
-                onClick={() => go(g)}
-                aria-label={`Start from ${s.text}`}
-              >
-                {s.text}
-              </button>
-            );
-          })}
+      <div className={`song-view ${song.mode}`}>
+        {/* keyed by line: a new line is a new element, and fades in */}
+        <div className="song-line" key={line} dir="rtl" lang="ar">
+          {range(from, to).map((i) => (
+            <button
+              type="button"
+              key={i}
+              className={`song-letter fam-${(steps[i].family ?? 0) % 7} ${i === activeIndex ? 'on' : ''} ${i > from && startsGroup(i) ? 'group-start' : ''}`}
+              onClick={() => fromStep(i)}
+              aria-label={`Start from ${steps[i].text}`}
+            >
+              {steps[i].text}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -249,12 +188,31 @@ export function SongCards({ lesson, rate }: { lesson: Lesson; rate: number }) {
         </button>
       </nav>
 
-      <p className="page-status" aria-live="polite">
-        {bright + 1} of {groups.length}
-      </p>
+      {/* the whole song, small: one row per line, the current one marked */}
+      <ol className={`song-lines ${song.mode}`} aria-label="The whole song">
+        {lines.map(([a, b], k) => (
+          <li key={k}>
+            <button
+              type="button"
+              className={`song-row ${k === line ? 'current' : ''}`}
+              aria-current={k === line ? 'true' : undefined}
+              onClick={() => toLine(k)}
+              dir="rtl"
+              lang="ar"
+            >
+              {range(a, b).map((i) => (
+                <span key={i} className={`song-mini ${i === activeIndex ? 'on' : ''}`}>
+                  {steps[i].text}
+                </span>
+              ))}
+            </button>
+          </li>
+        ))}
+      </ol>
+
       <p className="kbd-hint">
-        The letters move by themselves as the song is sung. Tap a letter to start from it; <kbd>Space</kbd>{' '}
-        plays or pauses.
+        The line turns by itself as the song is sung. Tap a letter to start from it, or a row below to go to that
+        line; <kbd>Space</kbd> plays or pauses.
       </p>
     </main>
   );

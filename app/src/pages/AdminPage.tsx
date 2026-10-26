@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArabicWord } from '../components/ArabicWord';
 import { splitClusters } from '../lib/graphemes';
-import { audibleIndices } from '../lib/timing';
+import { audibleIndices, phraseBoundaries } from '../lib/timing';
 import { speechBounds } from '../lib/audioAnalysis';
 import { allPlayables } from '../lib/lessons';
 import { clearCalibration, loadCalibration, saveCalibration } from '../lib/calibration';
@@ -38,6 +38,15 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
     () => audibleIndices(clusters, playable.silentClusters),
     [clusters, playable.silentClusters],
   );
+  /**
+   * A letter card is calibrated by PHRASE: a tap as each sound card's
+   * phrase begins ("With a fat-ha…"), then one when the lit part ends ("Now
+   * your turn") — five taps for بَ بُ بِ نَبۡ, where a tap per letter would
+   * have been five as well but at the wrong moments (2026-10-25).
+   */
+  const segments = playable.segments;
+  const segmented = !!segments?.length;
+  const tapsNeeded = segmented ? segments!.length + 1 : audible.length;
   const calibration = useMemo(
     () => loadCalibration(lesson.lesson),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,7 +89,11 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
       captureRef.current = null;
       window.clearInterval(tailCheck);
       const captured = tapsRef.current;
-      if (captured.length === audible.length) {
+      const spread = segmented ? phraseBoundaries(clusters, playable.silentClusters, segments!, captured) : null;
+      if (segmented && captured.length === tapsNeeded && spread) {
+        setBoundaries(spread);
+        setPhase('review');
+      } else if (!segmented && captured.length === audible.length) {
         const lastTap = captured[captured.length - 1];
         const end = Math.min(Math.max(bounds.end, lastTap + 0.2), bounds.duration);
         setBoundaries([...captured, end]);
@@ -93,17 +106,17 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
     };
     const handle = playWithHighlights(url, [0, bounds.duration], () => {}, finalize, rate);
     captureRef.current = handle;
-    // Don't sit through the silent tail once every letter has been tapped.
+    // Don't sit through the silent tail once every letter has been tapped —
+    // nor, on a letter card, through "Now your turn" once it is marked.
     const tailCheck = window.setInterval(() => {
-      if (captureRef.current === handle && tapsRef.current.length === audible.length && handle.now() >= bounds.end) {
-        finalize();
-      }
+      if (captureRef.current !== handle || tapsRef.current.length !== tapsNeeded) return;
+      if (segmented || handle.now() >= bounds.end) finalize();
     }, 100);
   };
 
   const recordTap = () => {
     const handle = captureRef.current;
-    if (phase !== 'capturing' || !handle || tapsRef.current.length >= audible.length) return;
+    if (phase !== 'capturing' || !handle || tapsRef.current.length >= tapsNeeded) return;
     // Reaction time is wall-clock; the media only advanced by offset × rate.
     const t = Math.max(0, handle.now() - (offsetMs / 1000) * rate);
     const prev = tapsRef.current[tapsRef.current.length - 1] ?? -1;
@@ -121,7 +134,7 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, audible.length, offsetMs, rate]);
+  }, [phase, tapsNeeded, offsetMs, rate]);
 
   const preview = async () => {
     if (!boundaries) return;
@@ -135,6 +148,9 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
       },
       rate,
       audible,
+      undefined,
+      0,
+      playable.playToEnd,
     );
   };
 
@@ -178,13 +194,23 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
 
   const calibratedCount = units.filter((u) => calibration[u.playable.key]).length;
   // The pending marker points at the CLUSTER awaiting its tap.
-  const pendingIndex = phase === 'capturing' ? (audible[taps.length] ?? null) : null;
+  const pendingIndex =
+    phase === 'capturing' ? (segmented ? (segments![taps.length] ?? null) : (audible[taps.length] ?? null)) : null;
 
   return (
     <main className="calibrate-page">
       <p className="cal-intro">
         Play a word and tap <kbd>Space</kbd> (or the big button) at the moment each letter begins.
         Silent letters are skipped automatically. Saved timings sync to every device.
+        {segmented && (
+          <>
+            {' '}
+            <strong>A letter card</strong> takes a tap as each sound card's phrase begins — "With a fat-ha…", "with
+            a damma…" — and one more at "Now your turn". Before the first tap the picture glows; after the last,
+            nothing is lit. Its timing is already found from the recording; calibrate only a card that lights at the
+            wrong moment.
+          </>
+        )}
       </p>
 
       <div className="cal-word-nav" dir="rtl">
@@ -216,7 +242,11 @@ export function AdminPage({ lesson }: { lesson: Lesson }) {
               ? 'Calibrated. Recapture to redo it.'
               : 'Not calibrated yet — timings are automatic.')}
           {phase === 'capturing' &&
-            `Listening… tap for letter ${Math.min(taps.length + 1, audible.length)} of ${audible.length}`}
+            (segmented
+              ? taps.length < segments!.length
+                ? `Listening… tap as sound card ${taps.length + 1} of ${segments!.length}'s phrase begins ("With a …")`
+                : 'Now tap once more as the teacher says "Now your turn".'
+              : `Listening… tap for letter ${Math.min(taps.length + 1, audible.length)} of ${audible.length}`)}
           {phase === 'review' && 'Captured! Preview it, then save or redo.'}
         </p>
 

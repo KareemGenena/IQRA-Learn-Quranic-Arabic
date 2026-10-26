@@ -26,8 +26,16 @@ import { VitePWA } from 'vite-plugin-pwa';
  * moment their calibrations need re-checking anyway.
  *
  * v3: lesson 6 كهيعص retake, 2026-09-05.
+ * v5: Level 1 recorded (lessons 20, 30–32, 21–23), 2026-10-25. Those
+ * lessons' words.json listed their clips BEFORE the clips existed, so a
+ * device that opened one was answered with the app's HTML page for every
+ * clip URL — and the browser kept that answer for a day under the
+ * `/audio/**` max-age. The author's phone then played nothing while the
+ * laptop, which had not asked early, played. A new version is a new URL;
+ * and every clip fetch now revalidates (`cache: 'no-cache'` below and in
+ * audioSource.ts), so a stale answer cannot be handed back again.
  */
-const AUDIO_VERSION = 'v4';
+const AUDIO_VERSION = 'v5';
 const AUDIO_CACHE = `iqra-audio-${AUDIO_VERSION}`;
 
 /**
@@ -142,6 +150,11 @@ export default defineConfig({
                * through to the network every time, which is the safe failure.
                */
               cacheableResponse: { statuses: [200], headers: { 'Content-Type': 'audio/wav' } },
+              // The worker goes to the network only on a miss; when it does,
+              // it asks the server again instead of taking the browser's
+              // HTTP cache at its word — which may hold the HTML page a
+              // missing clip was answered with (see AUDIO_VERSION).
+              fetchOptions: { cache: 'no-cache' },
             },
           },
           {
@@ -172,6 +185,7 @@ export default defineConfig({
                 purgeOnQuotaError: true,
               },
               cacheableResponse: { statuses: [200], headers: { 'Content-Type': type } },
+              fetchOptions: { cache: 'no-cache' as const },
             },
           })),
         ],
