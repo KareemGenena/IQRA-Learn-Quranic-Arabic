@@ -2,6 +2,8 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { WorkbookIndex, WorkbookPage } from './pages/WorkbookPage';
 import { AssessmentPage } from './pages/AssessmentPage';
+import { QuizPage } from './pages/QuizPage';
+import { BulbIcon } from './components/BulbIcon';
 import { ReadingSwitch } from './components/ReadingSwitch';
 import { LettersLesson, drawsLetterCards } from './pages/LettersLesson';
 import { LessonTools } from './components/LessonTools';
@@ -61,7 +63,7 @@ function initialReading(): Reading {
 }
 
 interface Route {
-  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'recordings' | 'intake' | 'workbook';
+  page: 'home' | 'lesson' | 'admin' | 'notes' | 'account' | 'classes' | 'recordings' | 'intake' | 'workbook' | 'quiz';
   lessonId: number;
   /** The workbook companion: #/workbook, #/workbook/L/<printed page>, or
    *  #/workbook/L/section/N (the QR's landing — resolves to a page). */
@@ -96,7 +98,7 @@ function parseRoute(hash: string): Route {
   }
   // "calibrate" is the old name for the admin page; still accepted so an old
   // bookmark or an installed shortcut doesn't dead-end.
-  const m = /^#\/(lesson|admin|calibrate|notes|account|classes|recordings|intake)(?:\/(\d+))?/.exec(hash);
+  const m = /^#\/(lesson|admin|calibrate|notes|account|classes|recordings|intake|quiz)(?:\/(\d+))?/.exec(hash);
   if (m) {
     const page = m[1] === 'calibrate' ? 'admin' : (m[1] as Route['page']);
     return { page, lessonId: Number(m[2] ?? 0) };
@@ -232,13 +234,17 @@ export default function App() {
   // The workbook companion is published like a lesson: the admin sees it
   // while it is a draft, everyone once it is switched on (2026-10-25).
   const showWorkbooks = canUseFeature(config, 'workbooks', admin);
+  // Quiz me, the question book: its own door, never a lesson — the
+  // lightbulb at the top of every page (the author, 2026-10-27). Published
+  // like a lesson: the admin's alone until switched on in Manage lessons.
+  const showQuiz = canUseFeature(config, 'quiz', admin);
 
   return (
     <div className={`app ${laser ? 'laser-on' : ''}`}>
       {/* The laser's switch is in the lesson's tool row; the floating pill
           it had covered the pager on a phone (2026-10-25). */}
       {showLaser && <LaserPointer active={laser} onExit={() => setLaser(false)} />}
-      <ContentsMenu config={config} admin={admin} workbooks={showWorkbooks} currentId={route.lessonId} open={menu} onClose={() => setMenu(false)} />
+      <ContentsMenu config={config} admin={admin} workbooks={showWorkbooks} quiz={showQuiz} currentId={route.lessonId} open={menu} onClose={() => setMenu(false)} />
       <InstallPrompt />
 
       <header className="app-header">
@@ -271,6 +277,17 @@ export default function App() {
               Sign in
             </a>
           )}
+          {showQuiz && (
+            <a
+              className={`tool header-tool ${route.page === 'quiz' ? 'current' : ''}`}
+              href="#/quiz"
+              aria-label="Quiz me"
+              aria-current={route.page === 'quiz' ? 'page' : undefined}
+            >
+              <BulbIcon />
+              <span className="tool-label">Quiz me</span>
+            </a>
+          )}
           <button
             type="button"
             className="theme-toggle"
@@ -287,7 +304,7 @@ export default function App() {
         </div>
       </header>
 
-      {route.page === 'home' && <HomePage config={config} admin={admin} workbooks={showWorkbooks} />}
+      {route.page === 'home' && <HomePage config={config} admin={admin} workbooks={showWorkbooks} quiz={showQuiz} />}
 
       {route.page !== 'home' && (
         <>
@@ -319,6 +336,8 @@ export default function App() {
                   ? route.level
                     ? `Workbook Level ${route.level}`
                     : 'Practice workbooks'
+                  : route.page === 'quiz'
+                  ? 'Quiz me'
                   : route.page === 'account'
                   ? 'Your account'
                   : route.page === 'classes'
@@ -339,6 +358,9 @@ export default function App() {
           {route.page === 'classes' && <ClassesPage account={account} />}
 
           {route.page === 'recordings' && <RecordingsPage account={account} />}
+
+          {route.page === 'quiz' &&
+            (showQuiz ? <QuizPage config={config} admin={admin} /> : <p className="loading">Quiz me is not published yet.</p>)}
 
           {route.page === 'workbook' && !showWorkbooks && (
             <p className="loading">The workbook pages are not published yet.</p>

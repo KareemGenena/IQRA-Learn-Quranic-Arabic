@@ -21,6 +21,12 @@ current — the "Where we are" section at the bottom is the handover note.
 > (milestones M0–M6); the recon report maps its data model onto this app and
 > lists the decisions that block M1. Only M0 is done (2026-09-19). So: grammar,
 > nahw, sarf, parsing, فاعل, corpus, Quran text, sessions → open both first.
+>
+> **If the session touches Quiz me — the question book, drills, `#/quiz`, the
+> lightbulb, student or parent accounts, a Masjid account, reports — read
+> `Design/drills.md` first.** Stage 1 (guest-mode drills) is built; stage 2
+> (accounts holding learner profiles, a shared Masjid account, saving and
+> reports) is designed there and not built.
 
 ---
 
@@ -155,6 +161,21 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   `iqra-progress`, and never a gate. Level 1's check is empty until its
   lessons are recorded, and the page says so. The paper Maktab instrument
   (§4) stays separate; this does not pretend to be it.
+- **Quiz me** (`#/quiz`, 2026-10-27; `Design/drills.md`) — the question
+  book: its own door (a lightbulb in the header, a card under Continue, a
+  line in the drawer), never a lesson. Choose topics — seven, the Level 1
+  workbook's sections with §3 split into letter sounds and harakat — and 15,
+  30 or 45 questions, behind a grown-ups multiplication; the choice is
+  remembered, so the next quiz is one tap. A clip plays, the choices wake when
+  it ends, tap what you heard; misses come back at the end, round after round,
+  until each is right once; an end screen by topic with "Practice my
+  mistakes". Guest mode: nothing about the learner is kept, and the quiz
+  under way survives a reload (`iqra-quiz-run`). The bank is
+  `public/quiz/quiz.json` from `node scripts/make-quiz.mjs`, which reads the
+  lesson 21/22/23/30 clips and two sheets of the author's (`Word Tables/Quiz
+  Prompts.docx`, `Quiz Sound-alikes.docx`). Feature `quiz`, admin-only until
+  switched on in Manage lessons; a topic shows only where its lessons may be
+  opened.
 - **Continue** — the way through, never a gate. The home page opens with one
   card: the lesson last left unfinished, else the first not done ("Start
   here" / "Next up" / "Continue"), with every lesson listed beneath it, ✓ on
@@ -1851,6 +1872,23 @@ is not needed to ship, but it is the cheap way to be sure — the script is
 session's directory, and it costs about 1.5 M subagent tokens a run.
 
 ## 5. Next task
+
+**Quiz me — stage 1 built, committed and deployed 2026-10-27 as a draft:
+only the admin sees the lightbulb until it is switched on in Manage lessons.
+Waiting on the author** (`Design/drills.md` §9 is the full list):
+- Record the thirteen spoken instructions: `Word Tables/Quiz Prompts.docx`
+  in the intake tool, one take each, into `Audio/Audio - Quiz/`; then
+  `node scripts/make-quiz.mjs`, build, deploy.
+- Correct `Word Tables/Quiz Sound-alikes.docx` (not recorded), re-run the
+  generator.
+- The ت retake and the other Level 1 retakes, then `make-alphabet.mjs` and
+  `make-quiz.mjs`.
+- Publish Quiz me from Manage lessons once Level 1 is published.
+- Remind the author when the time comes: register the Masjid account with a
+  Masjid email when teacher accounts are about to be made; turn on two-step
+  verification on the Google account that owns Firebase once the quiz is
+  published; and the first-tablet checklist (drills.md §9) when the author
+  says the tablet has arrived.
 
 **The continuum — decided 2026-10-11; levels and the door built the same
 day.** The author set the workbooks and the app side by side and decided,

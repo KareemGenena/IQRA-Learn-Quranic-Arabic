@@ -1,0 +1,2603 @@
+{
+ "letters": [
+  {
+   "letter": "ب",
+   "base": "ب",
+   "family": 1,
+   "name": {
+    "text": "بَاء",
+    "lesson": 30,
+    "file": "name01.wav",
+    "rev": "8d820760"
+   },
+   "forms": [
+    {
+     "text": "بَ",
+     "lesson": 21,
+     "file": "word01a.wav"
+    },
+    {
+     "text": "بًا",
+     "lesson": 21,
+     "file": "word01b.wav"
+    },
+    {
+     "text": "بُ",
+     "lesson": 21,
+     "file": "word01c.wav"
+    },
+    {
+     "text": "بٌ",
+     "lesson": 21,
+     "file": "word01d.wav"
+    },
+    {
+     "text": "بِ",
+     "lesson": 21,
+     "file": "word01e.wav"
+    },
+    {
+     "text": "بٍ",
+     "lesson": 21,
+     "file": "word01f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ت",
+   "base": "ت",
+   "family": 1,
+   "name": {
+    "text": "تَاء",
+    "lesson": 30,
+    "file": "name02.wav",
+    "rev": "f494c0d4"
+   },
+   "forms": [
+    {
+     "text": "تَ",
+     "lesson": 21,
+     "file": "word02a.wav"
+    },
+    {
+     "text": "تًا",
+     "lesson": 21,
+     "file": "word02b.wav"
+    },
+    {
+     "text": "تُ",
+     "lesson": 21,
+     "file": "word02c.wav"
+    },
+    {
+     "text": "تٌ",
+     "lesson": 21,
+     "file": "word02d.wav"
+    },
+    {
+     "text": "تِ",
+     "lesson": 21,
+     "file": "word02e.wav"
+    },
+    {
+     "text": "تٍ",
+     "lesson": 21,
+     "file": "word02f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ث",
+   "base": "ث",
+   "family": 1,
+   "name": {
+    "text": "ثَاء",
+    "lesson": 30,
+    "file": "name03.wav",
+    "rev": "fa188064"
+   },
+   "forms": [
+    {
+     "text": "ثَ",
+     "lesson": 21,
+     "file": "word03a.wav"
+    },
+    {
+     "text": "ثًا",
+     "lesson": 21,
+     "file": "word03b.wav"
+    },
+    {
+     "text": "ثُ",
+     "lesson": 21,
+     "file": "word03c.wav"
+    },
+    {
+     "text": "ثٌ",
+     "lesson": 21,
+     "file": "word03d.wav"
+    },
+    {
+     "text": "ثِ",
+     "lesson": 21,
+     "file": "word03e.wav"
+    },
+    {
+     "text": "ثٍ",
+     "lesson": 21,
+     "file": "word03f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ج",
+   "base": "ج",
+   "family": 2,
+   "name": {
+    "text": "جِيم",
+    "lesson": 30,
+    "file": "name04.wav",
+    "rev": "8e864218"
+   },
+   "forms": [
+    {
+     "text": "جَ",
+     "lesson": 21,
+     "file": "word04a.wav"
+    },
+    {
+     "text": "جًا",
+     "lesson": 21,
+     "file": "word04b.wav"
+    },
+    {
+     "text": "جُ",
+     "lesson": 21,
+     "file": "word04c.wav"
+    },
+    {
+     "text": "جٌ",
+     "lesson": 21,
+     "file": "word04d.wav"
+    },
+    {
+     "text": "جِ",
+     "lesson": 21,
+     "file": "word04e.wav"
+    },
+    {
+     "text": "جٍ",
+     "lesson": 21,
+     "file": "word04f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ح",
+   "base": "ح",
+   "family": 2,
+   "name": {
+    "text": "حَاء",
+    "lesson": 30,
+    "file": "name05.wav",
+    "rev": "5d40a95e"
+   },
+   "forms": [
+    {
+     "text": "حَ",
+     "lesson": 21,
+     "file": "word05a.wav"
+    },
+    {
+     "text": "حًا",
+     "lesson": 21,
+     "file": "word05b.wav"
+    },
+    {
+     "text": "حُ",
+     "lesson": 21,
+     "file": "word05c.wav"
+    },
+    {
+     "text": "حٌ",
+     "lesson": 21,
+     "file": "word05d.wav"
+    },
+    {
+     "text": "حِ",
+     "lesson": 21,
+     "file": "word05e.wav"
+    },
+    {
+     "text": "حٍ",
+     "lesson": 21,
+     "file": "word05f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "خ",
+   "base": "خ",
+   "family": 2,
+   "name": {
+    "text": "خَاء",
+    "lesson": 30,
+    "file": "name06.wav",
+    "rev": "e37825ad"
+   },
+   "forms": [
+    {
+     "text": "خَ",
+     "lesson": 21,
+     "file": "word06a.wav"
+    },
+    {
+     "text": "خًا",
+     "lesson": 21,
+     "file": "word06b.wav"
+    },
+    {
+     "text": "خُ",
+     "lesson": 21,
+     "file": "word06c.wav"
+    },
+    {
+     "text": "خٌ",
+     "lesson": 21,
+     "file": "word06d.wav"
+    },
+    {
+     "text": "خِ",
+     "lesson": 21,
+     "file": "word06e.wav"
+    },
+    {
+     "text": "خٍ",
+     "lesson": 21,
+     "file": "word06f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "د",
+   "base": "د",
+   "family": 3,
+   "name": {
+    "text": "دَال",
+    "lesson": 30,
+    "file": "name07.wav",
+    "rev": "01ed42e6"
+   },
+   "forms": [
+    {
+     "text": "دَ",
+     "lesson": 21,
+     "file": "word07a.wav"
+    },
+    {
+     "text": "دًا",
+     "lesson": 21,
+     "file": "word07b.wav"
+    },
+    {
+     "text": "دُ",
+     "lesson": 21,
+     "file": "word07c.wav"
+    },
+    {
+     "text": "دٌ",
+     "lesson": 21,
+     "file": "word07d.wav"
+    },
+    {
+     "text": "دِ",
+     "lesson": 21,
+     "file": "word07e.wav"
+    },
+    {
+     "text": "دٍ",
+     "lesson": 21,
+     "file": "word07f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ذ",
+   "base": "ذ",
+   "family": 3,
+   "name": {
+    "text": "ذَال",
+    "lesson": 30,
+    "file": "name08.wav",
+    "rev": "91941029"
+   },
+   "forms": [
+    {
+     "text": "ذَ",
+     "lesson": 21,
+     "file": "word08a.wav"
+    },
+    {
+     "text": "ذًا",
+     "lesson": 21,
+     "file": "word08b.wav"
+    },
+    {
+     "text": "ذُ",
+     "lesson": 21,
+     "file": "word08c.wav"
+    },
+    {
+     "text": "ذٌ",
+     "lesson": 21,
+     "file": "word08d.wav"
+    },
+    {
+     "text": "ذِ",
+     "lesson": 21,
+     "file": "word08e.wav"
+    },
+    {
+     "text": "ذٍ",
+     "lesson": 21,
+     "file": "word08f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ر",
+   "base": "ر",
+   "family": 4,
+   "name": {
+    "text": "رَاء",
+    "lesson": 30,
+    "file": "name09.wav",
+    "rev": "ed4ddc72"
+   },
+   "forms": [
+    {
+     "text": "رَ",
+     "lesson": 21,
+     "file": "word09a.wav"
+    },
+    {
+     "text": "رًا",
+     "lesson": 21,
+     "file": "word09b.wav"
+    },
+    {
+     "text": "رُ",
+     "lesson": 21,
+     "file": "word09c.wav"
+    },
+    {
+     "text": "رٌ",
+     "lesson": 21,
+     "file": "word09d.wav"
+    },
+    {
+     "text": "رِ",
+     "lesson": 21,
+     "file": "word09e.wav"
+    },
+    {
+     "text": "رٍ",
+     "lesson": 21,
+     "file": "word09f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ز",
+   "base": "ز",
+   "family": 4,
+   "name": {
+    "text": "زَاي",
+    "lesson": 30,
+    "file": "name10.wav",
+    "rev": "1b044c71"
+   },
+   "forms": [
+    {
+     "text": "زَ",
+     "lesson": 21,
+     "file": "word10a.wav"
+    },
+    {
+     "text": "زًا",
+     "lesson": 21,
+     "file": "word10b.wav"
+    },
+    {
+     "text": "زُ",
+     "lesson": 21,
+     "file": "word10c.wav"
+    },
+    {
+     "text": "زٌ",
+     "lesson": 21,
+     "file": "word10d.wav"
+    },
+    {
+     "text": "زِ",
+     "lesson": 21,
+     "file": "word10e.wav"
+    },
+    {
+     "text": "زٍ",
+     "lesson": 21,
+     "file": "word10f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "س",
+   "base": "س",
+   "family": 5,
+   "name": {
+    "text": "سِين",
+    "lesson": 30,
+    "file": "name11.wav",
+    "rev": "684435df"
+   },
+   "forms": [
+    {
+     "text": "سَ",
+     "lesson": 21,
+     "file": "word11a.wav"
+    },
+    {
+     "text": "سًا",
+     "lesson": 21,
+     "file": "word11b.wav"
+    },
+    {
+     "text": "سُ",
+     "lesson": 21,
+     "file": "word11c.wav"
+    },
+    {
+     "text": "سٌ",
+     "lesson": 21,
+     "file": "word11d.wav"
+    },
+    {
+     "text": "سِ",
+     "lesson": 21,
+     "file": "word11e.wav"
+    },
+    {
+     "text": "سٍ",
+     "lesson": 21,
+     "file": "word11f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ش",
+   "base": "ش",
+   "family": 5,
+   "name": {
+    "text": "شِين",
+    "lesson": 30,
+    "file": "name12.wav",
+    "rev": "977eb619"
+   },
+   "forms": [
+    {
+     "text": "شَ",
+     "lesson": 21,
+     "file": "word12a.wav"
+    },
+    {
+     "text": "شًا",
+     "lesson": 21,
+     "file": "word12b.wav"
+    },
+    {
+     "text": "شُ",
+     "lesson": 21,
+     "file": "word12c.wav"
+    },
+    {
+     "text": "شٌ",
+     "lesson": 21,
+     "file": "word12d.wav"
+    },
+    {
+     "text": "شِ",
+     "lesson": 21,
+     "file": "word12e.wav"
+    },
+    {
+     "text": "شٍ",
+     "lesson": 21,
+     "file": "word12f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ص",
+   "base": "ص",
+   "family": 6,
+   "name": {
+    "text": "صَاد",
+    "lesson": 30,
+    "file": "name13.wav",
+    "rev": "d4b3c5ec"
+   },
+   "forms": [
+    {
+     "text": "صَ",
+     "lesson": 21,
+     "file": "word13a.wav"
+    },
+    {
+     "text": "صًا",
+     "lesson": 21,
+     "file": "word13b.wav"
+    },
+    {
+     "text": "صُ",
+     "lesson": 21,
+     "file": "word13c.wav"
+    },
+    {
+     "text": "صٌ",
+     "lesson": 21,
+     "file": "word13d.wav"
+    },
+    {
+     "text": "صِ",
+     "lesson": 21,
+     "file": "word13e.wav"
+    },
+    {
+     "text": "صٍ",
+     "lesson": 21,
+     "file": "word13f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ض",
+   "base": "ض",
+   "family": 6,
+   "name": {
+    "text": "ضَاد",
+    "lesson": 30,
+    "file": "name14.wav",
+    "rev": "6afe5719"
+   },
+   "forms": [
+    {
+     "text": "ضَ",
+     "lesson": 21,
+     "file": "word14a.wav"
+    },
+    {
+     "text": "ضًا",
+     "lesson": 21,
+     "file": "word14b.wav"
+    },
+    {
+     "text": "ضُ",
+     "lesson": 21,
+     "file": "word14c.wav"
+    },
+    {
+     "text": "ضٌ",
+     "lesson": 21,
+     "file": "word14d.wav"
+    },
+    {
+     "text": "ضِ",
+     "lesson": 21,
+     "file": "word14e.wav"
+    },
+    {
+     "text": "ضٍ",
+     "lesson": 21,
+     "file": "word14f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ط",
+   "base": "ط",
+   "family": 7,
+   "name": {
+    "text": "طَاء",
+    "lesson": 30,
+    "file": "name15.wav",
+    "rev": "e15e58da"
+   },
+   "forms": [
+    {
+     "text": "طَ",
+     "lesson": 21,
+     "file": "word15a.wav"
+    },
+    {
+     "text": "طًا",
+     "lesson": 21,
+     "file": "word15b.wav"
+    },
+    {
+     "text": "طُ",
+     "lesson": 21,
+     "file": "word15c.wav"
+    },
+    {
+     "text": "طٌ",
+     "lesson": 21,
+     "file": "word15d.wav"
+    },
+    {
+     "text": "طِ",
+     "lesson": 21,
+     "file": "word15e.wav"
+    },
+    {
+     "text": "طٍ",
+     "lesson": 21,
+     "file": "word15f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ظ",
+   "base": "ظ",
+   "family": 7,
+   "name": {
+    "text": "ظَاء",
+    "lesson": 30,
+    "file": "name16.wav",
+    "rev": "27d655e0"
+   },
+   "forms": [
+    {
+     "text": "ظَ",
+     "lesson": 21,
+     "file": "word16a.wav"
+    },
+    {
+     "text": "ظًا",
+     "lesson": 21,
+     "file": "word16b.wav"
+    },
+    {
+     "text": "ظُ",
+     "lesson": 21,
+     "file": "word16c.wav"
+    },
+    {
+     "text": "ظٌ",
+     "lesson": 21,
+     "file": "word16d.wav"
+    },
+    {
+     "text": "ظِ",
+     "lesson": 21,
+     "file": "word16e.wav"
+    },
+    {
+     "text": "ظٍ",
+     "lesson": 21,
+     "file": "word16f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ع",
+   "base": "ع",
+   "family": 8,
+   "name": {
+    "text": "عَيۡن",
+    "lesson": 30,
+    "file": "name17.wav",
+    "rev": "dc1104fb"
+   },
+   "forms": [
+    {
+     "text": "عَ",
+     "lesson": 21,
+     "file": "word17a.wav"
+    },
+    {
+     "text": "عًا",
+     "lesson": 21,
+     "file": "word17b.wav"
+    },
+    {
+     "text": "عُ",
+     "lesson": 21,
+     "file": "word17c.wav"
+    },
+    {
+     "text": "عٌ",
+     "lesson": 21,
+     "file": "word17d.wav"
+    },
+    {
+     "text": "عِ",
+     "lesson": 21,
+     "file": "word17e.wav"
+    },
+    {
+     "text": "عٍ",
+     "lesson": 21,
+     "file": "word17f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "غ",
+   "base": "غ",
+   "family": 8,
+   "name": {
+    "text": "غَيۡن",
+    "lesson": 30,
+    "file": "name18.wav",
+    "rev": "f655be93"
+   },
+   "forms": [
+    {
+     "text": "غَ",
+     "lesson": 21,
+     "file": "word18a.wav"
+    },
+    {
+     "text": "غًا",
+     "lesson": 21,
+     "file": "word18b.wav"
+    },
+    {
+     "text": "غُ",
+     "lesson": 21,
+     "file": "word18c.wav"
+    },
+    {
+     "text": "غٌ",
+     "lesson": 21,
+     "file": "word18d.wav"
+    },
+    {
+     "text": "غِ",
+     "lesson": 21,
+     "file": "word18e.wav"
+    },
+    {
+     "text": "غٍ",
+     "lesson": 21,
+     "file": "word18f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ف",
+   "base": "ف",
+   "family": 9,
+   "name": {
+    "text": "فَاء",
+    "lesson": 30,
+    "file": "name19.wav",
+    "rev": "72f19efb"
+   },
+   "forms": [
+    {
+     "text": "فَ",
+     "lesson": 21,
+     "file": "word19a.wav"
+    },
+    {
+     "text": "فًا",
+     "lesson": 21,
+     "file": "word19b.wav"
+    },
+    {
+     "text": "فُ",
+     "lesson": 21,
+     "file": "word19c.wav"
+    },
+    {
+     "text": "فٌ",
+     "lesson": 21,
+     "file": "word19d.wav"
+    },
+    {
+     "text": "فِ",
+     "lesson": 21,
+     "file": "word19e.wav"
+    },
+    {
+     "text": "فٍ",
+     "lesson": 21,
+     "file": "word19f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ق",
+   "base": "ق",
+   "family": 9,
+   "name": {
+    "text": "قَاف",
+    "lesson": 30,
+    "file": "name20.wav",
+    "rev": "8f986ef6"
+   },
+   "forms": [
+    {
+     "text": "قَ",
+     "lesson": 21,
+     "file": "word20a.wav"
+    },
+    {
+     "text": "قًا",
+     "lesson": 21,
+     "file": "word20b.wav"
+    },
+    {
+     "text": "قُ",
+     "lesson": 21,
+     "file": "word20c.wav"
+    },
+    {
+     "text": "قٌ",
+     "lesson": 21,
+     "file": "word20d.wav"
+    },
+    {
+     "text": "قِ",
+     "lesson": 21,
+     "file": "word20e.wav"
+    },
+    {
+     "text": "قٍ",
+     "lesson": 21,
+     "file": "word20f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ك",
+   "base": "ك",
+   "family": 10,
+   "name": {
+    "text": "كَاف",
+    "lesson": 30,
+    "file": "name21.wav",
+    "rev": "8f50aab3"
+   },
+   "forms": [
+    {
+     "text": "كَ",
+     "lesson": 21,
+     "file": "word21a.wav"
+    },
+    {
+     "text": "كًا",
+     "lesson": 21,
+     "file": "word21b.wav"
+    },
+    {
+     "text": "كُ",
+     "lesson": 21,
+     "file": "word21c.wav"
+    },
+    {
+     "text": "كٌ",
+     "lesson": 21,
+     "file": "word21d.wav"
+    },
+    {
+     "text": "كِ",
+     "lesson": 21,
+     "file": "word21e.wav"
+    },
+    {
+     "text": "كٍ",
+     "lesson": 21,
+     "file": "word21f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ل",
+   "base": "ل",
+   "family": 11,
+   "name": {
+    "text": "لَام",
+    "lesson": 30,
+    "file": "name22.wav",
+    "rev": "07adde41"
+   },
+   "forms": [
+    {
+     "text": "لَ",
+     "lesson": 21,
+     "file": "word22a.wav"
+    },
+    {
+     "text": "لًا",
+     "lesson": 21,
+     "file": "word22b.wav"
+    },
+    {
+     "text": "لُ",
+     "lesson": 21,
+     "file": "word22c.wav"
+    },
+    {
+     "text": "لٌ",
+     "lesson": 21,
+     "file": "word22d.wav"
+    },
+    {
+     "text": "لِ",
+     "lesson": 21,
+     "file": "word22e.wav"
+    },
+    {
+     "text": "لٍ",
+     "lesson": 21,
+     "file": "word22f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "م",
+   "base": "م",
+   "family": 12,
+   "name": {
+    "text": "مِيم",
+    "lesson": 30,
+    "file": "name23.wav",
+    "rev": "1ce726c8"
+   },
+   "forms": [
+    {
+     "text": "مَ",
+     "lesson": 21,
+     "file": "word23a.wav"
+    },
+    {
+     "text": "مًا",
+     "lesson": 21,
+     "file": "word23b.wav"
+    },
+    {
+     "text": "مُ",
+     "lesson": 21,
+     "file": "word23c.wav"
+    },
+    {
+     "text": "مٌ",
+     "lesson": 21,
+     "file": "word23d.wav"
+    },
+    {
+     "text": "مِ",
+     "lesson": 21,
+     "file": "word23e.wav"
+    },
+    {
+     "text": "مٍ",
+     "lesson": 21,
+     "file": "word23f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ن",
+   "base": "ن",
+   "family": 13,
+   "name": {
+    "text": "نُون",
+    "lesson": 30,
+    "file": "name24.wav",
+    "rev": "bf4f4390"
+   },
+   "forms": [
+    {
+     "text": "نَ",
+     "lesson": 21,
+     "file": "word24a.wav"
+    },
+    {
+     "text": "نًا",
+     "lesson": 21,
+     "file": "word24b.wav"
+    },
+    {
+     "text": "نُ",
+     "lesson": 21,
+     "file": "word24c.wav"
+    },
+    {
+     "text": "نٌ",
+     "lesson": 21,
+     "file": "word24d.wav"
+    },
+    {
+     "text": "نِ",
+     "lesson": 21,
+     "file": "word24e.wav"
+    },
+    {
+     "text": "نٍ",
+     "lesson": 21,
+     "file": "word24f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "هـ",
+   "base": "ه",
+   "family": 14,
+   "name": {
+    "text": "هَاء",
+    "lesson": 30,
+    "file": "name25.wav",
+    "rev": "89ebbb52"
+   },
+   "forms": [
+    {
+     "text": "هَـ",
+     "lesson": 21,
+     "file": "word25a.wav"
+    },
+    {
+     "text": "هًا",
+     "lesson": 21,
+     "file": "word25b.wav"
+    },
+    {
+     "text": "هُـ",
+     "lesson": 21,
+     "file": "word25c.wav"
+    },
+    {
+     "text": "هٌـ",
+     "lesson": 21,
+     "file": "word25d.wav"
+    },
+    {
+     "text": "هِـ",
+     "lesson": 21,
+     "file": "word25e.wav"
+    },
+    {
+     "text": "هٍـ",
+     "lesson": 21,
+     "file": "word25f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "و",
+   "base": "و",
+   "family": 15,
+   "name": {
+    "text": "وَاو",
+    "lesson": 30,
+    "file": "name26.wav",
+    "rev": "47107168"
+   },
+   "forms": [
+    {
+     "text": "وَ",
+     "lesson": 21,
+     "file": "word26a.wav"
+    },
+    {
+     "text": "وًا",
+     "lesson": 21,
+     "file": "word26b.wav"
+    },
+    {
+     "text": "وُ",
+     "lesson": 21,
+     "file": "word26c.wav"
+    },
+    {
+     "text": "وٌ",
+     "lesson": 21,
+     "file": "word26d.wav"
+    },
+    {
+     "text": "وِ",
+     "lesson": 21,
+     "file": "word26e.wav"
+    },
+    {
+     "text": "وٍ",
+     "lesson": 21,
+     "file": "word26f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ى",
+   "base": "ى",
+   "family": 16,
+   "name": {
+    "text": "يَاء",
+    "lesson": 30,
+    "file": "name27.wav",
+    "rev": "afb78680"
+   },
+   "forms": [
+    {
+     "text": "ىَ",
+     "lesson": 21,
+     "file": "word28a.wav"
+    },
+    {
+     "text": "يًا",
+     "lesson": 21,
+     "file": "word28b.wav"
+    },
+    {
+     "text": "ىُ",
+     "lesson": 21,
+     "file": "word28c.wav"
+    },
+    {
+     "text": "ىٌ",
+     "lesson": 21,
+     "file": "word28d.wav"
+    },
+    {
+     "text": "ىِ",
+     "lesson": 21,
+     "file": "word28e.wav"
+    },
+    {
+     "text": "ىٍ",
+     "lesson": 21,
+     "file": "word28f.wav"
+    }
+   ]
+  },
+  {
+   "letter": "ا",
+   "base": "ا",
+   "family": 0,
+   "name": {
+    "text": "أَلِف",
+    "lesson": 30,
+    "file": "name28.wav",
+    "rev": "0db35c11"
+   }
+  },
+  {
+   "letter": "ء",
+   "base": "ء",
+   "family": 0,
+   "name": {
+    "text": "هَمۡزَة",
+    "lesson": 30,
+    "file": "name29.wav",
+    "rev": "f3894746"
+   },
+   "forms": [
+    {
+     "text": "ءَ",
+     "lesson": 21,
+     "file": "word27a.wav"
+    },
+    {
+     "text": "ءًا",
+     "lesson": 21,
+     "file": "word27b.wav"
+    },
+    {
+     "text": "ءُ",
+     "lesson": 21,
+     "file": "word27c.wav"
+    },
+    {
+     "text": "ءٌ",
+     "lesson": 21,
+     "file": "word27d.wav"
+    },
+    {
+     "text": "ءِ",
+     "lesson": 21,
+     "file": "word27e.wav"
+    },
+    {
+     "text": "ءٍ",
+     "lesson": 21,
+     "file": "word27f.wav"
+    }
+   ]
+  }
+ ],
+ "madd": [
+  [
+   {
+    "text": "بَدَ",
+    "lesson": 22,
+    "file": "word01a.wav"
+   },
+   {
+    "text": "بَادَ",
+    "lesson": 22,
+    "file": "word01b.wav"
+   },
+   {
+    "text": "بُدَ",
+    "lesson": 22,
+    "file": "word01c.wav"
+   },
+   {
+    "text": "بُودَ",
+    "lesson": 22,
+    "file": "word01d.wav"
+   },
+   {
+    "text": "بِدَ",
+    "lesson": 22,
+    "file": "word01e.wav"
+   },
+   {
+    "text": "بِيدَ",
+    "lesson": 22,
+    "file": "word01f.wav"
+   }
+  ],
+  [
+   {
+    "text": "تَدَ",
+    "lesson": 22,
+    "file": "word02a.wav"
+   },
+   {
+    "text": "تَادَ",
+    "lesson": 22,
+    "file": "word02b.wav"
+   },
+   {
+    "text": "تُدَ",
+    "lesson": 22,
+    "file": "word02c.wav"
+   },
+   {
+    "text": "تُودَ",
+    "lesson": 22,
+    "file": "word02d.wav"
+   },
+   {
+    "text": "تِدَ",
+    "lesson": 22,
+    "file": "word02e.wav"
+   },
+   {
+    "text": "تِيدَ",
+    "lesson": 22,
+    "file": "word02f.wav"
+   }
+  ],
+  [
+   {
+    "text": "ثَدَ",
+    "lesson": 22,
+    "file": "word03a.wav"
+   },
+   {
+    "text": "ثَادَ",
+    "lesson": 22,
+    "file": "word03b.wav"
+   },
+   {
+    "text": "ثُدَ",
+    "lesson": 22,
+    "file": "word03c.wav"
+   },
+   {
+    "text": "ثُودَ",
+    "lesson": 22,
+    "file": "word03d.wav"
+   },
+   {
+    "text": "ثِدَ",
+    "lesson": 22,
+    "file": "word03e.wav"
+   },
+   {
+    "text": "ثِيدَ",
+    "lesson": 22,
+    "file": "word03f.wav"
+   }
+  ],
+  [
+   {
+    "text": "جَدَ",
+    "lesson": 22,
+    "file": "word04a.wav"
+   },
+   {
+    "text": "جَادَ",
+    "lesson": 22,
+    "file": "word04b.wav"
+   },
+   {
+    "text": "جُدَ",
+    "lesson": 22,
+    "file": "word04c.wav"
+   },
+   {
+    "text": "جُودَ",
+    "lesson": 22,
+    "file": "word04d.wav"
+   },
+   {
+    "text": "جِدَ",
+    "lesson": 22,
+    "file": "word04e.wav"
+   },
+   {
+    "text": "جِيدَ",
+    "lesson": 22,
+    "file": "word04f.wav"
+   }
+  ],
+  [
+   {
+    "text": "حَدُ",
+    "lesson": 22,
+    "file": "word05a.wav"
+   },
+   {
+    "text": "حَادُ",
+    "lesson": 22,
+    "file": "word05b.wav"
+   },
+   {
+    "text": "حُدُ",
+    "lesson": 22,
+    "file": "word05c.wav"
+   },
+   {
+    "text": "حُودُ",
+    "lesson": 22,
+    "file": "word05d.wav"
+   },
+   {
+    "text": "حِدُ",
+    "lesson": 22,
+    "file": "word05e.wav"
+   },
+   {
+    "text": "حِيدُ",
+    "lesson": 22,
+    "file": "word05f.wav"
+   }
+  ],
+  [
+   {
+    "text": "خَدُ",
+    "lesson": 22,
+    "file": "word06a.wav"
+   },
+   {
+    "text": "خَادُ",
+    "lesson": 22,
+    "file": "word06b.wav"
+   },
+   {
+    "text": "خُدُ",
+    "lesson": 22,
+    "file": "word06c.wav"
+   },
+   {
+    "text": "خُودُ",
+    "lesson": 22,
+    "file": "word06d.wav"
+   },
+   {
+    "text": "خِدُ",
+    "lesson": 22,
+    "file": "word06e.wav"
+   },
+   {
+    "text": "خِيدُ",
+    "lesson": 22,
+    "file": "word06f.wav"
+   }
+  ],
+  [
+   {
+    "text": "دَدُ",
+    "lesson": 22,
+    "file": "word07a.wav"
+   },
+   {
+    "text": "دَادُ",
+    "lesson": 22,
+    "file": "word07b.wav"
+   },
+   {
+    "text": "دُدُ",
+    "lesson": 22,
+    "file": "word07c.wav"
+   },
+   {
+    "text": "دُودُ",
+    "lesson": 22,
+    "file": "word07d.wav"
+   },
+   {
+    "text": "دِدُ",
+    "lesson": 22,
+    "file": "word07e.wav"
+   },
+   {
+    "text": "دِيدُ",
+    "lesson": 22,
+    "file": "word07f.wav"
+   }
+  ],
+  [
+   {
+    "text": "ذَدُ",
+    "lesson": 22,
+    "file": "word08a.wav"
+   },
+   {
+    "text": "ذَادُ",
+    "lesson": 22,
+    "file": "word08b.wav"
+   },
+   {
+    "text": "ذُدُ",
+    "lesson": 22,
+    "file": "word08c.wav"
+   },
+   {
+    "text": "ذُودُ",
+    "lesson": 22,
+    "file": "word08d.wav"
+   },
+   {
+    "text": "ذِدُ",
+    "lesson": 22,
+    "file": "word08e.wav"
+   },
+   {
+    "text": "ذِيدُ",
+    "lesson": 22,
+    "file": "word08f.wav"
+   }
+  ],
+  [
+   {
+    "text": "رَدِ",
+    "lesson": 22,
+    "file": "word09a.wav"
+   },
+   {
+    "text": "رَادِ",
+    "lesson": 22,
+    "file": "word09b.wav"
+   },
+   {
+    "text": "رُدِ",
+    "lesson": 22,
+    "file": "word09c.wav"
+   },
+   {
+    "text": "رُودِ",
+    "lesson": 22,
+    "file": "word09d.wav"
+   },
+   {
+    "text": "رِدِ",
+    "lesson": 22,
+    "file": "word09e.wav"
+   },
+   {
+    "text": "رِيدِ",
+    "lesson": 22,
+    "file": "word09f.wav"
+   }
+  ],
+  [
+   {
+    "text": "زَدِ",
+    "lesson": 22,
+    "file": "word10a.wav"
+   },
+   {
+    "text": "زَادِ",
+    "lesson": 22,
+    "file": "word10b.wav"
+   },
+   {
+    "text": "زُدِ",
+    "lesson": 22,
+    "file": "word10c.wav"
+   },
+   {
+    "text": "زُودِ",
+    "lesson": 22,
+    "file": "word10d.wav"
+   },
+   {
+    "text": "زِدِ",
+    "lesson": 22,
+    "file": "word10e.wav"
+   },
+   {
+    "text": "زِيدِ",
+    "lesson": 22,
+    "file": "word10f.wav"
+   }
+  ],
+  [
+   {
+    "text": "سَدِ",
+    "lesson": 22,
+    "file": "word11a.wav"
+   },
+   {
+    "text": "سَادِ",
+    "lesson": 22,
+    "file": "word11b.wav"
+   },
+   {
+    "text": "سُدِ",
+    "lesson": 22,
+    "file": "word11c.wav"
+   },
+   {
+    "text": "سُودِ",
+    "lesson": 22,
+    "file": "word11d.wav"
+   },
+   {
+    "text": "سِدِ",
+    "lesson": 22,
+    "file": "word11e.wav"
+   },
+   {
+    "text": "سِيدِ",
+    "lesson": 22,
+    "file": "word11f.wav"
+   }
+  ],
+  [
+   {
+    "text": "شَدِ",
+    "lesson": 22,
+    "file": "word12a.wav"
+   },
+   {
+    "text": "شَادِ",
+    "lesson": 22,
+    "file": "word12b.wav"
+   },
+   {
+    "text": "شُدِ",
+    "lesson": 22,
+    "file": "word12c.wav"
+   },
+   {
+    "text": "شُودِ",
+    "lesson": 22,
+    "file": "word12d.wav"
+   },
+   {
+    "text": "شِدِ",
+    "lesson": 22,
+    "file": "word12e.wav"
+   },
+   {
+    "text": "شِيدِ",
+    "lesson": 22,
+    "file": "word12f.wav"
+   }
+  ],
+  [
+   {
+    "text": "صَنَ",
+    "lesson": 22,
+    "file": "word13a.wav"
+   },
+   {
+    "text": "صَانَ",
+    "lesson": 22,
+    "file": "word13b.wav"
+   },
+   {
+    "text": "صُنَ",
+    "lesson": 22,
+    "file": "word13c.wav"
+   },
+   {
+    "text": "صُونَ",
+    "lesson": 22,
+    "file": "word13d.wav"
+   },
+   {
+    "text": "صِنَ",
+    "lesson": 22,
+    "file": "word13e.wav"
+   },
+   {
+    "text": "صِينَ",
+    "lesson": 22,
+    "file": "word13f.wav"
+   }
+  ],
+  [
+   {
+    "text": "ضَنَ",
+    "lesson": 22,
+    "file": "word14a.wav"
+   },
+   {
+    "text": "ضَانَ",
+    "lesson": 22,
+    "file": "word14b.wav"
+   },
+   {
+    "text": "ضُنَ",
+    "lesson": 22,
+    "file": "word14c.wav"
+   },
+   {
+    "text": "ضُونَ",
+    "lesson": 22,
+    "file": "word14d.wav"
+   },
+   {
+    "text": "ضِنَ",
+    "lesson": 22,
+    "file": "word14e.wav"
+   },
+   {
+    "text": "ضِينَ",
+    "lesson": 22,
+    "file": "word14f.wav"
+   }
+  ],
+  [
+   {
+    "text": "طَنَ",
+    "lesson": 22,
+    "file": "word15a.wav"
+   },
+   {
+    "text": "طَانَ",
+    "lesson": 22,
+    "file": "word15b.wav"
+   },
+   {
+    "text": "طُنَ",
+    "lesson": 22,
+    "file": "word15c.wav"
+   },
+   {
+    "text": "طُونَ",
+    "lesson": 22,
+    "file": "word15d.wav"
+   },
+   {
+    "text": "طِنَ",
+    "lesson": 22,
+    "file": "word15e.wav"
+   },
+   {
+    "text": "طِينَ",
+    "lesson": 22,
+    "file": "word15f.wav"
+   }
+  ],
+  [
+   {
+    "text": "ظَنَ",
+    "lesson": 22,
+    "file": "word16a.wav"
+   },
+   {
+    "text": "ظَانَ",
+    "lesson": 22,
+    "file": "word16b.wav"
+   },
+   {
+    "text": "ظُنَ",
+    "lesson": 22,
+    "file": "word16c.wav"
+   },
+   {
+    "text": "ظُونَ",
+    "lesson": 22,
+    "file": "word16d.wav"
+   },
+   {
+    "text": "ظِنَ",
+    "lesson": 22,
+    "file": "word16e.wav"
+   },
+   {
+    "text": "ظِينَ",
+    "lesson": 22,
+    "file": "word16f.wav"
+   }
+  ],
+  [
+   {
+    "text": "عَنُ",
+    "lesson": 22,
+    "file": "word17a.wav"
+   },
+   {
+    "text": "عَانُ",
+    "lesson": 22,
+    "file": "word17b.wav"
+   },
+   {
+    "text": "عُنُ",
+    "lesson": 22,
+    "file": "word17c.wav"
+   },
+   {
+    "text": "عُونُ",
+    "lesson": 22,
+    "file": "word17d.wav"
+   },
+   {
+    "text": "عِنُ",
+    "lesson": 22,
+    "file": "word17e.wav"
+   },
+   {
+    "text": "عِينُ",
+    "lesson": 22,
+    "file": "word17f.wav"
+   }
+  ],
+  [
+   {
+    "text": "غَنُ",
+    "lesson": 22,
+    "file": "word18a.wav"
+   },
+   {
+    "text": "غَانُ",
+    "lesson": 22,
+    "file": "word18b.wav"
+   },
+   {
+    "text": "غُنُ",
+    "lesson": 22,
+    "file": "word18c.wav"
+   },
+   {
+    "text": "غُونُ",
+    "lesson": 22,
+    "file": "word18d.wav"
+   },
+   {
+    "text": "غِنُ",
+    "lesson": 22,
+    "file": "word18e.wav"
+   },
+   {
+    "text": "غِينُ",
+    "lesson": 22,
+    "file": "word18f.wav"
+   }
+  ],
+  [
+   {
+    "text": "فَنُ",
+    "lesson": 22,
+    "file": "word19a.wav"
+   },
+   {
+    "text": "فَانُ",
+    "lesson": 22,
+    "file": "word19b.wav"
+   },
+   {
+    "text": "فُنُ",
+    "lesson": 22,
+    "file": "word19c.wav"
+   },
+   {
+    "text": "فُونُ",
+    "lesson": 22,
+    "file": "word19d.wav"
+   },
+   {
+    "text": "فِنُ",
+    "lesson": 22,
+    "file": "word19e.wav"
+   },
+   {
+    "text": "فِينُ",
+    "lesson": 22,
+    "file": "word19f.wav"
+   }
+  ],
+  [
+   {
+    "text": "قَنُ",
+    "lesson": 22,
+    "file": "word20a.wav"
+   },
+   {
+    "text": "قَانُ",
+    "lesson": 22,
+    "file": "word20b.wav"
+   },
+   {
+    "text": "قُنُ",
+    "lesson": 22,
+    "file": "word20c.wav"
+   },
+   {
+    "text": "قُونُ",
+    "lesson": 22,
+    "file": "word20d.wav"
+   },
+   {
+    "text": "قِنُ",
+    "lesson": 22,
+    "file": "word20e.wav"
+   },
+   {
+    "text": "قِينُ",
+    "lesson": 22,
+    "file": "word20f.wav"
+   }
+  ],
+  [
+   {
+    "text": "كَنِ",
+    "lesson": 22,
+    "file": "word21a.wav"
+   },
+   {
+    "text": "كَانِ",
+    "lesson": 22,
+    "file": "word21b.wav"
+   },
+   {
+    "text": "كُنِ",
+    "lesson": 22,
+    "file": "word21c.wav"
+   },
+   {
+    "text": "كُونِ",
+    "lesson": 22,
+    "file": "word21d.wav"
+   },
+   {
+    "text": "كِنِ",
+    "lesson": 22,
+    "file": "word21e.wav"
+   },
+   {
+    "text": "كِينِ",
+    "lesson": 22,
+    "file": "word21f.wav"
+   }
+  ],
+  [
+   {
+    "text": "لَنِ",
+    "lesson": 22,
+    "file": "word22a.wav"
+   },
+   {
+    "text": "لَانِ",
+    "lesson": 22,
+    "file": "word22b.wav"
+   },
+   {
+    "text": "لُنِ",
+    "lesson": 22,
+    "file": "word22c.wav"
+   },
+   {
+    "text": "لُونِ",
+    "lesson": 22,
+    "file": "word22d.wav"
+   },
+   {
+    "text": "لِنِ",
+    "lesson": 22,
+    "file": "word22e.wav"
+   },
+   {
+    "text": "لِينِ",
+    "lesson": 22,
+    "file": "word22f.wav"
+   }
+  ],
+  [
+   {
+    "text": "مَنِ",
+    "lesson": 22,
+    "file": "word23a.wav"
+   },
+   {
+    "text": "مَانِ",
+    "lesson": 22,
+    "file": "word23b.wav"
+   },
+   {
+    "text": "مُنِ",
+    "lesson": 22,
+    "file": "word23c.wav"
+   },
+   {
+    "text": "مُونِ",
+    "lesson": 22,
+    "file": "word23d.wav"
+   },
+   {
+    "text": "مِنِ",
+    "lesson": 22,
+    "file": "word23e.wav"
+   },
+   {
+    "text": "مِينِ",
+    "lesson": 22,
+    "file": "word23f.wav"
+   }
+  ],
+  [
+   {
+    "text": "نَنِ",
+    "lesson": 22,
+    "file": "word24a.wav"
+   },
+   {
+    "text": "نَانِ",
+    "lesson": 22,
+    "file": "word24b.wav"
+   },
+   {
+    "text": "نُنِ",
+    "lesson": 22,
+    "file": "word24c.wav"
+   },
+   {
+    "text": "نُونِ",
+    "lesson": 22,
+    "file": "word24d.wav"
+   },
+   {
+    "text": "نِنِ",
+    "lesson": 22,
+    "file": "word24e.wav"
+   },
+   {
+    "text": "نِينِ",
+    "lesson": 22,
+    "file": "word24f.wav"
+   }
+  ],
+  [
+   {
+    "text": "هَرَ",
+    "lesson": 22,
+    "file": "word25a.wav"
+   },
+   {
+    "text": "هَارَ",
+    "lesson": 22,
+    "file": "word25b.wav"
+   },
+   {
+    "text": "هُرَ",
+    "lesson": 22,
+    "file": "word25c.wav"
+   },
+   {
+    "text": "هُورَ",
+    "lesson": 22,
+    "file": "word25d.wav"
+   },
+   {
+    "text": "هِرَ",
+    "lesson": 22,
+    "file": "word25e.wav"
+   },
+   {
+    "text": "هِيرَ",
+    "lesson": 22,
+    "file": "word25f.wav"
+   }
+  ],
+  [
+   {
+    "text": "وَرَ",
+    "lesson": 22,
+    "file": "word26a.wav"
+   },
+   {
+    "text": "وَارَ",
+    "lesson": 22,
+    "file": "word26b.wav"
+   },
+   {
+    "text": "وُرَ",
+    "lesson": 22,
+    "file": "word26c.wav"
+   },
+   {
+    "text": "وُورَ",
+    "lesson": 22,
+    "file": "word26d.wav"
+   },
+   {
+    "text": "وِرَ",
+    "lesson": 22,
+    "file": "word26e.wav"
+   },
+   {
+    "text": "وِيرَ",
+    "lesson": 22,
+    "file": "word26f.wav"
+   }
+  ],
+  [
+   {
+    "text": "أَرَ",
+    "lesson": 22,
+    "file": "word27a.wav"
+   },
+   {
+    "text": "ءَارَ",
+    "lesson": 22,
+    "file": "word27b.wav"
+   },
+   {
+    "text": "أُرَ",
+    "lesson": 22,
+    "file": "word27c.wav"
+   },
+   {
+    "text": "أُورَ",
+    "lesson": 22,
+    "file": "word27d.wav"
+   },
+   {
+    "text": "إِرَ",
+    "lesson": 22,
+    "file": "word27e.wav"
+   },
+   {
+    "text": "إِيرَ",
+    "lesson": 22,
+    "file": "word27f.wav"
+   }
+  ],
+  [
+   {
+    "text": "يَرَ",
+    "lesson": 22,
+    "file": "word28a.wav"
+   },
+   {
+    "text": "يَارَ",
+    "lesson": 22,
+    "file": "word28b.wav"
+   },
+   {
+    "text": "يُرَ",
+    "lesson": 22,
+    "file": "word28c.wav"
+   },
+   {
+    "text": "يُورَ",
+    "lesson": 22,
+    "file": "word28d.wav"
+   },
+   {
+    "text": "يِرَ",
+    "lesson": 22,
+    "file": "word28e.wav"
+   },
+   {
+    "text": "يِيرَ",
+    "lesson": 22,
+    "file": "word28f.wav"
+   }
+  ]
+ ],
+ "shadda": [
+  [
+   {
+    "text": "بَأَ",
+    "lesson": 23,
+    "file": "word01a.wav"
+   },
+   {
+    "text": "بَأَّ",
+    "lesson": 23,
+    "file": "word01b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَبَ",
+    "lesson": 23,
+    "file": "word02a.wav"
+   },
+   {
+    "text": "بَبَّ",
+    "lesson": 23,
+    "file": "word02b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَتَ",
+    "lesson": 23,
+    "file": "word03a.wav"
+   },
+   {
+    "text": "بَتَّ",
+    "lesson": 23,
+    "file": "word03b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَثَ",
+    "lesson": 23,
+    "file": "word04a.wav"
+   },
+   {
+    "text": "بَثَّ",
+    "lesson": 23,
+    "file": "word04b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَجَ",
+    "lesson": 23,
+    "file": "word05a.wav"
+   },
+   {
+    "text": "بَجَّ",
+    "lesson": 23,
+    "file": "word05b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَحَ",
+    "lesson": 23,
+    "file": "word06a.wav"
+   },
+   {
+    "text": "بَحَّ",
+    "lesson": 23,
+    "file": "word06b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَخَ",
+    "lesson": 23,
+    "file": "word07a.wav"
+   },
+   {
+    "text": "بَخَّ",
+    "lesson": 23,
+    "file": "word07b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَدَ",
+    "lesson": 23,
+    "file": "word08a.wav"
+   },
+   {
+    "text": "بَدَّ",
+    "lesson": 23,
+    "file": "word08b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَذَ",
+    "lesson": 23,
+    "file": "word09a.wav"
+   },
+   {
+    "text": "بَذَّ",
+    "lesson": 23,
+    "file": "word09b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَرَ",
+    "lesson": 23,
+    "file": "word10a.wav"
+   },
+   {
+    "text": "بَرَّ",
+    "lesson": 23,
+    "file": "word10b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَزَ",
+    "lesson": 23,
+    "file": "word11a.wav"
+   },
+   {
+    "text": "بَزَّ",
+    "lesson": 23,
+    "file": "word11b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَسَ",
+    "lesson": 23,
+    "file": "word12a.wav"
+   },
+   {
+    "text": "بَسَّ",
+    "lesson": 23,
+    "file": "word12b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَشَ",
+    "lesson": 23,
+    "file": "word13a.wav"
+   },
+   {
+    "text": "بَشَّ",
+    "lesson": 23,
+    "file": "word13b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَصَ",
+    "lesson": 23,
+    "file": "word14a.wav"
+   },
+   {
+    "text": "بَصَّ",
+    "lesson": 23,
+    "file": "word14b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَضَ",
+    "lesson": 23,
+    "file": "word15a.wav"
+   },
+   {
+    "text": "بَضَّ",
+    "lesson": 23,
+    "file": "word15b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَطَ",
+    "lesson": 23,
+    "file": "word16a.wav"
+   },
+   {
+    "text": "بَطَّ",
+    "lesson": 23,
+    "file": "word16b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَظَ",
+    "lesson": 23,
+    "file": "word17a.wav"
+   },
+   {
+    "text": "بَظَّ",
+    "lesson": 23,
+    "file": "word17b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَعَ",
+    "lesson": 23,
+    "file": "word18a.wav"
+   },
+   {
+    "text": "بَعَّ",
+    "lesson": 23,
+    "file": "word18b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَغَ",
+    "lesson": 23,
+    "file": "word19a.wav"
+   },
+   {
+    "text": "بَغَّ",
+    "lesson": 23,
+    "file": "word19b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَفَ",
+    "lesson": 23,
+    "file": "word20a.wav"
+   },
+   {
+    "text": "بَفَّ",
+    "lesson": 23,
+    "file": "word20b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَقَ",
+    "lesson": 23,
+    "file": "word21a.wav"
+   },
+   {
+    "text": "بَقَّ",
+    "lesson": 23,
+    "file": "word21b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَكَ",
+    "lesson": 23,
+    "file": "word22a.wav"
+   },
+   {
+    "text": "بَكَّ",
+    "lesson": 23,
+    "file": "word22b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَلَ",
+    "lesson": 23,
+    "file": "word23a.wav"
+   },
+   {
+    "text": "بَلَّ",
+    "lesson": 23,
+    "file": "word23b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَمَ",
+    "lesson": 23,
+    "file": "word24a.wav"
+   },
+   {
+    "text": "بَمَّ",
+    "lesson": 23,
+    "file": "word24b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَنَ",
+    "lesson": 23,
+    "file": "word25a.wav"
+   },
+   {
+    "text": "بَنَّ",
+    "lesson": 23,
+    "file": "word25b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَهَ",
+    "lesson": 23,
+    "file": "word26a.wav"
+   },
+   {
+    "text": "بَهَّ",
+    "lesson": 23,
+    "file": "word26b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَوَ",
+    "lesson": 23,
+    "file": "word27a.wav"
+   },
+   {
+    "text": "بَوَّ",
+    "lesson": 23,
+    "file": "word27b.wav"
+   }
+  ],
+  [
+   {
+    "text": "بَىَ",
+    "lesson": 23,
+    "file": "word28a.wav"
+   },
+   {
+    "text": "بَىَّ",
+    "lesson": 23,
+    "file": "word28b.wav"
+   }
+  ],
+  [
+   {
+    "text": "عَلِ",
+    "lesson": 23,
+    "file": "word29a.wav"
+   },
+   {
+    "text": "عَلِّ",
+    "lesson": 23,
+    "file": "word29b.wav"
+   }
+  ],
+  [
+   {
+    "text": "عَقِ",
+    "lesson": 23,
+    "file": "word30a.wav"
+   },
+   {
+    "text": "عَقِّ",
+    "lesson": 23,
+    "file": "word30b.wav"
+   }
+  ],
+  [
+   {
+    "text": "عَسِ",
+    "lesson": 23,
+    "file": "word31a.wav"
+   },
+   {
+    "text": "عَسِّ",
+    "lesson": 23,
+    "file": "word31b.wav"
+   }
+  ],
+  [
+   {
+    "text": "عَشِ",
+    "lesson": 23,
+    "file": "word32a.wav"
+   },
+   {
+    "text": "عَشِّ",
+    "lesson": 23,
+    "file": "word32b.wav"
+   }
+  ],
+  [
+   {
+    "text": "عَصِ",
+    "lesson": 23,
+    "file": "word33a.wav"
+   },
+   {
+    "text": "عَصِّ",
+    "lesson": 23,
+    "file": "word33b.wav"
+   }
+  ],
+  [
+   {
+    "text": "عَضِ",
+    "lesson": 23,
+    "file": "word34a.wav"
+   },
+   {
+    "text": "عَضِّ",
+    "lesson": 23,
+    "file": "word34b.wav"
+   }
+  ]
+ ],
+ "soundAlikes": [
+  [
+   "ح",
+   "ه"
+  ],
+  [
+   "ع",
+   "ء"
+  ],
+  [
+   "س",
+   "ص"
+  ],
+  [
+   "ت",
+   "ط"
+  ],
+  [
+   "ذ",
+   "ز",
+   "ظ"
+  ],
+  [
+   "ث",
+   "س"
+  ],
+  [
+   "ق",
+   "ك"
+  ],
+  [
+   "د",
+   "ض"
+  ]
+ ],
+ "prompts": {
+  "quiz-name": {
+   "line": "Listen to the name. Which letter is it?"
+  },
+  "quiz-lookalike": {
+   "line": "These letters look alike. Tap the one you hear."
+  },
+  "quiz-hunt": {
+   "line": "Find this letter. Tap every one you see."
+  },
+  "quiz-which-letter": {
+   "line": "Which letter did you hear?"
+  },
+  "quiz-same-different": {
+   "line": "Listen to two sounds. Are they the same, or different?"
+  },
+  "quiz-which-haraka": {
+   "line": "Which haraka did you hear?"
+  },
+  "quiz-tanween": {
+   "line": "Did you hear tanween, or not?"
+  },
+  "quiz-which-tanween": {
+   "line": "Which tanween did you hear?"
+  },
+  "quiz-short-long": {
+   "line": "Was it short, or long?"
+  },
+  "quiz-which-madd": {
+   "line": "Which madd did you hear?"
+  },
+  "quiz-shadda": {
+   "line": "Did you hear a shadda, or not?"
+  },
+  "quiz-review": {
+   "line": "Let's try the ones you missed."
+  },
+  "quiz-done": {
+   "line": "All done. Well done!"
+  }
+ }
+}

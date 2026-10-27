@@ -42,8 +42,9 @@ export const DEFAULT_CONFIG: AppConfig = {
     41: 'draft', 42: 'draft', 43: 'draft',
   },
   // `workbooks`: the companion pages (#/workbook) — draft until the author
-  // switches them on in Manage lessons (2026-10-25).
-  features: { laser: 'admin', notes: 'admin', workbooks: 'admin' },
+  // switches them on in Manage lessons (2026-10-25). `quiz`: Quiz me, the
+  // question book behind the lightbulb (#/quiz; Design/drills.md, 2026-10-27).
+  features: { laser: 'admin', notes: 'admin', workbooks: 'admin', quiz: 'admin' },
 };
 
 const CACHE_KEY = 'iqra-app-config';

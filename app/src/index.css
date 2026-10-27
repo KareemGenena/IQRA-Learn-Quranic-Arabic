@@ -3919,3 +3919,162 @@ circle.trace-ink { fill: currentColor; stroke: none; }
   .song-lines.sounds .song-row { font-size: 19px; padding: 2px 4px; }
   .song-row { font-size: 22px; }
 }
+
+/* ── Quiz me (pages/QuizPage.tsx; Design/drills.md, 2026-10-27) ──────────
+   The question book: its door is the lightbulb in the header and a card
+   under "Continue" on the home page, never a lesson in a Level. The
+   question screen wears the Level check's styles (.check-*). */
+.app-header .header-tool { height: 40px; padding: 0 10px; }
+.app-header .header-tool.current { border-color: var(--accent); color: var(--accent); }
+
+.quiz-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 12px 0 4px;
+  padding: 14px 20px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.quiz-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); border-color: var(--accent); }
+.quiz-bulb {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(193, 160, 84, 0.18);
+  color: #8a6a1f;
+}
+:root[data-theme='dark'] .quiz-bulb { color: #e3c97f; }
+
+.quiz-page { max-width: 720px; margin: 0 auto; }
+.quiz-panel {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.quiz-lead { margin: 0 0 14px; color: var(--text-soft); }
+.quiz-chosen { margin: 0 0 16px; font-size: 15px; }
+.quiz-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.quiz-start-btn { min-height: 52px; padding: 0 30px; font-size: 18px; }
+.quiz-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  font-size: 14px;
+}
+.quiz-h { margin: 0 0 10px; font-size: 16px; }
+.quiz-topics { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 8px; }
+.quiz-topic label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.quiz-topic input { flex: none; width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); }
+.quiz-topic.off label { opacity: 0.5; cursor: default; }
+.quiz-topic-title { display: block; font-weight: 600; }
+.quiz-topic-sub { display: block; font-size: 13px; color: var(--text-soft); }
+.quiz-counts { display: flex; gap: 8px; margin: 0 0 18px; }
+.quiz-count {
+  min-width: 64px;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 2px solid var(--card-border);
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.quiz-count.on { border-color: var(--accent); color: var(--accent-strong); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+
+/* the grown-ups question */
+.quiz-gate-back { position: fixed; inset: 0; z-index: 950; display: grid; place-items: center; padding: 16px; background: rgba(0, 0, 0, 0.35); }
+.quiz-gate { width: min(360px, 100%); padding: 20px; border-radius: 18px; background: var(--card); box-shadow: var(--shadow-lift); }
+.quiz-gate-title { margin: 0 0 10px; font-weight: 700; }
+.quiz-gate-q { display: grid; gap: 10px; margin: 0 0 14px; font-size: 18px; }
+.quiz-gate-q input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 22px;
+}
+.quiz-gate-wrong { margin: -6px 0 12px; color: #c0392b; font-size: 14px; }
+
+/* the questions */
+.quiz-line { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 0 0 14px; font-size: 17px; text-align: center; }
+.quiz-target :is(.arabic-word, .arabic-text) { font-size: 52px; }
+.check-options.n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* .arabic-text sets its own size: a context resizes the word and its text */
+.check-options.kind-name :is(.arabic-word, .arabic-text),
+.check-options.kind-lookalike :is(.arabic-word, .arabic-text) { font-size: 56px; }
+/* the play glyph sits in the corner of a word card; in a button it is inline */
+.check-play .play-icon,
+.quiz-mini-play .play-icon { position: static; color: inherit; opacity: 1; }
+.check-option.asleep { opacity: 0.55; }
+.quiz-word { font-size: 20px; font-weight: 600; line-height: 1.4; }
+.quiz-hunt { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 420px; margin: 0 auto; }
+.hunt-cell {
+  position: relative;
+  aspect-ratio: 1;
+  border: 2px solid var(--card-border);
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+.hunt-cell :is(.arabic-word, .arabic-text) { font-size: 44px; }
+.hunt-cell.asleep { opacity: 0.55; }
+.hunt-cell.found { border-color: #14513a; background: #14513a14; }
+.hunt-cell.wrong { border-color: #c0392b; background: #c0392b14; }
+.hunt-cell.show { border-color: #14513a; border-style: dashed; }
+.check-feedback { flex-wrap: wrap; }
+.quiz-pair { display: inline-flex; gap: 8px; }
+.quiz-pair :is(.arabic-word, .arabic-text) { font-size: 32px; }
+.quiz-stop { margin: 10px 0 0; text-align: center; font-size: 13px; color: var(--text-soft); }
+
+/* the review round, the getting-ready bar, the end */
+.quiz-intro { text-align: center; }
+.quiz-bar-track { display: block; height: 10px; border-radius: 999px; background: color-mix(in srgb, var(--text-soft) 18%, transparent); overflow: hidden; }
+.quiz-bar-fill { display: block; height: 100%; border-radius: 999px; background: #14513a; transition: width 0.2s ease; }
+:root[data-theme='dark'] .quiz-bar-fill { background: #5fae7f; }
+.quiz-bars { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
+.quiz-bar { display: grid; grid-template-columns: minmax(7em, 10em) 1fr auto; align-items: center; gap: 10px; font-size: 14px; }
+.quiz-bar-count { color: var(--text-soft); font-variant-numeric: tabular-nums; }
+.quiz-time { margin: 0 0 16px; text-align: center; color: var(--text-soft); }
+.quiz-missed { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 8px; }
+.quiz-missed li { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 6px 12px; border: 1px solid var(--card-border); border-radius: 12px; }
+.quiz-mini-play { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; padding: 0 10px; }
+.quiz-missed-ar { display: inline-flex; gap: 4px; }
+.quiz-missed-ar :is(.arabic-word, .arabic-text) { font-size: 32px; }
+.quiz-missed-picked { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; color: var(--text-soft); }
+.quiz-missed-picked :is(.arabic-word, .arabic-text) { font-size: 26px; }
+.quiz-missed-picked .arabic-text { color: #c0392b; }
+@media (max-width: 420px) {
+  .check-options.n3 .check-option { min-height: 80px; padding: 16px 4px 10px; }
+  .check-options.n3 :is(.arabic-word, .arabic-text) { font-size: 34px; }
+  .hunt-cell :is(.arabic-word, .arabic-text) { font-size: 36px; }
+}

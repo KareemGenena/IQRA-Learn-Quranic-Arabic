@@ -15,6 +15,7 @@ export function ContentsMenu({
   config,
   admin,
   workbooks,
+  quiz,
   currentId,
   open,
   onClose,
@@ -22,6 +23,7 @@ export function ContentsMenu({
   config: AppConfig;
   admin: boolean;
   workbooks: boolean;
+  quiz: boolean;
   currentId: number;
   open: boolean;
   onClose: () => void;
@@ -74,6 +76,11 @@ export function ContentsMenu({
               </ol>
             </section>
           ))}
+          {quiz && (
+            <a className="menu-link" href="#/quiz" onClick={onClose}>
+              Quiz me
+            </a>
+          )}
           {workbooks && (
             <a className="menu-link" href="#/workbook" onClick={onClose}>
               Practice workbooks

@@ -1,3 +1,4 @@
+import { BulbIcon } from '../components/BulbIcon';
 import { LESSONS, lessonsByLevel, orderedLessons } from '../lib/lessons';
 import { canSeeLesson, lessonStatus } from '../lib/appConfig';
 import { continueWith, readProgress, stateOf } from '../lib/progress';
@@ -67,7 +68,17 @@ function LessonList({
   );
 }
 
-export function HomePage({ config, admin, workbooks }: { config: AppConfig; admin: boolean; workbooks: boolean }) {
+export function HomePage({
+  config,
+  admin,
+  workbooks,
+  quiz,
+}: {
+  config: AppConfig;
+  admin: boolean;
+  workbooks: boolean;
+  quiz: boolean;
+}) {
   const visible = (l: LessonMeta) => canSeeLesson(config, l.id, admin);
   const levels = lessonsByLevel(LESSONS)
     .map((lv) => ({ ...lv, lessons: lv.lessons.filter(visible) }))
@@ -102,6 +113,28 @@ export function HomePage({ config, admin, workbooks }: { config: AppConfig; admi
       )}
       {!next && ordered.length > 0 && (
         <p className="continue-done">You have been through every lesson. Pick any one to review.</p>
+      )}
+
+      {/* Quiz me: a door of its own beside the way through, never a lesson
+          in it (Design/drills.md). The lightbulb at the top reaches it too. */}
+      {quiz && (
+        <a className="quiz-card" href="#/quiz">
+          <span className="quiz-bulb">
+            <BulbIcon size={24} />
+          </span>
+          <span className="lesson-body">
+            <span className="lesson-title">
+              Quiz me{' '}
+              {(config.features.quiz ?? 'admin') !== 'everyone' && <span className="status-pill draft">draft</span>}
+            </span>
+            <span className="lesson-blurb">
+              Choose what to practice. Hear a sound, tap what you heard — every mistake comes back until you get it right.
+            </span>
+          </span>
+          <span className="lesson-go" aria-hidden="true">
+            ›
+          </span>
+        </a>
       )}
 
       {levels.map((lv) => (

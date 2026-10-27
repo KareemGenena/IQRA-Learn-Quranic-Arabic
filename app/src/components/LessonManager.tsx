@@ -7,6 +7,7 @@ const FEATURES: { key: string; label: string }[] = [
   { key: 'laser', label: 'Laser pointer' },
   { key: 'notes', label: 'Lesson notes' },
   { key: 'workbooks', label: 'Workbook pages (Listen to a workbook page)' },
+  { key: 'quiz', label: 'Quiz me (the lightbulb)' },
 ];
 
 const NEXT_LABEL: Record<LessonStatus, string> = {
