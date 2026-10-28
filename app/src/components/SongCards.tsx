@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePlayable } from '../lib/usePlayable';
+import { Transport } from './Transport';
 import { toItems } from '../lib/lessons';
 import type { Lesson } from '../types';
 
@@ -26,7 +27,7 @@ import type { Lesson } from '../types';
  * itself (the song's breaths and its notes' onsets, scripts/lib/align.mjs);
  * a tap calibration still overrides it.
  *
- * Play/Pause (and Space) only; a tap on a letter starts the song from that
+ * Play, Pause and Stop (and Space to play or pause); a tap on a letter starts the song from that
  * letter. Each letter is its own element — they are standalone and do not
  * join, so the never-split-a-word rule is not touched.
  */
@@ -38,7 +39,7 @@ const LEAD_S = 0.3;
 export function SongCards({ lesson, rate }: { lesson: Lesson; rate: number }) {
   const song = lesson.song;
   const playable = useMemo(() => toItems(lesson)[0]?.forms[0], [lesson]);
-  const { activeIndex, playing, paused, boundaries, play, stop, pause, resume, seek, now } = usePlayable(
+  const { activeIndex, playing, paused, loading, boundaries, play, stop, pause, resume, seek, now } = usePlayable(
     lesson,
     playable,
     rate,
@@ -120,16 +121,27 @@ export function SongCards({ lesson, rate }: { lesson: Lesson; rate: number }) {
     [playing, timed, boundaries, lines, seek],
   );
 
-  const togglePlay = useCallback(() => {
-    if (!playing) {
-      // By cluster: a step is a cluster in both songs, and the hook resolves
-      // it against the timing it has just fetched — right on a first play.
-      void play({ cluster: lines[line]?.[0] ?? 0 });
+  /** Play: from the line on screen, or on from where Pause held it. */
+  const start = useCallback(() => {
+    if (playing) {
+      if (paused) resume();
       return;
     }
-    if (paused) resume();
-    else pause();
-  }, [playing, paused, line, lines, play, pause, resume]);
+    // By cluster: a step is a cluster in both songs, and the hook resolves
+    // it against the timing it has just fetched — right on a first play.
+    void play({ cluster: lines[line]?.[0] ?? 0 });
+  }, [playing, paused, line, lines, play, resume]);
+
+  /** Stop: the song ends, and the next Play starts it from the top. */
+  const end = useCallback(() => {
+    stop();
+    setLine(0);
+  }, [stop]);
+
+  const togglePlay = useCallback(() => {
+    if (playing && !paused) pause();
+    else start();
+  }, [playing, paused, pause, start]);
 
   // Single keys only, as everywhere: someone may be driving this by voice.
   useEffect(() => {
@@ -183,9 +195,14 @@ export function SongCards({ lesson, rate }: { lesson: Lesson; rate: number }) {
       </div>
 
       <nav className="pager" aria-label="Song">
-        <button type="button" className="btn primary play-all" onClick={togglePlay}>
-          {!playing ? 'Play' : paused ? 'Resume' : 'Pause'}
-        </button>
+        <Transport
+          state={!playing ? 'idle' : paused ? 'paused' : 'playing'}
+          waiting={loading}
+          onPlay={start}
+          onPause={pause}
+          onStop={end}
+          label="The song"
+        />
       </nav>
 
       {/* the whole song, small: one row per line, the current one marked */}

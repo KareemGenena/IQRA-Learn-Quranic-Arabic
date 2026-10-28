@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { PlayIcon } from './PlayIcon';
 import { Mixed } from './Mixed';
+import { Transport } from './Transport';
 import { usePlayable } from '../lib/usePlayable';
 import { splitClusters } from '../lib/graphemes';
 import type { CardProps } from '../pages/SectionedLesson';
@@ -28,7 +28,7 @@ import type { CardProps } from '../pages/SectionedLesson';
  */
 export function LetterCard({ lesson, item, rate, displayNo, register }: CardProps) {
   const playable = item.forms[0];
-  const { activeIndex, playing, play, toggle } = usePlayable(lesson, playable, rate);
+  const { activeIndex, playing, paused, loading, play, stop, pause, resume } = usePlayable(lesson, playable, rate);
 
   useEffect(() => {
     register?.(playable.key, () => play());
@@ -134,16 +134,17 @@ export function LetterCard({ lesson, item, rate, displayNo, register }: CardProp
         </p>
       )}
 
+      {/* The teacher's whole line is long: Play, Pause and Stop, each what
+          it says — a pause holds the place and Play carries on from it. */}
       <div className="letter-actions">
-        <button
-          type="button"
-          className={`btn primary play-letter ${playing ? 'playing' : ''}`}
-          onClick={() => void toggle()}
-          aria-label={playing ? 'Stop' : `Play ${item.name ?? item.letter ?? ''}`}
-        >
-          <PlayIcon playing={playing} />
-          <span>{playing ? 'Stop' : 'Play'}</span>
-        </button>
+        <Transport
+          state={!playing ? 'idle' : paused ? 'paused' : 'playing'}
+          waiting={loading}
+          onPlay={() => (paused ? resume() : void play())}
+          onPause={pause}
+          onStop={stop}
+          label={`Play ${item.name ?? item.letter ?? ''}`}
+        />
       </div>
     </div>
   );

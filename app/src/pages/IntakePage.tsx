@@ -26,6 +26,8 @@ import { nameProblem, sheetFileNames } from '../lib/audioName';
 import { readDocx, guessWordColumns, slotColumn } from '../lib/docxTable';
 import type { DocxTable } from '../lib/docxTable';
 import { Mixed } from '../components/Mixed';
+import { Transport } from '../components/Transport';
+import type { TransportState } from '../components/Transport';
 import {
   canWriteToFolder,
   download,
@@ -508,6 +510,70 @@ function Destination({
   );
 }
 
+// ── listening back ────────────────────────────────────────────────────────
+
+/**
+ * One take sounding at a time, with Play, Pause and Stop (the author,
+ * 2026-10-27: "if I play a long recording, I must finish it"). A take is the
+ * id it is known by — the slot and its number — so a list of takes can show
+ * which one is playing and the controls of that one alone.
+ */
+function useTakePlayer() {
+  const audio = useRef<HTMLAudioElement | null>(null);
+  const url = useRef<string | null>(null);
+  const [now, setNow] = useState<{ id: string; paused: boolean } | null>(null);
+
+  const release = useCallback(() => {
+    const a = audio.current;
+    if (a) {
+      a.onended = null;
+      a.pause();
+    }
+    audio.current = null;
+    if (url.current) URL.revokeObjectURL(url.current);
+    url.current = null;
+  }, []);
+
+  const stop = useCallback(() => {
+    release();
+    setNow(null);
+  }, [release]);
+
+  /** Play this take — from where it was paused, if it was. */
+  const play = useCallback(
+    (id: string, blob: Blob) => {
+      if (now?.id === id && now.paused && audio.current) {
+        void audio.current.play();
+        setNow({ id, paused: false });
+        return;
+      }
+      release();
+      url.current = URL.createObjectURL(blob);
+      const a = new Audio(url.current);
+      a.onended = () => stop();
+      audio.current = a;
+      void a.play();
+      setNow({ id, paused: false });
+    },
+    [now, release, stop],
+  );
+
+  const pause = useCallback(() => {
+    audio.current?.pause();
+    setNow((n) => (n ? { ...n, paused: true } : n));
+  }, []);
+
+  useEffect(() => release, [release]);
+
+  /** The controls' state for one take. */
+  const stateOf = useCallback(
+    (id: string): TransportState => (now?.id !== id ? 'idle' : now.paused ? 'paused' : 'playing'),
+    [now],
+  );
+  return useMemo(() => ({ play, pause, stop, stateOf }), [play, pause, stop, stateOf]);
+}
+type TakePlayer = ReturnType<typeof useTakePlayer>;
+
 // ── recording ─────────────────────────────────────────────────────────────
 
 function Recorder({
@@ -534,9 +600,11 @@ function Recorder({
   const [mics, setMics] = useState<MediaDeviceInfo[]>([]);
   const [mic, setMic] = useState('');
   const handle = useRef<RecorderHandle | null>(null);
-  const playing = useRef<HTMLAudioElement | null>(null);
+  const player = useTakePlayer();
 
   const slot = session.slots[current];
+  // Moving to another slot, or starting a take, silences the one playing.
+  useEffect(() => player.stop(), [slot.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     listMicrophones().then(setMics).catch(() => {});
@@ -587,6 +655,7 @@ function Recorder({
       return;
     }
     setMicError('');
+    player.stop();
     try {
       handle.current = await startRecording(mic || undefined);
       setHeld(0);
@@ -594,16 +663,16 @@ function Recorder({
     } catch {
       setMicError('The microphone was refused or is in use by another program.');
     }
-  }, [mic, stop]);
+  }, [mic, stop, player]);
 
-  const play = useCallback(() => {
-    const chosen = (takes[slot.id] ?? []).find((t) => t.no === session.chosen[slot.id]);
-    if (!chosen) return;
-    playing.current?.pause();
-    const audio = new Audio(URL.createObjectURL(chosen.blob));
-    playing.current = audio;
-    void audio.play();
-  }, [session.chosen, slot.id, takes]);
+  /** Space: the kept take plays, pauses, and carries on. */
+  const playKept = useCallback(() => {
+    const kept = (takes[slot.id] ?? []).find((t) => t.no === session.chosen[slot.id]);
+    if (!kept) return;
+    const id = `${slot.id}:${kept.no}`;
+    if (player.stateOf(id) === 'playing') player.pause();
+    else player.play(id, kept.blob);
+  }, [session.chosen, slot.id, takes, player]);
 
   const move = useCallback(
     (by: number) => {
@@ -629,12 +698,12 @@ function Recorder({
         move(-1);
       } else if (e.code === 'Space') {
         e.preventDefault();
-        play();
+        playKept();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [move, play, record]);
+  }, [move, playKept, record]);
 
   /**
    * Changing how many words a take should hold changes where the splitter
@@ -719,9 +788,20 @@ function Recorder({
           >
             {recording ? 'Stop' : 'Record'}
           </button>
-          <button type="button" className="btn" disabled={!chosen} onClick={play}>
-            Play
-          </button>
+          {chosen ? (
+            <Transport
+              small
+              state={player.stateOf(`${slot.id}:${chosen.no}`)}
+              onPlay={() => player.play(`${slot.id}:${chosen.no}`, chosen.blob)}
+              onPause={player.pause}
+              onStop={player.stop}
+              label="The kept take"
+            />
+          ) : (
+            <button type="button" className="btn" disabled>
+              Play
+            </button>
+          )}
           <button type="button" className="btn" onClick={() => move(-1)} disabled={current === 0}>
             Previous
           </button>
@@ -736,7 +816,7 @@ function Recorder({
         </div>
         {micError && <p className="gate-error">{micError}</p>}
         <p className="kbd-hint">
-          <kbd>R</kbd> record or stop · <kbd>Space</kbd> play · <kbd>N</kbd> next ·{' '}
+          <kbd>R</kbd> record or stop · <kbd>Space</kbd> play or pause · <kbd>N</kbd> next ·{' '}
           <kbd>P</kbd> previous
         </p>
 
@@ -773,6 +853,8 @@ function Recorder({
 
       <TakeList
         takes={mine}
+        slotId={slot.id}
+        player={player}
         expect={slot.expect}
         chosen={chosenNo}
         onChoose={(no) => onUpdate({ ...session, chosen: { ...session.chosen, [slot.id]: no } })}
@@ -834,11 +916,15 @@ function LevelCheck({ advice }: { advice: ReturnType<typeof levelAdvice> }) {
 
 function TakeList({
   takes,
+  slotId,
+  player,
   expect,
   chosen,
   onChoose,
 }: {
   takes: Take[];
+  slotId: string;
+  player: TakePlayer;
   expect: number;
   chosen: number | undefined;
   onChoose: (no: number) => void;
@@ -868,13 +954,14 @@ function TakeList({
                 )}{' '}
                 · peak {(20 * Math.log10(take.report.peak || 1e-6)).toFixed(0)} dBFS
               </span>
-              <button
-                type="button"
-                className="btn"
-                onClick={() => void new Audio(URL.createObjectURL(take.blob)).play()}
-              >
-                Play
-              </button>
+              <Transport
+                small
+                state={player.stateOf(`${slotId}:${take.no}`)}
+                onPlay={() => player.play(`${slotId}:${take.no}`, take.blob)}
+                onPause={player.pause}
+                onStop={player.stop}
+                label={`Take ${take.no}`}
+              />
               <button
                 type="button"
                 className={`btn ${take.no === chosen ? 'primary' : ''}`}

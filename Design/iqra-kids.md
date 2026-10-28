@@ -1359,3 +1359,21 @@ teaching lines in their title boxes; بَمَّ and بَنَّ wear "Ghunna"; ع
 / عَفِّ left the shadda sheet. The Arabic everywhere in Level 1 (letter
 cards, songs, places, chips) is now truly the Mushaf face — it had been
 Noto Naskh under a wrong font name. Open: the author re-records ت.
+
+### 2026-10-27 — retakes, the hooks, the places, Play / Pause / Stop
+
+ب, ت and ر were re-recorded (table 7, same names) and re-cut; no calibration
+existed on them. The author's script edits picked up with them: ت's "as in
+tiger", ر's "a fishing hook lying on the sand". **The pictures of د and ر
+were swapped, and so were ذ and ز** — the hanging hook on the line is د (ذ
+with its bubble), the hook on the sand ر (ز) — as the mnemonics always said;
+the four files were exchanged in `public/images/kids/` and `IMAGE_VERSION`
+is v3. The art pipeline that cut them from `Design/kids-art/ب ت ث ج ح خ د ذ
+ر ز.png` is not in the repo: whoever re-cuts that sheet must keep the hooks
+the right way round. **The places lesson (33)** now reads mouth space,
+throat, lips, tongue, nose — the tongue second to last, the ghunna last (the
+author); each place keeps its id. **A letter card's one Play/Stop button is
+three: Play, Pause, Stop** — Play carries on from a pause, Stop starts over
+— and the songs got the same three (`Transport.tsx`). The tracing card no
+longer says "teacher's strokes"; the teacher's strokes are still used. The
+quiz (`Design/drills.md`) now practises tracing and memory pairs too.

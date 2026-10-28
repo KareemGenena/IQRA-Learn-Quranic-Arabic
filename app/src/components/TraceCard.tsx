@@ -95,8 +95,25 @@ const readWatch = () => {
   }
 };
 
-export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps) {
+export function TraceCard({
+  lesson,
+  item,
+  rate,
+  displayNo,
+  register,
+  quiz = false,
+  onTraced,
+}: CardProps & {
+  /** In Quiz me: no number, no "Watch all", no "Trace it again", no
+   *  teacher's tools — the quiz moves on by itself. */
+  quiz?: boolean;
+  /** The letter traced, and how many times the finger left the line. */
+  onTraced?: (slips: number) => void;
+}) {
   const playable = item.forms[0];
+  const slips = useRef(0);
+  const tracedRef = useRef(onTraced);
+  tracedRef.current = onTraced;
   const { playing, play } = usePlayable(lesson, playable, rate);
   useEffect(() => {
     register?.(playable.key, () => play());
@@ -267,7 +284,7 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
         phaseRef.current = 'trace';
         paint();
         // Someone watching rather than writing: on to the next letter.
-        if (readWatch()) timer = window.setTimeout(() => window.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight', key: 'ArrowRight', bubbles: true })), 1200);
+        if (!quiz && readWatch()) timer = window.setTimeout(() => window.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight', key: 'ArrowRight', bubbles: true })), 1200);
         return;
       }
       const t = ts[i];
@@ -295,7 +312,7 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
       raf = requestAnimationFrame(frame);
     };
     next();
-  }, [templates, size, stopDemo, paint]);
+  }, [templates, size, stopDemo, paint, quiz]);
 
   // On a new card: its name, then the demonstration. The name plays from
   // the page's own gesture (a tap, a key); a clip not yet recorded fails
@@ -307,6 +324,7 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
     if (openedRef.current === item.id) return;
     openedRef.current = item.id;
     let on = true;
+    slips.current = 0;
     setCur(0);
     curRef.current = 0;
     tracers.current.forEach((tr) => tr.reset());
@@ -352,6 +370,7 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
       setPhase('done');
       phaseRef.current = 'done';
       chime();
+      tracedRef.current?.(slips.current);
     }
   }, []);
 
@@ -359,6 +378,7 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
   const offTheLine = useCallback(
     (lastFraction: number) => {
       knock();
+      slips.current += 1;
       flashing.current = lastFraction;
       setFlash(true);
       setPhase('sorry');
@@ -555,6 +575,7 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
 
   const again = () => {
     stopDemo();
+    slips.current = 0;
     setCur(0);
     curRef.current = 0;
     tracers.current.forEach((tr) => tr.reset());
@@ -620,10 +641,9 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
   return (
     <div ref={cardRef} className={`letter-card trace-card ${fam} ${phase === 'done' ? 'traced' : ''} ${authoring ? 'authoring' : ''}`}>
       <div className="letter-top">
-        <span className="letter-no">{displayNo}</span>
+        {!quiz && <span className="letter-no">{displayNo}</span>}
         <span className="letter-name" dir="rtl" lang="ar">
           {item.name}
-          {taught && <span className="trace-taught"> · teacher's strokes</span>}
         </span>
       </div>
 
@@ -714,20 +734,22 @@ export function TraceCard({ lesson, item, rate, displayNo, register }: CardProps
             <button type="button" className="btn" onClick={() => void play()} disabled={playing || !playable.audio}>
               Say the name
             </button>
-            <button type="button" className={`btn ${watching ? 'primary' : ''}`} onClick={toggleWatch} aria-pressed={watching} title="Each letter shows itself, then the next">
-              {watching ? 'Stop watching' : 'Watch all'}
-            </button>
-            {phase === 'done' && (
+            {!quiz && (
+              <button type="button" className={`btn ${watching ? 'primary' : ''}`} onClick={toggleWatch} aria-pressed={watching} title="Each letter shows itself, then the next">
+                {watching ? 'Stop watching' : 'Watch all'}
+              </button>
+            )}
+            {!quiz && phase === 'done' && (
               <button type="button" className="btn primary" onClick={again}>
                 Trace it again
               </button>
             )}
-            {admin && geom && (
+            {!quiz && admin && geom && (
               <button type="button" className="btn admin-btn" onClick={beginAuthoring} disabled={busy}>
                 Teach the strokes
               </button>
             )}
-            {admin && taught && (
+            {!quiz && admin && taught && (
               <button type="button" className="btn admin-btn" onClick={() => void forgetAuthored()} disabled={busy}>
                 Use the font's strokes
               </button>

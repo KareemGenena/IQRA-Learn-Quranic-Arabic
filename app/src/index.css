@@ -229,6 +229,41 @@ body {
   display: flex;
 }
 
+/* The glyph sits in the corner of a word card. Inside a button it is part of
+   the button — absolute there, it floated off to the page's edge: the
+   letter card's Play showed its triangle by the margin on a right-to-left
+   card (the author, 2026-10-27), the Level check's Listen again the same. */
+.btn .play-icon {
+  position: static;
+  color: inherit;
+  opacity: 1;
+}
+
+/* ── Play, Pause and Stop (components/Transport.tsx, 2026-10-27) ── */
+.transport {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  direction: ltr;
+}
+.transport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-weight: 600;
+}
+.transport-btn:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+.transport.small .transport-btn {
+  min-height: 34px;
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
 /* ---------- Arabic word + highlight ---------- */
 
 .arabic-word {
@@ -3445,7 +3480,6 @@ kbd {
 .letter-pic.glow img { box-shadow: 0 0 0 4px var(--highlight-border), 0 0 26px var(--highlight-border); }
 .small-form-text { font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif; font-size: 44px; line-height: 1.3; }
 .letter-actions { display: flex; justify-content: center; margin-top: 16px; }
-.play-letter { display: inline-flex; align-items: center; gap: 8px; }
 @media (max-width: 640px) {
   .letter-stage { grid-template-areas: 'pic letter'; }
 }
@@ -3629,7 +3663,6 @@ kbd {
 circle.trace-author { fill: currentColor; stroke: none; }
 .trace-author.live { opacity: 0.55; }
 .trace-author-no { font: 700 14px system-ui, sans-serif; fill: currentColor; }
-.trace-taught { font-family: system-ui, sans-serif; font-size: 12px; color: var(--text-soft); }
 .trace-note { text-align: center; margin-top: 8px; }
 .authoring .trace-board { outline: 2px dashed var(--accent); outline-offset: 3px; }
 .trace-ink { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
@@ -4031,9 +4064,6 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 /* .arabic-text sets its own size: a context resizes the word and its text */
 .check-options.kind-name :is(.arabic-word, .arabic-text),
 .check-options.kind-lookalike :is(.arabic-word, .arabic-text) { font-size: 56px; }
-/* the play glyph sits in the corner of a word card; in a button it is inline */
-.check-play .play-icon,
-.quiz-mini-play .play-icon { position: static; color: inherit; opacity: 1; }
 .check-option.asleep { opacity: 0.55; }
 .quiz-word { font-size: 20px; font-weight: 600; line-height: 1.4; }
 .quiz-hunt { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 420px; margin: 0 auto; }
@@ -4059,8 +4089,7 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 /* the review round, the getting-ready bar, the end */
 .quiz-intro { text-align: center; }
 .quiz-bar-track { display: block; height: 10px; border-radius: 999px; background: color-mix(in srgb, var(--text-soft) 18%, transparent); overflow: hidden; }
-.quiz-bar-fill { display: block; height: 100%; border-radius: 999px; background: #14513a; transition: width 0.2s ease; }
-:root[data-theme='dark'] .quiz-bar-fill { background: #5fae7f; }
+.quiz-bar-fill { display: block; height: 100%; border-radius: 999px; background: var(--q-first); transition: width 0.2s ease; }
 .quiz-bars { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
 .quiz-bar { display: grid; grid-template-columns: minmax(7em, 10em) 1fr auto; align-items: center; gap: 10px; font-size: 14px; }
 .quiz-bar-count { color: var(--text-soft); font-variant-numeric: tabular-nums; }
@@ -4070,6 +4099,8 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 .quiz-mini-play { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; padding: 0 10px; }
 .quiz-missed-ar { display: inline-flex; gap: 4px; }
 .quiz-missed-ar :is(.arabic-word, .arabic-text) { font-size: 32px; }
+.quiz-missed-en { font-size: 15px; }
+.quiz-end-actions { justify-content: center; margin: 18px 0 8px; }
 .quiz-missed-picked { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; color: var(--text-soft); }
 .quiz-missed-picked :is(.arabic-word, .arabic-text) { font-size: 26px; }
 .quiz-missed-picked .arabic-text { color: #c0392b; }
@@ -4078,3 +4109,146 @@ circle.trace-ink { fill: currentColor; stroke: none; }
   .check-options.n3 :is(.arabic-word, .arabic-text) { font-size: 34px; }
   .hunt-cell :is(.arabic-word, .arabic-text) { font-size: 36px; }
 }
+
+/* ── Quiz me: the contrast, tracing, memory pairs, the end (2026-10-27) ── */
+.quiz-contrast { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-soft); }
+.quiz-contrast-ar { font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif; font-size: 30px; line-height: 1.5; color: var(--text); }
+.quiz-diff-btn { margin-inline-start: auto; font-size: 13px; padding: 6px 12px; }
+
+/* lesson 30's card inside the quiz's own: one card, not two */
+.quiz-trace .letter-card { border: none; box-shadow: none; padding: 0; background: transparent; }
+
+.memory-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; max-width: 520px; margin: 0 auto; }
+.memory-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 2px solid var(--card-border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.memory-card.down { background: linear-gradient(135deg, var(--accent), var(--accent-strong)); border-color: transparent; color: #fff; }
+.memory-card.down .check-key { color: rgba(255, 255, 255, 0.8); }
+.memory-back { font-size: 30px; font-weight: 700; opacity: 0.85; }
+.memory-card.up { border-color: var(--accent); }
+.memory-card.matched { border-color: #14513a; background: #14513a14; cursor: default; }
+.memory-card.miss { border-color: #c0392b; background: #c0392b14; }
+.memory-letter { font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif; font-size: 48px; line-height: 1.4; }
+.memory-name { font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif; font-size: 26px; line-height: 1.6; }
+.memory-sound { display: flex; color: var(--accent); }
+@media (max-width: 420px) {
+  .memory-grid { gap: 6px; }
+  .memory-letter { font-size: 36px; }
+  .memory-name { font-size: 18px; }
+}
+/* the classic game: every card face up to look at first, then turned over */
+.memory-face { display: flex; flex-direction: column; align-items: center; }
+.quiz-memory-go { justify-content: center; margin-top: 16px; }
+
+/* ── Quiz me, the second round (2026-10-27): choosing by Level, letter
+   shapes, find the one ── */
+.quiz-all {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  font-weight: 600;
+  cursor: pointer;
+}
+.quiz-all input,
+.quiz-level input { flex: none; width: 20px; height: 20px; margin: 0; accent-color: var(--accent); }
+.quiz-level-group { margin: 0 0 8px; }
+.quiz-level {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+}
+.quiz-level.off { opacity: 0.55; margin: 0 0 8px; min-height: 44px; }
+.quiz-level-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  text-align: start;
+  cursor: pointer;
+}
+.quiz-level.off .quiz-level-name { cursor: default; }
+.quiz-level-arrow { width: 1em; color: var(--text-soft); }
+.quiz-level-note { margin-inline-start: auto; font-size: 13px; font-weight: 400; color: var(--text-soft); }
+.quiz-level-group .quiz-topics { margin: 8px 0 12px; padding-inline-start: 22px; }
+
+/* a letter's shape is read, not heard: the glyph alone, in the Mushaf face */
+.quiz-glyph { font-family: 'Uthmanic Hafs', 'Noto Naskh Arabic', serif; font-size: 56px; line-height: 1.5; }
+.quiz-show { display: flex; flex-direction: column; align-items: center; gap: 2px; margin: 0 0 14px; }
+.quiz-show-glyph { font-size: 76px; line-height: 1.4; }
+.quiz-show-place { font-size: 15px; color: var(--text-soft); }
+
+/* A word or a phrase as a choice is capped at its card, so its own --fit
+   shrinks the type instead of letting it run out of the card; on a phone the
+   three stand one above the other, where a two-word phrase has room. */
+.check-option { min-width: 0; }
+.check-option > .arabic-word { max-width: 100%; }
+.check-options:is(.kind-word, .kind-find) :is(.arabic-word, .arabic-text) { font-size: calc(36px * var(--fit, 1)); }
+@media (max-width: 560px) {
+  .check-options.n3:is(.kind-word, .kind-find) { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .check-options:is(.kind-word, .kind-find) .check-option { min-height: 0; padding: 8px 14px; line-height: 1.4; }
+}
+/* find the one: each card lit while its word is heard, once */
+.check-option.lit { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); opacity: 1; }
+@media (max-width: 420px) {
+  .quiz-glyph { font-size: 44px; }
+  .quiz-show-glyph { font-size: 60px; }
+}
+
+/* The end. Two classes on the dot strip — right the first time, put right
+   later — in a green and a gold validated for colour-blind separation in
+   both themes (dataviz validator: light ΔE 12.1, dark 9.0), and told apart
+   by SHAPE as well: a filled dot, a ring. The ring and the bars are one
+   series each: the same green on a lighter track of itself. The tokens sit
+   on the page, so the getting-ready bar wears the same green. */
+.quiz-page { --q-first: #1f7a4d; --q-later: #c08a1e; --q-track: rgba(31, 122, 77, 0.16); }
+:root[data-theme='dark'] .quiz-page { --q-first: #1f8455; --q-later: #ba8820; --q-track: rgba(31, 132, 85, 0.3); }
+.quiz-end-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 18px 26px; margin: 0 0 16px; }
+/* the picture is drawn on white: a rounded tile, like the letter pictures */
+.quiz-end-manara { width: 92px; height: auto; border-radius: 14px; }
+.score-ring { position: relative; width: 168px; height: 168px; }
+.score-ring svg { display: block; }
+.score-ring-track { fill: none; stroke: var(--q-track); stroke-width: 12; }
+.score-ring-fill { fill: none; stroke: var(--q-first); stroke-width: 12; stroke-linecap: round; }
+.score-ring-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.score-ring-value { font-size: 48px; font-weight: 700; line-height: 1; color: var(--text); }
+.score-ring-of { font-size: 18px; font-weight: 600; color: var(--text-soft); }
+.score-ring-note { margin-top: 6px; max-width: 112px; font-size: 12px; line-height: 1.25; color: var(--text-soft); }
+.quiz-dots-fig { margin: 0 0 18px; }
+.quiz-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 520px; margin: 0 auto; }
+.quiz-dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; box-sizing: border-box; }
+.quiz-dot.first { background: var(--q-first); }
+.quiz-dot.later { border: 3px solid var(--q-later); }
+.quiz-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin-top: 10px; font-size: 13px; color: var(--text-soft); }
+.quiz-legend .quiz-dot { width: 12px; height: 12px; margin-right: 4px; vertical-align: -1px; }
+.quiz-legend .quiz-dot.later { border-width: 2.5px; }
+.quiz-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 10px; margin: 0 0 18px; }
+.quiz-tile { padding: 10px 14px; border: 1px solid var(--card-border); border-radius: 12px; background: color-mix(in srgb, var(--q-first) 5%, var(--card)); }
+.quiz-tile-label { display: block; font-size: 12px; color: var(--text-soft); }
+.quiz-tile-value { display: block; font-size: 19px; font-weight: 700; color: var(--text); }
+.quiz-end-h { margin: 8px 0 10px; font-size: 15px; }
+.quiz-end .quiz-bar-track { height: 12px; border-radius: 4px; background: var(--q-track); }
+.quiz-end .quiz-bar-fill { border-radius: 0 4px 4px 0; background: var(--q-first); }
+.quiz-end .quiz-missed li { flex-wrap: wrap; }

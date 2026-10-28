@@ -276,12 +276,15 @@ const L32 = songLesson(32, SONG2, {
 });
 
 // ── where the letters come from — the workbook's five places ──────────────
+// In the author's order (2026-10-27): the tongue second to last and the
+// ghunna last. Each place keeps the id it was born with — an id is a key,
+// never a position.
 const PLACES = [
-  { zone: 'jawf', title: 'Mouth space', titleArabic: 'الجوف', note: 'The madd letters', letters: ['ا', 'و', 'ى'] },
-  { zone: 'throat', title: 'Throat', titleArabic: 'الحلق', note: '6 letters', letters: ['ء', 'ه', 'ع', 'ح', 'غ', 'خ'] },
-  { zone: 'tongue', title: 'Tongue', titleArabic: 'اللسان', note: 'All the other 18 letters', letters: ['ت', 'ث', 'ج', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ق', 'ك', 'ل', 'ن', 'ي'] },
-  { zone: 'lips', title: 'Lips', titleArabic: 'الشفتان', note: '4 letters', letters: ['ب', 'م', 'و', 'ف'] },
-  { zone: 'nose', title: 'Nose', titleArabic: 'الخيشوم', note: 'Ghunna — 2 letters', letters: ['ن', 'م'] },
+  { id: 1, zone: 'jawf', title: 'Mouth space', titleArabic: 'الجوف', note: 'The madd letters', letters: ['ا', 'و', 'ى'] },
+  { id: 2, zone: 'throat', title: 'Throat', titleArabic: 'الحلق', note: '6 letters', letters: ['ء', 'ه', 'ع', 'ح', 'غ', 'خ'] },
+  { id: 4, zone: 'lips', title: 'Lips', titleArabic: 'الشفتان', note: '4 letters', letters: ['ب', 'م', 'و', 'ف'] },
+  { id: 3, zone: 'tongue', title: 'Tongue', titleArabic: 'اللسان', note: 'All the other 18 letters', letters: ['ت', 'ث', 'ج', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ق', 'ك', 'ل', 'ن', 'ي'] },
+  { id: 5, zone: 'nose', title: 'Nose', titleArabic: 'الخيشوم', note: 'Ghunna — 2 letters', letters: ['ن', 'م'] },
 ];
 const L33 = {
   lesson: 33,
@@ -291,9 +294,9 @@ const L33 = {
   audioPath: 'audio/lesson20/',
   imagePath: 'images/kids/',
   perPage: 1,
-  sections: [{ id: 'places', title: 'Where the Letters Come From', titleArabic: 'مخارج الحروف', hint: 'Five places — mouth space, throat, tongue, lips and nose.' }],
-  words: PLACES.map((p, i) => ({
-    id: i + 1,
+  sections: [{ id: 'places', title: 'Where the Letters Come From', titleArabic: 'مخارج الحروف', hint: 'Five places — mouth space, throat, lips, tongue and nose.' }],
+  words: PLACES.map((p) => ({
+    id: p.id,
     section: 'places',
     image: `makhraj-${p.zone}.png`,
     badges: [],

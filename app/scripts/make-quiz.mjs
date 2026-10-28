@@ -4,24 +4,31 @@
  *   node scripts/make-quiz.mjs
  *
  * Draws on the Level 1 lessons that already have their clips — 30 (each
- * letter's name), 21 (harakat and tanween), 22 (natural madd), 23 (shadda) —
- * and keeps every form whose clip is on disk. Two Word sheets belong to the
+ * letter's name and its tracing strokes), 21 (harakat and tanween), 22
+ * (natural madd), 23 (shadda) — and on Level 2's words (1, 5, 6, 25–29), and
+ * keeps every form whose clip is on disk. Two Word sheets belong to the
  * author:
  *
  *   Word Tables/Quiz Prompts.docx       Slot · Say this — the spoken
- *       instructions. Record one take per row with the intake tool into
- *       `Audio/Audio - Quiz/`; the on-screen instruction is the same line.
+ *       instructions, recorded one take per row into `Audio/Audio - Quiz
+ *       Prompts/`; the on-screen instruction is the same line. A slot the
+ *       sheet has no row for shows the default line below, unrecorded.
  *   Word Tables/Quiz Sound-alikes.docx   letters a learner confuses by ear,
- *       one group per row — the wrong choice of "Which letter?". Not
- *       recorded: the clips are lesson 21's.
+ *       one group per row — the wrong choice of "Which letter?". The author
+ *       also recorded each row (2026-10-27) into `Audio/Audio - Quiz
+ *       Sound-alikes/`: the letters' sounds one after another, a second
+ *       apart. That take is the row's CONTRAST — "hear the difference" after
+ *       a mix-up between them. It is cut into as many pieces as the row has
+ *       letters, so the record click is never mistaken for a sound, and kept
+ *       whole from the first sound to the last.
  *
  * Each sheet is written once from the defaults below when it does not exist
  * and never overwritten; delete it to have it written afresh.
  *
- * Writes `public/quiz/quiz.json` and cuts each prompt take, trimmed to one
- * piece like every other take (splitIntoN), into `public/audio/quiz/`. Re-run
- * after any Level 1 lesson is re-cut or re-recorded: the bank carries each
- * clip's hash (`rev`), so a retake reaches every device as a new URL.
+ * Writes `public/quiz/quiz.json` and cuts each take, trimmed like every other
+ * take (splitIntoN), into `public/audio/quiz/`. Re-run after any Level 1
+ * lesson is re-cut or re-recorded: the bank carries each clip's hash (`rev`),
+ * so a retake reaches every device as a new URL.
  */
 import { createHash } from 'crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'fs';
@@ -39,7 +46,9 @@ const SHEETS = join(ROOT, 'Word Tables');
 const TEMPLATE = join(SHEETS, 'كلمات.docx');
 const PROMPTS_SHEET = join(SHEETS, 'Quiz Prompts.docx');
 const ALIKES_SHEET = join(SHEETS, 'Quiz Sound-alikes.docx');
-const AUDIO_SRC = join(ROOT, 'Audio', 'Audio - Quiz');
+// the author's folder names (2026-10-27)
+const AUDIO_SRC = join(ROOT, 'Audio', 'Audio - Quiz Prompts');
+const ALIKES_SRC = join(ROOT, 'Audio', 'Audio - Quiz Sound-alikes');
 const AUDIO_OUT = join(PUB, 'audio', 'quiz');
 const FONT = 'KFGQPC HAFS Uthmanic Script'; // the author's Word font (CLAUDE.md §4)
 
@@ -63,6 +72,9 @@ const PROMPTS = [
   ['quiz-review', "Let's try the ones you missed."],
   ['quiz-done', 'All done. Well done!'],
 ];
+// Since the evening of 2026-10-27 the quiz's headings are its own, as plain
+// as they can be ("Tap what you hear."), and a recording plays only where it
+// says the same thing (`ASK` in src/lib/quiz.ts); the others stay on disk.
 /** A starting point for the author to correct (Design/drills.md §6). */
 const SOUND_ALIKES = ['ح ه', 'ع ء', 'س ص', 'ت ط', 'ذ ز ظ', 'ث س', 'ق ك', 'د ض'];
 
@@ -194,6 +206,9 @@ for (const w of L30.words) {
   if (onDisk(30, w.audio)) entry.name = clip(30, w.text, w.audio, w.audioRev);
   else problems.push(`lesson 30 #${w.id} ${w.letter}: no name clip — left out of the name questions`);
   if (formsOf.has(b)) entry.forms = formsOf.get(b);
+  // lesson 30's card number, for the tracing questions: the quiz loads the
+  // lesson and traces that card, the teacher's own strokes where he drew them
+  if (w.trace?.strokes?.length) entry.trace = w.id;
   letters.push(entry);
 }
 for (const b of formsOf.keys()) {
@@ -231,6 +246,29 @@ for (const w of L23.words) {
   shadda.push([clip(23, plain.text, plain.audio, plain.audioRev), clip(23, doubled.text, doubled.audio, doubled.audioRev)]);
 }
 
+// ── Level 2's words: heard, and tapped among look-alikes ─────────────────
+// Every recorded form of the lessons Level 2's topics play, each text once
+// (lesson 6's ʿāriḍ word is one text said three ways: one is enough). A
+// lesson not yet recorded gives nothing, and its topic waits, greyed, until
+// it is recorded and this is run again (Design/drills.md §10).
+const WORD_LESSONS = [1, 5, 6, 25, 26, 27, 28, 29];
+const words = {};
+for (const n of WORD_LESSONS) {
+  const L = load(n);
+  const seen = new Set();
+  const out = [];
+  for (const w of L.words) {
+    const forms = w.forms ?? [{ text: w.text ?? w.arabic, audio: w.audio, audioRev: w.audioRev }];
+    for (const f of forms) {
+      const text = (f.text ?? '').normalize('NFC').trim();
+      if (!text || seen.has(text) || !onDisk(n, f.audio)) continue;
+      seen.add(text);
+      out.push(clip(n, text, f.audio, f.audioRev));
+    }
+  }
+  words[n] = out;
+}
+
 // ── the sound-alikes ──────────────────────────────────────────────────────
 const known = new Set(letters.map((l) => l.base));
 const soundAlikes = [];
@@ -244,23 +282,54 @@ for (const [g] of readSheet(ALIKES_SHEET)) {
   else if (group.length) problems.push(`sound-alikes "${g}": fewer than two letters — ignored`);
 }
 
-// ── the prompts, and their takes ──────────────────────────────────────────
-const takes = new Map(); // slot -> { file, take }
-if (existsSync(AUDIO_SRC)) {
-  for (const f of readdirSync(AUDIO_SRC)) {
-    if (!f.toLowerCase().endsWith('.wav')) continue;
+/** A folder's takes by their key; a trailing number is a take number and the
+ *  highest wins (CLAUDE.md, "Audio"). */
+function takesIn(dir) {
+  const out = new Map(); // key -> { file, take }
+  if (!existsSync(dir)) return out;
+  for (const f of readdirSync(dir)) {
+    if (!f.toLowerCase().endsWith('.wav') || f.startsWith('speaker-')) continue;
     const base = f.replace(/\.wav$/i, '');
     const numbered = /^(.*?)\s+(\d+)$/.exec(base);
     const k = key(numbered ? numbered[1] : base);
     const take = numbered ? Number(numbered[2]) : 1;
-    const prev = takes.get(k);
-    if (!prev || take > prev.take) takes.set(k, { file: f, take });
+    const prev = out.get(k);
+    if (!prev || take > prev.take) out.set(k, { file: f, take });
   }
+  return out;
 }
+const hashOf = (path) => createHash('sha1').update(readFileSync(path)).digest('hex').slice(0, 8);
+
+// ── the contrasts: each sound-alike row said aloud ────────────────────────
+const contrasts = [];
+const alikeTakes = takesIn(ALIKES_SRC);
+const alikeUsed = new Set();
+for (const [g] of readSheet(ALIKES_SHEET)) {
+  if (!g) continue;
+  const group = [...new Set(g.split(/[\s،,/]+/).map(bare).filter(Boolean))].filter((b) => known.has(b));
+  if (group.length < 2) continue;
+  const t = alikeTakes.get(key(g));
+  if (!t) continue;
+  alikeUsed.add(t.file);
+  const wav = readWav(join(ALIKES_SRC, t.file));
+  // As many pieces as letters: the click rule then never takes a sound.
+  const { segments } = splitIntoN(wav, group.length);
+  if (segments.length !== group.length) problems.push(`sound-alike take "${t.file}": found ${segments.length} sounds, expected ${group.length} — kept whole`);
+  const from = segments[0]?.[0] ?? 0;
+  const to = segments.at(-1)?.[1] ?? wav.frames;
+  const file = `alike-${group.map((b) => b.codePointAt(0).toString(16)).join('-')}.wav`;
+  mkdirSync(AUDIO_OUT, { recursive: true });
+  writeSegment(wav, from, to, join(AUDIO_OUT, file), { mono: true });
+  contrasts.push({ letters: group, file, rev: hashOf(join(AUDIO_OUT, file)) });
+}
+const strayAlikes = [...alikeTakes.values()].filter((t) => !alikeUsed.has(t.file)).map((t) => t.file);
+if (strayAlikes.length) problems.push(`${strayAlikes.length} recording(s) in Audio - Quiz Sound-alikes match no row: ${strayAlikes.join(', ')}`);
+
+// ── the prompts, and their takes ──────────────────────────────────────────
+const takes = takesIn(AUDIO_SRC);
 
 const prompts = {};
 const used = new Set();
-const unrecorded = [];
 for (const [slot, line] of readSheet(PROMPTS_SHEET)) {
   if (!slot) continue;
   const entry = { line: line ?? '' };
@@ -275,18 +344,15 @@ for (const [slot, line] of readSheet(PROMPTS_SHEET)) {
     const out = join(AUDIO_OUT, `${slot}.wav`);
     writeSegment(wav, from, to, out, { mono: true });
     entry.file = `${slot}.wav`;
-    entry.rev = createHash('sha1').update(readFileSync(out)).digest('hex').slice(0, 8);
-  } else unrecorded.push(slot);
+    entry.rev = hashOf(out);
+  }
   prompts[slot] = entry;
 }
-for (const [slot] of PROMPTS) if (!prompts[slot]) problems.push(`the prompts sheet has no row for ${slot} — the quiz will show no instruction there`);
-if (existsSync(AUDIO_SRC)) {
-  const unused = readdirSync(AUDIO_SRC).filter((f) => f.toLowerCase().endsWith('.wav') && !used.has(f) && !f.startsWith('speaker-'));
-  if (unused.length) problems.push(`${unused.length} recording(s) in Audio - Quiz match no slot: ${unused.join(', ')}`);
-}
+const unused = [...takes.values()].filter((t) => !used.has(t.file)).map((t) => t.file);
+if (unused.length) problems.push(`${unused.length} recording(s) in Audio - Quiz Prompts match no slot: ${unused.join(', ')}`);
 
 // ── write ─────────────────────────────────────────────────────────────────
-const bank = { letters, madd, shadda, soundAlikes, prompts };
+const bank = { letters, madd, shadda, soundAlikes, contrasts, words, prompts };
 mkdirSync(join(PUB, 'quiz'), { recursive: true });
 writeFileSync(join(PUB, 'quiz', 'quiz.json'), JSON.stringify(bank, null, 1) + '\n', 'utf8');
 
@@ -294,9 +360,13 @@ const withForms = letters.filter((l) => l.forms).length;
 const named = letters.filter((l) => l.name).length;
 console.log(`quiz.json: ${letters.length} letters (${named} with a name clip, ${withForms} with lesson 21's forms), ${madd.length} madd cards, ${shadda.length} shadda pairs`);
 console.log(`sound-alikes: ${soundAlikes.map((g) => g.join(' ')).join(' · ') || 'none'}`);
+console.log(`contrasts recorded: ${contrasts.length} of ${soundAlikes.length} (${contrasts.map((c) => c.letters.join(' ')).join(' · ') || 'none'})`);
+console.log(`letters with tracing strokes: ${letters.filter((l) => l.trace).length} of ${letters.length}`);
+console.log(`Level 2 words recorded: ${WORD_LESSONS.map((n) => `${n}: ${words[n].length}`).join(' · ')}`);
+const silent = Object.entries(prompts).filter(([, p]) => !p.file).map(([slot]) => slot);
 console.log(
-  unrecorded.length
-    ? `spoken instructions: ${Object.keys(prompts).length - unrecorded.length} of ${Object.keys(prompts).length} recorded — still to record: ${unrecorded.join(', ')}`
+  silent.length
+    ? `spoken instructions: ${Object.keys(prompts).length - silent.length} of ${Object.keys(prompts).length} recorded — still to record: ${silent.join(', ')}`
     : `spoken instructions: all ${Object.keys(prompts).length} recorded`,
 );
 if (!existsSync(AUDIO_SRC)) console.log(`  (no folder yet: ${AUDIO_SRC} — record Quiz Prompts.docx into it)`);

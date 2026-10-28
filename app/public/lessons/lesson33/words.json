@@ -11,7 +11,7 @@
       "id": "places",
       "title": "Where the Letters Come From",
       "titleArabic": "مخارج الحروف",
-      "hint": "Five places — mouth space, throat, tongue, lips and nose."
+      "hint": "Five places — mouth space, throat, lips, tongue and nose."
     }
   ],
   "words": [
@@ -75,6 +75,36 @@
           {
             "text": "خ",
             "family": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "section": "places",
+      "image": "makhraj-lips.png",
+      "badges": [],
+      "place": {
+        "zone": "lips",
+        "title": "Lips",
+        "titleArabic": "الشفتان",
+        "note": "4 letters",
+        "letters": [
+          {
+            "text": "ب",
+            "family": 1
+          },
+          {
+            "text": "م",
+            "family": 12
+          },
+          {
+            "text": "و",
+            "family": 15
+          },
+          {
+            "text": "ف",
+            "family": 9
           }
         ]
       }
@@ -161,36 +191,6 @@
           {
             "text": "ي",
             "family": 16
-          }
-        ]
-      }
-    },
-    {
-      "id": 4,
-      "section": "places",
-      "image": "makhraj-lips.png",
-      "badges": [],
-      "place": {
-        "zone": "lips",
-        "title": "Lips",
-        "titleArabic": "الشفتان",
-        "note": "4 letters",
-        "letters": [
-          {
-            "text": "ب",
-            "family": 1
-          },
-          {
-            "text": "م",
-            "family": 12
-          },
-          {
-            "text": "و",
-            "family": 15
-          },
-          {
-            "text": "ف",
-            "family": 9
           }
         ]
       }

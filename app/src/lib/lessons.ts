@@ -171,7 +171,7 @@ export const LESSONS: LessonMeta[] = [
     level: 1,
     title: 'Where the Letters Come From',
     titleArabic: 'مخارج الحروف',
-    blurb: 'Mouth space, throat, tongue, lips and nose — the five places.',
+    blurb: 'Mouth space, throat, lips, tongue and nose — the five places.',
   },
 
   // ── Lessons cut from the practice workbooks (Workbooks/lessons.map.json,

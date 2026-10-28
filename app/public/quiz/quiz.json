@@ -41,7 +41,8 @@
      "lesson": 21,
      "file": "word01f.wav"
     }
-   ]
+   ],
+   "trace": 1
   },
   {
    "letter": "ت",
@@ -84,7 +85,8 @@
      "lesson": 21,
      "file": "word02f.wav"
     }
-   ]
+   ],
+   "trace": 2
   },
   {
    "letter": "ث",
@@ -127,7 +129,8 @@
      "lesson": 21,
      "file": "word03f.wav"
     }
-   ]
+   ],
+   "trace": 3
   },
   {
    "letter": "ج",
@@ -170,7 +173,8 @@
      "lesson": 21,
      "file": "word04f.wav"
     }
-   ]
+   ],
+   "trace": 4
   },
   {
    "letter": "ح",
@@ -213,7 +217,8 @@
      "lesson": 21,
      "file": "word05f.wav"
     }
-   ]
+   ],
+   "trace": 5
   },
   {
    "letter": "خ",
@@ -256,7 +261,8 @@
      "lesson": 21,
      "file": "word06f.wav"
     }
-   ]
+   ],
+   "trace": 6
   },
   {
    "letter": "د",
@@ -299,7 +305,8 @@
      "lesson": 21,
      "file": "word07f.wav"
     }
-   ]
+   ],
+   "trace": 7
   },
   {
    "letter": "ذ",
@@ -342,7 +349,8 @@
      "lesson": 21,
      "file": "word08f.wav"
     }
-   ]
+   ],
+   "trace": 8
   },
   {
    "letter": "ر",
@@ -385,7 +393,8 @@
      "lesson": 21,
      "file": "word09f.wav"
     }
-   ]
+   ],
+   "trace": 9
   },
   {
    "letter": "ز",
@@ -428,7 +437,8 @@
      "lesson": 21,
      "file": "word10f.wav"
     }
-   ]
+   ],
+   "trace": 10
   },
   {
    "letter": "س",
@@ -471,7 +481,8 @@
      "lesson": 21,
      "file": "word11f.wav"
     }
-   ]
+   ],
+   "trace": 11
   },
   {
    "letter": "ش",
@@ -514,7 +525,8 @@
      "lesson": 21,
      "file": "word12f.wav"
     }
-   ]
+   ],
+   "trace": 12
   },
   {
    "letter": "ص",
@@ -557,7 +569,8 @@
      "lesson": 21,
      "file": "word13f.wav"
     }
-   ]
+   ],
+   "trace": 13
   },
   {
    "letter": "ض",
@@ -600,7 +613,8 @@
      "lesson": 21,
      "file": "word14f.wav"
     }
-   ]
+   ],
+   "trace": 14
   },
   {
    "letter": "ط",
@@ -643,7 +657,8 @@
      "lesson": 21,
      "file": "word15f.wav"
     }
-   ]
+   ],
+   "trace": 15
   },
   {
    "letter": "ظ",
@@ -686,7 +701,8 @@
      "lesson": 21,
      "file": "word16f.wav"
     }
-   ]
+   ],
+   "trace": 16
   },
   {
    "letter": "ع",
@@ -729,7 +745,8 @@
      "lesson": 21,
      "file": "word17f.wav"
     }
-   ]
+   ],
+   "trace": 17
   },
   {
    "letter": "غ",
@@ -772,7 +789,8 @@
      "lesson": 21,
      "file": "word18f.wav"
     }
-   ]
+   ],
+   "trace": 18
   },
   {
    "letter": "ف",
@@ -815,7 +833,8 @@
      "lesson": 21,
      "file": "word19f.wav"
     }
-   ]
+   ],
+   "trace": 19
   },
   {
    "letter": "ق",
@@ -858,7 +877,8 @@
      "lesson": 21,
      "file": "word20f.wav"
     }
-   ]
+   ],
+   "trace": 20
   },
   {
    "letter": "ك",
@@ -901,7 +921,8 @@
      "lesson": 21,
      "file": "word21f.wav"
     }
-   ]
+   ],
+   "trace": 21
   },
   {
    "letter": "ل",
@@ -944,7 +965,8 @@
      "lesson": 21,
      "file": "word22f.wav"
     }
-   ]
+   ],
+   "trace": 22
   },
   {
    "letter": "م",
@@ -987,7 +1009,8 @@
      "lesson": 21,
      "file": "word23f.wav"
     }
-   ]
+   ],
+   "trace": 23
   },
   {
    "letter": "ن",
@@ -1030,7 +1053,8 @@
      "lesson": 21,
      "file": "word24f.wav"
     }
-   ]
+   ],
+   "trace": 24
   },
   {
    "letter": "هـ",
@@ -1073,7 +1097,8 @@
      "lesson": 21,
      "file": "word25f.wav"
     }
-   ]
+   ],
+   "trace": 25
   },
   {
    "letter": "و",
@@ -1116,7 +1141,8 @@
      "lesson": 21,
      "file": "word26f.wav"
     }
-   ]
+   ],
+   "trace": 26
   },
   {
    "letter": "ى",
@@ -1159,7 +1185,8 @@
      "lesson": 21,
      "file": "word28f.wav"
     }
-   ]
+   ],
+   "trace": 27
   },
   {
    "letter": "ا",
@@ -1170,7 +1197,8 @@
     "lesson": 30,
     "file": "name28.wav",
     "rev": "0db35c11"
-   }
+   },
+   "trace": 28
   },
   {
    "letter": "ء",
@@ -1213,7 +1241,8 @@
      "lesson": 21,
      "file": "word27f.wav"
     }
-   ]
+   ],
+   "trace": 29
   }
  ],
  "madd": [
@@ -2559,45 +2588,901 @@
    "ض"
   ]
  ],
+ "contrasts": [
+  {
+   "letters": [
+    "ح",
+    "ه"
+   ],
+   "file": "alike-62d-647.wav",
+   "rev": "08d220aa"
+  },
+  {
+   "letters": [
+    "ع",
+    "ء"
+   ],
+   "file": "alike-639-621.wav",
+   "rev": "35da092e"
+  },
+  {
+   "letters": [
+    "س",
+    "ص"
+   ],
+   "file": "alike-633-635.wav",
+   "rev": "a5694520"
+  },
+  {
+   "letters": [
+    "ت",
+    "ط"
+   ],
+   "file": "alike-62a-637.wav",
+   "rev": "fc9e8da0"
+  },
+  {
+   "letters": [
+    "ذ",
+    "ز",
+    "ظ"
+   ],
+   "file": "alike-630-632-638.wav",
+   "rev": "af5545a8"
+  },
+  {
+   "letters": [
+    "ث",
+    "س"
+   ],
+   "file": "alike-62b-633.wav",
+   "rev": "2b4ba2c5"
+  },
+  {
+   "letters": [
+    "ق",
+    "ك"
+   ],
+   "file": "alike-642-643.wav",
+   "rev": "0f2a9c41"
+  },
+  {
+   "letters": [
+    "د",
+    "ض"
+   ],
+   "file": "alike-62f-636.wav",
+   "rev": "3b3e2307"
+  }
+ ],
+ "words": {
+  "1": [
+   {
+    "text": "أَنۡعَمۡتَ",
+    "lesson": 1,
+    "file": "word01.wav"
+   },
+   {
+    "text": "مَغۡضُوبِ",
+    "lesson": 1,
+    "file": "word02.wav"
+   },
+   {
+    "text": "عَلَيۡهِمۡ",
+    "lesson": 1,
+    "file": "word03.wav"
+   },
+   {
+    "text": "مَثَلُهُمۡ",
+    "lesson": 1,
+    "file": "word04.wav"
+   },
+   {
+    "text": "تَرَكَهُمۡ",
+    "lesson": 1,
+    "file": "word05.wav"
+   },
+   {
+    "text": "خَلَقَكُمۡ",
+    "lesson": 1,
+    "file": "word06.wav"
+   },
+   {
+    "text": "قَبۡلِكُمۡ",
+    "lesson": 1,
+    "file": "word07.wav"
+   },
+   {
+    "text": "فَأَخۡرَجَ",
+    "lesson": 1,
+    "file": "word08.wav"
+   },
+   {
+    "text": "عَبۡدِنَا",
+    "lesson": 1,
+    "file": "word09.wav"
+   },
+   {
+    "text": "بِسُورَةٍ",
+    "lesson": 1,
+    "file": "word10.wav"
+   },
+   {
+    "text": "حِجَارَةُ",
+    "lesson": 1,
+    "file": "word11.wav"
+   },
+   {
+    "text": "تَحۡتِهَا",
+    "lesson": 1,
+    "file": "word12.wav"
+   },
+   {
+    "text": "أَنۡهَارُ",
+    "lesson": 1,
+    "file": "word13.wav"
+   },
+   {
+    "text": "رُزِقۡنَا",
+    "lesson": 1,
+    "file": "word14.wav"
+   },
+   {
+    "text": "أَزۡوَاجٌ",
+    "lesson": 1,
+    "file": "word15.wav"
+   },
+   {
+    "text": "بَعُوضَةً",
+    "lesson": 1,
+    "file": "word16.wav"
+   },
+   {
+    "text": "فَوۡقَهَا",
+    "lesson": 1,
+    "file": "word17.wav"
+   },
+   {
+    "text": "خَلِيفَةً",
+    "lesson": 1,
+    "file": "word18.wav"
+   },
+   {
+    "text": "بِحَمۡدِكَ",
+    "lesson": 1,
+    "file": "word19.wav"
+   },
+   {
+    "text": "عَرَضَهُمۡ",
+    "lesson": 1,
+    "file": "word20.wav"
+   },
+   {
+    "text": "سُبۡحَانَ",
+    "lesson": 1,
+    "file": "word21.wav"
+   },
+   {
+    "text": "تُبۡدُونَ",
+    "lesson": 1,
+    "file": "word22.wav"
+   },
+   {
+    "text": "إِبۡلِيسَ",
+    "lesson": 1,
+    "file": "word23.wav"
+   },
+   {
+    "text": "وَزَوۡجُكَ",
+    "lesson": 1,
+    "file": "word24.wav"
+   },
+   {
+    "text": "تَقۡرَبَا",
+    "lesson": 1,
+    "file": "word25.wav"
+   },
+   {
+    "text": "وَقُلۡنَا",
+    "lesson": 1,
+    "file": "word26.wav"
+   },
+   {
+    "text": "بَعۡضُكُمۡ",
+    "lesson": 1,
+    "file": "word27.wav"
+   },
+   {
+    "text": "كَلِمَاتٍ",
+    "lesson": 1,
+    "file": "word28.wav"
+   },
+   {
+    "text": "أَصۡحَابُ",
+    "lesson": 1,
+    "file": "word29.wav"
+   },
+   {
+    "text": "نِعۡمَتِيَ",
+    "lesson": 1,
+    "file": "word30.wav"
+   },
+   {
+    "text": "عَلَيۡكُمۡ",
+    "lesson": 1,
+    "file": "word31.wav"
+   },
+   {
+    "text": "بِعَهۡدِي",
+    "lesson": 1,
+    "file": "word32.wav"
+   },
+   {
+    "text": "كَبِيرَةٌ",
+    "lesson": 1,
+    "file": "word33.wav"
+   }
+  ],
+  "5": [
+   {
+    "text": "جَآءَ",
+    "lesson": 5,
+    "file": "word01.wav"
+   },
+   {
+    "text": "شَآءَ",
+    "lesson": 5,
+    "file": "word02.wav"
+   },
+   {
+    "text": "جِاْيٓءَ",
+    "lesson": 5,
+    "file": "word03.wav"
+   },
+   {
+    "text": "مَآءً",
+    "lesson": 5,
+    "file": "word04.wav"
+   },
+   {
+    "text": "غُثَآءً",
+    "lesson": 5,
+    "file": "word05.wav"
+   },
+   {
+    "text": "عَطَآءً",
+    "lesson": 5,
+    "file": "word06.wav"
+   },
+   {
+    "text": "جَزَآءً",
+    "lesson": 5,
+    "file": "word07.wav"
+   },
+   {
+    "text": "سَوَآءٌ",
+    "lesson": 5,
+    "file": "word08.wav"
+   },
+   {
+    "text": "أُوْلَٰٓئِكَ",
+    "lesson": 5,
+    "file": "word09.wav"
+   },
+   {
+    "text": "خَطِيٓـَٔةً",
+    "lesson": 5,
+    "file": "word10.wav"
+   },
+   {
+    "text": "هَنِيٓـًٔا",
+    "lesson": 5,
+    "file": "word11.wav"
+   },
+   {
+    "text": "مَرِيٓـًٔا",
+    "lesson": 5,
+    "file": "word12.wav"
+   },
+   {
+    "text": "سِيٓـَٔتۡ",
+    "lesson": 5,
+    "file": "word13.wav"
+   },
+   {
+    "text": "يَشَآءُ",
+    "lesson": 5,
+    "file": "word14.wav"
+   },
+   {
+    "text": "وَسَآءَ",
+    "lesson": 5,
+    "file": "word15.wav"
+   },
+   {
+    "text": "ضِيَآءً",
+    "lesson": 5,
+    "file": "word16.wav"
+   },
+   {
+    "text": "سُوٓءُ",
+    "lesson": 5,
+    "file": "word17.wav"
+   },
+   {
+    "text": "بَرِىٓءٌ",
+    "lesson": 5,
+    "file": "word18.wav"
+   },
+   {
+    "text": "تَبُوٓءَ",
+    "lesson": 5,
+    "file": "word19.wav"
+   },
+   {
+    "text": "هَـٰٓؤُلآءِ",
+    "lesson": 5,
+    "file": "word20.wav"
+   },
+   {
+    "text": "نِسَآءَ",
+    "lesson": 5,
+    "file": "word21.wav"
+   },
+   {
+    "text": "أُوْلَآءِ",
+    "lesson": 5,
+    "file": "word22.wav"
+   },
+   {
+    "text": "ٱلسَّمَآءِ",
+    "lesson": 5,
+    "file": "word23a.wav"
+   },
+   {
+    "text": "وَٱلسَّمَآءِ",
+    "lesson": 5,
+    "file": "word23b.wav"
+   },
+   {
+    "text": "ٱلشِّتَآءِ",
+    "lesson": 5,
+    "file": "word24a.wav"
+   },
+   {
+    "text": "رِحۡلَةَ ٱلشِّتَآءِ",
+    "lesson": 5,
+    "file": "word24b.wav"
+   },
+   {
+    "text": "ٱلۡمَآءِ",
+    "lesson": 5,
+    "file": "word25a.wav"
+   },
+   {
+    "text": "مِنَ ٱلۡمَآءِ",
+    "lesson": 5,
+    "file": "word25b.wav"
+   },
+   {
+    "text": "ٱلسُّوٓءِ",
+    "lesson": 5,
+    "file": "word26a.wav"
+   },
+   {
+    "text": "بِٱلسُّوٓءِ",
+    "lesson": 5,
+    "file": "word26b.wav"
+   },
+   {
+    "text": "ٱلنِّسَآءِ",
+    "lesson": 5,
+    "file": "word27a.wav"
+   },
+   {
+    "text": "مِنَ ٱلنِّسَآءِ",
+    "lesson": 5,
+    "file": "word27b.wav"
+   },
+   {
+    "text": "ٱلدُّعَآءِ",
+    "lesson": 5,
+    "file": "word28a.wav"
+   },
+   {
+    "text": "سَمِيعُ ٱلدُّعَآءِ",
+    "lesson": 5,
+    "file": "word28b.wav"
+   },
+   {
+    "text": "ٱلۡبَغۡضَآءُ",
+    "lesson": 5,
+    "file": "word29a.wav"
+   },
+   {
+    "text": "بَدَتِ ٱلۡبَغۡضَآءُ",
+    "lesson": 5,
+    "file": "word29b.wav"
+   },
+   {
+    "text": "ٱلشُّهَدَآءِ",
+    "lesson": 5,
+    "file": "word30a.wav"
+   },
+   {
+    "text": "مِنَ ٱلشُّهَدَآءِ",
+    "lesson": 5,
+    "file": "word30b.wav"
+   },
+   {
+    "text": "ٱلۡأَوۡلِيَآءِ",
+    "lesson": 5,
+    "file": "word31a.wav"
+   },
+   {
+    "text": "مِنَ ٱلۡأَوۡلِيَآءِ",
+    "lesson": 5,
+    "file": "word31b.wav"
+   },
+   {
+    "text": "ٱلۡمَلَٰٓئِكَةُ",
+    "lesson": 5,
+    "file": "word32a.wav"
+   },
+   {
+    "text": "قَالَتِ ٱلۡمَلَٰٓئِكَةُ",
+    "lesson": 5,
+    "file": "word32b.wav"
+   },
+   {
+    "text": "عَنۡهُمُ ٱبۡتِغَآءَ",
+    "lesson": 5,
+    "file": "word33.wav"
+   },
+   {
+    "text": "إِنَّآ أَعۡطَيۡنَٰكَ",
+    "lesson": 5,
+    "file": "word34.wav"
+   },
+   {
+    "text": "وَمَآ أَدۡرَىٰكَ",
+    "lesson": 5,
+    "file": "word35.wav"
+   },
+   {
+    "text": "فِىٓ أَحۡسَنِ",
+    "lesson": 5,
+    "file": "word36.wav"
+   },
+   {
+    "text": "يَٰٓأَيُّهَا",
+    "lesson": 5,
+    "file": "word37.wav"
+   },
+   {
+    "text": "وَلَا تَقۡتُلُوٓاْ أَوۡلَٰدَكُمۡ",
+    "lesson": 5,
+    "file": "word38.wav"
+   },
+   {
+    "text": "مَآ أَغۡنَىٰ",
+    "lesson": 5,
+    "file": "word39.wav"
+   },
+   {
+    "text": "إِلَىٰٓ أَهۡلِهِۦ",
+    "lesson": 5,
+    "file": "word40.wav"
+   },
+   {
+    "text": "فِىٓ أَىِّ",
+    "lesson": 5,
+    "file": "word41.wav"
+   },
+   {
+    "text": "هَٰذَآ إِلَّا",
+    "lesson": 5,
+    "file": "word42.wav"
+   },
+   {
+    "text": "أُمِرُوٓاْ إِلَّا",
+    "lesson": 5,
+    "file": "word43.wav"
+   },
+   {
+    "text": "مِمَّآ أَوۡحَىٰ",
+    "lesson": 5,
+    "file": "word44.wav"
+   },
+   {
+    "text": "قَالُوٓاْ ءَامَنَّا",
+    "lesson": 5,
+    "file": "word45.wav"
+   },
+   {
+    "text": "قَالُوٓاْ أَنُؤۡمِنُ",
+    "lesson": 5,
+    "file": "word46.wav"
+   },
+   {
+    "text": "إِلَىٰٓ إِبۡرَٰهِيمَ",
+    "lesson": 5,
+    "file": "word47.wav"
+   },
+   {
+    "text": "إِنِّىٓ أَنَا۠",
+    "lesson": 5,
+    "file": "word48.wav"
+   },
+   {
+    "text": "مَآ أَنَا۠ بِبَاسِطٍ",
+    "lesson": 5,
+    "file": "word49.wav"
+   },
+   {
+    "text": "وَفِىٓ ءَاذَانِهِمۡ",
+    "lesson": 5,
+    "file": "word50.wav"
+   },
+   {
+    "text": "أَمۡرِىٓ إِلَى",
+    "lesson": 5,
+    "file": "word51.wav"
+   },
+   {
+    "text": "تُوبُوٓاْ إِلَى",
+    "lesson": 5,
+    "file": "word52.wav"
+   },
+   {
+    "text": "إِذَآ أَرَادَ",
+    "lesson": 5,
+    "file": "word53.wav"
+   },
+   {
+    "text": "وَإِذۡ هُمۡ نَجۡوَىٰٓ إِذۡ يَقُولُ",
+    "lesson": 5,
+    "file": "word54.wav"
+   },
+   {
+    "text": "قُلۡ عَسَىٰٓ أَن",
+    "lesson": 5,
+    "file": "word55.wav"
+   },
+   {
+    "text": "يَٰٓأُوْلِى",
+    "lesson": 5,
+    "file": "word56.wav"
+   },
+   {
+    "text": "رَبَّنَآ ءَاتِنَا",
+    "lesson": 5,
+    "file": "word57.wav"
+   },
+   {
+    "text": "بَنِىٓ ءَادَمَ",
+    "lesson": 5,
+    "file": "word58.wav"
+   },
+   {
+    "text": "أَوۡحَيۡنَآ إِلَيۡكَ",
+    "lesson": 5,
+    "file": "word59.wav"
+   },
+   {
+    "text": "عَلَىٰٓ أَبۡصَٰرِهِمۡ",
+    "lesson": 5,
+    "file": "word60.wav"
+   },
+   {
+    "text": "كَمَآ ءَامَنَ",
+    "lesson": 5,
+    "file": "word61.wav"
+   },
+   {
+    "text": "أَلَآ إِنَّهُمۡ",
+    "lesson": 5,
+    "file": "word62.wav"
+   },
+   {
+    "text": "إِذَآ أَلۡقَوۡاْ",
+    "lesson": 5,
+    "file": "word63.wav"
+   },
+   {
+    "text": "وَمَآ أُبَرِّئُ",
+    "lesson": 5,
+    "file": "word64.wav"
+   },
+   {
+    "text": "يَٰٓإِبۡرَٰهِيمُ",
+    "lesson": 5,
+    "file": "word65.wav"
+   },
+   {
+    "text": "ءَاتَيۡنَآ إِبۡرَٰهِيمَ",
+    "lesson": 5,
+    "file": "word66.wav"
+   }
+  ],
+  "6": [
+   {
+    "text": "ٱلضَّآلِّينَ",
+    "lesson": 6,
+    "file": "word01.wav"
+   },
+   {
+    "text": "ٱلۡحَآقَّةُ",
+    "lesson": 6,
+    "file": "word02.wav"
+   },
+   {
+    "text": "ٱلصَّآخَّةُ",
+    "lesson": 6,
+    "file": "word03.wav"
+   },
+   {
+    "text": "دَآبَّةٍ",
+    "lesson": 6,
+    "file": "word04.wav"
+   },
+   {
+    "text": "جَآنٌّ",
+    "lesson": 6,
+    "file": "word05.wav"
+   },
+   {
+    "text": "أَتُحَـٰٓجُّوٓنِّى",
+    "lesson": 6,
+    "file": "word06.wav"
+   },
+   {
+    "text": "تَأۡمُرُوٓنِّىٓ",
+    "lesson": 6,
+    "file": "word07.wav"
+   },
+   {
+    "text": "صَوَآفَّ",
+    "lesson": 6,
+    "file": "word08.wav"
+   },
+   {
+    "text": "خَآصَّةً",
+    "lesson": 6,
+    "file": "word09.wav"
+   },
+   {
+    "text": "ٱلظَّآنِّينَ",
+    "lesson": 6,
+    "file": "word10.wav"
+   },
+   {
+    "text": "ءَآلۡـٔـٰنَ",
+    "lesson": 6,
+    "file": "word11.wav"
+   },
+   {
+    "text": "الٓمٓ",
+    "lesson": 6,
+    "file": "word12.wav"
+   },
+   {
+    "text": "الٓمٓصٓ",
+    "lesson": 6,
+    "file": "word13.wav"
+   },
+   {
+    "text": "الٓر",
+    "lesson": 6,
+    "file": "word14.wav"
+   },
+   {
+    "text": "الٓمٓر",
+    "lesson": 6,
+    "file": "word15.wav"
+   },
+   {
+    "text": "كٓهيعٓصٓ",
+    "lesson": 6,
+    "file": "word16.wav"
+   },
+   {
+    "text": "طسٓمٓ",
+    "lesson": 6,
+    "file": "word17.wav"
+   },
+   {
+    "text": "طسٓ",
+    "lesson": 6,
+    "file": "word18.wav"
+   },
+   {
+    "text": "يسٓ",
+    "lesson": 6,
+    "file": "word19.wav"
+   },
+   {
+    "text": "صٓ",
+    "lesson": 6,
+    "file": "word20.wav"
+   },
+   {
+    "text": "حمٓ عٓسٓقٓ",
+    "lesson": 6,
+    "file": "word21.wav"
+   },
+   {
+    "text": "قٓ",
+    "lesson": 6,
+    "file": "word22.wav"
+   },
+   {
+    "text": "مَالُهُۥ وَمَا كَسَبَ",
+    "lesson": 6,
+    "file": "word23.wav"
+   },
+   {
+    "text": "لَهُۥ مُلۡكُ ٱلسَّمَـٰوَٰتِ",
+    "lesson": 6,
+    "file": "word24.wav"
+   },
+   {
+    "text": "إِنَّهُۥ هُوَ ٱلتَّوَّابُ",
+    "lesson": 6,
+    "file": "word25.wav"
+   },
+   {
+    "text": "وَقَدَّرَهُۥ مَنَازِلَ",
+    "lesson": 6,
+    "file": "word26.wav"
+   },
+   {
+    "text": "بِهِۦ وَٱلۡأَرۡحَامَ",
+    "lesson": 6,
+    "file": "word27.wav"
+   },
+   {
+    "text": "وَبِرَحۡمَتِهِۦ فَبِذَٰلِكَ",
+    "lesson": 6,
+    "file": "word28.wav"
+   },
+   {
+    "text": "وَكُتُبِهِۦ وَرُسُلِهِۦ",
+    "lesson": 6,
+    "file": "word29.wav"
+   },
+   {
+    "text": "مَالَهُۥٓ أَخۡلَدَهُۥ",
+    "lesson": 6,
+    "file": "word30.wav"
+   },
+   {
+    "text": "إِنَّهُۥٓ أَنَا۠ ٱللَّهُ",
+    "lesson": 6,
+    "file": "word31.wav"
+   },
+   {
+    "text": "حَسۡبُهُۥٓ إِنَّ",
+    "lesson": 6,
+    "file": "word32.wav"
+   },
+   {
+    "text": "عِلۡمِهِۦٓ إِلَّا بِمَا شَآءَ",
+    "lesson": 6,
+    "file": "word33.wav"
+   },
+   {
+    "text": "دُونِهِۦٓ أَوۡلِيَآءَ",
+    "lesson": 6,
+    "file": "word34.wav"
+   },
+   {
+    "text": "بِهِۦٓ إِلَّا ٱلۡفَـٰسِقِينَ",
+    "lesson": 6,
+    "file": "word35.wav"
+   },
+   {
+    "text": "فَضۡلِهِۦٓ إِنَّ",
+    "lesson": 6,
+    "file": "word36.wav"
+   },
+   {
+    "text": "ٱلۡقُرۡءَانُ",
+    "lesson": 6,
+    "file": "word37.wav"
+   },
+   {
+    "text": "عَلِيمًا",
+    "lesson": 6,
+    "file": "word38.wav"
+   },
+   {
+    "text": "خَوۡفٍ",
+    "lesson": 6,
+    "file": "word39.wav"
+   },
+   {
+    "text": "ٱلصَّيۡفِ",
+    "lesson": 6,
+    "file": "word40.wav"
+   },
+   {
+    "text": "ٱلرَّحِيمِ",
+    "lesson": 6,
+    "file": "word44.wav"
+   }
+  ],
+  "25": [],
+  "26": [],
+  "27": [],
+  "28": [],
+  "29": []
+ },
  "prompts": {
   "quiz-name": {
-   "line": "Listen to the name. Which letter is it?"
+   "line": "Listen to the name and pick the right letter.",
+   "file": "quiz-name.wav",
+   "rev": "2998990e"
   },
   "quiz-lookalike": {
-   "line": "These letters look alike. Tap the one you hear."
+   "line": "These letters look alike. Tap the one you hear.",
+   "file": "quiz-lookalike.wav",
+   "rev": "08978cf2"
   },
   "quiz-hunt": {
-   "line": "Find this letter. Tap every one you see."
+   "line": "Find this letter. Tap every one you see.",
+   "file": "quiz-hunt.wav",
+   "rev": "f4e81eeb"
   },
   "quiz-which-letter": {
-   "line": "Which letter did you hear?"
+   "line": "Which letter did you hear?",
+   "file": "quiz-which-letter.wav",
+   "rev": "97ef5b4e"
   },
   "quiz-same-different": {
-   "line": "Listen to two sounds. Are they the same, or different?"
+   "line": "Listen to two sounds. Are they the same, or different?",
+   "file": "quiz-same-different.wav",
+   "rev": "c7d232cd"
   },
   "quiz-which-haraka": {
-   "line": "Which haraka did you hear?"
+   "line": "Which haraka did you hear?",
+   "file": "quiz-which-haraka.wav",
+   "rev": "ae58cc99"
   },
   "quiz-tanween": {
-   "line": "Did you hear tanween, or not?"
+   "line": "Did you hear tanween, or not?",
+   "file": "quiz-tanween.wav",
+   "rev": "2bc9982f"
   },
   "quiz-which-tanween": {
-   "line": "Which tanween did you hear?"
+   "line": "Which tanween did you hear?",
+   "file": "quiz-which-tanween.wav",
+   "rev": "18471b24"
   },
   "quiz-short-long": {
-   "line": "Was it short, or long?"
+   "line": "Was it short, or long?",
+   "file": "quiz-short-long.wav",
+   "rev": "98c935c7"
   },
   "quiz-which-madd": {
-   "line": "Which madd did you hear?"
+   "line": "Which madd did you hear?",
+   "file": "quiz-which-madd.wav",
+   "rev": "29c3ae7e"
   },
   "quiz-shadda": {
-   "line": "Did you hear a shadda, or not?"
+   "line": "Did you hear a shadda, or not?",
+   "file": "quiz-shadda.wav",
+   "rev": "44f670b5"
   },
   "quiz-review": {
-   "line": "Let's try the ones you missed."
+   "line": "Let's try the ones you missed.",
+   "file": "quiz-review.wav",
+   "rev": "ec201625"
   },
   "quiz-done": {
-   "line": "All done. Well done!"
+   "line": "All done. Good job!",
+   "file": "quiz-done.wav",
+   "rev": "9df00595"
   }
  }
 }

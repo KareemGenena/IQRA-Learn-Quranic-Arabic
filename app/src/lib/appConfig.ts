@@ -112,13 +112,29 @@ export async function saveConfig(config: AppConfig): Promise<void> {
 export const lessonStatus = (config: AppConfig, id: number): LessonStatus =>
   config.lessons[String(id)] ?? 'draft';
 
+/**
+ * Development only: `localStorage.setItem('iqra-dev-drafts', '1')` in the
+ * page shows every draft lesson and feature as the admin sees them, so a
+ * session without the admin's sign-in can still check a draft in the Browser
+ * pane (2026-10-27). `import.meta.env.DEV` is false in every build, so this
+ * never reaches the live app.
+ */
+const devDrafts = (): boolean => {
+  if (!import.meta.env.DEV) return false;
+  try {
+    return localStorage.getItem('iqra-dev-drafts') === '1';
+  } catch {
+    return false;
+  }
+};
+
 /** Can this visitor open this lesson at all? */
 export const canSeeLesson = (config: AppConfig, id: number, admin: boolean): boolean => {
   const status = lessonStatus(config, id);
   if (status === 'deleted') return false; // gone for everyone, admin included
-  return admin || status === 'published';
+  return admin || devDrafts() || status === 'published';
 };
 
 /** Is this feature switched on for this visitor? */
 export const canUseFeature = (config: AppConfig, name: string, admin: boolean): boolean =>
-  admin || (config.features[name] ?? 'admin') === 'everyone';
+  admin || devDrafts() || (config.features[name] ?? 'admin') === 'everyone';

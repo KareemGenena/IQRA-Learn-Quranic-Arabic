@@ -24,9 +24,9 @@ current — the "Where we are" section at the bottom is the handover note.
 >
 > **If the session touches Quiz me — the question book, drills, `#/quiz`, the
 > lightbulb, student or parent accounts, a Masjid account, reports — read
-> `Design/drills.md` first.** Stage 1 (guest-mode drills) is built; stage 2
-> (accounts holding learner profiles, a shared Masjid account, saving and
-> reports) is designed there and not built.
+> `Design/drills.md` first.** Stage 1 (guest-mode drills, Levels 1 and 2) is
+> built; stage 2 (accounts holding learner profiles, a shared Masjid account,
+> saving and reports) is designed there and not built.
 
 ---
 
@@ -173,9 +173,28 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   under way survives a reload (`iqra-quiz-run`). The bank is
   `public/quiz/quiz.json` from `node scripts/make-quiz.mjs`, which reads the
   lesson 21/22/23/30 clips and two sheets of the author's (`Word Tables/Quiz
-  Prompts.docx`, `Quiz Sound-alikes.docx`). Feature `quiz`, admin-only until
-  switched on in Manage lessons; a topic shows only where its lessons may be
-  opened.
+  Prompts.docx`, `Quiz Sound-alikes.docx`, both RECORDED 2026-10-27 into
+  `Audio/Audio - Quiz Prompts/` and `Audio/Audio - Quiz Sound-alikes/`).
+  Feature `quiz`, admin-only until switched on in Manage lessons; a topic
+  shows only where its lessons may be opened. **Since the evening of
+  2026-10-27**: nine topics — memory pairs (a game, never scored) and
+  tracing (lesson 30's own `TraceCard` in a `quiz` mode, a slip off the line
+  sending the letter back) joined; a mix-up between sound-alikes plays the
+  teacher's recording of the two ("hear the difference"); the end screen is a
+  ring meter, a dot per question and bars by topic in a green and gold
+  validated for colour-blind separation (`Design/drills.md` §2). **Since late
+  2026-10-27**: every heading is the plainest words that say what to do
+  (`ASK` in `quiz.ts` — "Which letter?", "Tap what you hear."), a recorded
+  instruction plays only where it says the same thing and only when it is
+  not the one just heard; memory pairs is the classic game, the cards face
+  up until "Turn them over"; the chooser has "Select all" and groups topics
+  by Level, a greyed topic saying "Not published yet" or "Not recorded yet";
+  and **Level 2 is built** (`Design/drills.md` §10): letter shapes from the
+  alphabet's text, "Tap what you hear" over the recorded words of lessons 1,
+  5 and 6 with a look-alike found by rule, and "find the one" for qalqala,
+  each word played once, lit, before the tap. Lessons 25–29 light up their
+  topics when recorded and `make-quiz.mjs` is re-run. `visibleBank` drops
+  every clip of a lesson the person cannot open before a quiz is made.
 - **Continue** — the way through, never a gate. The home page opens with one
   card: the lesson last left unfinished, else the first not done ("Start
   here" / "Next up" / "Continue"), with every lesson listed beneath it, ✓ on
@@ -1517,7 +1536,25 @@ this time the corrupted records are children's.
   cb(performance.now()), 16)` in the page first — that is how the ghunna
   phase was verified (مَنفُوشِ: plain 380 ms → ghunna 420 ms → plain 1140 ms,
   matching the weights). CSS transitions also freeze there, so a measured
-  `left` may not move.
+  `left` may not move. **Patch `cancelAnimationFrame = id => clearTimeout(id)`
+  with it**: alone, the engine's cancel misses the timeout ids, a paused or
+  stopped clip's loop runs on, and the highlight seems to walk during a pause
+  or flicker against a newer clip (2026-10-27, a round spent on a fault that
+  was the test's). Reload the page between runs.
+- **Drafts in the pane without the admin's sign-in**:
+  `localStorage.setItem('iqra-dev-drafts', '1')` on localhost shows every
+  draft lesson and feature as the admin sees them (`devDrafts` in
+  `appConfig.ts`, `import.meta.env.DEV` only — absent from every build,
+  checked by grepping `dist`). Remove the key afterwards.
+- **Long recordings have Play, Pause and Stop** (`Transport.tsx`,
+  2026-10-27): a letter card's whole line, the two songs, and every take in
+  the audio intake. Play starts or carries on from a pause, Pause holds the
+  place, Stop ends it and the next Play starts from the top; Space plays or
+  pauses where it did. One button that turned into "Stop" read as a pause
+  and started the line over. A short word keeps its single tap. And
+  `PlayIcon` inside a `.btn` is static (`.btn .play-icon`): absolute, as on a
+  word card, it floated to the page's edge from the letter card's button —
+  the author's screenshot showed it by the laser dot.
 
 **Wording the learner reads**
 - **A section hint is the app's, never the workbook's tracing line.** The
@@ -1873,17 +1910,28 @@ session's directory, and it costs about 1.5 M subagent tokens a run.
 
 ## 5. Next task
 
-**Quiz me — stage 1 built, committed and deployed 2026-10-27 as a draft:
-only the admin sees the lightbulb until it is switched on in Manage lessons.
-Waiting on the author** (`Design/drills.md` §9 is the full list):
-- Record the thirteen spoken instructions: `Word Tables/Quiz Prompts.docx`
-  in the intake tool, one take each, into `Audio/Audio - Quiz/`; then
-  `node scripts/make-quiz.mjs`, build, deploy.
-- Correct `Word Tables/Quiz Sound-alikes.docx` (not recorded), re-run the
-  generator.
-- The ت retake and the other Level 1 retakes, then `make-alphabet.mjs` and
-  `make-quiz.mjs`.
+**Quiz me — Levels 1 and 2, committed and deployed 2026-10-27 as a draft:
+only the admin sees the lightbulb until it is switched on in Manage
+lessons.** The two rounds of that evening went out together: the prompts and
+sound-alike recordings cut (the generator reads the author's folders, `Audio
+- Quiz Prompts` and `Audio - Quiz Sound-alikes`); tracing and memory pairs in
+the quiz; "hear the difference"; the end screen as a chart; Play / Pause /
+Stop for long audio (letter cards, songs, intake); ب ت ر retaken and re-cut
+(no calibration existed on them) and the author's two script edits (ت
+"tiger", ر "lying on the sand"); the pictures of د ↔ ر and ذ ↔ ز swapped back
+(`IMAGE_VERSION` v3); the places lesson as mouth space, throat, lips,
+tongue, nose (ids kept); "teacher's strokes" off the tracing card; then the
+plain headings, the classic memory game, "Select all", the choice by Level
+and Level 2's drills (section 2). **Waiting on the author**
+(`Design/drills.md` §9):
+- Try Quiz me on the iPad: a Level 2 quiz (letter shapes, longer words, the
+  madd words) and memory pairs.
+- Record lessons 25–29 when their turn comes, then `make-quiz.mjs`: Short
+  words, Timing, Hamza and Qalqala light up by themselves.
+- Correct `Word Tables/Quiz Sound-alikes.docx` if wanted; a changed row's
+  contrast take is re-recorded.
 - Publish Quiz me from Manage lessons once Level 1 is published.
+- Stage 2 (accounts) waits until the author asks for it (2026-10-27).
 - Remind the author when the time comes: register the Masjid account with a
   Masjid email when teacher accounts are about to be made; turn on two-step
   verification on the Google account that owns Firebase once the quiz is

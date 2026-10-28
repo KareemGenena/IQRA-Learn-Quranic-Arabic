@@ -48,8 +48,10 @@ const AUDIO_CACHE = `iqra-audio-${AUDIO_VERSION}`;
  *
  * v1: the seaside letter mnemonics, 2026-09-06.
  * v2: ك ل م ن ه ة ء و ى ي ا لا re-cut inside their frames, 2026-10-24.
+ * v3: د ↔ ر and ذ ↔ ز swapped back — the hanging hook is د / ذ, the hook on
+ *     the sand ر / ز, as their mnemonics say (the author, 2026-10-27).
  */
-const IMAGE_VERSION = 'v2';
+const IMAGE_VERSION = 'v3';
 const IMAGE_CACHE = `iqra-images-${IMAGE_VERSION}`;
 
 /** Deletes the audio and image caches of earlier versions when a new worker
