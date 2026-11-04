@@ -4,7 +4,7 @@ A progressive web app that teaches Quranic Arabic pronunciation to English
 speakers. Tap a word, hear it recited, and watch each letter light up exactly as
 it is pronounced.
 
-**Live:** https://iqra---learn-quranic-arabic.web.app
+**Live:** https://iqra1447.web.app
 
 ## Repository layout
 

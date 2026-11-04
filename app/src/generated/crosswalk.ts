@@ -2,7 +2,7 @@
 export const CROSSWALK = {
   "edition": "Edition 1.0, October 2026",
   "base": "https://iqra.muslimbynature.org/workbooks",
-  "app": "https://iqra---learn-quranic-arabic.web.app/",
+  "app": "https://iqra1447.web.app/",
   "levels": {
     "1": {
       "file": "iqra-1447-workbook-level-1.pdf",
@@ -14,19 +14,19 @@ export const CROSSWALK = {
           "printed": 1,
           "parts": [],
           "physical": 3,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/1",
+          "companion": "https://iqra1447.web.app/#/workbook/1/section/1",
           "lessons": [
             {
               "id": 31,
               "title": "The Alphabet Song — the Names",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/31"
+              "url": "https://iqra1447.web.app/#/lesson/31"
             },
             {
               "id": 20,
               "title": "The Letters",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/20"
+              "url": "https://iqra1447.web.app/#/lesson/20"
             }
           ]
         },
@@ -37,19 +37,19 @@ export const CROSSWALK = {
           "printed": 4,
           "parts": [],
           "physical": 6,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/2",
+          "companion": "https://iqra1447.web.app/#/workbook/1/section/2",
           "lessons": [
             {
               "id": 31,
               "title": "The Alphabet Song — the Names",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/31"
+              "url": "https://iqra1447.web.app/#/lesson/31"
             },
             {
               "id": 20,
               "title": "The Letters",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/20"
+              "url": "https://iqra1447.web.app/#/lesson/20"
             }
           ]
         },
@@ -60,19 +60,19 @@ export const CROSSWALK = {
           "printed": 6,
           "parts": [],
           "physical": 8,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/3",
+          "companion": "https://iqra1447.web.app/#/workbook/1/section/3",
           "lessons": [
             {
               "id": 20,
               "title": "The Letters",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/20"
+              "url": "https://iqra1447.web.app/#/lesson/20"
             },
             {
               "id": 32,
               "title": "The Alphabet Song — the Sounds",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/32"
+              "url": "https://iqra1447.web.app/#/lesson/32"
             }
           ]
         },
@@ -83,13 +83,13 @@ export const CROSSWALK = {
           "printed": 13,
           "parts": [],
           "physical": 15,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/4",
+          "companion": "https://iqra1447.web.app/#/workbook/1/section/4",
           "lessons": [
             {
               "id": 21,
               "title": "Tanween",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/21"
+              "url": "https://iqra1447.web.app/#/lesson/21"
             }
           ]
         },
@@ -100,13 +100,13 @@ export const CROSSWALK = {
           "printed": 20,
           "parts": [],
           "physical": 22,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/5",
+          "companion": "https://iqra1447.web.app/#/workbook/1/section/5",
           "lessons": [
             {
               "id": 22,
               "title": "Natural Madd",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/22"
+              "url": "https://iqra1447.web.app/#/lesson/22"
             }
           ]
         },
@@ -136,13 +136,13 @@ export const CROSSWALK = {
             }
           ],
           "physical": 29,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/1/section/6",
+          "companion": "https://iqra1447.web.app/#/workbook/1/section/6",
           "lessons": [
             {
               "id": 23,
               "title": "Shadda",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/23"
+              "url": "https://iqra1447.web.app/#/lesson/23"
             }
           ]
         }
@@ -183,13 +183,13 @@ export const CROSSWALK = {
             }
           ],
           "physical": 3,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/1",
+          "companion": "https://iqra1447.web.app/#/workbook/2/section/1",
           "lessons": [
             {
               "id": 24,
               "title": "Letter Pairs",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/24"
+              "url": "https://iqra1447.web.app/#/lesson/24"
             }
           ]
         },
@@ -207,13 +207,13 @@ export const CROSSWALK = {
             }
           ],
           "physical": 30,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/2",
+          "companion": "https://iqra1447.web.app/#/workbook/2/section/2",
           "lessons": [
             {
               "id": 25,
               "title": "Three-Letter Words",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/25"
+              "url": "https://iqra1447.web.app/#/lesson/25"
             }
           ]
         },
@@ -224,13 +224,13 @@ export const CROSSWALK = {
           "printed": 36,
           "parts": [],
           "physical": 38,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/3",
+          "companion": "https://iqra1447.web.app/#/workbook/2/section/3",
           "lessons": [
             {
               "id": 26,
               "title": "Timing",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/26"
+              "url": "https://iqra1447.web.app/#/lesson/26"
             }
           ]
         },
@@ -248,13 +248,13 @@ export const CROSSWALK = {
             }
           ],
           "physical": 41,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/4",
+          "companion": "https://iqra1447.web.app/#/workbook/2/section/4",
           "lessons": [
             {
               "id": 27,
               "title": "Four-Letter Words",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/27"
+              "url": "https://iqra1447.web.app/#/lesson/27"
             }
           ]
         },
@@ -284,19 +284,19 @@ export const CROSSWALK = {
             }
           ],
           "physical": 47,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/5",
+          "companion": "https://iqra1447.web.app/#/workbook/2/section/5",
           "lessons": [
             {
               "id": 28,
               "title": "Hamza",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/28"
+              "url": "https://iqra1447.web.app/#/lesson/28"
             },
             {
               "id": 3,
               "title": "Throat Letters",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/3"
+              "url": "https://iqra1447.web.app/#/lesson/3"
             }
           ]
         },
@@ -344,19 +344,19 @@ export const CROSSWALK = {
             }
           ],
           "physical": 50,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/6",
+          "companion": "https://iqra1447.web.app/#/workbook/2/section/6",
           "lessons": [
             {
               "id": 5,
               "title": "Madd before a Hamza",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/5"
+              "url": "https://iqra1447.web.app/#/lesson/5"
             },
             {
               "id": 6,
               "title": "Madd Lāzim, Ṣilah and More",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/6"
+              "url": "https://iqra1447.web.app/#/lesson/6"
             }
           ]
         },
@@ -367,13 +367,13 @@ export const CROSSWALK = {
           "printed": 54,
           "parts": [],
           "physical": 56,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/7",
+          "companion": "https://iqra1447.web.app/#/workbook/2/section/7",
           "lessons": [
             {
               "id": 29,
               "title": "Qalqala",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/29"
+              "url": "https://iqra1447.web.app/#/lesson/29"
             }
           ]
         },
@@ -384,7 +384,7 @@ export const CROSSWALK = {
           "printed": 57,
           "parts": [],
           "physical": 59,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/2/section/8",
+          "companion": "https://iqra1447.web.app/#/workbook/2/section/8",
           "lessons": []
         }
       ]
@@ -399,19 +399,19 @@ export const CROSSWALK = {
           "printed": 1,
           "parts": [],
           "physical": 3,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/1",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/1",
           "lessons": [
             {
               "id": 34,
               "title": "Stopping",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/34"
+              "url": "https://iqra1447.web.app/#/lesson/34"
             },
             {
               "id": 6,
               "title": "Madd Lāzim, Ṣilah and More",
               "level": 2,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/6"
+              "url": "https://iqra1447.web.app/#/lesson/6"
             }
           ]
         },
@@ -429,13 +429,13 @@ export const CROSSWALK = {
             }
           ],
           "physical": 7,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/2",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/2",
           "lessons": [
             {
               "id": 2,
               "title": "Sun & Moon Lam",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/2"
+              "url": "https://iqra1447.web.app/#/lesson/2"
             }
           ]
         },
@@ -453,13 +453,13 @@ export const CROSSWALK = {
             }
           ],
           "physical": 11,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/3",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/3",
           "lessons": [
             {
               "id": 4,
               "title": "Hamzat Wasl after وَ and ثُمَّ",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/4"
+              "url": "https://iqra1447.web.app/#/lesson/4"
             }
           ]
         },
@@ -470,13 +470,13 @@ export const CROSSWALK = {
           "printed": 11,
           "parts": [],
           "physical": 13,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/4",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/4",
           "lessons": [
             {
               "id": 4,
               "title": "Hamzat Wasl after وَ and ثُمَّ",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/4"
+              "url": "https://iqra1447.web.app/#/lesson/4"
             }
           ]
         },
@@ -518,25 +518,25 @@ export const CROSSWALK = {
             }
           ],
           "physical": 14,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/5",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/5",
           "lessons": [
             {
               "id": 35,
               "title": "Makharij & Sifat",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/35"
+              "url": "https://iqra1447.web.app/#/lesson/35"
             },
             {
               "id": 33,
               "title": "Where the Letters Come From",
               "level": 1,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/33"
+              "url": "https://iqra1447.web.app/#/lesson/33"
             },
             {
               "id": 3,
               "title": "Throat Letters",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/3"
+              "url": "https://iqra1447.web.app/#/lesson/3"
             }
           ]
         },
@@ -547,13 +547,13 @@ export const CROSSWALK = {
           "printed": 23,
           "parts": [],
           "physical": 25,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/6",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/6",
           "lessons": [
             {
               "id": 7,
               "title": "Nūn Sākinah, Tanwīn and Mīm Sākinah",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/7"
+              "url": "https://iqra1447.web.app/#/lesson/7"
             }
           ]
         },
@@ -577,13 +577,13 @@ export const CROSSWALK = {
             }
           ],
           "physical": 26,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/7",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/7",
           "lessons": [
             {
               "id": 7,
               "title": "Nūn Sākinah, Tanwīn and Mīm Sākinah",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/7"
+              "url": "https://iqra1447.web.app/#/lesson/7"
             }
           ]
         },
@@ -607,13 +607,13 @@ export const CROSSWALK = {
             }
           ],
           "physical": 31,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/8",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/8",
           "lessons": [
             {
               "id": 36,
               "title": "Idghām of Two Letters",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/36"
+              "url": "https://iqra1447.web.app/#/lesson/36"
             }
           ]
         },
@@ -624,13 +624,13 @@ export const CROSSWALK = {
           "printed": 32,
           "parts": [],
           "physical": 34,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/9",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/9",
           "lessons": [
             {
               "id": 37,
               "title": "Silent Alif",
               "level": 3,
-              "url": "https://iqra---learn-quranic-arabic.web.app/#/lesson/37"
+              "url": "https://iqra1447.web.app/#/lesson/37"
             }
           ]
         },
@@ -641,7 +641,7 @@ export const CROSSWALK = {
           "printed": 33,
           "parts": [],
           "physical": 35,
-          "companion": "https://iqra---learn-quranic-arabic.web.app/#/workbook/3/section/10",
+          "companion": "https://iqra1447.web.app/#/workbook/3/section/10",
           "lessons": []
         }
       ]

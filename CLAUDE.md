@@ -2,7 +2,8 @@
 
 A PWA that teaches Quranic Arabic pronunciation to English speakers. Tap a word,
 hear the teacher's own voice, and watch each letter light up exactly as it is
-pronounced. Live at **https://iqra---learn-quranic-arabic.web.app**
+pronounced. Live at **https://iqra1447.web.app** (and, for every device that
+had it before 2026-11-04, still at https://iqra---learn-quranic-arabic.web.app)
 
 This file is loaded automatically at the start of every session. Keep it
 current — the "Where we are" section at the bottom is the handover note.
@@ -65,7 +66,7 @@ re-run — never edit `words.json` by hand.
 ```bash
 node scripts/make-lesson3.mjs     # rebuild one lesson
 npm run build                     # tsc + vite
-firebase deploy --only hosting:app   # from 1447 H/ (hosting:home = the landing page)
+firebase deploy --only hosting:app   # from 1447 H/ — BOTH app sites (hosting:home = the landing page)
 ```
 
 Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin`,
@@ -1264,9 +1265,12 @@ this time the corrupted records are children's.
   the Geocoding API — which nothing here calls — so the key had been scraped
   and used on a billable API. It is now restricted in the Google Cloud
   console (APIs & Services → Credentials → "Browser key (auto created by
-  Firebase)") to **websites**: the app at `iqra---learn-quranic-arabic.web.app`
-  and `.firebaseapp.com`, the landing page at `iqra1447.web.app`,
-  `iqra1447.firebaseapp.com` and `iqra.muslimbynature.org`, and localhost on
+  Firebase)") to **websites**: `iqra---learn-quranic-arabic.web.app` and
+  `.firebaseapp.com`, `iqra1447.web.app` and `iqra1447.firebaseapp.com` (the
+  app's two sites since 2026-11-04; `iqra1447` was the landing page's until
+  then, which is why it was already listed), `iqra.muslimbynature.org` (the
+  landing page — its own `iqra1447-home.web.app` is NOT listed and does not
+  need to be: nobody is sent there), and localhost on
   5173, 5174 and 4173; and to **three APIs**: Identity Toolkit, Token Service,
   Cloud Firestore — the only Google endpoints the code calls (`auth.ts`,
   `appConfig.ts`, `classes.ts`, `admin.js`). **A new host must be added to
@@ -1747,9 +1751,23 @@ reports its page count and draws chosen pages to PNG — the way to verify an
 edit to these files (it kills only the Word it started).
 
 **The landing page — `iqra.muslimbynature.org` (2026-10-05).** A second
-Hosting site in the same Firebase project: site `iqra1447` (also served at
-`iqra1447.web.app`), deploy target `home`, source in `site/`. The app stays at
-`iqra---learn-quranic-arabic.web.app` (target `app`) and the page links to it.
+Hosting site in the same Firebase project: site `iqra1447-home` (also served
+at `iqra1447-home.web.app`), deploy target `home`, source in `site/`. The app
+is target `app`, and the page links to its short address.
+- **The sites were swapped on 2026-11-04** so the app could have the short
+  address. Until then the landing page was site `iqra1447`. Now `iqra1447`
+  serves the APP, beside `iqra---learn-quranic-arabic` — `.firebaserc` maps
+  target `app` to both, so one `--only hosting:app` deploys the same build to
+  each. The old address is kept serving, never redirected: progress
+  (`iqra-progress`), my notes (IndexedDB), local calibrations, the audio
+  cache and an installed copy all belong to an ORIGIN, and a redirect would
+  have left every existing learner's data behind on the old one. The short
+  address was first filled by `firebase hosting:clone
+  iqra---learn-quranic-arabic:live iqra1447:live` (byte-identical, headers
+  and rewrites included). The domain was moved by the author (removed from
+  `iqra1447`, added to `iqra1447-home` in the console, CNAME changed at
+  Namecheap), and only then did the app go onto `iqra1447` — in the other
+  order, `iqra.muslimbynature.org` would have shown the app.
 - `site/public/` — one static page: logo, the three workbook PDFs, a link to the
   app, a contact form. Same palette and star geometry as the cover.
 - `site/build.mjs` runs as the `home` predeploy: copies the generic PDFs from
@@ -1771,10 +1789,11 @@ Hosting site in the same Firebase project: site `iqra1447` (also served at
   erase a field kept there. Off is the default: no document, or an error, keeps
   the App link, the hero button and the app section hidden. Hiding is not
   restricting: the app's own address still works.
-- Deploy: `firebase deploy --only hosting:app` (the app),
+- Deploy: `firebase deploy --only hosting:app` (the app, both its sites),
   `--only hosting:home` (the page), `--only functions:site` (the form).
-  A bare `--only hosting` now deploys both sites.
-- The domain is connected (2026-10-06): a CNAME `iqra` → `iqra1447.web.app` at
+  A bare `--only hosting` deploys all three sites.
+- The domain is connected (2026-10-06; moved 2026-11-04): a CNAME `iqra` →
+  `iqra1447-home.web.app` at
   Namecheap, the certificate issued by Firebase. The root `muslimbynature.org`
   is not built and needs nothing for the subdomain to work.
 - The form was tested live the same day: a message reached both Notion and

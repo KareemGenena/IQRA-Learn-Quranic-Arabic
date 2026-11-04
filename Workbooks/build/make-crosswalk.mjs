@@ -31,7 +31,7 @@ const WB = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ROOT = resolve(WB, '..');
 const EDITION = 'Edition 1.0, October 2026';   // keep in step with site/build.mjs
 const BASE = 'https://iqra.muslimbynature.org/workbooks';
-const APP = 'https://iqra---learn-quranic-arabic.web.app/';
+const APP = 'https://iqra1447.web.app/';
 
 const cellText = (c) => {
   let s = '';

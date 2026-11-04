@@ -6,10 +6,11 @@
     "iqra---learn-quranic-arabic": {
       "hosting": {
         "app": [
-          "iqra---learn-quranic-arabic"
+          "iqra---learn-quranic-arabic",
+          "iqra1447"
         ],
         "home": [
-          "iqra1447"
+          "iqra1447-home"
         ]
       }
     }
