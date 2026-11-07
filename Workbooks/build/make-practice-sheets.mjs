@@ -1,12 +1,13 @@
 /**
  * Spare Level 1 sheets for the Maktab, photocopied as needed — not a workbook.
+ * ONE Word file, Extra Practice Sheets/Level 1 Extra Practice and Games.docx:
  *
- *   Extra Practice Sheets/  every letter of sections 1–2 written 10 times
- *                           (3 traced, 7 on its own), grouped by look-alike family
- *   Quiz and Game Sheets/   Hidden Pictures (15, sections 1–6, self-checking),
- *                           Make Your Own Bingo (one per section, nothing to mark),
- *                           Connect the Dots (sections 1, 3, 4), and the teacher's
- *                           two-page guide with the answers
+ *   the teacher's guide   two pages — what is where (by page), how each game
+ *                         runs, the answers
+ *   Extra Practice        every letter of sections 1–2 written 10 times
+ *                         (3 traced, 7 on its own), grouped by look-alike family
+ *   Hidden Pictures       read each box, color it by the rules; nothing to mark
+ *   Connect the Dots      sections 1, 3, 4; an Islamic figure appears
  *
  * Every Arabic item is taken from the Level 1 master itself (exact codepoints);
  * the styles, the font and the logo are the master's, so a sheet looks like the
@@ -143,20 +144,27 @@ function footer(notes) {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr ${NS}><w:p><w:pPr><w:pStyle w:val="Footer"/><w:tabs><w:tab w:val="clear" w:pos="4680"/><w:tab w:val="clear" w:pos="9360"/><w:tab w:val="right" w:pos="10296"/></w:tabs></w:pPr>${runs}</w:p></w:ftr>`;
 }
 
-function save(file, title, body, { notes = true, images = [] } = {}) {
+/** A section's page setup, its footer named by relationship id. */
+const SECT = (footer) => `<w:sectPr><w:footerReference w:type="default" r:id="${footer}"/><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="560" w:right="972" w:bottom="720" w:left="972" w:header="280" w:footer="360" w:gutter="0"/><w:cols w:space="720"/><w:docGrid w:linePitch="360"/></w:sectPr>`;
+/** Ends a section here (the next one starts on a new page); its pages get this footer. */
+const sectionEnd = (footer) => `<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="20" w:lineRule="exact"/><w:rPr><w:sz w:val="2"/></w:rPr>${SECT(footer)}</w:pPr></w:p>`;
+
+/** Writes the document. The last section's pages carry the Teacher notes footer. */
+function save(file, title, body, { images = [] } = {}) {
   const imageRels = images.map((im) => `<Relationship Id="rIdImg${im.id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/${im.id}.png"/>`).join('');
-  const doc = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document ${NS}><w:body>${body}<w:sectPr><w:footerReference w:type="default" r:id="rIdFooter"/><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="560" w:right="972" w:bottom="720" w:left="972" w:header="280" w:footer="360" w:gutter="0"/><w:cols w:space="720"/><w:docGrid w:linePitch="360"/></w:sectPr></w:body></w:document>`;
+  const doc = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document ${NS}><w:body>${body}${SECT('rIdFooter')}</w:body></w:document>`;
   const CT = 'application/vnd.openxmlformats-officedocument';
   const entries = [
-    { name: '[Content_Types].xml', data: Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="${CT}.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="${CT}.wordprocessingml.styles+xml"/><Override PartName="/word/settings.xml" ContentType="${CT}.wordprocessingml.settings+xml"/><Override PartName="/word/fontTable.xml" ContentType="${CT}.wordprocessingml.fontTable+xml"/><Override PartName="/word/theme/theme1.xml" ContentType="${CT}.theme+xml"/><Override PartName="/word/footer1.xml" ContentType="${CT}.wordprocessingml.footer+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="${CT}.extended-properties+xml"/></Types>`) },
+    { name: '[Content_Types].xml', data: Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="${CT}.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="${CT}.wordprocessingml.styles+xml"/><Override PartName="/word/settings.xml" ContentType="${CT}.wordprocessingml.settings+xml"/><Override PartName="/word/fontTable.xml" ContentType="${CT}.wordprocessingml.fontTable+xml"/><Override PartName="/word/theme/theme1.xml" ContentType="${CT}.theme+xml"/><Override PartName="/word/footer1.xml" ContentType="${CT}.wordprocessingml.footer+xml"/><Override PartName="/word/footer2.xml" ContentType="${CT}.wordprocessingml.footer+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="${CT}.extended-properties+xml"/></Types>`) },
     { name: '_rels/.rels', data: Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/></Relationships>`) },
     { name: 'word/document.xml', data: Buffer.from(doc) },
-    { name: 'word/_rels/document.xml.rels', data: Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdStyles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rIdSettings" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/><Relationship Id="rIdFonts" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable" Target="fontTable.xml"/><Relationship Id="rIdTheme" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="theme/theme1.xml"/><Relationship Id="rIdFooter" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/><Relationship Id="rIdLogo" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo.png"/>${imageRels}</Relationships>`) },
+    { name: 'word/_rels/document.xml.rels', data: Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdStyles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rIdSettings" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/><Relationship Id="rIdFonts" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable" Target="fontTable.xml"/><Relationship Id="rIdTheme" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="theme/theme1.xml"/><Relationship Id="rIdFooter" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/><Relationship Id="rIdFooterPlain" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer2.xml"/><Relationship Id="rIdLogo" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo.png"/>${imageRels}</Relationships>`) },
     { name: 'word/styles.xml', data: part('word/styles.xml') },
     { name: 'word/settings.xml', data: Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:settings xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:zoom w:percent="100"/><w:defaultTabStop w:val="720"/><w:characterSpacingControl w:val="doNotCompress"/><w:compat><w:compatSetting w:name="compatibilityMode" w:uri="http://schemas.microsoft.com/office/word" w:val="15"/></w:compat></w:settings>`) },
     { name: 'word/fontTable.xml', data: part('word/fontTable.xml') },
     { name: 'word/theme/theme1.xml', data: part('word/theme/theme1.xml') },
-    { name: 'word/footer1.xml', data: Buffer.from(footer(notes)) },
+    { name: 'word/footer1.xml', data: Buffer.from(footer(true)) },
+    { name: 'word/footer2.xml', data: Buffer.from(footer(false)) },
     { name: 'word/media/logo.png', data: part('word/media/image1.png') },
     ...images.map((im) => ({ name: `word/media/${im.id}.png`, data: im.data })),
     { name: 'docProps/core.xml', data: Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>${esc(title)}</dc:title><dc:creator>IQRA 1447</dc:creator></cp:coreProperties>`) },
@@ -180,12 +188,13 @@ const FAMILIES = [
 ];
 const TRACE = 3;
 const WRITE = 7;
+let lettersBody = '';
 {
   const used = FAMILIES.flat().map(letter);
   const missing = Object.keys(NAME).filter((t) => !used.includes(t));
   if (missing.length || used.length !== new Set(used).size) throw new Error(`families must hold every section 1 letter once; missing ${missing}`);
 
-  const body = FAMILIES.map((fam, k) => {
+  lettersBody = FAMILIES.map((fam, k) => {
     const widths = split(WIDTH, fam.length);
     const cell = (w, content, b) => tc(content, { w, borders: b });
     const rows = [
@@ -200,8 +209,6 @@ const WRITE = 7;
       `Extra Practice ${k + 1} of ${FAMILIES.length} — Trace the gray letter ${TRACE} times, then write it ${WRITE} times on your own.${dots}`,
       { first: k === 0 }) + tbl(rows, widths, { rtl: 1 });
   }).join('');
-  save(join(OUT, 'Extra Practice Sheets', 'Level 1 Extra Practice - The Letters (Sections 1-2).docx'),
-    'Level 1 Extra Practice — The Letters', body);
 }
 
 // ── 2. Hidden pictures ─────────────────────────────────────────────────────
@@ -277,52 +284,6 @@ const PICTURES = [
     practices: 'ج and ر among ح خ ع غ ز د ذ',
   },
   {
-    section: L2, answer: 'a bee', sz: 52, dots: true,
-    art: ['.B.....B.', '..B...B..', '...BBB...', 'CC.AAA.CC', 'CCCBBBCCC', 'CCCAAACCC', '.C.BBB.C.', '...AAA...', '...BBB...', '....B....'],
-    A: { color: 'yellow', rule: 'every', pool: [letter('ص')] },
-    B: { color: 'brown', rule: 'every', pool: [letter('ش')] },
-    C: { color: 'blue', rule: 'every', pool: [letter('ض')] },
-    rest: 'every other letter',
-    D: weighted([[letter('س'), 3], [letter('ط'), 2], [letter('ظ'), 2]]),
-    practices: 'ص ش ض among س ط ظ',
-  },
-  {
-    section: L2, answer: 'an ant', sz: 52, dots: true,
-    art: ['A.......A', '.A.....A.', '..ABBBA..', '...BBB...', 'A...B...A', '.A.BBB.A.', 'AAABBBAAA', '.A..B..A.', 'A.BBBBB.A', '.BBBBBBB.', '..BBBBB..'],
-    A: { color: 'black', rule: 'every', pool: [letter('ذ')] },
-    B: { color: 'red', rule: 'every', pool: [letter('ز')] },
-    rest: 'every other letter',
-    D: weighted([[letter('د'), 3], [letter('ر'), 3]]),
-    practices: 'ذ and ز among د ر',
-  },
-  {
-    section: 'Section 3 · Harakat', answer: 'a lantern', sz: 52,
-    art: ['....B....', '...BBB...', '..BBBBB..', '.BAAAAAB.', '.BAAAAAB.', '.BAAAAAB.', '.BAAAAAB.', '..BBBBB..', '...BBB...', '....B....'],
-    A: { color: 'yellow', rule: 'a Fat-ha', pool: pool(S3, 'Fat-ha') },
-    B: { color: 'orange', rule: 'a Damma', pool: pool(S3, 'Damma') },
-    rest: 'every box with a Kasra',
-    D: pool(S3, 'Kasra'),
-    practices: 'Fat-ha and Damma (Kasra stays white)',
-  },
-  {
-    section: 'Section 3 · Harakat', answer: 'an elephant', sz: 48,
-    art: ['..AA........', '.AAABBAAAA..', 'AAABBBAAAAA.', 'AAABBBAAAAAA', 'A.ABBBAAAAA.', 'A...B.AAAAA.', 'A....AA..AA.', '.A...AA..AA.'],
-    A: { color: 'gray', rule: 'a Kasra', pool: pool(S3, 'Kasra') },
-    B: { color: 'pink', rule: 'a Damma', pool: pool(S3, 'Damma') },
-    rest: 'every box with a Fat-ha',
-    D: pool(S3, 'Fat-ha'),
-    practices: 'Kasra and Damma (Fat-ha stays white)',
-  },
-  {
-    section: 'Section 3 · Harakat', answer: 'a Mushaf on its stand', sz: 48,
-    art: ['AAA...AAA', 'AAAABAAAA', 'AAAABAAAA', 'AAAABAAAA', '.AAABAAA.', '..B...B..', '...B.B...', '....B....', '...B.B...', '..B...B..'],
-    A: { color: 'green', rule: 'a Sukoon', pool: pool(S3, 'Sukoon') },
-    B: { color: 'brown', rule: 'a Kasra', pool: pool(S3, 'Kasra') },
-    rest: 'every other box',
-    D: [...pool(S3, 'Fat-ha'), ...pool(S3, 'Damma')],
-    practices: 'Sukoon and Kasra among Fat-ha and Damma',
-  },
-  {
     section: 'Section 4 · Tanween', answer: 'a sailboat', sz: 48,
     art: ['....B....', '....BA...', '...ABAA..', '..AABAAA.', '.AAABAAAA', '....B....', 'BBBBBBBBB', '.BBBBBBB.', '..BBBBB..', '.........'],
     A: { color: 'red', rule: 'Tanween Fath', pool: pool(S4, 'Tanween Fath') },
@@ -330,53 +291,6 @@ const PICTURES = [
     rest: 'every other box',
     D: weighted([...pool(S4, 'Fat-ha'), ...pool(S4, 'Damma').map((t) => [t, 2]), ...pool(S4, 'Kasra'), ...pool(S4, 'Tanween Kasr')]),
     practices: 'Tanween Fath and Tanween Damm among single harakat',
-  },
-  {
-    section: 'Section 4 · Tanween', answer: 'a fish (the fish of Yunus)', sz: 48,
-    art: ['.........', '...BB....', '..AAAA..B', '.AAAAAABB', 'AABAAAAB.', 'AAAAAAAB.', '.AAAAAABB', '..AAAA..B', '....B....', '.........'],
-    A: { color: 'blue', rule: 'Tanween Kasr', pool: pool(S4, 'Tanween Kasr') },
-    B: { color: 'orange', rule: 'Tanween Fath', pool: pool(S4, 'Tanween Fath') },
-    rest: 'every other box',
-    D: weighted([...pool(S4, 'Fat-ha'), ...pool(S4, 'Damma'), ...pool(S4, 'Kasra').map((t) => [t, 2]), ...pool(S4, 'Tanween Damm')]),
-    practices: 'Tanween Kasr and Tanween Fath among single harakat',
-  },
-  {
-    section: 'Section 5 · Natural Madd', answer: 'a flower', sz: 40,
-    art: ['.A..A..A.', '.AA.A.AA.', '.AAAAAAA.', '.AAAAAAA.', '..AAAAA..', '....B....', 'BB..B..BB', '.BB.B.BB.', '..BBBBB..', '....B....'],
-    A: { color: 'red', rule: 'Madd Alif', pool: pool(S5, 'Madd Alif', maddKeep) },
-    B: { color: 'green', rule: 'Madd Yaa', pool: pool(S5, 'Madd Yaa', maddKeep) },
-    rest: 'every other box',
-    D: weighted([...pool(S5, 'Fat-ha', maddKeep).map((t) => [t, 2]), ...pool(S5, 'Kasra', maddKeep).map((t) => [t, 2]), ...pool(S5, 'Damma', maddKeep), ...pool(S5, 'Madd Waaw', maddKeep)]),
-    practices: 'Madd Alif and Madd Yaa among short harakat and Madd Waaw',
-  },
-  {
-    section: 'Section 5 · Natural Madd', answer: 'a pen (Al-Qalam)', sz: 40,
-    art: ['........A', '.......AA', '......AAA', '.....AAA.', '....AAA..', '...AAA...', '..AAA....', '.BBB.....', '.BB......', 'B........'],
-    A: { color: 'blue', rule: 'Madd Waaw', pool: pool(S5, 'Madd Waaw', maddKeep) },
-    B: { color: 'yellow', rule: 'Madd Alif', pool: pool(S5, 'Madd Alif', maddKeep) },
-    rest: 'every other box',
-    D: weighted([...pool(S5, 'Fat-ha', maddKeep), ...pool(S5, 'Damma', maddKeep).map((t) => [t, 2]), ...pool(S5, 'Kasra', maddKeep), ...pool(S5, 'Madd Yaa', maddKeep)]),
-    practices: 'Madd Waaw and Madd Alif among short harakat and Madd Yaa',
-  },
-  // Section 6 is set larger: a Kasra under a Shadda is a small mark, and at 22 pt
-  // it was lost (the author, 2026-10-28).
-  {
-    section: 'Section 6 · Shadda', answer: 'a kite', sz: 60,
-    art: ['....A....', '...AAA...', '..AAAAA..', '.AAAAAAA.', '..AAAAA..', '...AAA...', '....A....', '....B....', '.....B...', '....BBB..'],
-    A: { color: 'blue', rule: 'Shadda and Fat-ha', pool: SHADDA_FATHA },
-    B: { color: 'red', rule: 'Shadda and Kasra', pool: SHADDA_KASRA },
-    rest: 'every box with no Shadda',
-    D: S6_PAIRS.map((g) => g[0].text),
-    practices: 'Shadda with Fat-ha and with Kasra among no Shadda',
-  },
-  {
-    section: 'Section 6 · Shadda', answer: 'a prayer rug', sz: 60,
-    art: ['.AAAAAAA.', '.AAABAAA.', '.AABBBAA.', '.ABBBBBA.', '.ABBBBBA.', '.ABBBBBA.', '.ABBBBBA.', '.AAAAAAA.', '.AAAAAAA.', '.A.A.A.A.'],
-    A: { color: 'red', rule: 'Shadda and Damma', pool: SHADDA_DAMMA },
-    B: { color: 'green', rule: 'Shadda and Fat-ha', pool: SHADDA_FATHA },
-    rest: 'every box with no Shadda',
-    D: weighted([...DAMMA_PARTNER.map((t) => [t, 2]), ...S6_PAIRS.filter((g) => g[0].caption === 'Fat-ha').map((g) => g[0].text)]),
-    practices: 'Shadda with Damma and with Fat-ha among no Shadda',
   },
 ];
 const KEYS = ['A', 'B', 'C'];
@@ -390,8 +304,9 @@ const grids = PICTURES.map((pic, k) => {
   return pic.art.map((row) => [...row].map((ch) => ({ ch, t: pick(ch === '.' ? pic.D : pic[ch].pool) })));
 });
 
+let picturesBody = '';
 {
-  const body = PICTURES.map((pic, k) => {
+  picturesBody = PICTURES.map((pic, k) => {
     // a box the child colors with that crayon — the legend, for a child who cannot read the rule
     const RW = [700, 260, 6020, 3300];
     const exSz = Math.min(pic.sz, 52);
@@ -417,56 +332,12 @@ const grids = PICTURES.map((pic, k) => {
     const grid = tbl(grids[k].map((row) =>
       tr(row.map((cell, c) => tc(arP(cell.t, pic.sz), { w: W[c], borders: { all: { sz: 6, color: '7F7F7F' } } })), h, 'exact')), W);
     const line = `Hidden Picture ${k + 1} · ${pic.section} — Read each box out loud, then color it by the rules.${pic.dots ? ' Watch the dots!' : ' A picture will appear!'}`;
-    return head('Level 1  ·  Game Sheets', line, { first: k === 0 }) + rules + gap(160) + grid + gap(200) +
+    return head('Level 1  ·  Games', line) + rules + gap(160) + grid + gap(200) +
       p(r('What is the hidden picture?  ', { b: 1, sz: 24 }) + r('_____________________________', { sz: 24 }), { jc: 'left' });
   }).join('');
-  save(join(OUT, 'Quiz and Game Sheets', 'Level 1 Hidden Pictures (Sections 1-6).docx'), 'Level 1 Hidden Pictures', body);
 }
 
-// ── 3. Make your own bingo ─────────────────────────────────────────────────
-// Each child copies any 9 boxes from the list into the card, so every card is
-// different and the copying is writing practice; the teacher calls from any
-// copy and checks only the winner's row, by ear.
-const pickGroups = (gs, firsts) => firsts.map((f) => {
-  const g = gs.find((x) => x[0].text.startsWith(f));
-  if (!g) throw new Error(`no group starting ${f}`);
-  return g.map((i) => i.text);
-});
-const shaddaPairs = (pairs) => pairs.map(([a, b]) => groups(S6, 2).find((g) => g[0].text === a && g[1].text.startsWith(b)).map((i) => i.text));
-const BINGO = [
-  { section: 'Section 1 · The Letters', call: 'the letter’s name', sz: 56,
-    rows: [['ا', 'ب', 'ج', 'د', 'ر', 'س'], ['ص', 'ط', 'ع', 'ف', 'ق', 'ك'], ['ل', 'م', 'ن', 'و', 'هـ', 'ي']].map((r) => r.map(letter)) },
-  { section: 'Section 2 · Letters That Look Alike', call: 'the letter’s name', sz: 56, dots: true,
-    rows: [['ب', 'ت', 'ث', 'ج', 'ح', 'خ'], ['د', 'ذ', 'ر', 'ز', 'س', 'ش'], ['ص', 'ض', 'ط', 'ظ', 'ع', 'غ']].map((r) => r.map(letter)) },
-  { section: 'Section 3 · Harakat', call: 'the sound', sz: 52, rows: pickGroups(groups(S3, 4), ['بَ', 'دَ', 'سَ', 'مَ']) },
-  { section: 'Section 4 · Tanween', call: 'the sound', sz: 48, rows: pickGroups(groups(S4, 6), ['بَ', 'دَ', 'مَ']) },
-  { section: 'Section 5 · Natural Madd', call: 'the sound', sz: 40, rows: pickGroups(groups(S5, 6), ['بَ', 'سَ', 'مَ']) },
-  { section: 'Section 6 · Shadda', call: 'the sound', sz: 44,
-    rows: [shaddaPairs([['بَبَ', 'بَبَّ'], ['بَدَ', 'بَدَّ'], ['بَرَ', 'بَرَّ']]).flat(), shaddaPairs([['بَسَ', 'بَسَّ'], ['بَلَ', 'بَلَّ'], ['بَمَ', 'بَمَّ']]).flat(), shaddaPairs([['عَلِ', 'عَلِّ'], ['عَقِ', 'عَقِّ'], ['عَسِ', 'عَسِّ']]).flat()] },
-];
-{
-  const body = BINGO.map((b, k) => {
-    const step = (n, t) => p(r(`${n}.  `, { b: 1, sz: 23 }) + r(t, { sz: 23 }), { jc: 'left', ind: 360, hanging: 360, after: 60 });
-    const CARD = split(8100, 3);
-    const thick = { sz: 18, color: '262626' };
-    const card = tbl([0, 1, 2].map((row) => tr([0, 1, 2].map((c) => tc(empty(), {
-      w: CARD[c], borders: { all: {}, ...(row === 0 ? { top: thick } : {}), ...(row === 2 ? { bottom: thick } : {}), ...(c === 0 ? { left: thick } : {}), ...(c === 2 ? { right: thick } : {}) },
-    })), 1800, 'exact')), CARD);
-    const n = b.rows[0].length;
-    const BANK = split(WIDTH, n);
-    const bank = tbl(b.rows.map((row) => tr(row.map((t, c) => tc(arP(t, b.sz), { w: BANK[c], borders: { all: {} } })), 980, 'exact')), BANK, { rtl: 1 });
-    const count = b.rows.flat().length;
-    return head('Level 1  ·  Game Sheets', `Make Your Own Bingo ${k + 1} · ${b.section}${b.dots ? ' — Watch the dots!' : ''}`, { first: k === 0 }) +
-      step(1, `Pick any 9 of the ${count} boxes at the bottom. Write one in each square of your card — mix them up!`) +
-      step(2, 'Listen to your teacher. When you hear one that is on your card, color its square.') +
-      step(3, 'Three in a row — across, down or corner to corner? Say “Bingo!” and read your row out loud.') +
-      gap(120) + p(r('My Bingo Card', { b: 1, sz: 28 }), { after: 80 }) + card + gap(240) +
-      p(r(`Pick 9 from these ${count}:`, { b: 1, sz: 24 }), { after: 80 }) + bank;
-  }).join('');
-  save(join(OUT, 'Quiz and Game Sheets', 'Level 1 Make Your Own Bingo (Sections 1-6).docx'), 'Level 1 Make Your Own Bingo', body);
-}
-
-// ── 4. Connect the dots ────────────────────────────────────────────────────
+// ── 3. Connect the dots ────────────────────────────────────────────────────
 // Join the dots in an order the child already knows — the alphabet song, then
 // بَ بُ بِ through the letters, then the tanween — and an Islamic figure
 // appears; a dot taken out of order is a line across the picture anyone can
@@ -591,44 +462,57 @@ const dotImages = DOTS.map((d, k) => {
     answer: { id: `dotsAnswer${k + 1}`, data: shoot(answer.svg, answer.w, answer.h, 1, `dotsAnswer${k + 1}`) },
   };
 });
+let dotsBody = '';
 {
-  const body = DOTS.map((d, k) =>
-    head('Level 1  ·  Game Sheets', `Connect the Dots ${k + 1} · ${d.section} — Start at the dot with a ring. Join the dots in this order, then join the last one back to the first.`, { first: k === 0 }) +
+  dotsBody = DOTS.map((d, k) =>
+    head('Level 1  ·  Games', `Connect the Dots ${k + 1} · ${d.section} — Start at the dot with a ring. Join the dots in this order, then join the last one back to the first.`) +
     p(d.seq.map((t) => arRun(t, 40)).join(r('   ', { ar: 1, sz: 40 })), { bidi: 1, after: 120, line: 288 }) +
     p(image(`dots${k + 1}`, ...fit(dotImages[k].size, 7.0, 6.9))) + gap(120) +
     p(r('What did you draw?  ', { b: 1, sz: 24 }) + r('_____________________________', { sz: 24 }) + r('   Now color it in!', { sz: 24 }), { jc: 'left' }),
   ).join('');
-  save(join(OUT, 'Quiz and Game Sheets', 'Level 1 Connect the Dots (Sections 1, 3, 4).docx'), 'Level 1 Connect the Dots', body,
-    { images: dotImages.map((x) => x.sheet) });
 }
 
-// ── 5. The teacher's guide, with the answers ───────────────────────────────
+// ── 4. The teacher's guide, and the one book ───────────────────────────────
+// One Word file for the teachers: the guide and its contents first, then every
+// student page; a teacher prints the pages a child needs by their numbers.
 {
+  const GUIDE_PAGES = 2;
+  const sectionsOf = (list) => [...new Set(list.map((x) => x.section.match(/Section (\d)/)[1]))].join(', ');
+  const PARTS = [
+    { what: 'Extra Practice — the letters', note: `each letter of Sections 1–2 written ${TRACE + WRITE} times (${TRACE} traced, ${WRITE} on their own), one family of look-alike letters to a page`, from: 0, pages: FAMILIES.length, workbook: '1–2' },
+    { what: 'Hidden Pictures', note: 'read each box, color it by the rules, and a picture appears', pages: PICTURES.length, workbook: sectionsOf(PICTURES) },
+    { what: 'Connect the Dots', note: 'join the dots in an order the child knows, and an Islamic figure appears', pages: DOTS.length, workbook: sectionsOf(DOTS) },
+  ];
+  let next = GUIDE_PAGES + 1;
+  for (const pt of PARTS) { pt.from = next; pt.to = next + pt.pages - 1; next = pt.to + 1; }
+  const range = (x, y) => (x === y ? `${x}` : `${x}–${y}`);
+  const [, picturesPart, dotsPart] = PARTS;
+
   const h2 = (t, o = {}) => p(r(t, { b: 1, sz: 26, color: '14513A' }), { jc: 'left', before: 160, after: 60, keepNext: 1, ...o });
   const bullet = (t) => p(r('•  ', { sz: 21 }) + r(t, { sz: 21 }), { jc: 'left', ind: 300, hanging: 300, after: 50 });
   const mixed = (bits) => bits.map((x) => (typeof x === 'string' ? r(x, { sz: 19 }) : arRun(x.ar, 30))).join('');
-  const arabicIn = (s) => s.split(/([\u0600-\u06FF][\u0600-\u06FF\s]*[\u0600-\u06FF]|[\u0600-\u06FF])/).filter(Boolean).map((x) => (/[\u0600-\u06FF]/.test(x) ? { ar: x } : x));
-
-  const TW = [700, 2700, 4280, 2600];
+  const arabicIn = (t) => t.split(/([؀-ۿ][؀-ۿ\s]*[؀-ۿ]|[؀-ۿ])/).filter(Boolean).map((x) => (/[؀-ۿ]/.test(x) ? { ar: x } : x));
   const lineCol = { all: { sz: 4, color: 'A6A6A6' } };
-  const th = (t, c) => tc(p(r(t, { b: 1, sz: 19 }), { jc: 'left' }), { w: TW[c], borders: lineCol, fill: 'EDEDED' });
-  const td = (content, c) => tc(p(content, { jc: 'left' }), { w: TW[c], borders: lineCol });
-  const pictureTable = tbl([
-    tr(['Page', 'Section', 'What it practices', 'Hidden picture'].map(th), 300),
-    ...PICTURES.map((pic, k) => tr([
-      td(r(String(k + 1), { sz: 19 }), 0), td(r(pic.section.replace('Section ', ''), { sz: 19 }), 1),
-      td(mixed(arabicIn(pic.practices)), 2), td(r(pic.answer, { sz: 19, b: 1 }), 3)], 300)),
-  ], TW);
-  const dotsTable = tbl([
-    tr(['Page', 'Section', 'The order', 'The figure'].map(th), 300),
-    ...DOTS.map((d, k) => tr([
-      td(r(String(k + 1), { sz: 19 }), 0), td(r(d.section.replace('Section ', ''), { sz: 19 }), 1),
-      td(r(d.order, { sz: 19 }), 2), td(mixed(arabicIn(d.answer)), 3)], 300)),
-  ], TW);
+  const table = (heads, widths, rows) => tbl([
+    tr(heads.map((t, c) => tc(p(r(t, { b: 1, sz: 19 }), { jc: 'left' }), { w: widths[c], borders: lineCol, fill: 'EDEDED' })), 300),
+    ...rows.map((cells) => tr(cells.map((content, c) => tc(p(content, { jc: 'left' }), { w: widths[c], borders: lineCol })), 300)),
+  ], widths);
 
-  // the hidden pictures finished, eight to a row — drawn as pictures, because
+  const contents = table(['Pages', 'What', 'Workbook sections', 'What the child does'], [900, 2900, 1600, 4880], [
+    [r(range(1, GUIDE_PAGES), { sz: 19, b: 1 }), r('Teacher’s guide and answers', { sz: 19 }), r('—', { sz: 19 }), r('this page and the next: how each game runs, and the answers', { sz: 19 })],
+    ...PARTS.map((pt) => [r(range(pt.from, pt.to), { sz: 19, b: 1 }), r(pt.what, { sz: 19 }), r(pt.workbook, { sz: 19 }), r(pt.note, { sz: 19 })]),
+  ]);
+  const TW = [700, 2700, 4280, 2600];
+  const pictureTable = table(['Page', 'Section', 'What it practices', 'Hidden picture'], TW,
+    PICTURES.map((pic, k) => [r(String(picturesPart.from + k), { sz: 19 }), r(pic.section.replace('Section ', ''), { sz: 19 }),
+      mixed(arabicIn(pic.practices)), r(pic.answer, { sz: 19, b: 1 })]));
+  const dotsTable = table(['Page', 'Section', 'The order', 'The figure'], TW,
+    DOTS.map((d, k) => [r(String(dotsPart.from + k), { sz: 19 }), r(d.section.replace('Section ', ''), { sz: 19 }),
+      r(d.order, { sz: 19 }), mixed(arabicIn(d.answer))]));
+
+  // the hidden pictures finished, five to a row — drawn as pictures, because
   // Word widens some columns of so small a table and squeezes others
-  const TH = split(WIDTH, 8);
+  const PER_ROW = 5, TH = split(WIDTH, PER_ROW);
   const thumbs = PICTURES.map((pic, k) => {
     const cols = pic.art[0].length, rows = pic.art.length, C = 20;
     const cells = pic.art.flatMap((row, y) => [...row].map((ch, x) =>
@@ -636,39 +520,46 @@ const dotImages = DOTS.map((d, k) => {
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${cols * C}" height="${rows * C}" viewBox="-0.5 -0.5 ${cols * C + 1} ${rows * C + 1}">${cells}</svg>`;
     return { id: `thumb${k + 1}`, data: shoot(svg, cols * C, rows * C, 3, `thumb${k + 1}`), size: { w: cols, h: rows } };
   });
-  const thumb = (k) => p(image(`thumb${k + 1}`, ...fit(thumbs[k].size, 1.0, 1.0)), { jc: 'left' });
-  const thumbRows = [PICTURES.slice(0, 8), PICTURES.slice(8)].map((row, rk) => tr(TH.map((w, c) => {
-    const pic = row[c], k = rk * 8 + c;
-    return pic
-      ? tc(thumb(k) + p(r(`${k + 1}  `, { b: 1, sz: 16 }) + r(pic.answer.replace(/^(an?|the) /, '').replace(/ \(.*\)$/, ''), { sz: 16 }), { before: 60, after: 120 }),
-        { w, borders: { all: null }, v: 'top' })
-      : tc(empty(), { w, borders: { all: null } });
-  }), 300));
+  const thumbRows = [];
+  for (let at = 0; at < PICTURES.length; at += PER_ROW) {
+    thumbRows.push(tr(TH.map((w, c) => {
+      const k = at + c, pic = PICTURES[k];
+      return pic
+        ? tc(p(image(`thumb${k + 1}`, ...fit(thumbs[k].size, 1.25, 1.25)), { jc: 'left' }) +
+            p(r(`p. ${picturesPart.from + k}  `, { b: 1, sz: 16 }) + r(pic.answer.replace(/^(an?|the) /, ''), { sz: 16 }), { jc: 'left', before: 60, after: 120 }),
+          { w, borders: { all: null }, v: 'top' })
+        : tc(empty(), { w, borders: { all: null } });
+    }), 300));
+  }
   const DW = split(WIDTH, 3);
   const dotsAnswers = tbl([tr(DOTS.map((d, k) => tc(
-    p(image(`dotsAnswer${k + 1}`, ...fit(dotImages[k].size, 1.8, 1.8))) + p(r(`${k + 1}  `, { b: 1, sz: 16 }) + r(['masjid', 'crescent moon', 'Rub el Hizb star'][k], { sz: 16 }), { before: 40 }),
+    p(image(`dotsAnswer${k + 1}`, ...fit(dotImages[k].size, 1.8, 1.8))) +
+      p(r(`p. ${dotsPart.from + k}  `, { b: 1, sz: 16 }) + r(['masjid', 'crescent moon', 'Rub el Hizb star'][k], { sz: 16 }), { before: 40 }),
     { w: DW[k], borders: { all: null }, v: 'top' })), 300)], DW);
 
-  const body =
-    head('Level 1  ·  Game Sheets  ·  Teacher’s Guide', 'Nothing on these sheets needs marking. Each one shows its own mistakes.', { first: true, name: false }) +
-    h2(`Hidden Pictures — ${PICTURES.length} pages, one child each`) +
+  const guideBody =
+    head('Level 1  ·  Extra Practice and Games  ·  Teacher’s Guide',
+      'Print only the pages a child needs: every page is numbered at the bottom. Nothing here needs marking — each game shows its own mistakes.',
+      { first: true, name: false }) +
+    h2('What is in this file') + contents +
+    h2('Extra Practice — the letters') +
+    bullet(`Each letter of Sections 1 and 2, ${TRACE + WRITE} times: ${TRACE} traced in gray, then ${WRITE} on its own. Each page is one family of letters that look alike, so you can copy just the page a child is stuck on.`) +
+    h2('Hidden Pictures') +
     bullet('Read the color rules out loud once. Each child reads every box out loud, then colors it by the rules.') +
     bullet('To check, glance from the front of the room. A clean picture means every box was read right. A colored box out in the white, or a white box inside the picture, is a box read wrong: point to it, the child reads it to you and fixes it.') +
-    bullet('Two or three crayons and a pencil are all a child needs. Black-and-white copies are fine: the colors are named on the sheet, never printed.') +
+    bullet('Two crayons and a pencil are all a child needs. Black-and-white copies are fine: the colors are named on the sheet, never printed.') +
     gap(80) + pictureTable +
-    h2('Make Your Own Bingo — 6 pages, the whole class at once', { pageBreakBefore: 1 }) +
-    bullet('Each child copies any 9 boxes from the bottom of the sheet into the card. Every card comes out different, and the copying is writing practice.') +
-    bullet('Call the boxes in any order from one copy, ticking each as you call it. Sections 1 and 2: say the letter’s name. Sections 3 to 6: read the box out loud.') +
-    bullet('The first child with three in a row says “Bingo!” and reads the row out loud. You check by ear — that is all the checking there is. Play on for more winners, or for a full card.') +
-    bullet('Anyone who reads well can do the calling: a helper, or an older student.') +
-    h2(`Connect the Dots — ${DOTS.length} pages, one child each`) +
+    h2('Connect the Dots', { pageBreakBefore: 1 }) +
     bullet('The order is printed under the title, right to left, and every child already knows it: the alphabet song; then Fat-ha, Damma, Kasra on each letter; then the three tanween on each letter. Start at the dot with a ring, and end back at it.') +
     bullet('To check, look at the figure. A dot taken out of order is a line that cuts across the picture.') +
     bullet('When the figure is done, the child colors it in and says or writes what it is.') +
     gap(80) + dotsTable +
     h2('The answers') + tbl(thumbRows, TH) + gap(120) + dotsAnswers;
-  save(join(OUT, 'Quiz and Game Sheets', 'Level 1 Game Sheets - Teacher Guide.docx'), 'Level 1 Game Sheets — Teacher Guide', body,
-    { notes: false, images: [...dotImages.map((x) => x.answer), ...thumbs] });
+
+  save(join(OUT, 'Extra Practice Sheets', 'Level 1 Extra Practice and Games.docx'), 'Level 1 Extra Practice and Games',
+    guideBody + sectionEnd('rIdFooterPlain') + lettersBody + picturesBody + dotsBody,
+    { images: [...dotImages.map((x) => x.sheet), ...dotImages.map((x) => x.answer), ...thumbs] });
+  console.log(PARTS.map((pt) => `${pt.what}: pages ${range(pt.from, pt.to)}`).join('\n'));
 }
 
 // ── report ─────────────────────────────────────────────────────────────────
@@ -678,4 +569,3 @@ for (const [k, pic] of PICTURES.entries()) {
   const colors = KEYS.filter((key) => pic[key]).map((key) => `${n[key]} ${pic[key].color} (${new Set(pic[key].pool).size})`).join(', ');
   console.log(`picture ${k + 1} ${pic.answer}: ${colors}, ${n['.']} white (${new Set(pic.D).size})`);
 }
-for (const [k, b] of BINGO.entries()) console.log(`bingo ${k + 1}: ${b.rows.map((r) => r.join(' ')).join(' | ')}`);
