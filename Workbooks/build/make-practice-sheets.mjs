@@ -214,15 +214,20 @@ let lettersBody = '';
 // ── 1b. Extra practice: the natural madd, each form 10 times ───────────────
 // The workbook's Section 5 as it stands — every letter's six forms, Fat-ha,
 // Madd Alif, Damma, Madd Waaw, Kasra, Madd Yaa — laid out as the workbook lays
-// them (one 13-column table: two letters and a gap, right to left, the same
-// type sizes), but each form traced 3 times and written 7 (the author's
-// choice, 2026-11-06): two letters to a page.
+// them (one 13-column table: two letters and a gap, right to left), but each
+// form traced 3 times and written 7 (the author's choice, 2026-11-06): two
+// letters to a page. The workbook's 26 pt does NOT fit these cells — صُونَ
+// ضُونَ and كَنِ كُنِ كِنِ ran onto a second line — so the words are 22 pt and
+// 21 pt, and section 3 measures the widest against the cell (MADD_FIT).
 const MADD = groups('L1S5', 6);
 const MADD_FORMS = 'Fat-ha,Madd Alif,Damma,Madd Waaw,Kasra,Madd Yaa';
-let maddBody = '';
+const MADD_SZ = { model: 44, trace: 42 };          // half-points
+const MADD_CM = 30;                                 // cell margin, twips each side
+let maddBody = '', maddCell = 0;
 {
   for (const g of MADD) if (g.map((i) => i.caption).join() !== MADD_FORMS) throw new Error(`section 5 group ${g[0].text}: ${g.map((i) => i.caption)}`);
   const GAP = 190, half = split(WIDTH - GAP, 12), widths = [...half.slice(0, 6), GAP, ...half.slice(6)];
+  maddCell = Math.min(...half) - 2 * MADD_CM;
   // the workbook's own paragraph for a form: the word raised 14, an exact line
   const form = (t, sz, color, line) => p(r(t, { ar: 1, sz, color, pos: 14 }), { bidi: 1, line, rule: 'exact' });
   const row = (pair, make, h, edge) => tr(pair.flatMap((g, gi) => [
@@ -233,14 +238,14 @@ let maddBody = '';
   for (let k = 0; k < MADD.length; k += 2) pages.push(MADD.slice(k, k + 2));
   maddBody = pages.map((pair, k) => {
     const rows = [
-      row(pair, (i) => form(i.text, 52, '000000', 1120), 1160, { top: { sz: 18 } }),
+      row(pair, (i) => form(i.text, MADD_SZ.model, '000000', 1120), 1160, { top: { sz: 18 } }),
       row(pair, (i) => p(r(i.caption, { b: 1, color: '262626', sz: 16 })), 320, { bottom: { val: 'double', sz: 6 } }),
-      ...Array.from({ length: TRACE }, (_, n) => row(pair, (i) => form(i.text, 48, 'B0B0B0', 900), 1000, n === 0 ? { top: { val: 'double', sz: 6 } } : {})),
+      ...Array.from({ length: TRACE }, (_, n) => row(pair, (i) => form(i.text, MADD_SZ.trace, 'B0B0B0', 900), 1000, n === 0 ? { top: { val: 'double', sz: 6 } } : {})),
       ...Array.from({ length: WRITE }, () => row(pair, () => empty(), 1000, {})),
     ];
     return head('Level 1  ·  Extra Practice  ·  Natural Madd',
       `Natural Madd ${k + 1} of ${pages.length} · Section 5 — Trace each one ${TRACE} times, then write it ${WRITE} times on your own.`) +
-      tbl(rows, widths, { rtl: 1, cm: 30 });
+      tbl(rows, widths, { rtl: 1, cm: MADD_CM });
   }).join('');
 }
 
@@ -420,6 +425,26 @@ function shoot(svg, w, h, scale, name) {
     `--force-device-scale-factor=${scale}`, `--window-size=${w},${h}`, `--screenshot=${png}`, pathToFileURL(html).href], { stdio: 'ignore' });
   return readFileSync(png);
 }
+/** How wide each text is in the Word font at `pt`, in twips, as Chrome lays it out. */
+function measure(texts, pt) {
+  const html = join(TMP, 'measure.html');
+  writeFileSync(html, `<!doctype html><meta charset="utf-8"><style>@font-face{font-family:AppMushaf;src:url('${APP_FONT}')}
+span{font-family:${MUSHAF_FACE};font-size:${pt}pt;white-space:nowrap}</style><pre id=out></pre><div id=box></div><script>
+const res = ${JSON.stringify(texts)}.map((t) => { const s = document.createElement('span'); s.lang = 'ar'; s.dir = 'rtl'; s.textContent = t;
+  document.getElementById('box').appendChild(s); return s.getBoundingClientRect().width * 15; });
+document.getElementById('out').textContent = 'WIDTHS' + JSON.stringify(res) + 'END';</script>`);
+  const dom = execFileSync(CHROME, ['--headless=new', '--disable-gpu', '--virtual-time-budget=3000', '--dump-dom', pathToFileURL(html).href],
+    { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+  return JSON.parse(dom.split('WIDTHS')[1].split('END')[0]);
+}
+// MADD_FIT: every Section 5 word must sit on one line in its cell, with room to
+// spare — a word wider than its cell wraps in Word, as صُونَ and كَنِ did at 26 pt.
+for (const [what, sz] of Object.entries(MADD_SZ)) {
+  const texts = MADD.flat().map((i) => i.text), w = measure(texts, sz / 2);
+  const k = w.indexOf(Math.max(...w));
+  if (w[k] > maddCell * 0.95) throw new Error(`natural madd ${what} at ${sz / 2} pt: ${texts[k]} is ${Math.round(w[k])} twips, the cell holds ${maddCell}`);
+  console.log(`natural madd ${what} ${sz / 2} pt: widest ${texts[k]} ${Math.round(w[k])} of ${maddCell} twips`);
+}
 
 const polar = (cx, cy, r, deg) => [cx + r * Math.cos((deg * Math.PI) / 180), cy - r * Math.sin((deg * Math.PI) / 180)];
 const inside = (pts, x, y) => {
@@ -568,9 +593,13 @@ let dotsBody = '';
     ...PARTS.map((pt) => [r(range(pt.from, pt.to), { sz: 19, b: 1 }), r(pt.what, { sz: 19 }), r(pt.workbook, { sz: 19 }), r(pt.note, { sz: 19 })]),
   ]);
   const TW = [700, 2700, 4280, 2600];
-  const pictureTable = table(['Page', 'Section', 'What it practices', 'Hidden picture'], TW,
+  // a crayon shown, not only named: a square in its color, then its name
+  const crayon = (name, sz = 19) => r('■', { color: COLORS[name], sz: Math.round(sz * 1.5) }) + r(` ${name}`, { sz });
+  const colorsOf = (pic) => KEYS.filter((key) => pic[key]).map((key) => pic[key].color);
+  const allColors = [...new Set(PICTURES.flatMap(colorsOf))];
+  const pictureTable = table(['Page', 'Section', 'What it practices', 'Hidden picture', 'Crayons'], [600, 2000, 3380, 2300, 2000],
     PICTURES.map((pic, k) => [r(String(picturesPart.from + k), { sz: 19 }), r(pic.section.replace('Section ', ''), { sz: 19 }),
-      mixed(arabicIn(pic.practices)), r(pic.answer, { sz: 19, b: 1 })]));
+      mixed(arabicIn(pic.practices)), r(pic.answer, { sz: 19, b: 1 }), colorsOf(pic).map((c) => crayon(c)).join(r('   ', { sz: 19 }))]));
   const dotsTable = table(['Page', 'Section', 'The order', 'The figure'], TW,
     DOTS.map((d, k) => [r(String(dotsPart.from + k), { sz: 19 }), r(d.section.replace('Section ', ''), { sz: 19 }),
       r(d.order, { sz: 19 }), mixed(arabicIn(d.answer))]));
@@ -613,7 +642,10 @@ let dotsBody = '';
     h2('Hidden Pictures') +
     bullet('Read the color rules out loud once. Each child reads every box out loud, then colors it by the rules.') +
     bullet('To check, glance from the front of the room. A clean picture means every box was read right. A colored box out in the white, or a white box inside the picture, is a box read wrong: point to it, the child reads it to you and fixes it.') +
-    bullet('Two crayons and a pencil are all a child needs. Black-and-white copies are fine: the colors are named on the sheet, never printed.') +
+    p(r('•  ', { sz: 21 }) + r(`Crayons: each sheet uses two colors, shown for each page in the table below. For all ${PICTURES.length} sheets, have these ${allColors.length} ready:`, { sz: 21 }),
+      { jc: 'left', ind: 300, hanging: 300, after: 30 }) +
+    p(allColors.map((c) => crayon(c, 21)).join(r('     ', { sz: 21 })), { jc: 'left', ind: 300, after: 50 }) +
+    bullet('Black-and-white copies are fine: each sheet names its colors, and the child colors a small box beside each rule with that crayon.') +
     gap(80) + pictureTable +
     h2('Connect the Dots', { pageBreakBefore: 1 }) +
     bullet('The order is printed under the title, right to left, and every child already knows it: the alphabet song; then Fat-ha, Damma, Kasra on each letter; then the three tanween on each letter. Start at the dot with a ring, and end back at it.') +
