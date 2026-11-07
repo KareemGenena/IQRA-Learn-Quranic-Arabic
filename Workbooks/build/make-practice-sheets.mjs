@@ -211,12 +211,44 @@ let lettersBody = '';
   }).join('');
 }
 
+// ── 1b. Extra practice: the natural madd, each form 10 times ───────────────
+// The workbook's Section 5 as it stands — every letter's six forms, Fat-ha,
+// Madd Alif, Damma, Madd Waaw, Kasra, Madd Yaa — laid out as the workbook lays
+// them (one 13-column table: two letters and a gap, right to left, the same
+// type sizes), but each form traced 3 times and written 7 (the author's
+// choice, 2026-11-06): two letters to a page.
+const MADD = groups('L1S5', 6);
+const MADD_FORMS = 'Fat-ha,Madd Alif,Damma,Madd Waaw,Kasra,Madd Yaa';
+let maddBody = '';
+{
+  for (const g of MADD) if (g.map((i) => i.caption).join() !== MADD_FORMS) throw new Error(`section 5 group ${g[0].text}: ${g.map((i) => i.caption)}`);
+  const GAP = 190, half = split(WIDTH - GAP, 12), widths = [...half.slice(0, 6), GAP, ...half.slice(6)];
+  // the workbook's own paragraph for a form: the word raised 14, an exact line
+  const form = (t, sz, color, line) => p(r(t, { ar: 1, sz, color, pos: 14 }), { bidi: 1, line, rule: 'exact' });
+  const row = (pair, make, h, edge) => tr(pair.flatMap((g, gi) => [
+    ...(gi ? [tc(empty(), { w: GAP, borders: { all: null } })] : []),
+    ...g.map((item, c) => tc(make(item), { w: widths[gi * 7 + c], borders: { all: {}, ...edge } })),
+  ]), h);
+  const pages = [];
+  for (let k = 0; k < MADD.length; k += 2) pages.push(MADD.slice(k, k + 2));
+  maddBody = pages.map((pair, k) => {
+    const rows = [
+      row(pair, (i) => form(i.text, 52, '000000', 1120), 1160, { top: { sz: 18 } }),
+      row(pair, (i) => p(r(i.caption, { b: 1, color: '262626', sz: 16 })), 320, { bottom: { val: 'double', sz: 6 } }),
+      ...Array.from({ length: TRACE }, (_, n) => row(pair, (i) => form(i.text, 48, 'B0B0B0', 900), 1000, n === 0 ? { top: { val: 'double', sz: 6 } } : {})),
+      ...Array.from({ length: WRITE }, () => row(pair, () => empty(), 1000, {})),
+    ];
+    return head('Level 1  ·  Extra Practice  ·  Natural Madd',
+      `Natural Madd ${k + 1} of ${pages.length} · Section 5 — Trace each one ${TRACE} times, then write it ${WRITE} times on your own.`) +
+      tbl(rows, widths, { rtl: 1, cm: 30 });
+  }).join('');
+}
+
 // ── 2. Hidden pictures ─────────────────────────────────────────────────────
-// A picture on a grid: A, B (and sometimes C) are its colors, every other box
-// is a look-alike left white. A box read wrong is a speck in the white or a hole
-// in the picture — the sheet marks itself, at arm's length. Islamic things and
-// things the Qurʾān names: the Kaaba, the Mushaf, the bee, the ant, the
-// elephant, the pen, Yunus's fish.
+// A picture on a grid: A and B are its colors, every other box is a look-alike
+// left white. A box read wrong is a speck in the white or a hole in the picture
+// — the sheet marks itself, at arm's length. Islamic things and things the
+// Qurʾān names; no animals (the author kept nine of an earlier fifteen).
 const COLORS = {
   yellow: 'FFD84D', orange: 'FF9F40', green: '5DBB63', brown: 'B07A4F', red: 'E8564A',
   blue: '5B9BE0', black: '3A3A3A', gray: 'A0A0A0', pink: 'F5A3C7',
@@ -235,12 +267,6 @@ const weighted = (list) => list.flatMap((x) => (Array.isArray(x) ? Array(x[1]).f
 const S3 = 'L1S3', S4 = 'L1S4', S5 = 'L1S5', S6 = 'L1S6';
 const notAf = (t) => plain(t) && !t.includes('ف');                 // عَفِ / عَفِّ left the app's lesson 23
 const maddKeep = (t) => !/[ىـأإءآ]/.test(t) && !t.startsWith('ي'); // the madd yaa is ي; the hamza and yaa rows stay out
-// The master's Shadda-with-Damma page (نَبُّ … نَزُّ) is a table the workbook
-// parser does not read, so its cells are taken from the XML as they stand.
-const CELLS = [...part('word/document.xml').toString('utf8').matchAll(/<w:tc>[\s\S]*?<\/w:tc>/g)]
-  .map((m) => [...m[0].matchAll(/<w:t[^>]*>([^<]*)<\/w:t>/g)].map((t) => t[1]).join('').trim());
-const SHADDA_DAMMA = [...new Set(CELLS.filter((t) => /^نَ.ُّ$/.test(t)))];
-const DAMMA_PARTNER = SHADDA_DAMMA.map((t) => t.slice(0, -1)).filter((t) => CELLS.includes(t));
 const S6_PAIRS = groups(S6, 2).filter((g) => g[1].caption === 'Shadda' && notAf(g[1].text) && plain(g[1].text));
 const SHADDA_FATHA = S6_PAIRS.filter((g) => g[0].caption === 'Fat-ha').map((g) => g[1].text);
 const SHADDA_KASRA = S6_PAIRS.filter((g) => g[0].caption === 'Kasra').map((g) => g[1].text);
@@ -284,6 +310,24 @@ const PICTURES = [
     practices: 'ج and ر among ح خ ع غ ز د ذ',
   },
   {
+    section: 'Section 3 · Harakat', answer: 'the sun', sz: 52,
+    art: ['A...A...A', '.A..A..A.', '...BBB...', '..BBBBB..', 'AABBBBBAA', '..BBBBB..', '...BBB...', '.A..A..A.', 'A...A...A', '.........'],
+    A: { color: 'orange', rule: 'a Damma', pool: pool(S3, 'Damma') },
+    B: { color: 'yellow', rule: 'a Fat-ha', pool: pool(S3, 'Fat-ha') },
+    rest: 'every box with a Kasra',
+    D: pool(S3, 'Kasra'),
+    practices: 'Fat-ha and Damma (Kasra stays white)',
+  },
+  {
+    section: 'Section 3 · Harakat', answer: 'a rain cloud', sz: 48,
+    art: ['.........', '...AA....', '..AAAAAA.', '.AAAAAAAA', 'AAAAAAAAA', '.AAAAAAA.', '.........', '.B..B..B.', 'B..B..B..', '.........'],
+    A: { color: 'gray', rule: 'a Sukoon', pool: pool(S3, 'Sukoon') },
+    B: { color: 'blue', rule: 'a Kasra', pool: pool(S3, 'Kasra') },
+    rest: 'every other box',
+    D: [...pool(S3, 'Fat-ha'), ...pool(S3, 'Damma')],
+    practices: 'Sukoon and Kasra among Fat-ha and Damma',
+  },
+  {
     section: 'Section 4 · Tanween', answer: 'a sailboat', sz: 48,
     art: ['....B....', '....BA...', '...ABAA..', '..AABAAA.', '.AAABAAAA', '....B....', 'BBBBBBBBB', '.BBBBBBB.', '..BBBBB..', '.........'],
     A: { color: 'red', rule: 'Tanween Fath', pool: pool(S4, 'Tanween Fath') },
@@ -291,6 +335,26 @@ const PICTURES = [
     rest: 'every other box',
     D: weighted([...pool(S4, 'Fat-ha'), ...pool(S4, 'Damma').map((t) => [t, 2]), ...pool(S4, 'Kasra'), ...pool(S4, 'Tanween Kasr')]),
     practices: 'Tanween Fath and Tanween Damm among single harakat',
+  },
+  {
+    section: 'Section 5 · Natural Madd', answer: 'an olive tree', sz: 40,
+    art: ['..AAAAA..', '.AAAAAAA.', 'AAAAAAAAA', 'AAAAAAAAA', '.AAAAAAA.', '..AAAAA..', '....B....', '....B....', '...BBB...', '..BBBBB..'],
+    A: { color: 'green', rule: 'Madd Alif', pool: pool(S5, 'Madd Alif', maddKeep) },
+    B: { color: 'brown', rule: 'Madd Yaa', pool: pool(S5, 'Madd Yaa', maddKeep) },
+    rest: 'every other box',
+    D: weighted([...pool(S5, 'Fat-ha', maddKeep).map((t) => [t, 2]), ...pool(S5, 'Kasra', maddKeep).map((t) => [t, 2]), ...pool(S5, 'Damma', maddKeep), ...pool(S5, 'Madd Waaw', maddKeep)]),
+    practices: 'Madd Alif and Madd Yaa among short harakat and Madd Waaw',
+  },
+  // Section 6 is set larger: a Kasra under a Shadda is a small mark, and at
+  // 22 pt it was lost (the author, 2026-10-28).
+  {
+    section: 'Section 6 · Shadda', answer: 'a minaret', sz: 60,
+    art: ['....B....', '...AAA...', '...AAA...', '..BBBBB..', '...AAA...', '...AAA...', '...AAA...', '...AAA...', '..AAAAA..', '.AAAAAAA.'],
+    A: { color: 'blue', rule: 'Shadda and Fat-ha', pool: SHADDA_FATHA },
+    B: { color: 'yellow', rule: 'Shadda and Kasra', pool: SHADDA_KASRA },
+    rest: 'every box with no Shadda',
+    D: S6_PAIRS.map((g) => g[0].text),
+    practices: 'Shadda with Fat-ha and with Kasra among no Shadda',
   },
 ];
 const KEYS = ['A', 'B', 'C'];
@@ -480,13 +544,14 @@ let dotsBody = '';
   const sectionsOf = (list) => [...new Set(list.map((x) => x.section.match(/Section (\d)/)[1]))].join(', ');
   const PARTS = [
     { what: 'Extra Practice — the letters', note: `each letter of Sections 1–2 written ${TRACE + WRITE} times (${TRACE} traced, ${WRITE} on their own), one family of look-alike letters to a page`, from: 0, pages: FAMILIES.length, workbook: '1–2' },
+    { what: 'Extra Practice — natural madd', note: `all six forms of each letter written ${TRACE + WRITE} times (${TRACE} traced, ${WRITE} on their own), two letters to a page`, pages: Math.ceil(MADD.length / 2), workbook: '5' },
     { what: 'Hidden Pictures', note: 'read each box, color it by the rules, and a picture appears', pages: PICTURES.length, workbook: sectionsOf(PICTURES) },
     { what: 'Connect the Dots', note: 'join the dots in an order the child knows, and an Islamic figure appears', pages: DOTS.length, workbook: sectionsOf(DOTS) },
   ];
   let next = GUIDE_PAGES + 1;
   for (const pt of PARTS) { pt.from = next; pt.to = next + pt.pages - 1; next = pt.to + 1; }
   const range = (x, y) => (x === y ? `${x}` : `${x}–${y}`);
-  const [, picturesPart, dotsPart] = PARTS;
+  const [, , picturesPart, dotsPart] = PARTS;
 
   const h2 = (t, o = {}) => p(r(t, { b: 1, sz: 26, color: '14513A' }), { jc: 'left', before: 160, after: 60, keepNext: 1, ...o });
   const bullet = (t) => p(r('•  ', { sz: 21 }) + r(t, { sz: 21 }), { jc: 'left', ind: 300, hanging: 300, after: 50 });
@@ -544,6 +609,7 @@ let dotsBody = '';
     h2('What is in this file') + contents +
     h2('Extra Practice — the letters') +
     bullet(`Each letter of Sections 1 and 2, ${TRACE + WRITE} times: ${TRACE} traced in gray, then ${WRITE} on its own. Each page is one family of letters that look alike, so you can copy just the page a child is stuck on.`) +
+    bullet(`Natural madd: the workbook’s Section 5 page by page — every letter’s six forms (Fat-ha, Madd Alif, Damma, Madd Waaw, Kasra, Madd Yaa), each ${TRACE + WRITE} times, two letters to a page, in the workbook’s order.`) +
     h2('Hidden Pictures') +
     bullet('Read the color rules out loud once. Each child reads every box out loud, then colors it by the rules.') +
     bullet('To check, glance from the front of the room. A clean picture means every box was read right. A colored box out in the white, or a white box inside the picture, is a box read wrong: point to it, the child reads it to you and fixes it.') +
@@ -557,7 +623,7 @@ let dotsBody = '';
     h2('The answers') + tbl(thumbRows, TH) + gap(120) + dotsAnswers;
 
   save(join(OUT, 'Extra Practice Sheets', 'Level 1 Extra Practice and Games.docx'), 'Level 1 Extra Practice and Games',
-    guideBody + sectionEnd('rIdFooterPlain') + lettersBody + picturesBody + dotsBody,
+    guideBody + sectionEnd('rIdFooterPlain') + lettersBody + maddBody + picturesBody + dotsBody,
     { images: [...dotImages.map((x) => x.sheet), ...dotImages.map((x) => x.answer), ...thumbs] });
   console.log(PARTS.map((pt) => `${pt.what}: pages ${range(pt.from, pt.to)}`).join('\n'));
 }
