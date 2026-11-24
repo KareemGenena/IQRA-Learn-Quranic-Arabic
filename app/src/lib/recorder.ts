@@ -139,6 +139,41 @@ export async function startRecording(deviceId?: string): Promise<RecorderHandle>
   };
 }
 
+/**
+ * A microphone's name as the same microphone always gives it: without the
+ * "Default - " the browser puts before whichever is the default, the "2- "
+ * Windows adds after reinstalling a driver, and the USB id at the end.
+ * "Default - Microphone (Yeti GX) (046d:0afc)" is "Microphone (Yeti GX)".
+ */
+export function micName(label: string): string {
+  return label
+    .replace(/^(Default|Communications)\s*-\s*/i, '')
+    .replace(/\(\d+-\s*/g, '(')
+    .replace(/\s*\([0-9a-f]{4}:[0-9a-f]{4}\)\s*$/i, '')
+    .trim();
+}
+
+/** The microphones the folder's earlier sessions were recorded with, from
+ *  its intake.json — leaving out the session `except` (ISO time it began). */
+export function micsInManifest(text: string | null, except?: string): string[] {
+  if (!text) return [];
+  try {
+    const parsed = JSON.parse(text) as { sessions?: unknown; recordings?: unknown };
+    const sessions = (Array.isArray(parsed.sessions) ? parsed.sessions : Array.isArray(parsed.recordings) ? [parsed] : []) as Array<{
+      createdAt?: string;
+      recordings?: Array<{ device?: string | null }>;
+    }>;
+    const names = new Set<string>();
+    for (const s of sessions) {
+      if (except && s.createdAt === except) continue;
+      for (const r of s.recordings ?? []) if (r.device) names.add(micName(r.device));
+    }
+    return [...names];
+  } catch {
+    return [];
+  }
+}
+
 /** The microphones the browser will name, for the device picker. */
 export async function listMicrophones(): Promise<MediaDeviceInfo[]> {
   const all = await navigator.mediaDevices.enumerateDevices();

@@ -38,6 +38,14 @@ export class LaserStrokes {
     this.lastMark = now;
   }
 
+  /** The stroke being drawn, removed as if never made — the first finger of
+   *  a two-finger scroll. */
+  takeBack(): void {
+    if (!this.drawing) return;
+    this.strokes.pop();
+    this.drawing = false;
+  }
+
   clear(): void {
     this.strokes = [];
     this.drawing = false;

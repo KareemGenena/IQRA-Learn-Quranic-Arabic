@@ -3485,34 +3485,54 @@
    "rev": "9df00595"
   },
   "quiz-tap-what-you-hear": {
-   "line": "Tap what you hear."
+   "line": "Tap what you hear.",
+   "file": "quiz-tap-what-you-hear.wav",
+   "rev": "8531fc1e"
   },
   "quiz-same-or-different": {
-   "line": "Same or different?"
+   "line": "Same or different?",
+   "file": "quiz-same-or-different.wav",
+   "rev": "e451fa5b"
   },
   "quiz-tap-every": {
-   "line": "Tap every … (stop there: the letter’s name plays right after)"
+   "line": "Tap every … (stop there: the letter’s name plays right after)",
+   "file": "quiz-tap-every.wav",
+   "rev": "99727bbe"
   },
   "quiz-which-letter-shape": {
-   "line": "Which letter?"
+   "line": "Which letter?",
+   "file": "quiz-which-letter-shape.wav",
+   "rev": "1bcf0644"
   },
   "quiz-which-shape": {
-   "line": "Which shape?"
+   "line": "Which shape?",
+   "file": "quiz-which-shape.wav",
+   "rev": "591bbdf1"
   },
   "quiz-never-joins": {
-   "line": "Which one never joins?"
+   "line": "Which one never joins?",
+   "file": "quiz-never-joins.wav",
+   "rev": "e5465587"
   },
   "quiz-listen-each-word": {
-   "line": "Listen to each word."
+   "line": "Listen to each word.",
+   "file": "quiz-listen-each-word.wav",
+   "rev": "28fd8431"
   },
   "quiz-which-has-qalqala": {
-   "line": "Which one has qalqala?"
+   "line": "Which one has qalqala?",
+   "file": "quiz-which-has-qalqala.wav",
+   "rev": "14ede76e"
   },
   "quiz-trace-the-letter": {
-   "line": "Trace the letter."
+   "line": "Trace the letter.",
+   "file": "quiz-trace-the-letter.wav",
+   "rev": "021517b9"
   },
   "quiz-find-pairs": {
-   "line": "Find the pairs."
+   "line": "Find the pairs.",
+   "file": "quiz-find-pairs.wav",
+   "rev": "692bb113"
   }
  }
 }

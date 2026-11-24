@@ -49,7 +49,7 @@ import {
   saveTake,
 } from '../lib/intakeStore';
 import type { IntakeSession, Slot, Take } from '../lib/intakeStore';
-import { listMicrophones, startRecording } from '../lib/recorder';
+import { listMicrophones, micName, micsInManifest, startRecording } from '../lib/recorder';
 import type { RecorderHandle } from '../lib/recorder';
 import { profileSlots } from '../lib/speakerProfile';
 import { LEVEL_BAND, checkTake, dbfs, levelAdvice, verdict } from '../lib/takeCheck';
@@ -68,6 +68,8 @@ export function IntakePage() {
   const [current, setCurrent] = useState(0);
   const [dir, setDir] = useState<FileSystemDirectoryHandle | null>(null);
   const [status, setStatus] = useState('');
+  /** The microphones the folder was recorded with before this session. */
+  const [folderMics, setFolderMics] = useState<string[]>([]);
 
   useEffect(() => {
     let alive = true;
@@ -110,6 +112,29 @@ export function IntakePage() {
     setStatus('');
   }, []);
 
+  // What the folder was recorded with — its own intake.json and its وقف/
+  // one, this session left out. A folder that cannot be read yet (permission
+  // not given since the page opened) simply gives no warning.
+  const sessionStart = session ? new Date(session.createdAt).toISOString() : '';
+  useEffect(() => {
+    let alive = true;
+    setFolderMics([]);
+    if (!dir || !sessionStart) return;
+    (async () => {
+      const names = new Set(micsInManifest(await readText(dir, 'intake.json'), sessionStart));
+      try {
+        const stopDir = await dir.getDirectoryHandle(STOP_DIR);
+        for (const n of micsInManifest(await readText(stopDir, 'intake.json'), sessionStart)) names.add(n);
+      } catch {
+        // no stop readings in this folder
+      }
+      if (alive) setFolderMics([...names]);
+    })();
+    return () => {
+      alive = false;
+    };
+  }, [dir, sessionStart]);
+
   if (!ready) return <p className="loading">Loading…</p>;
   if (!session) return <SetupPanel onBegin={begin} />;
 
@@ -124,6 +149,7 @@ export function IntakePage() {
         current={current}
         setCurrent={setCurrent}
         onUpdate={update}
+        folderMics={folderMics}
       />
       <SavePanel
         session={session}
@@ -583,6 +609,7 @@ function Recorder({
   current,
   setCurrent,
   onUpdate,
+  folderMics,
 }: {
   session: IntakeSession;
   takes: TakeMap;
@@ -590,6 +617,7 @@ function Recorder({
   current: number;
   setCurrent: (i: number) => void;
   onUpdate: (s: IntakeSession) => void;
+  folderMics: string[];
 }) {
   const [recording, setRecording] = useState(false);
   const [level, setLevel] = useState(0);
@@ -606,9 +634,31 @@ function Recorder({
   // Moving to another slot, or starting a take, silences the one playing.
   useEffect(() => player.stop(), [slot.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // The list, and again whenever a microphone is plugged in or out.
   useEffect(() => {
-    listMicrophones().then(setMics).catch(() => {});
+    const refresh = () => void listMicrophones().then(setMics).catch(() => {});
+    refresh();
+    navigator.mediaDevices?.addEventListener?.('devicechange', refresh);
+    return () => navigator.mediaDevices?.removeEventListener?.('devicechange', refresh);
   }, []);
+
+  /**
+   * The wrong microphone, said before and after a take (the author,
+   * 2026-11-23: Windows had made the laptop's own microphone the default, and
+   * a session was recorded through it — 35 dB more hiss — before anyone
+   * noticed). The usual microphone is the one the folder's earlier sessions
+   * used, else the one this session's first take used.
+   */
+  const allTakes = session.slots.flatMap((s) => takes[s.id] ?? []).sort((a, b) => a.at - b.at);
+  const first = allTakes.find((t) => t.device);
+  const usual = folderMics.length ? folderMics : first?.device ? [micName(first.device)] : [];
+  const picked = mic ? mics.find((d) => d.deviceId === mic) : (mics.find((d) => d.deviceId === 'default') ?? mics[0]);
+  const upcoming = picked?.label ? micName(picked.label) : '';
+  const latest = allTakes.at(-1);
+  const latestMic = latest?.device ? micName(latest.device) : '';
+  const wrongNext = !!upcoming && usual.length > 0 && !usual.includes(upcoming);
+  const wrongLast = !!latestMic && usual.length > 0 && !usual.includes(latestMic);
+  const latestSlot = latest ? session.slots.find((s) => (takes[s.id] ?? []).includes(latest)) : undefined;
 
   // The meter, while a take is running.
   useEffect(() => {
@@ -645,6 +695,8 @@ function Recorder({
     };
     await saveTake(slot.id, take);
     setTakes((prev) => ({ ...prev, [slot.id]: [...(prev[slot.id] ?? []), take] }));
+    // the names are known once a take has been allowed
+    void listMicrophones().then(setMics).catch(() => {});
     // A new take is the one you meant; the old ones stay for comparison.
     onUpdate({ ...session, chosen: { ...session.chosen, [slot.id]: take.no } });
   }, [onUpdate, session, setTakes, slot, takes]);
@@ -779,6 +831,24 @@ function Recorder({
               : 'Listening…'
             : `Aim for the shaded band — peaks around ${LEVEL_BAND.aim} dBFS`}
         </p>
+
+        {(wrongNext || wrongLast) && (
+          <div className="intake-mic-warn" role="alert">
+            <strong>Not the usual microphone.</strong>{' '}
+            {wrongNext ? (
+              <>
+                This folder was recorded with <b>{usual.join(' or ')}</b>, and the next take would come
+                from <b>{upcoming}</b>. Choose the usual one under Microphone below, or make it the
+                default in Windows (Settings → System → Sound → Input).
+              </>
+            ) : (
+              <>
+                The last take{latestSlot ? <> ({latestSlot.fileName})</> : null} came from <b>{latestMic}</b>,
+                not <b>{usual.join(' or ')}</b>. Record it again now that the microphone is right.
+              </>
+            )}
+          </div>
+        )}
 
         <div className="cal-actions">
           <button

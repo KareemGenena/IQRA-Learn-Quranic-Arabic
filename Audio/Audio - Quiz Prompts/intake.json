@@ -369,6 +369,256 @@
           "recordedAt": "2026-10-28T02:47:08.647Z"
         }
       ]
+    },
+    {
+      "batch": "more prompts",
+      "source": "Quiz Prompts.docx",
+      "speaker": "Kareem Genena",
+      "consent": true,
+      "reading": "continuing",
+      "createdAt": "2026-11-24T04:22:26.553Z",
+      "writtenAt": "2026-11-24T04:50:55.274Z",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36 Edg/158.0.0.0",
+      "recordings": [
+        {
+          "file": "speaker-roomtone.wav",
+          "kind": "profile",
+          "text": "—",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": null,
+          "expectedUtterances": 0,
+          "take": 4,
+          "takesMade": 4,
+          "sampleRate": 48000,
+          "duration": 3.157,
+          "peak": 0.0007,
+          "noiseFloor": 0.00002,
+          "snrDb": 26.9,
+          "piecesFound": 0,
+          "cutInto": [],
+          "recordedAt": "2026-11-24T04:44:51.331Z"
+        },
+        {
+          "file": "speaker-vowel-a.wav",
+          "kind": "profile",
+          "text": "بَا",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": null,
+          "expectedUtterances": 1,
+          "take": 5,
+          "takesMade": 5,
+          "sampleRate": 48000,
+          "duration": 2.304,
+          "peak": 0.0569,
+          "noiseFloor": 0.000031,
+          "snrDb": 56.3,
+          "piecesFound": 1,
+          "cutInto": [
+            0.79
+          ],
+          "recordedAt": "2026-11-24T04:45:08.172Z"
+        },
+        {
+          "file": "quiz-tap-what-you-hear.wav",
+          "kind": "word",
+          "text": "quiz-tap-what-you-hear",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 13,
+          "expectedUtterances": 1,
+          "take": 10,
+          "takesMade": 10,
+          "sampleRate": 48000,
+          "duration": 3.499,
+          "peak": 0.0745,
+          "noiseFloor": 0.000031,
+          "snrDb": 58.2,
+          "piecesFound": 3,
+          "cutInto": [
+            1.41
+          ],
+          "recordedAt": "2026-11-24T04:47:57.675Z"
+        },
+        {
+          "file": "quiz-same-or-different.wav",
+          "kind": "word",
+          "text": "quiz-same-or-different",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 14,
+          "expectedUtterances": 1,
+          "take": 1,
+          "takesMade": 1,
+          "sampleRate": 48000,
+          "duration": 3.243,
+          "peak": 0.0856,
+          "noiseFloor": 0.000038,
+          "snrDb": 57.2,
+          "piecesFound": 2,
+          "cutInto": [
+            1.46
+          ],
+          "recordedAt": "2026-11-24T04:48:22.288Z"
+        },
+        {
+          "file": "quiz-tap-every.wav",
+          "kind": "word",
+          "text": "quiz-tap-every",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 15,
+          "expectedUtterances": 1,
+          "take": 1,
+          "takesMade": 1,
+          "sampleRate": 48000,
+          "duration": 2.731,
+          "peak": 0.0792,
+          "noiseFloor": 0.000039,
+          "snrDb": 57.3,
+          "piecesFound": 3,
+          "cutInto": [
+            1.19
+          ],
+          "recordedAt": "2026-11-24T04:48:38.427Z"
+        },
+        {
+          "file": "quiz-which-letter-shape.wav",
+          "kind": "word",
+          "text": "quiz-which-letter-shape",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 16,
+          "expectedUtterances": 1,
+          "take": 1,
+          "takesMade": 1,
+          "sampleRate": 48000,
+          "duration": 2.56,
+          "peak": 0.0752,
+          "noiseFloor": 0.000033,
+          "snrDb": 57.8,
+          "piecesFound": 2,
+          "cutInto": [
+            0.89
+          ],
+          "recordedAt": "2026-11-24T04:48:52.249Z"
+        },
+        {
+          "file": "quiz-which-shape.wav",
+          "kind": "word",
+          "text": "quiz-which-shape",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 17,
+          "expectedUtterances": 1,
+          "take": 1,
+          "takesMade": 1,
+          "sampleRate": 48000,
+          "duration": 2.645,
+          "peak": 0.1085,
+          "noiseFloor": 0.000034,
+          "snrDb": 60.5,
+          "piecesFound": 1,
+          "cutInto": [
+            0.89
+          ],
+          "recordedAt": "2026-11-24T04:49:06.846Z"
+        },
+        {
+          "file": "quiz-never-joins.wav",
+          "kind": "word",
+          "text": "quiz-never-joins",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 18,
+          "expectedUtterances": 1,
+          "take": 2,
+          "takesMade": 2,
+          "sampleRate": 48000,
+          "duration": 3.157,
+          "peak": 0.0904,
+          "noiseFloor": 0.000036,
+          "snrDb": 58.4,
+          "piecesFound": 3,
+          "cutInto": [
+            1.69
+          ],
+          "recordedAt": "2026-11-24T04:49:34.451Z"
+        },
+        {
+          "file": "quiz-listen-each-word.wav",
+          "kind": "word",
+          "text": "quiz-listen-each-word",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 19,
+          "expectedUtterances": 1,
+          "take": 1,
+          "takesMade": 1,
+          "sampleRate": 48000,
+          "duration": 2.987,
+          "peak": 0.0762,
+          "noiseFloor": 0.00003,
+          "snrDb": 58,
+          "piecesFound": 2,
+          "cutInto": [
+            1.46
+          ],
+          "recordedAt": "2026-11-24T04:49:48.031Z"
+        },
+        {
+          "file": "quiz-which-has-qalqala.wav",
+          "kind": "word",
+          "text": "quiz-which-has-qalqala",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 20,
+          "expectedUtterances": 1,
+          "take": 1,
+          "takesMade": 1,
+          "sampleRate": 48000,
+          "duration": 3.328,
+          "peak": 0.0979,
+          "noiseFloor": 0.000054,
+          "snrDb": 55.1,
+          "piecesFound": 5,
+          "cutInto": [
+            1.65
+          ],
+          "recordedAt": "2026-11-24T04:50:09.829Z"
+        },
+        {
+          "file": "quiz-trace-the-letter.wav",
+          "kind": "word",
+          "text": "quiz-trace-the-letter",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 21,
+          "expectedUtterances": 1,
+          "take": 1,
+          "takesMade": 1,
+          "sampleRate": 48000,
+          "duration": 2.475,
+          "peak": 0.0765,
+          "noiseFloor": 0.000026,
+          "snrDb": 60.3,
+          "piecesFound": 1,
+          "cutInto": [
+            1
+          ],
+          "recordedAt": "2026-11-24T04:50:19.973Z"
+        },
+        {
+          "file": "quiz-find-pairs.wav",
+          "kind": "word",
+          "text": "quiz-find-pairs",
+          "device": "Default - Microphone (Yeti GX) (046d:0afc)",
+          "row": 22,
+          "expectedUtterances": 1,
+          "take": 1,
+          "takesMade": 1,
+          "sampleRate": 48000,
+          "duration": 2.56,
+          "peak": 0.083,
+          "noiseFloor": 0.000036,
+          "snrDb": 58.4,
+          "piecesFound": 2,
+          "cutInto": [
+            1.27
+          ],
+          "recordedAt": "2026-11-24T04:50:34.808Z"
+        }
+      ]
     }
   ]
 }

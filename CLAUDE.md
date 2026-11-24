@@ -328,7 +328,20 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   page with no button for it. Verified in the pane with synthesized
   pointer events (pen dot cleared on lift; one-finger scroll 158 px and a
   tap reaching Play in pen mode, a pen tap not; one finger drawing and two
-  scrolling without); NOT on a real iPad or phone.
+  scrolling without); NOT on a real iPad or phone. **The same evening**:
+  (a) **for a mouse or a pen the dot is the SYSTEM CURSOR** — a 32 px SVG
+  red dot set as `cursor` on `.laser-canvas`, which the system draws
+  where the pointer is with no frame of the page's in between ("NO latency.
+  Zero. Only the highlighter stroke has a latency"); the canvas draws only
+  the trail (every coalesced sample, drawn in the event) and a finger's dot;
+  (b) **two fingers leave no mark**: a lone finger draws nothing for its
+  first 70 ms unless it moves 8 px, so a second finger landing in that time
+  cancels it, and a stroke a second finger joins within 0.3 s is taken back
+  (`takeBack` in `laserStrokes.ts`). Verified in the pane by reading the
+  canvas's pixels: nothing on mouse or pen hover, nothing after two fingers
+  landing 30 ms or 150 ms apart, a finger's dot and a mouse trail as before.
+  Whether the system shows the cursor during PEN hover on the author's
+  Windows pen and on an iPad is the device's to show — not seen here.
 - **A lesson is named by its place, never its number** — `lessonLabel(id)`
   in `lessons.ts`: "Level 3 · Lesson 4", the Level and the position the
   home page counts in it. Shown in the lesson header and the recordings
@@ -1006,6 +1019,21 @@ Things that cost real debugging. Do not undo them without reading why.
   0.6 s, −51 dBFS — was 34 dB above the floor and failed the take; no word
   in the corpus peaks under −33 dBFS. The ratio alone was the rule, and a
   quieter microphone than the rule had ever met broke it.
+- **The wrong microphone is named before it records (2026-11-23).** Windows
+  made the laptop's own microphone the default, and a session of quiz
+  prompts was recorded through it at −53 dBFS of room noise instead of the
+  Yeti's −88, before anyone noticed. Every take already stores its device
+  (`device` in `intake.json`); the page now reads the folder's
+  `intake.json` (and its `وقف/` one), this session left out, and when the
+  microphone the next take would use — the picker's, else the browser's
+  "Default" entry — is not one the folder was recorded with, a red box above
+  Record says which it is and which the folder used; after a take from the
+  wrong one, it says which take to record again. With no earlier session in
+  the folder, the session's own first take is the reference. Names are
+  compared without "Default - ", Windows' "2- " and the USB id (`micName`
+  in `recorder.ts`). The list refreshes on `devicechange`. Checked on the
+  folders' real manifests (all read "Microphone (Yeti GX)"); the page itself
+  needs the admin's sign-in and was not opened in the pane.
 - The **speaker profile** — room tone, بَا/بِي/بُو, and one carrier phrase —
   is recorded once per session. It is worthless to the lessons and
   indispensable to the pronunciation work: vowel formants scale with the vocal
@@ -1680,6 +1708,8 @@ this time the corrupted records are children's.
 
 ## 4. Current state
 
+**Published (2026-11-23, by the author):** Level 1 and Quiz me, besides the
+lessons published before. The note that follows is the older state.
 **Published:** lessons 1–5. **Features:** laser and notes both live for
 everyone. (Read from `config/app` on 2026-08-11: the document names 1–4;
 lesson 5 is published by `DEFAULT_CONFIG` in `appConfig.ts`, which the fetched
@@ -2064,12 +2094,16 @@ final release kept — rule (D) in section 3, "Audio"; ك had the same fault.
 (4) The screen wake lock (section 3, "Audio"). (5) The alif's phrases
 (section 3, "A letter card lights by PHRASE"). (6) Memory pairs: "Show me
 again" turns every card face up again until "Turn them over"
-(`Design/drills.md` §4). **Waiting on the author:** record the ten new
-prompts (intake → `Quiz Prompts.docx` → Reading "Continuing", 1 utterance →
-into `Audio/Audio - Quiz Prompts/`; then `node scripts/make-quiz.mjs`,
-build, deploy); listen to the ت and ك cards' endings and the alif's بَا
-piece; try the laser on the iPad with the pencil and on a phone; publish
-Level 1 and Quiz me.
+(`Design/drills.md` §4). **Done the same evening:** the author recorded
+the ten prompts on the Yeti (all 23 recorded; rule (D) kept the t of
+"different" and the p of "shape"), heard ت and ك fixed, accepted the ء card
+as it is (its take without "sitting up on an alif" is right; the
+generator's "does not match the script" flag on it can be ignored), and
+published Level 1 and Quiz me. Then the laser's cursor dot and the
+two-finger fix, and the microphone warning (section 3). **Waiting on the
+author:** the laser on the iPad and on his Windows pen; turn on two-step
+verification on the Google account that owns Firebase; the GitHub deploy
+setup (steps given 2-step and deploy, 2026-11-23).
 
 **Quiz me — Levels 1 and 2, committed and deployed 2026-10-27 as a draft:
 only the admin sees the lightbulb until it is switched on in Manage

@@ -281,10 +281,8 @@ only; stage 2 saves the same records to the learner.
 ## 9. Waiting on the author
 
 - ~~Record the thirteen spoken instructions~~ — done 2026-10-27.
-- **Record the ten new instructions** (2026-11-23): the intake tool on
-  `Word Tables/Quiz Prompts.docx`, one take each, into
-  `Audio/Audio - Quiz Prompts/`; then `node scripts/make-quiz.mjs`, build
-  and deploy.
+- ~~Record the ten new instructions~~ — done and cut 2026-11-23: all 23
+  recorded.
 - **Record lessons 25–29** (Level 2's workbook lessons) when their turn
   comes, then `node scripts/make-quiz.mjs`: Short words, Timing, Hamza and
   Qalqala light up by themselves, and Longer words gains lesson 27's words.
@@ -292,7 +290,7 @@ only; stage 2 saves the same records to the learner.
   row's contrast take must be re-recorded.
 - ~~The ت retake~~ — ب ت ر retaken and cut 2026-10-27 (no calibration
   existed on them).
-- **Publish** Quiz me from Manage lessons once Level 1 is published.
+- ~~Publish Quiz me~~ — published with Level 1 by the author, 2026-11-23.
 - **When teacher accounts are about to be made**: register the Masjid account
   with a Masjid email.
 - **After the quiz is published**: two-step verification on the Google account
