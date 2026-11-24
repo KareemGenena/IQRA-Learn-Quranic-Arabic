@@ -43,9 +43,11 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
 
   /** Resolves when playback has finished, so callers can chain words.
    *  `start` begins part-way through: media seconds, or `{ cluster }` to
-   *  begin where that letter is said — a letter card tapped on بُ. */
+   *  begin where that letter is said — a letter card tapped on بُ — with
+   *  `lead` seconds of what comes before, so a soft onset (the l of
+   *  "Listen") is not clipped by starting on the dot. */
   const play = useCallback(
-    async (start: number | { cluster: number } = 0): Promise<void> => {
+    async (start: number | { cluster: number; lead?: number } = 0): Promise<void> => {
       stopActivePlayback();
       // Still inside the tap: iOS lets a suspended or interrupted context
       // resume, and the session-key element be unlocked, only from a gesture.
@@ -67,7 +69,9 @@ export function usePlayable(lesson: Lesson, playable: Playable, rate: number) {
         setBoundaries(bounds);
         const indexMap = audibleIndices(clusters, playable.silentClusters);
         const startAt =
-          typeof start === 'number' ? start : (bounds[indexMap.indexOf(start.cluster)] ?? 0);
+          typeof start === 'number'
+            ? start
+            : Math.max(0, (bounds[indexMap.indexOf(start.cluster)] ?? 0) - (start.lead ?? 0));
         const shares = ghunnaShares(clusters, playable.silentClusters, {
           letterNames: playable.letterNames,
           waqf: playable.waqf,

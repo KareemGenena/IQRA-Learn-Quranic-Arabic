@@ -37,6 +37,7 @@ import { splitClusters } from './graphemes';
 import type { LetterCluster } from './graphemes';
 import { getAudioBlob, getAudioSrc } from './audioSource';
 import { wsola } from './wsola';
+import { soundStarted, soundStopped } from './wakeLock';
 import type { Lesson, Playable } from '../types';
 
 let activeStop: (() => void) | null = null;
@@ -682,6 +683,15 @@ export function playWithHighlights(
   let engine: Engine | null = null;
   let finished = false;
   let paused = false;
+  // The screen stays on while this sounds and three minutes after (wakeLock.ts).
+  let awake = false;
+  const keepAwake = (on: boolean) => {
+    if (on === awake) return;
+    awake = on;
+    if (on) soundStarted();
+    else soundStopped();
+  };
+  keepAwake(true);
   const lastBoundary = boundaries[boundaries.length - 1];
   /** Where the engine stops on its own: just after the last boundary, or
    *  the end of the clip. */
@@ -693,6 +703,7 @@ export function playWithHighlights(
     engine?.teardown();
     engine = null;
     holdSession(false);
+    keepAwake(false);
     onActiveLetter(null, null);
     if (activeStop === stop) activeStop = null;
     onDone();
@@ -744,11 +755,13 @@ export function playWithHighlights(
       if (finished || paused) return;
       paused = true;
       engine?.pause();
+      keepAwake(false);
     },
     resume: () => {
       if (finished || !paused) return;
       paused = false;
       engine?.resume();
+      keepAwake(true);
     },
     seek: (time) => {
       if (finished) return;

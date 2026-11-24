@@ -135,6 +135,11 @@ export default function App() {
   const rate = RATE;
   const [reading, setReading] = useState<Reading>(initialReading);
   const [laser, setLaser] = useState(false);
+  // The laser belongs to a lesson page: leaving one switches it off, or
+  // the overlay would stay over a page with no button to turn it off.
+  useEffect(() => {
+    if (route.page !== 'lesson') setLaser(false);
+  }, [route.page]);
   const [menu, setMenu] = useState(false);
   const [config, setConfig] = useState<AppConfig>(cachedConfig);
 
@@ -241,8 +246,9 @@ export default function App() {
 
   return (
     <div className={`app ${laser ? 'laser-on' : ''}`}>
-      {/* The laser's switch is in the lesson's tool row; the floating pill
-          it had covered the pager on a phone (2026-10-25). */}
+      {/* The laser's switch is in the lesson's tool row, which stays at the
+          top of the screen; the floating pill it had covered the pager on a
+          phone (2026-10-25). */}
       {showLaser && <LaserPointer active={laser} onExit={() => setLaser(false)} />}
       <ContentsMenu config={config} admin={admin} workbooks={showWorkbooks} quiz={showQuiz} currentId={route.lessonId} open={menu} onClose={() => setMenu(false)} />
       <InstallPrompt />

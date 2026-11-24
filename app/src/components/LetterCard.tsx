@@ -50,17 +50,23 @@ export function LetterCard({ lesson, item, rate, displayNo, register }: CardProp
 
   // Before the first Arabic letter the teacher is talking about the picture.
   const [reached, setReached] = useState(false);
+  /** The sound card tapped: playback starts a breath before its phrase, and
+   *  the card before it must not flash in that breath. */
+  const [from, setFrom] = useState<number | null>(null);
   useEffect(() => {
-    if (!playing) setReached(false);
-    else if (activeIndex !== null) setReached(true);
+    if (!playing) {
+      setReached(false);
+      setFrom(null);
+    } else if (activeIndex !== null) setReached(true);
   }, [playing, activeIndex]);
 
   // The back of the card, where it has one. A card always opens on its front.
   const [flipped, setFlipped] = useState(false);
   useEffect(() => setFlipped(false), [item.id]);
 
-  const litPart = playing && activeIndex !== null ? partOfCluster[activeIndex] ?? null : null;
-  const aboutPicture = playing && !reached;
+  const heard = playing && activeIndex !== null ? partOfCluster[activeIndex] ?? null : null;
+  const litPart = playing && from !== null && (heard === null ? !reached : heard < from) ? from : heard;
+  const aboutPicture = playing && !reached && from === null;
   const fam = `fam-${(item.family ?? 0) % 7}`;
 
   /** Picture and big letter — one face of the card. */
@@ -117,7 +123,10 @@ export function LetterCard({ lesson, item, rate, displayNo, register }: CardProp
             type="button"
             key={i}
             className={`small-form ${litPart === i ? 'lit' : ''}`}
-            onClick={() => void play({ cluster: firstCluster[i] })}
+            onClick={() => {
+              setFrom(i);
+              void play({ cluster: firstCluster[i], lead: 0.15 });
+            }}
             aria-label={`Play from ${p}`}
           >
             <span className="small-form-text" lang="ar">
@@ -140,7 +149,13 @@ export function LetterCard({ lesson, item, rate, displayNo, register }: CardProp
         <Transport
           state={!playing ? 'idle' : paused ? 'paused' : 'playing'}
           waiting={loading}
-          onPlay={() => (paused ? resume() : void play())}
+          onPlay={() => {
+            if (paused) resume();
+            else {
+              setFrom(null);
+              void play();
+            }
+          }}
           onPause={pause}
           onStop={stop}
           label={`Play ${item.name ?? item.letter ?? ''}`}

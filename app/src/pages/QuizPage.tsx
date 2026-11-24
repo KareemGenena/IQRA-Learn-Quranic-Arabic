@@ -11,6 +11,7 @@ import { getAudioBlob } from '../lib/audioSource';
 import { chime, click, knock } from '../lib/sounds';
 import {
   ASK,
+  LISTEN_EACH,
   COUNTS,
   PLACE_WORDS,
   TOPICS,
@@ -339,7 +340,7 @@ function Ready({ run, bank, onReady, onBack }: { run: Run; bank: QuizBank; onRea
     () =>
       [
         ...new Set(
-          [...Object.values(ASK).map((a) => a.slot), 'quiz-review', 'quiz-done']
+          [...Object.values(ASK).map((a) => a.slot), LISTEN_EACH.slot, 'quiz-review', 'quiz-done']
             .map((s) => (s ? promptUrl(bank, s) : null))
             .filter((u): u is string => !!u),
         ),
@@ -636,15 +637,24 @@ function QuestionView({
  */
 function TraceQuestion({
   q,
+  bank,
   label,
   tracing,
+  withPrompt,
   onAnswer,
 }: {
   q: Question;
+  bank: QuizBank;
   label: string;
   tracing: Tracing | null;
+  withPrompt: boolean;
   onAnswer: (picked: string, ok: boolean, seconds: number) => void;
 }) {
+  const player = useSequence();
+  // "Trace the letter." first, where it is recorded and not just heard; the
+  // card comes after it, because the card says the letter's name as it opens.
+  const prompt = withPrompt && ASK.trace.slot ? promptUrl(bank, ASK.trace.slot) : null;
+  const [ready, setReady] = useState(!prompt);
   const [slips, setSlips] = useState<number | null>(null);
   const shownAt = useRef(performance.now());
   const result = useRef<{ picked: string; ok: boolean; seconds: number } | null>(null);
@@ -653,14 +663,25 @@ function TraceQuestion({
   const timer = useRef<number | undefined>(undefined);
   const item = tracing?.items.find((it) => it.id === q.trace);
 
-  // No spoken instruction: the card says the letter's name and draws it —
-  // that is the instruction (the author, 2026-10-27: nothing redundant).
   useEffect(() => {
     alive.current = true;
+    // this mount's own flag: a stopped run resolves too, after a remount
+    let on = true;
+    let wake = 0;
+    if (prompt) {
+      void player.run([prompt]).then(() => on && setReady(true));
+      // a prompt that will not play never holds the letter back
+      wake = window.setTimeout(() => on && setReady(true), 5000);
+    }
     return () => {
+      on = false;
       alive.current = false;
+      window.clearTimeout(wake);
       window.clearTimeout(timer.current);
+      player.stop();
     };
+    // one run per question: the view is keyed by it
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const next = useCallback(() => {
@@ -694,7 +715,9 @@ function TraceQuestion({
         {label} · {topicOf(q.topic).title}
       </p>
       <p className="quiz-line">{ASK.trace.line}</p>
-      {tracing && item ? (
+      {!ready ? (
+        <p className="loading">…</p>
+      ) : tracing && item ? (
         <TraceCard lesson={tracing.lesson} item={item} rate={1} displayNo={0} quiz onTraced={traced} />
       ) : (
         <p className="loading">Getting the letter ready…</p>
@@ -725,7 +748,19 @@ function TraceQuestion({
  * game, not a question — never right or wrong: the end screen counts the
  * turns.
  */
-function MemoryQuestion({ q, label, onAnswer }: { q: Question; label: string; onAnswer: (picked: string, ok: boolean, seconds: number) => void }) {
+function MemoryQuestion({
+  q,
+  bank,
+  label,
+  withPrompt,
+  onAnswer,
+}: {
+  q: Question;
+  bank: QuizBank;
+  label: string;
+  withPrompt: boolean;
+  onAnswer: (picked: string, ok: boolean, seconds: number) => void;
+}) {
   const player = useSequence();
   /** Each card is a letter's index in `q.choices`; every letter twice. */
   const cards = useMemo(() => {
@@ -750,14 +785,29 @@ function MemoryQuestion({ q, label, onAnswer }: { q: Question; label: string; on
 
   useEffect(() => {
     alive.current = true;
+    const p = withPrompt && ASK.memory.slot ? promptUrl(bank, ASK.memory.slot) : null;
+    if (p) void player.run([p]);
     return () => {
       alive.current = false;
       window.clearTimeout(timer.current);
       player.stop();
     };
-  }, [player]);
+    // one run per question: the view is keyed by it
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const say = (pair: number) => void player.run([clipUrl(q.clips[pair])]);
+
+  /** Every card face up again until "Turn them over" — the way on for a
+   *  child who cannot remember (the author, 2026-11-23: the game was a trap
+   *  with no way out). Pairs found stay found; looking is not a turn. */
+  const showAgain = () => {
+    if (lock.current || done) return;
+    window.clearTimeout(timer.current);
+    setUp([]);
+    setMiss([]);
+    setLooking(true);
+  };
 
   const finish = (t: number) => {
     if (sent.current || !alive.current) return;
@@ -857,6 +907,13 @@ function MemoryQuestion({ q, label, onAnswer }: { q: Question; label: string; on
           </button>
         </div>
       )}
+      {!looking && !done && (
+        <div className="quiz-actions quiz-memory-go">
+          <button type="button" className="btn quiz-memory-peek" onClick={showAgain}>
+            Show me again
+          </button>
+        </div>
+      )}
       {done && (
         <div className="check-feedback right">
           <span>
@@ -878,9 +935,23 @@ function MemoryQuestion({ q, label, onAnswer }: { q: Question; label: string; on
  * taps the one with the rule. Hearing and choosing are different gestures, so
  * a tap never plays; and there is no Listen again: each is heard once.
  */
-function FindQuestion({ q, label, onAnswer }: { q: Question; label: string; onAnswer: (picked: string, ok: boolean, seconds: number) => void }) {
+function FindQuestion({
+  q,
+  bank,
+  label,
+  withPrompt,
+  onAnswer,
+}: {
+  q: Question;
+  bank: QuizBank;
+  label: string;
+  withPrompt: boolean;
+  onAnswer: (picked: string, ok: boolean, seconds: number) => void;
+}) {
   const player = useSequence();
   const [lit, setLit] = useState<number | null>(null);
+  /** The words have been heard: the heading asks the question. */
+  const [asking, setAsking] = useState(false);
   const [awake, setAwake] = useState(false);
   const [chosen, setChosen] = useState<number | null>(null);
   const [verdict, setVerdict] = useState<boolean | null>(null);
@@ -892,8 +963,14 @@ function FindQuestion({ q, label, onAnswer }: { q: Question; label: string; onAn
 
   useEffect(() => {
     alive.current = true;
+    const listen = withPrompt ? promptUrl(bank, LISTEN_EACH.slot) : null;
+    const ask = withPrompt && ASK.find.slot ? promptUrl(bank, ASK.find.slot) : null;
     (async () => {
       await new Promise((r) => window.setTimeout(r, 500));
+      if (listen) {
+        if (!(await player.run([listen])) || !alive.current) return;
+        await new Promise((r) => window.setTimeout(r, 300));
+      }
       for (let k = 0; k < q.clips.length; k++) {
         if (!alive.current) return;
         setLit(k);
@@ -902,6 +979,9 @@ function FindQuestion({ q, label, onAnswer }: { q: Question; label: string; onAn
         setLit(null);
         await new Promise((r) => window.setTimeout(r, 450));
       }
+      if (!alive.current) return;
+      setAsking(true);
+      if (ask && !(await player.run([ask]))) return;
       if (alive.current) {
         shownAt.current = performance.now();
         setAwake(true);
@@ -911,8 +991,9 @@ function FindQuestion({ q, label, onAnswer }: { q: Question; label: string; onAn
     const wake = window.setTimeout(() => {
       if (!alive.current) return;
       setLit(null);
+      setAsking(true);
       setAwake(true);
-    }, 20000);
+    }, 25000);
     return () => {
       alive.current = false;
       window.clearTimeout(wake);
@@ -969,7 +1050,7 @@ function FindQuestion({ q, label, onAnswer }: { q: Question; label: string; onAn
       <p className="check-progress">
         {label} · {topicOf(q.topic).title}
       </p>
-      <p className="quiz-line">{awake ? ASK[q.kind].line : 'Listen to each word.'}</p>
+      <p className="quiz-line">{asking || awake ? ASK[q.kind].line : LISTEN_EACH.line}</p>
       <div className={`check-options n${q.choices.length} kind-find`}>
         {q.choices.map((c, k) => {
           const state =
@@ -1060,11 +1141,11 @@ function RunView({
   return (
     <>
       {q.kind === 'trace' ? (
-        <TraceQuestion key={key} q={q} label={label} tracing={tracing} onAnswer={onAnswer} />
+        <TraceQuestion key={key} q={q} bank={bank} label={label} tracing={tracing} withPrompt={withPrompt} onAnswer={onAnswer} />
       ) : q.kind === 'memory' ? (
-        <MemoryQuestion key={key} q={q} label={label} onAnswer={onAnswer} />
+        <MemoryQuestion key={key} q={q} bank={bank} label={label} withPrompt={withPrompt} onAnswer={onAnswer} />
       ) : q.kind === 'find' ? (
-        <FindQuestion key={key} q={q} label={label} onAnswer={onAnswer} />
+        <FindQuestion key={key} q={q} bank={bank} label={label} withPrompt={withPrompt} onAnswer={onAnswer} />
       ) : (
         <QuestionView key={key} q={q} bank={bank} label={label} withPrompt={withPrompt} onAnswer={onAnswer} />
       )}

@@ -91,8 +91,11 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
 - **Admin**: publish/take-down/delete lessons and toggle features at runtime;
   tap-to-calibrate timings that sync to every device.
 - **Laser pointer** for teaching over a shared screen: a red dot under the
-  pointer and a trail that fades a second after the last mark; on a phone
-  the finger is the laser and two fingers scroll (2026-10-25).
+  pointer and a trail that fades a second after the last mark. Once a pen
+  has touched it on a device, the pen points and a finger scrolls and taps
+  through; without a pen, one finger points and two fingers scroll
+  (2026-11-23). Its switch is in the lesson's tool row, which stays pinned
+  at the top of the screen.
 - **Notes** — endless per-lesson canvas: stylus draws, finger scrolls, typing in
   Uthmanic Hafs with a Quranic-mark palette. Local-only so far.
 - **Lesson 5** — madd muttasil and munfasil, both held four harakat.
@@ -300,14 +303,32 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   draws a red dot wherever the pointer is — mouse, pen or finger — and a
   trail while pressing, which fades a second after the last mark; on a
   phone ONE finger is the laser and TWO fingers scroll (the component pans
-  the scrollable under them; a mouse wheel scrolls as ever). The way out:
-  the tool button (the `.lesson-crumb` row sits above the overlay, z-index
-  905 over 900), the "Laser on · tap to turn off" chip fixed at the top,
-  or Escape. Before this the overlay showed a crosshair, a red frame and
-  no dot, the button under it could not be reached, and on a phone —
-  where a finger only scrolled — the frame was the whole feature. The icon
-  is a slanted pointer with a red dot and rays at its tip, white once the
-  button itself is red (`--laser`).
+  the scrollable under them; a mouse wheel scrolls as ever). Before this the
+  overlay showed a crosshair, a red frame and no dot, the button under it
+  could not be reached, and on a phone — where a finger only scrolled — the
+  frame was the whole feature. The icon is a slanted pointer with a red dot
+  and rays at its tip, white once the button itself is red (`--laser`).
+  **The laser's third round (2026-11-23)**, the author's three faults: (1)
+  a pen's dot stayed on screen after the pen lifted — the dot now goes on
+  `pointerup` for anything but a mouse, and a hovering pen's dot goes a
+  second after its last report (no `pointerleave` is needed); (2) no way
+  to scroll with a finger — once a PEN has touched the overlay the device
+  is remembered (`iqra-laser-pen`) and from then on the pen points and ONE
+  finger scrolls, as on the notes sheet, and a finger's TAP goes through to
+  what is under it (forwarded from the browser's own `click` on the
+  canvas, which carries the gesture iOS needs to start sound); a touch while
+  the pen draws is a palm and is ignored; without a pen it stays one finger
+  points, two scroll, and a three-second hint at the bottom says which; (3)
+  the switch scrolled away — **the lesson's row (`.lesson-crumb`) is
+  `position: sticky`**, one line, above the overlay (z 905 over 900); on a
+  phone the lesson's name moves to a line ABOVE the links and the row
+  sticks at `top: -30px`, so only the line of tools stays on screen. The
+  "Laser on · tap to turn off" chip is gone (it covered the page). Leaving
+  the lesson page switches the laser off, or its overlay would sit on a
+  page with no button for it. Verified in the pane with synthesized
+  pointer events (pen dot cleared on lift; one-finger scroll 158 px and a
+  tap reaching Play in pen mode, a pen tap not; one finger drawing and two
+  scrolling without); NOT on a real iPad or phone.
 - **A lesson is named by its place, never its number** — `lessonLabel(id)`
   in `lessons.ts`: "Level 3 · Lesson 4", the Level and the position the
   home page counts in it. Shown in the lesson header and the recordings
@@ -719,6 +740,31 @@ Things that cost real debugging. Do not undo them without reading why.
   estimates** (±0.45 s, see "The highlight engine's remaining error") —
   this fixes the clip starting late or the highlight leading the voice,
   not where each letter's boundary falls; only calibration does that.
+- **(D) The QUIET release at the end of a take (2026-11-23).** The ت card's
+  line ends "… say taa, too, tee, nat" and the author heard the last t cut:
+  the release of نَتۡ comes 0.27 s after the نَ fades at 0.03 of the take's
+  peak — a long take's peak is its loudest word — under the run threshold
+  (0.06), so (C) never saw it. After the LAST piece, the first window within
+  0.40 s that is noisy (≥ 4 crossings/ms, over 15 dB above the room and
+  0.005 of peak) and starts abruptly (≥ 12 dB over the window two before; a
+  breath or a fricative's own tail fades in or out, a release bursts) begins
+  a burst that runs while it stays that loud; it is kept when 2–20 windows
+  long, crossing 8/ms somewhere, followed by 0.1 s with nothing 6 dB
+  louder, and clear of the take's last 0.10 s. In `splitIntoN` and
+  `takeCheck.ts` alike (parity: 1,219 recordings, identical). Over all
+  1,164 takes it changes FOUR: ت and ك of lesson 20 (re-cut, new
+  `audioRev`, no version bump needed) and two quiz prompts ending in t
+  ("missed", "not"). A future re-run of any other generator cuts its clips
+  exactly as before.
+- **The screen stays on while a recording plays, and three minutes after**
+  (`wakeLock.ts`, the author 2026-11-23: "keep screen on for 3 minutes
+  before turning off"). `playWithHighlights` holds it from the play to its
+  end, a pause releases its hold; the lock is let go three minutes after the
+  last sound, and asked for again when the page comes back inside that
+  window. Screen Wake Lock API (Safari 16.4+, a Home Screen app from iOS
+  18.4); refused or missing, nothing happens. The Browser pane refuses it —
+  verified there with a stand-in for `navigator.wakeLock.request` (one
+  request for two plays, released when the window ran out).
 - **Every clip is played at the same level** (`gainFor` in `playback.ts`,
   2026-10-24). Recording levels vary by 30 dB across the corpus; lesson 4
   peaks at −29.6 dBFS and the author found it barely audible. The files
@@ -1375,6 +1421,20 @@ this time the corrupted records are children's.
   phrase begins plus when "Now your turn" begins; `phraseBoundaries` in
   `timing.ts` spreads a phrase evenly over its letters, so the timing
   keeps the usual per-letter shape and resolves below a calibration.
+  **The alif's take has no "Now your turn" (2026-11-23)**: it ends on
+  "thaa". Read with the line kept, the fit dropped "baa", put "Now your
+  turn" on thaa and every sound one stretch early — the بَا card lit during
+  "Listen" and the تَا card during "baa"; the author heard the بَا piece as
+  cut on both sides. So the script is also tried WITHOUT its closing line
+  (the lit part then runs to the end of the last word), every sound
+  demonstrated inside the lit part is a word the fit must place (never
+  left out), the readings are compared on the WHOLE fit, not per word (per
+  word a longer script spreads its misfit thinner: the wrong reading won
+  0.268 to 0.278 while costing more in all), and the alif's first phrase
+  starts at "Listen", as the others start at "With a fat-ha". The other 28
+  cards came out identical. **A tapped sound card starts 0.15 s before its
+  phrase** (`play({ cluster, lead })` in `usePlayable`), so a soft onset
+  is not clipped, and the card tapped stays lit through that lead-in.
   Every card's fit is printed on each run. **Its
   calibration is one tap as each sound card's phrase begins and one at
   "Now your turn"** (`segments` on the Playable; the admin page says so),
@@ -1986,6 +2046,29 @@ is not needed to ship, but it is the cheap way to be sure — the script is
 session's directory, and it costs about 1.5 M subagent tokens a run.
 
 ## 5. Next task
+
+**The author's clean-up round of 2026-11-23, built before he publishes
+Level 1.** (1) Every quiz heading now has a recording slot (`ASK` in
+`quiz.ts`, plus `LISTEN_EACH` for "Listen to each word."): ten new rows at
+the end of `Word Tables/Quiz Prompts.docx`, each saying its heading — Tap
+what you hear · Same or different? · Tap every … (the letter's name follows)
+· Which letter? (the letter-shape question, where nothing is heard) · Which
+shape? · Which one never joins? · Listen to each word. · Which one has
+qalqala? · Trace the letter. · Find the pairs. Until a slot is recorded the
+question plays nothing, as before. The tracing card now waits for its
+instruction (the card says the letter's name as it opens), find-the-one
+plays "Listen to each word." before its words and the question after them.
+(2) The laser's third round (section 3, "The lesson page's head"). (3) ت's
+final release kept — rule (D) in section 3, "Audio"; ك had the same fault.
+(4) The screen wake lock (section 3, "Audio"). (5) The alif's phrases
+(section 3, "A letter card lights by PHRASE"). (6) Memory pairs: "Show me
+again" turns every card face up again until "Turn them over"
+(`Design/drills.md` §4). **Waiting on the author:** record the ten new
+prompts (intake → `Quiz Prompts.docx` → Reading "Continuing", 1 utterance →
+into `Audio/Audio - Quiz Prompts/`; then `node scripts/make-quiz.mjs`,
+build, deploy); listen to the ت and ك cards' endings and the alif's بَا
+piece; try the laser on the iPad with the pencil and on a phone; publish
+Level 1 and Quiz me.
 
 **Quiz me — Levels 1 and 2, committed and deployed 2026-10-27 as a draft:
 only the admin sees the lightbulb until it is switched on in Manage

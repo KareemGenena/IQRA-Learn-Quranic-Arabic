@@ -148,29 +148,36 @@ export const topicOf = (id: TopicId): Topic => TOPICS.find((t) => t.id === id) ?
 /**
  * What each kind of question says, as plainly as it can be said — the author,
  * 2026-10-27: "a simple click what you hear is enough" — and the recorded
- * instruction that says the same thing, where one does. A recording that no
- * longer matches its heading stays on disk, unplayed, for later.
+ * instruction that says the same thing. Every heading has one since
+ * 2026-11-23 (the author: "each question needs a prompt"); a slot with no
+ * take yet plays nothing, and the question goes on as before. A recording
+ * that no longer matches its heading stays on disk, unplayed, for later.
  */
 export const ASK: Record<Kind, { line: string; slot?: string }> = {
   name: { line: 'Which letter?', slot: 'quiz-which-letter' },
   lookalike: { line: 'Which letter?', slot: 'quiz-which-letter' },
-  hunt: { line: 'Tap every' },
-  memory: { line: 'Find the pairs.' },
+  // the letter's name is heard right after: "Tap every … thaa"
+  hunt: { line: 'Tap every', slot: 'quiz-tap-every' },
+  memory: { line: 'Find the pairs.', slot: 'quiz-find-pairs' },
   whichLetter: { line: 'Which letter?', slot: 'quiz-which-letter' },
-  sameDiff: { line: 'Same or different?' },
+  sameDiff: { line: 'Same or different?', slot: 'quiz-same-or-different' },
   whichHaraka: { line: 'Which haraka?', slot: 'quiz-which-haraka' },
-  tanween: { line: 'Tap what you hear.' },
+  tanween: { line: 'Tap what you hear.', slot: 'quiz-tap-what-you-hear' },
   whichTanween: { line: 'Which tanween?', slot: 'quiz-which-tanween' },
-  shortLong: { line: 'Tap what you hear.' },
+  shortLong: { line: 'Tap what you hear.', slot: 'quiz-tap-what-you-hear' },
   whichMadd: { line: 'Which madd?', slot: 'quiz-which-madd' },
-  shadda: { line: 'Tap what you hear.' },
-  trace: { line: 'Trace the letter.' },
-  shape: { line: 'Which letter?' },
-  position: { line: 'Which shape?' },
-  join: { line: 'Which one never joins?' },
-  word: { line: 'Tap what you hear.' },
-  find: { line: 'Which one has qalqala?' },
+  shadda: { line: 'Tap what you hear.', slot: 'quiz-tap-what-you-hear' },
+  trace: { line: 'Trace the letter.', slot: 'quiz-trace-the-letter' },
+  // nothing is heard on a letter-shape question: "Which letter?", not "…did you hear?"
+  shape: { line: 'Which letter?', slot: 'quiz-which-letter-shape' },
+  position: { line: 'Which shape?', slot: 'quiz-which-shape' },
+  join: { line: 'Which one never joins?', slot: 'quiz-never-joins' },
+  word: { line: 'Tap what you hear.', slot: 'quiz-tap-what-you-hear' },
+  find: { line: 'Which one has qalqala?', slot: 'quiz-which-has-qalqala' },
 };
+
+/** "Find the one" opens by playing its three words: this is said first. */
+export const LISTEN_EACH = { line: 'Listen to each word.', slot: 'quiz-listen-each-word' };
 
 /** Kinds that are practice, not questions: played, never right or wrong. */
 export const UNSCORED: Kind[] = ['memory'];

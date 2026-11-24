@@ -117,7 +117,7 @@ function profile(wav, floor = 0.06) {
   }
   const sorted = Float64Array.from(rms).sort();
   const noiseFloor = sorted[Math.floor(sorted.length * 0.15)] || 0;
-  return { rms, peak, win, threshold: Math.max(noiseFloor * 3.5, peak * floor, 0.0008) };
+  return { rms, peak, win, noiseFloor, threshold: Math.max(noiseFloor * 3.5, peak * floor, 0.0008) };
 }
 
 /**
@@ -130,7 +130,7 @@ function profile(wav, floor = 0.06) {
  * the take should contain turns an unreliable guess into a ranking problem.
  */
 export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15 } = {}) {
-  const { rms, win, threshold, peak } = profile(wav, floor);
+  const { rms, win, threshold, peak, noiseFloor } = profile(wav, floor);
   const n = rms.length;
 
   // 1. Runs of sound, discarding brief clicks and breaths. A stray 0.3s blip
@@ -324,6 +324,43 @@ export function splitIntoN(wav, count, { pad = 0.12, floor = 0.06, minRun = 0.15
     }
     return [a, end];
   });
+
+  //    (D) The QUIET release at the end of a take (2026-11-23). A letter
+  //    card's line ends "… say taa, too, tee, nat": the ت of نَتۡ is
+  //    released 0.27 s after the نَ fades, at 0.03 of the take's peak —
+  //    under the run threshold (0.06 of peak), so (C) never sees it, and
+  //    the clip ended on "na" (the author heard the last t cut; ك's "nak"
+  //    the same). A long take's peak is its loudest word, so a whispered
+  //    release sits far below it. After the LAST piece: the first window
+  //    within 0.40 s that is noisy (≥ 4 crossings per ms, and over both
+  //    15 dB above the room and 0.005 of peak) and STARTS ABRUPTLY (≥ 12 dB
+  //    over the window two before it — a breath or a fricative's own tail
+  //    fades, a release bursts). The burst runs on while it stays that loud;
+  //    it is kept when it is 2–20 windows long, crosses 8/ms somewhere (a
+  //    release crosses 10+, a thump under 1), is followed by a tenth of a
+  //    second with nothing 6 dB louder than that, and ends clear of the
+  //    take's last 0.10 s, where the stop click is.
+  if (runs.length) {
+    const last = runs.length - 1;
+    const [a0, b0] = runs[last];
+    const zAt = (w) => zcrPerMs([w, w + 1]);
+    const loudW = Math.max(noiseFloor * 6, peak * 0.005);
+    const noisy = (w) => rms[w] >= loudW && zAt(w) >= 4;
+    const reach = Math.min(endGuard, b0 + Math.round(0.4 / 0.01));
+    let w = Math.max(b0, 2);
+    while (w < reach && !(noisy(w) && rms[w] >= 4 * rms[w - 2])) w++;
+    if (w < reach) {
+      let e = w;
+      let zMax = 0;
+      while (e < endGuard && rms[e] >= loudW) zMax = Math.max(zMax, zAt(e++));
+      let quietAfter = e + 10 <= n;
+      for (let k = e; k < Math.min(n, e + 10); k++) if (rms[k] >= 2 * loudW) quietAfter = false;
+      if (e - w >= 2 && e - w <= 20 && zMax >= 8 && e <= endGuard && quietAfter) {
+        say(`quiet release ${t(w)}–${t(e)} s kept after the last piece ending ${t(b0)} s (${(maxRms([w, e]) / peak).toFixed(2)} of peak, ${zMax.toFixed(1)} crossings/ms)`);
+        runs[last] = [a0, e];
+      }
+    }
+  }
 
   const padW = Math.round(pad / 0.01);
   const segments = runs.map(([a, b]) => [

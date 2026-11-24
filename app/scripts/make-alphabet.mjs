@@ -422,8 +422,14 @@ const r2 = (x) => Math.round(x * 100) / 100;
 
 /** What the teacher says, as the aligner reads it, and the sounds he
  *  demonstrates (drawn out, and always parted by a pause). */
-function spokenOf(script, repeat) {
+function spokenOf(script, repeat, closing = true) {
   let s = script.replace(/\s*\([^)]*[؀-ۿ][^)]*\)/g, '').replace(/\s+[—–]\s+/g, ', ');
+  // A take may stop before the closing line: the alif's ends on "thaa", with
+  // no "Now your turn" (2026-11-23). Read with the line kept, the fit put
+  // "Now your turn" on thaa and every sound one stretch early — the بَا card
+  // lit during "Listen" and the تَا card during "baa". So the script is also
+  // tried without it, and the best fit kept.
+  if (!closing) s = s.replace(/\s*Now your turn\b.*$/i, '');
   const sounds = [];
   const listen = /Listen:\s*([^.]+)\./i.exec(s);
   if (listen) sounds.push(...listen[1].split(/,\s*/).map((x) => x.trim()).filter(Boolean));
@@ -436,13 +442,15 @@ function spokenOf(script, repeat) {
   // He closes most lines with "Now your turn, say baa boo bee nab" — the
   // sheet writes "Now your turn." — so both readings are tried and the one
   // that fits the recording better is kept.
-  if (repeat) s = s.replace(/Now your turn\.?(\s*Say it\.)?\s*$/i, `Now your turn. Say ${sounds.join(', ')}.`);
+  if (repeat && closing) s = s.replace(/Now your turn\.?(\s*Say it\.)?\s*$/i, `Now your turn. Say ${sounds.join(', ')}.`);
   return { text: s, sounds, listen: !!listen };
 }
 
 /** The words that begin each sound card's phrase, and the word that ends
- *  the lit part (the first of the sentence after the last phrase). */
-function anchorsOf(tokens, listen, parts) {
+ *  the lit part (the first of the sentence after the last phrase) — or -1
+ *  when the script stops at the last phrase (`closing` false): then the lit
+ *  part runs to the end of the last word. */
+function anchorsOf(tokens, listen, parts, closing = true) {
   const low = tokens.map((t) => t.bare.toLowerCase());
   const at = (seq) => {
     for (let i = 0; i + seq.length <= low.length; i++) if (seq.every((w, k) => low[i + k] === w)) return i;
@@ -450,12 +458,16 @@ function anchorsOf(tokens, listen, parts) {
   };
   let starts;
   if (listen) {
+    // The first phrase is "Listen: baa", as the first of the others is
+    // "With a fat-ha it sounds like baa" — the word before the sound
+    // belongs to it (the author heard the بَا piece as "listen.. baa").
     const l = at(['listen']);
-    starts = l < 0 ? [] : parts.map((_, i) => l + 1 + i);
+    starts = l < 0 ? [] : parts.map((_, i) => (i === 0 ? l : l + 1 + i));
   } else {
     starts = [at(['with', 'a', 'fat-ha']), at(['with', 'a', 'damma']), at(['with', 'a', 'kasra']), at(['with', 'a', 'sukoon'])].slice(0, parts.length);
   }
   if (starts.length !== parts.length || starts.some((k) => k < 0 || k >= tokens.length)) return null;
+  if (!closing) return { starts, end: -1 };
   let end = -1;
   for (let i = starts[starts.length - 1]; i + 1 < tokens.length; i++) {
     if (tokens[i].after === 2) {
@@ -473,17 +485,32 @@ function phrasesOf(wav, word) {
   // has an 80 ms click between two sounds, and it was read as ʾoo)
   const runs = speechRuns(env, { minGap: 0.1, minRun: 0.1 });
   let best = null;
-  for (const repeat of [true, false]) {
-    const { text, sounds, listen } = spokenOf(word.script, repeat);
+  for (const [repeat, closing] of [[true, true], [false, true], [false, false]]) {
+    const { text, sounds, listen } = spokenOf(word.script, repeat, closing);
     const tokens = tokenize(text, { sounds });
-    const anchors = anchorsOf(tokens, listen, word.parts);
+    const anchors = anchorsOf(tokens, listen, word.parts, closing);
     if (!anchors) continue;
-    const al = alignTokens(runs, tokens, { keep: new Set([...anchors.starts, anchors.end]) });
-    if (!best || al.cost < best.al.cost) best = { tokens, al, anchors, repeat };
+    const last = tokens.length - 1;
+    const endKey = closing ? anchors.end : last;
+    // Every sound demonstrated inside the lit part is kept too: it is what
+    // the card is for, and he never skips one. Left free, the fit dropped
+    // the alif's "baa" to make room for a "Now your turn" the take lacks.
+    const shown = tokens.map((t, k) => k).filter((k) => tokens[k].sound && k > anchors.starts[0] && k < endKey);
+    const al = alignTokens(runs, tokens, { keep: new Set([...anchors.starts, endKey, ...shown]) });
+    // Compared on the WHOLE fit, not per word: every reading explains the
+    // same stretches of sound, and per word a longer script spreads its
+    // misfit thinner — the alif's reading with a "Now your turn" it does
+    // not have won by 0.268 to 0.278 a word while costing more in all.
+    const total = al.cost * tokens.length;
+    if (!best || total < best.total) best = { tokens, al, anchors, repeat, closing, total };
   }
   if (!best) return null;
   const { al, anchors } = best;
-  const times = [...anchors.starts, anchors.end].map((k) => al.starts[k]);
+  // With no closing line the lit part ends where the last word does.
+  const times = [
+    ...anchors.starts.map((k) => al.starts[k]),
+    best.closing ? al.starts[anchors.end] : al.ends[best.tokens.length - 1],
+  ];
   if (times.some((t) => t == null)) return null;
   for (let i = 1; i < times.length; i++) if (times[i] - times[i - 1] < 0.3) return null;
   // The closing "say baa…" is said at an easy pace; when the stretch that
@@ -502,8 +529,8 @@ function phrasesOf(wav, word) {
   };
   // ("Now" alone is no test: it opens on a quiet n, and ر's "Now" is a
   // short stretch of its own, rightly.)
-  const misfit = firstSound > 0 && tight(firstSound);
-  return { times, cost: al.cost, repeat: best.repeat, misfit, left: al.left.map((k) => best.tokens[k].bare) };
+  const misfit = best.closing && firstSound > 0 && tight(firstSound);
+  return { times, cost: al.cost, repeat: best.repeat, closing: best.closing, misfit, left: al.left.map((k) => best.tokens[k].bare) };
 }
 
 const phraseLines = [];
@@ -521,7 +548,8 @@ for (const w of L20.words) {
       `   fit ${res.cost.toFixed(2)}${res.cost > 0.55 || res.misfit ? '  ← listen, calibrate if it is off' : ''}` +
       (res.misfit ? '   the end of the take does not match the script' : '') +
       // a phrase left out, not a stray word the fit found cheaper to drop
-      (res.left.length >= 3 ? `   not in the take?: "${res.left.join(' ')}"` : ''),
+      (res.left.length >= 3 ? `   not in the take?: "${res.left.join(' ')}"` : '') +
+      (res.closing ? '' : '   the take ends before "Now your turn": lit to the end of its last word'),
   );
 }
 

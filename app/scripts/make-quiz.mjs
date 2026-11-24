@@ -71,6 +71,18 @@ const PROMPTS = [
   ['quiz-shadda', 'Did you hear a shadda, or not?'],
   ['quiz-review', "Let's try the ones you missed."],
   ['quiz-done', 'All done. Well done!'],
+  // 2026-11-23: a recording for every heading (the author: "each question
+  // needs a prompt"), each saying the heading itself (ASK in quiz.ts)
+  ['quiz-tap-what-you-hear', 'Tap what you hear.'],
+  ['quiz-same-or-different', 'Same or different?'],
+  ['quiz-tap-every', 'Tap every … (stop there: the letter’s name plays right after)'],
+  ['quiz-which-letter-shape', 'Which letter?'],
+  ['quiz-which-shape', 'Which shape?'],
+  ['quiz-never-joins', 'Which one never joins?'],
+  ['quiz-listen-each-word', 'Listen to each word.'],
+  ['quiz-which-has-qalqala', 'Which one has qalqala?'],
+  ['quiz-trace-the-letter', 'Trace the letter.'],
+  ['quiz-find-pairs', 'Find the pairs.'],
 ];
 // Since the evening of 2026-10-27 the quiz's headings are its own, as plain
 // as they can be ("Tap what you hear."), and a recording plays only where it

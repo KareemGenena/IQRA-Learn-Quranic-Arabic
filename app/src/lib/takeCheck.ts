@@ -265,6 +265,33 @@ export function checkTake(samples: Float32Array, sampleRate: number, count = 1):
     return [a, end];
   });
 
+  //    (D) The quiet release at the end of a take — a whispered ت or ك under
+  //    the run threshold, as in a letter card's "… nat" (2026-11-23). After
+  //    the LAST piece: the first window within 0.40 s that is noisy (≥ 4
+  //    crossings per ms, over 15 dB above the room and 0.005 of peak) and
+  //    starts abruptly (≥ 12 dB over the window two before); the burst runs
+  //    while it stays that loud and is kept when 2–20 windows long, crossing
+  //    8/ms somewhere, followed by a tenth of a second with nothing 6 dB
+  //    louder, and clear of the last 0.10 s. Mirrors splitIntoN (wav.mjs).
+  if (runs.length) {
+    const last = runs.length - 1;
+    const [a0, b0] = runs[last];
+    const zAt = (w: number) => zcrPerMs([w, w + 1]);
+    const loudW = Math.max(noiseFloor * 6, peakRms * 0.005);
+    const noisy = (w: number) => rms[w] >= loudW && zAt(w) >= 4;
+    const reach = Math.min(endGuard, b0 + Math.round(0.4 / WINDOW_S));
+    let w = Math.max(b0, 2);
+    while (w < reach && !(noisy(w) && rms[w] >= 4 * rms[w - 2])) w++;
+    if (w < reach) {
+      let e = w;
+      let zMax = 0;
+      while (e < endGuard && rms[e] >= loudW) zMax = Math.max(zMax, zAt(e++));
+      let quietAfter = e + 10 <= n;
+      for (let k = e; k < Math.min(n, e + 10); k++) if (rms[k] >= 2 * loudW) quietAfter = false;
+      if (e - w >= 2 && e - w <= 20 && zMax >= 8 && e <= endGuard && quietAfter) runs[last] = [a0, e];
+    }
+  }
+
   const padW = Math.round(0.12 / WINDOW_S);
   const durations = runs.map(([a, b]) => {
     const from = Math.max(0, a - padW) * win;

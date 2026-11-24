@@ -122,7 +122,7 @@ what the end screen reports: one list.
 | Tanween | §4 | **Tap what you hear** — بُ or بٌ · **Which tanween?** — بًا · بٌ · بٍ | 168 (lesson 21) |
 | Madd | §5 | **Tap what you hear** — بَدَ or بَادَ · **Which madd?** — بَادَ · بُودَ · بِيدَ | 168 (lesson 22) |
 | Shadda | §6 | **Tap what you hear** — بَبَ or بَبَّ | 68 (lesson 23) |
-| Memory pairs | §1–2 | **Memory pairs** — the classic game: four letters, each on two cards. All eight lie FACE UP first, for as long as the child likes, and a tap says the letter's name; "Turn them over" hides them. Then turn two: the same letter twice stays up with its name under it, anything else is seen for a moment and turns back. Every card says its letter's name as it turns. A game: never right or wrong, the end screen counts the turns | 29 names (lesson 30) |
+| Memory pairs | §1–2 | **Memory pairs** — the classic game: four letters, each on two cards. All eight lie FACE UP first, for as long as the child likes, and a tap says the letter's name; "Turn them over" hides them. Then turn two: the same letter twice stays up with its name under it, anything else is seen for a moment and turns back. Every card says its letter's name as it turns. **"Show me again"** (2026-11-23) turns every card face up again until "Turn them over": the game was a trap for a child who could not remember (the author), and looking is not a turn. A game: never right or wrong, the end screen counts the turns | 29 names (lesson 30) |
 | Tracing | every page | **Trace it** — lesson 30's own card: the name, the letter drawing itself, then the learner's turn, on the teacher's strokes where he drew them. Leaving the line is the one mistake, as in lesson 30: traced without a slip is right, a slip sends the letter back at the end | lesson 30 |
 
 **Every wrong choice differs from the answer in ONE thing** — the letter or
@@ -176,9 +176,16 @@ only; stage 2 saves the same records to the learner.
   `-which-tanween`, `-which-madd`, and the review and "all done" lines. The
   other seven ("Did you hear tanween, or not?", "Was it short, or long?",
   "Listen to two sounds. Are they the same, or different?" …) stay in the
-  sheet and on disk, unplayed, for later use. No new rows: the instructions
-  once planned for tracing and memory pairs were dropped as redundant (the
-  author) — the card itself shows what to do.
+  sheet and on disk, unplayed, for later use. **Since 2026-11-23 every
+  heading has a slot** (the author: "each question needs a prompt"): ten
+  rows were added at the end of the sheet — `quiz-tap-what-you-hear`,
+  `-same-or-different`, `-tap-every` (said as the start of a sentence: the
+  letter's name follows), `-which-letter-shape` ("Which letter?" where
+  nothing is heard), `-which-shape`, `-never-joins`, `-listen-each-word`,
+  `-which-has-qalqala`, `-trace-the-letter`, `-find-pairs` — including the
+  tracing and memory lines once dropped as redundant. A slot not yet
+  recorded plays nothing. The tracing card waits for its line; find-the-one
+  says "Listen to each word." before its words and asks after them.
 - `Word Tables/Quiz Sound-alikes.docx` — one group of letters a learner
   confuses by ear per row: the wrong choice of "Which letter?". The defaults
   are a starting point for the author to correct: ح ه · ع ء · س ص · ت ط ·
@@ -274,6 +281,10 @@ only; stage 2 saves the same records to the learner.
 ## 9. Waiting on the author
 
 - ~~Record the thirteen spoken instructions~~ — done 2026-10-27.
+- **Record the ten new instructions** (2026-11-23): the intake tool on
+  `Word Tables/Quiz Prompts.docx`, one take each, into
+  `Audio/Audio - Quiz Prompts/`; then `node scripts/make-quiz.mjs`, build
+  and deploy.
 - **Record lessons 25–29** (Level 2's workbook lessons) when their turn
   comes, then `node scripts/make-quiz.mjs`: Short words, Timing, Hamza and
   Qalqala light up by themselves, and Longer words gains lesson 27's words.

@@ -3472,17 +3472,47 @@
   "quiz-shadda": {
    "line": "Did you hear a shadda, or not?",
    "file": "quiz-shadda.wav",
-   "rev": "44f670b5"
+   "rev": "d3aa5173"
   },
   "quiz-review": {
    "line": "Let's try the ones you missed.",
    "file": "quiz-review.wav",
-   "rev": "ec201625"
+   "rev": "31575649"
   },
   "quiz-done": {
    "line": "All done. Good job!",
    "file": "quiz-done.wav",
    "rev": "9df00595"
+  },
+  "quiz-tap-what-you-hear": {
+   "line": "Tap what you hear."
+  },
+  "quiz-same-or-different": {
+   "line": "Same or different?"
+  },
+  "quiz-tap-every": {
+   "line": "Tap every … (stop there: the letter’s name plays right after)"
+  },
+  "quiz-which-letter-shape": {
+   "line": "Which letter?"
+  },
+  "quiz-which-shape": {
+   "line": "Which shape?"
+  },
+  "quiz-never-joins": {
+   "line": "Which one never joins?"
+  },
+  "quiz-listen-each-word": {
+   "line": "Listen to each word."
+  },
+  "quiz-which-has-qalqala": {
+   "line": "Which one has qalqala?"
+  },
+  "quiz-trace-the-letter": {
+   "line": "Trace the letter."
+  },
+  "quiz-find-pairs": {
+   "line": "Find the pairs."
   }
  }
 }

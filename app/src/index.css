@@ -1769,55 +1769,72 @@ a.pill-half:hover {
   inset: 0;
   z-index: 900;
   /* The overlay takes the pointer so nothing underneath is tapped by
-     accident; a finger is the laser and two fingers scroll (the component
-     does the scrolling), so the browser gets no gesture. The system cursor
-     is hidden: the red dot the canvas draws is the pointer. */
+     accident; the component decides who points and who scrolls (a pen and
+     a finger, or one finger and two) and does the scrolling, so the browser
+     gets no gesture. The system cursor is hidden: the red dot is the
+     pointer. */
   touch-action: none;
   cursor: none;
 }
 
-/* The way out, on a phone as on a laptop: a chip at the top above the
-   overlay (the lesson's tool row stays above it too). The red frame the
-   mode used to draw read, on a phone, as the whole feature (2026-10-25). */
-.laser-exit {
+/* Who scrolls, said for three seconds when the laser comes on (2026-11-23).
+   It never takes a tap: the way out is the laser's own button in the
+   lesson's row, which stays at the top of the screen, or Escape. The
+   floating chip that was here covered the page. */
+.laser-hint {
   position: fixed;
   z-index: 950;
-  top: 10px;
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 34px;
-  padding: 0 14px;
+  margin: 0;
+  padding: 8px 14px;
   border-radius: 999px;
-  border: 1px solid #e11;
   background: var(--card);
-  color: #e11;
-  font: inherit;
+  border: 1px solid #e11;
+  color: var(--text);
   font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
   box-shadow: var(--shadow-lift);
-  cursor: pointer;
+  pointer-events: none;
+  animation: laser-hint 3s ease forwards;
 }
-.laser-exit:hover { background: #e11; color: #fff; }
-.laser-exit-dot {
+.laser-hint-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: #e11;
   box-shadow: 0 0 6px 2px rgba(255, 34, 34, 0.45);
 }
-.laser-exit:hover .laser-exit-dot { background: #fff; }
-/* the lesson's tool row keeps its laser button clickable over the overlay */
-.lesson-crumb { position: relative; z-index: 905; }
+@keyframes laser-hint {
+  0%, 80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* The lesson's row — All lessons, where you are, notes, workbook, the laser,
+   the gear — stays at the top of the screen as the page scrolls (the author,
+   2026-11-23: turning the laser on meant scrolling back up every time). It
+   sits above the laser's overlay (900), so its buttons work while pointing,
+   and on one line, the lesson's name giving way first. */
+.lesson-crumb {
+  position: sticky;
+  top: 0;
+  z-index: 905;
+  background: var(--bg);
+  padding: 6px 0;
+}
+.lesson-crumb > a { flex: none; }
+.lesson-crumb .lesson-where { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1 1 0; }
 
 @media print {
-  .laser-exit,
+  .laser-hint,
   .laser-canvas {
     display: none;
   }
+  .lesson-crumb { position: static; }
 }
 
 /* ---------- contents ---------- */
@@ -3696,7 +3713,7 @@ circle.trace-ink { fill: currentColor; stroke: none; }
    One small line — "Level 1 · Lesson 4 · Tracing the Letters" — and a row of
    icons that grow their label on hover: notes, workbook, laser, the admin's
    gear. The section box below is the page's one heading. */
-.lesson-crumb { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; }
+.lesson-crumb { display: flex; align-items: center; flex-wrap: nowrap; gap: 8px 14px; }
 .lesson-where { font-size: 13px; color: var(--text-soft); flex: 1 1 auto; min-width: 0; }
 .lesson-tools { display: flex; align-items: center; gap: 6px; margin-left: auto; }
 .tool {
@@ -3795,8 +3812,13 @@ circle.trace-ink { fill: currentColor; stroke: none; }
 .menu-no { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; flex: none; }
 .menu-title { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
+/* On a phone the lesson's name takes a line of its own, ABOVE the links
+   and tools, and the row sticks 30 px up: the name (6 px of padding, an
+   18 px line, the 8 px gap) slides under the top edge and only the line of
+   tools stays on screen, one line thin (2026-11-23). */
 @media (max-width: 640px) {
-  .lesson-where { flex-basis: 100%; order: 3; }
+  .lesson-crumb { flex-wrap: wrap; top: -30px; }
+  .lesson-crumb .lesson-where { flex: 1 1 100%; order: -1; line-height: 18px; }
   .lesson-tools { margin-left: auto; }
 }
 
