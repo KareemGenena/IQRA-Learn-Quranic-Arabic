@@ -1938,7 +1938,8 @@ is target `app`, and the page links to its short address.
   the CLI should be pinned to a version that allows it. On 2026-11-06 the old
   address and the landing page were deployed (build `2026-11-07 05:52 UTC`,
   main at c89c54c). On 2026-11-23 BOTH app sites were deployed the same way,
-  one after the other (build `2026-11-24 03:58 UTC`, main at b681646); the
+  one after the other (build `2026-11-24 03:58 UTC`, main at b681646; again
+  the same night, `2026-11-24 05:11 UTC`, main at eeb05bc); the
   landing page was not touched. `curl <site>/version.json` shows any site's
   build.
 - The domain is connected (2026-10-06; moved 2026-11-04): a CNAME `iqra` →
