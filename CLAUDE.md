@@ -340,8 +340,9 @@ Routes are hash-based (works offline): `#/`, `#/lesson/N`, `#/notes/N`, `#/admin
   (`takeBack` in `laserStrokes.ts`). Verified in the pane by reading the
   canvas's pixels: nothing on mouse or pen hover, nothing after two fingers
   landing 30 ms or 150 ms apart, a finger's dot and a mouse trail as before.
-  Whether the system shows the cursor during PEN hover on the author's
-  Windows pen and on an iPad is the device's to show — not seen here.
+  On the author's Windows pen, hover shows Windows' own small circle,
+  not the red dot; he tried it and keeps it so (2026-11-23) — do not
+  bring back a page-drawn hover dot.
 - **A lesson is named by its place, never its number** — `lessonLabel(id)`
   in `lessons.ts`: "Level 3 · Lesson 4", the Level and the position the
   home page counts in it. Shown in the lesson header and the recordings
@@ -2101,10 +2102,10 @@ the ten prompts on the Yeti (all 23 recorded; rule (D) kept the t of
 as it is (its take without "sitting up on an alif" is right; the
 generator's "does not match the script" flag on it can be ignored), and
 published Level 1 and Quiz me. Then the laser's cursor dot and the
-two-finger fix, and the microphone warning (section 3). **Waiting on the
-author:** the laser on the iPad and on his Windows pen; turn on two-step
-verification on the Google account that owns Firebase; the GitHub deploy
-setup (steps given 2-step and deploy, 2026-11-23).
+two-finger fix, and the microphone warning (section 3). Two-step verification is on (the
+author, 2026-11-23). **Waiting:** the GitHub deploy setup — the author
+runs `firebase init hosting:github`, then Claude writes the Run-button
+workflow.
 
 **Quiz me — Levels 1 and 2, committed and deployed 2026-10-27 as a draft:
 only the admin sees the lightbulb until it is switched on in Manage
