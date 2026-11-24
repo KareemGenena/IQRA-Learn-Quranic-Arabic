@@ -1907,8 +1907,9 @@ is target `app`, and the page links to its short address.
   restore the file byte for byte, repeat for the other site — or ask whether
   the CLI should be pinned to a version that allows it. On 2026-11-06 the old
   address and the landing page were deployed (build `2026-11-07 05:52 UTC`,
-  main at c89c54c); **`iqra1447` still serves the `2026-10-28` build** — the
-  second deploy was stopped by the permission check and waits on the author. `curl <site>/version.json` shows any site's
+  main at c89c54c). On 2026-11-23 BOTH app sites were deployed the same way,
+  one after the other (build `2026-11-24 03:58 UTC`, main at b681646); the
+  landing page was not touched. `curl <site>/version.json` shows any site's
   build.
 - The domain is connected (2026-10-06; moved 2026-11-04): a CNAME `iqra` →
   `iqra1447-home.web.app` at
