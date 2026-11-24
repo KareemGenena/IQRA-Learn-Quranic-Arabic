@@ -1943,6 +1943,21 @@ is target `app`, and the page links to its short address.
   the same night, `2026-11-24 05:11 UTC`, main at eeb05bc); the
   landing page was not touched. `curl <site>/version.json` shows any site's
   build.
+- **Deploying from GitHub, by hand (set up 2026-11-23).** The author ran
+  `firebase init hosting:github` (a service account `github-action-1298716901`,
+  its key in the repository secret
+  `FIREBASE_SERVICE_ACCOUNT_IQRA___LEARN_QURANIC_ARABIC`; the first run failed
+  with "service account does not exist" — IAM not caught up — and a re-run a
+  minute later went through). It reformats `firebase.json` and `.firebaserc`
+  (same content; restored from git) and writes a pull-request preview
+  workflow, deleted. `.github/workflows/deploy-app.yml` is the one
+  workflow: **workflow_dispatch only**, main only, a sparse checkout of
+  `app/` (the raw `Audio/` is 550 MB and not needed), `npm ci` + build, then
+  each app site deployed in turn with firebase-tools pinned at 15.16.0 and
+  `.firebaserc` rewritten on the runner by `jq`; the run's summary shows each
+  site's `version.json`. Run it from GitHub → Actions → "Deploy the app" →
+  Run workflow, or `gh workflow run deploy-app.yml`. Never on push. The
+  landing page still deploys from this laptop (`--only hosting:home`).
 - The domain is connected (2026-10-06; moved 2026-11-04): a CNAME `iqra` →
   `iqra1447-home.web.app` at
   Namecheap, the certificate issued by Firebase. The root `muslimbynature.org`
